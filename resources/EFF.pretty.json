@@ -6,6 +6,10 @@
       ,"contact": {
           "name": "US EPA, OECA Integration, Targeting and Access Branch"
       }
+      ,"license": {
+          "name": "This page was built with the Swagger API."
+         ,"url": "https:\/\/swagger.io"
+      }
       ,"version": "1.0.0"
    }
    ,"host": "ofmpub.epa.gov"
@@ -25,13 +29,12 @@
        "output": {
           "name": "output"
          ,"in": "query"
-         ,"description": "Output format: JSONP, JSON or XML."
+         ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
          ,"enum": [
              "JSONP"
             ,"JSON"
             ,"XML"
          ]
-         ,"default": "JSON"
          ,"type": "string"
          ,"required": false
       }
@@ -45,7 +48,7 @@
       ,"callback": {
           "name": "callback"
          ,"in": "query"
-         ,"description": "JSONP Callback.  For use with JSONP output only.  Enter a name of the function in which to wrap the JSON response."
+         ,"description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
          ,"type": "string"
          ,"required": false
       }

@@ -29,20 +29,19 @@
        "output": {
           "name": "output"
          ,"in": "query"
-         ,"description": "Output format: JSONP, JSON or XML."
+         ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
          ,"enum": [
              "JSONP"
             ,"JSON"
             ,"XML"
          ]
-         ,"default": "JSON"
          ,"type": "string"
          ,"required": false
       }
       ,"callback": {
           "name": "callback"
          ,"in": "query"
-         ,"description": "JSONP Callback.  For use with JSONP output only.  Enter a name of the function in which to wrap the JSON response."
+         ,"description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
          ,"type": "string"
          ,"required": false
       }
@@ -2879,8 +2878,8 @@
       }
       ,"\/rest_lookups.icis_law_sections": {
           "get": {
-             "summary": "ECHO ICIS NPDES Law Sections Lookup Service"
-            ,"description": "Returns the ICIS NPDES Law Section Descriptions."
+             "summary": "ECHO ICIS Law Sections Lookup Service"
+            ,"description": "Returns the ICIS Law Section Descriptions."
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -2926,8 +2925,8 @@
             }
          }
          ,"post": {
-             "summary": "ECHO ICIS NPDES Law Sections Lookup Service"
-            ,"description": "Returns the ICIS NPDES Law Section Descriptions."
+             "summary": "ECHO ICIS Law Sections Lookup Service"
+            ,"description": "Returns the ICIS Law Section Descriptions."
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"

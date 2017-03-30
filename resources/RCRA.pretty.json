@@ -2,9 +2,13 @@
     "swagger": "2.0"
    ,"info": {
        "title": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Resource Conservation and Recovery Act "
-      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\n<BR><BR>RCRA Rest Services provides multiple service endpoints, each with specific capabilities, to search and retrieve data on hazardous waste handlers\/facilities regulated under the Resource Conservation and Recovery Act (RCRA).   The returned results reflect data drawn from EPA's RCRAInfo database.\n<BR><BR>\nThe get_facilities, get_map, get_qid, and get_download end points are meant to be used together, while the enhanced get_facility_info end point is self contained.\n  The get_facility_info end point returns either an array of state, county or zip clusters with summary statistics per cluster or an array of facilities.\n<BR><BR>\nThe recommended use scenario for get_facilities, get_qid, get_map, and get_downoad is:\n<br>\n<br><b>1)<\/b>&nbsp Use get_facilities to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.\n<br><b>2)<\/b>&nbsp Use get_qid, with the returned QID, to paginate through arrays of facility results.\n<br><b>3)<\/b>&nbsp Use get_map, with the returned QID, to zoom in\/out and pan on the clustered and individual facility coordinates that meet the QID query criteria.\n<br><b>4)<\/b>&nbsp Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.\n<br>\n<br>\nAdditional ECHO Resources:&nbsp&nbsp <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a>\n<br>"
+      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\n<BR><BR>RCRA Rest Services provides multiple service endpoints, each with specific capabilities, to search and retrieve data on hazardous waste handlers\/facilities regulated under the Resource Conservation and Recovery Act (RCRA).   The returned results reflect data drawn from EPA's RCRAInfo database.\n<BR><BR>\nThe get_facilities, get_map, get_qid, and get_download end points are meant to be used together, while the enhanced get_facility_info end point is self contained.\n  The get_facility_info end point returns either an array of state, county or zip clusters with summary statistics per cluster or an array of facilities.\n<BR><BR>\nThe recommended use scenario for get_facilities, get_qid, get_map, and get_downoad is:\n<br>\n<br><b>1)<\/b>&nbsp Use get_facilities to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.\n<br><b>2)<\/b>&nbsp Use get_qid, with the returned QID, to paginate through arrays of facility results.\n<br><b>3)<\/b>&nbsp Use get_map, with the returned QID, to zoom in\/out and pan on the clustered and individual facility coordinates that meet the QID query criteria.\n<br><b>4)<\/b>&nbsp Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.\n<br>\n<br>\nUse the qcolumns parameter to customize your search results.  Use the Metdata service endpoint for a list of available output objects, their Column Ids, and their definitions to help you build your customized output. \n<br><br>\nAdditional ECHO Resources:&nbsp&nbsp <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a>\n<br>"
       ,"contact": {
           "name": "US EPA, OECA Integration, Targeting and Access Branch"
+      }
+      ,"license": {
+          "name": "This page was built with the Swagger API."
+         ,"url": "https:\/\/swagger.io"
       }
       ,"version": "0.0.0"
    }
@@ -22,23 +26,18 @@
       ,"application\/xml"
    ]
    ,"parameters": {
-       "output": {
-          "name": "output"
-         ,"in": "query"
-         ,"description": "Output format: JSONP, JSON or XML."
-         ,"enum": [
-             "JSONP"
-            ,"JSON"
-            ,"XML"
-         ]
-         ,"default": "JSON"
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"p_med": {
+       "p_med": {
           "name": "p_med"
          ,"in": "query"
-         ,"description": "Filter Results by Media.\n- A = Air\n- W = Water\n- R = RCRA (Hazardous Waste)\n- M = RMP (Risk Management Plan)\n- S = SDWA (Public Drinking Water Systems)\n- ALL (Air + Water + RCRA + SDWA)"
+         ,"description": "Filter Results by Media.\n- A = Air\n- M = RMP (Risk Management Plan)\n- R = RCRA (Hazardous Waste)\n- S = SDWA (Public Drinking Water Systems)\n- W = Water\n- ALL = Air and Water and RCRA"
+         ,"enum": [
+             "A"
+            ,"M"
+            ,"R"
+            ,"S"
+            ,"W"
+            ,"ALL"
+         ]
          ,"type": "string"
          ,"required": false
       }
@@ -59,7 +58,7 @@
       ,"callback": {
           "name": "callback"
          ,"in": "query"
-         ,"description": "JSONP Callback.  For use with JSONP output only.  Enter a name of the function in which to wrap the JSON response."
+         ,"description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
          ,"type": "string"
          ,"required": false
       }
@@ -511,6 +510,13 @@
          ,"type": "number"
          ,"required": false
       }
+      ,"p_tribename": {
+          "name": "p_tribename"
+         ,"in": "query"
+         ,"description": "Tribe Name Filter.  Enter a single tribe name to filter results."
+         ,"type": "string"
+         ,"required": false
+      }
       ,"p_tribedist": {
           "name": "p_tribedist"
          ,"in": "query"
@@ -687,6 +693,20 @@
          ,"type": "string"
          ,"required": false
       }
+      ,"qid": {
+          "name": "qid"
+         ,"in": "query"
+         ,"description": "Query ID Selector.  Enter the QueryID number from a previously run query."
+         ,"type": "string"
+         ,"required": true
+      }
+      ,"p_qid": {
+          "name": "p_qid"
+         ,"in": "query"
+         ,"description": "Query ID Selector.  Enter the QueryID number from a previously run query."
+         ,"type": "string"
+         ,"required": true
+      }
       ,"pageno": {
           "name": "pageno"
          ,"in": "query"
@@ -741,10 +761,17 @@
          ,"type": "number"
          ,"required": false
       }
+      ,"p_pretty_print": {
+          "name": "p_pretty_print"
+         ,"in": "query"
+         ,"description": "Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost."
+         ,"type": "number"
+         ,"required": false
+      }
       ,"qcolumns": {
           "name": "qcolumns"
          ,"in": "query"
-         ,"description": "Results Column Limiter.  Enter a comma-delimited list of column positions to limit results to only desired columns or provide an asterisk to obtain all possible columns.  When qcolumns is unspecified each ECHO service provides a default set of columns considered appropriate for average use.  This parameter provides a mechanism to tune this further.  The list of positions and corresponding columns may be obtained via calling the metadata endpoint for each service.  Use with caution as while ECHO data structures are largely static, breaking changes are possible as ECHO implements new features."
+         ,"description": "Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
          ,"type": "string"
          ,"required": false
       }
@@ -806,6 +833,12 @@
           "name": "p_icoo"
          ,"in": "query"
          ,"description": "Indian country search and\/or flag.  Enter \"Y\" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_ico, p_fac_ico or p_fac_icoo conditions will be returned."
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_ejscreen_over80cnt": {
+          "name": "p_ejscreen_over80cnt"
+         ,"in": "query"
          ,"type": "string"
          ,"required": false
       }
@@ -905,7 +938,16 @@
             ,"description": "Validates query search parameters and returns query identifier.  Use the responseset parameter to set the page size"
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "name": "output"
+                  ,"in": "query"
+                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+                  ,"enum": [
+                      "JSONP"
+                     ,"JSON"
+                     ,"XML"
+                  ]
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/p_fn"
@@ -1052,6 +1094,9 @@
                    "$ref": "#\/parameters\/p_tribeid"
                }
                ,{
+                   "$ref": "#\/parameters\/p_tribename"
+               }
+               ,{
                    "$ref": "#\/parameters\/p_tribedist"
                }
                ,{
@@ -1134,6 +1179,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/p_decouple"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ejscreen_over80cnt"
                }
                ,{
                    "$ref": "#\/parameters\/queryset"
@@ -1183,7 +1231,16 @@
             ,"description": "Validates query search parameters and returns query identifier.  Use the responseset parameter to set the page size"
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "name": "output"
+                  ,"in": "query"
+                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+                  ,"enum": [
+                      "JSONP"
+                     ,"JSON"
+                     ,"XML"
+                  ]
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/p_fn"
@@ -1330,6 +1387,9 @@
                    "$ref": "#\/parameters\/p_tribeid"
                }
                ,{
+                   "$ref": "#\/parameters\/p_tribename"
+               }
+               ,{
                    "$ref": "#\/parameters\/p_tribedist"
                }
                ,{
@@ -1412,6 +1472,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/p_decouple"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ejscreen_over80cnt"
                }
                ,{
                    "$ref": "#\/parameters\/queryset"
@@ -1463,7 +1526,11 @@
             ,"description": "Returns either an array of Facilities or an array of Clusters that meet the specified search criteria."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "name": "output"
+                  ,"in": "query"
+                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language.\n- CSV = Facility results formatted as comma delimited file download.\n- GEOJSON = Facility results formatted as GeoJSON feature collection.\n- GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/p_fn"
@@ -1610,6 +1677,9 @@
                    "$ref": "#\/parameters\/p_tribeid"
                }
                ,{
+                   "$ref": "#\/parameters\/p_tribename"
+               }
+               ,{
                    "$ref": "#\/parameters\/p_tribedist"
                }
                ,{
@@ -1694,6 +1764,9 @@
                    "$ref": "#\/parameters\/p_decouple"
                }
                ,{
+                   "$ref": "#\/parameters\/p_ejscreen_over80cnt"
+               }
+               ,{
                    "$ref": "#\/parameters\/queryset"
                }
                ,{
@@ -1707,6 +1780,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/qcolumns"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pretty_print"
                }
             ]
             ,"tags": [
@@ -1735,7 +1811,11 @@
             ,"description": "Returns either an array of Facilities or an array of Clusters that meet the specified search criteria."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "name": "output"
+                  ,"in": "query"
+                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language.\n- CSV = Facility results formatted as comma delimited file download.\n- GEOJSON = Facility results formatted as GeoJSON feature collection.\n- GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/p_fn"
@@ -1882,6 +1962,9 @@
                    "$ref": "#\/parameters\/p_tribeid"
                }
                ,{
+                   "$ref": "#\/parameters\/p_tribename"
+               }
+               ,{
                    "$ref": "#\/parameters\/p_tribedist"
                }
                ,{
@@ -1966,6 +2049,9 @@
                    "$ref": "#\/parameters\/p_decouple"
                }
                ,{
+                   "$ref": "#\/parameters\/p_ejscreen_over80cnt"
+               }
+               ,{
                    "$ref": "#\/parameters\/queryset"
                }
                ,{
@@ -1979,6 +2065,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/qcolumns"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pretty_print"
                }
             ]
             ,"tags": [
@@ -2009,14 +2098,19 @@
             ,"description": "GET_QID is passed with a query ID corresponding to a previously run get_facilities query. It then returns a Facility object containing all matching facilities. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. "
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "name": "output"
+                  ,"in": "query"
+                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+                  ,"enum": [
+                      "JSONP"
+                     ,"JSON"
+                     ,"XML"
+                  ]
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
-                   "name": "qid"
-                  ,"in": "query"
-                  ,"description": "Query ID Selector.  Enter the QueryID number from a previously run query."
-                  ,"type": "string"
-                  ,"required": true
+                   "$ref": "#\/parameters\/qid"
                }
                ,{
                    "$ref": "#\/parameters\/pageno"
@@ -2060,14 +2154,19 @@
             ,"description": "GET_QID is passed with a query ID corresponding to a previously run get_facilities query. It then returns a Facility object containing all matching facilities. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. "
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "name": "output"
+                  ,"in": "query"
+                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+                  ,"enum": [
+                      "JSONP"
+                     ,"JSON"
+                     ,"XML"
+                  ]
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
-                   "name": "qid"
-                  ,"in": "query"
-                  ,"description": "Query ID Selector.  Enter the QueryID number from a previously run query."
-                  ,"type": "string"
-                  ,"required": true
+                   "$ref": "#\/parameters\/qid"
                }
                ,{
                    "$ref": "#\/parameters\/pageno"
@@ -2113,14 +2212,19 @@
             ,"description": "The purpose of the GET_MAP service is to display facility coordinates and facility clusters related to a get_facilities facility query. Currently, the maximum number of coordinates returned is 500. GET_MAP performs automatic clustering at the state, county, and zip code levels to maximize the number of coordinates returned."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "name": "output"
+                  ,"in": "query"
+                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+                  ,"enum": [
+                      "JSONP"
+                     ,"JSON"
+                     ,"XML"
+                  ]
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
-                   "name": "qid"
-                  ,"in": "query"
-                  ,"description": "Query ID Selector.  Enter the QueryID number from a previously run query."
-                  ,"type": "string"
-                  ,"required": true
+                   "$ref": "#\/parameters\/qid"
                }
                ,{
                    "$ref": "#\/parameters\/callback"
@@ -2170,14 +2274,19 @@
             ,"description": "The purpose of the GET_MAP service is to display facility coordinates and facility clusters related to a get_facilities facility query. Currently, the maximum number of coordinates returned is 500. GET_MAP performs automatic clustering at the state, county, and zip code levels to maximize the number of coordinates returned."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "name": "output"
+                  ,"in": "query"
+                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+                  ,"enum": [
+                      "JSONP"
+                     ,"JSON"
+                     ,"XML"
+                  ]
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
-                   "name": "qid"
-                  ,"in": "query"
-                  ,"description": "Query ID Selector.  Enter the QueryID number from a previously run query."
-                  ,"type": "string"
-                  ,"required": true
+                   "$ref": "#\/parameters\/qid"
                }
                ,{
                    "$ref": "#\/parameters\/callback"
@@ -2229,14 +2338,20 @@
             ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return a comma sepated vaule (CSV) file of the facilities found."
             ,"parameters": [
                 {
-                   "name": "qid"
+                   "name": "output"
                   ,"in": "query"
-                  ,"description": "Query ID Selector.  Enter the QueryID number from a previously run query."
-                  ,"type": "number"
-                  ,"required": true
+                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default).\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/qid"
                }
                ,{
                    "$ref": "#\/parameters\/qcolumns"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pretty_print"
                }
             ]
             ,"tags": [
@@ -2244,7 +2359,7 @@
             ]
             ,"responses": {
              "200": {
-                "description": "Results are a comma separated value (CSV) file."
+                "description": "Results are a comma separated value (CSV) file or a file containing a GeoJSON feature collection."
                ,"schema": {
                    "type": "file"
                }
@@ -2256,14 +2371,20 @@
             ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return a comma sepated vaule (CSV) file of the facilities found."
             ,"parameters": [
                 {
-                   "name": "qid"
+                   "name": "output"
                   ,"in": "query"
-                  ,"description": "Query ID Selector.  Enter the QueryID number from a previously run query."
-                  ,"type": "number"
-                  ,"required": true
+                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default).\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/qid"
                }
                ,{
                    "$ref": "#\/parameters\/qcolumns"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pretty_print"
                }
             ]
             ,"tags": [
@@ -2271,9 +2392,157 @@
             ]
             ,"responses": {
              "200": {
-                "description": "Results are a comma separated value (CSV) file."
+                "description": "Results are a comma separated value (CSV) file or a file containing a GeoJSON feature collection."
                ,"schema": {
                    "type": "file"
+               }
+            }
+            }
+         }
+      }
+      ,"\/rcra_rest_services.get_info_clusters": {
+          "get": {
+             "summary": "Resource Conservation and Recovery Act (RCRA) Info Clusters Service"
+            ,"description": "Based on the QID obtained from a clustered get_facility_info query, download cluster facility information as either a CSV or GEOJSON file."
+            ,"parameters": [
+                {
+                   "name": "output"
+                  ,"in": "query"
+                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default).\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_qid"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pretty_print"
+               }
+            ]
+            ,"tags": [
+                "Resource Conservation and Recovery Act"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results are a comma separated value (CSV) file or a file containing a GeoJSON feature collection."
+               ,"schema": {
+                   "type": "file"
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Resource Conservation and Recovery Act (RCRA) Info Clusters Service"
+            ,"description": "Based on the QID obtained from a clustered get_facility_info query, download cluster facility information as either a CSV or GEOJSON file."
+            ,"parameters": [
+                {
+                   "name": "output"
+                  ,"in": "query"
+                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default).\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_qid"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pretty_print"
+               }
+            ]
+            ,"tags": [
+                "Resource Conservation and Recovery Act"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results are a comma separated value (CSV) file or a file containing a GeoJSON feature collection."
+               ,"schema": {
+                   "type": "file"
+               }
+            }
+            }
+         }
+      }
+      ,"\/rcra_rest_services.get_geojson": {
+          "get": {
+             "summary": "Resource Conservation and Recovery Act (RCRA) GeoJSON Service"
+            ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found."
+            ,"parameters": [
+                {
+                   "name": "output"
+                  ,"in": "query"
+                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- GEOJSON = Facility results formatted as GeoJSON feature collection (default).\n- GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/qid"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/newsort"
+               }
+               ,{
+                   "$ref": "#\/parameters\/descending"
+               }
+               ,{
+                   "$ref": "#\/parameters\/qcolumns"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pretty_print"
+               }
+            ]
+            ,"tags": [
+                "Resource Conservation and Recovery Act"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results are formatted as a GeoJSON feature collection."
+               ,"schema": {
+                   "$ref": "#\/definitions\/rcr5_FeatureCollection"
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Resource Conservation and Recovery Act (RCRA) GeoJSON Service"
+            ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found."
+            ,"parameters": [
+                {
+                   "name": "output"
+                  ,"in": "query"
+                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- GEOJSON = Facility results formatted as GeoJSON feature collection (default).\n- GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/qid"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/newsort"
+               }
+               ,{
+                   "$ref": "#\/parameters\/descending"
+               }
+               ,{
+                   "$ref": "#\/parameters\/qcolumns"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pretty_print"
+               }
+            ]
+            ,"tags": [
+                "Resource Conservation and Recovery Act"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results are formatted as a GeoJSON feature collection."
+               ,"schema": {
+                   "$ref": "#\/definitions\/rcr5_FeatureCollection"
                }
             }
             }
@@ -2285,7 +2554,16 @@
             ,"description": "Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "name": "output"
+                  ,"in": "query"
+                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+                  ,"enum": [
+                      "JSONP"
+                     ,"JSON"
+                     ,"XML"
+                  ]
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/callback"
@@ -2317,7 +2595,16 @@
             ,"description": "Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "name": "output"
+                  ,"in": "query"
+                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+                  ,"enum": [
+                      "JSONP"
+                     ,"JSON"
+                     ,"XML"
+                  ]
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/callback"
@@ -2369,6 +2656,31 @@
             ,"QV"
          ]
       }
+      ,"Geometry": {
+          "type": "object"
+         ,"description": "GeoJSON Geometry Object"
+         ,"properties": {
+             "type": {
+                "type": "string"
+               ,"title": "Geometry"
+               ,"example": "Point"
+               ,"description": "Indicator of the geometry represented in the GeoJSON Feature, for Echo will always be \"Point\"."
+            }
+            ,"coordinates": {
+                "type": "array"
+               ,"title": "Coordinates Array"
+               ,"example": -87.86253
+               ,"description": "Array of coordinate values in longitude, latitude format."
+               ,"items": {
+                   "type": "number"
+               }
+            }
+         }
+         ,"required": [
+             "type"
+            ,"coordinates"
+         ]
+      }
       ,"met_ResultsColumns": {
           "type": "object"
          ,"description": "Results Column Object"
@@ -2397,6 +2709,11 @@
                 "type": "string"
                ,"title": "Object Name"
             }
+            ,"Description": {
+                "type": "string"
+               ,"title": "Description"
+               ,"description": "A description of the category of Supplemental Environment Project (SEP) for a settlement."
+            }
          }
          ,"required": [
              "ColumnName"
@@ -2404,6 +2721,7 @@
             ,"DataLength"
             ,"ColumnID"
             ,"ObjectName"
+            ,"Description"
          ]
       }
       ,"met_Results": {
@@ -2533,6 +2851,7 @@
             }
             ,"FacPopulationDensity": {
                 "type": "string"
+               ,"example": "9611.17"
             }
             ,"FacFederalAgencyCode": {
                 "type": "string"
@@ -2580,36 +2899,43 @@
             }
             ,"RCRAQtrsInSNC": {
                 "type": "string"
+               ,"example": "0"
             }
             ,"RCRAQtrsInNC": {
                 "type": "string"
+               ,"example": "0"
             }
             ,"RCRACurrViolationTypes": {
                 "type": "string"
             }
             ,"RCRAInspCnt": {
                 "type": "string"
+               ,"example": "0"
             }
             ,"RCRALastInspectionDate": {
                 "type": "string"
             }
             ,"RCRADaysLastInspection": {
                 "type": "string"
+               ,"example": "1247"
             }
             ,"RCRAIeaCnt": {
                 "type": "string"
+               ,"example": "0"
             }
             ,"RCRALastIeaDate": {
                 "type": "string"
             }
             ,"RCRAFeaCnt": {
                 "type": "string"
+               ,"example": "0"
             }
             ,"RCRALastFeaDate": {
                 "type": "string"
             }
             ,"RCRAPenalties": {
                 "type": "string"
+               ,"example": "$987"
             }
             ,"RCRALastPenaltyDate": {
                 "type": "string"
@@ -2848,14 +3174,22 @@
             ,"CalculatedAccuracyMeters": {
                 "type": "string"
                ,"title": "Calculated Accuracy in Meters"
+               ,"example": "50"
             }
             ,"Map": {
                 "type": "string"
                ,"title": "Map"
             }
+            ,"Over80CountUs": {
+                "type": "string"
+            }
+            ,"DateLastRecordReview": {
+                "type": "string"
+            }
             ,"Score": {
                 "type": "string"
                ,"title": "Score"
+               ,"example": "1"
             }
             ,"MaxScore": {
                 "type": "string"
@@ -3417,6 +3751,7 @@
             }
             ,"FacPopulationDensity": {
                 "type": "string"
+               ,"example": "9611.17"
             }
             ,"FacFederalAgencyCode": {
                 "type": "string"
@@ -3464,36 +3799,43 @@
             }
             ,"RCRAQtrsInSNC": {
                 "type": "string"
+               ,"example": "0"
             }
             ,"RCRAQtrsInNC": {
                 "type": "string"
+               ,"example": "0"
             }
             ,"RCRACurrViolationTypes": {
                 "type": "string"
             }
             ,"RCRAInspCnt": {
                 "type": "string"
+               ,"example": "0"
             }
             ,"RCRALastInspectionDate": {
                 "type": "string"
             }
             ,"RCRADaysLastInspection": {
                 "type": "string"
+               ,"example": "1247"
             }
             ,"RCRAIeaCnt": {
                 "type": "string"
+               ,"example": "0"
             }
             ,"RCRALastIeaDate": {
                 "type": "string"
             }
             ,"RCRAFeaCnt": {
                 "type": "string"
+               ,"example": "0"
             }
             ,"RCRALastFeaDate": {
                 "type": "string"
             }
             ,"RCRAPenalties": {
                 "type": "string"
+               ,"example": "$987"
             }
             ,"RCRALastPenaltyDate": {
                 "type": "string"
@@ -3732,14 +4074,22 @@
             ,"CalculatedAccuracyMeters": {
                 "type": "string"
                ,"title": "Calculated Accuracy in Meters"
+               ,"example": "50"
             }
             ,"Map": {
                 "type": "string"
                ,"title": "Map"
             }
+            ,"Over80CountUs": {
+                "type": "string"
+            }
+            ,"DateLastRecordReview": {
+                "type": "string"
+            }
             ,"Score": {
                 "type": "string"
                ,"title": "Score"
+               ,"example": "1"
             }
             ,"MaxScore": {
                 "type": "string"
@@ -3977,6 +4327,599 @@
             ,"PopUpBaseURL"
             ,"ServiceBaseURL"
             ,"QueryParameters"
+         ]
+      }
+      ,"rcr5_Feature": {
+          "type": "object"
+         ,"description": "GeoJSON Feature Object"
+         ,"properties": {
+             "type": {
+                "type": "string"
+               ,"title": "Feature"
+               ,"example": "Feature"
+               ,"description": "Static marker indicating object is a GeoJSON Feature."
+            }
+            ,"geometry": {
+                "$ref": "#\/definitions\/Geometry"
+            }
+            ,"properties": {
+                "$ref": "#\/definitions\/rcr5_properties"
+            }
+         }
+         ,"required": [
+             "type"
+            ,"geometry"
+            ,"properties"
+         ]
+      }
+      ,"rcr5_FeatureCollection": {
+          "type": "object"
+         ,"description": "GeoJSON Feature Collection Object"
+         ,"properties": {
+             "type": {
+                "type": "string"
+               ,"title": "Feature Collection"
+               ,"example": "FeatureCollection"
+               ,"description": "Static marker indicating object is a GeoJSON Feature Collection."
+            }
+            ,"features": {
+                "type": "array"
+               ,"title": "Features Array"
+               ,"description": "Array of GeoJSON feature objects."
+               ,"items": {
+                   "$ref": "#\/definitions\/rcr5_Feature"
+               }
+            }
+         }
+         ,"required": [
+             "type"
+            ,"features"
+         ]
+      }
+      ,"rcr5_properties": {
+          "type": "object"
+         ,"description": "GeoJSON Properties Object"
+         ,"properties": {
+             "SourceID": {
+                "type": "string"
+               ,"title": "EPA Source Identifier"
+               ,"example": "ALR040033"
+               ,"description": "Unique Identifier assigned by EPA."
+            }
+            ,"EPASystem": {
+                "type": "string"
+               ,"title": "EPA Data System"
+               ,"example": "ICP"
+               ,"description": "The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: \n\n- AFS: Air Facility System for Clean Air Act stationary source programs.\n- ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.\n- RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.\n- NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).\n- TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.\n- NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.\n- TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals."
+            }
+            ,"RegistryID": {
+                "type": "string"
+               ,"title": "FRS ID"
+               ,"example": "110020837601"
+               ,"description": "An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases."
+            }
+            ,"Statute": {
+                "type": "string"
+               ,"title": "Regulatory Statute"
+               ,"example": "CWA"
+               ,"description": "The name of the statute associated with each of the permits and identifiers linked to the facility: \n- CAA = the Clean Air Act\n- CWA = the Clean Water Act\n- RCRA = the Resource Conservation and Recovery Act\n- EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)\n- TSCA = the Toxic Substances Control Act\n- SDWA = the Safe Drinking Water Act"
+            }
+            ,"RCRAName": {
+                "type": "string"
+            }
+            ,"RCRAStreet": {
+                "type": "string"
+            }
+            ,"RCRACity": {
+                "type": "string"
+            }
+            ,"RCRAState": {
+                "type": "string"
+            }
+            ,"RCRAStateDistrict": {
+                "type": "string"
+            }
+            ,"RCRAZip": {
+                "type": "string"
+            }
+            ,"RCRACounty": {
+                "type": "string"
+            }
+            ,"RCRAEPARegion": {
+                "type": "string"
+            }
+            ,"RCRAStatus": {
+                "type": "string"
+            }
+            ,"RCRAIndianCntryFlg": {
+                "type": "string"
+            }
+            ,"RCRATRIbalLandCode": {
+                "type": "string"
+            }
+            ,"FacFIPSCode": {
+                "type": "string"
+               ,"title": "FIPS Code"
+               ,"example": "55001"
+               ,"description": "The 2-digit Federal Information Processing Standards (FIPS) code to identify the county that a facility is located in."
+            }
+            ,"FacUsMexBorderFlg": {
+                "type": "string"
+               ,"title": "Near US-Mexico Border"
+               ,"example": "Y"
+               ,"description": "A Y\/N flag indicating that the facility is within 100KM of the US-Mexico Border."
+            }
+            ,"RCRAImpWaterFlg": {
+                "type": "string"
+            }
+            ,"RCRAUniverse": {
+                "type": "string"
+            }
+            ,"RCRANaics": {
+                "type": "string"
+            }
+            ,"FacSicCodes": {
+                "type": "string"
+            }
+            ,"FacPercentMinority": {
+                "type": "number"
+               ,"title": "Facility Percent Minority\n"
+               ,"example": 45.379
+               ,"description": "Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility."
+            }
+            ,"FacPopulationDensity": {
+                "type": "number"
+               ,"example": 9611.17
+            }
+            ,"FacFederalAgencyCode": {
+                "type": "string"
+               ,"title": "Facility Federal Agency Code\n"
+               ,"example": "E"
+               ,"description": "Indicates the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government. The five-character code consists of a letter followed by four numbers. There are four possible letters that can occupy the first character position: C = Civilian Federal Agency; D = Department of Defense; E = Department of Energy; X = Unknown. The second and third characters represent the agency code, while the fourth and fifth characters represent the bureau code."
+            }
+            ,"ChesapeakeBayFlag": {
+                "type": "string"
+               ,"title": "Chesapeake Bay Flag\n"
+               ,"example": "Y"
+               ,"description": "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
+            }
+            ,"AIRIDs": {
+                "type": "string"
+               ,"title": "AIR Facility System ID"
+               ,"example": "DC0000001100195254"
+               ,"description": "Air Facility System (AFS) ID."
+            }
+            ,"CWAIDs": {
+                "type": "string"
+            }
+            ,"RCRAIDs": {
+                "type": "string"
+               ,"title": "Resource Conservation and Recovery Act IDs"
+               ,"example": "VAD981111784"
+               ,"description": "A unique 12-character ID assigned for each record\/permit\/site\/facility within the RCRAInfo database."
+            }
+            ,"TRIIDs": {
+                "type": "string"
+               ,"title": "Toxics Release Inventory Program IDs"
+               ,"example": "20011FRTTT5001F"
+               ,"description": "A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address."
+            }
+            ,"SDWAIDs": {
+                "type": "string"
+               ,"example": "DC0000001"
+               ,"description": "A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS)."
+            }
+            ,"RCRACaseIDs": {
+                "type": "string"
+            }
+            ,"RCRACurrSNC": {
+                "type": "string"
+            }
+            ,"RCRACurrComplStatus": {
+                "type": "string"
+            }
+            ,"RCRAQtrsInSNC": {
+                "type": "number"
+               ,"example": 0
+            }
+            ,"RCRAQtrsInNC": {
+                "type": "number"
+               ,"example": 0
+            }
+            ,"RCRACurrViolationTypes": {
+                "type": "string"
+            }
+            ,"RCRAInspCnt": {
+                "type": "number"
+               ,"example": 0
+            }
+            ,"RCRALastInspectionDate": {
+                "type": "string"
+            }
+            ,"RCRADaysLastInspection": {
+                "type": "number"
+               ,"example": 1247
+            }
+            ,"RCRAIeaCnt": {
+                "type": "number"
+               ,"example": 0
+            }
+            ,"RCRALastIeaDate": {
+                "type": "string"
+            }
+            ,"RCRAFeaCnt": {
+                "type": "number"
+               ,"example": 0
+            }
+            ,"RCRALastFeaDate": {
+                "type": "string"
+            }
+            ,"RCRAPenalties": {
+                "type": "number"
+               ,"example": 987
+            }
+            ,"RCRALastPenaltyDate": {
+                "type": "string"
+            }
+            ,"RCRALastInspDateEPA": {
+                "type": "string"
+            }
+            ,"RCRALastInspDateState": {
+                "type": "string"
+            }
+            ,"RCRALastFeaDateEPA": {
+                "type": "string"
+            }
+            ,"RCRALastFeaDateState": {
+                "type": "string"
+            }
+            ,"RCRALastIeaDateEPA": {
+                "type": "string"
+            }
+            ,"RCRALastIeaDateState": {
+                "type": "string"
+            }
+            ,"FacTRIReporter": {
+                "type": "string"
+               ,"title": "Facility TRI Reporter"
+               ,"example": "B"
+               ,"description": "Indicates whether facility reported to the Toxics Release Inventory (TRI) for the most recent reporting year."
+            }
+            ,"FacTRIOnSiteReleases": {
+                "type": "string"
+            }
+            ,"FacDerivedHuc": {
+                "type": "string"
+               ,"title": "Watershed (HUC Code)"
+               ,"example": "552968"
+               ,"description": "The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed."
+            }
+            ,"FacDerivedWBD": {
+                "type": "string"
+            }
+            ,"FacDerivedWBDName": {
+                "type": "string"
+            }
+            ,"FacMapFlg": {
+                "type": "string"
+               ,"title": "Facility Mapped Flag"
+               ,"example": "Y"
+               ,"description": "Graphical indicator denoting whether geographical data required to map a facility are available."
+            }
+            ,"FacMapIcon": {
+                "type": "string"
+               ,"title": "Facility Map Icon"
+               ,"example": "CWA-NC-MJ-2.png"
+               ,"description": "The default map icon image file calculated for the facility by the ECHO program."
+            }
+            ,"LastViolationDate": {
+                "type": "string"
+               ,"title": "Date of Last Violation"
+               ,"example": "5\/13\/2011"
+            }
+            ,"CurrentVioCnt": {
+                "type": "string"
+               ,"title": "Count of Current Violations"
+            }
+            ,"FacFederalAgencyName": {
+                "type": "string"
+            }
+            ,"FacTRIOffSiteTransfers": {
+                "type": "string"
+            }
+            ,"RCRAFIPSCode": {
+                "type": "string"
+            }
+            ,"RCRALandTypeCode": {
+                "type": "string"
+            }
+            ,"RCRAOldestOpenVioDate": {
+                "type": "string"
+            }
+            ,"FacTRILandReleases": {
+                "type": "string"
+               ,"example": "11.7"
+            }
+            ,"RCRAMapIcon": {
+                "type": "string"
+            }
+            ,"RmpIDs": {
+                "type": "string"
+            }
+            ,"RCRA3yrComplQtrsStatus": {
+                "type": "string"
+            }
+            ,"CensusBlockGroup": {
+                "type": "string"
+               ,"title": "Census Block Group"
+               ,"example": "110010096022"
+               ,"description": "A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people."
+            }
+            ,"PctilePctpre1960Us": {
+                "type": "number"
+               ,"example": 14.6
+               ,"description": "The national percentile of the census block group for the EJSCREEN Lead paint indicator."
+            }
+            ,"PctileDpmUs": {
+                "type": "number"
+               ,"example": 99
+               ,"description": "The national percentile of the census block group for the EJSCREEN diesel particulate matter indicator."
+            }
+            ,"PctileCancerUs": {
+                "type": "number"
+               ,"example": 99
+               ,"description": "The national percentile of the census block group for the EJSCREEN NATA air toxics cancer risk indicator."
+            }
+            ,"PctileRespUs": {
+                "type": "number"
+               ,"example": 41.9
+               ,"description": "The national percentile of the census block group for the EJSCREEN NATA respiratory hazard index indicator."
+            }
+            ,"PctileTrafficScoreUs": {
+                "type": "number"
+               ,"example": 7
+               ,"description": "The national percentile of the census block group for the EJSCREEN Traffic proximity and volume indicator."
+            }
+            ,"PctileProximityNPDESUs": {
+                "type": "number"
+               ,"example": 45.3
+               ,"description": "The national percentile of the census block group for the EJSCREEN proximity to major direct water dischargers indicator."
+            }
+            ,"PctileProximityNplUs": {
+                "type": "number"
+               ,"example": 38.9
+               ,"description": "The national percentile of the census block group for the EJSCREEN proximity to National Priorities List (NPL) sites indicator."
+            }
+            ,"PctileProximityRmpUs": {
+                "type": "number"
+               ,"example": 54.7
+               ,"description": "The national percentile of the census block group for the EJSCREEN proximity to Risk Management Plan (RMP) sites indicator."
+            }
+            ,"PctileProximityTsdfUs": {
+                "type": "number"
+               ,"example": 42.4
+               ,"description": "The national percentile of the census block group for the EJSCREEN proximity to Treatment Storage and Disposal Facilities (TSDFs) indicator."
+            }
+            ,"PctileO3Us": {
+                "type": "number"
+               ,"example": 52.4
+               ,"description": "The national percentile of the census block group for the EJSCREEN ozone indicator."
+            }
+            ,"PctilePmUs": {
+                "type": "number"
+               ,"example": 52.4
+               ,"description": "The national percentile of the census block group for the EJSCREEN particulate matter indicator."
+            }
+            ,"MaxPctileUs": {
+                "type": "number"
+               ,"example": 54.7
+               ,"description": "The maximum percentile from all individual EJSCREEN indicators."
+            }
+            ,"EjscreenFlagUs": {
+                "type": "string"
+            }
+            ,"EjscreenFlag": {
+                "type": "string"
+            }
+            ,"TRIbalFlag": {
+                "type": "number"
+               ,"title": "Tribal Lands Flag"
+               ,"example": 1
+            }
+            ,"CurrSvFlag": {
+                "type": "number"
+               ,"title": "Current Significant Violation Flag"
+               ,"example": 1
+               ,"description": "Indicates if the facility has a current significant violation. 1 = Yes"
+            }
+            ,"ViolFlag": {
+                "type": "number"
+               ,"title": "Violation Flag"
+               ,"example": 1
+               ,"description": "Indicates if the facility had a violation within the last 3 years. 1 = Yes"
+            }
+            ,"CurrVioFlag": {
+                "type": "number"
+               ,"title": "Current Violation Flag"
+               ,"example": 1
+               ,"description": "Indicates if the facility has a current violation. 1 = Yes"
+            }
+            ,"Insp5yrFlag": {
+                "type": "number"
+               ,"title": "Inspected Within Last Five Years Flag"
+               ,"example": 1
+               ,"description": "Indicates if the facility has an inspection within the last 5 years. 1 = Yes"
+            }
+            ,"Ea5yrFlag": {
+                "type": "number"
+               ,"example": 0
+               ,"description": "Indicates if the facility has a formal enforcement action within the last 5 years. 1 = Yes"
+            }
+            ,"Infea5yrFlag": {
+                "type": "number"
+               ,"example": 1
+               ,"description": "Indicates if the facility has an informal enforcement action within the last 5 years. 1 = Yes."
+            }
+            ,"Lower48": {
+                "type": "string"
+               ,"title": "Contiguous United States Flag"
+               ,"example": "Y"
+               ,"description": "Flag showing Y\/N whether location is within the contiguous (lower 48) United States."
+            }
+            ,"ActiveLower48": {
+                "type": "string"
+            }
+            ,"FacDerivedTRIbes": {
+                "type": "string"
+            }
+            ,"FacIndianCntryFlg": {
+                "type": "string"
+               ,"title": "Facility Indian Country Flag"
+               ,"description": "Flag showing Y\/N whether the facility is located in Indian Country."
+            }
+            ,"FacIndianSpatialFlg": {
+                "type": "string"
+            }
+            ,"CollectionMethod": {
+                "type": "string"
+               ,"title": "Collection Method"
+               ,"example": "ADDRESS MATCHING-HOUSE NUMBER"
+               ,"description": "??"
+            }
+            ,"ReferencePoint": {
+                "type": "string"
+               ,"title": "Reference Point"
+               ,"example": "ENTRANCE POINT OF A FACILITY OR STATION"
+               ,"description": "??"
+            }
+            ,"CalculatedAccuracyMeters": {
+                "type": "number"
+               ,"title": "Calculated Accuracy in Meters"
+               ,"example": 50
+            }
+            ,"Map": {
+                "type": "string"
+               ,"title": "Map"
+            }
+            ,"Over80CountUs": {
+                "type": "number"
+            }
+            ,"DateLastRecordReview": {
+                "type": "string"
+            }
+            ,"Score": {
+                "type": "number"
+               ,"title": "Score"
+               ,"example": 1
+            }
+            ,"MaxScore": {
+                "type": "number"
+               ,"title": "Max Score"
+               ,"example": 1
+               ,"description": "[Col. 121]"
+            }
+         }
+         ,"required": [
+             "SourceID"
+            ,"EPASystem"
+            ,"RegistryID"
+            ,"Statute"
+            ,"RCRAName"
+            ,"RCRAStreet"
+            ,"RCRACity"
+            ,"RCRAState"
+            ,"RCRAStateDistrict"
+            ,"RCRAZip"
+            ,"RCRACounty"
+            ,"RCRAEPARegion"
+            ,"RCRAStatus"
+            ,"RCRAIndianCntryFlg"
+            ,"RCRATRIbalLandCode"
+            ,"FacFIPSCode"
+            ,"FacUsMexBorderFlg"
+            ,"RCRAImpWaterFlg"
+            ,"RCRAUniverse"
+            ,"RCRANaics"
+            ,"FacSicCodes"
+            ,"FacPercentMinority"
+            ,"FacPopulationDensity"
+            ,"FacFederalAgencyCode"
+            ,"ChesapeakeBayFlag"
+            ,"AIRIDs"
+            ,"CWAIDs"
+            ,"RCRAIDs"
+            ,"TRIIDs"
+            ,"SDWAIDs"
+            ,"RCRACaseIDs"
+            ,"RCRACurrSNC"
+            ,"RCRACurrComplStatus"
+            ,"RCRAQtrsInSNC"
+            ,"RCRAQtrsInNC"
+            ,"RCRACurrViolationTypes"
+            ,"RCRAInspCnt"
+            ,"RCRALastInspectionDate"
+            ,"RCRADaysLastInspection"
+            ,"RCRAIeaCnt"
+            ,"RCRALastIeaDate"
+            ,"RCRAFeaCnt"
+            ,"RCRALastFeaDate"
+            ,"RCRAPenalties"
+            ,"RCRALastPenaltyDate"
+            ,"RCRALastInspDateEPA"
+            ,"RCRALastInspDateState"
+            ,"RCRALastFeaDateEPA"
+            ,"RCRALastFeaDateState"
+            ,"RCRALastIeaDateEPA"
+            ,"RCRALastIeaDateState"
+            ,"FacTRIReporter"
+            ,"FacTRIOnSiteReleases"
+            ,"FacDerivedHuc"
+            ,"FacDerivedWBD"
+            ,"FacDerivedWBDName"
+            ,"FacMapFlg"
+            ,"FacMapIcon"
+            ,"LastViolationDate"
+            ,"CurrentVioCnt"
+            ,"FacFederalAgencyName"
+            ,"FacTRIOffSiteTransfers"
+            ,"RCRAFIPSCode"
+            ,"RCRALandTypeCode"
+            ,"RCRAOldestOpenVioDate"
+            ,"FacTRILandReleases"
+            ,"RCRAMapIcon"
+            ,"RmpIDs"
+            ,"RCRA3yrComplQtrsStatus"
+            ,"CensusBlockGroup"
+            ,"PctilePctpre1960Us"
+            ,"PctileDpmUs"
+            ,"PctileCancerUs"
+            ,"PctileRespUs"
+            ,"PctileTrafficScoreUs"
+            ,"PctileProximityNPDESUs"
+            ,"PctileProximityNplUs"
+            ,"PctileProximityRmpUs"
+            ,"PctileProximityTsdfUs"
+            ,"PctileO3Us"
+            ,"PctilePmUs"
+            ,"MaxPctileUs"
+            ,"EjscreenFlagUs"
+            ,"EjscreenFlag"
+            ,"TRIbalFlag"
+            ,"CurrSvFlag"
+            ,"ViolFlag"
+            ,"CurrVioFlag"
+            ,"Insp5yrFlag"
+            ,"Ea5yrFlag"
+            ,"Infea5yrFlag"
+            ,"Lower48"
+            ,"ActiveLower48"
+            ,"FacDerivedTRIbes"
+            ,"FacIndianCntryFlg"
+            ,"FacIndianSpatialFlg"
+            ,"CollectionMethod"
+            ,"ReferencePoint"
+            ,"CalculatedAccuracyMeters"
+            ,"Map"
          ]
       }
       ,"rcr3_MapData": {

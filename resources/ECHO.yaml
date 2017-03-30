@@ -21,11 +21,16 @@ info:
     <br><b>4)</b>&nbsp Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.
     <br>
     <br>
+    Use the qcolumns parameter to customize your search results.  Use the Metdata service endpoint for a list of available output objects, their Column Ids, and their definitions to help you build your customized output. 
+    <br><br>
     Additional ECHO Resources:&nbsp&nbsp <a href="https://echo.epa.gov/tools/web-services">Web Services</a>, <a href="https://echo.epa.gov/resources/echo-data/about-the-data">About ECHO's Data</a>, <a href="https://echo.epa.gov/tools/data-downloads">Data Downloads</a>
     <br>
 
   contact: 
     name: US EPA, OECA Integration, Targeting and Access Branch
+  license: 
+    name: This page was built with the Swagger API.
+    url: "https://swagger.io"
   version: '1.0.0'
 host: ofmpub.epa.gov
 basePath: /echo
@@ -50,29 +55,18 @@ parameters:
     description: |-
       Filter Results by Media.
       - A = Air
-      - W = Water
-      - R = RCRA (Hazardous Waste)
       - M = RMP (Risk Management Plan)
+      - R = RCRA (Hazardous Waste)
       - S = SDWA (Public Drinking Water Systems)
-      - ALL (Air + Water + RCRA + SDWA)
+      - W = Water
+      - ALL = Air and Water and RCRA
     enum: 
     - A
-    - W
-    - R
     - M
+    - R
     - S
+    - W
     - ALL
-    type: string
-    required: false
-  output: 
-    name: output
-    in: query
-    description: "Output format: JSONP, JSON or XML."
-    enum: 
-    - JSONP
-    - JSON
-    - XML
-    default: JSON
     type: string
     required: false
   p_id: 
@@ -90,7 +84,7 @@ parameters:
   callback: 
     name: callback
     in: query
-    description: JSONP Callback.  For use with JSONP output only.  Enter a name of the function in which to wrap the JSON response.
+    description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
     type: string
     required: false
   p_sa: 
@@ -555,6 +549,12 @@ parameters:
     description: Numeric code for tribe (or list of tribes).
     type: number
     required: false
+  p_tribename: 
+    name: p_tribename
+    in: query
+    description: Tribe Name Filter.  Enter a single tribe name to filter results.
+    type: string
+    required: false
   p_tribedist: 
     name: p_tribedist
     in: query
@@ -648,6 +648,18 @@ parameters:
     - N
     type: string
     required: false
+  qid: 
+    name: qid
+    in: query
+    description: Query ID Selector.  Enter the QueryID number from a previously run query.
+    type: string
+    required: true
+  p_qid: 
+    name: p_qid
+    in: query
+    description: Query ID Selector.  Enter the QueryID number from a previously run query.
+    type: string
+    required: true
   pageno: 
     name: pageno
     in: query
@@ -694,6 +706,12 @@ parameters:
     description: Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
     type: number
     required: false
+  p_pretty_print: 
+    name: p_pretty_print
+    in: query
+    description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
+    type: number
+    required: false
   p_feac: 
     name: p_feac
     in: query
@@ -704,6 +722,11 @@ parameters:
     name: p_icoo
     in: query
     description: "Indian country search and/or flag.  Enter \"Y\" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_ico, p_fac_ico or p_fac_icoo conditions will be returned."
+    type: string
+    required: false
+  p_ejscreen_over80cnt: 
+    name: p_ejscreen_over80cnt
+    in: query
     type: string
     required: false
   p_fac_icos: 
@@ -751,7 +774,19 @@ paths:
       summary: Combined ECHO Facility Search Service
       description: Validates query search parameters and returns query identifier.  Use the responseset parameter to set the page size
       parameters: 
-      - "$ref": "#/parameters/output"
+      - name: output
+        in: query
+        description: |-
+          Output Format Flag.  Enter one of the following keywords:
+          - JSON = Data model formatted as Javascript Object Notation (default).
+          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+          - XML = Data model formatted as Extensible Markup Language.
+        enum: 
+        - JSONP
+        - JSON
+        - XML
+        type: string
+        required: false
       - "$ref": "#/parameters/p_fn"
       - "$ref": "#/parameters/p_sa"
       - "$ref": "#/parameters/p_sa1"
@@ -804,6 +839,7 @@ paths:
       - "$ref": "#/parameters/p_qs"
       - "$ref": "#/parameters/p_sfs"
       - "$ref": "#/parameters/p_tribeid"
+      - "$ref": "#/parameters/p_tribename"
       - "$ref": "#/parameters/p_tribedist"
       - "$ref": "#/parameters/p_wbd"
       - "$ref": "#/parameters/p_fntype"
@@ -814,6 +850,7 @@ paths:
       - "$ref": "#/parameters/p_lat"
       - "$ref": "#/parameters/p_long"
       - "$ref": "#/parameters/p_radius"
+      - "$ref": "#/parameters/p_ejscreen_over80cnt"
       - "$ref": "#/parameters/queryset"
       - "$ref": "#/parameters/responseset"
       - "$ref": "#/parameters/tablelist"
@@ -822,7 +859,7 @@ paths:
       - "$ref": "#/parameters/callback"
       - name: qcolumns
         in: query
-        description: Results Column Limiter.  Enter a comma-delimited list of column positions to limit results to only desired columns or provide an asterisk to obtain all possible columns.  When qcolumns is unspecified each ECHO service provides a default set of columns considered appropriate for average use.  This parameter provides a mechanism to tune this further.  The list of positions and corresponding columns may be obtained via calling the metadata endpoint for each service.  Use with caution as while ECHO data structures are largely static, breaking changes are possible as ECHO implements new features.
+        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
         type: string
         required: false
       tags: 
@@ -841,7 +878,19 @@ paths:
       summary: Combined ECHO Facility Search Service
       description: Validates query search parameters and returns query identifier.  Use the responseset parameter to set the page size
       parameters: 
-      - "$ref": "#/parameters/output"
+      - name: output
+        in: query
+        description: |-
+          Output Format Flag.  Enter one of the following keywords:
+          - JSON = Data model formatted as Javascript Object Notation (default).
+          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+          - XML = Data model formatted as Extensible Markup Language.
+        enum: 
+        - JSONP
+        - JSON
+        - XML
+        type: string
+        required: false
       - "$ref": "#/parameters/p_fn"
       - "$ref": "#/parameters/p_sa"
       - "$ref": "#/parameters/p_sa1"
@@ -894,6 +943,7 @@ paths:
       - "$ref": "#/parameters/p_qs"
       - "$ref": "#/parameters/p_sfs"
       - "$ref": "#/parameters/p_tribeid"
+      - "$ref": "#/parameters/p_tribename"
       - "$ref": "#/parameters/p_tribedist"
       - "$ref": "#/parameters/p_wbd"
       - "$ref": "#/parameters/p_fntype"
@@ -904,6 +954,7 @@ paths:
       - "$ref": "#/parameters/p_lat"
       - "$ref": "#/parameters/p_long"
       - "$ref": "#/parameters/p_radius"
+      - "$ref": "#/parameters/p_ejscreen_over80cnt"
       - "$ref": "#/parameters/queryset"
       - "$ref": "#/parameters/responseset"
       - "$ref": "#/parameters/tablelist"
@@ -912,7 +963,7 @@ paths:
       - "$ref": "#/parameters/callback"
       - name: qcolumns
         in: query
-        description: Results Column Limiter.  Enter a comma-delimited list of column positions to limit results to only desired columns or provide an asterisk to obtain all possible columns.  When qcolumns is unspecified each ECHO service provides a default set of columns considered appropriate for average use.  This parameter provides a mechanism to tune this further.  The list of positions and corresponding columns may be obtained via calling the metadata endpoint for each service.  Use with caution as while ECHO data structures are largely static, breaking changes are possible as ECHO implements new features.
+        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
         type: string
         required: false
       tags: 
@@ -932,7 +983,19 @@ paths:
       summary: Combined ECHO Facility Enhanced Search Service
       description: Returns either an array of Facilities or an array of Clusters that meet the specified search criteria.
       parameters: 
-      - "$ref": "#/parameters/output"
+      - name: output
+        in: query
+        description: |-
+          Output Format Flag.  Enter one of the following keywords:
+          - JSON = Data model formatted as Javascript Object Notation (default).
+          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+          - XML = Data model formatted as Extensible Markup Language.
+          - CSV = Facility results formatted as comma delimited file download.
+          - GEOJSON = Facility results formatted as GeoJSON feature collection.
+          - GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
+          - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+        type: string
+        required: false
       - "$ref": "#/parameters/p_fn"
       - "$ref": "#/parameters/p_sa"
       - "$ref": "#/parameters/p_sa1"
@@ -985,6 +1048,7 @@ paths:
       - "$ref": "#/parameters/p_qs"
       - "$ref": "#/parameters/p_sfs"
       - "$ref": "#/parameters/p_tribeid"
+      - "$ref": "#/parameters/p_tribename"
       - "$ref": "#/parameters/p_tribedist"
       - "$ref": "#/parameters/p_wbd"
       - "$ref": "#/parameters/p_fntype"
@@ -995,13 +1059,15 @@ paths:
       - "$ref": "#/parameters/p_lat"
       - "$ref": "#/parameters/p_long"
       - "$ref": "#/parameters/p_radius"
+      - "$ref": "#/parameters/p_ejscreen_over80cnt"
       - "$ref": "#/parameters/responseset"
       - "$ref": "#/parameters/callback"
       - name: qcolumns
         in: query
-        description: "List of comma-separated column IDs of output fields that will be returned. Columns 1, 5, 37, 38, 42, and 43 are automatically returned. [Column numbers can be found in the field definitions on the Model tab.]"
+        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
         type: string
         required: false
+      - "$ref": "#/parameters/p_pretty_print"
       tags: 
       - Facility Info
       responses: 
@@ -1018,7 +1084,19 @@ paths:
       summary: Combined ECHO Facility Enhanced Search Service
       description: Returns either an array of Facilities or an array of Clusters that meet the specified search criteria.
       parameters: 
-      - "$ref": "#/parameters/output"
+      - name: output
+        in: query
+        description: |-
+          Output Format Flag.  Enter one of the following keywords:
+          - JSON = Data model formatted as Javascript Object Notation (default).
+          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+          - XML = Data model formatted as Extensible Markup Language.
+          - CSV = Facility results formatted as comma delimited file download.
+          - GEOJSON = Facility results formatted as GeoJSON feature collection.
+          - GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
+          - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+        type: string
+        required: false
       - "$ref": "#/parameters/p_fn"
       - "$ref": "#/parameters/p_sa"
       - "$ref": "#/parameters/p_sa1"
@@ -1071,6 +1149,7 @@ paths:
       - "$ref": "#/parameters/p_qs"
       - "$ref": "#/parameters/p_sfs"
       - "$ref": "#/parameters/p_tribeid"
+      - "$ref": "#/parameters/p_tribename"
       - "$ref": "#/parameters/p_tribedist"
       - "$ref": "#/parameters/p_wbd"
       - "$ref": "#/parameters/p_fntype"
@@ -1081,13 +1160,15 @@ paths:
       - "$ref": "#/parameters/p_lat"
       - "$ref": "#/parameters/p_long"
       - "$ref": "#/parameters/p_radius"
+      - "$ref": "#/parameters/p_ejscreen_over80cnt"
       - "$ref": "#/parameters/responseset"
       - "$ref": "#/parameters/callback"
       - name: qcolumns
         in: query
-        description: "List of comma-separated column IDs of output fields that will be returned. Columns 1, 5, 37, 38, 42, and 43 are automatically returned. [Column numbers can be found in the field definitions on the Model tab.]"
+        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
         type: string
         required: false
+      - "$ref": "#/parameters/p_pretty_print"
       tags: 
       - Facility Info
       responses: 
@@ -1105,19 +1186,27 @@ paths:
       summary: Combined ECHO Paginated Results Service
       description: GET_QID is passed with a query ID corresponding to a previously run get_facilities query. It then returns a Facility object containing all matching facilities. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - name: qid
+      - name: output
         in: query
-        description: Query ID Selector.  Enter the QueryID number from a previously run query.
+        description: |-
+          Output Format Flag.  Enter one of the following keywords:
+          - JSON = Data model formatted as Javascript Object Notation (default).
+          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+          - XML = Data model formatted as Extensible Markup Language.
+        enum: 
+        - JSONP
+        - JSON
+        - XML
         type: string
-        required: true
+        required: false
+      - "$ref": "#/parameters/qid"
       - "$ref": "#/parameters/pageno"
       - "$ref": "#/parameters/callback"
       - "$ref": "#/parameters/newsort"
       - "$ref": "#/parameters/descending"
       - name: qcolumns
         in: query
-        description: Results Column Limiter.  Enter a comma-delimited list of column positions to limit results to only desired columns or provide an asterisk to obtain all possible columns.  When qcolumns is unspecified each ECHO service provides a default set of columns considered appropriate for average use.  This parameter provides a mechanism to tune this further.  The list of positions and corresponding columns may be obtained via calling the metadata endpoint for each service.  Use with caution as while ECHO data structures are largely static, breaking changes are possible as ECHO implements new features.
+        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
         type: string
         required: false
       tags: 
@@ -1136,19 +1225,27 @@ paths:
       summary: Combined ECHO Paginated Results Service
       description: GET_QID is passed with a query ID corresponding to a previously run get_facilities query. It then returns a Facility object containing all matching facilities. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - name: qid
+      - name: output
         in: query
-        description: Query ID Selector.  Enter the QueryID number from a previously run query.
+        description: |-
+          Output Format Flag.  Enter one of the following keywords:
+          - JSON = Data model formatted as Javascript Object Notation (default).
+          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+          - XML = Data model formatted as Extensible Markup Language.
+        enum: 
+        - JSONP
+        - JSON
+        - XML
         type: string
-        required: true
+        required: false
+      - "$ref": "#/parameters/qid"
       - "$ref": "#/parameters/pageno"
       - "$ref": "#/parameters/callback"
       - "$ref": "#/parameters/newsort"
       - "$ref": "#/parameters/descending"
       - name: qcolumns
         in: query
-        description: Results Column Limiter.  Enter a comma-delimited list of column positions to limit results to only desired columns or provide an asterisk to obtain all possible columns.  When qcolumns is unspecified each ECHO service provides a default set of columns considered appropriate for average use.  This parameter provides a mechanism to tune this further.  The list of positions and corresponding columns may be obtained via calling the metadata endpoint for each service.  Use with caution as while ECHO data structures are largely static, breaking changes are possible as ECHO implements new features.
+        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
         type: string
         required: false
       tags: 
@@ -1168,12 +1265,20 @@ paths:
       summary: Combined ECHO Map Service
       description: The purpose of the GET_MAP service is to display facility coordinates and facility clusters related to a get_facilities facility query. Currently, the maximum number of coordinates returned is 500. GET_MAP performs automatic clustering at the state, county, and zip code levels to maximize the number of coordinates returned.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - name: qid
+      - name: output
         in: query
-        description: Query ID Selector.  Enter the QueryID number from a previously run query.
+        description: |-
+          Output Format Flag.  Enter one of the following keywords:
+          - JSON = Data model formatted as Javascript Object Notation (default).
+          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+          - XML = Data model formatted as Extensible Markup Language.
+        enum: 
+        - JSONP
+        - JSON
+        - XML
         type: string
-        required: true
+        required: false
+      - "$ref": "#/parameters/qid"
       - "$ref": "#/parameters/callback"
       - "$ref": "#/parameters/tablelist"
       - "$ref": "#/parameters/c1_lat"
@@ -1197,12 +1302,20 @@ paths:
       summary: Combined ECHO Map Service
       description: The purpose of the GET_MAP service is to display facility coordinates and facility clusters related to a get_facilities facility query. Currently, the maximum number of coordinates returned is 500. GET_MAP performs automatic clustering at the state, county, and zip code levels to maximize the number of coordinates returned.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - name: qid
+      - name: output
         in: query
-        description: Query ID Selector.  Enter the QueryID number from a previously run query.
+        description: |-
+          Output Format Flag.  Enter one of the following keywords:
+          - JSON = Data model formatted as Javascript Object Notation (default).
+          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+          - XML = Data model formatted as Extensible Markup Language.
+        enum: 
+        - JSONP
+        - JSON
+        - XML
         type: string
-        required: true
+        required: false
+      - "$ref": "#/parameters/qid"
       - "$ref": "#/parameters/callback"
       - "$ref": "#/parameters/tablelist"
       - "$ref": "#/parameters/c1_lat"
@@ -1227,50 +1340,176 @@ paths:
       summary: Combined ECHO Download Data Service
       description: Based on the QID obtained from a get_facilities or get_facility_info query, return a comma sepated vaule (CSV) file of the facilities found.
       parameters: 
-      - name: qid
+      - name: output
         in: query
-        description: Query ID Selector.  Enter the QueryID number from a previously run query.
-        type: number
-        required: true
-      - name: qcolumns
-        in: query
-        description: Results Column Limiter.  Enter a comma-delimited list of column positions to limit results to only desired columns or provide an asterisk to obtain all possible columns.  When qcolumns is unspecified each ECHO service provides a default set of columns considered appropriate for average use.  This parameter provides a mechanism to tune this further.  The list of positions and corresponding columns may be obtained via calling the metadata endpoint for each service.  Use with caution as while ECHO data structures are largely static, breaking changes are possible as ECHO implements new features.
+        description: |-
+          Output Format Flag.  Enter one of the following keywords:
+          - CSV = Facility results formatted as comma delimited file download (default).
+          - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
         type: string
         required: false
+      - "$ref": "#/parameters/qid"
+      - name: qcolumns
+        in: query
+        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+        type: string
+        required: false
+      - "$ref": "#/parameters/p_pretty_print"
       tags: 
       - Facility Info
       responses: 
         '200': 
-          description: Results are a comma separated value (CSV) file.
+          description: Results are a comma separated value (CSV) file or a file containing a GeoJSON feature collection.
           schema: 
             type: file
     post: 
       summary: Combined ECHO Download Data Service
       description: Based on the QID obtained from a get_facilities or get_facility_info query, return a comma sepated vaule (CSV) file of the facilities found.
       parameters: 
-      - name: qid
+      - name: output
         in: query
-        description: Query ID Selector.  Enter the QueryID number from a previously run query.
-        type: number
-        required: true
-      - name: qcolumns
-        in: query
-        description: Results Column Limiter.  Enter a comma-delimited list of column positions to limit results to only desired columns or provide an asterisk to obtain all possible columns.  When qcolumns is unspecified each ECHO service provides a default set of columns considered appropriate for average use.  This parameter provides a mechanism to tune this further.  The list of positions and corresponding columns may be obtained via calling the metadata endpoint for each service.  Use with caution as while ECHO data structures are largely static, breaking changes are possible as ECHO implements new features.
+        description: |-
+          Output Format Flag.  Enter one of the following keywords:
+          - CSV = Facility results formatted as comma delimited file download (default).
+          - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
         type: string
         required: false
+      - "$ref": "#/parameters/qid"
+      - name: qcolumns
+        in: query
+        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+        type: string
+        required: false
+      - "$ref": "#/parameters/p_pretty_print"
       tags: 
       - Facility Info
       responses: 
         '200': 
-          description: Results are a comma separated value (CSV) file.
+          description: Results are a comma separated value (CSV) file or a file containing a GeoJSON feature collection.
           schema: 
             type: file
+  "/echo_rest_services.get_info_clusters": 
+    get: 
+      summary: Combined ECHO Info Clusters Service
+      description: Based on the QID obtained from a clustered get_facility_info query, download cluster facility information as either a CSV or GEOJSON file.
+      parameters: 
+      - name: output
+        in: query
+        description: |-
+          Output Format Flag.  Enter one of the following keywords:
+          - CSV = Facility results formatted as comma delimited file download (default).
+          - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+        type: string
+        required: false
+      - "$ref": "#/parameters/p_qid"
+      - "$ref": "#/parameters/p_pretty_print"
+      tags: 
+      - Facility Info
+      responses: 
+        '200': 
+          description: Results are a comma separated value (CSV) file or a file containing a GeoJSON feature collection.
+          schema: 
+            type: file
+    post: 
+      summary: Combined ECHO Info Clusters Service
+      description: Based on the QID obtained from a clustered get_facility_info query, download cluster facility information as either a CSV or GEOJSON file.
+      parameters: 
+      - name: output
+        in: query
+        description: |-
+          Output Format Flag.  Enter one of the following keywords:
+          - CSV = Facility results formatted as comma delimited file download (default).
+          - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+        type: string
+        required: false
+      - "$ref": "#/parameters/p_qid"
+      - "$ref": "#/parameters/p_pretty_print"
+      tags: 
+      - Facility Info
+      responses: 
+        '200': 
+          description: Results are a comma separated value (CSV) file or a file containing a GeoJSON feature collection.
+          schema: 
+            type: file
+  "/echo_rest_services.get_geojson": 
+    get: 
+      summary: Combined ECHO GeoJSON Service
+      description: Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found.
+      parameters: 
+      - name: output
+        in: query
+        description: |-
+          Output Format Flag.  Enter one of the following keywords:
+          - GEOJSON = Facility results formatted as GeoJSON feature collection (default).
+          - GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
+          - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+        type: string
+        required: false
+      - "$ref": "#/parameters/qid"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/newsort"
+      - "$ref": "#/parameters/descending"
+      - name: qcolumns
+        in: query
+        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+        type: string
+        required: false
+      - "$ref": "#/parameters/p_pretty_print"
+      tags: 
+      - Facility Info
+      responses: 
+        '200': 
+          description: Results are formatted as a GeoJSON feature collection.
+          schema: 
+            "$ref": "#/definitions/ers5_FeatureCollection"
+    post: 
+      summary: Combined ECHO GeoJSON Service
+      description: Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found.
+      parameters: 
+      - name: output
+        in: query
+        description: |-
+          Output Format Flag.  Enter one of the following keywords:
+          - GEOJSON = Facility results formatted as GeoJSON feature collection (default).
+          - GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
+          - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+        type: string
+        required: false
+      - "$ref": "#/parameters/qid"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/newsort"
+      - "$ref": "#/parameters/descending"
+      - name: qcolumns
+        in: query
+        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+        type: string
+        required: false
+      - "$ref": "#/parameters/p_pretty_print"
+      tags: 
+      - Facility Info
+      responses: 
+        '200': 
+          description: Results are formatted as a GeoJSON feature collection.
+          schema: 
+            "$ref": "#/definitions/ers5_FeatureCollection"
   "/echo_rest_services.metadata": 
     get: 
       summary: Combined ECHO Metadata Service
       description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
       parameters: 
-      - "$ref": "#/parameters/output"
+      - name: output
+        in: query
+        description: |-
+          Output Format Flag.  Enter one of the following keywords:
+          - JSON = Data model formatted as Javascript Object Notation (default).
+          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+          - XML = Data model formatted as Extensible Markup Language.
+        enum: 
+        - JSONP
+        - JSON
+        - XML
+        type: string
+        required: false
       - "$ref": "#/parameters/callback"
       tags: 
       - Metadata
@@ -1288,7 +1527,19 @@ paths:
       summary: Combined ECHO Metadata Service
       description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
       parameters: 
-      - "$ref": "#/parameters/output"
+      - name: output
+        in: query
+        description: |-
+          Output Format Flag.  Enter one of the following keywords:
+          - JSON = Data model formatted as Javascript Object Notation (default).
+          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+          - XML = Data model formatted as Extensible Markup Language.
+        enum: 
+        - JSONP
+        - JSON
+        - XML
+        type: string
+        required: false
       - "$ref": "#/parameters/callback"
       tags: 
       - Metadata
@@ -1505,6 +1756,7 @@ definitions:
         type: string
       FacAccuracyMeters: 
         type: string
+        example: '35900'
       FacDerivedTRIbes: 
         type: string
       FacDerivedHuc: 
@@ -1659,6 +1911,7 @@ definitions:
         description: The number of inspections/compliance evaluations under the Clean Air Act, occurring at the facility within the last five years
       CAADaysLastEvaluation: 
         type: string
+        example: '7051'
       CAAInformalCount: 
         type: string
         description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Clean Air Act.
@@ -1674,8 +1927,10 @@ definitions:
         type: string
       CAALastPenaltyAmt: 
         type: string
+        example: "$17014"
       CAAQtrsInNC: 
         type: string
+        example: '0'
       CAACurrComplianceStatus: 
         type: string
         example: Not Available
@@ -1708,6 +1963,7 @@ definitions:
         description: The number of inspections/compliance evaluations under the Clean Water Act, occurring at the facility within the last five years.
       CWADaysLastInspection: 
         type: string
+        example: '184'
       CWAInformalCount: 
         type: string
         title: Clean Water Act Informal Action Count
@@ -1768,6 +2024,7 @@ definitions:
         description: The number of inspections/compliance evaluations under the Resource Conservation and Recovery Act, occurring at the facility within the last five years
       RCRADaysLastEvaluation: 
         type: string
+        example: '6848'
       RCRAInformalCount: 
         type: string
         title: RCRA Informal Action Count
@@ -1782,12 +2039,14 @@ definitions:
         type: string
       RCRAPenalties: 
         type: string
+        example: "$987"
       RCRALastPenaltyDate: 
         type: string
       RCRALastPenaltyAmt: 
         type: string
       RCRAQtrsInNC: 
         type: string
+        example: '0'
       RCRACurrComplianceStatus: 
         type: string
         title: RCRA Current Compliance Status
@@ -1825,13 +2084,16 @@ definitions:
       TRIReleasesTransfers: 
         type: string
         title: TRI Release Transfers
+        example: '170878'
         description: Total chemical releases, in pounds, as reported to the Toxics Release Inventory (TRI) by the facility for the most recent reporting year
       TRIOnSiteReleases: 
         type: string
         title: Toxics Release Inventory Onsite Releases
+        example: '11987'
       TRIOffSiteTransfers: 
         type: string
         title: Toxics Release Inventory Offsite Transfer Count
+        example: '0'
       TRIReporterInPast: 
         type: string
         title: Toxics Release Inventory Reporter In Past Flag
@@ -1840,10 +2102,12 @@ definitions:
         description: All Case Numbers of Federal Enforcement Cases relating to the Facility from the ICIS System
       FecNumberOfCases: 
         type: string
+        example: '1'
       FecLastCaseDate: 
         type: string
       FecTotalPenalties: 
         type: string
+        example: "$34400"
       GHGIDs: 
         type: string
       GHGCO2Releases: 
@@ -1996,9 +2260,20 @@ definitions:
         type: string
       FacIndianSpatialFlg: 
         type: string
+      Over80CountUs: 
+        type: string
+      FacDerivedWBDHu8: 
+        type: string
+      FacDerivedWBDHu8Name: 
+        type: string
+      FacDerivedRadWBDHu8: 
+        type: string
+      FacDerivedRadWBDHu8Name: 
+        type: string
       Score: 
         type: string
         title: Score
+        example: '1'
       MaxScore: 
         type: string
         title: Max Score
@@ -2170,6 +2445,11 @@ definitions:
     - ActiveLower48
     - FacFederalAgencyName
     - FacIndianSpatialFlg
+    - Over80CountUs
+    - FacDerivedWBDHu8
+    - FacDerivedWBDHu8Name
+    - FacDerivedRadWBDHu8
+    - FacDerivedRadWBDHu8Name
     - Score
     - MaxScore
   ers1_Results: 
@@ -2460,6 +2740,7 @@ definitions:
         type: string
       FacAccuracyMeters: 
         type: string
+        example: '35900'
       FacDerivedTRIbes: 
         type: string
       FacDerivedHuc: 
@@ -2614,6 +2895,7 @@ definitions:
         description: The number of inspections/compliance evaluations under the Clean Air Act, occurring at the facility within the last five years
       CAADaysLastEvaluation: 
         type: string
+        example: '7051'
       CAAInformalCount: 
         type: string
         description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Clean Air Act.
@@ -2629,8 +2911,10 @@ definitions:
         type: string
       CAALastPenaltyAmt: 
         type: string
+        example: "$17014"
       CAAQtrsInNC: 
         type: string
+        example: '0'
       CAACurrComplianceStatus: 
         type: string
         example: Not Available
@@ -2663,6 +2947,7 @@ definitions:
         description: The number of inspections/compliance evaluations under the Clean Water Act, occurring at the facility within the last five years.
       CWADaysLastInspection: 
         type: string
+        example: '184'
       CWAInformalCount: 
         type: string
         title: Clean Water Act Informal Action Count
@@ -2723,6 +3008,7 @@ definitions:
         description: The number of inspections/compliance evaluations under the Resource Conservation and Recovery Act, occurring at the facility within the last five years
       RCRADaysLastEvaluation: 
         type: string
+        example: '6848'
       RCRAInformalCount: 
         type: string
         title: RCRA Informal Action Count
@@ -2737,12 +3023,14 @@ definitions:
         type: string
       RCRAPenalties: 
         type: string
+        example: "$987"
       RCRALastPenaltyDate: 
         type: string
       RCRALastPenaltyAmt: 
         type: string
       RCRAQtrsInNC: 
         type: string
+        example: '0'
       RCRACurrComplianceStatus: 
         type: string
         title: RCRA Current Compliance Status
@@ -2780,13 +3068,16 @@ definitions:
       TRIReleasesTransfers: 
         type: string
         title: TRI Release Transfers
+        example: '170878'
         description: Total chemical releases, in pounds, as reported to the Toxics Release Inventory (TRI) by the facility for the most recent reporting year
       TRIOnSiteReleases: 
         type: string
         title: Toxics Release Inventory Onsite Releases
+        example: '11987'
       TRIOffSiteTransfers: 
         type: string
         title: Toxics Release Inventory Offsite Transfer Count
+        example: '0'
       TRIReporterInPast: 
         type: string
         title: Toxics Release Inventory Reporter In Past Flag
@@ -2795,10 +3086,12 @@ definitions:
         description: All Case Numbers of Federal Enforcement Cases relating to the Facility from the ICIS System
       FecNumberOfCases: 
         type: string
+        example: '1'
       FecLastCaseDate: 
         type: string
       FecTotalPenalties: 
         type: string
+        example: "$34400"
       GHGIDs: 
         type: string
       GHGCO2Releases: 
@@ -2951,9 +3244,20 @@ definitions:
         type: string
       FacIndianSpatialFlg: 
         type: string
+      Over80CountUs: 
+        type: string
+      FacDerivedWBDHu8: 
+        type: string
+      FacDerivedWBDHu8Name: 
+        type: string
+      FacDerivedRadWBDHu8: 
+        type: string
+      FacDerivedRadWBDHu8Name: 
+        type: string
       Score: 
         type: string
         title: Score
+        example: '1'
       MaxScore: 
         type: string
         title: Max Score
@@ -3126,6 +3430,11 @@ definitions:
     - ActiveLower48
     - FacFederalAgencyName
     - FacIndianSpatialFlg
+    - Over80CountUs
+    - FacDerivedWBDHu8
+    - FacDerivedWBDHu8Name
+    - FacDerivedRadWBDHu8
+    - FacDerivedRadWBDHu8Name
     - Score
     - MaxScore
   ers2_Results: 
@@ -3242,6 +3551,808 @@ definitions:
     - PopUpBaseURL
     - ServiceBaseURL
     - QueryParameters
+  ers5_Feature: 
+    description: GeoJSON Feature Object
+    properties: 
+      type: 
+        type: string
+        title: Feature
+        example: Feature
+        description: Static marker indicating object is a GeoJSON Feature.
+      geometry: 
+        "$ref": "#/definitions/Geometry" 
+      properties: 
+        "$ref": "#/definitions/ers5_properties" 
+    required: 
+    - type
+    - geometry
+    - properties
+  ers5_FeatureCollection: 
+    description: GeoJSON Feature Collection Object
+    properties: 
+      type: 
+        type: string
+        title: Feature Collection
+        example: FeatureCollection
+        description: Static marker indicating object is a GeoJSON Feature Collection.
+      features: 
+        type: array
+        title: Features Array
+        description: Array of GeoJSON feature objects.
+        items: 
+          "$ref": "#/definitions/ers5_Feature" 
+    required: 
+    - type
+    - features
+  ers5_properties: 
+    description: GeoJSON Properties Object
+    properties: 
+      RegistryID: 
+        type: string
+        title: FRS ID
+        example: '110020837601'
+        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
+      FacName: 
+        type: string
+        title: Facility Name
+        example: W M A T A CENTRAL MAINT FAC
+        description: Name of facility
+      FacStreet: 
+        type: string
+        title: Facility Street Address
+        example: 3101 EISENHOWER AVENUE
+        description: Street address where facility is located, as maintained by each data system. Certain data systems also maintain mailing address information, which is not used in this report. The street address may differ across EPA databases due to differences in reported information (e.g., use of mailing address), change in ownership, use of parent or subsidiary address, etc.
+      FacCity: 
+        type: string
+        title: Facility City
+        example: ALEXANDRIA
+        description: The city where the facility is located.
+      FacState: 
+        type: string
+        title: Facility State
+        example: VA
+        description: Facility state
+      FacZip: 
+        type: string
+        title: Facility Zip Code
+        example: '22314'
+        description: Facility ZIP code
+      FacCounty: 
+        type: string
+        title: Facility County
+        example: ALEXANDRIA CITY
+        description: The county where the facility is located.
+      FacFIPSCode: 
+        type: string
+        title: FIPS Code
+        example: '55001'
+        description: The 2-digit Federal Information Processing Standards (FIPS) code to identify the county that a facility is located in.
+      FacEPARegion: 
+        type: string
+        title: Facility EPA Region
+        example: '03'
+        description: The EPA region where the facility is located. EPA has 10 regional offices that execute programs within several states and territories
+      FacIndianCntryFlg: 
+        type: string
+        title: Facility Indian Country Flag
+        description: Flag showing Y/N whether the facility is located in Indian Country.
+      FacFederalFlg: 
+        type: string
+      FacUsMexBorderFlg: 
+        type: string
+        title: Near US-Mexico Border
+        example: Y
+        description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
+      FacChesapeakeBayFlg: 
+        type: string
+        title: Facility in Chesapeake Bay Watershed Flag
+      FacNaaFlag: 
+        type: string
+      FacMapIcon: 
+        type: string
+        title: Facility Map Icon
+        example: CWA-NC-MJ-2.png
+        description: The default map icon image file calculated for the facility by the ECHO program.
+      FacCollectionMethod: 
+        type: string
+      FacReferencePoint: 
+        type: string
+      FacAccuracyMeters: 
+        type: number
+        example: 35900
+      FacDerivedTRIbes: 
+        type: string
+      FacDerivedHuc: 
+        type: string
+        title: Watershed (HUC Code)
+        example: '552968'
+        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
+      FacDerivedWBD: 
+        type: string
+      FacDerivedStctyFIPS: 
+        type: string
+      FacDerivedZip: 
+        type: string
+      FacDerivedCd113: 
+        type: string
+      FacDerivedCb2010: 
+        type: string
+      FacPercentMinority: 
+        type: number
+        title: |-
+          Facility Percent Minority
+
+        example: 45.379
+        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
+      FacPopDen: 
+        type: number
+        title: |-
+          Facility Population Density
+
+        example: 6716.34
+        description: The number of persons per square mile in the area being profiled. This field is the ratio of total persons (displayed in the Total Persons field) to total land area (displayed in the Land Area field).
+      FacMajorFlag: 
+        type: string
+        title: Facility Major Flag
+      FacActiveFlag: 
+        type: string
+      FacMyrtkUniverse: 
+        type: string
+      FacInspectionCount: 
+        type: number
+        title: Facility Inspection Count
+        example: 1
+        description: The number of inspections/compliance evaluations that have occurred at the facility, under the AIR, CWA, and RCRA, within the last five years. The last 5 years will include data from the 20 most recently completed quarters, plus data from the current quarter up until the refresh date. This count only includes inspection types that are counted as inspections in official counts.
+      FacDateLastInspection: 
+        type: string
+        title: Date of Last Facility Inspection
+        example: 12/18/2012
+        description: The date on which most recent inspection of the facility took place. For the Clean Air Act, the date on which a Full Inspection (FCE) was completed. This date may or may not correspond to an actual site visit. A series of partial on- or off-site inspections may have been conducted during the fiscal year as part of this FCE.
+      FacDaysLastInspection: 
+        type: number
+        title: Days Since Last Facility Inspection
+        example: 1197
+        description: The number of days from the last ECHO refresh to the date on which the most recent inspection of the facility took place based on data recorded into AFS, ICIS-NPDES, or RCRA Info.
+      FacInformalCount: 
+        type: number
+        title: Count of Informal Actions
+        example: 0
+        description: Indicates the total number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years
+      FacDateLastInformalAction: 
+        type: string
+        title: Date of Last Informal Action
+        example: 8/6/2008
+        description: The date of the most recent informal action or NOV taken recorded in AFS, ICIS-NPDES, RCRA Info or SDWIS.
+      FacFormalActionCount: 
+        type: number
+        title: Count of Formal Actions
+        example: 0
+        description: Indicates the total number of enforcement actions taken against the facility within the last five years. NA indicates that this measure is not applicable for facilities with no associated CAA, CWA, or RCRA permits
+      FacDateLastFormalAction: 
+        type: string
+        title: Date of Last Formal Action
+        example: 5/7/2009
+        description: Indicates the effective date of the most recent listed enforcement action taken against the facility within the last five years.
+      FacTotalPenalties: 
+        type: number
+        title: Total Penalties
+        example: 850
+        description: The total dollar amount of either assessed (or final) penalties taken against the facility within the last five years
+      FacPenaltyCount: 
+        type: number
+        title: Penalty Count
+        example: 2
+        description: The total number of penalties assessed (or final) taken against the facility within the last five years
+      FacDateLastPenalty: 
+        type: string
+        title: Date of Last Penalty
+        example: 2/19/2011
+        description: Indicates the date on which the most recent assessed (or final) penalty was taken against the facility within the last five years
+      FacLastPenaltyAmt: 
+        type: number
+        title: Last Penalty Amount
+        example: 200
+        description: Indicates the dollar amount of the most recent assessed (or final) penalty taken against the facility within the last five years
+      FacQtrsInNC: 
+        type: number
+        title: Quarters in Noncompliance
+        example: 3
+        description: Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered either in Non-compliance (NC), Significant Non-compliance (SNC) or High Priority violation (HPV) status
+      FacProgramsInSNC: 
+        type: number
+        title: Programs in Significant Noncompliance
+        example: 1
+        description: A count of the number of programs (AIR, CWA, SDWA, RCRA) related to the facility that have a current serious violation
+      FacCurrComplianceStatus: 
+        type: string
+        title: Current Facility Compliance Status
+        description: "Current compliance status: SNC/Serious Viol, In Violation, No Violation, Unknown, NULL. (Order corresponds to priority if multiple programs/permits exist)"
+      FacCurrSNCFlg: 
+        type: string
+        title: Facility in Significant Noncompliance Flag
+        example: N
+        description: The current Significant Non-compliance (SNC), Serious Violation or High Priority Violator (HPV) status for the facility during the most current quarter reflects the time the records were extracted from the program data systems
+      Fac3yrComplianceStatus: 
+        type: string
+      AIRFlag: 
+        type: string
+      NPDESFlag: 
+        type: string
+        title: NPDES Flag
+      SdwisFlag: 
+        type: string
+        title: SDWIS Flag
+      RCRAFlag: 
+        type: string
+      TRIFlag: 
+        type: string
+        title: Toxics Release Inventory Program Flag
+      GHGFlag: 
+        type: string
+      AIRIDs: 
+        type: string
+        title: AIR Facility System ID
+        example: DC0000001100195254
+        description: Air Facility System (AFS) ID.
+      CAAPermitTypes: 
+        type: string
+        example: Minor Emissions
+        description: |-
+          ICIS AIR Permit Types associated with the FRS Facility:
+          - Major
+          - Federally Reportable Minor
+          - Other Minor
+          - Synthetic Minor
+          - NULL
+      CAANaics: 
+        type: string
+      CAASics: 
+        type: string
+      CAAEvaluationCount: 
+        type: string
+        example: '0'
+        description: The number of inspections/compliance evaluations under the Clean Air Act, occurring at the facility within the last five years
+      CAADaysLastEvaluation: 
+        type: number
+        example: 7051
+      CAAInformalCount: 
+        type: string
+        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Clean Air Act.
+      CAAFormalActionCount: 
+        type: string
+        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Clean Air Act.
+      CAADateLastFormalAction: 
+        type: string
+      CAAPenalties: 
+        type: string
+        description: The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Air Act.
+      CAALastPenaltyDate: 
+        type: string
+      CAALastPenaltyAmt: 
+        type: number
+        example: 17014
+      CAAQtrsInNC: 
+        type: number
+        example: 0
+      CAACurrComplianceStatus: 
+        type: string
+        example: Not Available
+        description: Current compliance status.
+      CAACurrHpvFlag: 
+        type: string
+      CAA3yrComplQtrsStatus: 
+        type: string
+      NPDESIDs: 
+        type: string
+        title: ICS-NPDES Clean Water Act Identifier
+        description: Clean Water Act ID from the ICIS-NPDES (Integrated Compliance Information System - National Pollutant Discharge Elimination System)
+      CWAPermitTypes: 
+        type: string
+        title: Clean Water Act Permit Types
+        description: |-
+          Indicates the facility's permit type or designation.
+          - Major
+          - Minor
+      CWAComplianceTracking: 
+        type: string
+      CWANaics: 
+        type: string
+      CWASics: 
+        type: string
+      CWAInspectionCount: 
+        type: number
+        title: Clean Water Act Inspection Count
+        example: 0
+        description: The number of inspections/compliance evaluations under the Clean Water Act, occurring at the facility within the last five years.
+      CWADaysLastInspection: 
+        type: number
+        example: 184
+      CWAInformalCount: 
+        type: number
+        title: Clean Water Act Informal Action Count
+        example: 1
+        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Clean Water Act.
+      CWAFormalActionCount: 
+        type: string
+        title: Clean Water Act Formal Action Count
+        example: '2'
+        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Clean Water Act.
+      CWADateLastFormalAction: 
+        type: string
+      CWAPenalties: 
+        type: string
+        title: Clean Water Act Penalties
+        description: The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Water Act.
+      CWALastPenaltyDate: 
+        type: string
+      CWALastPenaltyAmt: 
+        type: string
+      CWAQtrsInNC: 
+        type: string
+      CWACurrComplianceStatus: 
+        type: string
+        title: Clean Water Act Current Compliance Status
+        description: Current compliance status
+      CWACurrSNCFlag: 
+        type: string
+      CWA13qtrsComplStatus: 
+        type: string
+      CWA13qtrsEfflntExceedances: 
+        type: string
+      CWA3YrQncrCodes: 
+        type: string
+      RCRAIDs: 
+        type: string
+        title: Resource Conservation and Recovery Act IDs
+        example: VAD981111784
+        description: A unique 12-character ID assigned for each record/permit/site/facility within the RCRAInfo database.
+      RCRAPermitTypes: 
+        type: string
+        title: Resource Conservation and Recovery Act Permit Types
+        example: LQG
+        description: |-
+          RCRA Facility Types include:
+          - TSDF = Treatment, Storage and Disposal facility
+          - LQG = Large Quantity Generator
+          - SQG = Small Quantity Generator
+          - CESQG = Conditionally-Exempt Small Quantity Generator
+          - Operating TSDF
+          - Transporters
+      RCRANaics: 
+        type: string
+      RCRAInspectionCount: 
+        type: number
+        title: Resource Conservation and Recovery Act Inspection Count
+        example: 1
+        description: The number of inspections/compliance evaluations under the Resource Conservation and Recovery Act, occurring at the facility within the last five years
+      RCRADaysLastEvaluation: 
+        type: number
+        example: 6848
+      RCRAInformalCount: 
+        type: string
+        title: RCRA Informal Action Count
+        example: '3'
+        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Resource Conservation and Recovery Act.
+      RCRAFormalActionCount: 
+        type: string
+        title: RCRA Formal Action Count
+        example: '5'
+        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Resource Conservation and Recovery Act.
+      RCRADateLastFormalAction: 
+        type: string
+      RCRAPenalties: 
+        type: string
+        example: "$987"
+      RCRALastPenaltyDate: 
+        type: string
+      RCRALastPenaltyAmt: 
+        type: string
+      RCRAQtrsInNC: 
+        type: number
+        example: 0
+      RCRACurrComplianceStatus: 
+        type: string
+        title: RCRA Current Compliance Status
+        example: No Violation
+        description: Current compliance status
+      RCRACurrSNCFlag: 
+        type: string
+      RCRA3yrComplQtrsStatus: 
+        type: string
+      SDWAIDs: 
+        type: string
+        example: DC0000001
+        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
+      SDWASystemTypes: 
+        type: string
+        description: SDWIS System Types
+      SDWAInformalCount: 
+        type: string
+        example: '2'
+        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Safe Drinking Water Act
+      SDWAFormalActionCount: 
+        type: string
+        example: '11'
+        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Safe Drinking Water Act
+      SDWACurrComplianceStatus: 
+        type: string
+        description: Current compliance status
+      SDWACurrSNCFlag: 
+        type: string
+      TRIIDs: 
+        type: string
+        title: Toxics Release Inventory Program IDs
+        example: 20011FRTTT5001F
+        description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
+      TRIReleasesTransfers: 
+        type: number
+        title: TRI Release Transfers
+        example: 170878
+        description: Total chemical releases, in pounds, as reported to the Toxics Release Inventory (TRI) by the facility for the most recent reporting year
+      TRIOnSiteReleases: 
+        type: number
+        title: Toxics Release Inventory Onsite Releases
+        example: 11987
+      TRIOffSiteTransfers: 
+        type: number
+        title: Toxics Release Inventory Offsite Transfer Count
+        example: 0
+      TRIReporterInPast: 
+        type: string
+        title: Toxics Release Inventory Reporter In Past Flag
+      FecCaseIDs: 
+        type: string
+        description: All Case Numbers of Federal Enforcement Cases relating to the Facility from the ICIS System
+      FecNumberOfCases: 
+        type: number
+        example: 1
+      FecLastCaseDate: 
+        type: string
+      FecTotalPenalties: 
+        type: number
+        example: 34400
+      GHGIDs: 
+        type: string
+      GHGCO2Releases: 
+        type: string
+        title: Greenhouse Gas Reporting CO2 Releases
+        description: "The sum of total release amounts of all linked Greenhouse Gas IDs reported as \"metric tons of CO2 equivalents\""
+      DfrUrl: 
+        type: string
+      FacSicCodes: 
+        type: string
+      FacNaicsCodes: 
+        type: string
+        title: Facility NAICS Codes
+      FacDateLastInspectionEPA: 
+        type: string
+      FacDateLastInspectionState: 
+        type: string
+      FacDateLastFormalActEPA: 
+        type: string
+      FacDateLastFormalActSt: 
+        type: string
+      FacDateLastInformalActEPA: 
+        type: string
+      FacDateLastInformalActSt: 
+        type: string
+      FacFederalAgency: 
+        type: string
+      TRIReporter: 
+        type: string
+        title: Toxics Release Inventory Reporter
+      FacImpWaterFlg: 
+        type: string
+      SourceID: 
+        type: string
+        title: EPA Source Identifier
+        example: ALR040033
+        description: Unique Identifier assigned by EPA.
+      NC: 
+        type: string
+      RmpIDs: 
+        type: string
+      FacMapFlg: 
+        type: string
+        title: Facility Mapped Flag
+        example: Y
+        description: Graphical indicator denoting whether geographical data required to map a facility are available.
+      HasPollRpt: 
+        type: string
+        example: Y
+        description: "???"
+      CensusBlockGroup: 
+        type: string
+        title: Census Block Group
+        example: '110010096022'
+        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
+      PctilePctpre1960Us: 
+        type: number
+        example: 14.6
+        description: The national percentile of the census block group for the EJSCREEN Lead paint indicator.
+      PctileDpmUs: 
+        type: number
+        example: 99
+        description: The national percentile of the census block group for the EJSCREEN diesel particulate matter indicator.
+      PctileCancerUs: 
+        type: number
+        example: 99
+        description: The national percentile of the census block group for the EJSCREEN NATA air toxics cancer risk indicator.
+      PctileRespUs: 
+        type: number
+        example: 41.9
+        description: The national percentile of the census block group for the EJSCREEN NATA respiratory hazard index indicator.
+      PctileTrafficScoreUs: 
+        type: number
+        example: 7
+        description: The national percentile of the census block group for the EJSCREEN Traffic proximity and volume indicator.
+      PctileProximityNPDESUs: 
+        type: number
+        example: 45.3
+        description: The national percentile of the census block group for the EJSCREEN proximity to major direct water dischargers indicator.
+      PctileProximityNplUs: 
+        type: number
+        example: 38.9
+        description: The national percentile of the census block group for the EJSCREEN proximity to National Priorities List (NPL) sites indicator.
+      PctileProximityRmpUs: 
+        type: number
+        example: 54.7
+        description: The national percentile of the census block group for the EJSCREEN proximity to Risk Management Plan (RMP) sites indicator.
+      PctileProximityTsdfUs: 
+        type: number
+        example: 42.4
+        description: The national percentile of the census block group for the EJSCREEN proximity to Treatment Storage and Disposal Facilities (TSDFs) indicator.
+      PctileO3Us: 
+        type: number
+        example: 52.4
+        description: The national percentile of the census block group for the EJSCREEN ozone indicator.
+      PctilePmUs: 
+        type: number
+        example: 52.4
+        description: The national percentile of the census block group for the EJSCREEN particulate matter indicator.
+      MaxPctileUs: 
+        type: number
+        example: 54.7
+        description: The maximum percentile from all individual EJSCREEN indicators.
+      EjscreenFlagUs: 
+        type: string
+      EjscreenFlag: 
+        type: string
+      SDWA3yrComplQtrsStatus: 
+        type: string
+      TRIbalFlag: 
+        type: number
+        title: Tribal Lands Flag
+        example: 1
+      CurrSvFlag: 
+        type: number
+        title: Current Significant Violation Flag
+        example: 1
+        description: Indicates if the facility has a current significant violation. 1 = Yes
+      ViolFlag: 
+        type: number
+        title: Violation Flag
+        example: 1
+        description: Indicates if the facility had a violation within the last 3 years. 1 = Yes
+      CurrVioFlag: 
+        type: number
+        title: Current Violation Flag
+        example: 1
+        description: Indicates if the facility has a current violation. 1 = Yes
+      Insp5yrFlag: 
+        type: number
+        title: Inspected Within Last Five Years Flag
+        example: 1
+        description: Indicates if the facility has an inspection within the last 5 years. 1 = Yes
+      Ea5yrFlag: 
+        type: number
+        example: 0
+        description: Indicates if the facility has a formal enforcement action within the last 5 years. 1 = Yes
+      Infea5yrFlag: 
+        type: number
+        example: 1
+        description: Indicates if the facility has an informal enforcement action within the last 5 years. 1 = Yes.
+      Lower48: 
+        type: string
+        title: Contiguous United States Flag
+        example: Y
+        description: Flag showing Y/N whether location is within the contiguous (lower 48) United States.
+      ActiveLower48: 
+        type: string
+      FacFederalAgencyName: 
+        type: string
+      FacIndianSpatialFlg: 
+        type: string
+      Over80CountUs: 
+        type: number
+      FacDerivedWBDHu8: 
+        type: string
+      FacDerivedWBDHu8Name: 
+        type: string
+      FacDerivedRadWBDHu8: 
+        type: string
+      FacDerivedRadWBDHu8Name: 
+        type: string
+      Score: 
+        type: number
+        title: Score
+        example: 1
+      MaxScore: 
+        type: number
+        title: Max Score
+        example: 1
+        description: "[Col. 121]"
+    required: 
+    - RegistryID
+    - FacName
+    - FacStreet
+    - FacCity
+    - FacState
+    - FacZip
+    - FacCounty
+    - FacFIPSCode
+    - FacEPARegion
+    - FacIndianCntryFlg
+    - FacFederalFlg
+    - FacUsMexBorderFlg
+    - FacChesapeakeBayFlg
+    - FacNaaFlag
+    - FacMapIcon
+    - FacCollectionMethod
+    - FacReferencePoint
+    - FacAccuracyMeters
+    - FacDerivedTRIbes
+    - FacDerivedHuc
+    - FacDerivedWBD
+    - FacDerivedStctyFIPS
+    - FacDerivedZip
+    - FacDerivedCd113
+    - FacDerivedCb2010
+    - FacPercentMinority
+    - FacPopDen
+    - FacMajorFlag
+    - FacActiveFlag
+    - FacMyrtkUniverse
+    - FacInspectionCount
+    - FacDateLastInspection
+    - FacDaysLastInspection
+    - FacInformalCount
+    - FacDateLastInformalAction
+    - FacFormalActionCount
+    - FacDateLastFormalAction
+    - FacTotalPenalties
+    - FacPenaltyCount
+    - FacDateLastPenalty
+    - FacLastPenaltyAmt
+    - FacQtrsInNC
+    - FacProgramsInSNC
+    - FacCurrComplianceStatus
+    - FacCurrSNCFlg
+    - Fac3yrComplianceStatus
+    - AIRFlag
+    - NPDESFlag
+    - SdwisFlag
+    - RCRAFlag
+    - TRIFlag
+    - GHGFlag
+    - AIRIDs
+    - CAAPermitTypes
+    - CAANaics
+    - CAASics
+    - CAAEvaluationCount
+    - CAADaysLastEvaluation
+    - CAAInformalCount
+    - CAAFormalActionCount
+    - CAADateLastFormalAction
+    - CAAPenalties
+    - CAALastPenaltyDate
+    - CAALastPenaltyAmt
+    - CAAQtrsInNC
+    - CAACurrComplianceStatus
+    - CAACurrHpvFlag
+    - CAA3yrComplQtrsStatus
+    - NPDESIDs
+    - CWAPermitTypes
+    - CWAComplianceTracking
+    - CWANaics
+    - CWASics
+    - CWAInspectionCount
+    - CWADaysLastInspection
+    - CWAInformalCount
+    - CWAFormalActionCount
+    - CWADateLastFormalAction
+    - CWAPenalties
+    - CWALastPenaltyDate
+    - CWALastPenaltyAmt
+    - CWAQtrsInNC
+    - CWACurrComplianceStatus
+    - CWACurrSNCFlag
+    - CWA13qtrsComplStatus
+    - CWA13qtrsEfflntExceedances
+    - CWA3YrQncrCodes
+    - RCRAIDs
+    - RCRAPermitTypes
+    - RCRANaics
+    - RCRAInspectionCount
+    - RCRADaysLastEvaluation
+    - RCRAInformalCount
+    - RCRAFormalActionCount
+    - RCRADateLastFormalAction
+    - RCRAPenalties
+    - RCRALastPenaltyDate
+    - RCRALastPenaltyAmt
+    - RCRAQtrsInNC
+    - RCRACurrComplianceStatus
+    - RCRACurrSNCFlag
+    - RCRA3yrComplQtrsStatus
+    - SDWAIDs
+    - SDWASystemTypes
+    - SDWAInformalCount
+    - SDWAFormalActionCount
+    - SDWACurrComplianceStatus
+    - SDWACurrSNCFlag
+    - TRIIDs
+    - TRIReleasesTransfers
+    - TRIOnSiteReleases
+    - TRIOffSiteTransfers
+    - TRIReporterInPast
+    - FecCaseIDs
+    - FecNumberOfCases
+    - FecLastCaseDate
+    - FecTotalPenalties
+    - GHGIDs
+    - GHGCO2Releases
+    - DfrUrl
+    - FacSicCodes
+    - FacNaicsCodes
+    - FacDateLastInspectionEPA
+    - FacDateLastInspectionState
+    - FacDateLastFormalActEPA
+    - FacDateLastFormalActSt
+    - FacDateLastInformalActEPA
+    - FacDateLastInformalActSt
+    - FacFederalAgency
+    - TRIReporter
+    - FacImpWaterFlg
+    - SourceID
+    - NC
+    - RmpIDs
+    - FacMapFlg
+    - HasPollRpt
+    - CensusBlockGroup
+    - PctilePctpre1960Us
+    - PctileDpmUs
+    - PctileCancerUs
+    - PctileRespUs
+    - PctileTrafficScoreUs
+    - PctileProximityNPDESUs
+    - PctileProximityNplUs
+    - PctileProximityRmpUs
+    - PctileProximityTsdfUs
+    - PctileO3Us
+    - PctilePmUs
+    - MaxPctileUs
+    - EjscreenFlagUs
+    - EjscreenFlag
+    - SDWA3yrComplQtrsStatus
+    - TRIbalFlag
+    - CurrSvFlag
+    - ViolFlag
+    - CurrVioFlag
+    - Insp5yrFlag
+    - Ea5yrFlag
+    - Infea5yrFlag
+    - Lower48
+    - ActiveLower48
+    - FacFederalAgencyName
+    - FacIndianSpatialFlg
+    - Over80CountUs
+    - FacDerivedWBDHu8
+    - FacDerivedWBDHu8Name
+    - FacDerivedRadWBDHu8
+    - FacDerivedRadWBDHu8Name
+    - Score
+    - MaxScore
   ers4_Results: 
     description: Results Object
     properties: 
@@ -3276,6 +4387,24 @@ definitions:
     - QueryID
     - PageNo
     - Facilities
+  Geometry: 
+    description: GeoJSON Geometry Object
+    properties: 
+      type: 
+        type: string
+        title: Geometry
+        example: Point
+        description: "Indicator of the geometry represented in the GeoJSON Feature, for Echo will always be \"Point\"."
+      coordinates: 
+        type: array
+        title: Coordinates Array
+        example: -87.86253
+        description: Array of coordinate values in longitude, latitude format.
+        items: 
+          type: number 
+    required: 
+    - type
+    - coordinates
   met_ResultsColumns: 
     description: Results Column Object
     properties: 
@@ -3298,12 +4427,17 @@ definitions:
       ObjectName: 
         type: string
         title: Object Name
+      Description: 
+        type: string
+        title: Description
+        description: A description of the category of Supplemental Environment Project (SEP) for a settlement.
     required: 
     - ColumnName
     - DataType
     - DataLength
     - ColumnID
     - ObjectName
+    - Description
   met_Results: 
     description: Results Object
     properties: 

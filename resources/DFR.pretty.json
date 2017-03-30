@@ -6,6 +6,10 @@
       ,"contact": {
           "name": "US EPA, OECA Integration, Targeting and Access Branch"
       }
+      ,"license": {
+          "name": "This page was built with the Swagger API."
+         ,"url": "https:\/\/swagger.io"
+      }
       ,"version": "0.0.0"
    }
    ,"host": "ofmpub.epa.gov"
@@ -25,13 +29,12 @@
        "output": {
           "name": "output"
          ,"in": "query"
-         ,"description": "Output format: JSONP, JSON or XML."
+         ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
          ,"enum": [
              "JSONP"
             ,"JSON"
             ,"XML"
          ]
-         ,"default": "JSON"
          ,"type": "string"
          ,"required": false
       }
@@ -45,7 +48,7 @@
       ,"callback": {
           "name": "callback"
          ,"in": "query"
-         ,"description": "JSONP Callback.  For use with JSONP output only.  Enter a name of the function in which to wrap the JSON response."
+         ,"description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
          ,"type": "string"
          ,"required": false
       }
@@ -3781,8 +3784,11 @@
                ,"example": "Washington, DC-MD-VA"
                ,"description": "If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name"
             }
-            ,"PaticulateMatter1997Area": {
+            ,"ParticulateMatter1997Area": {
                 "type": "string"
+               ,"title": "Particulate Matter Area - 1997"
+               ,"example": "Washington, DC-MD-VA"
+               ,"description": "If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name"
             }
             ,"ParticulateMatter2006Area": {
                 "type": "string"
@@ -3796,7 +3802,7 @@
             ,"Ozone8hr2008Area"
             ,"Lead2008Area"
             ,"SulfurDioxide2010Area"
-            ,"PaticulateMatter1997Area"
+            ,"ParticulateMatter1997Area"
             ,"ParticulateMatter2006Area"
          ]
       }
@@ -5045,8 +5051,10 @@
                ,"example": "38.798026"
                ,"description": "The latitude of the facility in degrees, to four decimal places."
             }
-            ,"CenterLognitude": {
+            ,"CenterLongitude": {
                 "type": "string"
+               ,"example": "-77.062981"
+               ,"description": "The longitude of the facility in degrees, to four decimal places."
             }
             ,"TotalPersons": {
                 "type": "string"
@@ -5226,7 +5234,7 @@
          ,"required": [
              "Radius"
             ,"CenterLatitude"
-            ,"CenterLognitude"
+            ,"CenterLongitude"
             ,"TotalPersons"
             ,"LandArea"
             ,"WaterArea"
@@ -5927,6 +5935,12 @@
                ,"example": "CWA"
                ,"description": "The name of the statute associated with each of the permits and identifiers linked to the facility: \n- CAA = the Clean Air Act\n- CWA = the Clean Water Act\n- RCRA = the Resource Conservation and Recovery Act\n- EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)\n- TSCA = the Toxic Substances Control Act\n- SDWA = the Safe Drinking Water Act"
             }
+            ,"EPASystem": {
+                "type": "string"
+               ,"title": "EPA Data System"
+               ,"example": "ICP"
+               ,"description": "The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: \n\n- AFS: Air Facility System for Clean Air Act stationary source programs.\n- ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.\n- RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.\n- NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).\n- TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.\n- NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.\n- TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals."
+            }
             ,"SourceID": {
                 "type": "string"
                ,"title": "EPA Source Identifier"
@@ -5957,6 +5971,7 @@
          }
          ,"required": [
              "Statute"
+            ,"EPASystem"
             ,"SourceID"
             ,"ActionType"
             ,"LeadAgency"
