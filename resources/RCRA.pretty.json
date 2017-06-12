@@ -2335,7 +2335,7 @@
       ,"\/rcra_rest_services.get_download": {
           "get": {
              "summary": "Resource Conservation and Recovery Act (RCRA) Download Data Service"
-            ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return a comma sepated vaule (CSV) file of the facilities found."
+            ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return a comma separated value (CSV) file of the facilities found."
             ,"parameters": [
                 {
                    "name": "output"
@@ -2368,7 +2368,7 @@
          }
          ,"post": {
              "summary": "Resource Conservation and Recovery Act (RCRA) Download Data Service"
-            ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return a comma sepated vaule (CSV) file of the facilities found."
+            ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return a comma separated value (CSV) file of the facilities found."
             ,"parameters": [
                 {
                    "name": "output"
@@ -2500,7 +2500,28 @@
              "200": {
                 "description": "Results are formatted as a GeoJSON feature collection."
                ,"schema": {
-                   "$ref": "#\/definitions\/rcr5_FeatureCollection"
+                   "type": "object"
+                  ,"description": "GeoJSON Feature Collection Object"
+                  ,"properties": {
+                      "type": {
+                         "type": "string"
+                        ,"title": "Feature Collection"
+                        ,"example": "FeatureCollection"
+                        ,"description": "Static marker indicating object is a GeoJSON Feature Collection."
+                     }
+                     ,"features": {
+                         "type": "array"
+                        ,"title": "Features Array"
+                        ,"description": "Array of GeoJSON feature objects."
+                        ,"items": {
+                            "$ref": "#\/definitions\/rcr5_Feature"
+                        }
+                     }
+                  }
+                  ,"required": [
+                      "type"
+                     ,"features"
+                  ]
                }
             }
             }
@@ -2542,7 +2563,28 @@
              "200": {
                 "description": "Results are formatted as a GeoJSON feature collection."
                ,"schema": {
-                   "$ref": "#\/definitions\/rcr5_FeatureCollection"
+                   "type": "object"
+                  ,"description": "GeoJSON Feature Collection Object"
+                  ,"properties": {
+                      "type": {
+                         "type": "string"
+                        ,"title": "Feature Collection"
+                        ,"example": "FeatureCollection"
+                        ,"description": "Static marker indicating object is a GeoJSON Feature Collection."
+                     }
+                     ,"features": {
+                         "type": "array"
+                        ,"title": "Features Array"
+                        ,"description": "Array of GeoJSON feature objects."
+                        ,"items": {
+                            "$ref": "#\/definitions\/rcr5_Feature"
+                        }
+                     }
+                  }
+                  ,"required": [
+                      "type"
+                     ,"features"
+                  ]
                }
             }
             }
@@ -2861,7 +2903,7 @@
             }
             ,"ChesapeakeBayFlag": {
                 "type": "string"
-               ,"title": "Chesapeake Bay Flag\n"
+               ,"title": "Chesapeake Bay Flag"
                ,"example": "Y"
                ,"description": "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
             }
@@ -3184,6 +3226,9 @@
                 "type": "string"
             }
             ,"DateLastRecordReview": {
+                "type": "string"
+            }
+            ,"Tsdf": {
                 "type": "string"
             }
             ,"Score": {
@@ -3761,7 +3806,7 @@
             }
             ,"ChesapeakeBayFlag": {
                 "type": "string"
-               ,"title": "Chesapeake Bay Flag\n"
+               ,"title": "Chesapeake Bay Flag"
                ,"example": "Y"
                ,"description": "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
             }
@@ -4086,6 +4131,9 @@
             ,"DateLastRecordReview": {
                 "type": "string"
             }
+            ,"Tsdf": {
+                "type": "string"
+            }
             ,"Score": {
                 "type": "string"
                ,"title": "Score"
@@ -4352,30 +4400,6 @@
             ,"properties"
          ]
       }
-      ,"rcr5_FeatureCollection": {
-          "type": "object"
-         ,"description": "GeoJSON Feature Collection Object"
-         ,"properties": {
-             "type": {
-                "type": "string"
-               ,"title": "Feature Collection"
-               ,"example": "FeatureCollection"
-               ,"description": "Static marker indicating object is a GeoJSON Feature Collection."
-            }
-            ,"features": {
-                "type": "array"
-               ,"title": "Features Array"
-               ,"description": "Array of GeoJSON feature objects."
-               ,"items": {
-                   "$ref": "#\/definitions\/rcr5_Feature"
-               }
-            }
-         }
-         ,"required": [
-             "type"
-            ,"features"
-         ]
-      }
       ,"rcr5_properties": {
           "type": "object"
          ,"description": "GeoJSON Properties Object"
@@ -4479,7 +4503,7 @@
             }
             ,"ChesapeakeBayFlag": {
                 "type": "string"
-               ,"title": "Chesapeake Bay Flag\n"
+               ,"title": "Chesapeake Bay Flag"
                ,"example": "Y"
                ,"description": "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
             }
@@ -4805,6 +4829,9 @@
                 "type": "number"
             }
             ,"DateLastRecordReview": {
+                "type": "string"
+            }
+            ,"Tsdf": {
                 "type": "string"
             }
             ,"Score": {

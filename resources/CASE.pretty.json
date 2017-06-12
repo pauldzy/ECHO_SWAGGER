@@ -1648,7 +1648,7 @@
       ,"\/case_rest_services.get_download": {
           "get": {
              "summary": "Enforcement Case Download Data Service"
-            ,"description": "Based on the QID obtained from a get_cases query, return a comma sepated vaule (CSV) file of the cases found."
+            ,"description": "Based on the QID obtained from a get_cases query, return a comma separated value (CSV) file of the cases found."
             ,"parameters": [
                 {
                    "name": "output"
@@ -1678,7 +1678,7 @@
          }
          ,"post": {
              "summary": "Enforcement Case Download Data Service"
-            ,"description": "Based on the QID obtained from a get_cases query, return a comma sepated vaule (CSV) file of the cases found."
+            ,"description": "Based on the QID obtained from a get_cases query, return a comma separated value (CSV) file of the cases found."
             ,"parameters": [
                 {
                    "name": "output"
@@ -1838,7 +1838,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk1_Results"
+                         "$ref": "#\/definitions\/rlk51_Results"
                      }
                   }
                   ,"required": [
@@ -1894,7 +1894,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk1_Results"
+                         "$ref": "#\/definitions\/rlk51_Results"
                      }
                   }
                   ,"required": [
@@ -3504,7 +3504,7 @@
              "Message"
          ]
       }
-      ,"rlk0_LuValues": {
+      ,"rlk00_LuValues": {
           "type": "object"
          ,"description": "Lookup Values"
          ,"properties": {
@@ -3524,7 +3524,7 @@
             ,"ValueDescription"
          ]
       }
-      ,"rlk1_Results": {
+      ,"rlk51_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -3537,7 +3537,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }

@@ -36,9 +36,10 @@
       ,"p_med": {
           "name": "p_med"
          ,"in": "query"
-         ,"description": "Filter Results by Media.\n- A = Air\n- M = RMP (Risk Management Plan)\n- R = RCRA (Hazardous Waste)\n- S = SDWA (Public Drinking Water Systems)\n- W = Water\n- ALL = Air and Water and RCRA"
+         ,"description": "Filter Results by Media.- A = Air- C = CAMD (Clean Air Markets Division)- M = RMP (Risk Management Plan)- R = RCRA (Hazardous Waste)- S = SDWA (Public Drinking Water Systems)- W = Water- ALL = Air and Water and RCRA"
          ,"enum": [
              "A"
+            ,"C"
             ,"M"
             ,"R"
             ,"S"
@@ -2033,7 +2034,7 @@
       ,"\/echo_rest_services.get_download": {
           "get": {
              "summary": "Combined ECHO Download Data Service"
-            ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return a comma sepated vaule (CSV) file of the facilities found."
+            ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return a comma separated value (CSV) file of the facilities found."
             ,"parameters": [
                 {
                    "name": "output"
@@ -2070,7 +2071,7 @@
          }
          ,"post": {
              "summary": "Combined ECHO Download Data Service"
-            ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return a comma sepated vaule (CSV) file of the facilities found."
+            ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return a comma separated value (CSV) file of the facilities found."
             ,"parameters": [
                 {
                    "name": "output"
@@ -2210,7 +2211,28 @@
              "200": {
                 "description": "Results are formatted as a GeoJSON feature collection."
                ,"schema": {
-                   "$ref": "#\/definitions\/ers5_FeatureCollection"
+                   "type": "object"
+                  ,"description": "GeoJSON Feature Collection Object"
+                  ,"properties": {
+                      "type": {
+                         "type": "string"
+                        ,"title": "Feature Collection"
+                        ,"example": "FeatureCollection"
+                        ,"description": "Static marker indicating object is a GeoJSON Feature Collection."
+                     }
+                     ,"features": {
+                         "type": "array"
+                        ,"title": "Features Array"
+                        ,"description": "Array of GeoJSON feature objects."
+                        ,"items": {
+                            "$ref": "#\/definitions\/ers5_Feature"
+                        }
+                     }
+                  }
+                  ,"required": [
+                      "type"
+                     ,"features"
+                  ]
                }
             }
             }
@@ -2256,7 +2278,28 @@
              "200": {
                 "description": "Results are formatted as a GeoJSON feature collection."
                ,"schema": {
-                   "$ref": "#\/definitions\/ers5_FeatureCollection"
+                   "type": "object"
+                  ,"description": "GeoJSON Feature Collection Object"
+                  ,"properties": {
+                      "type": {
+                         "type": "string"
+                        ,"title": "Feature Collection"
+                        ,"example": "FeatureCollection"
+                        ,"description": "Static marker indicating object is a GeoJSON Feature Collection."
+                     }
+                     ,"features": {
+                         "type": "array"
+                        ,"title": "Features Array"
+                        ,"description": "Array of GeoJSON feature objects."
+                        ,"items": {
+                            "$ref": "#\/definitions\/ers5_Feature"
+                        }
+                     }
+                  }
+                  ,"required": [
+                      "type"
+                     ,"features"
+                  ]
                }
             }
             }
@@ -3247,6 +3290,11 @@
             ,"FacDerivedRadWBDHu8Name": {
                 "type": "string"
             }
+            ,"CamdIDs": {
+                "type": "string"
+               ,"title": "Clean Air Markets Division Identifiers"
+               ,"description": "Facility identifiers for the Clean Air Markets Division database."
+            }
             ,"Score": {
                 "type": "string"
                ,"title": "Score"
@@ -3430,6 +3478,7 @@
             ,"FacDerivedWBDHu8Name"
             ,"FacDerivedRadWBDHu8"
             ,"FacDerivedRadWBDHu8Name"
+            ,"CamdIDs"
             ,"Score"
             ,"MaxScore"
          ]
@@ -4439,6 +4488,11 @@
             ,"FacDerivedRadWBDHu8Name": {
                 "type": "string"
             }
+            ,"CamdIDs": {
+                "type": "string"
+               ,"title": "Clean Air Markets Division Identifiers"
+               ,"description": "Facility identifiers for the Clean Air Markets Division database."
+            }
             ,"Score": {
                 "type": "string"
                ,"title": "Score"
@@ -4623,6 +4677,7 @@
             ,"FacDerivedWBDHu8Name"
             ,"FacDerivedRadWBDHu8"
             ,"FacDerivedRadWBDHu8Name"
+            ,"CamdIDs"
             ,"Score"
             ,"MaxScore"
          ]
@@ -4790,30 +4845,6 @@
              "type"
             ,"geometry"
             ,"properties"
-         ]
-      }
-      ,"ers5_FeatureCollection": {
-          "type": "object"
-         ,"description": "GeoJSON Feature Collection Object"
-         ,"properties": {
-             "type": {
-                "type": "string"
-               ,"title": "Feature Collection"
-               ,"example": "FeatureCollection"
-               ,"description": "Static marker indicating object is a GeoJSON Feature Collection."
-            }
-            ,"features": {
-                "type": "array"
-               ,"title": "Features Array"
-               ,"description": "Array of GeoJSON feature objects."
-               ,"items": {
-                   "$ref": "#\/definitions\/ers5_Feature"
-               }
-            }
-         }
-         ,"required": [
-             "type"
-            ,"features"
          ]
       }
       ,"ers5_properties": {
@@ -5554,6 +5585,11 @@
             ,"FacDerivedRadWBDHu8Name": {
                 "type": "string"
             }
+            ,"CamdIDs": {
+                "type": "string"
+               ,"title": "Clean Air Markets Division Identifiers"
+               ,"description": "Facility identifiers for the Clean Air Markets Division database."
+            }
             ,"Score": {
                 "type": "number"
                ,"title": "Score"
@@ -5735,6 +5771,7 @@
             ,"FacDerivedWBDHu8Name"
             ,"FacDerivedRadWBDHu8"
             ,"FacDerivedRadWBDHu8Name"
+            ,"CamdIDs"
             ,"Score"
             ,"MaxScore"
          ]

@@ -1010,11 +1010,123 @@
          ,"type": "number"
          ,"required": false
       }
+      ,"p_bio_mgmt_prctce_handler": {
+          "name": "p_bio_mgmt_prctce_handler"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_bio_analy_method_catgry": {
+          "name": "p_bio_analy_method_catgry"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_bio_mgmt_prctce_stype": {
+          "name": "p_bio_mgmt_prctce_stype"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_bio_mgmt_deficiencies": {
+          "name": "p_bio_mgmt_deficiencies"
+         ,"in": "query"
+         ,"type": "number"
+         ,"required": false
+      }
+      ,"p_bio_mgmt_def_category": {
+          "name": "p_bio_mgmt_def_category"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_bio_total_volume_amt": {
+          "name": "p_bio_total_volume_amt"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_bio_mgmt_prctce_type": {
+          "name": "p_bio_mgmt_prctce_type"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_bio_mgmt_container": {
+          "name": "p_bio_mgmt_container"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_insp_deficiencies": {
+          "name": "p_insp_deficiencies"
+         ,"in": "query"
+         ,"type": "number"
+         ,"required": false
+      }
+      ,"p_bio_mgmt_pathogen": {
+          "name": "p_bio_mgmt_pathogen"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_bio_trtmnt_procs": {
+          "name": "p_bio_trtmnt_procs"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_bio_mgmt_pathred": {
+          "name": "p_bio_mgmt_pathred"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_bio_qtrs_in_vio": {
+          "name": "p_bio_qtrs_in_vio"
+         ,"in": "query"
+         ,"type": "number"
+         ,"required": false
+      }
+      ,"p_bio_mgmt_vector": {
+          "name": "p_bio_mgmt_vector"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_bio_current_vio": {
+          "name": "p_bio_current_vio"
+         ,"in": "query"
+         ,"enum": [
+             "Y"
+            ,"N"
+         ]
+         ,"type": "string"
+         ,"required": false
+      }
       ,"p_pretty_print": {
           "name": "p_pretty_print"
          ,"in": "query"
          ,"description": "Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost."
          ,"type": "number"
+         ,"required": false
+      }
+      ,"p_bio_vio_code": {
+          "name": "p_bio_vio_code"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_bio_rpt_year": {
+          "name": "p_bio_rpt_year"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_bio_fac_type": {
+          "name": "p_bio_fac_type"
+         ,"in": "query"
+         ,"type": "string"
          ,"required": false
       }
       ,"statute_code": {
@@ -1040,6 +1152,19 @@
           "name": "sort_order"
          ,"in": "query"
          ,"type": "number"
+         ,"required": false
+      }
+      ,"p_mon_type": {
+          "name": "p_mon_type"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_bio_flag": {
+          "name": "p_bio_flag"
+         ,"in": "query"
+         ,"description": "A Y value will select all biosolid-related permits."
+         ,"type": "string"
          ,"required": false
       }
       ,"p_icoo": {
@@ -1536,6 +1661,9 @@
                    "$ref": "#\/parameters\/p_msgp_ptype"
                }
                ,{
+                   "$ref": "#\/parameters\/p_mon_type"
+               }
+               ,{
                    "$ref": "#\/parameters\/p_iagency"
                }
                ,{
@@ -1615,6 +1743,63 @@
                }
                ,{
                    "$ref": "#\/parameters\/p_ejscreen_over80cnt"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_fac_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_trtmnt_procs"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_analy_method_catgry"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_total_volume_amt"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_prctce_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_prctce_stype"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_prctce_handler"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_container"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_pathogen"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_pathred"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_vector"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_insp_deficiencies"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_def_category"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_deficiencies"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_vio_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_current_vio"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_qtrs_in_vio"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_rpt_year"
                }
                ,{
                    "$ref": "#\/parameters\/queryset"
@@ -1929,6 +2114,9 @@
                    "$ref": "#\/parameters\/p_msgp_ptype"
                }
                ,{
+                   "$ref": "#\/parameters\/p_mon_type"
+               }
+               ,{
                    "$ref": "#\/parameters\/p_iagency"
                }
                ,{
@@ -2008,6 +2196,63 @@
                }
                ,{
                    "$ref": "#\/parameters\/p_ejscreen_over80cnt"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_fac_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_trtmnt_procs"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_analy_method_catgry"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_total_volume_amt"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_prctce_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_prctce_stype"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_prctce_handler"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_container"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_pathogen"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_pathred"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_vector"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_insp_deficiencies"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_def_category"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_deficiencies"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_vio_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_current_vio"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_qtrs_in_vio"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_rpt_year"
                }
                ,{
                    "$ref": "#\/parameters\/queryset"
@@ -2319,6 +2564,9 @@
                    "$ref": "#\/parameters\/p_msgp_ptype"
                }
                ,{
+                   "$ref": "#\/parameters\/p_mon_type"
+               }
+               ,{
                    "$ref": "#\/parameters\/p_iagency"
                }
                ,{
@@ -2398,6 +2646,63 @@
                }
                ,{
                    "$ref": "#\/parameters\/p_ejscreen_over80cnt"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_fac_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_trtmnt_procs"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_analy_method_catgry"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_total_volume_amt"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_prctce_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_prctce_stype"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_prctce_handler"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_container"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_pathogen"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_pathred"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_vector"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_insp_deficiencies"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_def_category"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_deficiencies"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_vio_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_current_vio"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_qtrs_in_vio"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_rpt_year"
                }
                ,{
                    "$ref": "#\/parameters\/responseset"
@@ -2698,6 +3003,9 @@
                    "$ref": "#\/parameters\/p_msgp_ptype"
                }
                ,{
+                   "$ref": "#\/parameters\/p_mon_type"
+               }
+               ,{
                    "$ref": "#\/parameters\/p_iagency"
                }
                ,{
@@ -2777,6 +3085,63 @@
                }
                ,{
                    "$ref": "#\/parameters\/p_ejscreen_over80cnt"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_fac_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_trtmnt_procs"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_analy_method_catgry"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_total_volume_amt"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_prctce_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_prctce_stype"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_prctce_handler"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_container"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_pathogen"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_pathred"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_vector"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_insp_deficiencies"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_def_category"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_mgmt_deficiencies"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_vio_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_current_vio"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_qtrs_in_vio"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_bio_rpt_year"
                }
                ,{
                    "$ref": "#\/parameters\/responseset"
@@ -3067,8 +3432,8 @@
       }
       ,"\/cwa_rest_services.get_download": {
           "get": {
-             "summary": "Clean Water Act (CWA) GeoJSON Service"
-            ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found."
+             "summary": "Clean Water Act (CWA) Download Data Service"
+            ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return a comma separated value (CSV) file of the facilities found."
             ,"parameters": [
                 {
                    "name": "output"
@@ -3104,8 +3469,8 @@
             }
          }
          ,"post": {
-             "summary": "Clean Water Act (CWA) GeoJSON Service"
-            ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found."
+             "summary": "Clean Water Act (CWA) Download Data Service"
+            ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return a comma separated value (CSV) file of the facilities found."
             ,"parameters": [
                 {
                    "name": "output"
@@ -3205,8 +3570,8 @@
       }
       ,"\/cwa_rest_services.get_geojson": {
           "get": {
-             "summary": "Clean Water Act (CWA) Download Data Service"
-            ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return a comma sepated vaule (CSV) file of the facilities found."
+             "summary": "Clean Water Act (CWA) GeoJSON Service"
+            ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found."
             ,"parameters": [
                 {
                    "name": "output"
@@ -3245,14 +3610,35 @@
              "200": {
                 "description": "Results are formatted as a GeoJSON feature collection."
                ,"schema": {
-                   "$ref": "#\/definitions\/cwa5_FeatureCollection"
+                   "type": "object"
+                  ,"description": "GeoJSON Feature Collection Object"
+                  ,"properties": {
+                      "type": {
+                         "type": "string"
+                        ,"title": "Feature Collection"
+                        ,"example": "FeatureCollection"
+                        ,"description": "Static marker indicating object is a GeoJSON Feature Collection."
+                     }
+                     ,"features": {
+                         "type": "array"
+                        ,"title": "Features Array"
+                        ,"description": "Array of GeoJSON feature objects."
+                        ,"items": {
+                            "$ref": "#\/definitions\/cwa5_Feature"
+                        }
+                     }
+                  }
+                  ,"required": [
+                      "type"
+                     ,"features"
+                  ]
                }
             }
             }
          }
          ,"post": {
-             "summary": "Clean Water Act (CWA) Download Data Service"
-            ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return a comma sepated vaule (CSV) file of the facilities found."
+             "summary": "Clean Water Act (CWA) GeoJSON Service"
+            ,"description": "Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found."
             ,"parameters": [
                 {
                    "name": "output"
@@ -3291,7 +3677,28 @@
              "200": {
                 "description": "Results are formatted as a GeoJSON feature collection."
                ,"schema": {
-                   "$ref": "#\/definitions\/cwa5_FeatureCollection"
+                   "type": "object"
+                  ,"description": "GeoJSON Feature Collection Object"
+                  ,"properties": {
+                      "type": {
+                         "type": "string"
+                        ,"title": "Feature Collection"
+                        ,"example": "FeatureCollection"
+                        ,"description": "Static marker indicating object is a GeoJSON Feature Collection."
+                     }
+                     ,"features": {
+                         "type": "array"
+                        ,"title": "Features Array"
+                        ,"description": "Array of GeoJSON feature objects."
+                        ,"items": {
+                            "$ref": "#\/definitions\/cwa5_Feature"
+                        }
+                     }
+                  }
+                  ,"required": [
+                      "type"
+                     ,"features"
+                  ]
                }
             }
             }
@@ -3416,7 +3823,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk7_Results"
+                         "$ref": "#\/definitions\/rlk13_Results"
                      }
                   }
                   ,"required": [
@@ -3460,7 +3867,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk7_Results"
+                         "$ref": "#\/definitions\/rlk13_Results"
                      }
                   }
                   ,"required": [
@@ -3509,7 +3916,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk9_Results"
+                         "$ref": "#\/definitions\/rlk16_Results"
                      }
                   }
                   ,"required": [
@@ -3556,7 +3963,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk9_Results"
+                         "$ref": "#\/definitions\/rlk16_Results"
                      }
                   }
                   ,"required": [
@@ -3604,7 +4011,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkA_Results"
+                         "$ref": "#\/definitions\/rlk17_Results"
                      }
                   }
                   ,"required": [
@@ -3650,7 +4057,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkA_Results"
+                         "$ref": "#\/definitions\/rlk17_Results"
                      }
                   }
                   ,"required": [
@@ -3699,7 +4106,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkb_Results"
+                         "$ref": "#\/definitions\/rlk46_Results"
                      }
                   }
                   ,"required": [
@@ -3746,7 +4153,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkb_Results"
+                         "$ref": "#\/definitions\/rlk46_Results"
                      }
                   }
                   ,"required": [
@@ -3795,7 +4202,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkf_Results"
+                         "$ref": "#\/definitions\/rlk50_Results"
                      }
                   }
                   ,"required": [
@@ -3842,7 +4249,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkf_Results"
+                         "$ref": "#\/definitions\/rlk50_Results"
                      }
                   }
                   ,"required": [
@@ -3900,7 +4307,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk1_Results"
+                         "$ref": "#\/definitions\/rlk51_Results"
                      }
                   }
                   ,"required": [
@@ -3956,7 +4363,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk1_Results"
+                         "$ref": "#\/definitions\/rlk51_Results"
                      }
                   }
                   ,"required": [
@@ -4004,7 +4411,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk2_Results"
+                         "$ref": "#\/definitions\/rlk52_Results"
                      }
                   }
                   ,"required": [
@@ -4050,7 +4457,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk2_Results"
+                         "$ref": "#\/definitions\/rlk52_Results"
                      }
                   }
                   ,"required": [
@@ -4096,7 +4503,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkh_Results"
+                         "$ref": "#\/definitions\/rlk56_Results"
                      }
                   }
                   ,"required": [
@@ -4140,7 +4547,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkh_Results"
+                         "$ref": "#\/definitions\/rlk56_Results"
                      }
                   }
                   ,"required": [
@@ -4189,7 +4596,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkn_Results"
+                         "$ref": "#\/definitions\/rlk66_Results"
                      }
                   }
                   ,"required": [
@@ -4236,7 +4643,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkn_Results"
+                         "$ref": "#\/definitions\/rlk66_Results"
                      }
                   }
                   ,"required": [
@@ -4285,7 +4692,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlko_Results"
+                         "$ref": "#\/definitions\/rlk67_Results"
                      }
                   }
                   ,"required": [
@@ -4332,7 +4739,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlko_Results"
+                         "$ref": "#\/definitions\/rlk67_Results"
                      }
                   }
                   ,"required": [
@@ -4856,7 +5263,7 @@
             }
             ,"ChesapeakeBayFlag": {
                 "type": "string"
-               ,"title": "Chesapeake Bay Flag\n"
+               ,"title": "Chesapeake Bay Flag"
                ,"example": "Y"
                ,"description": "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
             }
@@ -5230,6 +5637,131 @@
             ,"Over80CountUs": {
                 "type": "string"
             }
+            ,"NPDESIDs": {
+                "type": "string"
+               ,"title": "ICS-NPDES Clean Water Act Identifier"
+               ,"description": "Clean Water Act ID from the ICIS-NPDES (Integrated Compliance Information System - National Pollutant Discharge Elimination System)"
+            }
+            ,"RmpIDs": {
+                "type": "string"
+            }
+            ,"BiosolidsFlag": {
+                "type": "string"
+            }
+            ,"BioReportDate": {
+                "type": "string"
+            }
+            ,"BioTotalVolumeAmt": {
+                "type": "string"
+            }
+            ,"BioCommentText": {
+                "type": "string"
+            }
+            ,"BioFacTypes": {
+                "type": "string"
+            }
+            ,"BioTrtmntProcesses": {
+                "type": "string"
+            }
+            ,"BioAnalyMethodCatgrys": {
+                "type": "string"
+            }
+            ,"BioAnalyMethods": {
+                "type": "string"
+            }
+            ,"BioLandApplicationSum": {
+                "type": "string"
+            }
+            ,"BioSurfaceDispSum": {
+                "type": "string"
+            }
+            ,"BioIncinerationSum": {
+                "type": "string"
+            }
+            ,"BioOtherManagementSum": {
+                "type": "string"
+            }
+            ,"BioMgmtPrctceTypes": {
+                "type": "string"
+            }
+            ,"BioMgmtPrctceStypes": {
+                "type": "string"
+            }
+            ,"BioMgmtHandlers": {
+                "type": "string"
+            }
+            ,"BioMgmtContainers": {
+                "type": "string"
+            }
+            ,"BioMgmtPathogens": {
+                "type": "string"
+            }
+            ,"BioMgmtPathreds": {
+                "type": "string"
+            }
+            ,"BioMgmtVectors": {
+                "type": "string"
+            }
+            ,"BioMgmtDeficiencies": {
+                "type": "string"
+            }
+            ,"BioMgmtDefCategories": {
+                "type": "string"
+            }
+            ,"BioMgmtDefCurrentCnt": {
+                "type": "string"
+            }
+            ,"InspDef5yrCnt": {
+                "type": "string"
+            }
+            ,"BioReportYear": {
+                "type": "string"
+            }
+            ,"BioTrtmntPrcssCmmntTxts": {
+                "type": "string"
+            }
+            ,"BioOtherMgmtPrctcTxts": {
+                "type": "string"
+            }
+            ,"BioQtrsInVio": {
+                "type": "string"
+            }
+            ,"BioCurrVioFlag": {
+                "type": "string"
+            }
+            ,"BioViolFlag": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioFea": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioFeaSt": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioFeaEPA": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioIea": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioIeaEPA": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioIeaSt": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioInsp": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioInspEPA": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioInspSt": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioPenalty": {
+                "type": "string"
+            }
             ,"Score": {
                 "type": "string"
                ,"title": "Score"
@@ -5417,6 +5949,49 @@
             ,"RadWBDHu8Name"
             ,"FacDerivedWBDHu8"
             ,"FacDerivedWBDHu8Name"
+            ,"Over80CountUs"
+            ,"NPDESIDs"
+            ,"RmpIDs"
+            ,"BiosolidsFlag"
+            ,"BioReportDate"
+            ,"BioTotalVolumeAmt"
+            ,"BioCommentText"
+            ,"BioFacTypes"
+            ,"BioTrtmntProcesses"
+            ,"BioAnalyMethodCatgrys"
+            ,"BioAnalyMethods"
+            ,"BioLandApplicationSum"
+            ,"BioSurfaceDispSum"
+            ,"BioIncinerationSum"
+            ,"BioOtherManagementSum"
+            ,"BioMgmtPrctceTypes"
+            ,"BioMgmtPrctceStypes"
+            ,"BioMgmtHandlers"
+            ,"BioMgmtContainers"
+            ,"BioMgmtPathogens"
+            ,"BioMgmtPathreds"
+            ,"BioMgmtVectors"
+            ,"BioMgmtDeficiencies"
+            ,"BioMgmtDefCategories"
+            ,"BioMgmtDefCurrentCnt"
+            ,"InspDef5yrCnt"
+            ,"BioReportYear"
+            ,"BioTrtmntPrcssCmmntTxts"
+            ,"BioOtherMgmtPrctcTxts"
+            ,"BioQtrsInVio"
+            ,"BioCurrVioFlag"
+            ,"BioViolFlag"
+            ,"CWPDateLastBioFea"
+            ,"CWPDateLastBioFeaSt"
+            ,"CWPDateLastBioFeaEPA"
+            ,"CWPDateLastBioIea"
+            ,"CWPDateLastBioIeaEPA"
+            ,"CWPDateLastBioIeaSt"
+            ,"CWPDateLastBioInsp"
+            ,"CWPDateLastBioInspEPA"
+            ,"CWPDateLastBioInspSt"
+            ,"CWPDateLastBioPenalty"
+            ,"Score"
          ]
       }
       ,"cwa1_MapData": {
@@ -5592,6 +6167,12 @@
                ,"example": "1"
                ,"description": "Number of facilities with insp_5yr_flag populated (CWP_DATE_LAST_INSPECTION)"
             }
+            ,"BioCVRows": {
+                "type": "string"
+            }
+            ,"BioV3Rows": {
+                "type": "string"
+            }
             ,"TotalPenalties": {
                 "type": "string"
                ,"title": "Total Penalties"
@@ -5632,6 +6213,8 @@
             ,"FEARows"
             ,"InfFEARows"
             ,"INSPRows"
+            ,"BioCVRows"
+            ,"BioV3Rows"
             ,"TotalPenalties"
             ,"QueryID"
             ,"PageNo"
@@ -5722,6 +6305,12 @@
                ,"example": "1"
                ,"description": "Number of facilities with insp_5yr_flag populated (CWP_DATE_LAST_INSPECTION)"
             }
+            ,"BioCVRows": {
+                "type": "string"
+            }
+            ,"BioV3Rows": {
+                "type": "string"
+            }
             ,"TotalPenalties": {
                 "type": "string"
                ,"title": "Total Penalties"
@@ -5746,6 +6335,8 @@
             ,"FEARows"
             ,"InfFEARows"
             ,"INSPRows"
+            ,"BioCVRows"
+            ,"BioV3Rows"
             ,"TotalPenalties"
          ]
       }
@@ -6260,7 +6851,7 @@
             }
             ,"ChesapeakeBayFlag": {
                 "type": "string"
-               ,"title": "Chesapeake Bay Flag\n"
+               ,"title": "Chesapeake Bay Flag"
                ,"example": "Y"
                ,"description": "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
             }
@@ -6634,6 +7225,131 @@
             ,"Over80CountUs": {
                 "type": "string"
             }
+            ,"NPDESIDs": {
+                "type": "string"
+               ,"title": "ICS-NPDES Clean Water Act Identifier"
+               ,"description": "Clean Water Act ID from the ICIS-NPDES (Integrated Compliance Information System - National Pollutant Discharge Elimination System)"
+            }
+            ,"RmpIDs": {
+                "type": "string"
+            }
+            ,"BiosolidsFlag": {
+                "type": "string"
+            }
+            ,"BioReportDate": {
+                "type": "string"
+            }
+            ,"BioTotalVolumeAmt": {
+                "type": "string"
+            }
+            ,"BioCommentText": {
+                "type": "string"
+            }
+            ,"BioFacTypes": {
+                "type": "string"
+            }
+            ,"BioTrtmntProcesses": {
+                "type": "string"
+            }
+            ,"BioAnalyMethodCatgrys": {
+                "type": "string"
+            }
+            ,"BioAnalyMethods": {
+                "type": "string"
+            }
+            ,"BioLandApplicationSum": {
+                "type": "string"
+            }
+            ,"BioSurfaceDispSum": {
+                "type": "string"
+            }
+            ,"BioIncinerationSum": {
+                "type": "string"
+            }
+            ,"BioOtherManagementSum": {
+                "type": "string"
+            }
+            ,"BioMgmtPrctceTypes": {
+                "type": "string"
+            }
+            ,"BioMgmtPrctceStypes": {
+                "type": "string"
+            }
+            ,"BioMgmtHandlers": {
+                "type": "string"
+            }
+            ,"BioMgmtContainers": {
+                "type": "string"
+            }
+            ,"BioMgmtPathogens": {
+                "type": "string"
+            }
+            ,"BioMgmtPathreds": {
+                "type": "string"
+            }
+            ,"BioMgmtVectors": {
+                "type": "string"
+            }
+            ,"BioMgmtDeficiencies": {
+                "type": "string"
+            }
+            ,"BioMgmtDefCategories": {
+                "type": "string"
+            }
+            ,"BioMgmtDefCurrentCnt": {
+                "type": "string"
+            }
+            ,"InspDef5yrCnt": {
+                "type": "string"
+            }
+            ,"BioReportYear": {
+                "type": "string"
+            }
+            ,"BioTrtmntPrcssCmmntTxts": {
+                "type": "string"
+            }
+            ,"BioOtherMgmtPrctcTxts": {
+                "type": "string"
+            }
+            ,"BioQtrsInVio": {
+                "type": "string"
+            }
+            ,"BioCurrVioFlag": {
+                "type": "string"
+            }
+            ,"BioViolFlag": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioFea": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioFeaSt": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioFeaEPA": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioIea": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioIeaEPA": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioIeaSt": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioInsp": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioInspEPA": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioInspSt": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioPenalty": {
+                "type": "string"
+            }
             ,"Score": {
                 "type": "string"
                ,"title": "Score"
@@ -6822,6 +7538,49 @@
             ,"RadWBDHu8Name"
             ,"FacDerivedWBDHu8"
             ,"FacDerivedWBDHu8Name"
+            ,"Over80CountUs"
+            ,"NPDESIDs"
+            ,"RmpIDs"
+            ,"BiosolidsFlag"
+            ,"BioReportDate"
+            ,"BioTotalVolumeAmt"
+            ,"BioCommentText"
+            ,"BioFacTypes"
+            ,"BioTrtmntProcesses"
+            ,"BioAnalyMethodCatgrys"
+            ,"BioAnalyMethods"
+            ,"BioLandApplicationSum"
+            ,"BioSurfaceDispSum"
+            ,"BioIncinerationSum"
+            ,"BioOtherManagementSum"
+            ,"BioMgmtPrctceTypes"
+            ,"BioMgmtPrctceStypes"
+            ,"BioMgmtHandlers"
+            ,"BioMgmtContainers"
+            ,"BioMgmtPathogens"
+            ,"BioMgmtPathreds"
+            ,"BioMgmtVectors"
+            ,"BioMgmtDeficiencies"
+            ,"BioMgmtDefCategories"
+            ,"BioMgmtDefCurrentCnt"
+            ,"InspDef5yrCnt"
+            ,"BioReportYear"
+            ,"BioTrtmntPrcssCmmntTxts"
+            ,"BioOtherMgmtPrctcTxts"
+            ,"BioQtrsInVio"
+            ,"BioCurrVioFlag"
+            ,"BioViolFlag"
+            ,"CWPDateLastBioFea"
+            ,"CWPDateLastBioFeaSt"
+            ,"CWPDateLastBioFeaEPA"
+            ,"CWPDateLastBioIea"
+            ,"CWPDateLastBioIeaEPA"
+            ,"CWPDateLastBioIeaSt"
+            ,"CWPDateLastBioInsp"
+            ,"CWPDateLastBioInspEPA"
+            ,"CWPDateLastBioInspSt"
+            ,"CWPDateLastBioPenalty"
+            ,"Score"
          ]
       }
       ,"cwa2_Results": {
@@ -6883,6 +7642,12 @@
                ,"example": "1"
                ,"description": "Number of facilities with insp_5yr_flag populated (CWP_DATE_LAST_INSPECTION)"
             }
+            ,"BioCVRows": {
+                "type": "string"
+            }
+            ,"BioV3Rows": {
+                "type": "string"
+            }
             ,"TotalPenalties": {
                 "type": "string"
                ,"title": "Total Penalties"
@@ -6942,6 +7707,8 @@
             ,"FEARows"
             ,"InfFEARows"
             ,"INSPRows"
+            ,"BioCVRows"
+            ,"BioV3Rows"
             ,"TotalPenalties"
             ,"IconBaseURL"
             ,"PopUpBaseURL"
@@ -6970,30 +7737,6 @@
              "type"
             ,"geometry"
             ,"properties"
-         ]
-      }
-      ,"cwa5_FeatureCollection": {
-          "type": "object"
-         ,"description": "GeoJSON Feature Collection Object"
-         ,"properties": {
-             "type": {
-                "type": "string"
-               ,"title": "Feature Collection"
-               ,"example": "FeatureCollection"
-               ,"description": "Static marker indicating object is a GeoJSON Feature Collection."
-            }
-            ,"features": {
-                "type": "array"
-               ,"title": "Features Array"
-               ,"description": "Array of GeoJSON feature objects."
-               ,"items": {
-                   "$ref": "#\/definitions\/cwa5_Feature"
-               }
-            }
-         }
-         ,"required": [
-             "type"
-            ,"features"
          ]
       }
       ,"cwa5_properties": {
@@ -7473,7 +8216,7 @@
             }
             ,"ChesapeakeBayFlag": {
                 "type": "string"
-               ,"title": "Chesapeake Bay Flag\n"
+               ,"title": "Chesapeake Bay Flag"
                ,"example": "Y"
                ,"description": "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
             }
@@ -7663,7 +8406,8 @@
                ,"example": 3
             }
             ,"MissDmrQtrs": {
-                "type": "string"
+                "type": "number"
+               ,"example": 0
             }
             ,"PastCalYrAverageFlow": {
                 "type": "string"
@@ -7850,6 +8594,134 @@
             ,"Over80CountUs": {
                 "type": "number"
             }
+            ,"NPDESIDs": {
+                "type": "string"
+               ,"title": "ICS-NPDES Clean Water Act Identifier"
+               ,"description": "Clean Water Act ID from the ICIS-NPDES (Integrated Compliance Information System - National Pollutant Discharge Elimination System)"
+            }
+            ,"RmpIDs": {
+                "type": "string"
+            }
+            ,"BiosolidsFlag": {
+                "type": "string"
+            }
+            ,"BioReportDate": {
+                "type": "string"
+            }
+            ,"BioTotalVolumeAmt": {
+                "type": "number"
+               ,"example": 0
+            }
+            ,"BioCommentText": {
+                "type": "string"
+            }
+            ,"BioFacTypes": {
+                "type": "string"
+            }
+            ,"BioTrtmntProcesses": {
+                "type": "string"
+            }
+            ,"BioAnalyMethodCatgrys": {
+                "type": "string"
+            }
+            ,"BioAnalyMethods": {
+                "type": "string"
+            }
+            ,"BioLandApplicationSum": {
+                "type": "number"
+            }
+            ,"BioSurfaceDispSum": {
+                "type": "number"
+            }
+            ,"BioIncinerationSum": {
+                "type": "number"
+            }
+            ,"BioOtherManagementSum": {
+                "type": "number"
+            }
+            ,"BioMgmtPrctceTypes": {
+                "type": "string"
+            }
+            ,"BioMgmtPrctceStypes": {
+                "type": "string"
+            }
+            ,"BioMgmtHandlers": {
+                "type": "string"
+            }
+            ,"BioMgmtContainers": {
+                "type": "string"
+            }
+            ,"BioMgmtPathogens": {
+                "type": "string"
+            }
+            ,"BioMgmtPathreds": {
+                "type": "string"
+            }
+            ,"BioMgmtVectors": {
+                "type": "string"
+            }
+            ,"BioMgmtDeficiencies": {
+                "type": "string"
+            }
+            ,"BioMgmtDefCategories": {
+                "type": "string"
+            }
+            ,"BioMgmtDefCurrentCnt": {
+                "type": "number"
+               ,"example": 0
+            }
+            ,"InspDef5yrCnt": {
+                "type": "number"
+               ,"example": 0
+            }
+            ,"BioReportYear": {
+                "type": "string"
+            }
+            ,"BioTrtmntPrcssCmmntTxts": {
+                "type": "string"
+            }
+            ,"BioOtherMgmtPrctcTxts": {
+                "type": "string"
+            }
+            ,"BioQtrsInVio": {
+                "type": "number"
+            }
+            ,"BioCurrVioFlag": {
+                "type": "number"
+            }
+            ,"BioViolFlag": {
+                "type": "number"
+            }
+            ,"CWPDateLastBioFea": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioFeaSt": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioFeaEPA": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioIea": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioIeaEPA": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioIeaSt": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioInsp": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioInspEPA": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioInspSt": {
+                "type": "string"
+            }
+            ,"CWPDateLastBioPenalty": {
+                "type": "string"
+            }
             ,"Score": {
                 "type": "number"
                ,"title": "Score"
@@ -8035,6 +8907,49 @@
             ,"RadWBDHu8Name"
             ,"FacDerivedWBDHu8"
             ,"FacDerivedWBDHu8Name"
+            ,"Over80CountUs"
+            ,"NPDESIDs"
+            ,"RmpIDs"
+            ,"BiosolidsFlag"
+            ,"BioReportDate"
+            ,"BioTotalVolumeAmt"
+            ,"BioCommentText"
+            ,"BioFacTypes"
+            ,"BioTrtmntProcesses"
+            ,"BioAnalyMethodCatgrys"
+            ,"BioAnalyMethods"
+            ,"BioLandApplicationSum"
+            ,"BioSurfaceDispSum"
+            ,"BioIncinerationSum"
+            ,"BioOtherManagementSum"
+            ,"BioMgmtPrctceTypes"
+            ,"BioMgmtPrctceStypes"
+            ,"BioMgmtHandlers"
+            ,"BioMgmtContainers"
+            ,"BioMgmtPathogens"
+            ,"BioMgmtPathreds"
+            ,"BioMgmtVectors"
+            ,"BioMgmtDeficiencies"
+            ,"BioMgmtDefCategories"
+            ,"BioMgmtDefCurrentCnt"
+            ,"InspDef5yrCnt"
+            ,"BioReportYear"
+            ,"BioTrtmntPrcssCmmntTxts"
+            ,"BioOtherMgmtPrctcTxts"
+            ,"BioQtrsInVio"
+            ,"BioCurrVioFlag"
+            ,"BioViolFlag"
+            ,"CWPDateLastBioFea"
+            ,"CWPDateLastBioFeaSt"
+            ,"CWPDateLastBioFeaEPA"
+            ,"CWPDateLastBioIea"
+            ,"CWPDateLastBioIeaEPA"
+            ,"CWPDateLastBioIeaSt"
+            ,"CWPDateLastBioInsp"
+            ,"CWPDateLastBioInspEPA"
+            ,"CWPDateLastBioInspSt"
+            ,"CWPDateLastBioPenalty"
+            ,"Score"
          ]
       }
       ,"cwa3_MapData": {
@@ -8285,7 +9200,7 @@
              "Message"
          ]
       }
-      ,"rlk0_LuValues": {
+      ,"rlk00_LuValues": {
           "type": "object"
          ,"description": "Lookup Values"
          ,"properties": {
@@ -8305,7 +9220,7 @@
             ,"ValueDescription"
          ]
       }
-      ,"rlk7_Results": {
+      ,"rlk13_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -8318,7 +9233,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -8326,7 +9241,7 @@
              "Message"
          ]
       }
-      ,"rlk9_Results": {
+      ,"rlk16_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -8339,7 +9254,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -8347,7 +9262,7 @@
              "Message"
          ]
       }
-      ,"rlkA_Results": {
+      ,"rlk17_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -8360,7 +9275,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -8368,7 +9283,7 @@
              "Message"
          ]
       }
-      ,"rlkb_Results": {
+      ,"rlk46_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -8381,7 +9296,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -8389,7 +9304,7 @@
              "Message"
          ]
       }
-      ,"rlkf_Results": {
+      ,"rlk50_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -8402,7 +9317,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -8410,7 +9325,7 @@
              "Message"
          ]
       }
-      ,"rlk1_Results": {
+      ,"rlk51_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -8423,7 +9338,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -8431,7 +9346,7 @@
              "Message"
          ]
       }
-      ,"rlk2_Results": {
+      ,"rlk52_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -8444,7 +9359,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -8452,7 +9367,7 @@
              "Message"
          ]
       }
-      ,"rlkh_Results": {
+      ,"rlk56_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -8465,7 +9380,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -8473,7 +9388,7 @@
              "Message"
          ]
       }
-      ,"rlkn_Results": {
+      ,"rlk66_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -8486,7 +9401,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -8494,7 +9409,7 @@
              "Message"
          ]
       }
-      ,"rlko_Results": {
+      ,"rlk67_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -8507,7 +9422,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }

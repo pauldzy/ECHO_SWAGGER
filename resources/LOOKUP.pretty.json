@@ -59,6 +59,13 @@
          ,"type": "string"
          ,"required": false
       }
+      ,"search_subcode": {
+          "name": "search_subcode"
+         ,"in": "query"
+         ,"description": "Enter a partial or complete code value."
+         ,"type": "string"
+         ,"required": false
+      }
       ,"state_code": {
           "name": "state_code"
          ,"in": "query"
@@ -90,17 +97,7 @@
       ,"descending": {
           "name": "descending"
          ,"in": "query"
-         ,"description": "Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated."
-         ,"enum": [
-             "Y"
-            ,"N"
-         ]
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"loads": {
-          "name": "loads"
-         ,"in": "query"
+         ,"description": "Output Sort Column Descending Flag.  Enter Y to sort results in descending order."
          ,"type": "string"
          ,"required": false
       }
@@ -165,7 +162,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk6_Results"
+                         "$ref": "#\/definitions\/rlk01_Results"
                      }
                   }
                   ,"required": [
@@ -203,7 +200,931 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk6_Results"
+                         "$ref": "#\/definitions\/rlk01_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.bio_analy_method_category": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk02_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk02_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.bio_analytical_method": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk03_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk03_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.bio_container_type": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk04_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk04_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.bio_mgmt_practice_handler": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk05_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk05_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.bio_mgmt_practice_subtype": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_subcode"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk06_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_subcode"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk06_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.bio_mgmt_practice_type": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk08_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk08_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.bio_mgmt_practice_typesubtype": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk07_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk07_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.bio_pathogen_class": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk09_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk09_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.bio_pathogen_reduction": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_subcode"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk10_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_subcode"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk10_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.bio_treatment_process": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk11_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk11_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.bio_vio_code": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk00_bio_vio_code.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk00_bio_vio_code.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.bio_vector_reduction": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk12_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk12_Results"
                      }
                   }
                   ,"required": [
@@ -240,7 +1161,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk7_Results"
+                         "$ref": "#\/definitions\/rlk13_Results"
                      }
                   }
                   ,"required": [
@@ -275,7 +1196,83 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk7_Results"
+                         "$ref": "#\/definitions\/rlk13_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.counties": {
+          "get": {
+             "summary": "ECHO Counties Lookup Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk14_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "ECHO Counties Lookup Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk14_Results"
                      }
                   }
                   ,"required": [
@@ -311,7 +1308,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk8_Results"
+                         "$ref": "#\/definitions\/rlk15_Results"
                      }
                   }
                   ,"required": [
@@ -345,7 +1342,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk8_Results"
+                         "$ref": "#\/definitions\/rlk15_Results"
                      }
                   }
                   ,"required": [
@@ -385,7 +1382,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk9_Results"
+                         "$ref": "#\/definitions\/rlk16_Results"
                      }
                   }
                   ,"required": [
@@ -423,7 +1420,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk9_Results"
+                         "$ref": "#\/definitions\/rlk16_Results"
                      }
                   }
                   ,"required": [
@@ -462,7 +1459,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkA_Results"
+                         "$ref": "#\/definitions\/rlk17_Results"
                      }
                   }
                   ,"required": [
@@ -499,861 +1496,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkA_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_cas_numbers": {
-          "get": {
-             "summary": "ECHO Discharge Monitoring Report Case Numbers Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkB_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO Discharge Monitoring Report Case Numbers Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkB_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_naics2_codes": {
-          "get": {
-             "summary": "ECHO Discharge Monitoring Report NAICS Code Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkC_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO Discharge Monitoring Report NAICS Code Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkC_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_point_source_cats": {
-          "get": {
-             "summary": "ECHO Discharge Monitoring Report Point Source Categories Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkD_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO Discharge Monitoring Report Point Source Categories Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkD_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_poll_cats": {
-          "get": {
-             "summary": "ECHO Discharge Monitoring Report Pollutant Categories Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/loads"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkE_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO Discharge Monitoring Report Pollutant Categories Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/loads"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkE_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_pollutants": {
-          "get": {
-             "summary": "ECHO Discharge Monitoring Report Pollutants Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkF_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO Discharge Monitoring Report Pollutants Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkF_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_reporting_year": {
-          "get": {
-             "summary": "ECHO Discharge Monitoring Report Reporting Year Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/descending"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkG_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO Discharge Monitoring Report Reporting Year Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/descending"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkG_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_sic2_codes": {
-          "get": {
-             "summary": "ECHO Discharge Monitoring Report SIC Codes Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkH_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO Discharge Monitoring Report SIC Codes Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkH_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_tri_chemicals": {
-          "get": {
-             "summary": "ECHO Discharge Monitoring Report TRI Chemicals Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkI_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO Discharge Monitoring Report TRI Chemicals Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkI_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_tri_reporting_year": {
-          "get": {
-             "summary": "ECHO Discharge Monitoring Report TRI Reporting Year Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/descending"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkJ_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO Discharge Monitoring Report TRI Reporting Year Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/descending"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkJ_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_watershed_groups": {
-          "get": {
-             "summary": "ECHO Discharge Monitoring Report Watershed Group Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkK_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO Discharge Monitoring Report Watershed Group Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkK_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_watersheds": {
-          "get": {
-             "summary": "ECHO Discharge Monitoring Report Watershed Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkL_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO Discharge Monitoring Report Watershed Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlkL_Results"
+                         "$ref": "#\/definitions\/rlk17_Results"
                      }
                   }
                   ,"required": [
@@ -1392,7 +1535,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkM_Results"
+                         "$ref": "#\/definitions\/rlk31_Results"
                      }
                   }
                   ,"required": [
@@ -1429,7 +1572,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkM_Results"
+                         "$ref": "#\/definitions\/rlk31_Results"
                      }
                   }
                   ,"required": [
@@ -1468,7 +1611,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkN_Results"
+                         "$ref": "#\/definitions\/rlk32_Results"
                      }
                   }
                   ,"required": [
@@ -1505,7 +1648,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkN_Results"
+                         "$ref": "#\/definitions\/rlk32_Results"
                      }
                   }
                   ,"required": [
@@ -1544,7 +1687,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkO_Results"
+                         "$ref": "#\/definitions\/rlk33_Results"
                      }
                   }
                   ,"required": [
@@ -1581,7 +1724,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkO_Results"
+                         "$ref": "#\/definitions\/rlk33_Results"
                      }
                   }
                   ,"required": [
@@ -1620,7 +1763,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkP_Results"
+                         "$ref": "#\/definitions\/rlk34_Results"
                      }
                   }
                   ,"required": [
@@ -1657,7 +1800,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkP_Results"
+                         "$ref": "#\/definitions\/rlk34_Results"
                      }
                   }
                   ,"required": [
@@ -1693,7 +1836,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkQ_Results"
+                         "$ref": "#\/definitions\/rlk35_Results"
                      }
                   }
                   ,"required": [
@@ -1727,7 +1870,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkQ_Results"
+                         "$ref": "#\/definitions\/rlk35_Results"
                      }
                   }
                   ,"required": [
@@ -1763,7 +1906,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkR_Results"
+                         "$ref": "#\/definitions\/rlk36_Results"
                      }
                   }
                   ,"required": [
@@ -1797,7 +1940,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkR_Results"
+                         "$ref": "#\/definitions\/rlk36_Results"
                      }
                   }
                   ,"required": [
@@ -1836,7 +1979,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkS_Results"
+                         "$ref": "#\/definitions\/rlk37_Results"
                      }
                   }
                   ,"required": [
@@ -1873,7 +2016,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkS_Results"
+                         "$ref": "#\/definitions\/rlk37_Results"
                      }
                   }
                   ,"required": [
@@ -1912,7 +2055,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkT_Results"
+                         "$ref": "#\/definitions\/rlk38_Results"
                      }
                   }
                   ,"required": [
@@ -1949,7 +2092,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkT_Results"
+                         "$ref": "#\/definitions\/rlk38_Results"
                      }
                   }
                   ,"required": [
@@ -1988,7 +2131,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkU_Results"
+                         "$ref": "#\/definitions\/rlk39_Results"
                      }
                   }
                   ,"required": [
@@ -2025,7 +2168,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkU_Results"
+                         "$ref": "#\/definitions\/rlk39_Results"
                      }
                   }
                   ,"required": [
@@ -2067,7 +2210,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkV_Results"
+                         "$ref": "#\/definitions\/rlk40_Results"
                      }
                   }
                   ,"required": [
@@ -2107,7 +2250,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkV_Results"
+                         "$ref": "#\/definitions\/rlk40_Results"
                      }
                   }
                   ,"required": [
@@ -2146,7 +2289,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkW_Results"
+                         "$ref": "#\/definitions\/rlk41_Results"
                      }
                   }
                   ,"required": [
@@ -2183,7 +2326,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkW_Results"
+                         "$ref": "#\/definitions\/rlk41_Results"
                      }
                   }
                   ,"required": [
@@ -2222,7 +2365,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkX_Results"
+                         "$ref": "#\/definitions\/rlk42_Results"
                      }
                   }
                   ,"required": [
@@ -2259,7 +2402,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkX_Results"
+                         "$ref": "#\/definitions\/rlk42_Results"
                      }
                   }
                   ,"required": [
@@ -2298,7 +2441,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkY_Results"
+                         "$ref": "#\/definitions\/rlk43_Results"
                      }
                   }
                   ,"required": [
@@ -2335,7 +2478,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkY_Results"
+                         "$ref": "#\/definitions\/rlk43_Results"
                      }
                   }
                   ,"required": [
@@ -2374,7 +2517,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkZ_Results"
+                         "$ref": "#\/definitions\/rlk44_Results"
                      }
                   }
                   ,"required": [
@@ -2411,7 +2554,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkZ_Results"
+                         "$ref": "#\/definitions\/rlk44_Results"
                      }
                   }
                   ,"required": [
@@ -2450,7 +2593,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlka_Results"
+                         "$ref": "#\/definitions\/rlk45_Results"
                      }
                   }
                   ,"required": [
@@ -2487,7 +2630,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlka_Results"
+                         "$ref": "#\/definitions\/rlk45_Results"
                      }
                   }
                   ,"required": [
@@ -2527,7 +2670,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkb_Results"
+                         "$ref": "#\/definitions\/rlk46_Results"
                      }
                   }
                   ,"required": [
@@ -2565,7 +2708,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkb_Results"
+                         "$ref": "#\/definitions\/rlk46_Results"
                      }
                   }
                   ,"required": [
@@ -2604,7 +2747,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkc_Results"
+                         "$ref": "#\/definitions\/rlk47_Results"
                      }
                   }
                   ,"required": [
@@ -2641,7 +2784,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkc_Results"
+                         "$ref": "#\/definitions\/rlk47_Results"
                      }
                   }
                   ,"required": [
@@ -2680,7 +2823,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkd_Results"
+                         "$ref": "#\/definitions\/rlk48_Results"
                      }
                   }
                   ,"required": [
@@ -2717,7 +2860,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkd_Results"
+                         "$ref": "#\/definitions\/rlk48_Results"
                      }
                   }
                   ,"required": [
@@ -2753,7 +2896,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlke_Results"
+                         "$ref": "#\/definitions\/rlk49_Results"
                      }
                   }
                   ,"required": [
@@ -2787,7 +2930,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlke_Results"
+                         "$ref": "#\/definitions\/rlk49_Results"
                      }
                   }
                   ,"required": [
@@ -2827,7 +2970,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkf_Results"
+                         "$ref": "#\/definitions\/rlk50_Results"
                      }
                   }
                   ,"required": [
@@ -2865,7 +3008,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkf_Results"
+                         "$ref": "#\/definitions\/rlk50_Results"
                      }
                   }
                   ,"required": [
@@ -2914,7 +3057,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk1_Results"
+                         "$ref": "#\/definitions\/rlk51_Results"
                      }
                   }
                   ,"required": [
@@ -2961,7 +3104,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk1_Results"
+                         "$ref": "#\/definitions\/rlk51_Results"
                      }
                   }
                   ,"required": [
@@ -3000,7 +3143,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk2_Results"
+                         "$ref": "#\/definitions\/rlk52_Results"
                      }
                   }
                   ,"required": [
@@ -3037,7 +3180,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk2_Results"
+                         "$ref": "#\/definitions\/rlk52_Results"
                      }
                   }
                   ,"required": [
@@ -3079,7 +3222,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk3_Results"
+                         "$ref": "#\/definitions\/rlk53_Results"
                      }
                   }
                   ,"required": [
@@ -3119,7 +3262,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk3_Results"
+                         "$ref": "#\/definitions\/rlk53_Results"
                      }
                   }
                   ,"required": [
@@ -3158,7 +3301,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk4_Results"
+                         "$ref": "#\/definitions\/rlk54_Results"
                      }
                   }
                   ,"required": [
@@ -3195,7 +3338,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk4_Results"
+                         "$ref": "#\/definitions\/rlk54_Results"
                      }
                   }
                   ,"required": [
@@ -3231,7 +3374,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkg_Results"
+                         "$ref": "#\/definitions\/rlk55_Results"
                      }
                   }
                   ,"required": [
@@ -3265,7 +3408,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkg_Results"
+                         "$ref": "#\/definitions\/rlk55_Results"
                      }
                   }
                   ,"required": [
@@ -3302,7 +3445,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkh_Results"
+                         "$ref": "#\/definitions\/rlk56_Results"
                      }
                   }
                   ,"required": [
@@ -3337,7 +3480,83 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkh_Results"
+                         "$ref": "#\/definitions\/rlk56_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.prog_deficiency": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk57_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk57_Results"
                      }
                   }
                   ,"required": [
@@ -3373,7 +3592,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlki_Results"
+                         "$ref": "#\/definitions\/rlk58_Results"
                      }
                   }
                   ,"required": [
@@ -3407,7 +3626,89 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlki_Results"
+                         "$ref": "#\/definitions\/rlk58_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.reporting_obligation": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/descending"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk59_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/descending"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk59_Results"
                      }
                   }
                   ,"required": [
@@ -3446,7 +3747,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkj_Results"
+                         "$ref": "#\/definitions\/rlk60_Results"
                      }
                   }
                   ,"required": [
@@ -3483,7 +3784,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkj_Results"
+                         "$ref": "#\/definitions\/rlk60_Results"
                      }
                   }
                   ,"required": [
@@ -3522,7 +3823,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkk_Results"
+                         "$ref": "#\/definitions\/rlk61_Results"
                      }
                   }
                   ,"required": [
@@ -3559,7 +3860,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkk_Results"
+                         "$ref": "#\/definitions\/rlk61_Results"
                      }
                   }
                   ,"required": [
@@ -3596,7 +3897,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk0_sdwis_tribes.Results"
+                         "$ref": "#\/definitions\/rlk62_Results"
                      }
                   }
                   ,"required": [
@@ -3631,7 +3932,83 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk0_sdwis_tribes.Results"
+                         "$ref": "#\/definitions\/rlk62_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.states": {
+          "get": {
+             "summary": "ECHO States Lookup Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk63_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "ECHO States Lookup Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk63_Results"
                      }
                   }
                   ,"required": [
@@ -3670,7 +4047,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkl_Results"
+                         "$ref": "#\/definitions\/rlk64_Results"
                      }
                   }
                   ,"required": [
@@ -3707,7 +4084,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkl_Results"
+                         "$ref": "#\/definitions\/rlk64_Results"
                      }
                   }
                   ,"required": [
@@ -3743,7 +4120,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkm_Results"
+                         "$ref": "#\/definitions\/rlk65_Results"
                      }
                   }
                   ,"required": [
@@ -3777,7 +4154,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkm_Results"
+                         "$ref": "#\/definitions\/rlk65_Results"
                      }
                   }
                   ,"required": [
@@ -3817,7 +4194,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkn_Results"
+                         "$ref": "#\/definitions\/rlk66_Results"
                      }
                   }
                   ,"required": [
@@ -3855,7 +4232,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlkn_Results"
+                         "$ref": "#\/definitions\/rlk66_Results"
                      }
                   }
                   ,"required": [
@@ -3895,7 +4272,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlko_Results"
+                         "$ref": "#\/definitions\/rlk67_Results"
                      }
                   }
                   ,"required": [
@@ -3933,7 +4310,7 @@
                   ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlko_Results"
+                         "$ref": "#\/definitions\/rlk67_Results"
                      }
                   }
                   ,"required": [
@@ -3946,7 +4323,7 @@
       }
    }
    ,"definitions": {
-       "rlk0_LuValues": {
+       "rlk00_LuValues": {
           "type": "object"
          ,"description": "Lookup Values"
          ,"properties": {
@@ -3966,39 +4343,7 @@
             ,"ValueDescription"
          ]
       }
-      ,"rlk0_LuValues2": {
-          "type": "object"
-         ,"description": "Lookup Values"
-         ,"properties": {
-             "ValueCode": {
-                "type": "string"
-               ,"title": "Value Code"
-               ,"example": "77034"
-            }
-            ,"ValueDescription": {
-                "type": "string"
-               ,"title": "Value Description"
-               ,"example": "1-Butanol"
-            }
-            ,"ValueLongDesc": {
-                "type": "string"
-               ,"title": "Lookup Long Description"
-               ,"example": "All phosphorus and phosphate pollutant parameters. Section 3.1.3 of the Technical Users Background Document for the DMR Pollutant Loading Tool describes how the Loading Tool identifies phosphorus parameters and aggregates phosphorus loads."
-            }
-            ,"ValueType": {
-                "type": "string"
-               ,"title": "Lookup Value Type"
-               ,"example": "loads"
-            }
-         }
-         ,"required": [
-             "ValueCode"
-            ,"ValueDescription"
-            ,"ValueLongDesc"
-            ,"ValueType"
-         ]
-      }
-      ,"rlk0_LuValues3": {
+      ,"rlk00_LuValues3": {
           "type": "object"
          ,"description": "Lookup Values"
          ,"properties": {
@@ -4024,7 +4369,33 @@
             ,"ValueDescription"
          ]
       }
-      ,"rlk6_Results": {
+      ,"rlk00_LuValues4": {
+          "type": "object"
+         ,"description": "Lookup Values"
+         ,"properties": {
+             "ValueCode": {
+                "type": "string"
+               ,"title": "Value Code"
+               ,"example": "77034"
+            }
+            ,"ValueSubCode": {
+                "type": "string"
+               ,"title": "Value SubCode"
+               ,"example": "77034"
+            }
+            ,"ValueDescription": {
+                "type": "string"
+               ,"title": "Value Description"
+               ,"example": "1-Butanol"
+            }
+         }
+         ,"required": [
+             "ValueCode"
+            ,"ValueSubCode"
+            ,"ValueDescription"
+         ]
+      }
+      ,"rlk01_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4037,7 +4408,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4045,7 +4416,7 @@
              "Message"
          ]
       }
-      ,"rlk7_Results": {
+      ,"rlk02_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4058,7 +4429,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4066,7 +4437,7 @@
              "Message"
          ]
       }
-      ,"rlk8_Results": {
+      ,"rlk03_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4079,7 +4450,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4087,7 +4458,7 @@
              "Message"
          ]
       }
-      ,"rlk9_Results": {
+      ,"rlk04_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4100,7 +4471,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4108,7 +4479,7 @@
              "Message"
          ]
       }
-      ,"rlkA_Results": {
+      ,"rlk05_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4121,7 +4492,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4129,7 +4500,7 @@
              "Message"
          ]
       }
-      ,"rlkB_Results": {
+      ,"rlk06_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4142,7 +4513,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues4"
                }
             }
          }
@@ -4150,7 +4521,7 @@
              "Message"
          ]
       }
-      ,"rlkC_Results": {
+      ,"rlk08_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4163,7 +4534,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4171,7 +4542,7 @@
              "Message"
          ]
       }
-      ,"rlkD_Results": {
+      ,"rlk07_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4184,7 +4555,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4192,7 +4563,7 @@
              "Message"
          ]
       }
-      ,"rlkE_Results": {
+      ,"rlk09_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4205,7 +4576,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues2"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4213,7 +4584,7 @@
              "Message"
          ]
       }
-      ,"rlkF_Results": {
+      ,"rlk10_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4226,7 +4597,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4234,7 +4605,7 @@
              "Message"
          ]
       }
-      ,"rlkG_Results": {
+      ,"rlk11_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4247,7 +4618,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4255,7 +4626,7 @@
              "Message"
          ]
       }
-      ,"rlkH_Results": {
+      ,"rlk12_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4268,7 +4639,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4276,7 +4647,7 @@
              "Message"
          ]
       }
-      ,"rlkI_Results": {
+      ,"rlk00_bio_vio_code.Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4289,7 +4660,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4297,7 +4668,7 @@
              "Message"
          ]
       }
-      ,"rlkJ_Results": {
+      ,"rlk13_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4310,7 +4681,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4318,7 +4689,7 @@
              "Message"
          ]
       }
-      ,"rlkK_Results": {
+      ,"rlk14_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4331,7 +4702,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4339,7 +4710,7 @@
              "Message"
          ]
       }
-      ,"rlkL_Results": {
+      ,"rlk15_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4352,7 +4723,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4360,7 +4731,7 @@
              "Message"
          ]
       }
-      ,"rlkM_Results": {
+      ,"rlk16_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4373,7 +4744,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4381,7 +4752,7 @@
              "Message"
          ]
       }
-      ,"rlkN_Results": {
+      ,"rlk17_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4394,7 +4765,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4402,7 +4773,7 @@
              "Message"
          ]
       }
-      ,"rlkO_Results": {
+      ,"rlk31_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4415,7 +4786,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4423,7 +4794,7 @@
              "Message"
          ]
       }
-      ,"rlkP_Results": {
+      ,"rlk32_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4436,7 +4807,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4444,7 +4815,7 @@
              "Message"
          ]
       }
-      ,"rlkQ_Results": {
+      ,"rlk33_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4457,7 +4828,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4465,7 +4836,7 @@
              "Message"
          ]
       }
-      ,"rlkR_Results": {
+      ,"rlk34_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4478,7 +4849,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4486,7 +4857,7 @@
              "Message"
          ]
       }
-      ,"rlkS_Results": {
+      ,"rlk35_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4499,7 +4870,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4507,7 +4878,7 @@
              "Message"
          ]
       }
-      ,"rlkT_Results": {
+      ,"rlk36_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4520,7 +4891,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4528,7 +4899,7 @@
              "Message"
          ]
       }
-      ,"rlkU_Results": {
+      ,"rlk37_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4541,7 +4912,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4549,7 +4920,7 @@
              "Message"
          ]
       }
-      ,"rlkV_Results": {
+      ,"rlk38_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4562,7 +4933,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4570,7 +4941,7 @@
              "Message"
          ]
       }
-      ,"rlkW_Results": {
+      ,"rlk39_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4583,7 +4954,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4591,7 +4962,7 @@
              "Message"
          ]
       }
-      ,"rlkX_Results": {
+      ,"rlk40_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4604,7 +4975,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4612,7 +4983,7 @@
              "Message"
          ]
       }
-      ,"rlkY_Results": {
+      ,"rlk41_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4625,7 +4996,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4633,7 +5004,7 @@
              "Message"
          ]
       }
-      ,"rlkZ_Results": {
+      ,"rlk42_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4646,7 +5017,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4654,7 +5025,7 @@
              "Message"
          ]
       }
-      ,"rlka_Results": {
+      ,"rlk43_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4667,7 +5038,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4675,7 +5046,7 @@
              "Message"
          ]
       }
-      ,"rlkb_Results": {
+      ,"rlk44_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4688,7 +5059,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4696,7 +5067,7 @@
              "Message"
          ]
       }
-      ,"rlkc_Results": {
+      ,"rlk45_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4709,7 +5080,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4717,7 +5088,7 @@
              "Message"
          ]
       }
-      ,"rlkd_Results": {
+      ,"rlk46_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4730,7 +5101,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4738,7 +5109,7 @@
              "Message"
          ]
       }
-      ,"rlke_Results": {
+      ,"rlk47_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4751,7 +5122,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4759,7 +5130,7 @@
              "Message"
          ]
       }
-      ,"rlkf_Results": {
+      ,"rlk48_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4772,7 +5143,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4780,7 +5151,7 @@
              "Message"
          ]
       }
-      ,"rlk1_Results": {
+      ,"rlk49_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4793,7 +5164,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4801,7 +5172,7 @@
              "Message"
          ]
       }
-      ,"rlk2_Results": {
+      ,"rlk50_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4814,7 +5185,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4822,7 +5193,7 @@
              "Message"
          ]
       }
-      ,"rlk3_Results": {
+      ,"rlk51_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4835,7 +5206,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues3"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4843,7 +5214,7 @@
              "Message"
          ]
       }
-      ,"rlk4_Results": {
+      ,"rlk52_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4856,7 +5227,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4864,7 +5235,7 @@
              "Message"
          ]
       }
-      ,"rlkg_Results": {
+      ,"rlk53_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4877,7 +5248,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues3"
                }
             }
          }
@@ -4885,7 +5256,7 @@
              "Message"
          ]
       }
-      ,"rlkh_Results": {
+      ,"rlk54_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4898,7 +5269,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4906,7 +5277,7 @@
              "Message"
          ]
       }
-      ,"rlki_Results": {
+      ,"rlk55_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4919,7 +5290,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4927,7 +5298,7 @@
              "Message"
          ]
       }
-      ,"rlkj_Results": {
+      ,"rlk56_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4940,7 +5311,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4948,7 +5319,7 @@
              "Message"
          ]
       }
-      ,"rlkk_Results": {
+      ,"rlk57_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4961,7 +5332,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4969,7 +5340,7 @@
              "Message"
          ]
       }
-      ,"rlk0_sdwis_tribes.Results": {
+      ,"rlk58_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4982,7 +5353,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -4990,7 +5361,7 @@
              "Message"
          ]
       }
-      ,"rlkl_Results": {
+      ,"rlk59_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -5003,7 +5374,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -5011,7 +5382,7 @@
              "Message"
          ]
       }
-      ,"rlkm_Results": {
+      ,"rlk60_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -5024,7 +5395,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -5032,7 +5403,7 @@
              "Message"
          ]
       }
-      ,"rlkn_Results": {
+      ,"rlk61_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -5045,7 +5416,7 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }
@@ -5053,7 +5424,7 @@
              "Message"
          ]
       }
-      ,"rlko_Results": {
+      ,"rlk62_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -5066,7 +5437,112 @@
             ,"LuValues": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/rlk0_LuValues"
+                   "$ref": "#\/definitions\/rlk00_LuValues"
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+         ]
+      }
+      ,"rlk63_Results": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"LuValues": {
+                "type": "array"
+               ,"items": {
+                   "$ref": "#\/definitions\/rlk00_LuValues"
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+         ]
+      }
+      ,"rlk64_Results": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"LuValues": {
+                "type": "array"
+               ,"items": {
+                   "$ref": "#\/definitions\/rlk00_LuValues"
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+         ]
+      }
+      ,"rlk65_Results": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"LuValues": {
+                "type": "array"
+               ,"items": {
+                   "$ref": "#\/definitions\/rlk00_LuValues"
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+         ]
+      }
+      ,"rlk66_Results": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"LuValues": {
+                "type": "array"
+               ,"items": {
+                   "$ref": "#\/definitions\/rlk00_LuValues"
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+         ]
+      }
+      ,"rlk67_Results": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"LuValues": {
+                "type": "array"
+               ,"items": {
+                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }

@@ -1002,11 +1002,104 @@ parameters:
     description: Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
     type: number
     required: false
+  p_bio_mgmt_prctce_handler: 
+    name: p_bio_mgmt_prctce_handler
+    in: query
+    type: string
+    required: false
+  p_bio_analy_method_catgry: 
+    name: p_bio_analy_method_catgry
+    in: query
+    type: string
+    required: false
+  p_bio_mgmt_prctce_stype: 
+    name: p_bio_mgmt_prctce_stype
+    in: query
+    type: string
+    required: false
+  p_bio_mgmt_deficiencies: 
+    name: p_bio_mgmt_deficiencies
+    in: query
+    type: number
+    required: false
+  p_bio_mgmt_def_category: 
+    name: p_bio_mgmt_def_category
+    in: query
+    type: string
+    required: false
+  p_bio_total_volume_amt: 
+    name: p_bio_total_volume_amt
+    in: query
+    type: string
+    required: false
+  p_bio_mgmt_prctce_type: 
+    name: p_bio_mgmt_prctce_type
+    in: query
+    type: string
+    required: false
+  p_bio_mgmt_container: 
+    name: p_bio_mgmt_container
+    in: query
+    type: string
+    required: false
+  p_insp_deficiencies: 
+    name: p_insp_deficiencies
+    in: query
+    type: number
+    required: false
+  p_bio_mgmt_pathogen: 
+    name: p_bio_mgmt_pathogen
+    in: query
+    type: string
+    required: false
+  p_bio_trtmnt_procs: 
+    name: p_bio_trtmnt_procs
+    in: query
+    type: string
+    required: false
+  p_bio_mgmt_pathred: 
+    name: p_bio_mgmt_pathred
+    in: query
+    type: string
+    required: false
+  p_bio_qtrs_in_vio: 
+    name: p_bio_qtrs_in_vio
+    in: query
+    type: number
+    required: false
+  p_bio_mgmt_vector: 
+    name: p_bio_mgmt_vector
+    in: query
+    type: string
+    required: false
+  p_bio_current_vio: 
+    name: p_bio_current_vio
+    in: query
+    enum: 
+    - Y
+    - N
+    type: string
+    required: false
   p_pretty_print: 
     name: p_pretty_print
     in: query
     description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
     type: number
+    required: false
+  p_bio_vio_code: 
+    name: p_bio_vio_code
+    in: query
+    type: string
+    required: false
+  p_bio_rpt_year: 
+    name: p_bio_rpt_year
+    in: query
+    type: string
+    required: false
+  p_bio_fac_type: 
+    name: p_bio_fac_type
+    in: query
+    type: string
     required: false
   statute_code: 
     name: statute_code
@@ -1030,6 +1123,17 @@ parameters:
     name: sort_order
     in: query
     type: number
+    required: false
+  p_mon_type: 
+    name: p_mon_type
+    in: query
+    type: string
+    required: false
+  p_bio_flag: 
+    name: p_bio_flag
+    in: query
+    description: A Y value will select all biosolid-related permits.
+    type: string
     required: false
   p_icoo: 
     name: p_icoo
@@ -1326,6 +1430,7 @@ paths:
       - "$ref": "#/parameters/p_last_dmr_within"
       - "$ref": "#/parameters/p_indsw"
       - "$ref": "#/parameters/p_msgp_ptype"
+      - "$ref": "#/parameters/p_mon_type"
       - "$ref": "#/parameters/p_iagency"
       - "$ref": "#/parameters/p_isws"
       - "$ref": "#/parameters/p_iswss"
@@ -1353,6 +1458,25 @@ paths:
       - "$ref": "#/parameters/p_radius"
       - "$ref": "#/parameters/p_decouple"
       - "$ref": "#/parameters/p_ejscreen_over80cnt"
+      - "$ref": "#/parameters/p_bio_flag"
+      - "$ref": "#/parameters/p_bio_fac_type"
+      - "$ref": "#/parameters/p_bio_trtmnt_procs"
+      - "$ref": "#/parameters/p_bio_analy_method_catgry"
+      - "$ref": "#/parameters/p_bio_total_volume_amt"
+      - "$ref": "#/parameters/p_bio_mgmt_prctce_type"
+      - "$ref": "#/parameters/p_bio_mgmt_prctce_stype"
+      - "$ref": "#/parameters/p_bio_mgmt_prctce_handler"
+      - "$ref": "#/parameters/p_bio_mgmt_container"
+      - "$ref": "#/parameters/p_bio_mgmt_pathogen"
+      - "$ref": "#/parameters/p_bio_mgmt_pathred"
+      - "$ref": "#/parameters/p_bio_mgmt_vector"
+      - "$ref": "#/parameters/p_insp_deficiencies"
+      - "$ref": "#/parameters/p_bio_mgmt_def_category"
+      - "$ref": "#/parameters/p_bio_mgmt_deficiencies"
+      - "$ref": "#/parameters/p_bio_vio_code"
+      - "$ref": "#/parameters/p_bio_current_vio"
+      - "$ref": "#/parameters/p_bio_qtrs_in_vio"
+      - "$ref": "#/parameters/p_bio_rpt_year"
       - "$ref": "#/parameters/queryset"
       - "$ref": "#/parameters/responseset"
       - "$ref": "#/parameters/tablelist"
@@ -1476,6 +1600,7 @@ paths:
       - "$ref": "#/parameters/p_last_dmr_within"
       - "$ref": "#/parameters/p_indsw"
       - "$ref": "#/parameters/p_msgp_ptype"
+      - "$ref": "#/parameters/p_mon_type"
       - "$ref": "#/parameters/p_iagency"
       - "$ref": "#/parameters/p_isws"
       - "$ref": "#/parameters/p_iswss"
@@ -1503,6 +1628,25 @@ paths:
       - "$ref": "#/parameters/p_radius"
       - "$ref": "#/parameters/p_decouple"
       - "$ref": "#/parameters/p_ejscreen_over80cnt"
+      - "$ref": "#/parameters/p_bio_flag"
+      - "$ref": "#/parameters/p_bio_fac_type"
+      - "$ref": "#/parameters/p_bio_trtmnt_procs"
+      - "$ref": "#/parameters/p_bio_analy_method_catgry"
+      - "$ref": "#/parameters/p_bio_total_volume_amt"
+      - "$ref": "#/parameters/p_bio_mgmt_prctce_type"
+      - "$ref": "#/parameters/p_bio_mgmt_prctce_stype"
+      - "$ref": "#/parameters/p_bio_mgmt_prctce_handler"
+      - "$ref": "#/parameters/p_bio_mgmt_container"
+      - "$ref": "#/parameters/p_bio_mgmt_pathogen"
+      - "$ref": "#/parameters/p_bio_mgmt_pathred"
+      - "$ref": "#/parameters/p_bio_mgmt_vector"
+      - "$ref": "#/parameters/p_insp_deficiencies"
+      - "$ref": "#/parameters/p_bio_mgmt_def_category"
+      - "$ref": "#/parameters/p_bio_mgmt_deficiencies"
+      - "$ref": "#/parameters/p_bio_vio_code"
+      - "$ref": "#/parameters/p_bio_current_vio"
+      - "$ref": "#/parameters/p_bio_qtrs_in_vio"
+      - "$ref": "#/parameters/p_bio_rpt_year"
       - "$ref": "#/parameters/queryset"
       - "$ref": "#/parameters/responseset"
       - "$ref": "#/parameters/tablelist"
@@ -1627,6 +1771,7 @@ paths:
       - "$ref": "#/parameters/p_last_dmr_within"
       - "$ref": "#/parameters/p_indsw"
       - "$ref": "#/parameters/p_msgp_ptype"
+      - "$ref": "#/parameters/p_mon_type"
       - "$ref": "#/parameters/p_iagency"
       - "$ref": "#/parameters/p_isws"
       - "$ref": "#/parameters/p_iswss"
@@ -1654,6 +1799,25 @@ paths:
       - "$ref": "#/parameters/p_radius"
       - "$ref": "#/parameters/p_decouple"
       - "$ref": "#/parameters/p_ejscreen_over80cnt"
+      - "$ref": "#/parameters/p_bio_flag"
+      - "$ref": "#/parameters/p_bio_fac_type"
+      - "$ref": "#/parameters/p_bio_trtmnt_procs"
+      - "$ref": "#/parameters/p_bio_analy_method_catgry"
+      - "$ref": "#/parameters/p_bio_total_volume_amt"
+      - "$ref": "#/parameters/p_bio_mgmt_prctce_type"
+      - "$ref": "#/parameters/p_bio_mgmt_prctce_stype"
+      - "$ref": "#/parameters/p_bio_mgmt_prctce_handler"
+      - "$ref": "#/parameters/p_bio_mgmt_container"
+      - "$ref": "#/parameters/p_bio_mgmt_pathogen"
+      - "$ref": "#/parameters/p_bio_mgmt_pathred"
+      - "$ref": "#/parameters/p_bio_mgmt_vector"
+      - "$ref": "#/parameters/p_insp_deficiencies"
+      - "$ref": "#/parameters/p_bio_mgmt_def_category"
+      - "$ref": "#/parameters/p_bio_mgmt_deficiencies"
+      - "$ref": "#/parameters/p_bio_vio_code"
+      - "$ref": "#/parameters/p_bio_current_vio"
+      - "$ref": "#/parameters/p_bio_qtrs_in_vio"
+      - "$ref": "#/parameters/p_bio_rpt_year"
       - "$ref": "#/parameters/responseset"
       - "$ref": "#/parameters/callback"
       - name: qcolumns
@@ -1774,6 +1938,7 @@ paths:
       - "$ref": "#/parameters/p_last_dmr_within"
       - "$ref": "#/parameters/p_indsw"
       - "$ref": "#/parameters/p_msgp_ptype"
+      - "$ref": "#/parameters/p_mon_type"
       - "$ref": "#/parameters/p_iagency"
       - "$ref": "#/parameters/p_isws"
       - "$ref": "#/parameters/p_iswss"
@@ -1801,6 +1966,25 @@ paths:
       - "$ref": "#/parameters/p_radius"
       - "$ref": "#/parameters/p_decouple"
       - "$ref": "#/parameters/p_ejscreen_over80cnt"
+      - "$ref": "#/parameters/p_bio_flag"
+      - "$ref": "#/parameters/p_bio_fac_type"
+      - "$ref": "#/parameters/p_bio_trtmnt_procs"
+      - "$ref": "#/parameters/p_bio_analy_method_catgry"
+      - "$ref": "#/parameters/p_bio_total_volume_amt"
+      - "$ref": "#/parameters/p_bio_mgmt_prctce_type"
+      - "$ref": "#/parameters/p_bio_mgmt_prctce_stype"
+      - "$ref": "#/parameters/p_bio_mgmt_prctce_handler"
+      - "$ref": "#/parameters/p_bio_mgmt_container"
+      - "$ref": "#/parameters/p_bio_mgmt_pathogen"
+      - "$ref": "#/parameters/p_bio_mgmt_pathred"
+      - "$ref": "#/parameters/p_bio_mgmt_vector"
+      - "$ref": "#/parameters/p_insp_deficiencies"
+      - "$ref": "#/parameters/p_bio_mgmt_def_category"
+      - "$ref": "#/parameters/p_bio_mgmt_deficiencies"
+      - "$ref": "#/parameters/p_bio_vio_code"
+      - "$ref": "#/parameters/p_bio_current_vio"
+      - "$ref": "#/parameters/p_bio_qtrs_in_vio"
+      - "$ref": "#/parameters/p_bio_rpt_year"
       - "$ref": "#/parameters/responseset"
       - "$ref": "#/parameters/callback"
       - name: qcolumns
@@ -1977,8 +2161,8 @@ paths:
             - MapOutput
   "/cwa_rest_services.get_download": 
     get: 
-      summary: Clean Water Act (CWA) GeoJSON Service
-      description: Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found.
+      summary: Clean Water Act (CWA) Download Data Service
+      description: Based on the QID obtained from a get_facilities or get_facility_info query, return a comma separated value (CSV) file of the facilities found.
       parameters: 
       - name: output
         in: query
@@ -2002,8 +2186,8 @@ paths:
           schema: 
             type: file
     post: 
-      summary: Clean Water Act (CWA) GeoJSON Service
-      description: Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found.
+      summary: Clean Water Act (CWA) Download Data Service
+      description: Based on the QID obtained from a get_facilities or get_facility_info query, return a comma separated value (CSV) file of the facilities found.
       parameters: 
       - name: output
         in: query
@@ -2071,8 +2255,8 @@ paths:
             type: file
   "/cwa_rest_services.get_geojson": 
     get: 
-      summary: Clean Water Act (CWA) Download Data Service
-      description: Based on the QID obtained from a get_facilities or get_facility_info query, return a comma sepated vaule (CSV) file of the facilities found.
+      summary: Clean Water Act (CWA) GeoJSON Service
+      description: Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found.
       parameters: 
       - name: output
         in: query
@@ -2099,10 +2283,25 @@ paths:
         '200': 
           description: Results are formatted as a GeoJSON feature collection.
           schema: 
-            "$ref": "#/definitions/cwa5_FeatureCollection"
+            description: GeoJSON Feature Collection Object
+            properties: 
+              type: 
+                type: string
+                title: Feature Collection
+                example: FeatureCollection
+                description: Static marker indicating object is a GeoJSON Feature Collection.
+              features: 
+                type: array
+                title: Features Array
+                description: Array of GeoJSON feature objects.
+                items: 
+                  "$ref": "#/definitions/cwa5_Feature" 
+            required: 
+            - type
+            - features
     post: 
-      summary: Clean Water Act (CWA) Download Data Service
-      description: Based on the QID obtained from a get_facilities or get_facility_info query, return a comma sepated vaule (CSV) file of the facilities found.
+      summary: Clean Water Act (CWA) GeoJSON Service
+      description: Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found.
       parameters: 
       - name: output
         in: query
@@ -2129,7 +2328,22 @@ paths:
         '200': 
           description: Results are formatted as a GeoJSON feature collection.
           schema: 
-            "$ref": "#/definitions/cwa5_FeatureCollection"
+            description: GeoJSON Feature Collection Object
+            properties: 
+              type: 
+                type: string
+                title: Feature Collection
+                example: FeatureCollection
+                description: Static marker indicating object is a GeoJSON Feature Collection.
+              features: 
+                type: array
+                title: Features Array
+                description: Array of GeoJSON feature objects.
+                items: 
+                  "$ref": "#/definitions/cwa5_Feature" 
+            required: 
+            - type
+            - features
   "/cwa_rest_services.metadata": 
     get: 
       summary: Clean Water Act (CWA) Metadata Service
@@ -2220,7 +2434,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk7_Results" 
+                "$ref": "#/definitions/rlk13_Results" 
             required: 
             - Results
     post: 
@@ -2251,7 +2465,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk7_Results" 
+                "$ref": "#/definitions/rlk13_Results" 
             required: 
             - Results
   "/rest_lookups.cwa_parameters": 
@@ -2286,7 +2500,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk9_Results" 
+                "$ref": "#/definitions/rlk16_Results" 
             required: 
             - Results
     post: 
@@ -2320,7 +2534,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk9_Results" 
+                "$ref": "#/definitions/rlk16_Results" 
             required: 
             - Results
   "/rest_lookups.cwa_pollutants": 
@@ -2352,7 +2566,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlkA_Results" 
+                "$ref": "#/definitions/rlk17_Results" 
             required: 
             - Results
     post: 
@@ -2383,7 +2597,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlkA_Results" 
+                "$ref": "#/definitions/rlk17_Results" 
             required: 
             - Results
   "/rest_lookups.federal_agencies": 
@@ -2416,7 +2630,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlkb_Results" 
+                "$ref": "#/definitions/rlk46_Results" 
             required: 
             - Results
     post: 
@@ -2448,7 +2662,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlkb_Results" 
+                "$ref": "#/definitions/rlk46_Results" 
             required: 
             - Results
   "/rest_lookups.icis_inspection_types": 
@@ -2481,7 +2695,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlkf_Results" 
+                "$ref": "#/definitions/rlk50_Results" 
             required: 
             - Results
     post: 
@@ -2513,7 +2727,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlkf_Results" 
+                "$ref": "#/definitions/rlk50_Results" 
             required: 
             - Results
   "/rest_lookups.icis_law_sections": 
@@ -2549,7 +2763,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk1_Results" 
+                "$ref": "#/definitions/rlk51_Results" 
             required: 
             - Results
     post: 
@@ -2584,7 +2798,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk1_Results" 
+                "$ref": "#/definitions/rlk51_Results" 
             required: 
             - Results
   "/rest_lookups.naics_codes": 
@@ -2616,7 +2830,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk2_Results" 
+                "$ref": "#/definitions/rlk52_Results" 
             required: 
             - Results
     post: 
@@ -2647,7 +2861,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk2_Results" 
+                "$ref": "#/definitions/rlk52_Results" 
             required: 
             - Results
   "/rest_lookups.npdes_parameters": 
@@ -2679,7 +2893,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlkh_Results" 
+                "$ref": "#/definitions/rlk56_Results" 
             required: 
             - Results
     post: 
@@ -2710,7 +2924,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlkh_Results" 
+                "$ref": "#/definitions/rlk56_Results" 
             required: 
             - Results
   "/rest_lookups.wbd_code_lu": 
@@ -2743,7 +2957,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlkn_Results" 
+                "$ref": "#/definitions/rlk66_Results" 
             required: 
             - Results
     post: 
@@ -2775,7 +2989,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlkn_Results" 
+                "$ref": "#/definitions/rlk66_Results" 
             required: 
             - Results
   "/rest_lookups.wbd_name_lu": 
@@ -2808,7 +3022,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlko_Results" 
+                "$ref": "#/definitions/rlk67_Results" 
             required: 
             - Results
     post: 
@@ -2840,7 +3054,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlko_Results" 
+                "$ref": "#/definitions/rlk67_Results" 
             required: 
             - Results
 definitions: 
@@ -3320,9 +3534,7 @@ definitions:
         description: "Displays \"Y\" if the facility is located on or near a waterbody with a beach closure within the last two years."
       ChesapeakeBayFlag: 
         type: string
-        title: |-
-          Chesapeake Bay Flag
-
+        title: Chesapeake Bay Flag
         example: Y
         description: "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
       AirIDs: 
@@ -3607,6 +3819,90 @@ definitions:
         type: string
       Over80CountUs: 
         type: string
+      NPDESIDs: 
+        type: string
+        title: ICS-NPDES Clean Water Act Identifier
+        description: Clean Water Act ID from the ICIS-NPDES (Integrated Compliance Information System - National Pollutant Discharge Elimination System)
+      RmpIDs: 
+        type: string
+      BiosolidsFlag: 
+        type: string
+      BioReportDate: 
+        type: string
+      BioTotalVolumeAmt: 
+        type: string
+      BioCommentText: 
+        type: string
+      BioFacTypes: 
+        type: string
+      BioTrtmntProcesses: 
+        type: string
+      BioAnalyMethodCatgrys: 
+        type: string
+      BioAnalyMethods: 
+        type: string
+      BioLandApplicationSum: 
+        type: string
+      BioSurfaceDispSum: 
+        type: string
+      BioIncinerationSum: 
+        type: string
+      BioOtherManagementSum: 
+        type: string
+      BioMgmtPrctceTypes: 
+        type: string
+      BioMgmtPrctceStypes: 
+        type: string
+      BioMgmtHandlers: 
+        type: string
+      BioMgmtContainers: 
+        type: string
+      BioMgmtPathogens: 
+        type: string
+      BioMgmtPathreds: 
+        type: string
+      BioMgmtVectors: 
+        type: string
+      BioMgmtDeficiencies: 
+        type: string
+      BioMgmtDefCategories: 
+        type: string
+      BioMgmtDefCurrentCnt: 
+        type: string
+      InspDef5yrCnt: 
+        type: string
+      BioReportYear: 
+        type: string
+      BioTrtmntPrcssCmmntTxts: 
+        type: string
+      BioOtherMgmtPrctcTxts: 
+        type: string
+      BioQtrsInVio: 
+        type: string
+      BioCurrVioFlag: 
+        type: string
+      BioViolFlag: 
+        type: string
+      CWPDateLastBioFea: 
+        type: string
+      CWPDateLastBioFeaSt: 
+        type: string
+      CWPDateLastBioFeaEPA: 
+        type: string
+      CWPDateLastBioIea: 
+        type: string
+      CWPDateLastBioIeaEPA: 
+        type: string
+      CWPDateLastBioIeaSt: 
+        type: string
+      CWPDateLastBioInsp: 
+        type: string
+      CWPDateLastBioInspEPA: 
+        type: string
+      CWPDateLastBioInspSt: 
+        type: string
+      CWPDateLastBioPenalty: 
+        type: string
       Score: 
         type: string
         title: Score
@@ -3791,6 +4087,49 @@ definitions:
     - RadWBDHu8Name
     - FacDerivedWBDHu8
     - FacDerivedWBDHu8Name
+    - Over80CountUs
+    - NPDESIDs
+    - RmpIDs
+    - BiosolidsFlag
+    - BioReportDate
+    - BioTotalVolumeAmt
+    - BioCommentText
+    - BioFacTypes
+    - BioTrtmntProcesses
+    - BioAnalyMethodCatgrys
+    - BioAnalyMethods
+    - BioLandApplicationSum
+    - BioSurfaceDispSum
+    - BioIncinerationSum
+    - BioOtherManagementSum
+    - BioMgmtPrctceTypes
+    - BioMgmtPrctceStypes
+    - BioMgmtHandlers
+    - BioMgmtContainers
+    - BioMgmtPathogens
+    - BioMgmtPathreds
+    - BioMgmtVectors
+    - BioMgmtDeficiencies
+    - BioMgmtDefCategories
+    - BioMgmtDefCurrentCnt
+    - InspDef5yrCnt
+    - BioReportYear
+    - BioTrtmntPrcssCmmntTxts
+    - BioOtherMgmtPrctcTxts
+    - BioQtrsInVio
+    - BioCurrVioFlag
+    - BioViolFlag
+    - CWPDateLastBioFea
+    - CWPDateLastBioFeaSt
+    - CWPDateLastBioFeaEPA
+    - CWPDateLastBioIea
+    - CWPDateLastBioIeaEPA
+    - CWPDateLastBioIeaSt
+    - CWPDateLastBioInsp
+    - CWPDateLastBioInspEPA
+    - CWPDateLastBioInspSt
+    - CWPDateLastBioPenalty
+    - Score
   cwa1_MapData: 
     description: Map Data Object
     properties: 
@@ -3930,6 +4269,10 @@ definitions:
         type: string
         example: '1'
         description: Number of facilities with insp_5yr_flag populated (CWP_DATE_LAST_INSPECTION)
+      BioCVRows: 
+        type: string
+      BioV3Rows: 
+        type: string
       TotalPenalties: 
         type: string
         title: Total Penalties
@@ -3963,6 +4306,8 @@ definitions:
     - FEARows
     - InfFEARows
     - INSPRows
+    - BioCVRows
+    - BioV3Rows
     - TotalPenalties
     - QueryID
     - PageNo
@@ -4034,6 +4379,10 @@ definitions:
         type: string
         example: '1'
         description: Number of facilities with insp_5yr_flag populated (CWP_DATE_LAST_INSPECTION)
+      BioCVRows: 
+        type: string
+      BioV3Rows: 
+        type: string
       TotalPenalties: 
         type: string
         title: Total Penalties
@@ -4056,6 +4405,8 @@ definitions:
     - FEARows
     - InfFEARows
     - INSPRows
+    - BioCVRows
+    - BioV3Rows
     - TotalPenalties
   cwa2_ClusterOutput: 
     description: Cluster Output Object
@@ -4532,9 +4883,7 @@ definitions:
         description: "Displays \"Y\" if the facility is located on or near a waterbody with a beach closure within the last two years."
       ChesapeakeBayFlag: 
         type: string
-        title: |-
-          Chesapeake Bay Flag
-
+        title: Chesapeake Bay Flag
         example: Y
         description: "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
       AirIDs: 
@@ -4819,6 +5168,90 @@ definitions:
         type: string
       Over80CountUs: 
         type: string
+      NPDESIDs: 
+        type: string
+        title: ICS-NPDES Clean Water Act Identifier
+        description: Clean Water Act ID from the ICIS-NPDES (Integrated Compliance Information System - National Pollutant Discharge Elimination System)
+      RmpIDs: 
+        type: string
+      BiosolidsFlag: 
+        type: string
+      BioReportDate: 
+        type: string
+      BioTotalVolumeAmt: 
+        type: string
+      BioCommentText: 
+        type: string
+      BioFacTypes: 
+        type: string
+      BioTrtmntProcesses: 
+        type: string
+      BioAnalyMethodCatgrys: 
+        type: string
+      BioAnalyMethods: 
+        type: string
+      BioLandApplicationSum: 
+        type: string
+      BioSurfaceDispSum: 
+        type: string
+      BioIncinerationSum: 
+        type: string
+      BioOtherManagementSum: 
+        type: string
+      BioMgmtPrctceTypes: 
+        type: string
+      BioMgmtPrctceStypes: 
+        type: string
+      BioMgmtHandlers: 
+        type: string
+      BioMgmtContainers: 
+        type: string
+      BioMgmtPathogens: 
+        type: string
+      BioMgmtPathreds: 
+        type: string
+      BioMgmtVectors: 
+        type: string
+      BioMgmtDeficiencies: 
+        type: string
+      BioMgmtDefCategories: 
+        type: string
+      BioMgmtDefCurrentCnt: 
+        type: string
+      InspDef5yrCnt: 
+        type: string
+      BioReportYear: 
+        type: string
+      BioTrtmntPrcssCmmntTxts: 
+        type: string
+      BioOtherMgmtPrctcTxts: 
+        type: string
+      BioQtrsInVio: 
+        type: string
+      BioCurrVioFlag: 
+        type: string
+      BioViolFlag: 
+        type: string
+      CWPDateLastBioFea: 
+        type: string
+      CWPDateLastBioFeaSt: 
+        type: string
+      CWPDateLastBioFeaEPA: 
+        type: string
+      CWPDateLastBioIea: 
+        type: string
+      CWPDateLastBioIeaEPA: 
+        type: string
+      CWPDateLastBioIeaSt: 
+        type: string
+      CWPDateLastBioInsp: 
+        type: string
+      CWPDateLastBioInspEPA: 
+        type: string
+      CWPDateLastBioInspSt: 
+        type: string
+      CWPDateLastBioPenalty: 
+        type: string
       Score: 
         type: string
         title: Score
@@ -5004,6 +5437,49 @@ definitions:
     - RadWBDHu8Name
     - FacDerivedWBDHu8
     - FacDerivedWBDHu8Name
+    - Over80CountUs
+    - NPDESIDs
+    - RmpIDs
+    - BiosolidsFlag
+    - BioReportDate
+    - BioTotalVolumeAmt
+    - BioCommentText
+    - BioFacTypes
+    - BioTrtmntProcesses
+    - BioAnalyMethodCatgrys
+    - BioAnalyMethods
+    - BioLandApplicationSum
+    - BioSurfaceDispSum
+    - BioIncinerationSum
+    - BioOtherManagementSum
+    - BioMgmtPrctceTypes
+    - BioMgmtPrctceStypes
+    - BioMgmtHandlers
+    - BioMgmtContainers
+    - BioMgmtPathogens
+    - BioMgmtPathreds
+    - BioMgmtVectors
+    - BioMgmtDeficiencies
+    - BioMgmtDefCategories
+    - BioMgmtDefCurrentCnt
+    - InspDef5yrCnt
+    - BioReportYear
+    - BioTrtmntPrcssCmmntTxts
+    - BioOtherMgmtPrctcTxts
+    - BioQtrsInVio
+    - BioCurrVioFlag
+    - BioViolFlag
+    - CWPDateLastBioFea
+    - CWPDateLastBioFeaSt
+    - CWPDateLastBioFeaEPA
+    - CWPDateLastBioIea
+    - CWPDateLastBioIeaEPA
+    - CWPDateLastBioIeaSt
+    - CWPDateLastBioInsp
+    - CWPDateLastBioInspEPA
+    - CWPDateLastBioInspSt
+    - CWPDateLastBioPenalty
+    - Score
   cwa2_Results: 
     description: Results Object
     properties: 
@@ -5052,6 +5528,10 @@ definitions:
         type: string
         example: '1'
         description: Number of facilities with insp_5yr_flag populated (CWP_DATE_LAST_INSPECTION)
+      BioCVRows: 
+        type: string
+      BioV3Rows: 
+        type: string
       TotalPenalties: 
         type: string
         title: Total Penalties
@@ -5100,6 +5580,8 @@ definitions:
     - FEARows
     - InfFEARows
     - INSPRows
+    - BioCVRows
+    - BioV3Rows
     - TotalPenalties
     - IconBaseURL
     - PopUpBaseURL
@@ -5121,23 +5603,6 @@ definitions:
     - type
     - geometry
     - properties
-  cwa5_FeatureCollection: 
-    description: GeoJSON Feature Collection Object
-    properties: 
-      type: 
-        type: string
-        title: Feature Collection
-        example: FeatureCollection
-        description: Static marker indicating object is a GeoJSON Feature Collection.
-      features: 
-        type: array
-        title: Features Array
-        description: Array of GeoJSON feature objects.
-        items: 
-          "$ref": "#/definitions/cwa5_Feature" 
-    required: 
-    - type
-    - features
   cwa5_properties: 
     description: GeoJSON Properties Object
     properties: 
@@ -5588,9 +6053,7 @@ definitions:
         description: "Displays \"Y\" if the facility is located on or near a waterbody with a beach closure within the last two years."
       ChesapeakeBayFlag: 
         type: string
-        title: |-
-          Chesapeake Bay Flag
-
+        title: Chesapeake Bay Flag
         example: Y
         description: "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
       AIRIDs: 
@@ -5741,7 +6204,8 @@ definitions:
         type: number
         example: 3
       MissDmrQtrs: 
-        type: string
+        type: number
+        example: 0
       PastCalYrAverageFlow: 
         type: string
       PastCalYrConvPollutants: 
@@ -5878,6 +6342,93 @@ definitions:
         type: string
       Over80CountUs: 
         type: number
+      NPDESIDs: 
+        type: string
+        title: ICS-NPDES Clean Water Act Identifier
+        description: Clean Water Act ID from the ICIS-NPDES (Integrated Compliance Information System - National Pollutant Discharge Elimination System)
+      RmpIDs: 
+        type: string
+      BiosolidsFlag: 
+        type: string
+      BioReportDate: 
+        type: string
+      BioTotalVolumeAmt: 
+        type: number
+        example: 0
+      BioCommentText: 
+        type: string
+      BioFacTypes: 
+        type: string
+      BioTrtmntProcesses: 
+        type: string
+      BioAnalyMethodCatgrys: 
+        type: string
+      BioAnalyMethods: 
+        type: string
+      BioLandApplicationSum: 
+        type: number
+      BioSurfaceDispSum: 
+        type: number
+      BioIncinerationSum: 
+        type: number
+      BioOtherManagementSum: 
+        type: number
+      BioMgmtPrctceTypes: 
+        type: string
+      BioMgmtPrctceStypes: 
+        type: string
+      BioMgmtHandlers: 
+        type: string
+      BioMgmtContainers: 
+        type: string
+      BioMgmtPathogens: 
+        type: string
+      BioMgmtPathreds: 
+        type: string
+      BioMgmtVectors: 
+        type: string
+      BioMgmtDeficiencies: 
+        type: string
+      BioMgmtDefCategories: 
+        type: string
+      BioMgmtDefCurrentCnt: 
+        type: number
+        example: 0
+      InspDef5yrCnt: 
+        type: number
+        example: 0
+      BioReportYear: 
+        type: string
+      BioTrtmntPrcssCmmntTxts: 
+        type: string
+      BioOtherMgmtPrctcTxts: 
+        type: string
+      BioQtrsInVio: 
+        type: number
+      BioCurrVioFlag: 
+        type: number
+      BioViolFlag: 
+        type: number
+      CWPDateLastBioFea: 
+        type: string
+      CWPDateLastBioFeaSt: 
+        type: string
+      CWPDateLastBioFeaEPA: 
+        type: string
+      CWPDateLastBioIea: 
+        type: string
+      CWPDateLastBioIeaEPA: 
+        type: string
+      CWPDateLastBioIeaSt: 
+        type: string
+      CWPDateLastBioInsp: 
+        type: string
+      CWPDateLastBioInspEPA: 
+        type: string
+      CWPDateLastBioInspSt: 
+        type: string
+      CWPDateLastBioPenalty: 
+        type: string
       Score: 
         type: number
         title: Score
@@ -6060,6 +6611,49 @@ definitions:
     - RadWBDHu8Name
     - FacDerivedWBDHu8
     - FacDerivedWBDHu8Name
+    - Over80CountUs
+    - NPDESIDs
+    - RmpIDs
+    - BiosolidsFlag
+    - BioReportDate
+    - BioTotalVolumeAmt
+    - BioCommentText
+    - BioFacTypes
+    - BioTrtmntProcesses
+    - BioAnalyMethodCatgrys
+    - BioAnalyMethods
+    - BioLandApplicationSum
+    - BioSurfaceDispSum
+    - BioIncinerationSum
+    - BioOtherManagementSum
+    - BioMgmtPrctceTypes
+    - BioMgmtPrctceStypes
+    - BioMgmtHandlers
+    - BioMgmtContainers
+    - BioMgmtPathogens
+    - BioMgmtPathreds
+    - BioMgmtVectors
+    - BioMgmtDeficiencies
+    - BioMgmtDefCategories
+    - BioMgmtDefCurrentCnt
+    - InspDef5yrCnt
+    - BioReportYear
+    - BioTrtmntPrcssCmmntTxts
+    - BioOtherMgmtPrctcTxts
+    - BioQtrsInVio
+    - BioCurrVioFlag
+    - BioViolFlag
+    - CWPDateLastBioFea
+    - CWPDateLastBioFeaSt
+    - CWPDateLastBioFeaEPA
+    - CWPDateLastBioIea
+    - CWPDateLastBioIeaEPA
+    - CWPDateLastBioIeaSt
+    - CWPDateLastBioInsp
+    - CWPDateLastBioInspEPA
+    - CWPDateLastBioInspSt
+    - CWPDateLastBioPenalty
+    - Score
   cwa3_MapData: 
     description: Map Data Object
     properties: 
@@ -6251,7 +6845,7 @@ definitions:
           "$ref": "#/definitions/met_ResultsColumns" 
     required: 
     - Message
-  rlk0_LuValues: 
+  rlk00_LuValues: 
     description: Lookup Values
     properties: 
       ValueCode: 
@@ -6265,7 +6859,7 @@ definitions:
     required: 
     - ValueCode
     - ValueDescription
-  rlk7_Results: 
+  rlk13_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -6276,10 +6870,10 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk0_LuValues" 
+          "$ref": "#/definitions/rlk00_LuValues" 
     required: 
     - Message
-  rlk9_Results: 
+  rlk16_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -6290,10 +6884,10 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk0_LuValues" 
+          "$ref": "#/definitions/rlk00_LuValues" 
     required: 
     - Message
-  rlkA_Results: 
+  rlk17_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -6304,10 +6898,10 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk0_LuValues" 
+          "$ref": "#/definitions/rlk00_LuValues" 
     required: 
     - Message
-  rlkb_Results: 
+  rlk46_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -6318,10 +6912,10 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk0_LuValues" 
+          "$ref": "#/definitions/rlk00_LuValues" 
     required: 
     - Message
-  rlkf_Results: 
+  rlk50_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -6332,10 +6926,10 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk0_LuValues" 
+          "$ref": "#/definitions/rlk00_LuValues" 
     required: 
     - Message
-  rlk1_Results: 
+  rlk51_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -6346,10 +6940,10 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk0_LuValues" 
+          "$ref": "#/definitions/rlk00_LuValues" 
     required: 
     - Message
-  rlk2_Results: 
+  rlk52_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -6360,10 +6954,10 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk0_LuValues" 
+          "$ref": "#/definitions/rlk00_LuValues" 
     required: 
     - Message
-  rlkh_Results: 
+  rlk56_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -6374,10 +6968,10 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk0_LuValues" 
+          "$ref": "#/definitions/rlk00_LuValues" 
     required: 
     - Message
-  rlkn_Results: 
+  rlk66_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -6388,10 +6982,10 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk0_LuValues" 
+          "$ref": "#/definitions/rlk00_LuValues" 
     required: 
     - Message
-  rlko_Results: 
+  rlk67_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -6402,6 +6996,6 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk0_LuValues" 
+          "$ref": "#/definitions/rlk00_LuValues" 
     required: 
     - Message

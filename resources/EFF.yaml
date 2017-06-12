@@ -245,7 +245,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk9_Results" 
+                "$ref": "#/definitions/rlk16_Results" 
             required: 
             - Results
     post: 
@@ -267,7 +267,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk9_Results" 
+                "$ref": "#/definitions/rlk16_Results" 
             required: 
             - Results
 definitions: 
@@ -1076,7 +1076,7 @@ definitions:
     - CWPCurrentSNCStatus
     - StartDate
     - EndDate
-  rlk0_LuValues: 
+  rlk00_LuValues: 
     description: Lookup Values
     properties: 
       ValueCode: 
@@ -1090,7 +1090,7 @@ definitions:
     required: 
     - ValueCode
     - ValueDescription
-  rlk9_Results: 
+  rlk16_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -1101,6 +1101,6 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk0_LuValues" 
+          "$ref": "#/definitions/rlk00_LuValues" 
     required: 
     - Message

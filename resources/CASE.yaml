@@ -1179,7 +1179,7 @@ paths:
   "/case_rest_services.get_download": 
     get: 
       summary: Enforcement Case Download Data Service
-      description: Based on the QID obtained from a get_cases query, return a comma sepated vaule (CSV) file of the cases found.
+      description: Based on the QID obtained from a get_cases query, return a comma separated value (CSV) file of the cases found.
       parameters: 
       - name: output
         in: query
@@ -1199,7 +1199,7 @@ paths:
             type: file
     post: 
       summary: Enforcement Case Download Data Service
-      description: Based on the QID obtained from a get_cases query, return a comma sepated vaule (CSV) file of the cases found.
+      description: Based on the QID obtained from a get_cases query, return a comma separated value (CSV) file of the cases found.
       parameters: 
       - name: output
         in: query
@@ -1311,7 +1311,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk1_Results" 
+                "$ref": "#/definitions/rlk51_Results" 
             required: 
             - Results
     post: 
@@ -1346,7 +1346,7 @@ paths:
             description: Root Object
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk1_Results" 
+                "$ref": "#/definitions/rlk51_Results" 
             required: 
             - Results
 definitions: 
@@ -2623,7 +2623,7 @@ definitions:
           "$ref": "#/definitions/met_ResultsColumns" 
     required: 
     - Message
-  rlk0_LuValues: 
+  rlk00_LuValues: 
     description: Lookup Values
     properties: 
       ValueCode: 
@@ -2637,7 +2637,7 @@ definitions:
     required: 
     - ValueCode
     - ValueDescription
-  rlk1_Results: 
+  rlk51_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -2648,6 +2648,6 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk0_LuValues" 
+          "$ref": "#/definitions/rlk00_LuValues" 
     required: 
     - Message

@@ -52,24 +52,10 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"nn2": {
-          "name": "nn2"
-         ,"in": "query"
-         ,"description": "Secondary statute filter, provide a single statute code to filter permit results."
-         ,"type": "string"
-         ,"required": false
-      }
       ,"p_system": {
           "name": "p_system"
          ,"in": "query"
          ,"description": "System Acronym Filter.  Enter a single system acronym to filter results."
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"nnn": {
-          "name": "nnn"
-         ,"in": "query"
-         ,"description": "Statute filter, provide a single statute code to filter permit results."
          ,"type": "string"
          ,"required": false
       }
@@ -1379,90 +1365,6 @@
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/dfra2_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/dfr_rest_services.get_nnnPermits": {
-          "get": {
-             "summary": "Detailed Facility Report Permits by Statute Service"
-            ,"description": "This procedure obtains data for the Permits by Statute section of the DFR."
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/nnn"
-               }
-               ,{
-                   "$ref": "#\/parameters\/nn2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Detailed Facility Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Returns an object that includes an array of permits"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dfrb_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Detailed Facility Report Permits by Statute Service"
-            ,"description": "This procedure obtains data for the Permits by Statute section of the DFR."
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/nnn"
-               }
-               ,{
-                   "$ref": "#\/parameters\/nn2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Detailed Facility Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Returns an object that includes an array of permits"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dfrb_Results"
                      }
                   }
                   ,"required": [
@@ -7681,43 +7583,27 @@
          ,"properties": {
              "Year9": {
                 "type": "string"
-               ,"example": "VA0000005151044014"
-               ,"description": "Air Facility System (AFS) ID."
             }
             ,"Year8": {
                 "type": "string"
-               ,"example": "VA0000005151044014"
-               ,"description": "Air Facility System (AFS) ID."
             }
             ,"Year7": {
                 "type": "string"
-               ,"example": "VA0000005151044014"
-               ,"description": "Air Facility System (AFS) ID."
             }
             ,"Year6": {
                 "type": "string"
-               ,"example": "VA0000005151044014"
-               ,"description": "Air Facility System (AFS) ID."
             }
             ,"Year5": {
                 "type": "string"
-               ,"example": "VA0000005151044014"
-               ,"description": "Air Facility System (AFS) ID."
             }
             ,"Year4": {
                 "type": "string"
-               ,"example": "VA0000005151044014"
-               ,"description": "Air Facility System (AFS) ID."
             }
             ,"Year3": {
                 "type": "string"
-               ,"example": "VA0000005151044014"
-               ,"description": "Air Facility System (AFS) ID."
             }
             ,"Year2": {
                 "type": "string"
-               ,"example": "VA0000005151044014"
-               ,"description": "Air Facility System (AFS) ID."
             }
             ,"Year1": {
                 "type": "string"
@@ -8084,66 +7970,6 @@
             ,"EsaAquaticSpeciesFlg"
          ]
       }
-      ,"dfr4_nnnPermits": {
-          "type": "object"
-         ,"description": "Permits by Statute Object"
-         ,"xml": {
-             "name": "Permits"
-         }
-         ,"properties": {
-             "Statute": {
-                "type": "string"
-               ,"title": "Regulatory Statute"
-               ,"example": "CWA"
-               ,"description": "The name of the statute associated with each of the permits and identifiers linked to the facility: \n- CAA = the Clean Air Act\n- CWA = the Clean Water Act\n- RCRA = the Resource Conservation and Recovery Act\n- EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)\n- TSCA = the Toxic Substances Control Act\n- SDWA = the Safe Drinking Water Act"
-            }
-            ,"EPASystem": {
-                "type": "string"
-               ,"title": "EPA Data System"
-               ,"example": "ICP"
-               ,"description": "The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: \n\n- AFS: Air Facility System for Clean Air Act stationary source programs.\n- ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.\n- RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.\n- NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).\n- TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.\n- NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.\n- TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals."
-            }
-            ,"SourceID": {
-                "type": "string"
-               ,"title": "EPA Source Identifier"
-               ,"example": "ALR040033"
-               ,"description": "Unique Identifier assigned by EPA."
-            }
-            ,"Universe": {
-                "type": "string"
-               ,"title": "Universe"
-               ,"example": "Minor: General Permit Covered Facility"
-               ,"description": "This field provides further description on type of permit or record for each data system as follows:\n- For CAA  = The program office defines each CAA Source ID and the associated permits as being Federally Reportable or Non-Federally Reportable. Under the CAA, federally reportable sources include majors, synthetic minors, NESHAP Part 61 minors, minors with an unresolved High Priority Violation (HPV), with recent enforcement actions, or included on a Compliance Monitoring Strategy plan. The Clean Air Act requires that delegated agencies and EPA track all federally reportable sources in Air Facility System (AFS).\n- For CWA  = Each CWA Source ID or National Pollutant Discharge Elimination System (NPDES) permit is defined by the program office as a Major or Minor discharger.\n- For RCRA = RCRA Source ID or permits for Treatment, Storage and Disposal facilities are identified by TSD, Large Quantity Generators are identified by LQG. Other values include Permit Workload (PMT), Closure Workload (CLO), Small Quantity Generator Universe (SQG), Conditionally-Exempt Small Quantity Generator (CESQG), Post-Closure Workload (POST CL), and Transporters."
-            }
-            ,"NAICS": {
-                "type": "string"
-               ,"title": "NAICS Code"
-               ,"example": "325211"
-               ,"description": "The North American Industry Classification System codes"
-            }
-            ,"NAICSDesc": {
-                "type": "string"
-               ,"title": "NAICS Description"
-               ,"example": "Ready-Mix Concrete Manufacturing"
-               ,"description": "The corresponding description of North American Industry Classification System (NAICS) code."
-            }
-            ,"FacilityStatus": {
-                "type": "string"
-               ,"title": "Facility Status"
-               ,"example": "Effective"
-               ,"description": "The Air Program Status is given for each source ID (Operating; Planned; Under construction; Temporarily closed;  Permanently closed; and Seasonal)\n\nFor CWA, the Permit Compliance System (PCS) designates a permitted facility as being Active or Inactive. Under the CWA, all facilities discharging pollutants from a point source (e.g., a pipe) to surface waters must have a NPDES permit. For CWA, ICISNPDES designates a permit as Effective, Administratively Continued, Expired, Not Needed, Pending, Retired, or Terminated. RCRA facilities (sites) are designated as Active or Inactive. The following provides RCRA site activity status definitions and explains site activity status designation."
-            }
-         }
-         ,"required": [
-             "Statute"
-            ,"EPASystem"
-            ,"SourceID"
-            ,"Universe"
-            ,"NAICS"
-            ,"NAICSDesc"
-            ,"FacilityStatus"
-         ]
-      }
       ,"dfrW1_Results": {
           "type": "object"
          ,"description": "Results Object"
@@ -8246,28 +8072,6 @@
             }
             ,"NAICS": {
                 "$ref": "#\/definitions\/dfr4_NAICS"
-            }
-         }
-         ,"required": [
-             "Message"
-         ]
-      }
-      ,"dfrb_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Message": {
-                "type": "string"
-               ,"title": "Message"
-               ,"example": "Success"
-               ,"description": "Field to record messages (typically performance-related) about packet processing"
-            }
-            ,"Permits": {
-                "type": "array"
-               ,"title": "Permits"
-               ,"items": {
-                   "$ref": "#\/definitions\/dfr4_nnnPermits"
-               }
             }
          }
          ,"required": [

@@ -3020,7 +3020,28 @@
              "200": {
                 "description": "Results are formatted as a GeoJSON feature collection."
                ,"schema": {
-                   "$ref": "#\/definitions\/air6_FeatureCollection"
+                   "type": "object"
+                  ,"description": "GeoJSON Feature Collection Object"
+                  ,"properties": {
+                      "type": {
+                         "type": "string"
+                        ,"title": "Feature Collection"
+                        ,"example": "FeatureCollection"
+                        ,"description": "Static marker indicating object is a GeoJSON Feature Collection."
+                     }
+                     ,"features": {
+                         "type": "array"
+                        ,"title": "Features Array"
+                        ,"description": "Array of features in the feature collection."
+                        ,"items": {
+                            "$ref": "#\/definitions\/air6_Feature"
+                        }
+                     }
+                  }
+                  ,"required": [
+                      "type"
+                     ,"features"
+                  ]
                }
             }
             }
@@ -3062,7 +3083,28 @@
              "200": {
                 "description": "Results are formatted as a GeoJSON feature collection."
                ,"schema": {
-                   "$ref": "#\/definitions\/air6_FeatureCollection"
+                   "type": "object"
+                  ,"description": "GeoJSON Feature Collection Object"
+                  ,"properties": {
+                      "type": {
+                         "type": "string"
+                        ,"title": "Feature Collection"
+                        ,"example": "FeatureCollection"
+                        ,"description": "Static marker indicating object is a GeoJSON Feature Collection."
+                     }
+                     ,"features": {
+                         "type": "array"
+                        ,"title": "Features Array"
+                        ,"description": "Array of features in the feature collection."
+                        ,"items": {
+                            "$ref": "#\/definitions\/air6_Feature"
+                        }
+                     }
+                  }
+                  ,"required": [
+                      "type"
+                     ,"features"
+                  ]
                }
             }
             }
@@ -3532,7 +3574,7 @@
             }
             ,"ChesapeakeBayFlag": {
                 "type": "string"
-               ,"title": "Chesapeake Bay Flag\n"
+               ,"title": "Chesapeake Bay Flag"
                ,"example": "Y"
                ,"description": "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
             }
@@ -3833,16 +3875,6 @@
             ,"EjscreenFlag": {
                 "type": "string"
             }
-            ,"AIRCmsCategoryCode": {
-                "type": "string"
-               ,"example": "20011FRTTT5001F"
-               ,"description": "A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address."
-            }
-            ,"AIRCmsCategoryDesc": {
-                "type": "string"
-               ,"example": "20011FRTTT5001F"
-               ,"description": "A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address."
-            }
             ,"TRIbalFlag": {
                 "type": "string"
                ,"title": "Tribal Lands Flag"
@@ -3924,6 +3956,20 @@
                ,"title": "Map"
             }
             ,"Over80CountUs": {
+                "type": "string"
+            }
+            ,"CamdIDs": {
+                "type": "string"
+               ,"title": "Clean Air Markets Division Identifiers"
+               ,"description": "Facility identifiers for the Clean Air Markets Division database."
+            }
+            ,"LastDatePce": {
+                "type": "string"
+            }
+            ,"LastDatePceEPA": {
+                "type": "string"
+            }
+            ,"LastDatePceSta": {
                 "type": "string"
             }
             ,"Score": {
@@ -4041,8 +4087,6 @@
             ,"MaxPctileUs"
             ,"EjscreenFlagUs"
             ,"EjscreenFlag"
-            ,"AIRCmsCategoryCode"
-            ,"AIRCmsCategoryDesc"
             ,"TRIbalFlag"
             ,"CurrSvFlag"
             ,"ViolFlag"
@@ -4356,7 +4400,7 @@
             }
             ,"ChesapeakeBayFlag": {
                 "type": "string"
-               ,"title": "Chesapeake Bay Flag\n"
+               ,"title": "Chesapeake Bay Flag"
                ,"example": "Y"
                ,"description": "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
             }
@@ -4657,16 +4701,6 @@
             ,"EjscreenFlag": {
                 "type": "string"
             }
-            ,"AIRCmsCategoryCode": {
-                "type": "string"
-               ,"example": "20011FRTTT5001F"
-               ,"description": "A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address."
-            }
-            ,"AIRCmsCategoryDesc": {
-                "type": "string"
-               ,"example": "20011FRTTT5001F"
-               ,"description": "A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address."
-            }
             ,"TRIbalFlag": {
                 "type": "string"
                ,"title": "Tribal Lands Flag"
@@ -4748,6 +4782,20 @@
                ,"title": "Map"
             }
             ,"Over80CountUs": {
+                "type": "string"
+            }
+            ,"CamdIDs": {
+                "type": "string"
+               ,"title": "Clean Air Markets Division Identifiers"
+               ,"description": "Facility identifiers for the Clean Air Markets Division database."
+            }
+            ,"LastDatePce": {
+                "type": "string"
+            }
+            ,"LastDatePceEPA": {
+                "type": "string"
+            }
+            ,"LastDatePceSta": {
                 "type": "string"
             }
             ,"Score": {
@@ -4866,8 +4914,6 @@
             ,"MaxPctileUs"
             ,"EjscreenFlagUs"
             ,"EjscreenFlag"
-            ,"AIRCmsCategoryCode"
-            ,"AIRCmsCategoryDesc"
             ,"TRIbalFlag"
             ,"CurrSvFlag"
             ,"ViolFlag"
@@ -5034,30 +5080,6 @@
             ,"properties"
          ]
       }
-      ,"air6_FeatureCollection": {
-          "type": "object"
-         ,"description": "GeoJSON Feature Collection Object"
-         ,"properties": {
-             "type": {
-                "type": "string"
-               ,"title": "Feature Collection"
-               ,"example": "FeatureCollection"
-               ,"description": "Static marker indicating object is a GeoJSON Feature Collection."
-            }
-            ,"features": {
-                "type": "array"
-               ,"title": "Features Array"
-               ,"description": "Array of features in the feature collection."
-               ,"items": {
-                   "$ref": "#\/definitions\/air6_Feature"
-               }
-            }
-         }
-         ,"required": [
-             "type"
-            ,"features"
-         ]
-      }
       ,"air6_properties": {
           "type": "object"
          ,"description": "GeoJSON Properties Object"
@@ -5198,7 +5220,7 @@
             }
             ,"ChesapeakeBayFlag": {
                 "type": "string"
-               ,"title": "Chesapeake Bay Flag\n"
+               ,"title": "Chesapeake Bay Flag"
                ,"example": "Y"
                ,"description": "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
             }
@@ -5499,16 +5521,6 @@
             ,"EjscreenFlag": {
                 "type": "string"
             }
-            ,"AIRCmsCategoryCode": {
-                "type": "string"
-               ,"example": "20011FRTTT5001F"
-               ,"description": "A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address."
-            }
-            ,"AIRCmsCategoryDesc": {
-                "type": "string"
-               ,"example": "20011FRTTT5001F"
-               ,"description": "A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address."
-            }
             ,"TRIbalFlag": {
                 "type": "number"
                ,"title": "Tribal Lands Flag"
@@ -5591,6 +5603,20 @@
             }
             ,"Over80CountUs": {
                 "type": "number"
+            }
+            ,"CamdIDs": {
+                "type": "string"
+               ,"title": "Clean Air Markets Division Identifiers"
+               ,"description": "Facility identifiers for the Clean Air Markets Division database."
+            }
+            ,"LastDatePce": {
+                "type": "string"
+            }
+            ,"LastDatePceEPA": {
+                "type": "string"
+            }
+            ,"LastDatePceSta": {
+                "type": "string"
             }
             ,"Score": {
                 "type": "number"
@@ -5705,8 +5731,6 @@
             ,"MaxPctileUs"
             ,"EjscreenFlagUs"
             ,"EjscreenFlag"
-            ,"AIRCmsCategoryCode"
-            ,"AIRCmsCategoryDesc"
             ,"TRIbalFlag"
             ,"CurrSvFlag"
             ,"ViolFlag"
