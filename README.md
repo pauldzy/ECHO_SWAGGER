@@ -26,6 +26,12 @@ Prototype of hosting ECHO Open API resources on GitHub.  Add more blurbage here.
 
 * [View service documentation in Swagger Editor](http://editor.swagger.io/#!/?import=http://raw.githubusercontent.com/pauldzy/ECHO_SWAGGER/master/resources/DFR.yaml)
 
+#### U.S. EPA Enforcement and Compliance History Online (ECHO) - Discharge Monitoring Report (DMR)
+
+* [View service documentation via Swagger UI](http://petstore.swagger.io?url=https://raw.githubusercontent.com/pauldzy/ECHO_SWAGGER/master/resources/DMR.json)
+
+* [View service documentation in Swagger Editor](http://editor.swagger.io/#!/?import=http://raw.githubusercontent.com/pauldzy/ECHO_SWAGGER/master/resources/DMR.yaml)
+
 #### U.S. EPA Enforcement and Compliance History Online (ECHO) - All Data
 
 * [View service documentation via Swagger UI](http://petstore.swagger.io?url=https://raw.githubusercontent.com/pauldzy/ECHO_SWAGGER/master/resources/ECHO.json)
