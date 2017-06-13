@@ -1,0 +1,3217 @@
+---
+swagger: '2.0'
+info: 
+  title: U.S. EPA Enforcement and Compliance History Online (ECHO) - Discharge Monitoring Report (DMR) Rest Services
+  description: |-
+    Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.
+    <br><br>
+    Additional ECHO Resources:&nbsp&nbsp <a href="https://echo.epa.gov/tools/web-services">Web Services</a>, <a href="https://echo.epa.gov/resources/echo-data/about-the-data">About ECHO's Data</a>, <a href="https://echo.epa.gov/tools/data-downloads">Data Downloads</a>
+    <br>
+  contact: 
+    name: US EPA, OECA Integration, Targeting and Access Branch
+  license: 
+    name: Creative Commons Zero Public Domain Dedication
+    url: "https://creativecommons.org/publicdomain/zero/1.0/"
+  version: '0.0.0'
+host: ofmpub.epa.gov
+basePath: /echo
+schemes: 
+- https
+consumes: 
+- application/json
+- application/xml
+produces: 
+- application/json
+- application/xml
+parameters: 
+  output: 
+    name: output
+    in: query
+    description: |-
+      Output Format Flag.  Enter one of the following keywords:
+      - JSON = Data model formatted as Javascript Object Notation (default).
+      - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+      - XML = Data model formatted as Extensible Markup Language.
+    enum: 
+    - JSONP
+    - JSON
+    - XML
+    type: string
+    required: false
+  callback: 
+    name: callback
+    in: query
+    description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+    type: string
+    required: false
+  search_term: 
+    name: search_term
+    in: query
+    description: Enter a partial or complete search phrase or word.
+    type: string
+    required: false
+  search_code: 
+    name: search_code
+    in: query
+    description: Enter a partial or complete code value.
+    type: string
+    required: false
+  p_ct: 
+    name: p_ct
+    in: query
+    description: Facility City Filter. Enter a single case-insensitive city name to filter results.
+    type: string
+    required: false
+  p_co: 
+    name: p_co
+    in: query
+    description: Facility County Filter. Provide a single county name in combination with a state value provided via p_st.
+    type: string
+    required: false
+  p_st: 
+    name: p_st
+    in: query
+    description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
+    type: string
+    required: false
+  p_zip: 
+    name: p_zip
+    in: query
+    description: 5-Digit ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values.
+    type: string
+    required: false
+  p_reg: 
+    name: p_reg
+    in: query
+    description: EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region.
+    enum: 
+    - '01'
+    - '02'
+    - '03'
+    - '04'
+    - '05'
+    - '06'
+    - '07'
+    - '08'
+    - '09'
+    - '10'
+    type: string
+    required: false
+  p_sic: 
+    name: p_sic
+    in: query
+    description: Standard Industrial Classification (SIC) Code Filter.  Enter a single 4-digit SIC Code to filter results.  If more complex filtering is required, use p_sic2 and p_sic4.
+    type: string
+    required: false
+  p_sic2: 
+    name: p_sic2
+    in: query
+    description: "Standard Industrial Classification (SIC) Code Filter Alternate 2. Enter a wild-card search against SIC codes.  A final wild-card is always present allowing \"22\" to match all SIC codes beginning with 22.  Use the \"%\" character within strings to match any SIC values with the pattern.  For example, \"2%21\" matches 2021, 2121, 2221, etc."
+    type: string
+    required: false
+  p_maj: 
+    name: p_maj
+    in: query
+    description: Major Facility Flag.  Enter Y to restrict results to Major facilities only.
+    enum: 
+    - Y
+    - N
+    type: string
+    required: false
+  responseset: 
+    name: responseset
+    in: query
+    description: Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000.
+    type: number
+    required: false
+  p_huc: 
+    name: p_huc
+    in: query
+    description: 2-, 4-, 6-, or 8-character watershed. May contain multiple comma-separated values.
+    type: string
+    required: false
+  pageno: 
+    name: pageno
+    in: query
+    description: Indicates the number of the page to display. It is used only when the results are paginated.
+    default: 1
+    type: number
+    required: false
+  newsort: 
+    name: newsort
+    in: query
+    description: Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column.
+    type: string
+    required: false
+  p_nd: 
+    name: p_nd
+    in: query
+    type: string
+    required: false
+  p_treatment_tech_present: 
+    name: p_treatment_tech_present
+    in: query
+    type: string
+    required: false
+  p_intermittent_disch: 
+    name: p_intermittent_disch
+    in: query
+    type: string
+    required: false
+  p_watershed_group: 
+    name: p_watershed_group
+    in: query
+    description: |-
+      Major U.S. Watershed. Provide one of the following codes to restrict results. 
+      - M = Major Watersheds
+      - U = USGS Watersheds
+      - L = Large Aquatic Ecosystems Program
+      - N = National Estuaries Program
+    enum: 
+    - M
+    - U
+    - L
+    - N
+    type: string
+    required: false
+  p_pct_limit_disch: 
+    name: p_pct_limit_disch
+    in: query
+    type: number
+    required: false
+  p_dmr_tri_release: 
+    name: p_dmr_tri_release
+    in: query
+    description: DMR facility links to TRI ID(s) that reports releases to surface waters flag. Provide Y or N to restrict results to DMR facilities that do or do not link to TRI ID(s) that report releases to surface waters.
+    type: string
+    required: false
+  suppress_headers: 
+    name: suppress_headers
+    in: query
+    type: string
+    required: false
+  p_treatment_tech: 
+    name: p_treatment_tech
+    in: query
+    type: string
+    required: false
+  p_watershed_zip: 
+    name: p_watershed_zip
+    in: query
+    description: 5-Digit Watershed ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values.
+    type: string
+    required: false
+  p_nutrient_agg: 
+    name: p_nutrient_agg
+    in: query
+    type: string
+    required: false
+  p_dmr_tri_link: 
+    name: p_dmr_tri_link
+    in: query
+    description: DMR facility links to TRI ID Flag. Provide a Y or N to restrict results to DMR facilities that do or do not link to TRI ID(s).
+    type: string
+    required: false
+  p_cso_outfalls: 
+    name: p_cso_outfalls
+    in: query
+    type: string
+    required: false
+  p_permit_type: 
+    name: p_permit_type
+    in: query
+    type: string
+    required: false
+  p_param_group: 
+    name: p_param_group
+    in: query
+    type: string
+    required: false
+  p_start_date: 
+    name: p_start_date
+    in: query
+    type: string
+    required: false
+  p_ptreatment: 
+    name: p_ptreatment
+    in: query
+    type: string
+    required: false
+  p_pct_exceed: 
+    name: p_pct_exceed
+    in: query
+    type: number
+    required: false
+  p_param_code: 
+    name: p_param_code
+    in: query
+    type: string
+    required: false
+  p_loads_data: 
+    name: p_loads_data
+    in: query
+    type: string
+    required: false
+  p_lbs_exceed: 
+    name: p_lbs_exceed
+    in: query
+    type: number
+    required: false
+  p_huc_region: 
+    name: p_huc_region
+    in: query
+    type: string
+    required: false
+  p_fac_radius: 
+    name: p_fac_radius
+    in: query
+    type: number
+    required: false
+  p_watershed: 
+    name: p_watershed
+    in: query
+    description: Watershed. Provide a watershed name in combination with p_watershed_group to restrict results.
+    type: string
+    required: false
+  p_poll_name: 
+    name: p_poll_name
+    in: query
+    description: Polltant Name. Provide a single pollutant name to restrict results.
+    type: string
+    required: false
+  p_pf_radius: 
+    name: p_pf_radius
+    in: query
+    type: number
+    required: false
+  p_permit_id: 
+    name: p_permit_id
+    in: query
+    description: "Facility identifier from one of the following EPA facility systems: National Pollutant Discharge Elimination System (NPDES) ID, Facility Registry Service (FRS) ID, Toxics Release Inventory (TRI) ID, or Clean Watersheds Needs Survey (CWNS) ID."
+    type: string
+    required: false
+  p_maj_model: 
+    name: p_maj_model
+    in: query
+    type: string
+    required: false
+  p_imp_water: 
+    name: p_imp_water
+    in: query
+    description: Discharge to impaired waterbodies flag. Provide Y or N to restrict results to DMR facilities that discharge to impaired waterbodies
+    type: string
+    required: false
+  p_sig_flag: 
+    name: p_sig_flag
+    in: query
+    type: string
+    required: false
+  p_poll_cat: 
+    name: p_poll_cat
+    in: query
+    description: |-
+      Pollutant Category. Provide a keyword to limit results.
+      - NutN = Nitrogen
+      - NutP = Phosphorus
+      - ORG = Organic Enrichment
+      - SS = Solids
+      - MET = Metals
+      - PP = Clean Water Act Priority Pollutants
+      - CER = CERCLA Hazardous Substances
+      - TRI = TRI Chemicals
+      - RAD = Radionuclides 
+      - PAT = Pathogen Indicators
+      - Temp = Temperature
+      - WW = Wastewater Flow
+      - GRAD = General Radioactivity
+      - CLR = Color
+      - WET = Whole Effluent Toxicity
+    enum: 
+    - NUTN
+    - NUTP
+    - ORG
+    - SS
+    - MET
+    - PP
+    - CER
+    - TRI
+    - RAD
+    - PAT
+    - TEMP
+    - WW
+    - GRAD
+    - CLR
+    - WET
+    type: string
+    required: false
+  p_imp_poll: 
+    name: p_imp_poll
+    in: query
+    description: Discharge pollutants contributing to impairment flag. Provide Y or N to restrict results to DMR facilities that discharge pollutants contributing to a waterbody impairment
+    type: string
+    required: false
+  p_fac_type: 
+    name: p_fac_type
+    in: query
+    type: string
+    required: false
+  p_end_date: 
+    name: p_end_date
+    in: query
+    type: string
+    required: false
+  p_qc_flag: 
+    name: p_qc_flag
+    in: query
+    type: string
+    required: false
+  p_mon_loc: 
+    name: p_mon_loc
+    in: query
+    type: string
+    required: false
+  p_fac_lng: 
+    name: p_fac_lng
+    in: query
+    type: number
+    required: false
+  p_fac_lat: 
+    name: p_fac_lat
+    in: query
+    type: number
+    required: false
+  p_cerclis: 
+    name: p_cerclis
+    in: query
+    type: string
+    required: false
+  p_pf_lng: 
+    name: p_pf_lng
+    in: query
+    type: number
+    required: false
+  p_pf_lat: 
+    name: p_pf_lat
+    in: query
+    type: number
+    required: false
+  p_naics2: 
+    name: p_naics2
+    in: query
+    description: "North American Industry Classification System Filter. Enter two digit code to filter results to facilities having matching NAICS codes.  A final wild-card is always present allowing \"22\" to match all NAICS codes beginning with 22. "
+    type: string
+    required: false
+  p_exceed: 
+    name: p_exceed
+    in: query
+    description: Effluent limit exceedance flag. Provide Y or N to restrict results to DMR facilities with or with no effluent limit exceedences
+    type: string
+    required: false
+  download: 
+    name: download
+    in: query
+    description: Name of data object to be downloaded, e.g., TopWatersheds, TopSIC, TopFacilities, TopPollutantPounds, TopPollutantTWPE, TopWatershedPounds, TopWatershedTWPE, TopSICPounds, TopSICTWPE, TopFacilityPounds, TopFacilityTWPE.
+    type: string
+    required: false
+  p_pf_id: 
+    name: p_pf_id
+    in: query
+    type: string
+    required: false
+  loads: 
+    name: loads
+    in: query
+    type: string
+    required: false
+  p_cas: 
+    name: p_cas
+    in: query
+    description: Chemical Abstracts Service (CAS) Registry Number.
+    type: string
+    required: false
+  p_esa: 
+    name: p_esa
+    in: query
+    description: ESA-listed species flag. Provide Y or N to restrict results to DMR facilities that do or do not discharge to counties w/ ESA-listed species
+    type: string
+    required: false
+  p_est: 
+    name: p_est
+    in: query
+    type: string
+    required: false
+  p_lod: 
+    name: p_lod
+    in: query
+    type: string
+    required: false
+  p_psc: 
+    name: p_psc
+    in: query
+    description: Point Source Category.
+    type: string
+    required: false
+  p_potw: 
+    name: p_potw
+    in: query
+    description: Publicly-Owned Treatment Works (POTW) Flag. Provide Y to restrict results to POTWs.
+    type: string
+    required: false
+  p_spcc: 
+    name: p_spcc
+    in: query
+    type: string
+    required: false
+  p_tmdl: 
+    name: p_tmdl
+    in: query
+    type: string
+    required: false
+  p_year: 
+    name: p_year
+    in: query
+    description: The calendar year for the annual pollutant loadings. 
+    type: string
+    required: false
+  p_count: 
+    name: p_count
+    in: query
+    type: string
+    required: false
+  p_fifra: 
+    name: p_fifra
+    in: query
+    type: string
+    required: false
+  p_fname: 
+    name: p_fname
+    in: query
+    description: Facility Name Filter. Enter a full or partial facility name to restrict results. 
+    type: string
+    required: false
+  qcolumns: 
+    name: qcolumns
+    in: query
+    description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+    type: string
+    required: false
+  p_naics: 
+    name: p_naics
+    in: query
+    description: North American Industry Classification System Filter. Enter two to six digits to filter results to facilities having matching NAICS codes.  Digits less than six will match to all codes beginning with the provided values.
+    type: string
+    required: false
+paths: 
+  "/dmr_rest_services.get_custom_data_facility": 
+    get: 
+      summary: Discharge Monitoring Report Custom Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_count"
+      - "$ref": "#/parameters/p_cas"
+      - "$ref": "#/parameters/p_cerclis"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_cso_outfalls"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_dmr_tri_link"
+      - "$ref": "#/parameters/p_end_date"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_est"
+      - "$ref": "#/parameters/p_exceed"
+      - "$ref": "#/parameters/p_fac_lat"
+      - "$ref": "#/parameters/p_fac_lng"
+      - "$ref": "#/parameters/p_fac_radius"
+      - "$ref": "#/parameters/p_fac_type"
+      - "$ref": "#/parameters/p_fifra"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_huc_region"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_intermittent_disch"
+      - "$ref": "#/parameters/p_lbs_exceed"
+      - "$ref": "#/parameters/p_loads_data"
+      - "$ref": "#/parameters/p_lod"
+      - "$ref": "#/parameters/p_maj"
+      - "$ref": "#/parameters/p_maj_model"
+      - "$ref": "#/parameters/p_mon_loc"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_nd"
+      - "$ref": "#/parameters/p_nutrient_agg"
+      - "$ref": "#/parameters/p_param_code"
+      - "$ref": "#/parameters/p_param_group"
+      - "$ref": "#/parameters/p_pct_exceed"
+      - "$ref": "#/parameters/p_pct_limit_disch"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_permit_type"
+      - "$ref": "#/parameters/p_pf_id"
+      - "$ref": "#/parameters/p_pf_lat"
+      - "$ref": "#/parameters/p_pf_lng"
+      - "$ref": "#/parameters/p_pf_radius"
+      - "$ref": "#/parameters/p_poll_cat"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_potw"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_ptreatment"
+      - "$ref": "#/parameters/p_qc_flag"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_sig_flag"
+      - "$ref": "#/parameters/p_spcc"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_start_date"
+      - "$ref": "#/parameters/p_tmdl"
+      - "$ref": "#/parameters/p_treatment_tech"
+      - "$ref": "#/parameters/p_treatment_tech_present"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/newsort"
+      - name: descending
+        in: query
+        description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
+        enum: 
+        - Y
+        - N
+        type: string
+        required: false
+      - "$ref": "#/parameters/responseset"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/qcolumns"
+      - "$ref": "#/parameters/suppress_headers"
+      tags: 
+      - Discharge Monitoring Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            type: object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dmr1_Results" 
+            required: 
+            - Results
+    post: 
+      summary: Discharge Monitoring Report Custom Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_count"
+      - "$ref": "#/parameters/p_cas"
+      - "$ref": "#/parameters/p_cerclis"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_cso_outfalls"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_dmr_tri_link"
+      - "$ref": "#/parameters/p_end_date"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_est"
+      - "$ref": "#/parameters/p_exceed"
+      - "$ref": "#/parameters/p_fac_lat"
+      - "$ref": "#/parameters/p_fac_lng"
+      - "$ref": "#/parameters/p_fac_radius"
+      - "$ref": "#/parameters/p_fac_type"
+      - "$ref": "#/parameters/p_fifra"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_huc_region"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_intermittent_disch"
+      - "$ref": "#/parameters/p_lbs_exceed"
+      - "$ref": "#/parameters/p_loads_data"
+      - "$ref": "#/parameters/p_lod"
+      - "$ref": "#/parameters/p_maj"
+      - "$ref": "#/parameters/p_maj_model"
+      - "$ref": "#/parameters/p_mon_loc"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_nd"
+      - "$ref": "#/parameters/p_nutrient_agg"
+      - "$ref": "#/parameters/p_param_code"
+      - "$ref": "#/parameters/p_param_group"
+      - "$ref": "#/parameters/p_pct_exceed"
+      - "$ref": "#/parameters/p_pct_limit_disch"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_permit_type"
+      - "$ref": "#/parameters/p_pf_id"
+      - "$ref": "#/parameters/p_pf_lat"
+      - "$ref": "#/parameters/p_pf_lng"
+      - "$ref": "#/parameters/p_pf_radius"
+      - "$ref": "#/parameters/p_poll_cat"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_potw"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_ptreatment"
+      - "$ref": "#/parameters/p_qc_flag"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_sig_flag"
+      - "$ref": "#/parameters/p_spcc"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_start_date"
+      - "$ref": "#/parameters/p_tmdl"
+      - "$ref": "#/parameters/p_treatment_tech"
+      - "$ref": "#/parameters/p_treatment_tech_present"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/newsort"
+      - name: descending
+        in: query
+        description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
+        enum: 
+        - Y
+        - N
+        type: string
+        required: false
+      - "$ref": "#/parameters/responseset"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/qcolumns"
+      - "$ref": "#/parameters/suppress_headers"
+      tags: 
+      - Discharge Monitoring Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            type: object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dmr1_Results" 
+            required: 
+            - Results
+  "/dmr_rest_services.get_custom_data_monitor_pd": 
+    get: 
+      summary: Discharge Monitoring Report Custom Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_count"
+      - "$ref": "#/parameters/p_cas"
+      - "$ref": "#/parameters/p_cerclis"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_cso_outfalls"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_dmr_tri_link"
+      - "$ref": "#/parameters/p_end_date"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_est"
+      - "$ref": "#/parameters/p_exceed"
+      - "$ref": "#/parameters/p_fac_lat"
+      - "$ref": "#/parameters/p_fac_lng"
+      - "$ref": "#/parameters/p_fac_radius"
+      - "$ref": "#/parameters/p_fac_type"
+      - "$ref": "#/parameters/p_fifra"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_huc_region"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_intermittent_disch"
+      - "$ref": "#/parameters/p_lbs_exceed"
+      - "$ref": "#/parameters/p_loads_data"
+      - "$ref": "#/parameters/p_lod"
+      - "$ref": "#/parameters/p_maj"
+      - "$ref": "#/parameters/p_maj_model"
+      - "$ref": "#/parameters/p_mon_loc"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_nd"
+      - "$ref": "#/parameters/p_nutrient_agg"
+      - "$ref": "#/parameters/p_param_code"
+      - "$ref": "#/parameters/p_param_group"
+      - "$ref": "#/parameters/p_pct_exceed"
+      - "$ref": "#/parameters/p_pct_limit_disch"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_permit_type"
+      - "$ref": "#/parameters/p_pf_id"
+      - "$ref": "#/parameters/p_pf_lat"
+      - "$ref": "#/parameters/p_pf_lng"
+      - "$ref": "#/parameters/p_pf_radius"
+      - "$ref": "#/parameters/p_poll_cat"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_potw"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_ptreatment"
+      - "$ref": "#/parameters/p_qc_flag"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_sig_flag"
+      - "$ref": "#/parameters/p_spcc"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_start_date"
+      - "$ref": "#/parameters/p_tmdl"
+      - "$ref": "#/parameters/p_treatment_tech"
+      - "$ref": "#/parameters/p_treatment_tech_present"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/newsort"
+      - name: descending
+        in: query
+        description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
+        enum: 
+        - Y
+        - N
+        type: string
+        required: false
+      - "$ref": "#/parameters/responseset"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/qcolumns"
+      - "$ref": "#/parameters/suppress_headers"
+      tags: 
+      - Discharge Monitoring Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            type: object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dmr3_Results" 
+            required: 
+            - Results
+    post: 
+      summary: Discharge Monitoring Report Custom Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_count"
+      - "$ref": "#/parameters/p_cas"
+      - "$ref": "#/parameters/p_cerclis"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_cso_outfalls"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_dmr_tri_link"
+      - "$ref": "#/parameters/p_end_date"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_est"
+      - "$ref": "#/parameters/p_exceed"
+      - "$ref": "#/parameters/p_fac_lat"
+      - "$ref": "#/parameters/p_fac_lng"
+      - "$ref": "#/parameters/p_fac_radius"
+      - "$ref": "#/parameters/p_fac_type"
+      - "$ref": "#/parameters/p_fifra"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_huc_region"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_intermittent_disch"
+      - "$ref": "#/parameters/p_lbs_exceed"
+      - "$ref": "#/parameters/p_loads_data"
+      - "$ref": "#/parameters/p_lod"
+      - "$ref": "#/parameters/p_maj"
+      - "$ref": "#/parameters/p_maj_model"
+      - "$ref": "#/parameters/p_mon_loc"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_nd"
+      - "$ref": "#/parameters/p_nutrient_agg"
+      - "$ref": "#/parameters/p_param_code"
+      - "$ref": "#/parameters/p_param_group"
+      - "$ref": "#/parameters/p_pct_exceed"
+      - "$ref": "#/parameters/p_pct_limit_disch"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_permit_type"
+      - "$ref": "#/parameters/p_pf_id"
+      - "$ref": "#/parameters/p_pf_lat"
+      - "$ref": "#/parameters/p_pf_lng"
+      - "$ref": "#/parameters/p_pf_radius"
+      - "$ref": "#/parameters/p_poll_cat"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_potw"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_ptreatment"
+      - "$ref": "#/parameters/p_qc_flag"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_sig_flag"
+      - "$ref": "#/parameters/p_spcc"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_start_date"
+      - "$ref": "#/parameters/p_tmdl"
+      - "$ref": "#/parameters/p_treatment_tech"
+      - "$ref": "#/parameters/p_treatment_tech_present"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/newsort"
+      - name: descending
+        in: query
+        description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
+        enum: 
+        - Y
+        - N
+        type: string
+        required: false
+      - "$ref": "#/parameters/responseset"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/qcolumns"
+      - "$ref": "#/parameters/suppress_headers"
+      tags: 
+      - Discharge Monitoring Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            type: object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dmr3_Results" 
+            required: 
+            - Results
+  "/dmr_rest_services.get_custom_data_annual": 
+    get: 
+      summary: Discharge Monitoring Report Custom Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_count"
+      - "$ref": "#/parameters/p_cas"
+      - "$ref": "#/parameters/p_cerclis"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_cso_outfalls"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_dmr_tri_link"
+      - "$ref": "#/parameters/p_end_date"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_est"
+      - "$ref": "#/parameters/p_exceed"
+      - "$ref": "#/parameters/p_fac_lat"
+      - "$ref": "#/parameters/p_fac_lng"
+      - "$ref": "#/parameters/p_fac_radius"
+      - "$ref": "#/parameters/p_fac_type"
+      - "$ref": "#/parameters/p_fifra"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_huc_region"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_intermittent_disch"
+      - "$ref": "#/parameters/p_lbs_exceed"
+      - "$ref": "#/parameters/p_loads_data"
+      - "$ref": "#/parameters/p_lod"
+      - "$ref": "#/parameters/p_maj"
+      - "$ref": "#/parameters/p_maj_model"
+      - "$ref": "#/parameters/p_mon_loc"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_nd"
+      - "$ref": "#/parameters/p_nutrient_agg"
+      - "$ref": "#/parameters/p_param_code"
+      - "$ref": "#/parameters/p_param_group"
+      - "$ref": "#/parameters/p_pct_exceed"
+      - "$ref": "#/parameters/p_pct_limit_disch"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_permit_type"
+      - "$ref": "#/parameters/p_pf_id"
+      - "$ref": "#/parameters/p_pf_lat"
+      - "$ref": "#/parameters/p_pf_lng"
+      - "$ref": "#/parameters/p_pf_radius"
+      - "$ref": "#/parameters/p_poll_cat"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_potw"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_ptreatment"
+      - "$ref": "#/parameters/p_qc_flag"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_sig_flag"
+      - "$ref": "#/parameters/p_spcc"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_start_date"
+      - "$ref": "#/parameters/p_tmdl"
+      - "$ref": "#/parameters/p_treatment_tech"
+      - "$ref": "#/parameters/p_treatment_tech_present"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/newsort"
+      - name: descending
+        in: query
+        description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
+        enum: 
+        - Y
+        - N
+        type: string
+        required: false
+      - "$ref": "#/parameters/responseset"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/qcolumns"
+      - "$ref": "#/parameters/suppress_headers"
+      tags: 
+      - Discharge Monitoring Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            type: object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dmr2_Results" 
+            required: 
+            - Results
+    post: 
+      summary: Discharge Monitoring Report Custom Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_count"
+      - "$ref": "#/parameters/p_cas"
+      - "$ref": "#/parameters/p_cerclis"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_cso_outfalls"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_dmr_tri_link"
+      - "$ref": "#/parameters/p_end_date"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_est"
+      - "$ref": "#/parameters/p_exceed"
+      - "$ref": "#/parameters/p_fac_lat"
+      - "$ref": "#/parameters/p_fac_lng"
+      - "$ref": "#/parameters/p_fac_radius"
+      - "$ref": "#/parameters/p_fac_type"
+      - "$ref": "#/parameters/p_fifra"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_huc_region"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_intermittent_disch"
+      - "$ref": "#/parameters/p_lbs_exceed"
+      - "$ref": "#/parameters/p_loads_data"
+      - "$ref": "#/parameters/p_lod"
+      - "$ref": "#/parameters/p_maj"
+      - "$ref": "#/parameters/p_maj_model"
+      - "$ref": "#/parameters/p_mon_loc"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_nd"
+      - "$ref": "#/parameters/p_nutrient_agg"
+      - "$ref": "#/parameters/p_param_code"
+      - "$ref": "#/parameters/p_param_group"
+      - "$ref": "#/parameters/p_pct_exceed"
+      - "$ref": "#/parameters/p_pct_limit_disch"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_permit_type"
+      - "$ref": "#/parameters/p_pf_id"
+      - "$ref": "#/parameters/p_pf_lat"
+      - "$ref": "#/parameters/p_pf_lng"
+      - "$ref": "#/parameters/p_pf_radius"
+      - "$ref": "#/parameters/p_poll_cat"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_potw"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_ptreatment"
+      - "$ref": "#/parameters/p_qc_flag"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_sig_flag"
+      - "$ref": "#/parameters/p_spcc"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_start_date"
+      - "$ref": "#/parameters/p_tmdl"
+      - "$ref": "#/parameters/p_treatment_tech"
+      - "$ref": "#/parameters/p_treatment_tech_present"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/newsort"
+      - name: descending
+        in: query
+        description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
+        enum: 
+        - Y
+        - N
+        type: string
+        required: false
+      - "$ref": "#/parameters/responseset"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/qcolumns"
+      - "$ref": "#/parameters/suppress_headers"
+      tags: 
+      - Discharge Monitoring Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            type: object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dmr2_Results" 
+            required: 
+            - Results
+  "/dmr_rest_services.get_dmr_loadings": 
+    get: 
+      summary: Discharge Monitoring Report Loadings Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_cas"
+      - "$ref": "#/parameters/p_poll_cat"
+      - "$ref": "#/parameters/p_exceed"
+      - "$ref": "#/parameters/p_potw"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_maj"
+      - "$ref": "#/parameters/p_dmr_tri_link"
+      - "$ref": "#/parameters/p_dmr_tri_release"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/newsort"
+      - name: descending
+        in: query
+        description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
+        enum: 
+        - Y
+        - N
+        type: string
+        required: false
+      - "$ref": "#/parameters/responseset"
+      - "$ref": "#/parameters/callback"
+      tags: 
+      - Discharge Monitoring Report
+      responses: 
+        '200': 
+          description: Returns a complex object (Water Pollutant Loadings) composed of objects that contain top pollutant loadings organized by geographic location, industry, or facility.
+          schema: 
+            type: object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dmr0_Results" 
+            required: 
+            - Results
+    post: 
+      summary: Discharge Monitoring Report Loadings Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_cas"
+      - "$ref": "#/parameters/p_poll_cat"
+      - "$ref": "#/parameters/p_exceed"
+      - "$ref": "#/parameters/p_potw"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_maj"
+      - "$ref": "#/parameters/p_dmr_tri_link"
+      - "$ref": "#/parameters/p_dmr_tri_release"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/newsort"
+      - name: descending
+        in: query
+        description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
+        enum: 
+        - Y
+        - N
+        type: string
+        required: false
+      - "$ref": "#/parameters/responseset"
+      - "$ref": "#/parameters/callback"
+      tags: 
+      - Discharge Monitoring Report
+      responses: 
+        '200': 
+          description: Returns a complex object (Water Pollutant Loadings) composed of objects that contain top pollutant loadings organized by geographic location, industry, or facility.
+          schema: 
+            type: object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dmr0_Results" 
+            required: 
+            - Results
+  "/rest_lookups.dmr_cas_numbers": 
+    get: 
+      summary: ECHO DMR CAS Number Lookup Service
+      description: Chemical Abstract Service (CAS) Number
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk18_Results" 
+            required: 
+            - Results
+    post: 
+      summary: ECHO DMR CAS Number Lookup Service
+      description: Chemical Abstract Service (CAS) Number
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk18_Results" 
+            required: 
+            - Results
+  "/rest_lookups.dmr_naics2_codes": 
+    get: 
+      summary: ECHO DMR 2-Digit NAICS Codes Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk19_Results" 
+            required: 
+            - Results
+    post: 
+      summary: ECHO DMR 2-Digit NAICS Codes Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk19_Results" 
+            required: 
+            - Results
+  "/rest_lookups.dmr_parameters": 
+    get: 
+      summary: ECHO DMR Parameter Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk20_Results" 
+            required: 
+            - Results
+    post: 
+      summary: ECHO DMR Parameter Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk20_Results" 
+            required: 
+            - Results
+  "/rest_lookups.dmr_point_source_cats": 
+    get: 
+      summary: ECHO DMR Point Source Category Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk21_Results" 
+            required: 
+            - Results
+    post: 
+      summary: ECHO DMR Point Source Category Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk21_Results" 
+            required: 
+            - Results
+  "/rest_lookups.dmr_poll_cats": 
+    get: 
+      summary: ECHO DMR Pollutant Category Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/loads"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk22_Results" 
+            required: 
+            - Results
+    post: 
+      summary: ECHO DMR Pollutant Category Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/loads"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk22_Results" 
+            required: 
+            - Results
+  "/rest_lookups.dmr_pollutants": 
+    get: 
+      summary: ECHO DMR Pollutants Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk23_Results" 
+            required: 
+            - Results
+    post: 
+      summary: ECHO DMR Pollutants Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk23_Results" 
+            required: 
+            - Results
+  "/rest_lookups.dmr_reporting_year": 
+    get: 
+      summary: ECHO DMR Reporting Year Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      - name: descending
+        in: query
+        description: Output Sort Column Descending Flag.  Enter Y to sort results in descending order.
+        type: string
+        required: false
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk24_Results" 
+            required: 
+            - Results
+    post: 
+      summary: ECHO DMR Reporting Year Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      - name: descending
+        in: query
+        description: Output Sort Column Descending Flag.  Enter Y to sort results in descending order.
+        type: string
+        required: false
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk24_Results" 
+            required: 
+            - Results
+  "/rest_lookups.dmr_sic2_codes": 
+    get: 
+      summary: ECHO DMR SIC Code Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk25_Results" 
+            required: 
+            - Results
+    post: 
+      summary: ECHO DMR SIC Code Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk25_Results" 
+            required: 
+            - Results
+  "/rest_lookups.dmr_treatment_technologies": 
+    get: 
+      summary: ECHO DMR CWNS Treatment Type Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk26_Results" 
+            required: 
+            - Results
+    post: 
+      summary: ECHO DMR CWNS Treatment Type Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk26_Results" 
+            required: 
+            - Results
+  "/rest_lookups.dmr_tri_chemicals": 
+    get: 
+      summary: ECHO TRI Chemical Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk27_Results" 
+            required: 
+            - Results
+    post: 
+      summary: ECHO TRI Chemical Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk27_Results" 
+            required: 
+            - Results
+  "/rest_lookups.dmr_tri_reporting_year": 
+    get: 
+      summary: ECHO TRI Reporting Year Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      - name: descending
+        in: query
+        description: Output Sort Column Descending Flag.  Enter Y to sort results in descending order.
+        type: string
+        required: false
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk28_Results" 
+            required: 
+            - Results
+    post: 
+      summary: ECHO TRI Reporting Year Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      - name: descending
+        in: query
+        description: Output Sort Column Descending Flag.  Enter Y to sort results in descending order.
+        type: string
+        required: false
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk28_Results" 
+            required: 
+            - Results
+  "/rest_lookups.dmr_watershed_groups": 
+    get: 
+      summary: ECHO DMR Watershed Group Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk29_Results" 
+            required: 
+            - Results
+    post: 
+      summary: ECHO DMR Watershed Group Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk29_Results" 
+            required: 
+            - Results
+  "/rest_lookups.dmr_watersheds": 
+    get: 
+      summary: ECHO DMR Major Watershed Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk30_Results" 
+            required: 
+            - Results
+    post: 
+      summary: ECHO DMR Major Watershed Lookup Service
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk30_Results" 
+            required: 
+            - Results
+definitions: 
+  dmr2_Results: 
+    type: object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      QueryID: 
+        type: string
+        title: Query Identifier
+        example: '245'
+        description: Sequential number assigned to entire search result
+      QueryRows: 
+        type: string
+        title: Query Row Count
+        example: '5'
+        description: Number of query results returned
+      PageCount: 
+        type: string
+      PageNo: 
+        type: string
+        title: Page Number
+        example: '1'
+        description: The number of pages of results returned
+      StartRec: 
+        type: string
+      EndRec: 
+        type: string
+      Results: 
+        type: array
+        title: Results
+        items: 
+          "$ref": "#/definitions/dmr2_Results-2" 
+    required: 
+    - Message
+    - QueryID
+    - QueryRows
+    - PageCount
+    - PageNo
+    - StartRec
+    - EndRec
+    - Results
+  dmr2_Results-2: 
+    type: object
+    properties: 
+      DmrYear: 
+        type: string
+      ExternalPermitNmbr: 
+        type: string
+      FacilityName: 
+        type: string
+        title: Facility Name
+        example: 3M COMPANY
+        description: The name of the facility.
+      Uin: 
+        type: string
+      TRIFids: 
+        type: string
+      CwnsIDs: 
+        type: string
+      FacilityTypeIndicator: 
+        type: string
+      PermitTypeCode: 
+        type: string
+      EffectiveDate: 
+        type: string
+      ExpirationDate: 
+        type: string
+      MajorMinorStatusFlag: 
+        type: string
+      Siccode: 
+        type: string
+      NaicsCode: 
+        type: string
+      City: 
+        type: string
+        title: City
+        description: The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery.
+      StateCode: 
+        type: string
+      Zip: 
+        type: string
+        title: Zip Code
+        example: '53140'
+        description: US postal ZIP code, as maintained by ICIS.
+      CountyName: 
+        type: string
+      EPARegionCode: 
+        type: string
+        title: EPA Region Code
+        example: '03'
+        description: The EPA region where the facility is located. EPA has 10 regional offices that execute programs within several states and territories
+      CongressionalDistNum: 
+        type: string
+      GeocodeLatitude: 
+        type: string
+      GeocodeLongitude: 
+        type: string
+      Huc12: 
+        type: string
+      Huc12Name: 
+        type: string
+      StateWaterBodyName: 
+        type: string
+      Reachcode: 
+        type: string
+      ImpairedWaterFlg: 
+        type: string
+      AssessmentUnitEPACategory: 
+        type: string
+      CsoCount: 
+        type: string
+      TotalDesignFlowNmbr: 
+        type: string
+      ActualAverageFlowNmbr: 
+        type: string
+      PermFeatureNmbr: 
+        type: string
+        title: Discharge Point
+        example: '001'
+        description: A three-character code in ICIS-NPDES that identifies the point of discharge (e.g., outfall) for a facility. A NPDES permit may have multiple points of discharge. If the code is less than three characters in the .CSV, append zeros to the beginning of the number (e.g., 1 is equivalent to 001)
+      MonitoringLocationCode: 
+        type: string
+        title: Monitoring Location Code
+        example: '1'
+        description: The code that the monitoring location at which the monitoring requirement (and effluent limit if limited) applies. One parameter may have several monitoring location codes pertaining to the same permitted feature
+      PollutantCode: 
+        type: string
+      PollutantDesc: 
+        type: string
+      ParameterCode: 
+        type: string
+        title: Parameter Code
+        example: '00400'
+        description: The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)
+      ParameterDesc: 
+        type: string
+        title: Parameter Description
+        example: pH
+        description: The pollutant name and form (e.g., dissolved, suspended) associated with the parameter code
+      Twf: 
+        type: string
+      Cas: 
+        type: string
+      SrsID: 
+        type: string
+      Lq1: 
+        type: string
+      Lq2: 
+        type: string
+      Lc1: 
+        type: string
+      Lc2: 
+        type: string
+      Lc3: 
+        type: string
+      PollutantLoad: 
+        type: string
+      PctLoadsDmr: 
+        type: string
+      PctLoadsLimits: 
+        type: string
+      AllowableLoad: 
+        type: string
+      LoadOverLimit1: 
+        type: string
+      LoadOverLimit2: 
+        type: string
+      WastewaterFlow: 
+        type: string
+      AvgPollutantLoad: 
+        type: string
+      AvgConcentration: 
+        type: string
+      AvgWastewaterFlow: 
+        type: string
+      MaxDailyFlow: 
+        type: string
+      AvgTemp: 
+        type: string
+      AvgPh: 
+        type: string
+      NdFlag: 
+        type: string
+      QcFlag: 
+        type: string
+      ChemicalName: 
+        type: string
+        title: Chemical Name
+        description: The TRI chemical to which the data in this row applies.
+      TRIDirectPounds: 
+        type: string
+      TRIIndirectPounds: 
+        type: string
+      EstFactor: 
+        type: string
+    required: 
+    - DmrYear
+    - ExternalPermitNmbr
+    - FacilityName
+    - Uin
+    - TRIFids
+    - CwnsIDs
+    - FacilityTypeIndicator
+    - PermitTypeCode
+    - EffectiveDate
+    - ExpirationDate
+    - MajorMinorStatusFlag
+    - Siccode
+    - NaicsCode
+    - City
+    - StateCode
+    - Zip
+    - CountyName
+    - EPARegionCode
+    - CongressionalDistNum
+    - GeocodeLatitude
+    - GeocodeLongitude
+    - Huc12
+    - Huc12Name
+    - StateWaterBodyName
+    - Reachcode
+    - ImpairedWaterFlg
+    - AssessmentUnitEPACategory
+    - CsoCount
+    - TotalDesignFlowNmbr
+    - ActualAverageFlowNmbr
+    - PermFeatureNmbr
+    - MonitoringLocationCode
+    - PollutantCode
+    - PollutantDesc
+    - ParameterCode
+    - ParameterDesc
+    - Twf
+    - Cas
+    - SrsID
+    - Lq1
+    - Lq2
+    - Lc1
+    - Lc2
+    - Lc3
+    - PollutantLoad
+    - PctLoadsDmr
+    - PctLoadsLimits
+    - AllowableLoad
+    - LoadOverLimit1
+    - LoadOverLimit2
+    - WastewaterFlow
+    - AvgPollutantLoad
+    - AvgConcentration
+    - AvgWastewaterFlow
+    - MaxDailyFlow
+    - AvgTemp
+    - AvgPh
+    - NdFlag
+    - QcFlag
+    - ChemicalName
+    - TRIDirectPounds
+    - TRIIndirectPounds
+    - EstFactor
+  dmr1_Results: 
+    type: object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      QueryID: 
+        type: string
+        title: Query Identifier
+        example: '245'
+        description: Sequential number assigned to entire search result
+      QueryRows: 
+        type: string
+        title: Query Row Count
+        example: '5'
+        description: Number of query results returned
+      PageCount: 
+        type: string
+      PageNo: 
+        type: string
+        title: Page Number
+        example: '1'
+        description: The number of pages of results returned
+      StartRec: 
+        type: string
+      EndRec: 
+        type: string
+      Results: 
+        type: array
+        title: Results
+        items: 
+          "$ref": "#/definitions/dmr1_Results-2" 
+    required: 
+    - Message
+    - QueryID
+    - QueryRows
+    - PageCount
+    - PageNo
+    - StartRec
+    - EndRec
+    - Results
+  dmr1_Results-2: 
+    type: object
+    properties: 
+      DmrYear: 
+        type: string
+      ExternalPermitNmbr: 
+        type: string
+      FacilityName: 
+        type: string
+        title: Facility Name
+        example: 3M COMPANY
+        description: The name of the facility.
+      Uin: 
+        type: string
+      TRIFids: 
+        type: string
+      CwnsIDs: 
+        type: string
+      FacilityTypeIndicator: 
+        type: string
+      PermitTypeCode: 
+        type: string
+      EffectiveDate: 
+        type: string
+      ExpirationDate: 
+        type: string
+      MajorMinorStatusFlag: 
+        type: string
+      Siccode: 
+        type: string
+      NaicsCode: 
+        type: string
+      City: 
+        type: string
+        title: City
+        description: The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery.
+      StateCode: 
+        type: string
+      Zip: 
+        type: string
+        title: Zip Code
+        example: '53140'
+        description: US postal ZIP code, as maintained by ICIS.
+      CountyName: 
+        type: string
+      EPARegionCode: 
+        type: string
+        title: EPA Region Code
+        example: '03'
+        description: The EPA region where the facility is located. EPA has 10 regional offices that execute programs within several states and territories
+      CongressionalDistNum: 
+        type: string
+      GeocodeLatitude: 
+        type: string
+      GeocodeLongitude: 
+        type: string
+      Huc12: 
+        type: string
+      Huc12Name: 
+        type: string
+      StateWaterBodyName: 
+        type: string
+      Reachcode: 
+        type: string
+      ImpairedWaterFlg: 
+        type: string
+      AssessmentUnitEPACategory: 
+        type: string
+      CsoCount: 
+        type: string
+      TotalDesignFlowNmbr: 
+        type: string
+      ActualAverageFlowNmbr: 
+        type: string
+      TotalFacilityLoad: 
+        type: string
+      PctLoadsDmr: 
+        type: string
+      PctLoadsLimits: 
+        type: string
+      FacilityLoadOverLimit1: 
+        type: string
+      FacilityLoadOverLimit2: 
+        type: string
+      AllowableLoad: 
+        type: string
+      HybridLoad: 
+        type: string
+      TotalFacilityFlow: 
+        type: string
+      MaxDailyFlow: 
+        type: string
+      FacilityInfoOnly: 
+        type: string
+      HasPermitLimits: 
+        type: string
+      HasLoadingsData: 
+        type: string
+      QcFlag: 
+        type: string
+    required: 
+    - DmrYear
+    - ExternalPermitNmbr
+    - FacilityName
+    - Uin
+    - TRIFids
+    - CwnsIDs
+    - FacilityTypeIndicator
+    - PermitTypeCode
+    - EffectiveDate
+    - ExpirationDate
+    - MajorMinorStatusFlag
+    - Siccode
+    - NaicsCode
+    - City
+    - StateCode
+    - Zip
+    - CountyName
+    - EPARegionCode
+    - CongressionalDistNum
+    - GeocodeLatitude
+    - GeocodeLongitude
+    - Huc12
+    - Huc12Name
+    - StateWaterBodyName
+    - Reachcode
+    - ImpairedWaterFlg
+    - AssessmentUnitEPACategory
+    - CsoCount
+    - TotalDesignFlowNmbr
+    - ActualAverageFlowNmbr
+    - TotalFacilityLoad
+    - PctLoadsDmr
+    - PctLoadsLimits
+    - FacilityLoadOverLimit1
+    - FacilityLoadOverLimit2
+    - AllowableLoad
+    - HybridLoad
+    - TotalFacilityFlow
+    - MaxDailyFlow
+    - FacilityInfoOnly
+    - HasPermitLimits
+    - HasLoadingsData
+    - QcFlag
+  dmr3_Results: 
+    type: object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      QueryID: 
+        type: string
+        title: Query Identifier
+        example: '245'
+        description: Sequential number assigned to entire search result
+      QueryRows: 
+        type: string
+        title: Query Row Count
+        example: '5'
+        description: Number of query results returned
+      PageCount: 
+        type: string
+      PageNo: 
+        type: string
+        title: Page Number
+        example: '1'
+        description: The number of pages of results returned
+      StartRec: 
+        type: string
+      EndRec: 
+        type: string
+      Results: 
+        type: array
+        title: Results
+        items: 
+          "$ref": "#/definitions/dmr3_Results-2" 
+    required: 
+    - Message
+    - QueryID
+    - QueryRows
+    - PageCount
+    - PageNo
+    - StartRec
+    - EndRec
+    - Results
+  dmr3_Results-2: 
+    type: object
+    properties: 
+      Mped: 
+        type: string
+      ExternalPermitNmbr: 
+        type: string
+      FacilityName: 
+        type: string
+        title: Facility Name
+        example: 3M COMPANY
+        description: The name of the facility.
+      Uin: 
+        type: string
+      TRIFids: 
+        type: string
+      CwnsIDs: 
+        type: string
+      FacilityTypeIndicator: 
+        type: string
+      PermitTypeCode: 
+        type: string
+      EffectiveDate: 
+        type: string
+      ExpirationDate: 
+        type: string
+      MajorMinorStatusFlag: 
+        type: string
+      Siccode: 
+        type: string
+      NaicsCode: 
+        type: string
+      City: 
+        type: string
+        title: City
+        description: The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery.
+      StateCode: 
+        type: string
+      Zip: 
+        type: string
+        title: Zip Code
+        example: '53140'
+        description: US postal ZIP code, as maintained by ICIS.
+      CountyName: 
+        type: string
+      EPARegionCode: 
+        type: string
+        title: EPA Region Code
+        example: '03'
+        description: The EPA region where the facility is located. EPA has 10 regional offices that execute programs within several states and territories
+      CongressionalDistNum: 
+        type: string
+      GeocodeLatitude: 
+        type: string
+      GeocodeLongitude: 
+        type: string
+      Huc12: 
+        type: string
+      Huc12Name: 
+        type: string
+      StateWaterBodyName: 
+        type: string
+      Reachcode: 
+        type: string
+      ImpairedWaterFlg: 
+        type: string
+      AssessmentUnitEPACategory: 
+        type: string
+      CsoCount: 
+        type: string
+      TotalDesignFlowNmbr: 
+        type: string
+      ActualAverageFlowNmbr: 
+        type: string
+      PermFeatureNmbr: 
+        type: string
+        title: Discharge Point
+        example: '001'
+        description: A three-character code in ICIS-NPDES that identifies the point of discharge (e.g., outfall) for a facility. A NPDES permit may have multiple points of discharge. If the code is less than three characters in the .CSV, append zeros to the beginning of the number (e.g., 1 is equivalent to 001)
+      MonitoringLocationCode: 
+        type: string
+        title: Monitoring Location Code
+        example: '1'
+        description: The code that the monitoring location at which the monitoring requirement (and effluent limit if limited) applies. One parameter may have several monitoring location codes pertaining to the same permitted feature
+      LatitudeMeasure: 
+        type: string
+      LongitudeMeasure: 
+        type: string
+      LimitSetDesignator: 
+        type: string
+      LimitSeasonID: 
+        type: string
+      NmbrOfReport: 
+        type: string
+      PollutantCode: 
+        type: string
+      PollutantDesc: 
+        type: string
+      ParameterCode: 
+        type: string
+        title: Parameter Code
+        example: '00400'
+        description: The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)
+      ParameterDesc: 
+        type: string
+        title: Parameter Description
+        example: pH
+        description: The pollutant name and form (e.g., dissolved, suspended) associated with the parameter code
+      Twf: 
+        type: string
+      Cas: 
+        type: string
+      SrsID: 
+        type: string
+      Lq1: 
+        type: string
+      Lq2: 
+        type: string
+      Lc1: 
+        type: string
+      Lc2: 
+        type: string
+      Lc3: 
+        type: string
+      Q1Qual: 
+        type: string
+      Mq1: 
+        type: string
+      Q2Qual: 
+        type: string
+      Mq2: 
+        type: string
+      C1Qual: 
+        type: string
+      Mc1: 
+        type: string
+      C2Qual: 
+        type: string
+      Mc2: 
+        type: string
+      C3Qual: 
+        type: string
+      Mc3: 
+        type: string
+      PollutantLoad0: 
+        type: string
+      AvgPollutantLoad0: 
+        type: string
+      AvgConcentration0: 
+        type: string
+      PctLoadsDmr: 
+        type: string
+      PctLoadsLimits: 
+        type: string
+      AllowableLoad: 
+        type: string
+      LoadOverLimit1: 
+        type: string
+      LoadOverLimit2: 
+        type: string
+      WastewaterFlow: 
+        type: string
+      AvgWastewaterFlow: 
+        type: string
+      MaxDailyFlow: 
+        type: string
+      AvgTemp: 
+        type: string
+      AvgPh: 
+        type: string
+      NdFlag: 
+        type: string
+      QcFlag: 
+        type: string
+      MeasurementType: 
+        type: string
+        title: Measurement Type
+        example: NMth
+    required: 
+    - Mped
+    - ExternalPermitNmbr
+    - FacilityName
+    - Uin
+    - TRIFids
+    - CwnsIDs
+    - FacilityTypeIndicator
+    - PermitTypeCode
+    - EffectiveDate
+    - ExpirationDate
+    - MajorMinorStatusFlag
+    - Siccode
+    - NaicsCode
+    - City
+    - StateCode
+    - Zip
+    - CountyName
+    - EPARegionCode
+    - CongressionalDistNum
+    - GeocodeLatitude
+    - GeocodeLongitude
+    - Huc12
+    - Huc12Name
+    - StateWaterBodyName
+    - Reachcode
+    - ImpairedWaterFlg
+    - AssessmentUnitEPACategory
+    - CsoCount
+    - TotalDesignFlowNmbr
+    - ActualAverageFlowNmbr
+    - PermFeatureNmbr
+    - MonitoringLocationCode
+    - LatitudeMeasure
+    - LongitudeMeasure
+    - LimitSetDesignator
+    - LimitSeasonID
+    - NmbrOfReport
+    - PollutantCode
+    - PollutantDesc
+    - ParameterCode
+    - ParameterDesc
+    - Twf
+    - Cas
+    - SrsID
+    - Lq1
+    - Lq2
+    - Lc1
+    - Lc2
+    - Lc3
+    - Q1Qual
+    - Mq1
+    - Q2Qual
+    - Mq2
+    - C1Qual
+    - Mc1
+    - C2Qual
+    - Mc2
+    - C3Qual
+    - Mc3
+    - PollutantLoad0
+    - AvgPollutantLoad0
+    - AvgConcentration0
+    - PctLoadsDmr
+    - PctLoadsLimits
+    - AllowableLoad
+    - LoadOverLimit1
+    - LoadOverLimit2
+    - WastewaterFlow
+    - AvgWastewaterFlow
+    - MaxDailyFlow
+    - AvgTemp
+    - AvgPh
+    - NdFlag
+    - QcFlag
+    - MeasurementType
+  dmr0_FacilityCounts: 
+    type: object
+    properties: 
+      AllFacs: 
+        type: string
+      AllMajor: 
+        type: string
+      AllMinor: 
+        type: string
+      FacInfoOnly: 
+        type: string
+      WithPermitData: 
+        type: string
+      WithPermitDataMajor: 
+        type: string
+      WithPermitDataMinor: 
+        type: string
+      WithMonReqOnly: 
+        type: string
+      WithDataIcis: 
+        type: string
+      WithMonReqLimits: 
+        type: string
+    required: 
+    - AllFacs
+    - AllMajor
+    - AllMinor
+    - FacInfoOnly
+    - WithPermitData
+    - WithPermitDataMajor
+    - WithPermitDataMinor
+    - WithMonReqOnly
+    - WithDataIcis
+    - WithMonReqLimits
+  dmr0_Results: 
+    type: object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      QueryID: 
+        type: string
+        title: Query Identifier
+        example: '245'
+        description: Sequential number assigned to entire search result
+      FacilityCounts: 
+        "$ref": "#/definitions/dmr0_FacilityCounts" 
+      TopPollutantPounds: 
+        type: array
+        items: 
+          "$ref": "#/definitions/dmr0_TopPollutantPounds" 
+      TopPollutantTWPE: 
+        type: array
+        items: 
+          "$ref": "#/definitions/dmr0_TopPollutantTWPE" 
+      TopSICPounds: 
+        type: array
+        items: 
+          "$ref": "#/definitions/dmr0_TopSICPounds" 
+      TopSICTWPE: 
+        type: array
+        items: 
+          "$ref": "#/definitions/dmr0_TopSICTWPE" 
+      TopFacilityPounds: 
+        type: array
+        items: 
+          "$ref": "#/definitions/dmr0_TopFacilityPounds" 
+      TopFacilityTWPE: 
+        type: array
+        items: 
+          "$ref": "#/definitions/dmr0_TopFacilityTWPE" 
+      TopWatersheds: 
+        type: array
+        items: 
+          "$ref": "#/definitions/dmr0_TopWatersheds" 
+      TopSIC: 
+        type: array
+        items: 
+          "$ref": "#/definitions/dmr0_TopSIC" 
+      TopFacilities: 
+        type: array
+        items: 
+          "$ref": "#/definitions/dmr0_TopFacilities" 
+    required: 
+    - Message
+    - QueryID
+    - FacilityCounts
+  dmr0_TopFacilities: 
+    type: object
+    properties: 
+      DataSource: 
+        type: string
+      ExternalPermitNmbr: 
+        type: string
+      Uin: 
+        type: string
+      FacilityName: 
+        type: string
+        title: Facility Name
+        example: 3M COMPANY
+        description: The name of the facility.
+      City: 
+        type: string
+        title: City
+        description: The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery.
+      StateCode: 
+        type: string
+      MajorMinorStatusFlag: 
+        type: string
+      GeocodeLatitude: 
+        type: string
+      GeocodeLongitude: 
+        type: string
+      SicCode1: 
+        type: string
+      SicCode4Digit: 
+        type: string
+      SicDesc4Digit: 
+        type: string
+      Huc12: 
+        type: string
+      Huc12Name: 
+        type: string
+      TotalPounds: 
+        type: string
+      LoadOverLimit: 
+        type: string
+      TotalTwpe: 
+        type: string
+      LoadOverLimitTwpe: 
+        type: string
+      AverageConcMgl: 
+        type: string
+      MaximumConcMgl: 
+        type: string
+      AverageFlow: 
+        type: string
+      TRIInfoFlag: 
+        type: string
+      QcFlag: 
+        type: string
+      LimitsInfoFlag: 
+        type: string
+      DmrInfoFlag: 
+        type: string
+    required: 
+    - DataSource
+    - ExternalPermitNmbr
+    - Uin
+    - FacilityName
+    - City
+    - StateCode
+    - MajorMinorStatusFlag
+    - GeocodeLatitude
+    - GeocodeLongitude
+    - SicCode1
+    - SicCode4Digit
+    - SicDesc4Digit
+    - Huc12
+    - Huc12Name
+    - TotalPounds
+    - LoadOverLimit
+    - TotalTwpe
+    - LoadOverLimitTwpe
+    - AverageConcMgl
+    - MaximumConcMgl
+    - AverageFlow
+    - TRIInfoFlag
+    - QcFlag
+    - LimitsInfoFlag
+    - DmrInfoFlag
+  dmr0_TopFacilityPounds: 
+    type: object
+    properties: 
+      DataSource: 
+        type: string
+      ExternalPermitNmbr: 
+        type: string
+      Uin: 
+        type: string
+      FacilityName: 
+        type: string
+        title: Facility Name
+        example: 3M COMPANY
+        description: The name of the facility.
+      City: 
+        type: string
+        title: City
+        description: The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery.
+      StateCode: 
+        type: string
+      Huc12: 
+        type: string
+      Huc12Name: 
+        type: string
+      SicCode1: 
+        type: string
+      GeocodeLatitude: 
+        type: string
+      GeocodeLongitude: 
+        type: string
+      PollutantDesc: 
+        type: string
+      SrsID: 
+        type: string
+      ChemicalAbstractServiceNmbr: 
+        type: string
+      AverageDailyFlow: 
+        type: string
+      MajorMinorStatusFlag: 
+        type: string
+      LimitsInfoFlag: 
+        type: string
+      QcFlag: 
+        type: string
+      TotalPounds: 
+        type: string
+      TotalTwpe: 
+        type: string
+    required: 
+    - DataSource
+    - ExternalPermitNmbr
+    - Uin
+    - FacilityName
+    - City
+    - StateCode
+    - Huc12
+    - Huc12Name
+    - SicCode1
+    - GeocodeLatitude
+    - GeocodeLongitude
+    - PollutantDesc
+    - SrsID
+    - ChemicalAbstractServiceNmbr
+    - AverageDailyFlow
+    - MajorMinorStatusFlag
+    - LimitsInfoFlag
+    - QcFlag
+    - TotalPounds
+    - TotalTwpe
+  dmr0_TopFacilityTWPE: 
+    type: object
+    properties: 
+      DataSource: 
+        type: string
+      ExternalPermitNmbr: 
+        type: string
+      Uin: 
+        type: string
+      FacilityName: 
+        type: string
+        title: Facility Name
+        example: 3M COMPANY
+        description: The name of the facility.
+      City: 
+        type: string
+        title: City
+        description: The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery.
+      StateCode: 
+        type: string
+      Huc12: 
+        type: string
+      Huc12Name: 
+        type: string
+      SicCode1: 
+        type: string
+      GeocodeLatitude: 
+        type: string
+      GeocodeLongitude: 
+        type: string
+      PollutantDesc: 
+        type: string
+      SrsID: 
+        type: string
+      ChemicalAbstractServiceNmbr: 
+        type: string
+      AverageDailyFlow: 
+        type: string
+      MajorMinorStatusFlag: 
+        type: string
+      LimitsInfoFlag: 
+        type: string
+      QcFlag: 
+        type: string
+      TotalTwpe: 
+        type: string
+      TotalPounds: 
+        type: string
+    required: 
+    - DataSource
+    - ExternalPermitNmbr
+    - Uin
+    - FacilityName
+    - City
+    - StateCode
+    - Huc12
+    - Huc12Name
+    - SicCode1
+    - GeocodeLatitude
+    - GeocodeLongitude
+    - PollutantDesc
+    - SrsID
+    - ChemicalAbstractServiceNmbr
+    - AverageDailyFlow
+    - MajorMinorStatusFlag
+    - LimitsInfoFlag
+    - QcFlag
+    - TotalTwpe
+    - TotalPounds
+  dmr0_TopPollutantPounds: 
+    type: object
+    properties: 
+      PollutantDesc: 
+        type: string
+      SrsID: 
+        type: string
+      ChemicalAbstractServiceNmbr: 
+        type: string
+      TRIInfoFlag: 
+        type: string
+      TotalPounds: 
+        type: string
+      QcFlag: 
+        type: string
+    required: 
+    - PollutantDesc
+    - SrsID
+    - ChemicalAbstractServiceNmbr
+    - TRIInfoFlag
+    - TotalPounds
+    - QcFlag
+  dmr0_TopPollutantTWPE: 
+    type: object
+    properties: 
+      PollutantDesc: 
+        type: string
+      SrsID: 
+        type: string
+      ChemicalAbstractServiceNmbr: 
+        type: string
+      TRIInfoFlag: 
+        type: string
+      TotalTwpe: 
+        type: string
+      QcFlag: 
+        type: string
+    required: 
+    - PollutantDesc
+    - SrsID
+    - ChemicalAbstractServiceNmbr
+    - TRIInfoFlag
+    - TotalTwpe
+    - QcFlag
+  dmr0_TopSIC: 
+    type: object
+    properties: 
+      SicCode4Digit: 
+        type: string
+      SicDesc4Digit: 
+        type: string
+      TotalPounds: 
+        type: string
+      LoadOverLimit: 
+        type: string
+      TotalTwpe: 
+        type: string
+      LoadOverLimitTwpe: 
+        type: string
+      AverageConcMgl: 
+        type: string
+      MaximumConcMgl: 
+        type: string
+      AverageFlow: 
+        type: string
+      TRIInfoFlag: 
+        type: string
+      QcFlag: 
+        type: string
+      LimitsInfoFlag: 
+        type: string
+      DmrInfoFlag: 
+        type: string
+    required: 
+    - SicCode4Digit
+    - SicDesc4Digit
+    - TotalPounds
+    - LoadOverLimit
+    - TotalTwpe
+    - LoadOverLimitTwpe
+    - AverageConcMgl
+    - MaximumConcMgl
+    - AverageFlow
+    - TRIInfoFlag
+    - QcFlag
+    - LimitsInfoFlag
+    - DmrInfoFlag
+  dmr0_TopSICPounds: 
+    type: object
+    properties: 
+      SicCode4Digit: 
+        type: string
+      SicDesc4Digit: 
+        type: string
+      PollutantDesc: 
+        type: string
+      SrsID: 
+        type: string
+      ChemicalAbstractServiceNmbr: 
+        type: string
+      AverageConc: 
+        type: string
+      MaximumConc: 
+        type: string
+      AverageTemp: 
+        type: string
+      MaximumTemp: 
+        type: string
+      AverageFlow: 
+        type: string
+      TRIInfoFlag: 
+        type: string
+      QcFlag: 
+        type: string
+      TotalPounds: 
+        type: string
+    required: 
+    - SicCode4Digit
+    - SicDesc4Digit
+    - PollutantDesc
+    - SrsID
+    - ChemicalAbstractServiceNmbr
+    - AverageConc
+    - MaximumConc
+    - AverageTemp
+    - MaximumTemp
+    - AverageFlow
+    - TRIInfoFlag
+    - QcFlag
+    - TotalPounds
+  dmr0_TopSICTWPE: 
+    type: object
+    properties: 
+      SicCode4Digit: 
+        type: string
+      SicDesc4Digit: 
+        type: string
+      PollutantDesc: 
+        type: string
+      SrsID: 
+        type: string
+      ChemicalAbstractServiceNmbr: 
+        type: string
+      AverageConc: 
+        type: string
+      MaximumConc: 
+        type: string
+      AverageTemp: 
+        type: string
+      MaximumTemp: 
+        type: string
+      AverageFlow: 
+        type: string
+      TRIInfoFlag: 
+        type: string
+      QcFlag: 
+        type: string
+      TotalTwpe: 
+        type: string
+    required: 
+    - SicCode4Digit
+    - SicDesc4Digit
+    - PollutantDesc
+    - SrsID
+    - ChemicalAbstractServiceNmbr
+    - AverageConc
+    - MaximumConc
+    - AverageTemp
+    - MaximumTemp
+    - AverageFlow
+    - TRIInfoFlag
+    - QcFlag
+    - TotalTwpe
+  dmr0_TopWatersheds: 
+    type: object
+    properties: 
+      Huc12: 
+        type: string
+      Huc12Name: 
+        type: string
+      TotalPounds: 
+        type: string
+      LoadOverLimit: 
+        type: string
+      TotalTwpe: 
+        type: string
+      LoadOverLimitTwpe: 
+        type: string
+      AverageConcMgl: 
+        type: string
+      MaximumConcMgl: 
+        type: string
+      AverageFlow: 
+        type: string
+      TRIInfoFlag: 
+        type: string
+      QcFlag: 
+        type: string
+      LimitsInfoFlag: 
+        type: string
+      DmrInfoFlag: 
+        type: string
+    required: 
+    - Huc12
+    - Huc12Name
+    - TotalPounds
+    - LoadOverLimit
+    - TotalTwpe
+    - LoadOverLimitTwpe
+    - AverageConcMgl
+    - MaximumConcMgl
+    - AverageFlow
+    - TRIInfoFlag
+    - QcFlag
+    - LimitsInfoFlag
+    - DmrInfoFlag
+  rlk00_LuValues: 
+    description: Lookup Values
+    properties: 
+      ValueCode: 
+        type: string
+        title: Value Code
+        example: '77034'
+      ValueDescription: 
+        type: string
+        title: Value Description
+        example: 1-Butanol
+    required: 
+    - ValueCode
+    - ValueDescription
+  rlk00_LuValues2: 
+    description: Lookup Values
+    properties: 
+      ValueCode: 
+        type: string
+        title: Value Code
+        example: '77034'
+      ValueDescription: 
+        type: string
+        title: Value Description
+        example: 1-Butanol
+      ValueLongDesc: 
+        type: string
+        title: Lookup Long Description
+        example: All phosphorus and phosphate pollutant parameters. Section 3.1.3 of the Technical Users Background Document for the DMR Pollutant Loading Tool describes how the Loading Tool identifies phosphorus parameters and aggregates phosphorus loads.
+      ValueType: 
+        type: string
+        title: Lookup Value Type
+        example: loads
+    required: 
+    - ValueCode
+    - ValueDescription
+    - ValueLongDesc
+    - ValueType
+  rlk00_LuValues3: 
+    description: Lookup Values
+    properties: 
+      Category: 
+        type: string
+        title: Category
+        description: A code that uniquely identifies a category of Supplemental Environment Project (SEP) for a settlement (e.g., Assessments and Audits, Environmental Compliance Promotion, Emergency Planning and Preparedness, Environmental Restoration).
+      ValueCode: 
+        type: string
+        title: Value Code
+        example: '77034'
+      ValueDescription: 
+        type: string
+        title: Value Description
+        example: 1-Butanol
+    required: 
+    - Category
+    - ValueCode
+    - ValueDescription
+  rlk18_Results: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      LuValues: 
+        type: array
+        items: 
+          "$ref": "#/definitions/rlk00_LuValues" 
+    required: 
+    - Message
+  rlk19_Results: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      LuValues: 
+        type: array
+        items: 
+          "$ref": "#/definitions/rlk00_LuValues" 
+    required: 
+    - Message
+  rlk20_Results: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      LuValues: 
+        type: array
+        items: 
+          "$ref": "#/definitions/rlk00_LuValues" 
+    required: 
+    - Message
+  rlk21_Results: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      LuValues: 
+        type: array
+        items: 
+          "$ref": "#/definitions/rlk00_LuValues" 
+    required: 
+    - Message
+  rlk22_Results: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      LuValues: 
+        type: array
+        items: 
+          "$ref": "#/definitions/rlk00_LuValues2" 
+    required: 
+    - Message
+  rlk23_Results: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      LuValues: 
+        type: array
+        items: 
+          "$ref": "#/definitions/rlk00_LuValues" 
+    required: 
+    - Message
+  rlk24_Results: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      LuValues: 
+        type: array
+        items: 
+          "$ref": "#/definitions/rlk00_LuValues" 
+    required: 
+    - Message
+  rlk25_Results: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      LuValues: 
+        type: array
+        items: 
+          "$ref": "#/definitions/rlk00_LuValues" 
+    required: 
+    - Message
+  rlk26_Results: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      LuValues: 
+        type: array
+        items: 
+          "$ref": "#/definitions/rlk00_LuValues3" 
+    required: 
+    - Message
+  rlk27_Results: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      LuValues: 
+        type: array
+        items: 
+          "$ref": "#/definitions/rlk00_LuValues" 
+    required: 
+    - Message
+  rlk28_Results: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      LuValues: 
+        type: array
+        items: 
+          "$ref": "#/definitions/rlk00_LuValues" 
+    required: 
+    - Message
+  rlk29_Results: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      LuValues: 
+        type: array
+        items: 
+          "$ref": "#/definitions/rlk00_LuValues" 
+    required: 
+    - Message
+  rlk30_Results: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      LuValues: 
+        type: array
+        items: 
+          "$ref": "#/definitions/rlk00_LuValues" 
+    required: 
+    - Message
