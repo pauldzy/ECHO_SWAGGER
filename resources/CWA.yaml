@@ -11,15 +11,15 @@ info:
     <br><br>
     The recommended use scenario for get_facilities, get_qid, get_map, and get_downoad is:
     <br>
-    <br><b>1)</b>&nbsp Use get_facilities to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.
-    <br><b>2)</b>&nbsp Use get_qid, with the returned QID, to paginate through arrays of facility results.
-    <br><b>3)</b>&nbsp Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates that meet the QID query criteria.
-    <br><b>4)</b>&nbsp Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.
+    <br><b>1)</b>  Use get_facilities to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.
+    <br><b>2)</b>  Use get_qid, with the returned QID, to paginate through arrays of facility results.
+    <br><b>3)</b>  Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates that meet the QID query criteria.
+    <br><b>4)</b>  Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.
     <br>
     <br>
     Use the qcolumns parameter to customize your search results.  Use the Metdata service endpoint for a list of available output objects, their Column Ids, and their definitions to help you build your customized output. 
     <br><br>
-    Additional ECHO Resources:&nbsp&nbsp <a href="https://echo.epa.gov/tools/web-services">Web Services</a>, <a href="https://echo.epa.gov/resources/echo-data/about-the-data">About ECHO's Data</a>, <a href="https://echo.epa.gov/tools/data-downloads">Data Downloads</a>
+    Additional ECHO Resources:   <a href="https://echo.epa.gov/tools/web-services">Web Services</a>, <a href="https://echo.epa.gov/resources/echo-data/about-the-data">About ECHO's Data</a>, <a href="https://echo.epa.gov/tools/data-downloads">Data Downloads</a>
     <br>
   contact: 
     name: US EPA, OECA Integration, Targeting and Access Branch
@@ -80,22 +80,10 @@ parameters:
     description: Facility street address. Enter a complete or partial street address.
     type: string
     required: false
-  search_term: 
-    name: search_term
-    in: query
-    description: Enter a partial or complete search phrase or word.
-    type: string
-    required: false
   p_sa1: 
     name: p_sa1
     in: query
     description: Facility street address. Enter a complete or partial street address.   Note that p_sa1 is culmulative with p_sa.
-    type: string
-    required: false
-  search_code: 
-    name: search_code
-    in: query
-    description: Enter a partial or complete code value.
     type: string
     required: false
   p_ct: 
@@ -122,30 +110,12 @@ parameters:
     description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
     type: string
     required: false
-  wbd_code: 
-    name: wbd_code
-    in: query
-    description: "Two-digit watershed code [Hydrologic Unit Code (HUC)]."
-    type: string
-    required: false
   p_zip: 
     name: p_zip
     in: query
     description: 5-Digit ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values.
     type: string
     required: false
-  wbd_level: 
-    name: wbd_level
-    in: query
-    description: "The number of digits of the watershed code [Hydrologic Unit Code (HUC)] returned in the ValueCode. Must be an even number between 4 and 12."
-    type: string
-    required: false
-  wbd_name: 
-    name: wbd_name
-    in: query
-    description: Watershed Name Filter.
-    type: string
-    required: true
   p_frs: 
     name: p_frs
     in: query
@@ -260,11 +230,7 @@ parameters:
   p_act: 
     name: p_act
     in: query
-    description: Active Permits/Facilities Flag.  Provide Y or N to filter results to facilities with active permits.
-    enum: 
-    - Y
-    - N
-    - A
+    description: Active Permits/Facilities Flag.  Provide Y or N to filter results to facilities with active permits.  A Y will select ICIS NPDES permits with a status of effective, continued, or expired.
     type: string
     required: false
   p_ff: 
@@ -451,6 +417,47 @@ parameters:
     enum: 
     - Y
     - N
+    type: string
+    required: false
+  p_imp_cau_grp: 
+    name: p_imp_cau_grp
+    in: query
+    description: Facility is discharging a pollutant group causing a waterbody to be impaired.  Enter 1 through 34 (the internal number of the pollutant group); or enter a partial name such as Dioxin,Temp,tUrBidity.
+    enum: 
+    - ALGAL GROWTH
+    - AMMONIA
+    - BIOTOXINS
+    - CAUSE UNKNOWN
+    - CAUSE UNKNOWN - FISH KILLS
+    - CAUSE UNKNOWN - IMPAIRED BIOTA
+    - CHLORINE
+    - DIOXINS
+    - FISH CONSUMPTION ADVISORY
+    - FLOW ALTERATION(S)
+    - HABITAT ALTERATIONS
+    - MERCURY
+    - METALS (OTHER THAN MERCURY)
+    - NOXIOUS AQUATIC PLANTS
+    - NUISANCE EXOTIC SPECIES
+    - NUISANCE NATIVE SPECIES
+    - NUTRIENTS
+    - OIL AND GREASE
+    - ORGANIC ENRICHMENT/OXYGEN DEPLETION
+    - OTHER CAUSE
+    - PATHOGENS
+    - PESTICIDES
+    - PH/ACIDITY/CAUSTIC CONDITIONS
+    - POLYCHLORINATED BIPHENYLS (PCBS)
+    - RADIATION
+    - SALINITY/TOTAL DISSOLVED SOLIDS/CHLORIDES/SULFATES
+    - SEDIMENT
+    - TASTE, COLOR AND ODOR
+    - TEMPERATURE
+    - TOTAL TOXICS
+    - TOXIC INORGANICS
+    - TOXIC ORGANICS
+    - TRASH
+    - TURBIDITY
     type: string
     required: false
   p_trep: 
@@ -1005,41 +1012,106 @@ parameters:
   p_bio_mgmt_prctce_handler: 
     name: p_bio_mgmt_prctce_handler
     in: query
+    description: |-
+      This is the code indicating the type of Biosolids or Sewage Sludge handlers/preparers.
+      - OWN = Owner or Operator
+      - OFF = Off-Site Third-Party Handler or Preparer
     type: string
     required: false
   p_bio_analy_method_catgry: 
     name: p_bio_analy_method_catgry
     in: query
+    description: |-
+      The unique code for the category of the analytic methods used by the facility to analyze regulated parameters (including enteric viruses, fecal coliforms, helminth ova, and Salmonella sp.) at the facility:
+      - PAT = Pathogens
+      - MET = Metals
+      - NIT = Nitrogen Compounds
+      - OTH = Other Analytes
+
     type: string
     required: false
   p_bio_mgmt_prctce_stype: 
     name: p_bio_mgmt_prctce_stype
     in: query
+    description: |-
+      This is the code indicating additional detail about the type of Management Practice used for a volume of Biosolids or Sewage Sludge:
+      - ADV = Advanced Alkaline Stabilized Biosolids Distribution & Marketing
+      - AGR = Agricultural Land Application
+      - COM = Distribution and Marketing - Compost
+      - DEE = Deep-well Injection Disposal
+      - DIS = Disposal in a Municipal Landfill (under 40 CFR 258)
+      - DMO = Distribution and Marketing - Other
+      - HEA = Heat Dried Biosolids Distribution & Marketing
+      - OTL = Other Land Application Management Practice Detail
+      - OTO = Other Management Practice Detail
+      - RSA = Reclamation Site Application
+      - SEN = Sent to Cement Kiln for Use as Alternative Energy
+      - STO = Storage
+      - UIC = Use in Construction
+      - UPS = Used in Production of Syngas
+      - USE = Use as Daily Cover for Municipal Landfill (under 40 CFR 258)
+
     type: string
     required: false
   p_bio_mgmt_deficiencies: 
     name: p_bio_mgmt_deficiencies
     in: query
+    description: |-
+      The number of times noncompliance was reported by the facility in the last 3 years. The results returned will include facilities whose number of reported noncompliance events is greater than or equal to the number entered.
+
     type: number
     required: false
   p_bio_mgmt_def_category: 
     name: p_bio_mgmt_def_category
     in: query
+    description: |-
+      This is the code indicating the type of NPDES special regulatory program deficiency:
+      - INC = Biosolids Incineration
+      - LNA = Biosolids Land Application
+      - LNB = Biosolids Land Application - Pathogen Class B
+      - OTB = Biosolids Other Management Practice
+      - SFD = Biosolids Surface Disposal
     type: string
+    required: false
+  p_bio_insp_deficiencies: 
+    name: p_bio_insp_deficiencies
+    in: query
+    type: number
     required: false
   p_bio_total_volume_amt: 
     name: p_bio_total_volume_amt
     in: query
+    description: |-
+      Total annual amount (in dry metric tons) of biosolids or sewage sludge generated at the facility.
+      - EQ0 = 0
+      - IN0_1 = GT 0 but LT 1
+      - IN0_289  =  GT 0 but LT 290 MT/year
+      - IN290_1499  =  GE 290 but LT 1500 MT/year
+      - IN1500_14999  =  GE 1500 but LT 15,000
+      - GE15000  =  GE 15,000
+
     type: string
     required: false
   p_bio_mgmt_prctce_type: 
     name: p_bio_mgmt_prctce_type
     in: query
+    description: |-
+      The unique code that identifies the type of biosolids or sewage sludge management practice (e.g., land application, surface disposal, incineration) used by the facility. The facility will separately report the management practice for each biosolids or sewage sludge form and pathogen class. This data element will also identify the management practices used by surface disposal site owners/operators (see 40 CFR 503.24):
+      - BIN = Incineration
+      - BLN = Land Application
+      - BOT = Other Management Practice
+      - BSD = Surface Disposal
+
     type: string
     required: false
   p_bio_mgmt_container: 
     name: p_bio_mgmt_container
     in: query
+    description: |-
+      The code that identifies the nature of each biosolids and sewage sludge material generated by the facility in terms of whether the material is a biosolid or sewage sludge and whether the material is ultimately conveyed off-site in bulk or in bags. The facility separately reports the form for each biosolids or sewage sludge management practice or practices used by the facility and pathogen class:
+      - BUL = Bulk
+      - BAG = Bag or Container
+
     type: string
     required: false
   p_insp_deficiencies: 
@@ -1047,37 +1119,125 @@ parameters:
     in: query
     type: number
     required: false
+  p_bio_vio_last_year: 
+    name: p_bio_vio_last_year
+    in: query
+    type: string
+    required: false
   p_bio_mgmt_pathogen: 
     name: p_bio_mgmt_pathogen
     in: query
+    description: |-
+      This code identifies the pathogen class [e.g., Class A, Class B, Not Applicable (Incineration)] for biosolids or sewage sludge generated by the facility. The facility will separately report the pathogen class for each biosolids or sewage sludge management practice used by the facility and by each biosolids or sewage sludge form. It also is used to filter applicable Pathogen Reduction and Vector Attraction Reduction Options as well as Land Application Management Practice Deficiencies. Only reqired for some of the mgmt. practice types:
+      - AAA = Class A
+      - AEQ = Class A EQ (sale/give away)
+      - BBB = Class B
+      - NAP = Not Applicable (Incineration)
+
     type: string
     required: false
   p_bio_trtmnt_procs: 
     name: p_bio_trtmnt_procs
     in: query
+    description: |-
+      The biosolids or sewage sludge treatment process or processes at the facility:
+      - AER = Aerobic Digestion
+      - AIR = Air Drying (or Sludge Drying Beds)
+      - ANA = Anaerobic Digestion
+      - COD = Beta Ray Irradiation
+      - COM = Lower Temperature Composting
+      - DEW = Pasteurization
+      - DIS = Gamma Ray Irradiation
+      - HEA = Heat Drying (e.g., Flash Dryer, Spray Dryer, Rotary Dryer)
+      - HET = Heat Treatment (Liquid Sewage Sludge Heated to 356 Deg. F/180 Deg. C or Higher for 30 min.)
+      - HTC = Higher Temperature Composting
+      - MET = Methane or Biogas Capture and Recovery
+      - OTH = Other Treatment Process
+      - PRE = Preliminary Operations (e.g., Sludge Grinding, Degritting, Blending)
+      - SLU = Sludge Lagoon
+      - STA = Lime Stabilization
+      - THE = Temporary Sludge Storage (Sewage Sludge Stored on Land 2 Years or Less, Not in Sewage Sludge Unit)
+      - THI = Thickening (Gravity and/or Flotation Thickening, Centrifugation, Belt Filter Press, Vacuum Filter)
+      - THM = Thermophilic Aerobic Digestion
+      - UND = Long-Term Sludge Storage (Sewage Sludge Stored on Land 2 Years or More, not in Sewage Sludge Unit)"
+
     type: string
     required: false
   p_bio_mgmt_pathred: 
     name: p_bio_mgmt_pathred
     in: query
+    description: |-
+      This is the description of the option used by the facility to control pathogen for a Biosolids Management Practice:
+      - A1 = Class A - Alternative 1: Time/Temperature
+      - A2 = Class A - Alternative 2: pH/Temperature/Percent Solids
+      - A3 = Class A - Alternative 3: Test Enteric Viruses and Helminth ova; Operating Parameters
+      - A4 = Class A - Alternative 4: Test Enteric Viruses and Helminth ova; No New Solids
+      - A51 = Class A - Alternative 5: PFRP 1: Composting
+      - A52 = Class A - Alternative 5: PFRP 2: Heat Drying
+      - A53 = Class A - Alternative 5: PFRP 3: Liquid heat treatment
+      - A54 = Class A - Alternative 5: PFRP 4: Thermophilic Aerobic Digestion (ATAD)
+      - A55 = Class A - Alternative 5 PFPR 5: Beta Ray Irradiation
+      - A56 = Class A - Alternative 5 PFPR 6: Gamma Ray Irradiation
+      - A57 = Class A - Alternative 5: PFRP 7: Pasteurization
+      - A6 = Class A - Alternative 6: PFRP Equivalency
+      - B1 = Class B - Alternative 1: Fecal Coliform Geometric Mean
+      - B21 = Class B - Alternative 2 PSRP 1: Aerobic Digestion
+      - B22 = Class B - Alternative 2 PSRP 2: Air Drying
+      - B23 = Class B - Alternative 2 PSRP 3: Anaerobic Digestion
+      - B24 = Class B - Alternative 2 PSRP 4: Composting
+      - B25 = Class B - Alternative 2 PSRP 5: Lime Stabilization
+      - B3 = Class B - Alternative 3: PSRP Equivalency
+      - PH = pH Adjustment (Domestic Septage)
     type: string
     required: false
   p_bio_qtrs_in_vio: 
     name: p_bio_qtrs_in_vio
     in: query
+    description: |-
+      The number of quarters, in the last three years, where the facility was in violation for a biosolids violation type.  The results returned will include facilities whose number of quarters with violations is greater than or equal to the number entered.
+
     type: number
     required: false
   p_bio_mgmt_vector: 
     name: p_bio_mgmt_vector
     in: query
+    description: |-
+      The unique code that identifies the option used by the facility for vector attraction reduction. See a listing of these vector attraction reduction options at 40 CFR 503.33(b)(1) through (11). The facility will separately report the vector attraction reduction options for each biosolids or sewage sludge management practice used by the facility and by each biosolids or sewage sludge form as well as by each biosolids or sewage sludge pathogen class:
+      - VR1 = Option 1 - Volatile Solids Reduction
+      - VR2 = Option 2 - Bench-Scale Volatile Solids Reduction (Anaerobic Bench Test)
+      - VR3 = Option 3 - Bench-Scale Volatile Solids Reduction (Aerobic Bench Test w/ Percent Solids - 2% or Less)
+      - VR4 = Option 4 - Specific Oxygen Uptake Rate
+      - VR5 = Option 5 - Aerobic Processing (Thermophilic Aerobic Digestion/Composting)
+      - VR6 = Option 6 - Alkaline Treatment
+      - VR7 = Option 7 - Drying (Equal to or Greater than 75 Percent)
+      - VR8 = Option 8 - Drying (Equal to or Greater than 90 Percent)
+      - VR9 = Option 9 - Sewage Sludge Injection
+      - V10 = Option 10 - Sewage Sludge Timely Incorporation into Land
+      - V11 = Option 11 - Sewage Sludge Covered at the End of Each Operating Day
     type: string
     required: false
   p_bio_current_vio: 
     name: p_bio_current_vio
     in: query
+    description: |-
+      Indicator of whether the facility is currently in violation for biosolids under the Clean Water Act, in the 12th or 13th quarter:
+      - Y = Yes
+      - N = No
+
     enum: 
     - Y
     - N
+    type: string
+    required: false
+  p_vio_last_year: 
+    name: p_vio_last_year
+    in: query
+    type: string
+    required: false
+  p_msgp_rpt_year: 
+    name: p_msgp_rpt_year
+    in: query
+    description: "The last year that a MSGP report was submitted for the permit.  Valid values are \"NONE\" and any year Greater or Eqal to 2015."
     type: string
     required: false
   p_pretty_print: 
@@ -1089,26 +1249,26 @@ parameters:
   p_bio_vio_code: 
     name: p_bio_vio_code
     in: query
+    description: The Biosolids Single Event Violation Code.  Enter one or mode codes.
     type: string
     required: false
   p_bio_rpt_year: 
     name: p_bio_rpt_year
     in: query
+    description: The last year that the permittee submitted an annual Biosolids report.  Valid values are NONE and any year greater or equal to 2016.
     type: string
     required: false
   p_bio_fac_type: 
     name: p_bio_fac_type
     in: query
-    type: string
-    required: false
-  statute_code: 
-    name: statute_code
-    in: query
-    type: string
-    required: false
-  status_flag: 
-    name: status_flag
-    in: query
+    description: |-
+      The code indicating the reporting obligation reason:
+      - POT = A POTW with a design flow rate equal to or greater than one million gallons per day
+      - CLI = A Class I Sludge Management Facility as defined in 40 CFR 503.9
+      - PPL = A POTW that serves 10,000 people or more
+      - OTH = Otherwise required to report (e.g., permit condition, enforcement action)
+      - NOA = None of the above
+
     type: string
     required: false
   p_alrexceed: 
@@ -1117,11 +1277,6 @@ parameters:
     description: |-
       Alert Limits Exceedences Limiter.  Enter a numeric value to restrict results to facilities having the given amount or more of alert limits exceedances.
 
-    type: number
-    required: false
-  sort_order: 
-    name: sort_order
-    in: query
     type: number
     required: false
   p_mon_type: 
@@ -1135,10 +1290,33 @@ parameters:
     description: A Y value will select all biosolid-related permits.
     type: string
     required: false
-  p_icoo: 
-    name: p_icoo
+  p_iv: 
+    name: p_iv
     in: query
-    description: "Indian country search and/or flag.  Enter \"Y\" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_ico, p_fac_ico or p_fac_icoo conditions will be returned."
+    description: |-
+      Facility has a violation status of 'In Viol' during any of the selected quarters. 
+      Range: Fiscal Year 2018 Quarter 1 to Fiscal Year 2015 Quarter 1
+      Multiple values are comma delimited.
+      ||||||  Fiscal Years ||||||
+      - FY2018 or FY18 or 2018 or 18
+      - FY2017 or FY17 or 2017 or 17
+      - FY2016 or FY16 or 2016 or 16
+      - FY2015 or FY15 or 2015 or 15
+      ||||| Fiscal Quarters |||||
+      - FY2018Q1 or FY18Q1 or 20181 or 181 or 13
+      - FY2017Q4 or FY17Q4 or 20174 or 174 or 12
+      - FY2017Q3 or FY17Q3 or 20173 or 173 or 11
+      - FY2017Q2 or FY17Q2 or 20172 or 172 or 10
+      - FY2017Q1 or FY17Q1 or 20171 or 171 or 9
+      - FY2016Q4 or FY16Q4 or 20164 or 164 or 8
+      - FY2016Q3 or FY16Q3 or 20163 or 163 or 7
+      - FY2016Q2 or FY16Q2 or 20162 or 162 or 6
+      - FY2016Q1 or FY16Q1 or 20161 or 161 or 5
+      - FY2015Q4 or FY15Q4 or 20154 or 154 or 4
+      - FY2015Q3 or FY15Q3 or 20153 or 153 or 3
+      - FY2015Q2 or FY15Q2 or 20152 or 152 or 2
+      - FY2015Q1 or FY15Q1 or 20151 or 151 or 1
+
     type: string
     required: false
   p_ejscreen_over80cnt: 
@@ -1165,6 +1343,12 @@ parameters:
     enum: 
     - Y
     - N
+    type: string
+    required: false
+  p_icoo: 
+    name: p_icoo
+    in: query
+    description: "Indian country search and/or flag.  Enter \"Y\" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_ico, p_fac_ico or p_fac_icoo conditions will be returned."
     type: string
     required: false
   p_decouple: 
@@ -1379,8 +1563,10 @@ paths:
       - "$ref": "#/parameters/p_ieay"
       - "$ref": "#/parameters/p_ieaa"
       - "$ref": "#/parameters/p_qiv"
+      - "$ref": "#/parameters/p_iv"
       - "$ref": "#/parameters/p_impw"
       - "$ref": "#/parameters/p_imp_pol"
+      - "$ref": "#/parameters/p_imp_cau_grp"
       - "$ref": "#/parameters/p_trep"
       - "$ref": "#/parameters/p_pm"
       - "$ref": "#/parameters/p_pd"
@@ -1477,6 +1663,10 @@ paths:
       - "$ref": "#/parameters/p_bio_current_vio"
       - "$ref": "#/parameters/p_bio_qtrs_in_vio"
       - "$ref": "#/parameters/p_bio_rpt_year"
+      - "$ref": "#/parameters/p_bio_insp_deficiencies"
+      - "$ref": "#/parameters/p_bio_vio_last_year"
+      - "$ref": "#/parameters/p_msgp_rpt_year"
+      - "$ref": "#/parameters/p_vio_last_year"
       - "$ref": "#/parameters/queryset"
       - "$ref": "#/parameters/responseset"
       - "$ref": "#/parameters/tablelist"
@@ -1549,8 +1739,10 @@ paths:
       - "$ref": "#/parameters/p_ieay"
       - "$ref": "#/parameters/p_ieaa"
       - "$ref": "#/parameters/p_qiv"
+      - "$ref": "#/parameters/p_iv"
       - "$ref": "#/parameters/p_impw"
       - "$ref": "#/parameters/p_imp_pol"
+      - "$ref": "#/parameters/p_imp_cau_grp"
       - "$ref": "#/parameters/p_trep"
       - "$ref": "#/parameters/p_pm"
       - "$ref": "#/parameters/p_pd"
@@ -1647,6 +1839,10 @@ paths:
       - "$ref": "#/parameters/p_bio_current_vio"
       - "$ref": "#/parameters/p_bio_qtrs_in_vio"
       - "$ref": "#/parameters/p_bio_rpt_year"
+      - "$ref": "#/parameters/p_bio_insp_deficiencies"
+      - "$ref": "#/parameters/p_bio_vio_last_year"
+      - "$ref": "#/parameters/p_msgp_rpt_year"
+      - "$ref": "#/parameters/p_vio_last_year"
       - "$ref": "#/parameters/queryset"
       - "$ref": "#/parameters/responseset"
       - "$ref": "#/parameters/tablelist"
@@ -1720,8 +1916,10 @@ paths:
       - "$ref": "#/parameters/p_ieay"
       - "$ref": "#/parameters/p_ieaa"
       - "$ref": "#/parameters/p_qiv"
+      - "$ref": "#/parameters/p_iv"
       - "$ref": "#/parameters/p_impw"
       - "$ref": "#/parameters/p_imp_pol"
+      - "$ref": "#/parameters/p_imp_cau_grp"
       - "$ref": "#/parameters/p_trep"
       - "$ref": "#/parameters/p_pm"
       - "$ref": "#/parameters/p_pd"
@@ -1818,6 +2016,10 @@ paths:
       - "$ref": "#/parameters/p_bio_current_vio"
       - "$ref": "#/parameters/p_bio_qtrs_in_vio"
       - "$ref": "#/parameters/p_bio_rpt_year"
+      - "$ref": "#/parameters/p_bio_insp_deficiencies"
+      - "$ref": "#/parameters/p_bio_vio_last_year"
+      - "$ref": "#/parameters/p_msgp_rpt_year"
+      - "$ref": "#/parameters/p_vio_last_year"
       - "$ref": "#/parameters/responseset"
       - "$ref": "#/parameters/callback"
       - name: qcolumns
@@ -1887,8 +2089,10 @@ paths:
       - "$ref": "#/parameters/p_ieay"
       - "$ref": "#/parameters/p_ieaa"
       - "$ref": "#/parameters/p_qiv"
+      - "$ref": "#/parameters/p_iv"
       - "$ref": "#/parameters/p_impw"
       - "$ref": "#/parameters/p_imp_pol"
+      - "$ref": "#/parameters/p_imp_cau_grp"
       - "$ref": "#/parameters/p_trep"
       - "$ref": "#/parameters/p_pm"
       - "$ref": "#/parameters/p_pd"
@@ -1985,6 +2189,10 @@ paths:
       - "$ref": "#/parameters/p_bio_current_vio"
       - "$ref": "#/parameters/p_bio_qtrs_in_vio"
       - "$ref": "#/parameters/p_bio_rpt_year"
+      - "$ref": "#/parameters/p_bio_insp_deficiencies"
+      - "$ref": "#/parameters/p_bio_vio_last_year"
+      - "$ref": "#/parameters/p_msgp_rpt_year"
+      - "$ref": "#/parameters/p_vio_last_year"
       - "$ref": "#/parameters/responseset"
       - "$ref": "#/parameters/callback"
       - name: qcolumns
@@ -2405,658 +2613,6 @@ paths:
                 "$ref": "#/definitions/met_Results" 
             required: 
             - Results
-  "/rest_lookups.bp_tribes": 
-    get: 
-      summary: ECHO BP Tribes Lookup Service
-      description: Returns the EPA Standard Indian Tribes and Native Alaskan Villages tribal_id and tribe_name.
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Returns an array of tribes containing the search term. If search term not provided, returns all values.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk13_Results" 
-            required: 
-            - Results
-    post: 
-      summary: ECHO BP Tribes Lookup Service
-      description: Returns the EPA Standard Indian Tribes and Native Alaskan Villages tribal_id and tribe_name.
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Returns an array of tribes containing the search term. If search term not provided, returns all values.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk13_Results" 
-            required: 
-            - Results
-  "/rest_lookups.cwa_parameters": 
-    get: 
-      summary: ECHO CWA Parameter Lookup Service
-      description: Look up Clean Water Act parameter codes and descriptions in the Integrated Compliance Information System - National Pollutant Discharge Elimination System (ICIS-NPDES) by code or term.
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: |-
-            Returns an array of parameter codes and descriptions that contain the search_term or search_code entered. If search term or search code not provided, returns all values. ValueCode is the 5-digit parameter code.
-            ValueDescription is the parameter description.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk16_Results" 
-            required: 
-            - Results
-    post: 
-      summary: ECHO CWA Parameter Lookup Service
-      description: Look up Clean Water Act parameter codes and descriptions in the Integrated Compliance Information System - National Pollutant Discharge Elimination System (ICIS-NPDES) by code or term.
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: |-
-            Returns an array of parameter codes and descriptions that contain the search_term or search_code entered. If search term or search code not provided, returns all values. ValueCode is the 5-digit parameter code.
-            ValueDescription is the parameter description.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk16_Results" 
-            required: 
-            - Results
-  "/rest_lookups.cwa_pollutants": 
-    get: 
-      summary: ECHO CWA Pollutants Lookup Service
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Returns an array of water polluntants containing search term or search code. If search term or search code not provided, returns all values.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk17_Results" 
-            required: 
-            - Results
-    post: 
-      summary: ECHO CWA Pollutants Lookup Service
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Returns an array of water polluntants containing search term or search code. If search term or search code not provided, returns all values.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk17_Results" 
-            required: 
-            - Results
-  "/rest_lookups.federal_agencies": 
-    get: 
-      summary: ECHO Federal Agency Lookup Service
-      description: Look up Federal Agency Code
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Returns an array of federal agency codes and their descriptions.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk46_Results" 
-            required: 
-            - Results
-    post: 
-      summary: ECHO Federal Agency Lookup Service
-      description: Look up Federal Agency Code
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Returns an array of federal agency codes and their descriptions.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk46_Results" 
-            required: 
-            - Results
-  "/rest_lookups.icis_inspection_types": 
-    get: 
-      summary: ECHO ICIS NPDES Inspection Types Lookup Service
-      description: Returns the ICIS NPDES Compliance Monitoring Type Code and Description.
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Returns an array of icis_inspection_types codes and their description. If search term or search code is  not provided, all values are returned.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk50_Results" 
-            required: 
-            - Results
-    post: 
-      summary: ECHO ICIS NPDES Inspection Types Lookup Service
-      description: Returns the ICIS NPDES Compliance Monitoring Type Code and Description.
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Returns an array of icis_inspection_types codes and their description. If search term or search code is  not provided, all values are returned.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk50_Results" 
-            required: 
-            - Results
-  "/rest_lookups.icis_law_sections": 
-    get: 
-      summary: ECHO ICIS Law Sections Lookup Service
-      description: Returns the ICIS Law Section Descriptions.
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/statute_code"
-      - "$ref": "#/parameters/status_flag"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      - "$ref": "#/parameters/sort_order"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Returns an array of icis_inspection_types codes and their description. If search term or search code is  not provided, all values are returned.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk51_Results" 
-            required: 
-            - Results
-    post: 
-      summary: ECHO ICIS Law Sections Lookup Service
-      description: Returns the ICIS Law Section Descriptions.
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/statute_code"
-      - "$ref": "#/parameters/status_flag"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      - "$ref": "#/parameters/sort_order"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Returns an array of icis_inspection_types codes and their description. If search term or search code is  not provided, all values are returned.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk51_Results" 
-            required: 
-            - Results
-  "/rest_lookups.naics_codes": 
-    get: 
-      summary: ECHO NAICS Codes Lookup Service
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Returns an array of NAICS codes and descriptions based on search term or search code. If search term or search code not provided, returns all values.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk52_Results" 
-            required: 
-            - Results
-    post: 
-      summary: ECHO NAICS Codes Lookup Service
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Returns an array of NAICS codes and descriptions based on search term or search code. If search term or search code not provided, returns all values.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk52_Results" 
-            required: 
-            - Results
-  "/rest_lookups.npdes_parameters": 
-    get: 
-      summary: ECHO NPDES Parameters Lookup Service
-      description: ICIS Limit Parameter Code and Name lookup based on the supply of a partial parameter name. (NPDES = National Pollutant Discharge Elimination System)
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Returns an array of NPDES Parameter Codes and their description that meet the search term. If the search term is not provided, returns all values.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk56_Results" 
-            required: 
-            - Results
-    post: 
-      summary: ECHO NPDES Parameters Lookup Service
-      description: ICIS Limit Parameter Code and Name lookup based on the supply of a partial parameter name. (NPDES = National Pollutant Discharge Elimination System)
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Returns an array of NPDES Parameter Codes and their description that meet the search term. If the search term is not provided, returns all values.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk56_Results" 
-            required: 
-            - Results
-  "/rest_lookups.wbd_code_lu": 
-    get: 
-      summary: ECHO WBD Code Lookup Service
-      description: USGS Watershed Boundary Dataset (WBD) Name lookup based on a supplied WBD Code and Watershed Level
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/wbd_code"
-      - "$ref": "#/parameters/wbd_level"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Returns an array of WBD names and codes based on the WBD code and WBD level provided. If WBD Code not provided, returns all values. ValueCode is the WBD Code containing the number of digits provided in the WBD level.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk66_Results" 
-            required: 
-            - Results
-    post: 
-      summary: ECHO WBD Code Lookup Service
-      description: USGS Watershed Boundary Dataset (WBD) Name lookup based on a supplied WBD Code and Watershed Level
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/wbd_code"
-      - "$ref": "#/parameters/wbd_level"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Returns an array of WBD names and codes based on the WBD code and WBD level provided. If WBD Code not provided, returns all values. ValueCode is the WBD Code containing the number of digits provided in the WBD level.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk66_Results" 
-            required: 
-            - Results
-  "/rest_lookups.wbd_name_lu": 
-    get: 
-      summary: ECHO WBD Name Lookup Service
-      description: USGS Watershed Boundary Dataset (WBD) Code lookup based on a supplied WBD Name and Watershed Level
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/wbd_name"
-      - "$ref": "#/parameters/wbd_level"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Returns an array of WBD names and codes based on the WBD name and WBD level provided. ValueCode is the WBD Code containing the number of digits provided in the WBD level.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk67_Results" 
-            required: 
-            - Results
-    post: 
-      summary: ECHO WBD Name Lookup Service
-      description: USGS Watershed Boundary Dataset (WBD) Code lookup based on a supplied WBD Name and Watershed Level
-      parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/wbd_name"
-      - "$ref": "#/parameters/wbd_level"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Returns an array of WBD names and codes based on the WBD name and WBD level provided. ValueCode is the WBD Code containing the number of digits provided in the WBD level.
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk67_Results" 
-            required: 
-            - Results
 definitions: 
   qp0_QueryParameters: 
     description: Query Parameters Object
@@ -3399,12 +2955,12 @@ definitions:
         type: string
         example: '247'
         description: Indicates the number of days since the most recent inspection of the facility. Inspections listed within the last five years are included.
-      CWPSicCodes: 
+      CWPSICCodes: 
         type: string
         title: SIC Code
         example: '4911'
         description: "Indicates the facility's or permit's primary Standard Industrial Classification (SIC) Code."
-      CWPNaicsCodes: 
+      CWPNAICSCodes: 
         type: string
         title: NAICS Code
         example: '236220'
@@ -3537,8 +3093,11 @@ definitions:
         title: Chesapeake Bay Flag
         example: Y
         description: "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
-      AirIDs: 
+      AIRIDs: 
         type: string
+        title: AIR Facility System ID
+        example: DC0000001100195254
+        description: Air Facility System (AFS) ID.
       RCRAIDs: 
         type: string
         title: Resource Conservation and Recovery Act IDs
@@ -3564,15 +3123,15 @@ definitions:
         title: Pollutants with Reporting Violations
         example: Chlorine|Flow, in conduit or thru treatment plant|Oil and grease|Solids, total suspended|Thermal Discharge|pH
         description: The names of pollutants with reporting violations (i.e., violation codes D80 and D90) or effluent exceedances (i.e., violation code E90) in the past three years in ICIS-NPDES.
-      DmrPounds: 
+      DMRPounds: 
         type: string
         example: '500696'
         description: Total pounds of pollutants discharged by the NPDES ID for the most recent complete calendar year.
-      DmrTwpe: 
+      DMRTwpe: 
         type: string
         example: '1.15'
         description: Total toxic-weighted pounds equivalent (TWPE) discharged by the NPDES ID for the most recent complete calendar year. TWPE is the mass of a pollutant or chemical discharged that accounts for its relative toxicity.
-      DmrImpairedPoll: 
+      DMRImpairedPoll: 
         type: string
         example: Mercury | Oil and grease | Solids, total suspended | Temperature, water deg. centigrade | Temperature, water deg. fahrenheit | pH
         description: "The pollutants with limits or monitoring requirements in a facility's NPDES permit with the potential to contribute to impairment of local waterbodies"
@@ -3669,7 +3228,7 @@ definitions:
         type: string
       EjscreenFlag: 
         type: string
-      LastDmrValueRcvdDate: 
+      LastDMRValueRcvdDate: 
         type: string
       Lower48: 
         type: string
@@ -3681,7 +3240,7 @@ definitions:
       EffExceeds: 
         type: string
         example: '3'
-      MissDmrQtrs: 
+      MissDMRQtrs: 
         type: string
       PastCalYrAverageFlow: 
         type: string
@@ -3827,62 +3386,90 @@ definitions:
         type: string
       BiosolidsFlag: 
         type: string
+        description: A Yes/No field to indicate permits with biosolids management and compliance information.
       BioReportDate: 
         type: string
+        description: The date the report was received by EPA.
       BioTotalVolumeAmt: 
         type: string
+        description: The amount (in dry metric tons) of biosolids or sewage sludge generated at the facility.
       BioCommentText: 
         type: string
+        description: Free text allowing the user to provide comments on the annual program report.
+      BioReportingObligations: 
+        type: string
+        description: Indicates the reporting obligation reason.
       BioFacTypes: 
         type: string
       BioTrtmntProcesses: 
         type: string
+        description: Identifies the biosolids or sewage sludge treatment process or processes at the facility.
       BioAnalyMethodCatgrys: 
         type: string
+        description: Displays the categories of the analytic methods used by the facility to analyze regulated parameters at the facility.
       BioAnalyMethods: 
         type: string
+        description: Displays the analytic methods used by the facility to analyze enteric viruses, fecal coliforms, helminth ova, Salmonella sp., and other regulated parameters as reported on the Biosolids Program Report.
       BioLandApplicationSum: 
         type: string
+        description: The amount (dry metric tons) of biosolids land applied.
       BioSurfaceDispSum: 
         type: string
+        description: The amount of surface disposal in dry metric tons (DMT).
       BioIncinerationSum: 
         type: string
+        description: The amount (dry metric tons) of biosolids incinerated.
       BioOtherManagementSum: 
         type: string
+        description: The amount (dry metric tons) of biosolids managed using methods not previously described.
       BioMgmtPrctceTypes: 
         type: string
+        description: The type of biosolids or sewage sludge management practice (e.g., land application, surface disposal, incineration) used by the facility.
       BioMgmtPrctceStypes: 
         type: string
+        description: Additional detail about the type of Management Practice used for an amount of Biosolids or Sewage Sludge.
       BioMgmtHandlers: 
         type: string
+        description: Indicates the type of Biosolids or Sewage Sludge handlers/preparers, either owner/operator or off-site third-party handler/preparer.
       BioMgmtContainers: 
         type: string
+        description: Identifies the nature of each biosolids and sewage sludge material generated by the facility in terms of whether the material is a biosolid or sewage sludge and whether the material is ultimately conveyed off-site in bulk or in bags.
       BioMgmtPathogens: 
         type: string
+        description: Identifies the pathogen class for biosolids or sewage sludge generated by the facility.
       BioMgmtPathreds: 
         type: string
+        description: Identifies the options used by the facility to control pathogens for a Biosolids Management Practice.
       BioMgmtVectors: 
         type: string
+        description: Identifies the option used by the facility for vector attraction reduction.
       BioMgmtDeficiencies: 
         type: string
+        description: Indicates the type of NPDES special regulatory program deficiency.
       BioMgmtDefCategories: 
         type: string
+        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
       BioMgmtDefCurrentCnt: 
         type: string
-      InspDef5yrCnt: 
-        type: string
+        description: The number of times noncompliance reported by the facility in the last 3 years.
       BioReportYear: 
         type: string
+        description: The calendar year corresponding to the Annual Biosolids Report.
       BioTrtmntPrcssCmmntTxts: 
         type: string
+        description: "Free text additional description of \"other\" biotreatment processes."
       BioOtherMgmtPrctcTxts: 
         type: string
+        description: "Free text additional description of \"other\" Biosolids Management Practices."
       BioQtrsInVio: 
         type: string
+        description: The number of quarters, in the last three years, where the facility was in violation for a biosolids violation type.
       BioCurrVioFlag: 
         type: string
+        description: Indicates if the facility is currently in violation for biosolids under the Clean Water Act, in the 12th or 13th quarter.
       BioViolFlag: 
         type: string
+        description: "Displays \"Yes\" if the facility is in violation for biosolids under the Clean Water Act, in the last three years."
       CWPDateLastBioFea: 
         type: string
       CWPDateLastBioFeaSt: 
@@ -3902,6 +3489,105 @@ definitions:
       CWPDateLastBioInspSt: 
         type: string
       CWPDateLastBioPenalty: 
+        type: string
+      MsgpLastReportYear: 
+        type: string
+      MsgpFacilityInspctnSmmry: 
+        type: string
+      MsgpVisualAssessmentSmmry: 
+        type: string
+      MsgpNoFurtherRdctnRtnle: 
+        type: string
+      MsgpCorrectiveActionSmmry: 
+        type: string
+      CWPDaysLastBioInsp: 
+        type: string
+        description: Indicates the number of days since the most recent Biosolids related inspection of the facility.
+      CWPBioInspCount: 
+        type: string
+        description: The count of Biosolids related Inspections that have occured for the facility.
+      CWPBioFeaCount: 
+        type: string
+        description: The count of Biosolids related Formal Enforcement Actions that have been taken against the Facility.
+      CWPBioIeaCount: 
+        type: string
+        description: The count of Biosolids related Informal Enforcement Actions that have been taken against the Facility.
+      CWPBioPenalties: 
+        type: string
+        description: The total amount of Biosolids related penalties that have been assessed against the facility.
+      BioVioLastYear: 
+        type: string
+        description: A flag (values of 1 for Yes, 0 for No) that a Bisolids Violation occurred in the last 4 quarters.
+      BioVioLastYearFlag: 
+        type: string
+      InspDef5yrCnt: 
+        type: string
+        example: 0
+      InspDef5yrCnt: 
+        type: string
+        example: 0
+      VioLastYear: 
+        type: string
+        title: Water Program Violation Flag
+        example: '1'
+        description: A flag (values of 1 for Yes, 0 for No) that a Water Program Violation occurred in the last 4 quarters.
+      BioCertifier: 
+        type: string
+      BioSvFlag: 
+        type: string
+        description: A flag (values of 1 for Yes, 0 for No) that a SNC Biosolids Violation exists for the facility.
+      StateAuthNPDES: 
+        type: string
+      StateAuthFedfac: 
+        type: string
+      StateAuthPretreat: 
+        type: string
+      StateAuthGen: 
+        type: string
+      StateAuthBiosolids: 
+        type: string
+      NPDESDataGroups: 
+        type: string
+        title: NPDES Data Group Codes
+        description: This is the code indicating the NPDES eReporting Rule Data Group that applies to the data.
+      PermittingAgency: 
+        type: string
+        title: Permitting Agency
+        description: This is the type of organization issuing or granting a permit.
+      ElectrRptWaiverTypeCode: 
+        type: string
+        title: Electronic Reporting Waiver Type Code
+        description: The unique code that identifies whether the authorized NPDES program has granted the permittee a waiver from electronic reporting in compliance with this part (e.g,  temporary waiver, permanent waiver). This data element should be left blank if the permittee does not have a waiver from electronic reporting in compliance with this part.
+      ElectrRptWaiverTypeDesc: 
+        type: string
+        title: Electronic Waiver Type Code Description
+        description: Description of the unique code that identifies whether the authorized NPDES program has granted the permittee a waiver from electronic reporting in compliance with this part (e.g,  temporary waiver, permanent waiver). This data element should be left blank if the permittee does not have a waiver from electronic reporting in compliance with this part.
+      ElectrRptWaiverEffDate: 
+        type: string
+        title: Electronic Reporting Waiver Effective Date
+        description: This is the effective date for a  waiver from electronic reporting in compliance with this part. This data element should always be populated for a waiver.
+      ElectrRptWaiverExpDate: 
+        type: string
+        title: Electronic Reporting Waiver Expiration Date
+        description: This is the expiration date for a temporary waiver from electronic reporting in compliance with this part. This data element should be left blank if the permittee has a permanent waiver from electronic reporting or if the permittee does not have a waiver from electronic reporting in compliance with this part.
+      ElectrSubmissionTypeCode: 
+        type: string
+        title: Electronic Submission Type Code
+        description: This is the code indicating the means by which the data were submitted electronically.
+      ElectrSubmissionTypeDesc: 
+        type: string
+        title: Electronic Submission Type Code Description
+        description: This is the description of the code indicating the means by which the data were submitted electronically.
+      NPDESDataGroupsDescs: 
+        type: string
+        title: NPDES Data Group Codes Descriptions
+        description: Description for each NPDES Data Group eReporting rule code related to the current NPDES permit.
+      WebDocs: 
+        type: string
+        title: Web Documents
+        example: C6
+        description: Contains flags that identify what web accessible documents are available for the facility.
+      LimPollutant: 
         type: string
       Score: 
         type: string
@@ -3975,8 +3661,8 @@ definitions:
     - FacTRIPotwTrans
     - CWP13qtrsComplStatus
     - CWPDaysLastInspection
-    - CWPSicCodes
-    - CWPNaicsCodes
+    - CWPSICCodes
+    - CWPNAICSCodes
     - CWPCaseIDs
     - CWPTotalDesignFlowNmbr
     - CWPActualAverageFlowNmbr
@@ -4000,7 +3686,7 @@ definitions:
     - BeachCloseLastYearFlg
     - BeachCloseLast2yrsFlg
     - ChesapeakeBayFlag
-    - AirIDs
+    - AIRIDs
     - RCRAIDs
     - TRIIDs
     - SDWAIDs
@@ -4008,9 +3694,9 @@ definitions:
     - FacDerivedWBDName
     - CWPFIPSCode
     - PollInViolation
-    - DmrPounds
-    - DmrTwpe
-    - DmrImpairedPoll
+    - DMRPounds
+    - DMRTwpe
+    - DMRImpairedPoll
     - CurrSvFlag
     - ViolFlag
     - CurrVioFlag
@@ -4034,11 +3720,11 @@ definitions:
     - MaxPctileUs
     - EjscreenFlagUs
     - EjscreenFlag
-    - LastDmrValueRcvdDate
+    - LastDMRValueRcvdDate
     - Lower48
     - ActiveLower48
     - EffExceeds
-    - MissDmrQtrs
+    - MissDMRQtrs
     - PastCalYrAverageFlow
     - PastCalYrConvPollutants
     - PastCalYrToxicPollutants
@@ -4094,7 +3780,7 @@ definitions:
     - BioReportDate
     - BioTotalVolumeAmt
     - BioCommentText
-    - BioFacTypes
+    - BioReportingObligations
     - BioTrtmntProcesses
     - BioAnalyMethodCatgrys
     - BioAnalyMethods
@@ -4112,7 +3798,6 @@ definitions:
     - BioMgmtDeficiencies
     - BioMgmtDefCategories
     - BioMgmtDefCurrentCnt
-    - InspDef5yrCnt
     - BioReportYear
     - BioTrtmntPrcssCmmntTxts
     - BioOtherMgmtPrctcTxts
@@ -4129,6 +3814,35 @@ definitions:
     - CWPDateLastBioInspEPA
     - CWPDateLastBioInspSt
     - CWPDateLastBioPenalty
+    - MsgpLastReportYear
+    - MsgpFacilityInspctnSmmry
+    - MsgpVisualAssessmentSmmry
+    - MsgpNoFurtherRdctnRtnle
+    - MsgpCorrectiveActionSmmry
+    - CWPDaysLastBioInsp
+    - CWPBioInspCount
+    - CWPBioFeaCount
+    - CWPBioIeaCount
+    - CWPBioPenalties
+    - BioVioLastYear
+    - BioVioLastYearFlag
+    - VioLastYear
+    - StateAuthNPDES
+    - StateAuthFedfac
+    - StateAuthPretreat
+    - StateAuthGen
+    - StateAuthBiosolids
+    - NPDESDataGroups
+    - PermittingAgency
+    - ElectrRptWaiverTypeCode
+    - ElectrRptWaiverTypeDesc
+    - ElectrRptWaiverEffDate
+    - ElectrRptWaiverExpDate
+    - ElectrSubmissionTypeCode
+    - ElectrSubmissionTypeDesc
+    - NPDESDataGroupsDescs
+    - WebDocs
+    - LimPollutant
     - Score
   cwa1_MapData: 
     description: Map Data Object
@@ -4271,7 +3985,11 @@ definitions:
         description: Number of facilities with insp_5yr_flag populated (CWP_DATE_LAST_INSPECTION)
       BioCVRows: 
         type: string
+        description: Number of facilities with current biosolid-related violations.
       BioV3Rows: 
+        type: string
+        description: Number of facilities having one or more quarters of biosolid-related non-compliance in the last three years.
+      VioLast4QRows: 
         type: string
       TotalPenalties: 
         type: string
@@ -4283,16 +4001,16 @@ definitions:
         title: Query Identifier
         example: '245'
         description: Sequential number assigned to entire search result
-      PageNo: 
-        type: string
-        title: Page Number
-        example: '1'
-        description: The number of pages of results returned
       Facilities: 
         type: array
         title: Facilities
         items: 
           "$ref": "#/definitions/cwa1_Facilities" 
+      PageNo: 
+        type: string
+        title: Page Number
+        example: '1'
+        description: The number of pages of results returned
       MapOutput: 
         "$ref": "#/definitions/cwa1_MapOutput" 
     required: 
@@ -4308,6 +4026,7 @@ definitions:
     - INSPRows
     - BioCVRows
     - BioV3Rows
+    - VioLast4QRows
     - TotalPenalties
     - QueryID
     - PageNo
@@ -4381,7 +4100,11 @@ definitions:
         description: Number of facilities with insp_5yr_flag populated (CWP_DATE_LAST_INSPECTION)
       BioCVRows: 
         type: string
+        description: Number of facilities with current biosolid-related violations.
       BioV3Rows: 
+        type: string
+        description: Number of facilities having one or more quarters of biosolid-related non-compliance in the last three years.
+      VioLast4QRows: 
         type: string
       TotalPenalties: 
         type: string
@@ -4407,6 +4130,7 @@ definitions:
     - INSPRows
     - BioCVRows
     - BioV3Rows
+    - VioLast4QRows
     - TotalPenalties
   cwa2_ClusterOutput: 
     description: Cluster Output Object
@@ -4748,12 +4472,12 @@ definitions:
         type: string
         example: '247'
         description: Indicates the number of days since the most recent inspection of the facility. Inspections listed within the last five years are included.
-      CWPSicCodes: 
+      CWPSICCodes: 
         type: string
         title: SIC Code
         example: '4911'
         description: "Indicates the facility's or permit's primary Standard Industrial Classification (SIC) Code."
-      CWPNaicsCodes: 
+      CWPNAICSCodes: 
         type: string
         title: NAICS Code
         example: '236220'
@@ -4886,8 +4610,11 @@ definitions:
         title: Chesapeake Bay Flag
         example: Y
         description: "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
-      AirIDs: 
+      AIRIDs: 
         type: string
+        title: AIR Facility System ID
+        example: DC0000001100195254
+        description: Air Facility System (AFS) ID.
       RCRAIDs: 
         type: string
         title: Resource Conservation and Recovery Act IDs
@@ -4913,15 +4640,15 @@ definitions:
         title: Pollutants with Reporting Violations
         example: Chlorine|Flow, in conduit or thru treatment plant|Oil and grease|Solids, total suspended|Thermal Discharge|pH
         description: The names of pollutants with reporting violations (i.e., violation codes D80 and D90) or effluent exceedances (i.e., violation code E90) in the past three years in ICIS-NPDES.
-      DmrPounds: 
+      DMRPounds: 
         type: string
         example: '500696'
         description: Total pounds of pollutants discharged by the NPDES ID for the most recent complete calendar year.
-      DmrTwpe: 
+      DMRTwpe: 
         type: string
         example: '1.15'
         description: Total toxic-weighted pounds equivalent (TWPE) discharged by the NPDES ID for the most recent complete calendar year. TWPE is the mass of a pollutant or chemical discharged that accounts for its relative toxicity.
-      DmrImpairedPoll: 
+      DMRImpairedPoll: 
         type: string
         example: Mercury | Oil and grease | Solids, total suspended | Temperature, water deg. centigrade | Temperature, water deg. fahrenheit | pH
         description: "The pollutants with limits or monitoring requirements in a facility's NPDES permit with the potential to contribute to impairment of local waterbodies"
@@ -5018,7 +4745,7 @@ definitions:
         type: string
       EjscreenFlag: 
         type: string
-      LastDmrValueRcvdDate: 
+      LastDMRValueRcvdDate: 
         type: string
       Lower48: 
         type: string
@@ -5030,7 +4757,7 @@ definitions:
       EffExceeds: 
         type: string
         example: '3'
-      MissDmrQtrs: 
+      MissDMRQtrs: 
         type: string
       PastCalYrAverageFlow: 
         type: string
@@ -5176,62 +4903,90 @@ definitions:
         type: string
       BiosolidsFlag: 
         type: string
+        description: A Yes/No field to indicate permits with biosolids management and compliance information.
       BioReportDate: 
         type: string
+        description: The date the report was received by EPA.
       BioTotalVolumeAmt: 
         type: string
+        description: The amount (in dry metric tons) of biosolids or sewage sludge generated at the facility.
       BioCommentText: 
         type: string
+        description: Free text allowing the user to provide comments on the annual program report.
+      BioReportingObligations: 
+        type: string
+        description: Indicates the reporting obligation reason.
       BioFacTypes: 
         type: string
       BioTrtmntProcesses: 
         type: string
+        description: Identifies the biosolids or sewage sludge treatment process or processes at the facility.
       BioAnalyMethodCatgrys: 
         type: string
+        description: Displays the categories of the analytic methods used by the facility to analyze regulated parameters at the facility.
       BioAnalyMethods: 
         type: string
+        description: Displays the analytic methods used by the facility to analyze enteric viruses, fecal coliforms, helminth ova, Salmonella sp., and other regulated parameters as reported on the Biosolids Program Report.
       BioLandApplicationSum: 
         type: string
+        description: The amount (dry metric tons) of biosolids land applied.
       BioSurfaceDispSum: 
         type: string
+        description: The amount of surface disposal in dry metric tons (DMT).
       BioIncinerationSum: 
         type: string
+        description: The amount (dry metric tons) of biosolids incinerated.
       BioOtherManagementSum: 
         type: string
+        description: The amount (dry metric tons) of biosolids managed using methods not previously described.
       BioMgmtPrctceTypes: 
         type: string
+        description: The type of biosolids or sewage sludge management practice (e.g., land application, surface disposal, incineration) used by the facility.
       BioMgmtPrctceStypes: 
         type: string
+        description: Additional detail about the type of Management Practice used for an amount of Biosolids or Sewage Sludge.
       BioMgmtHandlers: 
         type: string
+        description: Indicates the type of Biosolids or Sewage Sludge handlers/preparers, either owner/operator or off-site third-party handler/preparer.
       BioMgmtContainers: 
         type: string
+        description: Identifies the nature of each biosolids and sewage sludge material generated by the facility in terms of whether the material is a biosolid or sewage sludge and whether the material is ultimately conveyed off-site in bulk or in bags.
       BioMgmtPathogens: 
         type: string
+        description: Identifies the pathogen class for biosolids or sewage sludge generated by the facility.
       BioMgmtPathreds: 
         type: string
+        description: Identifies the options used by the facility to control pathogens for a Biosolids Management Practice.
       BioMgmtVectors: 
         type: string
+        description: Identifies the option used by the facility for vector attraction reduction.
       BioMgmtDeficiencies: 
         type: string
+        description: Indicates the type of NPDES special regulatory program deficiency.
       BioMgmtDefCategories: 
         type: string
+        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
       BioMgmtDefCurrentCnt: 
         type: string
-      InspDef5yrCnt: 
-        type: string
+        description: The number of times noncompliance reported by the facility in the last 3 years.
       BioReportYear: 
         type: string
+        description: The calendar year corresponding to the Annual Biosolids Report.
       BioTrtmntPrcssCmmntTxts: 
         type: string
+        description: "Free text additional description of \"other\" biotreatment processes."
       BioOtherMgmtPrctcTxts: 
         type: string
+        description: "Free text additional description of \"other\" Biosolids Management Practices."
       BioQtrsInVio: 
         type: string
+        description: The number of quarters, in the last three years, where the facility was in violation for a biosolids violation type.
       BioCurrVioFlag: 
         type: string
+        description: Indicates if the facility is currently in violation for biosolids under the Clean Water Act, in the 12th or 13th quarter.
       BioViolFlag: 
         type: string
+        description: "Displays \"Yes\" if the facility is in violation for biosolids under the Clean Water Act, in the last three years."
       CWPDateLastBioFea: 
         type: string
       CWPDateLastBioFeaSt: 
@@ -5251,6 +5006,105 @@ definitions:
       CWPDateLastBioInspSt: 
         type: string
       CWPDateLastBioPenalty: 
+        type: string
+      MsgpLastReportYear: 
+        type: string
+      MsgpFacilityInspctnSmmry: 
+        type: string
+      MsgpVisualAssessmentSmmry: 
+        type: string
+      MsgpNoFurtherRdctnRtnle: 
+        type: string
+      MsgpCorrectiveActionSmmry: 
+        type: string
+      CWPDaysLastBioInsp: 
+        type: string
+        description: Indicates the number of days since the most recent Biosolids related inspection of the facility.
+      CWPBioInspCount: 
+        type: string
+        description: The count of Biosolids related Inspections that have occured for the facility.
+      CWPBioFeaCount: 
+        type: string
+        description: The count of Biosolids related Formal Enforcement Actions that have been taken against the Facility.
+      CWPBioIeaCount: 
+        type: string
+        description: The count of Biosolids related Informal Enforcement Actions that have been taken against the Facility.
+      CWPBioPenalties: 
+        type: string
+        description: The total amount of Biosolids related penalties that have been assessed against the facility.
+      BioVioLastYear: 
+        type: string
+        description: A flag (values of 1 for Yes, 0 for No) that a Bisolids Violation occurred in the last 4 quarters.
+      BioVioLastYearFlag: 
+        type: string
+      InspDef5yrCnt: 
+        type: string
+        example: 0
+      InspDef5yrCnt: 
+        type: string
+        example: 0
+      VioLastYear: 
+        type: string
+        title: Water Program Violation Flag
+        example: '1'
+        description: A flag (values of 1 for Yes, 0 for No) that a Water Program Violation occurred in the last 4 quarters.
+      BioCertifier: 
+        type: string
+      BioSvFlag: 
+        type: string
+        description: A flag (values of 1 for Yes, 0 for No) that a SNC Biosolids Violation exists for the facility.
+      StateAuthNPDES: 
+        type: string
+      StateAuthFedfac: 
+        type: string
+      StateAuthPretreat: 
+        type: string
+      StateAuthGen: 
+        type: string
+      StateAuthBiosolids: 
+        type: string
+      NPDESDataGroups: 
+        type: string
+        title: NPDES Data Group Codes
+        description: This is the code indicating the NPDES eReporting Rule Data Group that applies to the data.
+      PermittingAgency: 
+        type: string
+        title: Permitting Agency
+        description: This is the type of organization issuing or granting a permit.
+      ElectrRptWaiverTypeCode: 
+        type: string
+        title: Electronic Reporting Waiver Type Code
+        description: The unique code that identifies whether the authorized NPDES program has granted the permittee a waiver from electronic reporting in compliance with this part (e.g,  temporary waiver, permanent waiver). This data element should be left blank if the permittee does not have a waiver from electronic reporting in compliance with this part.
+      ElectrRptWaiverTypeDesc: 
+        type: string
+        title: Electronic Waiver Type Code Description
+        description: Description of the unique code that identifies whether the authorized NPDES program has granted the permittee a waiver from electronic reporting in compliance with this part (e.g,  temporary waiver, permanent waiver). This data element should be left blank if the permittee does not have a waiver from electronic reporting in compliance with this part.
+      ElectrRptWaiverEffDate: 
+        type: string
+        title: Electronic Reporting Waiver Effective Date
+        description: This is the effective date for a  waiver from electronic reporting in compliance with this part. This data element should always be populated for a waiver.
+      ElectrRptWaiverExpDate: 
+        type: string
+        title: Electronic Reporting Waiver Expiration Date
+        description: This is the expiration date for a temporary waiver from electronic reporting in compliance with this part. This data element should be left blank if the permittee has a permanent waiver from electronic reporting or if the permittee does not have a waiver from electronic reporting in compliance with this part.
+      ElectrSubmissionTypeCode: 
+        type: string
+        title: Electronic Submission Type Code
+        description: This is the code indicating the means by which the data were submitted electronically.
+      ElectrSubmissionTypeDesc: 
+        type: string
+        title: Electronic Submission Type Code Description
+        description: This is the description of the code indicating the means by which the data were submitted electronically.
+      NPDESDataGroupsDescs: 
+        type: string
+        title: NPDES Data Group Codes Descriptions
+        description: Description for each NPDES Data Group eReporting rule code related to the current NPDES permit.
+      WebDocs: 
+        type: string
+        title: Web Documents
+        example: C6
+        description: Contains flags that identify what web accessible documents are available for the facility.
+      LimPollutant: 
         type: string
       Score: 
         type: string
@@ -5325,8 +5179,8 @@ definitions:
     - FacTRIPotwTrans
     - CWP13qtrsComplStatus
     - CWPDaysLastInspection
-    - CWPSicCodes
-    - CWPNaicsCodes
+    - CWPSICCodes
+    - CWPNAICSCodes
     - CWPCaseIDs
     - CWPTotalDesignFlowNmbr
     - CWPActualAverageFlowNmbr
@@ -5350,7 +5204,7 @@ definitions:
     - BeachCloseLastYearFlg
     - BeachCloseLast2yrsFlg
     - ChesapeakeBayFlag
-    - AirIDs
+    - AIRIDs
     - RCRAIDs
     - TRIIDs
     - SDWAIDs
@@ -5358,9 +5212,9 @@ definitions:
     - FacDerivedWBDName
     - CWPFIPSCode
     - PollInViolation
-    - DmrPounds
-    - DmrTwpe
-    - DmrImpairedPoll
+    - DMRPounds
+    - DMRTwpe
+    - DMRImpairedPoll
     - CurrSvFlag
     - ViolFlag
     - CurrVioFlag
@@ -5384,11 +5238,11 @@ definitions:
     - MaxPctileUs
     - EjscreenFlagUs
     - EjscreenFlag
-    - LastDmrValueRcvdDate
+    - LastDMRValueRcvdDate
     - Lower48
     - ActiveLower48
     - EffExceeds
-    - MissDmrQtrs
+    - MissDMRQtrs
     - PastCalYrAverageFlow
     - PastCalYrConvPollutants
     - PastCalYrToxicPollutants
@@ -5444,7 +5298,7 @@ definitions:
     - BioReportDate
     - BioTotalVolumeAmt
     - BioCommentText
-    - BioFacTypes
+    - BioReportingObligations
     - BioTrtmntProcesses
     - BioAnalyMethodCatgrys
     - BioAnalyMethods
@@ -5462,7 +5316,6 @@ definitions:
     - BioMgmtDeficiencies
     - BioMgmtDefCategories
     - BioMgmtDefCurrentCnt
-    - InspDef5yrCnt
     - BioReportYear
     - BioTrtmntPrcssCmmntTxts
     - BioOtherMgmtPrctcTxts
@@ -5479,6 +5332,35 @@ definitions:
     - CWPDateLastBioInspEPA
     - CWPDateLastBioInspSt
     - CWPDateLastBioPenalty
+    - MsgpLastReportYear
+    - MsgpFacilityInspctnSmmry
+    - MsgpVisualAssessmentSmmry
+    - MsgpNoFurtherRdctnRtnle
+    - MsgpCorrectiveActionSmmry
+    - CWPDaysLastBioInsp
+    - CWPBioInspCount
+    - CWPBioFeaCount
+    - CWPBioIeaCount
+    - CWPBioPenalties
+    - BioVioLastYear
+    - BioVioLastYearFlag
+    - VioLastYear
+    - StateAuthNPDES
+    - StateAuthFedfac
+    - StateAuthPretreat
+    - StateAuthGen
+    - StateAuthBiosolids
+    - NPDESDataGroups
+    - PermittingAgency
+    - ElectrRptWaiverTypeCode
+    - ElectrRptWaiverTypeDesc
+    - ElectrRptWaiverEffDate
+    - ElectrRptWaiverExpDate
+    - ElectrSubmissionTypeCode
+    - ElectrSubmissionTypeDesc
+    - NPDESDataGroupsDescs
+    - WebDocs
+    - LimPollutant
     - Score
   cwa2_Results: 
     description: Results Object
@@ -5530,7 +5412,11 @@ definitions:
         description: Number of facilities with insp_5yr_flag populated (CWP_DATE_LAST_INSPECTION)
       BioCVRows: 
         type: string
+        description: Number of facilities with current biosolid-related violations.
       BioV3Rows: 
+        type: string
+        description: Number of facilities having one or more quarters of biosolid-related non-compliance in the last three years.
+      VioLast4QRows: 
         type: string
       TotalPenalties: 
         type: string
@@ -5582,6 +5468,7 @@ definitions:
     - INSPRows
     - BioCVRows
     - BioV3Rows
+    - VioLast4QRows
     - TotalPenalties
     - IconBaseURL
     - PopUpBaseURL
@@ -5918,12 +5805,12 @@ definitions:
         type: number
         example: 247
         description: Indicates the number of days since the most recent inspection of the facility. Inspections listed within the last five years are included.
-      CWPSicCodes: 
+      CWPSICCodes: 
         type: string
         title: SIC Code
         example: '4911'
         description: "Indicates the facility's or permit's primary Standard Industrial Classification (SIC) Code."
-      CWPNaicsCodes: 
+      CWPNAICSCodes: 
         type: string
         title: NAICS Code
         example: '236220'
@@ -6086,15 +5973,15 @@ definitions:
         title: Pollutants with Reporting Violations
         example: Chlorine|Flow, in conduit or thru treatment plant|Oil and grease|Solids, total suspended|Thermal Discharge|pH
         description: The names of pollutants with reporting violations (i.e., violation codes D80 and D90) or effluent exceedances (i.e., violation code E90) in the past three years in ICIS-NPDES.
-      DmrPounds: 
+      DMRPounds: 
         type: number
         example: 4012
         description: Total pounds of pollutants discharged by the NPDES ID for the most recent complete calendar year.
-      DmrTwpe: 
+      DMRTwpe: 
         type: number
         example: 1.15
         description: Total toxic-weighted pounds equivalent (TWPE) discharged by the NPDES ID for the most recent complete calendar year. TWPE is the mass of a pollutant or chemical discharged that accounts for its relative toxicity.
-      DmrImpairedPoll: 
+      DMRImpairedPoll: 
         type: string
         example: Mercury | Oil and grease | Solids, total suspended | Temperature, water deg. centigrade | Temperature, water deg. fahrenheit | pH
         description: "The pollutants with limits or monitoring requirements in a facility's NPDES permit with the potential to contribute to impairment of local waterbodies"
@@ -6191,7 +6078,7 @@ definitions:
         type: string
       EjscreenFlag: 
         type: string
-      LastDmrValueRcvdDate: 
+      LastDMRValueRcvdDate: 
         type: string
       Lower48: 
         type: string
@@ -6203,7 +6090,7 @@ definitions:
       EffExceeds: 
         type: number
         example: 3
-      MissDmrQtrs: 
+      MissDMRQtrs: 
         type: number
         example: 0
       PastCalYrAverageFlow: 
@@ -6350,65 +6237,92 @@ definitions:
         type: string
       BiosolidsFlag: 
         type: string
+        description: A Yes/No field to indicate permits with biosolids management and compliance information.
       BioReportDate: 
         type: string
+        description: The date the report was received by EPA.
       BioTotalVolumeAmt: 
         type: number
         example: 0
+        description: The amount (in dry metric tons) of biosolids or sewage sludge generated at the facility.
       BioCommentText: 
         type: string
+        description: Free text allowing the user to provide comments on the annual program report.
+      BioReportingObligations: 
+        type: string
+        description: Indicates the reporting obligation reason.
       BioFacTypes: 
         type: string
       BioTrtmntProcesses: 
         type: string
+        description: Identifies the biosolids or sewage sludge treatment process or processes at the facility.
       BioAnalyMethodCatgrys: 
         type: string
+        description: Displays the categories of the analytic methods used by the facility to analyze regulated parameters at the facility.
       BioAnalyMethods: 
         type: string
+        description: Displays the analytic methods used by the facility to analyze enteric viruses, fecal coliforms, helminth ova, Salmonella sp., and other regulated parameters as reported on the Biosolids Program Report.
       BioLandApplicationSum: 
         type: number
+        description: The amount (dry metric tons) of biosolids land applied.
       BioSurfaceDispSum: 
         type: number
+        description: The amount of surface disposal in dry metric tons (DMT).
       BioIncinerationSum: 
         type: number
+        description: The amount (dry metric tons) of biosolids incinerated.
       BioOtherManagementSum: 
         type: number
+        description: The amount (dry metric tons) of biosolids managed using methods not previously described.
       BioMgmtPrctceTypes: 
         type: string
+        description: The type of biosolids or sewage sludge management practice (e.g., land application, surface disposal, incineration) used by the facility.
       BioMgmtPrctceStypes: 
         type: string
+        description: Additional detail about the type of Management Practice used for an amount of Biosolids or Sewage Sludge.
       BioMgmtHandlers: 
         type: string
+        description: Indicates the type of Biosolids or Sewage Sludge handlers/preparers, either owner/operator or off-site third-party handler/preparer.
       BioMgmtContainers: 
         type: string
+        description: Identifies the nature of each biosolids and sewage sludge material generated by the facility in terms of whether the material is a biosolid or sewage sludge and whether the material is ultimately conveyed off-site in bulk or in bags.
       BioMgmtPathogens: 
         type: string
+        description: Identifies the pathogen class for biosolids or sewage sludge generated by the facility.
       BioMgmtPathreds: 
         type: string
+        description: Identifies the options used by the facility to control pathogens for a Biosolids Management Practice.
       BioMgmtVectors: 
         type: string
+        description: Identifies the option used by the facility for vector attraction reduction.
       BioMgmtDeficiencies: 
         type: string
+        description: Indicates the type of NPDES special regulatory program deficiency.
       BioMgmtDefCategories: 
         type: string
+        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
       BioMgmtDefCurrentCnt: 
         type: number
         example: 0
-      InspDef5yrCnt: 
-        type: number
-        example: 0
+        description: The number of times noncompliance reported by the facility in the last 3 years.
       BioReportYear: 
         type: string
+        description: The calendar year corresponding to the Annual Biosolids Report.
       BioTrtmntPrcssCmmntTxts: 
         type: string
+        description: "Free text additional description of \"other\" biotreatment processes."
       BioOtherMgmtPrctcTxts: 
         type: string
+        description: "Free text additional description of \"other\" Biosolids Management Practices."
       BioQtrsInVio: 
         type: number
+        description: The number of quarters, in the last three years, where the facility was in violation for a biosolids violation type.
       BioCurrVioFlag: 
         type: number
+        description: Indicates if the facility is currently in violation for biosolids under the Clean Water Act, in the 12th or 13th quarter.
       BioViolFlag: 
         type: number
+        description: "Displays \"Yes\" if the facility is in violation for biosolids under the Clean Water Act, in the last three years."
       CWPDateLastBioFea: 
         type: string
       CWPDateLastBioFeaSt: 
@@ -6428,6 +6342,107 @@ definitions:
       CWPDateLastBioInspSt: 
         type: string
       CWPDateLastBioPenalty: 
+        type: string
+      MsgpLastReportYear: 
+        type: string
+      MsgpFacilityInspctnSmmry: 
+        type: string
+      MsgpVisualAssessmentSmmry: 
+        type: string
+      MsgpNoFurtherRdctnRtnle: 
+        type: string
+      MsgpCorrectiveActionSmmry: 
+        type: string
+      CWPDaysLastBioInsp: 
+        type: string
+        description: Indicates the number of days since the most recent Biosolids related inspection of the facility.
+      CWPBioInspCount: 
+        type: number
+        description: The count of Biosolids related Inspections that have occured for the facility.
+      CWPBioFeaCount: 
+        type: number
+        description: The count of Biosolids related Formal Enforcement Actions that have been taken against the Facility.
+      CWPBioIeaCount: 
+        type: number
+        description: The count of Biosolids related Informal Enforcement Actions that have been taken against the Facility.
+      CWPBioPenalties: 
+        type: number
+        description: The total amount of Biosolids related penalties that have been assessed against the facility.
+      BioVioLastYear: 
+        type: number
+        description: A flag (values of 1 for Yes, 0 for No) that a Bisolids Violation occurred in the last 4 quarters.
+      BioVioLastYearFlag: 
+        type: string
+      BioInspDef5yrCnt: 
+        type: number
+        example: 0
+        description: The count of Inspection Deficiencies that have been found in the last 5 years.
+      InspDef5yrCnt: 
+        type: number
+        example: 0
+        description: The count of Biosolids Inspection Deficiencies that have been found in the last 5 years.
+      VioLastYear: 
+        type: number
+        title: Water Program Violation Flag
+        example: 1
+        description: A flag (values of 1 for Yes, 0 for No) that a Water Program Violation occurred in the last 4 quarters.
+      BioCertifier: 
+        type: string
+      BioSvFlag: 
+        type: string
+        description: A flag (values of 1 for Yes, 0 for No) that a SNC Biosolids Violation exists for the facility.
+      StateAuthNPDES: 
+        type: string
+      StateAuthFedfac: 
+        type: string
+      StateAuthPretreat: 
+        type: string
+      StateAuthGen: 
+        type: string
+      StateAuthBiosolids: 
+        type: string
+      NPDESDataGroups: 
+        type: string
+        title: NPDES Data Group Codes
+        description: This is the code indicating the NPDES eReporting Rule Data Group that applies to the data.
+      PermittingAgency: 
+        type: string
+        title: Permitting Agency
+        description: This is the type of organization issuing or granting a permit.
+      ElectrRptWaiverTypeCode: 
+        type: string
+        title: Electronic Reporting Waiver Type Code
+        description: The unique code that identifies whether the authorized NPDES program has granted the permittee a waiver from electronic reporting in compliance with this part (e.g,  temporary waiver, permanent waiver). This data element should be left blank if the permittee does not have a waiver from electronic reporting in compliance with this part.
+      ElectrRptWaiverTypeDesc: 
+        type: string
+        title: Electronic Waiver Type Code Description
+        description: Description of the unique code that identifies whether the authorized NPDES program has granted the permittee a waiver from electronic reporting in compliance with this part (e.g,  temporary waiver, permanent waiver). This data element should be left blank if the permittee does not have a waiver from electronic reporting in compliance with this part.
+      ElectrRptWaiverEffDate: 
+        type: string
+        title: Electronic Reporting Waiver Effective Date
+        description: This is the effective date for a  waiver from electronic reporting in compliance with this part. This data element should always be populated for a waiver.
+      ElectrRptWaiverExpDate: 
+        type: string
+        title: Electronic Reporting Waiver Expiration Date
+        description: This is the expiration date for a temporary waiver from electronic reporting in compliance with this part. This data element should be left blank if the permittee has a permanent waiver from electronic reporting or if the permittee does not have a waiver from electronic reporting in compliance with this part.
+      ElectrSubmissionTypeCode: 
+        type: string
+        title: Electronic Submission Type Code
+        description: This is the code indicating the means by which the data were submitted electronically.
+      ElectrSubmissionTypeDesc: 
+        type: string
+        title: Electronic Submission Type Code Description
+        description: This is the description of the code indicating the means by which the data were submitted electronically.
+      NPDESDataGroupsDescs: 
+        type: string
+        title: NPDES Data Group Codes Descriptions
+        description: Description for each NPDES Data Group eReporting rule code related to the current NPDES permit.
+      WebDocs: 
+        type: string
+        title: Web Documents
+        example: C6
+        description: Contains flags that identify what web accessible documents are available for the facility.
+      LimPollutant: 
         type: string
       Score: 
         type: number
@@ -6499,8 +6514,8 @@ definitions:
     - FacTRIPotwTrans
     - CWP13qtrsComplStatus
     - CWPDaysLastInspection
-    - CWPSicCodes
-    - CWPNaicsCodes
+    - CWPSICCodes
+    - CWPNAICSCodes
     - CWPCaseIDs
     - CWPTotalDesignFlowNmbr
     - CWPActualAverageFlowNmbr
@@ -6532,9 +6547,9 @@ definitions:
     - FacDerivedWBDName
     - CWPFIPSCode
     - PollInViolation
-    - DmrPounds
-    - DmrTwpe
-    - DmrImpairedPoll
+    - DMRPounds
+    - DMRTwpe
+    - DMRImpairedPoll
     - CurrSvFlag
     - ViolFlag
     - CurrVioFlag
@@ -6558,11 +6573,11 @@ definitions:
     - MaxPctileUs
     - EjscreenFlagUs
     - EjscreenFlag
-    - LastDmrValueRcvdDate
+    - LastDMRValueRcvdDate
     - Lower48
     - ActiveLower48
     - EffExceeds
-    - MissDmrQtrs
+    - MissDMRQtrs
     - PastCalYrAverageFlow
     - PastCalYrConvPollutants
     - PastCalYrToxicPollutants
@@ -6618,7 +6633,7 @@ definitions:
     - BioReportDate
     - BioTotalVolumeAmt
     - BioCommentText
-    - BioFacTypes
+    - BioReportingObligations
     - BioTrtmntProcesses
     - BioAnalyMethodCatgrys
     - BioAnalyMethods
@@ -6636,7 +6651,6 @@ definitions:
     - BioMgmtDeficiencies
     - BioMgmtDefCategories
     - BioMgmtDefCurrentCnt
-    - InspDef5yrCnt
     - BioReportYear
     - BioTrtmntPrcssCmmntTxts
     - BioOtherMgmtPrctcTxts
@@ -6653,6 +6667,35 @@ definitions:
     - CWPDateLastBioInspEPA
     - CWPDateLastBioInspSt
     - CWPDateLastBioPenalty
+    - MsgpLastReportYear
+    - MsgpFacilityInspctnSmmry
+    - MsgpVisualAssessmentSmmry
+    - MsgpNoFurtherRdctnRtnle
+    - MsgpCorrectiveActionSmmry
+    - CWPDaysLastBioInsp
+    - CWPBioInspCount
+    - CWPBioFeaCount
+    - CWPBioIeaCount
+    - CWPBioPenalties
+    - BioVioLastYear
+    - BioVioLastYearFlag
+    - VioLastYear
+    - StateAuthNPDES
+    - StateAuthFedfac
+    - StateAuthPretreat
+    - StateAuthGen
+    - StateAuthBiosolids
+    - NPDESDataGroups
+    - PermittingAgency
+    - ElectrRptWaiverTypeCode
+    - ElectrRptWaiverTypeDesc
+    - ElectrRptWaiverEffDate
+    - ElectrRptWaiverExpDate
+    - ElectrSubmissionTypeCode
+    - ElectrSubmissionTypeDesc
+    - NPDESDataGroupsDescs
+    - WebDocs
+    - LimPollutant
     - Score
   cwa3_MapData: 
     description: Map Data Object
@@ -6843,159 +6886,5 @@ definitions:
         title: Result Columns
         items: 
           "$ref": "#/definitions/met_ResultsColumns" 
-    required: 
-    - Message
-  rlk00_LuValues: 
-    description: Lookup Values
-    properties: 
-      ValueCode: 
-        type: string
-        title: Value Code
-        example: '77034'
-      ValueDescription: 
-        type: string
-        title: Value Description
-        example: 1-Butanol
-    required: 
-    - ValueCode
-    - ValueDescription
-  rlk13_Results: 
-    description: Results Object
-    properties: 
-      Message: 
-        type: string
-        title: Message
-        example: Success
-        description: Field to record messages (typically performance-related) about packet processing
-      LuValues: 
-        type: array
-        items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
-    required: 
-    - Message
-  rlk16_Results: 
-    description: Results Object
-    properties: 
-      Message: 
-        type: string
-        title: Message
-        example: Success
-        description: Field to record messages (typically performance-related) about packet processing
-      LuValues: 
-        type: array
-        items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
-    required: 
-    - Message
-  rlk17_Results: 
-    description: Results Object
-    properties: 
-      Message: 
-        type: string
-        title: Message
-        example: Success
-        description: Field to record messages (typically performance-related) about packet processing
-      LuValues: 
-        type: array
-        items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
-    required: 
-    - Message
-  rlk46_Results: 
-    description: Results Object
-    properties: 
-      Message: 
-        type: string
-        title: Message
-        example: Success
-        description: Field to record messages (typically performance-related) about packet processing
-      LuValues: 
-        type: array
-        items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
-    required: 
-    - Message
-  rlk50_Results: 
-    description: Results Object
-    properties: 
-      Message: 
-        type: string
-        title: Message
-        example: Success
-        description: Field to record messages (typically performance-related) about packet processing
-      LuValues: 
-        type: array
-        items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
-    required: 
-    - Message
-  rlk51_Results: 
-    description: Results Object
-    properties: 
-      Message: 
-        type: string
-        title: Message
-        example: Success
-        description: Field to record messages (typically performance-related) about packet processing
-      LuValues: 
-        type: array
-        items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
-    required: 
-    - Message
-  rlk52_Results: 
-    description: Results Object
-    properties: 
-      Message: 
-        type: string
-        title: Message
-        example: Success
-        description: Field to record messages (typically performance-related) about packet processing
-      LuValues: 
-        type: array
-        items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
-    required: 
-    - Message
-  rlk56_Results: 
-    description: Results Object
-    properties: 
-      Message: 
-        type: string
-        title: Message
-        example: Success
-        description: Field to record messages (typically performance-related) about packet processing
-      LuValues: 
-        type: array
-        items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
-    required: 
-    - Message
-  rlk66_Results: 
-    description: Results Object
-    properties: 
-      Message: 
-        type: string
-        title: Message
-        example: Success
-        description: Field to record messages (typically performance-related) about packet processing
-      LuValues: 
-        type: array
-        items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
-    required: 
-    - Message
-  rlk67_Results: 
-    description: Results Object
-    properties: 
-      Message: 
-        type: string
-        title: Message
-        example: Success
-        description: Field to record messages (typically performance-related) about packet processing
-      LuValues: 
-        type: array
-        items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
     required: 
     - Message

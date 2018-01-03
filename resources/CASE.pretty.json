@@ -2,7 +2,7 @@
     "swagger": "2.0"
    ,"info": {
        "title": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Enforcement Case Search"
-      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\n<BR><BR>CASE Rest Services provide multiple service endpoints, each with specific capabilities, to search and retrieve data on civil cases entered into the \nIntegrated Compliance Information System (ICIS) and criminal cases entered into the Summary of Criminal Prosecutions database.  \nSee Enforcement Case Search Help (https:\/\/echo.epa.gov\/help\/enforcement-case-search-help) for additional information on searching civil and criminal cases. \n<BR><BR>\nThe get_cases, get_map, get_qid, and get_download end points are meant to be used together.<br>  \nThe recommended use scenario for get_cases, get_qid, get_map, and get_downoad is:\n<br>\n<br><b>1)<\/b>&nbsp Use get_cases to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.\n<br><b>2)<\/b>&nbsp Use get_qid, with the returned QID, to paginate through arrays of case results.\n<br><b>3)<\/b>&nbsp Use get_map, with the returned QID, to zoom in\/out and pan on the clustered and individual facility coordinates, related to the returned cases, that meet the QID query criteria.\n<br><b>4)<\/b>&nbsp Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.\n<br><br>\nIn addition to the service endpoints listed above there are two detailed case report services, one for civil cases (get_case_report) and one for criminal cases (get_crcase_report). \nSee the Civil Enforcement Case Report Help (https:\/\/echo.epa.gov\/help\/reports\/enforcement-case-report-help) and the Criminal Case Report Help (https:\/\/echo.epa.gov\/help\/reports\/criminal-case-report-help) for additional information \non then data returned from these two services.   \n<br>\nAdditional ECHO Resources:&nbsp&nbsp <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a>\n<br>\n"
+      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\n<BR><BR>CASE Rest Services provide multiple service endpoints, each with specific capabilities, to search and retrieve data on civil cases entered into the \nIntegrated Compliance Information System (ICIS) and criminal cases entered into the Summary of Criminal Prosecutions database.  \nSee Enforcement Case Search Help (https:\/\/echo.epa.gov\/help\/enforcement-case-search-help) for additional information on searching civil and criminal cases. \n<BR><BR>\nThe get_cases, get_map, get_qid, and get_download end points are meant to be used together.<br>  \nThe recommended use scenario for get_cases, get_qid, get_map, and get_downoad is:\n<br>\n<br><b>1)<\/b>  Use get_cases to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.\n<br><b>2)<\/b>  Use get_qid, with the returned QID, to paginate through arrays of case results.\n<br><b>3)<\/b>  Use get_map, with the returned QID, to zoom in\/out and pan on the clustered and individual facility coordinates, related to the returned cases, that meet the QID query criteria.\n<br><b>4)<\/b>  Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.\n<br><br>\nIn addition to the service endpoints listed above there are two detailed case report services, one for civil cases (get_case_report) and one for criminal cases (get_crcase_report). \nSee the Civil Enforcement Case Report Help (https:\/\/echo.epa.gov\/help\/reports\/enforcement-case-report-help) and the Criminal Case Report Help (https:\/\/echo.epa.gov\/help\/reports\/criminal-case-report-help) for additional information \non then data returned from these two services.   \n<br>\nAdditional ECHO Resources:   <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a>\n<br>\n"
       ,"contact": {
           "name": "US EPA, OECA Integration, Targeting and Access Branch"
       }
@@ -30,20 +30,6 @@
           "name": "callback"
          ,"in": "query"
          ,"description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"search_term": {
-          "name": "search_term"
-         ,"in": "query"
-         ,"description": "Enter a partial or complete search phrase or word."
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"search_code": {
-          "name": "search_code"
-         ,"in": "query"
-         ,"description": "Enter a partial or complete code value."
          ,"type": "string"
          ,"required": false
       }
@@ -268,24 +254,6 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"statute_code": {
-          "name": "statute_code"
-         ,"in": "query"
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"status_flag": {
-          "name": "status_flag"
-         ,"in": "query"
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"sort_order": {
-          "name": "sort_order"
-         ,"in": "query"
-         ,"type": "number"
-         ,"required": false
-      }
       ,"p_role": {
           "name": "p_role"
          ,"in": "query"
@@ -506,17 +474,17 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"p_fac_city": {
-          "name": "p_fac_city"
-         ,"in": "query"
-         ,"description": "Case Facility City Limiter.  Enter a single complete city name to filter cases by facility location city."
-         ,"type": "string"
-         ,"required": false
-      }
       ,"p_case_sens_flg": {
           "name": "p_case_sens_flg"
          ,"in": "query"
          ,"description": "Case Sensitive Data Flag.  Enter a Y or N to include or exclude cases with sensitive data."
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_fac_city": {
+          "name": "p_fac_city"
+         ,"in": "query"
+         ,"description": "Case Facility City Limiter.  Enter a single complete city name to filter cases by facility location city."
          ,"type": "string"
          ,"required": false
       }
@@ -1791,120 +1759,6 @@
             }
          }
       }
-      ,"\/rest_lookups.icis_law_sections": {
-          "get": {
-             "summary": "ECHO ICIS Law Sections Lookup Service"
-            ,"description": "Returns the ICIS Law Section Descriptions."
-            ,"parameters": [
-                {
-                   "name": "output"
-                  ,"in": "query"
-                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-                  ,"enum": [
-                      "JSONP"
-                     ,"JSON"
-                     ,"XML"
-                  ]
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/statute_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/status_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/sort_order"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Returns an array of icis_inspection_types codes and their description. If search term or search code is  not provided, all values are returned."
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk51_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO ICIS Law Sections Lookup Service"
-            ,"description": "Returns the ICIS Law Section Descriptions."
-            ,"parameters": [
-                {
-                   "name": "output"
-                  ,"in": "query"
-                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-                  ,"enum": [
-                      "JSONP"
-                     ,"JSON"
-                     ,"XML"
-                  ]
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/statute_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/status_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/sort_order"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Returns an array of icis_inspection_types codes and their description. If search term or search code is  not provided, all values are returned."
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk51_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
    }
    ,"definitions": {
        "crs0_Cases": {
@@ -1930,7 +1784,7 @@
                 "type": "string"
                ,"title": "Case Category Code"
                ,"example": "AIF"
-               ,"description": "A three-character code that identifies the type of ICIS activity, which includes general categories such as information requests, inspections, compliance determinations, and enforcement.  Activities selected for the ECHO data download are restricted to two subcategories of enforcement:  administrative – formal (AFR), and judicial activities (JDC)."
+               ,"description": "A three-character code that identifies the type of ICIS activity, which includes general categories such as information requests, inspections, compliance determinations, and enforcement.  Activities selected for the ECHO data download are restricted to two subcategories of enforcement:  administrative \u2013 formal (AFR), and judicial activities (JDC)."
             }
             ,"CaseCategoryDesc": {
                 "type": "string"
@@ -2062,6 +1916,16 @@
                ,"example": "0"
                ,"description": "For civil enforcement actions, cost recovery awarded is the amount of cost recovery ordered or agreed to be repaid by the responsible party of parties."
             }
+            ,"Lead": {
+                "type": "string"
+               ,"title": "Lead Agency"
+               ,"example": "EPA"
+               ,"description": "The lead agency (e.g., EPA, State) conducting the inspection"
+            }
+            ,"StateLocPenaltyAmt": {
+                "type": "string"
+               ,"title": "State Local Penalty Amount"
+            }
             ,"SEPCategories": {
                 "type": "string"
                ,"title": "Supplemental Environmental Projects Categories"
@@ -2107,6 +1971,8 @@
             ,"DateClosed"
             ,"EnfOutcome"
             ,"CostRecovery"
+            ,"Lead"
+            ,"StateLocPenaltyAmt"
             ,"SEPCategories"
             ,"SEPTexts"
             ,"MaxScore"
@@ -2198,6 +2064,14 @@
             ,"PopUpBaseURL"
             ,"MapData"
          ]
+      }
+      ,"crs1_CAEDDocuments": {
+          "type": "object"
+         ,"properties": {
+             "Dummy": {
+                "type": "string"
+            }
+         }
       }
       ,"crs1_CaseInformation": {
           "type": "object"
@@ -3036,6 +2910,12 @@
                    "$ref": "#\/definitions\/crs1_EnforcementConclusions"
                }
             }
+            ,"CAEDDocuments": {
+                "type": "array"
+               ,"items": {
+                   "$ref": "#\/definitions\/crs1_CAEDDocuments"
+               }
+            }
          }
          ,"required": [
              "Message"
@@ -3049,6 +2929,7 @@
             ,"Pollutants"
             ,"RelatedActivities"
             ,"EnforcementConclusions"
+            ,"CAEDDocuments"
          ]
       }
       ,"crs1_SupplementalEnvironmentalProjects": {
@@ -3497,47 +3378,6 @@
                ,"title": "Result Columns"
                ,"items": {
                    "$ref": "#\/definitions\/met_ResultsColumns"
-               }
-            }
-         }
-         ,"required": [
-             "Message"
-         ]
-      }
-      ,"rlk00_LuValues": {
-          "type": "object"
-         ,"description": "Lookup Values"
-         ,"properties": {
-             "ValueCode": {
-                "type": "string"
-               ,"title": "Value Code"
-               ,"example": "77034"
-            }
-            ,"ValueDescription": {
-                "type": "string"
-               ,"title": "Value Description"
-               ,"example": "1-Butanol"
-            }
-         }
-         ,"required": [
-             "ValueCode"
-            ,"ValueDescription"
-         ]
-      }
-      ,"rlk51_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Message": {
-                "type": "string"
-               ,"title": "Message"
-               ,"example": "Success"
-               ,"description": "Field to record messages (typically performance-related) about packet processing"
-            }
-            ,"LuValues": {
-                "type": "array"
-               ,"items": {
-                   "$ref": "#\/definitions\/rlk00_LuValues"
                }
             }
          }

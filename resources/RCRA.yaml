@@ -11,15 +11,15 @@ info:
     <BR><BR>
     The recommended use scenario for get_facilities, get_qid, get_map, and get_downoad is:
     <br>
-    <br><b>1)</b>&nbsp Use get_facilities to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.
-    <br><b>2)</b>&nbsp Use get_qid, with the returned QID, to paginate through arrays of facility results.
-    <br><b>3)</b>&nbsp Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates that meet the QID query criteria.
-    <br><b>4)</b>&nbsp Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.
+    <br><b>1)</b>  Use get_facilities to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.
+    <br><b>2)</b>  Use get_qid, with the returned QID, to paginate through arrays of facility results.
+    <br><b>3)</b>  Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates that meet the QID query criteria.
+    <br><b>4)</b>  Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.
     <br>
     <br>
     Use the qcolumns parameter to customize your search results.  Use the Metdata service endpoint for a list of available output objects, their Column Ids, and their definitions to help you build your customized output. 
     <br><br>
-    Additional ECHO Resources:&nbsp&nbsp <a href="https://echo.epa.gov/tools/web-services">Web Services</a>, <a href="https://echo.epa.gov/resources/echo-data/about-the-data">About ECHO's Data</a>, <a href="https://echo.epa.gov/tools/data-downloads">Data Downloads</a>
+    Additional ECHO Resources:   <a href="https://echo.epa.gov/tools/web-services">Web Services</a>, <a href="https://echo.epa.gov/resources/echo-data/about-the-data">About ECHO's Data</a>, <a href="https://echo.epa.gov/tools/data-downloads">Data Downloads</a>
     <br>
   contact: 
     name: US EPA, OECA Integration, Targeting and Access Branch
@@ -825,12 +825,6 @@ parameters:
     description: Number of Current Violations Limiter.  Enter a value in the format GTXX replacing XX with a numeric value to select facilities with an equal to greater count of current violations.  Enter Z to select facilities with zero violations.
     type: string
     required: false
-  p_icoo: 
-    name: p_icoo
-    in: query
-    description: "Indian country search and/or flag.  Enter \"Y\" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_ico, p_fac_ico or p_fac_icoo conditions will be returned."
-    type: string
-    required: false
   p_ejscreen_over80cnt: 
     name: p_ejscreen_over80cnt
     in: query
@@ -855,6 +849,12 @@ parameters:
     enum: 
     - Y
     - N
+    type: string
+    required: false
+  p_icoo: 
+    name: p_icoo
+    in: query
+    description: "Indian country search and/or flag.  Enter \"Y\" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_ico, p_fac_ico or p_fac_icoo conditions will be returned."
     type: string
     required: false
   p_des: 
@@ -1914,9 +1914,9 @@ definitions:
         type: string
       RCRAUniverse: 
         type: string
-      RCRANaics: 
+      RCRANAICS: 
         type: string
-      FacSicCodes: 
+      FacSICCodes: 
         type: string
       FacPercentMinority: 
         type: string
@@ -1940,8 +1940,11 @@ definitions:
         title: Chesapeake Bay Flag
         example: Y
         description: "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
-      AirIDs: 
+      AIRIDs: 
         type: string
+        title: AIR Facility System ID
+        example: DC0000001100195254
+        description: Air Facility System (AFS) ID.
       CWAIDs: 
         type: string
       RCRAIDs: 
@@ -2186,6 +2189,11 @@ definitions:
         type: string
       Tsdf: 
         type: string
+      WebDocs: 
+        type: string
+        title: Web Documents
+        example: C6
+        description: Contains flags that identify what web accessible documents are available for the facility.
       Score: 
         type: string
         title: Score
@@ -2217,13 +2225,13 @@ definitions:
     - FacUsMexBorderFlg
     - RCRAImpWaterFlg
     - RCRAUniverse
-    - RCRANaics
-    - FacSicCodes
+    - RCRANAICS
+    - FacSICCodes
     - FacPercentMinority
     - FacPopulationDensity
     - FacFederalAgencyCode
     - ChesapeakeBayFlag
-    - AirIDs
+    - AIRIDs
     - CWAIDs
     - RCRAIDs
     - TRIIDs
@@ -2655,9 +2663,9 @@ definitions:
         type: string
       RCRAUniverse: 
         type: string
-      RCRANaics: 
+      RCRANAICS: 
         type: string
-      FacSicCodes: 
+      FacSICCodes: 
         type: string
       FacPercentMinority: 
         type: string
@@ -2681,8 +2689,11 @@ definitions:
         title: Chesapeake Bay Flag
         example: Y
         description: "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
-      AirIDs: 
+      AIRIDs: 
         type: string
+        title: AIR Facility System ID
+        example: DC0000001100195254
+        description: Air Facility System (AFS) ID.
       CWAIDs: 
         type: string
       RCRAIDs: 
@@ -2927,6 +2938,11 @@ definitions:
         type: string
       Tsdf: 
         type: string
+      WebDocs: 
+        type: string
+        title: Web Documents
+        example: C6
+        description: Contains flags that identify what web accessible documents are available for the facility.
       Score: 
         type: string
         title: Score
@@ -2959,13 +2975,13 @@ definitions:
     - FacUsMexBorderFlg
     - RCRAImpWaterFlg
     - RCRAUniverse
-    - RCRANaics
-    - FacSicCodes
+    - RCRANAICS
+    - FacSICCodes
     - FacPercentMinority
     - FacPopulationDensity
     - FacFederalAgencyCode
     - ChesapeakeBayFlag
-    - AirIDs
+    - AIRIDs
     - CWAIDs
     - RCRAIDs
     - TRIIDs
@@ -3231,9 +3247,9 @@ definitions:
         type: string
       RCRAUniverse: 
         type: string
-      RCRANaics: 
+      RCRANAICS: 
         type: string
-      FacSicCodes: 
+      FacSICCodes: 
         type: string
       FacPercentMinority: 
         type: number
@@ -3506,6 +3522,11 @@ definitions:
         type: string
       Tsdf: 
         type: string
+      WebDocs: 
+        type: string
+        title: Web Documents
+        example: C6
+        description: Contains flags that identify what web accessible documents are available for the facility.
       Score: 
         type: number
         title: Score
@@ -3535,8 +3556,8 @@ definitions:
     - FacUsMexBorderFlg
     - RCRAImpWaterFlg
     - RCRAUniverse
-    - RCRANaics
-    - FacSicCodes
+    - RCRANAICS
+    - FacSICCodes
     - FacPercentMinority
     - FacPopulationDensity
     - FacFederalAgencyCode

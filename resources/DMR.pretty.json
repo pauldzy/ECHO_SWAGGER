@@ -2,7 +2,7 @@
     "swagger": "2.0"
    ,"info": {
        "title": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Discharge Monitoring Report (DMR) Rest Services"
-      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\n\n<br><br>\nAdditional ECHO Resources:&nbsp&nbsp <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a>\n<br>"
+      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\n\n<br><br>\nAdditional ECHO Resources:   <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a>\n<br>"
       ,"contact": {
           "name": "US EPA, OECA Integration, Targeting and Access Branch"
       }
@@ -42,20 +42,6 @@
           "name": "callback"
          ,"in": "query"
          ,"description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"search_term": {
-          "name": "search_term"
-         ,"in": "query"
-         ,"description": "Enter a partial or complete search phrase or word."
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"search_code": {
-          "name": "search_code"
-         ,"in": "query"
-         ,"description": "Enter a partial or complete code value."
          ,"type": "string"
          ,"required": false
       }
@@ -157,6 +143,17 @@
           "name": "newsort"
          ,"in": "query"
          ,"description": "Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column."
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"descending": {
+          "name": "descending"
+         ,"in": "query"
+         ,"description": "Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated."
+         ,"enum": [
+             "Y"
+            ,"N"
+         ]
          ,"type": "string"
          ,"required": false
       }
@@ -296,12 +293,6 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"p_fac_radius": {
-          "name": "p_fac_radius"
-         ,"in": "query"
-         ,"type": "number"
-         ,"required": false
-      }
       ,"p_watershed": {
           "name": "p_watershed"
          ,"in": "query"
@@ -314,12 +305,6 @@
          ,"in": "query"
          ,"description": "Polltant Name. Provide a single pollutant name to restrict results."
          ,"type": "string"
-         ,"required": false
-      }
-      ,"p_pf_radius": {
-          "name": "p_pf_radius"
-         ,"in": "query"
-         ,"type": "number"
          ,"required": false
       }
       ,"p_permit_id": {
@@ -403,34 +388,10 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"p_fac_lng": {
-          "name": "p_fac_lng"
-         ,"in": "query"
-         ,"type": "number"
-         ,"required": false
-      }
-      ,"p_fac_lat": {
-          "name": "p_fac_lat"
-         ,"in": "query"
-         ,"type": "number"
-         ,"required": false
-      }
       ,"p_cerclis": {
           "name": "p_cerclis"
          ,"in": "query"
          ,"type": "string"
-         ,"required": false
-      }
-      ,"p_pf_lng": {
-          "name": "p_pf_lng"
-         ,"in": "query"
-         ,"type": "number"
-         ,"required": false
-      }
-      ,"p_pf_lat": {
-          "name": "p_pf_lat"
-         ,"in": "query"
-         ,"type": "number"
          ,"required": false
       }
       ,"p_naics2": {
@@ -460,8 +421,60 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"loads": {
-          "name": "loads"
+      ,"p_fname": {
+          "name": "p_fname"
+         ,"in": "query"
+         ,"description": "Facility Name Filter. Enter a full or partial facility name to restrict results. "
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_fifra": {
+          "name": "p_fifra"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_count": {
+          "name": "p_count"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_year": {
+          "name": "p_year"
+         ,"in": "query"
+         ,"description": "The calendar year for the annual pollutant loadings. "
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_tmdl": {
+          "name": "p_tmdl"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_spcc": {
+          "name": "p_spcc"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_potw": {
+          "name": "p_potw"
+         ,"in": "query"
+         ,"description": "Publicly-Owned Treatment Works (POTW) Flag. Provide Y to restrict results to POTWs."
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_psc": {
+          "name": "p_psc"
+         ,"in": "query"
+         ,"description": "Point Source Category."
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_lod": {
+          "name": "p_lod"
          ,"in": "query"
          ,"type": "string"
          ,"required": false
@@ -486,64 +499,6 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"p_lod": {
-          "name": "p_lod"
-         ,"in": "query"
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"p_psc": {
-          "name": "p_psc"
-         ,"in": "query"
-         ,"description": "Point Source Category."
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"p_potw": {
-          "name": "p_potw"
-         ,"in": "query"
-         ,"description": "Publicly-Owned Treatment Works (POTW) Flag. Provide Y to restrict results to POTWs."
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"p_spcc": {
-          "name": "p_spcc"
-         ,"in": "query"
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"p_tmdl": {
-          "name": "p_tmdl"
-         ,"in": "query"
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"p_year": {
-          "name": "p_year"
-         ,"in": "query"
-         ,"description": "The calendar year for the annual pollutant loadings. "
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"p_count": {
-          "name": "p_count"
-         ,"in": "query"
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"p_fifra": {
-          "name": "p_fifra"
-         ,"in": "query"
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"p_fname": {
-          "name": "p_fname"
-         ,"in": "query"
-         ,"description": "Facility Name Filter. Enter a full or partial facility name to restrict results. "
-         ,"type": "string"
-         ,"required": false
-      }
       ,"qcolumns": {
           "name": "qcolumns"
          ,"in": "query"
@@ -556,6 +511,27 @@
          ,"in": "query"
          ,"description": "North American Industry Classification System Filter. Enter two to six digits to filter results to facilities having matching NAICS codes.  Digits less than six will match to all codes beginning with the provided values."
          ,"type": "string"
+         ,"required": false
+      }
+      ,"p_lat": {
+          "name": "p_lat"
+         ,"in": "query"
+         ,"description": "Latitude location in decimal degrees."
+         ,"type": "number"
+         ,"required": false
+      }
+      ,"p_long": {
+          "name": "p_long"
+         ,"in": "query"
+         ,"description": "Longitude location in decimal degrees."
+         ,"type": "number"
+         ,"required": false
+      }
+      ,"p_radius": {
+          "name": "p_radius"
+         ,"in": "query"
+         ,"description": "Spatial Search Radius.  Enter a radius up to 100 miles in which to spatially search for facilities."
+         ,"type": "number"
          ,"required": false
       }
    }
@@ -601,13 +577,13 @@
                    "$ref": "#\/parameters\/p_exceed"
                }
                ,{
-                   "$ref": "#\/parameters\/p_fac_lat"
+                   "$ref": "#\/parameters\/p_lat"
                }
                ,{
-                   "$ref": "#\/parameters\/p_fac_lng"
+                   "$ref": "#\/parameters\/p_long"
                }
                ,{
-                   "$ref": "#\/parameters\/p_fac_radius"
+                   "$ref": "#\/parameters\/p_radius"
                }
                ,{
                    "$ref": "#\/parameters\/p_fac_type"
@@ -685,15 +661,6 @@
                    "$ref": "#\/parameters\/p_pf_id"
                }
                ,{
-                   "$ref": "#\/parameters\/p_pf_lat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_lng"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_radius"
-               }
-               ,{
                    "$ref": "#\/parameters\/p_poll_cat"
                }
                ,{
@@ -760,15 +727,7 @@
                    "$ref": "#\/parameters\/newsort"
                }
                ,{
-                   "name": "descending"
-                  ,"in": "query"
-                  ,"description": "Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated."
-                  ,"enum": [
-                      "Y"
-                     ,"N"
-                  ]
-                  ,"type": "string"
-                  ,"required": false
+                   "$ref": "#\/parameters\/descending"
                }
                ,{
                    "$ref": "#\/parameters\/responseset"
@@ -843,13 +802,13 @@
                    "$ref": "#\/parameters\/p_exceed"
                }
                ,{
-                   "$ref": "#\/parameters\/p_fac_lat"
+                   "$ref": "#\/parameters\/p_lat"
                }
                ,{
-                   "$ref": "#\/parameters\/p_fac_lng"
+                   "$ref": "#\/parameters\/p_long"
                }
                ,{
-                   "$ref": "#\/parameters\/p_fac_radius"
+                   "$ref": "#\/parameters\/p_radius"
                }
                ,{
                    "$ref": "#\/parameters\/p_fac_type"
@@ -927,15 +886,6 @@
                    "$ref": "#\/parameters\/p_pf_id"
                }
                ,{
-                   "$ref": "#\/parameters\/p_pf_lat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_lng"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_radius"
-               }
-               ,{
                    "$ref": "#\/parameters\/p_poll_cat"
                }
                ,{
@@ -1002,15 +952,7 @@
                    "$ref": "#\/parameters\/newsort"
                }
                ,{
-                   "name": "descending"
-                  ,"in": "query"
-                  ,"description": "Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated."
-                  ,"enum": [
-                      "Y"
-                     ,"N"
-                  ]
-                  ,"type": "string"
-                  ,"required": false
+                   "$ref": "#\/parameters\/descending"
                }
                ,{
                    "$ref": "#\/parameters\/responseset"
@@ -1036,978 +978,6 @@
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/dmr1_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/dmr_rest_services.get_custom_data_monitor_pd": {
-          "get": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_count"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cas"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cerclis"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cso_outfalls"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_link"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_end_date"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_est"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_lat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_lng"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_radius"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fifra"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fname"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc_region"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_intermittent_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lbs_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_loads_data"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lod"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj_model"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_mon_loc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_nd"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_nutrient_agg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pct_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pct_limit_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_lat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_lng"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_radius"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_cat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_potw"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_psc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ptreatment"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_qc_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sig_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_spcc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_start_date"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_tmdl"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_treatment_tech"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_treatment_tech_present"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/pageno"
-               }
-               ,{
-                   "$ref": "#\/parameters\/newsort"
-               }
-               ,{
-                   "name": "descending"
-                  ,"in": "query"
-                  ,"description": "Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated."
-                  ,"enum": [
-                      "Y"
-                     ,"N"
-                  ]
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/responseset"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/qcolumns"
-               }
-               ,{
-                   "$ref": "#\/parameters\/suppress_headers"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr3_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_count"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cas"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cerclis"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cso_outfalls"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_link"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_end_date"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_est"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_lat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_lng"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_radius"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fifra"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fname"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc_region"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_intermittent_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lbs_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_loads_data"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lod"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj_model"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_mon_loc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_nd"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_nutrient_agg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pct_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pct_limit_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_lat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_lng"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_radius"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_cat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_potw"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_psc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ptreatment"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_qc_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sig_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_spcc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_start_date"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_tmdl"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_treatment_tech"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_treatment_tech_present"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/pageno"
-               }
-               ,{
-                   "$ref": "#\/parameters\/newsort"
-               }
-               ,{
-                   "name": "descending"
-                  ,"in": "query"
-                  ,"description": "Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated."
-                  ,"enum": [
-                      "Y"
-                     ,"N"
-                  ]
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/responseset"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/qcolumns"
-               }
-               ,{
-                   "$ref": "#\/parameters\/suppress_headers"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr3_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/dmr_rest_services.get_custom_data_annual": {
-          "get": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_count"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cas"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cerclis"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cso_outfalls"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_link"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_end_date"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_est"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_lat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_lng"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_radius"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fifra"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fname"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc_region"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_intermittent_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lbs_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_loads_data"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lod"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj_model"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_mon_loc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_nd"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_nutrient_agg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pct_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pct_limit_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_lat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_lng"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_radius"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_cat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_potw"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_psc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ptreatment"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_qc_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sig_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_spcc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_start_date"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_tmdl"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_treatment_tech"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_treatment_tech_present"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/pageno"
-               }
-               ,{
-                   "$ref": "#\/parameters\/newsort"
-               }
-               ,{
-                   "name": "descending"
-                  ,"in": "query"
-                  ,"description": "Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated."
-                  ,"enum": [
-                      "Y"
-                     ,"N"
-                  ]
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/responseset"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/qcolumns"
-               }
-               ,{
-                   "$ref": "#\/parameters\/suppress_headers"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr2_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_count"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cas"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cerclis"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cso_outfalls"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_link"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_end_date"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_est"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_lat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_lng"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_radius"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fifra"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fname"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc_region"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_intermittent_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lbs_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_loads_data"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lod"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj_model"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_mon_loc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_nd"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_nutrient_agg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pct_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pct_limit_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_lat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_lng"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_radius"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_cat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_potw"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_psc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ptreatment"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_qc_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sig_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_spcc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_start_date"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_tmdl"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_treatment_tech"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_treatment_tech_present"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/pageno"
-               }
-               ,{
-                   "$ref": "#\/parameters\/newsort"
-               }
-               ,{
-                   "name": "descending"
-                  ,"in": "query"
-                  ,"description": "Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated."
-                  ,"enum": [
-                      "Y"
-                     ,"N"
-                  ]
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/responseset"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/qcolumns"
-               }
-               ,{
-                   "$ref": "#\/parameters\/suppress_headers"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr2_Results"
                      }
                   }
                   ,"required": [
@@ -2113,21 +1083,16 @@
                    "$ref": "#\/parameters\/p_permit_id"
                }
                ,{
+                   "$ref": "#\/parameters\/p_permit_type"
+               }
+               ,{
                    "$ref": "#\/parameters\/pageno"
                }
                ,{
                    "$ref": "#\/parameters\/newsort"
                }
                ,{
-                   "name": "descending"
-                  ,"in": "query"
-                  ,"description": "Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated."
-                  ,"enum": [
-                      "Y"
-                     ,"N"
-                  ]
-                  ,"type": "string"
-                  ,"required": false
+                   "$ref": "#\/parameters\/descending"
                }
                ,{
                    "$ref": "#\/parameters\/responseset"
@@ -2250,21 +1215,16 @@
                    "$ref": "#\/parameters\/p_permit_id"
                }
                ,{
+                   "$ref": "#\/parameters\/p_permit_type"
+               }
+               ,{
                    "$ref": "#\/parameters\/pageno"
                }
                ,{
                    "$ref": "#\/parameters\/newsort"
                }
                ,{
-                   "name": "descending"
-                  ,"in": "query"
-                  ,"description": "Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated."
-                  ,"enum": [
-                      "Y"
-                     ,"N"
-                  ]
-                  ,"type": "string"
-                  ,"required": false
+                   "$ref": "#\/parameters\/descending"
                }
                ,{
                    "$ref": "#\/parameters\/responseset"
@@ -2294,36 +1254,223 @@
             }
          }
       }
-      ,"\/rest_lookups.dmr_cas_numbers": {
+      ,"\/dmr_rest_services.get_custom_data_annual": {
           "get": {
-             "summary": "ECHO DMR CAS Number Lookup Service"
-            ,"description": "Chemical Abstract Service (CAS) Number"
+             "summary": "Discharge Monitoring Report Custom Service"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
                }
                ,{
+                   "$ref": "#\/parameters\/p_count"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cas"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cerclis"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_co"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cso_outfalls"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ct"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_dmr_tri_link"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_end_date"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_esa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_est"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_long"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_radius"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fac_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fifra"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fname"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc_region"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_poll"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_water"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_intermittent_disch"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lbs_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_loads_data"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lod"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj_model"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_mon_loc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_nd"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_nutrient_agg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pct_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pct_limit_disch"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pf_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_cat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_name"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_potw"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_psc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ptreatment"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_qc_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_reg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sig_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_spcc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_st"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_start_date"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_tmdl"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_treatment_tech"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_treatment_tech_present"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_year"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_zip"
+               }
+               ,{
+                   "$ref": "#\/parameters\/pageno"
+               }
+               ,{
+                   "$ref": "#\/parameters\/newsort"
+               }
+               ,{
+                   "$ref": "#\/parameters\/descending"
+               }
+               ,{
+                   "$ref": "#\/parameters\/responseset"
+               }
+               ,{
                    "$ref": "#\/parameters\/callback"
                }
                ,{
-                   "$ref": "#\/parameters\/search_term"
+                   "$ref": "#\/parameters\/qcolumns"
                }
                ,{
-                   "$ref": "#\/parameters\/search_code"
+                   "$ref": "#\/parameters\/suppress_headers"
                }
             ]
             ,"tags": [
-                "Lookups"
+                "Discharge Monitoring Report"
             ]
             ,"responses": {
              "200": {
                 "description": "Results"
                ,"schema": {
                    "type": "object"
-                  ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk18_Results"
+                         "$ref": "#\/definitions\/dmr2_Results"
                      }
                   }
                   ,"required": [
@@ -2334,34 +1481,221 @@
             }
          }
          ,"post": {
-             "summary": "ECHO DMR CAS Number Lookup Service"
-            ,"description": "Chemical Abstract Service (CAS) Number"
+             "summary": "Discharge Monitoring Report Custom Service"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
                }
                ,{
+                   "$ref": "#\/parameters\/p_count"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cas"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cerclis"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_co"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cso_outfalls"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ct"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_dmr_tri_link"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_end_date"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_esa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_est"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_long"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_radius"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fac_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fifra"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fname"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc_region"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_poll"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_water"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_intermittent_disch"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lbs_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_loads_data"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lod"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj_model"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_mon_loc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_nd"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_nutrient_agg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pct_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pct_limit_disch"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pf_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_cat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_name"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_potw"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_psc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ptreatment"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_qc_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_reg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sig_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_spcc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_st"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_start_date"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_tmdl"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_treatment_tech"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_treatment_tech_present"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_year"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_zip"
+               }
+               ,{
+                   "$ref": "#\/parameters\/pageno"
+               }
+               ,{
+                   "$ref": "#\/parameters\/newsort"
+               }
+               ,{
+                   "$ref": "#\/parameters\/descending"
+               }
+               ,{
+                   "$ref": "#\/parameters\/responseset"
+               }
+               ,{
                    "$ref": "#\/parameters\/callback"
                }
                ,{
-                   "$ref": "#\/parameters\/search_term"
+                   "$ref": "#\/parameters\/qcolumns"
                }
                ,{
-                   "$ref": "#\/parameters\/search_code"
+                   "$ref": "#\/parameters\/suppress_headers"
                }
             ]
             ,"tags": [
-                "Lookups"
+                "Discharge Monitoring Report"
             ]
             ,"responses": {
              "200": {
                 "description": "Results"
                ,"schema": {
                    "type": "object"
-                  ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk18_Results"
+                         "$ref": "#\/definitions\/dmr2_Results"
                      }
                   }
                   ,"required": [
@@ -2372,35 +1706,223 @@
             }
          }
       }
-      ,"\/rest_lookups.dmr_naics2_codes": {
+      ,"\/dmr_rest_services.get_custom_data_monitor_pd": {
           "get": {
-             "summary": "ECHO DMR 2-Digit NAICS Codes Lookup Service"
+             "summary": "Discharge Monitoring Report Custom Service"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
                }
                ,{
+                   "$ref": "#\/parameters\/p_count"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cas"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cerclis"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_co"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cso_outfalls"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ct"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_dmr_tri_link"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_end_date"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_esa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_est"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_long"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_radius"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fac_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fifra"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fname"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc_region"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_poll"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_water"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_intermittent_disch"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lbs_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_loads_data"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lod"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj_model"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_mon_loc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_nd"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_nutrient_agg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pct_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pct_limit_disch"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pf_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_cat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_name"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_potw"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_psc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ptreatment"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_qc_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_reg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sig_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_spcc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_st"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_start_date"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_tmdl"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_treatment_tech"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_treatment_tech_present"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_year"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_zip"
+               }
+               ,{
+                   "$ref": "#\/parameters\/pageno"
+               }
+               ,{
+                   "$ref": "#\/parameters\/newsort"
+               }
+               ,{
+                   "$ref": "#\/parameters\/descending"
+               }
+               ,{
+                   "$ref": "#\/parameters\/responseset"
+               }
+               ,{
                    "$ref": "#\/parameters\/callback"
                }
                ,{
-                   "$ref": "#\/parameters\/search_term"
+                   "$ref": "#\/parameters\/qcolumns"
                }
                ,{
-                   "$ref": "#\/parameters\/search_code"
+                   "$ref": "#\/parameters\/suppress_headers"
                }
             ]
             ,"tags": [
-                "Lookups"
+                "Discharge Monitoring Report"
             ]
             ,"responses": {
              "200": {
                 "description": "Results"
                ,"schema": {
                    "type": "object"
-                  ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk19_Results"
+                         "$ref": "#\/definitions\/dmr3_Results"
                      }
                   }
                   ,"required": [
@@ -2411,903 +1933,221 @@
             }
          }
          ,"post": {
-             "summary": "ECHO DMR 2-Digit NAICS Codes Lookup Service"
+             "summary": "Discharge Monitoring Report Custom Service"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
                }
                ,{
+                   "$ref": "#\/parameters\/p_count"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cas"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cerclis"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_co"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cso_outfalls"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ct"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_dmr_tri_link"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_end_date"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_esa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_est"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_long"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_radius"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fac_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fifra"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fname"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc_region"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_poll"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_water"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_intermittent_disch"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lbs_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_loads_data"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lod"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj_model"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_mon_loc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_nd"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_nutrient_agg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pct_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pct_limit_disch"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pf_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_cat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_name"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_potw"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_psc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ptreatment"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_qc_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_reg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sig_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_spcc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_st"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_start_date"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_tmdl"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_treatment_tech"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_treatment_tech_present"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_year"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_zip"
+               }
+               ,{
+                   "$ref": "#\/parameters\/pageno"
+               }
+               ,{
+                   "$ref": "#\/parameters\/newsort"
+               }
+               ,{
+                   "$ref": "#\/parameters\/descending"
+               }
+               ,{
+                   "$ref": "#\/parameters\/responseset"
+               }
+               ,{
                    "$ref": "#\/parameters\/callback"
                }
                ,{
-                   "$ref": "#\/parameters\/search_term"
+                   "$ref": "#\/parameters\/qcolumns"
                }
                ,{
-                   "$ref": "#\/parameters\/search_code"
+                   "$ref": "#\/parameters\/suppress_headers"
                }
             ]
             ,"tags": [
-                "Lookups"
+                "Discharge Monitoring Report"
             ]
             ,"responses": {
              "200": {
                 "description": "Results"
                ,"schema": {
                    "type": "object"
-                  ,"description": "Root Object"
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rlk19_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_parameters": {
-          "get": {
-             "summary": "ECHO DMR Parameter Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk20_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO DMR Parameter Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk20_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_point_source_cats": {
-          "get": {
-             "summary": "ECHO DMR Point Source Category Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk21_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO DMR Point Source Category Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk21_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_poll_cats": {
-          "get": {
-             "summary": "ECHO DMR Pollutant Category Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/loads"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk22_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO DMR Pollutant Category Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/loads"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk22_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_pollutants": {
-          "get": {
-             "summary": "ECHO DMR Pollutants Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk23_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO DMR Pollutants Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk23_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_reporting_year": {
-          "get": {
-             "summary": "ECHO DMR Reporting Year Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-               ,{
-                   "name": "descending"
-                  ,"in": "query"
-                  ,"description": "Output Sort Column Descending Flag.  Enter Y to sort results in descending order."
-                  ,"type": "string"
-                  ,"required": false
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk24_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO DMR Reporting Year Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-               ,{
-                   "name": "descending"
-                  ,"in": "query"
-                  ,"description": "Output Sort Column Descending Flag.  Enter Y to sort results in descending order."
-                  ,"type": "string"
-                  ,"required": false
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk24_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_sic2_codes": {
-          "get": {
-             "summary": "ECHO DMR SIC Code Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk25_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO DMR SIC Code Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk25_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_treatment_technologies": {
-          "get": {
-             "summary": "ECHO DMR CWNS Treatment Type Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk26_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO DMR CWNS Treatment Type Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk26_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_tri_chemicals": {
-          "get": {
-             "summary": "ECHO TRI Chemical Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk27_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO TRI Chemical Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk27_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_tri_reporting_year": {
-          "get": {
-             "summary": "ECHO TRI Reporting Year Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-               ,{
-                   "name": "descending"
-                  ,"in": "query"
-                  ,"description": "Output Sort Column Descending Flag.  Enter Y to sort results in descending order."
-                  ,"type": "string"
-                  ,"required": false
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk28_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO TRI Reporting Year Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-               ,{
-                   "name": "descending"
-                  ,"in": "query"
-                  ,"description": "Output Sort Column Descending Flag.  Enter Y to sort results in descending order."
-                  ,"type": "string"
-                  ,"required": false
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk28_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_watershed_groups": {
-          "get": {
-             "summary": "ECHO DMR Watershed Group Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk29_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO DMR Watershed Group Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk29_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.dmr_watersheds": {
-          "get": {
-             "summary": "ECHO DMR Major Watershed Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk30_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "ECHO DMR Major Watershed Lookup Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk30_Results"
+                         "$ref": "#\/definitions\/dmr3_Results"
                      }
                   }
                   ,"required": [
@@ -3857,6 +2697,11 @@
             ,"QcFlag": {
                 "type": "string"
             }
+            ,"MeasurementType": {
+                "type": "string"
+               ,"title": "Measurement Type"
+               ,"example": "NMth"
+            }
          }
          ,"required": [
              "DmrYear"
@@ -3902,6 +2747,7 @@
             ,"HasPermitLimits"
             ,"HasLoadingsData"
             ,"QcFlag"
+            ,"MeasurementType"
          ]
       }
       ,"dmr3_Results": {
@@ -4318,10 +3164,10 @@
             ,"WithMonReqOnly": {
                 "type": "string"
             }
-            ,"WithDataIcis": {
+            ,"WithMonReqLimits": {
                 "type": "string"
             }
-            ,"WithMonReqLimits": {
+            ,"WithDataIcis": {
                 "type": "string"
             }
          }
@@ -4334,8 +3180,8 @@
             ,"WithPermitDataMajor"
             ,"WithPermitDataMinor"
             ,"WithMonReqOnly"
-            ,"WithDataIcis"
             ,"WithMonReqLimits"
+            ,"WithDataIcis"
          ]
       }
       ,"dmr0_Results": {
@@ -4734,6 +3580,9 @@
             ,"QcFlag": {
                 "type": "string"
             }
+            ,"ExceedanceFlag": {
+                "type": "string"
+            }
          }
          ,"required": [
              "PollutantDesc"
@@ -4742,6 +3591,7 @@
             ,"TRIInfoFlag"
             ,"TotalPounds"
             ,"QcFlag"
+            ,"ExceedanceFlag"
          ]
       }
       ,"dmr0_TopPollutantTWPE": {
@@ -4765,6 +3615,9 @@
             ,"QcFlag": {
                 "type": "string"
             }
+            ,"ExceedanceFlag": {
+                "type": "string"
+            }
          }
          ,"required": [
              "PollutantDesc"
@@ -4773,6 +3626,7 @@
             ,"TRIInfoFlag"
             ,"TotalTwpe"
             ,"QcFlag"
+            ,"ExceedanceFlag"
          ]
       }
       ,"dmr0_TopSIC": {
@@ -5009,357 +3863,6 @@
             ,"QcFlag"
             ,"LimitsInfoFlag"
             ,"DmrInfoFlag"
-         ]
-      }
-      ,"rlk00_LuValues": {
-          "type": "object"
-         ,"description": "Lookup Values"
-         ,"properties": {
-             "ValueCode": {
-                "type": "string"
-               ,"title": "Value Code"
-               ,"example": "77034"
-            }
-            ,"ValueDescription": {
-                "type": "string"
-               ,"title": "Value Description"
-               ,"example": "1-Butanol"
-            }
-         }
-         ,"required": [
-             "ValueCode"
-            ,"ValueDescription"
-         ]
-      }
-      ,"rlk00_LuValues2": {
-          "type": "object"
-         ,"description": "Lookup Values"
-         ,"properties": {
-             "ValueCode": {
-                "type": "string"
-               ,"title": "Value Code"
-               ,"example": "77034"
-            }
-            ,"ValueDescription": {
-                "type": "string"
-               ,"title": "Value Description"
-               ,"example": "1-Butanol"
-            }
-            ,"ValueLongDesc": {
-                "type": "string"
-               ,"title": "Lookup Long Description"
-               ,"example": "All phosphorus and phosphate pollutant parameters. Section 3.1.3 of the Technical Users Background Document for the DMR Pollutant Loading Tool describes how the Loading Tool identifies phosphorus parameters and aggregates phosphorus loads."
-            }
-            ,"ValueType": {
-                "type": "string"
-               ,"title": "Lookup Value Type"
-               ,"example": "loads"
-            }
-         }
-         ,"required": [
-             "ValueCode"
-            ,"ValueDescription"
-            ,"ValueLongDesc"
-            ,"ValueType"
-         ]
-      }
-      ,"rlk00_LuValues3": {
-          "type": "object"
-         ,"description": "Lookup Values"
-         ,"properties": {
-             "Category": {
-                "type": "string"
-               ,"title": "Category"
-               ,"description": "A code that uniquely identifies a category of Supplemental Environment Project (SEP) for a settlement (e.g., Assessments and Audits, Environmental Compliance Promotion, Emergency Planning and Preparedness, Environmental Restoration)."
-            }
-            ,"ValueCode": {
-                "type": "string"
-               ,"title": "Value Code"
-               ,"example": "77034"
-            }
-            ,"ValueDescription": {
-                "type": "string"
-               ,"title": "Value Description"
-               ,"example": "1-Butanol"
-            }
-         }
-         ,"required": [
-             "Category"
-            ,"ValueCode"
-            ,"ValueDescription"
-         ]
-      }
-      ,"rlk18_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Message": {
-                "type": "string"
-               ,"title": "Message"
-               ,"example": "Success"
-               ,"description": "Field to record messages (typically performance-related) about packet processing"
-            }
-            ,"LuValues": {
-                "type": "array"
-               ,"items": {
-                   "$ref": "#\/definitions\/rlk00_LuValues"
-               }
-            }
-         }
-         ,"required": [
-             "Message"
-         ]
-      }
-      ,"rlk19_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Message": {
-                "type": "string"
-               ,"title": "Message"
-               ,"example": "Success"
-               ,"description": "Field to record messages (typically performance-related) about packet processing"
-            }
-            ,"LuValues": {
-                "type": "array"
-               ,"items": {
-                   "$ref": "#\/definitions\/rlk00_LuValues"
-               }
-            }
-         }
-         ,"required": [
-             "Message"
-         ]
-      }
-      ,"rlk20_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Message": {
-                "type": "string"
-               ,"title": "Message"
-               ,"example": "Success"
-               ,"description": "Field to record messages (typically performance-related) about packet processing"
-            }
-            ,"LuValues": {
-                "type": "array"
-               ,"items": {
-                   "$ref": "#\/definitions\/rlk00_LuValues"
-               }
-            }
-         }
-         ,"required": [
-             "Message"
-         ]
-      }
-      ,"rlk21_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Message": {
-                "type": "string"
-               ,"title": "Message"
-               ,"example": "Success"
-               ,"description": "Field to record messages (typically performance-related) about packet processing"
-            }
-            ,"LuValues": {
-                "type": "array"
-               ,"items": {
-                   "$ref": "#\/definitions\/rlk00_LuValues"
-               }
-            }
-         }
-         ,"required": [
-             "Message"
-         ]
-      }
-      ,"rlk22_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Message": {
-                "type": "string"
-               ,"title": "Message"
-               ,"example": "Success"
-               ,"description": "Field to record messages (typically performance-related) about packet processing"
-            }
-            ,"LuValues": {
-                "type": "array"
-               ,"items": {
-                   "$ref": "#\/definitions\/rlk00_LuValues2"
-               }
-            }
-         }
-         ,"required": [
-             "Message"
-         ]
-      }
-      ,"rlk23_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Message": {
-                "type": "string"
-               ,"title": "Message"
-               ,"example": "Success"
-               ,"description": "Field to record messages (typically performance-related) about packet processing"
-            }
-            ,"LuValues": {
-                "type": "array"
-               ,"items": {
-                   "$ref": "#\/definitions\/rlk00_LuValues"
-               }
-            }
-         }
-         ,"required": [
-             "Message"
-         ]
-      }
-      ,"rlk24_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Message": {
-                "type": "string"
-               ,"title": "Message"
-               ,"example": "Success"
-               ,"description": "Field to record messages (typically performance-related) about packet processing"
-            }
-            ,"LuValues": {
-                "type": "array"
-               ,"items": {
-                   "$ref": "#\/definitions\/rlk00_LuValues"
-               }
-            }
-         }
-         ,"required": [
-             "Message"
-         ]
-      }
-      ,"rlk25_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Message": {
-                "type": "string"
-               ,"title": "Message"
-               ,"example": "Success"
-               ,"description": "Field to record messages (typically performance-related) about packet processing"
-            }
-            ,"LuValues": {
-                "type": "array"
-               ,"items": {
-                   "$ref": "#\/definitions\/rlk00_LuValues"
-               }
-            }
-         }
-         ,"required": [
-             "Message"
-         ]
-      }
-      ,"rlk26_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Message": {
-                "type": "string"
-               ,"title": "Message"
-               ,"example": "Success"
-               ,"description": "Field to record messages (typically performance-related) about packet processing"
-            }
-            ,"LuValues": {
-                "type": "array"
-               ,"items": {
-                   "$ref": "#\/definitions\/rlk00_LuValues3"
-               }
-            }
-         }
-         ,"required": [
-             "Message"
-         ]
-      }
-      ,"rlk27_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Message": {
-                "type": "string"
-               ,"title": "Message"
-               ,"example": "Success"
-               ,"description": "Field to record messages (typically performance-related) about packet processing"
-            }
-            ,"LuValues": {
-                "type": "array"
-               ,"items": {
-                   "$ref": "#\/definitions\/rlk00_LuValues"
-               }
-            }
-         }
-         ,"required": [
-             "Message"
-         ]
-      }
-      ,"rlk28_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Message": {
-                "type": "string"
-               ,"title": "Message"
-               ,"example": "Success"
-               ,"description": "Field to record messages (typically performance-related) about packet processing"
-            }
-            ,"LuValues": {
-                "type": "array"
-               ,"items": {
-                   "$ref": "#\/definitions\/rlk00_LuValues"
-               }
-            }
-         }
-         ,"required": [
-             "Message"
-         ]
-      }
-      ,"rlk29_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Message": {
-                "type": "string"
-               ,"title": "Message"
-               ,"example": "Success"
-               ,"description": "Field to record messages (typically performance-related) about packet processing"
-            }
-            ,"LuValues": {
-                "type": "array"
-               ,"items": {
-                   "$ref": "#\/definitions\/rlk00_LuValues"
-               }
-            }
-         }
-         ,"required": [
-             "Message"
-         ]
-      }
-      ,"rlk30_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Message": {
-                "type": "string"
-               ,"title": "Message"
-               ,"example": "Success"
-               ,"description": "Field to record messages (typically performance-related) about packet processing"
-            }
-            ,"LuValues": {
-                "type": "array"
-               ,"items": {
-                   "$ref": "#\/definitions\/rlk00_LuValues"
-               }
-            }
-         }
-         ,"required": [
-             "Message"
          ]
       }
    }

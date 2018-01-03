@@ -11,15 +11,15 @@ info:
     <BR><BR>
     The recommended use scenario for get_facilities, get_qid, get_map, and get_downoad is:
     <br>
-    <br><b>1)</b>&nbsp Use get_facilities to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.
-    <br><b>2)</b>&nbsp Use get_qid, with the returned QID, to paginate through arrays of facility results.
-    <br><b>3)</b>&nbsp Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates that meet the QID query criteria.
-    <br><b>4)</b>&nbsp Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.
+    <br><b>1)</b>  Use get_facilities to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.
+    <br><b>2)</b>  Use get_qid, with the returned QID, to paginate through arrays of facility results.
+    <br><b>3)</b>  Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates that meet the QID query criteria.
+    <br><b>4)</b>  Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.
     <br>
     <br>
     Use the qcolumns parameter to customize your search results.  Use the Metdata service endpoint for a list of available output objects, their Column Ids, and their definitions to help you build your customized output. 
     <br><br>
-    Additional ECHO Resources:&nbsp&nbsp <a href="https://echo.epa.gov/tools/web-services">Web Services</a>, <a href="https://echo.epa.gov/resources/echo-data/about-the-data">About ECHO's Data</a>, <a href="https://echo.epa.gov/tools/data-downloads">Data Downloads</a>
+    Additional ECHO Resources:   <a href="https://echo.epa.gov/tools/web-services">Web Services</a>, <a href="https://echo.epa.gov/resources/echo-data/about-the-data">About ECHO's Data</a>, <a href="https://echo.epa.gov/tools/data-downloads">Data Downloads</a>
     <br>
   contact: 
     name: US EPA, OECA Integration, Targeting and Access Branch
@@ -1007,12 +1007,6 @@ parameters:
     description: Green House Gas (GHG) Reporting Year. (2010 through 2015)
     type: string
     required: false
-  p_icoo: 
-    name: p_icoo
-    in: query
-    description: "Indian country search and/or flag.  Enter \"Y\" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_ico, p_fac_ico or p_fac_icoo conditions will be returned."
-    type: string
-    required: false
   p_ejscreen_over80cnt: 
     name: p_ejscreen_over80cnt
     in: query
@@ -1037,6 +1031,12 @@ parameters:
     enum: 
     - Y
     - N
+    type: string
+    required: false
+  p_icoo: 
+    name: p_icoo
+    in: query
+    description: "Indian country search and/or flag.  Enter \"Y\" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_ico, p_fac_ico or p_fac_icoo conditions will be returned."
     type: string
     required: false
   p_recvio: 
@@ -2352,10 +2352,10 @@ definitions:
       AIRUniverse: 
         type: string
         example: Minor Emissions
-      AIRNaics: 
+      AIRNAICS: 
         type: string
         example: '812320'
-      FacSicCodes: 
+      FacSICCodes: 
         type: string
       FacPercentMinority: 
         type: string
@@ -2410,7 +2410,6 @@ definitions:
         type: string
       EisIDs: 
         type: string
-        example: '7509611'
       AIRMacts: 
         type: string
         example: ZZZZZ
@@ -2682,6 +2681,11 @@ definitions:
         type: string
       LastDatePceSta: 
         type: string
+      WebDocs: 
+        type: string
+        title: Web Documents
+        example: C6
+        description: Contains flags that identify what web accessible documents are available for the facility.
       Score: 
         type: string
         title: Score
@@ -2715,8 +2719,8 @@ definitions:
     - FacLong
     - FacUsMexBorderFlg
     - AIRUniverse
-    - AIRNaics
-    - FacSicCodes
+    - AIRNAICS
+    - FacSICCodes
     - FacPercentMinority
     - FacPopulationDensity
     - FacFederalAgencyCode
@@ -3038,10 +3042,10 @@ definitions:
       AIRUniverse: 
         type: string
         example: Minor Emissions
-      AIRNaics: 
+      AIRNAICS: 
         type: string
         example: '812320'
-      FacSicCodes: 
+      FacSICCodes: 
         type: string
       FacPercentMinority: 
         type: string
@@ -3096,7 +3100,6 @@ definitions:
         type: string
       EisIDs: 
         type: string
-        example: '7509611'
       AIRMacts: 
         type: string
         example: ZZZZZ
@@ -3368,6 +3371,19 @@ definitions:
         type: string
       LastDatePceSta: 
         type: string
+      AIRCmsCategoryCode: 
+        type: string
+        title: AIR CMS Category Code
+        description: AIR CMS Category Code
+      AIRCmsCategoryDesc: 
+        type: string
+        title: AIR CMS Category Description
+        description: AIR CMS Category Description
+      WebDocs: 
+        type: string
+        title: Web Documents
+        example: C6
+        description: Contains flags that identify what web accessible documents are available for the facility.
       Score: 
         type: string
         title: Score
@@ -3402,8 +3418,8 @@ definitions:
     - FacLong
     - FacUsMexBorderFlg
     - AIRUniverse
-    - AIRNaics
-    - FacSicCodes
+    - AIRNAICS
+    - FacSICCodes
     - FacPercentMinority
     - FacPopulationDensity
     - FacFederalAgencyCode
@@ -3719,10 +3735,10 @@ definitions:
       AIRUniverse: 
         type: string
         example: Minor Emissions
-      AIRNaics: 
+      AIRNAICS: 
         type: string
         example: '812320'
-      FacSicCodes: 
+      FacSICCodes: 
         type: string
       FacPercentMinority: 
         type: number
@@ -3777,7 +3793,6 @@ definitions:
         type: string
       EisIDs: 
         type: string
-        example: '7509611'
       AIRMacts: 
         type: string
         example: ZZZZZ
@@ -4049,6 +4064,11 @@ definitions:
         type: string
       LastDatePceSta: 
         type: string
+      WebDocs: 
+        type: string
+        title: Web Documents
+        example: C6
+        description: Contains flags that identify what web accessible documents are available for the facility.
       Score: 
         type: number
         title: Score
@@ -4080,8 +4100,8 @@ definitions:
     - FacFIPSCode
     - FacUsMexBorderFlg
     - AIRUniverse
-    - AIRNaics
-    - FacSicCodes
+    - AIRNAICS
+    - FacSICCodes
     - FacPercentMinority
     - FacPopulationDensity
     - FacFederalAgencyCode

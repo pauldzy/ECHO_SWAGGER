@@ -15,15 +15,15 @@ info:
     <BR><BR>
     The recommended use scenario for get_facilities, get_qid, get_map, and get_downoad is:
     <br>
-    <br><b>1)</b>&nbsp Use get_facilities to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.
-    <br><b>2)</b>&nbsp Use get_qid, with the returned QID, to paginate through arrays of facility results.
-    <br><b>3)</b>&nbsp Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates that meet the QID query criteria.
-    <br><b>4)</b>&nbsp Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.
+    <br><b>1)</b>  Use get_facilities to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.
+    <br><b>2)</b>  Use get_qid, with the returned QID, to paginate through arrays of facility results.
+    <br><b>3)</b>  Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates that meet the QID query criteria.
+    <br><b>4)</b>  Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.
     <br>
     <br>
     Use the qcolumns parameter to customize your search results.  Use the Metdata service endpoint for a list of available output objects, their Column Ids, and their definitions to help you build your customized output. 
     <br><br>
-    Additional ECHO Resources:&nbsp&nbsp <a href="https://echo.epa.gov/tools/web-services">Web Services</a>, <a href="https://echo.epa.gov/resources/echo-data/about-the-data">About ECHO's Data</a>, <a href="https://echo.epa.gov/tools/data-downloads">Data Downloads</a>
+    Additional ECHO Resources:   <a href="https://echo.epa.gov/tools/web-services">Web Services</a>, <a href="https://echo.epa.gov/resources/echo-data/about-the-data">About ECHO's Data</a>, <a href="https://echo.epa.gov/tools/data-downloads">Data Downloads</a>
     <br>
 
   contact: 
@@ -52,13 +52,17 @@ parameters:
   p_med: 
     name: p_med
     in: query
-    description: Filter Results by Media.- A = Air- C = CAMD (Clean Air Markets Division)- M = RMP (Risk Management Plan)- R = RCRA (Hazardous Waste)- S = SDWA (Public Drinking Water Systems)- W = Water- ALL = Air and Water and RCRA
+    description: Filter Results by Media.- A = Air- C = CAMD (Clean Air Markets Division)- E = EIS (Emissions Inventory Systems)- G = GHG (Greenhouse Gases)- M = RMP (Risk Management Plan)- R = RCRA (Hazardous Waste)- S = SDWA (Public Drinking Water Systems)- T = TRI (Toxic Release Inventory)- TSCA = TSCA (Toxic Substances Control Act)- W = Water- ALL = Air and Water and RCRA
     enum: 
     - A
     - C
+    - E
+    - G
     - M
     - R
     - S
+    - T
+    - TSCA
     - W
     - ALL
     type: string
@@ -579,6 +583,15 @@ parameters:
     - BEGINS
     type: string
     required: false
+  p_agoo: 
+    name: p_agoo
+    in: query
+    description: Indicates whether to AND or OR the Owner/Operator parameter (p_owop) and the federal agency code (p_fa) parameters.
+    enum: 
+    - AND
+    - OR
+    type: string
+    required: false
   p_ocr: 
     name: p_ocr
     in: query
@@ -706,16 +719,15 @@ parameters:
     description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
     type: number
     required: false
+  p_istatute: 
+    name: p_istatute
+    in: query
+    type: string
+    required: false
   p_feac: 
     name: p_feac
     in: query
     description: "Formal Enforcment Action Last Case Date Limiter Flag.  Enter a value of \"Y\" to additionally apply the p_feay year filter to the last formal enforcement action case date.  Use the p_fea parameter to control if the filter is within or outside the date span provided."
-    type: string
-    required: false
-  p_icoo: 
-    name: p_icoo
-    in: query
-    description: "Indian country search and/or flag.  Enter \"Y\" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_ico, p_fac_ico or p_fac_icoo conditions will be returned."
     type: string
     required: false
   p_ejscreen_over80cnt: 
@@ -733,6 +745,12 @@ parameters:
     name: p_ejscreen
     in: query
     description: "Enter \"Y\" to limit facilities to Census block groups where one of more Environmental Justice indexes above 80th percentile."
+    type: string
+    required: false
+  p_icoo: 
+    name: p_icoo
+    in: query
+    description: "Indian country search and/or flag.  Enter \"Y\" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_ico, p_fac_ico or p_fac_icoo conditions will be returned."
     type: string
     required: false
   p_lat: 
@@ -827,6 +845,7 @@ paths:
       - "$ref": "#/parameters/p_huc"
       - "$ref": "#/parameters/p_pid"
       - "$ref": "#/parameters/p_med"
+      - "$ref": "#/parameters/p_istatute"
       - "$ref": "#/parameters/p_ysl"
       - "$ref": "#/parameters/p_ysly"
       - "$ref": "#/parameters/p_ysla"
@@ -845,6 +864,7 @@ paths:
       - "$ref": "#/parameters/p_long"
       - "$ref": "#/parameters/p_radius"
       - "$ref": "#/parameters/p_ejscreen_over80cnt"
+      - "$ref": "#/parameters/p_agoo"
       - "$ref": "#/parameters/queryset"
       - "$ref": "#/parameters/responseset"
       - "$ref": "#/parameters/tablelist"
@@ -931,6 +951,7 @@ paths:
       - "$ref": "#/parameters/p_huc"
       - "$ref": "#/parameters/p_pid"
       - "$ref": "#/parameters/p_med"
+      - "$ref": "#/parameters/p_istatute"
       - "$ref": "#/parameters/p_ysl"
       - "$ref": "#/parameters/p_ysly"
       - "$ref": "#/parameters/p_ysla"
@@ -949,6 +970,7 @@ paths:
       - "$ref": "#/parameters/p_long"
       - "$ref": "#/parameters/p_radius"
       - "$ref": "#/parameters/p_ejscreen_over80cnt"
+      - "$ref": "#/parameters/p_agoo"
       - "$ref": "#/parameters/queryset"
       - "$ref": "#/parameters/responseset"
       - "$ref": "#/parameters/tablelist"
@@ -1036,6 +1058,7 @@ paths:
       - "$ref": "#/parameters/p_huc"
       - "$ref": "#/parameters/p_pid"
       - "$ref": "#/parameters/p_med"
+      - "$ref": "#/parameters/p_istatute"
       - "$ref": "#/parameters/p_ysl"
       - "$ref": "#/parameters/p_ysly"
       - "$ref": "#/parameters/p_ysla"
@@ -1054,6 +1077,7 @@ paths:
       - "$ref": "#/parameters/p_long"
       - "$ref": "#/parameters/p_radius"
       - "$ref": "#/parameters/p_ejscreen_over80cnt"
+      - "$ref": "#/parameters/p_agoo"
       - "$ref": "#/parameters/responseset"
       - "$ref": "#/parameters/callback"
       - name: qcolumns
@@ -1137,6 +1161,7 @@ paths:
       - "$ref": "#/parameters/p_huc"
       - "$ref": "#/parameters/p_pid"
       - "$ref": "#/parameters/p_med"
+      - "$ref": "#/parameters/p_istatute"
       - "$ref": "#/parameters/p_ysl"
       - "$ref": "#/parameters/p_ysly"
       - "$ref": "#/parameters/p_ysla"
@@ -1155,6 +1180,7 @@ paths:
       - "$ref": "#/parameters/p_long"
       - "$ref": "#/parameters/p_radius"
       - "$ref": "#/parameters/p_ejscreen_over80cnt"
+      - "$ref": "#/parameters/p_agoo"
       - "$ref": "#/parameters/responseset"
       - "$ref": "#/parameters/callback"
       - name: qcolumns
@@ -1900,7 +1926,7 @@ definitions:
       NPDESFlag: 
         type: string
         title: NPDES Flag
-      SdwisFlag: 
+      SDWISFlag: 
         type: string
         title: SDWIS Flag
       RCRAFlag: 
@@ -1925,9 +1951,9 @@ definitions:
           - Other Minor
           - Synthetic Minor
           - NULL
-      CAANaics: 
+      CAANAICS: 
         type: string
-      CAASics: 
+      CAASICs: 
         type: string
       CAAEvaluationCount: 
         type: string
@@ -1976,9 +2002,9 @@ definitions:
           - Minor
       CWAComplianceTracking: 
         type: string
-      CWANaics: 
+      CWANAICS: 
         type: string
-      CWASics: 
+      CWASICs: 
         type: string
       CWAInspectionCount: 
         type: string
@@ -2039,7 +2065,7 @@ definitions:
           - CESQG = Conditionally-Exempt Small Quantity Generator
           - Operating TSDF
           - Transporters
-      RCRANaics: 
+      RCRANAICS: 
         type: string
       RCRAInspectionCount: 
         type: string
@@ -2140,9 +2166,9 @@ definitions:
         description: "The sum of total release amounts of all linked Greenhouse Gas IDs reported as \"metric tons of CO2 equivalents\""
       DfrUrl: 
         type: string
-      FacSicCodes: 
+      FacSICCodes: 
         type: string
-      FacNaicsCodes: 
+      FacNAICSCodes: 
         type: string
         title: Facility NAICS Codes
       FacDateLastInspectionEPA: 
@@ -2298,6 +2324,23 @@ definitions:
         type: string
         title: Clean Air Markets Division Identifiers
         description: Facility identifiers for the Clean Air Markets Division database.
+      EisFlag: 
+        type: string
+      EisIDs: 
+        type: string
+      TscaFlag: 
+        type: string
+        title: Toxic Substances Control Act Flag
+        description: Flag indicating whether or not a facility has a TSCA ID
+      TscaIDs: 
+        type: string
+        title: Toxic Substances Control Act ID
+        description: Toxic Substances Control Act ID assigned to a facility
+      WebDocs: 
+        type: string
+        title: Web Documents
+        example: C6
+        description: Contains flags that identify what web accessible documents are available for the facility.
       Score: 
         type: string
         title: Score
@@ -2358,14 +2401,14 @@ definitions:
     - Fac3yrComplianceStatus
     - AIRFlag
     - NPDESFlag
-    - SdwisFlag
+    - SDWISFlag
     - RCRAFlag
     - TRIFlag
     - GHGFlag
     - AIRIDs
     - CAAPermitTypes
-    - CAANaics
-    - CAASics
+    - CAANAICS
+    - CAASICs
     - CAAEvaluationCount
     - CAADaysLastEvaluation
     - CAAInformalCount
@@ -2381,8 +2424,8 @@ definitions:
     - NPDESIDs
     - CWAPermitTypes
     - CWAComplianceTracking
-    - CWANaics
-    - CWASics
+    - CWANAICS
+    - CWASICs
     - CWAInspectionCount
     - CWADaysLastInspection
     - CWAInformalCount
@@ -2399,7 +2442,7 @@ definitions:
     - CWA3YrQncrCodes
     - RCRAIDs
     - RCRAPermitTypes
-    - RCRANaics
+    - RCRANAICS
     - RCRAInspectionCount
     - RCRADaysLastEvaluation
     - RCRAInformalCount
@@ -2430,8 +2473,8 @@ definitions:
     - GHGIDs
     - GHGCO2Releases
     - DfrUrl
-    - FacSicCodes
-    - FacNaicsCodes
+    - FacSICCodes
+    - FacNAICSCodes
     - FacDateLastInspectionEPA
     - FacDateLastInspectionState
     - FacDateLastFormalActEPA
@@ -2479,6 +2522,11 @@ definitions:
     - FacDerivedRadWBDHu8
     - FacDerivedRadWBDHu8Name
     - CamdIDs
+    - EisFlag
+    - EisIDs
+    - TscaFlag
+    - TscaIDs
+    - WebDocs
     - Score
     - MaxScore
   ers1_Results: 
@@ -2889,7 +2937,7 @@ definitions:
       NPDESFlag: 
         type: string
         title: NPDES Flag
-      SdwisFlag: 
+      SDWISFlag: 
         type: string
         title: SDWIS Flag
       RCRAFlag: 
@@ -2914,9 +2962,9 @@ definitions:
           - Other Minor
           - Synthetic Minor
           - NULL
-      CAANaics: 
+      CAANAICS: 
         type: string
-      CAASics: 
+      CAASICs: 
         type: string
       CAAEvaluationCount: 
         type: string
@@ -2965,9 +3013,9 @@ definitions:
           - Minor
       CWAComplianceTracking: 
         type: string
-      CWANaics: 
+      CWANAICS: 
         type: string
-      CWASics: 
+      CWASICs: 
         type: string
       CWAInspectionCount: 
         type: string
@@ -3028,7 +3076,7 @@ definitions:
           - CESQG = Conditionally-Exempt Small Quantity Generator
           - Operating TSDF
           - Transporters
-      RCRANaics: 
+      RCRANAICS: 
         type: string
       RCRAInspectionCount: 
         type: string
@@ -3129,9 +3177,9 @@ definitions:
         description: "The sum of total release amounts of all linked Greenhouse Gas IDs reported as \"metric tons of CO2 equivalents\""
       DfrUrl: 
         type: string
-      FacSicCodes: 
+      FacSICCodes: 
         type: string
-      FacNaicsCodes: 
+      FacNAICSCodes: 
         type: string
         title: Facility NAICS Codes
       FacDateLastInspectionEPA: 
@@ -3287,6 +3335,23 @@ definitions:
         type: string
         title: Clean Air Markets Division Identifiers
         description: Facility identifiers for the Clean Air Markets Division database.
+      EisFlag: 
+        type: string
+      EisIDs: 
+        type: string
+      TscaFlag: 
+        type: string
+        title: Toxic Substances Control Act Flag
+        description: Flag indicating whether or not a facility has a TSCA ID
+      TscaIDs: 
+        type: string
+        title: Toxic Substances Control Act ID
+        description: Toxic Substances Control Act ID assigned to a facility
+      WebDocs: 
+        type: string
+        title: Web Documents
+        example: C6
+        description: Contains flags that identify what web accessible documents are available for the facility.
       Score: 
         type: string
         title: Score
@@ -3348,14 +3413,14 @@ definitions:
     - Fac3yrComplianceStatus
     - AIRFlag
     - NPDESFlag
-    - SdwisFlag
+    - SDWISFlag
     - RCRAFlag
     - TRIFlag
     - GHGFlag
     - AIRIDs
     - CAAPermitTypes
-    - CAANaics
-    - CAASics
+    - CAANAICS
+    - CAASICs
     - CAAEvaluationCount
     - CAADaysLastEvaluation
     - CAAInformalCount
@@ -3371,8 +3436,8 @@ definitions:
     - NPDESIDs
     - CWAPermitTypes
     - CWAComplianceTracking
-    - CWANaics
-    - CWASics
+    - CWANAICS
+    - CWASICs
     - CWAInspectionCount
     - CWADaysLastInspection
     - CWAInformalCount
@@ -3389,7 +3454,7 @@ definitions:
     - CWA3YrQncrCodes
     - RCRAIDs
     - RCRAPermitTypes
-    - RCRANaics
+    - RCRANAICS
     - RCRAInspectionCount
     - RCRADaysLastEvaluation
     - RCRAInformalCount
@@ -3420,8 +3485,8 @@ definitions:
     - GHGIDs
     - GHGCO2Releases
     - DfrUrl
-    - FacSicCodes
-    - FacNaicsCodes
+    - FacSICCodes
+    - FacNAICSCodes
     - FacDateLastInspectionEPA
     - FacDateLastInspectionState
     - FacDateLastFormalActEPA
@@ -3469,6 +3534,11 @@ definitions:
     - FacDerivedRadWBDHu8
     - FacDerivedRadWBDHu8Name
     - CamdIDs
+    - EisFlag
+    - EisIDs
+    - TscaFlag
+    - TscaIDs
+    - WebDocs
     - Score
     - MaxScore
   ers2_Results: 
@@ -3796,7 +3866,7 @@ definitions:
       NPDESFlag: 
         type: string
         title: NPDES Flag
-      SdwisFlag: 
+      SDWISFlag: 
         type: string
         title: SDWIS Flag
       RCRAFlag: 
@@ -3821,9 +3891,9 @@ definitions:
           - Other Minor
           - Synthetic Minor
           - NULL
-      CAANaics: 
+      CAANAICS: 
         type: string
-      CAASics: 
+      CAASICs: 
         type: string
       CAAEvaluationCount: 
         type: string
@@ -3872,9 +3942,9 @@ definitions:
           - Minor
       CWAComplianceTracking: 
         type: string
-      CWANaics: 
+      CWANAICS: 
         type: string
-      CWASics: 
+      CWASICs: 
         type: string
       CWAInspectionCount: 
         type: number
@@ -3935,7 +4005,7 @@ definitions:
           - CESQG = Conditionally-Exempt Small Quantity Generator
           - Operating TSDF
           - Transporters
-      RCRANaics: 
+      RCRANAICS: 
         type: string
       RCRAInspectionCount: 
         type: number
@@ -4036,9 +4106,9 @@ definitions:
         description: "The sum of total release amounts of all linked Greenhouse Gas IDs reported as \"metric tons of CO2 equivalents\""
       DfrUrl: 
         type: string
-      FacSicCodes: 
+      FacSICCodes: 
         type: string
-      FacNaicsCodes: 
+      FacNAICSCodes: 
         type: string
         title: Facility NAICS Codes
       FacDateLastInspectionEPA: 
@@ -4194,6 +4264,23 @@ definitions:
         type: string
         title: Clean Air Markets Division Identifiers
         description: Facility identifiers for the Clean Air Markets Division database.
+      EisFlag: 
+        type: string
+      EisIDs: 
+        type: string
+      TscaFlag: 
+        type: string
+        title: Toxic Substances Control Act Flag
+        description: Flag indicating whether or not a facility has a TSCA ID
+      TscaIDs: 
+        type: string
+        title: Toxic Substances Control Act ID
+        description: Toxic Substances Control Act ID assigned to a facility
+      WebDocs: 
+        type: string
+        title: Web Documents
+        example: C6
+        description: Contains flags that identify what web accessible documents are available for the facility.
       Score: 
         type: number
         title: Score
@@ -4252,14 +4339,14 @@ definitions:
     - Fac3yrComplianceStatus
     - AIRFlag
     - NPDESFlag
-    - SdwisFlag
+    - SDWISFlag
     - RCRAFlag
     - TRIFlag
     - GHGFlag
     - AIRIDs
     - CAAPermitTypes
-    - CAANaics
-    - CAASics
+    - CAANAICS
+    - CAASICs
     - CAAEvaluationCount
     - CAADaysLastEvaluation
     - CAAInformalCount
@@ -4275,8 +4362,8 @@ definitions:
     - NPDESIDs
     - CWAPermitTypes
     - CWAComplianceTracking
-    - CWANaics
-    - CWASics
+    - CWANAICS
+    - CWASICs
     - CWAInspectionCount
     - CWADaysLastInspection
     - CWAInformalCount
@@ -4293,7 +4380,7 @@ definitions:
     - CWA3YrQncrCodes
     - RCRAIDs
     - RCRAPermitTypes
-    - RCRANaics
+    - RCRANAICS
     - RCRAInspectionCount
     - RCRADaysLastEvaluation
     - RCRAInformalCount
@@ -4324,8 +4411,8 @@ definitions:
     - GHGIDs
     - GHGCO2Releases
     - DfrUrl
-    - FacSicCodes
-    - FacNaicsCodes
+    - FacSICCodes
+    - FacNAICSCodes
     - FacDateLastInspectionEPA
     - FacDateLastInspectionState
     - FacDateLastFormalActEPA
@@ -4373,6 +4460,11 @@ definitions:
     - FacDerivedRadWBDHu8
     - FacDerivedRadWBDHu8Name
     - CamdIDs
+    - EisFlag
+    - EisIDs
+    - TscaFlag
+    - TscaIDs
+    - WebDocs
     - Score
     - MaxScore
   ers4_Results: 

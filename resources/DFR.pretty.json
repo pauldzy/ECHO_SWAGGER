@@ -2,7 +2,7 @@
     "swagger": "2.0"
    ,"info": {
        "title": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Detailed Facility Report (DFR)"
-      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\n<BR><BR>DFR Rest Services provide multiple service endpoints, to retrieve detailed facility location, enforcement, compliance monitoring, and pollutant information for any single facility.  See the Detailed Facility Report (DFR) Help Page (https:\/\/echo.epa.gov\/help\/reports\/detailed-facility-report-help) for additional information on the DFR.  Additionally, a Data Dictionary (https:\/\/echo.epa.gov\/help\/reports\/dfr-data-dictionary) is also available.<BR><BR>\nThere is one primary service end point, get_dfr, that provides all available DFR data.  All other service end points that are exposed, will return data on a single section of the DFR. <br>  \n<br>\nAdditional ECHO Resources:&nbsp&nbsp <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a>\n<br>\n"
+      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\n<BR><BR>DFR Rest Services provide multiple service endpoints, to retrieve detailed facility location, enforcement, compliance monitoring, and pollutant information for any single facility.  See the Detailed Facility Report (DFR) Help Page (https:\/\/echo.epa.gov\/help\/reports\/detailed-facility-report-help) for additional information on the DFR.  Additionally, a Data Dictionary (https:\/\/echo.epa.gov\/help\/reports\/dfr-data-dictionary) is also available.<BR><BR>\nThere is one primary service end point, get_dfr, that provides all available DFR data.  All other service end points that are exposed, will return data on a single section of the DFR. <br>  \n<br>\nAdditional ECHO Resources:   <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a>\n<br>\n"
       ,"contact": {
           "name": "US EPA, OECA Integration, Targeting and Access Branch"
       }
@@ -57,6 +57,20 @@
          ,"in": "query"
          ,"description": "System Acronym Filter.  Enter a single system acronym to filter results."
          ,"type": "string"
+         ,"required": false
+      }
+      ,"p_lat": {
+          "name": "p_lat"
+         ,"in": "query"
+         ,"description": "Latitude location in decimal degrees."
+         ,"type": "number"
+         ,"required": false
+      }
+      ,"p_long": {
+          "name": "p_long"
+         ,"in": "query"
+         ,"description": "Longitude location in decimal degrees."
+         ,"type": "number"
          ,"required": false
       }
       ,"p_radius": {
@@ -946,7 +960,10 @@
                    "$ref": "#\/parameters\/output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/p_lat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_long"
                }
                ,{
                    "$ref": "#\/parameters\/p_radius"
@@ -984,7 +1001,10 @@
                    "$ref": "#\/parameters\/output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/p_lat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_long"
                }
                ,{
                    "$ref": "#\/parameters\/p_radius"
@@ -995,6 +1015,78 @@
             ]
             ,"tags": [
                 "Detailed Facility Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Returns an object that includes demographics"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dfrY_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/dfr_rest_services.get_demographics_by_id": {
+          "get": {
+             "summary": "Detailed Facility Report Demographics Report Service"
+            ,"description": "Returns a complex object with Demographics from the 2010 Census and 2010 American Community Survey."
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_radius"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Returns an object that includes demographics"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dfrY_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Detailed Facility Report Demographics Report Service"
+            ,"description": "Returns a complex object with Demographics from the 2010 Census and 2010 American Community Survey."
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_radius"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
             ]
             ,"responses": {
              "200": {
@@ -3708,6 +3800,15 @@
             ,"ParticulateMatter2006Area"
          ]
       }
+      ,"dfr4_CAEDDocuments": {
+          "type": "object"
+         ,"description": "CAED Documents"
+         ,"properties": {
+             "Dummy": {
+                "type": "string"
+            }
+         }
+      }
       ,"dfr7_CWA3YrCompliance": {
           "type": "object"
          ,"description": "CWA 3-Year Compliance Object"
@@ -4605,6 +4706,12 @@
                ,"example": "3401214483"
                ,"description": "The unique identifier in ICIS-NPDES for the NPDES Violation"
             }
+            ,"Agency": {
+                "type": "string"
+               ,"title": "Agency"
+               ,"example": "State"
+               ,"description": "Identifies the lead agency (e.g., EPA, State) conducting the inspection. \nValues: State abbreviation or \"EPA\""
+            }
             ,"Qtr1Status": {
                 "type": "string"
                ,"title": "Quarter 1 Status"
@@ -4740,6 +4847,7 @@
              "SourceID"
             ,"ViolationDesc"
             ,"NPDESViolationId"
+            ,"Agency"
             ,"Qtr1Status"
             ,"Qtr1Value"
             ,"Qtr2Status"
@@ -5393,6 +5501,9 @@
                ,"example": "$65,000.00"
                ,"description": "For civil judicial Enforcement Actions, this amount is the Federal penalty assessed against the defendant(s) as specified in the final entered Consent Decree or Court Order.  For administrative Enforcement Actions, it is the penalty assessed in the Consent\/Final Order.  It does not include the amount of the penalty mitigated due to a SEP or the amount shared with the state or local entities.  Interest payments associated with a penalty paid over time are not to be included in this amount.  It is the total Federal amount for each Final Order."
             }
+            ,"LatestSettlementEnteredDate": {
+                "type": "string"
+            }
             ,"StateLocalPenalty": {
                 "type": "string"
                ,"title": "State Local Penalty"
@@ -5421,6 +5532,7 @@
             ,"TotalCostRecovery"
             ,"SettlementDate"
             ,"FederalPenalty"
+            ,"LatestSettlementEnteredDate"
             ,"StateLocalPenalty"
             ,"SepCost"
             ,"CompActionCost"
@@ -6312,6 +6424,9 @@
                ,"example": "ALR040033"
                ,"description": "Unique Identifier assigned by EPA."
             }
+            ,"ViolationType": {
+                "type": "string"
+            }
             ,"Violation": {
                 "type": "string"
                ,"title": "Violation"
@@ -6398,6 +6513,7 @@
          }
          ,"required": [
              "SourceID"
+            ,"ViolationType"
             ,"Violation"
             ,"Agency"
             ,"Qtr1Status"
@@ -6589,6 +6705,20 @@
                ,"title": "Tribes"
                ,"items": {
                    "$ref": "#\/definitions\/dfrS_Tribes"
+               }
+            }
+            ,"WebFireDocuments": {
+                "type": "array"
+               ,"title": "Web Fire Documents"
+               ,"items": {
+                   "$ref": "#\/definitions\/dfr4_WebFireDocuments"
+               }
+            }
+            ,"CAEDDocuments": {
+                "type": "array"
+               ,"title": "Web Fire Documents"
+               ,"items": {
+                   "$ref": "#\/definitions\/dfr4_CAEDDocuments"
                }
             }
             ,"SpatialMetadata": {
@@ -7376,9 +7506,6 @@
                }
             }
          }
-         ,"required": [
-             "Sources"
-         ]
       }
       ,"dfre_Source": {
           "type": "object"
@@ -7392,9 +7519,6 @@
                }
             }
          }
-         ,"required": [
-             "ReleaseYear"
-         ]
       }
       ,"dfre_ReleaseYear": {
           "type": "object"
@@ -7489,10 +7613,6 @@
                }
             }
          }
-         ,"required": [
-             "Header"
-            ,"Chemicals"
-         ]
       }
       ,"dfrR_Chemicals": {
           "type": "object"
@@ -7607,8 +7727,6 @@
             }
             ,"Year1": {
                 "type": "string"
-               ,"example": "VA0000005151044014"
-               ,"description": "Air Facility System (AFS) ID."
             }
          }
          ,"required": [
@@ -7969,6 +8087,15 @@
             ,"BeachCloseLast2yrsFlg"
             ,"EsaAquaticSpeciesFlg"
          ]
+      }
+      ,"dfr4_WebFireDocuments": {
+          "type": "object"
+         ,"description": "Web Fire Documents"
+         ,"properties": {
+             "Dummy": {
+                "type": "string"
+            }
+         }
       }
       ,"dfrW1_Results": {
           "type": "object"
