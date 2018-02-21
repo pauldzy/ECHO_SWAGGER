@@ -1140,6 +1140,9 @@
        "met_ResultsColumns": {
           "type": "object"
          ,"description": "Results Column Object"
+         ,"xml": {
+             "name": "ResultColumn"
+         }
          ,"properties": {
              "ColumnName": {
                 "type": "string"
@@ -1195,6 +1198,10 @@
                ,"title": "Result Columns"
                ,"items": {
                    "$ref": "#\/definitions\/met_ResultsColumns"
+               }
+               ,"xml": {
+                   "name": "ResultColumns"
+                  ,"wrapped": true
                }
             }
          }

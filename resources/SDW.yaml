@@ -847,6 +847,8 @@ paths:
 definitions: 
   met_ResultsColumns: 
     description: Results Column Object
+    xml: 
+      name: ResultColum
     properties: 
       ColumnName: 
         type: string
@@ -891,6 +893,9 @@ definitions:
         title: Result Columns
         items: 
           "$ref": "#/definitions/met_ResultsColumns" 
+        xml: 
+          name: ResultColumns
+          wrapped: true
     required: 
     - Message
   sdw2_Results: 
