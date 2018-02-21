@@ -668,6 +668,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/sdw3_Results"
@@ -844,6 +847,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/sdw3_Results"
@@ -902,6 +908,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/sdw2_Results"
@@ -958,6 +967,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/sdw2_Results"
@@ -1063,6 +1075,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/met_Results"
@@ -1104,6 +1119,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/met_Results"
@@ -1187,9 +1205,6 @@
       ,"sdw2_Results": {
           "type": "object"
          ,"description": "Results Object"
-         ,"xml": {
-             "name": "Results"
-         }
          ,"properties": {
              "Message": {
                 "type": "string"
@@ -1221,6 +1236,10 @@
                ,"items": {
                    "$ref": "#\/definitions\/sdw3_WaterSystems"
                }
+               ,"xml": {
+                   "name": "WaterSystem"
+                  ,"wrapped": true
+               }
             }
          }
          ,"required": [
@@ -1233,9 +1252,6 @@
       ,"sdw3_Results": {
           "type": "object"
          ,"description": "Results Object"
-         ,"xml": {
-             "name": "Results"
-         }
          ,"properties": {
              "Message": {
                 "type": "string"
@@ -1310,6 +1326,10 @@
                ,"items": {
                    "$ref": "#\/definitions\/sdw3_WaterSystems"
                }
+               ,"xml": {
+                   "name": "WaterSystem"
+                  ,"wrapped": true
+               }
             }
          }
          ,"required": [
@@ -1330,9 +1350,6 @@
       ,"sdw3_WaterSystems": {
           "type": "object"
          ,"description": "Safe Drinking Water Search Results Object"
-         ,"xml": {
-             "name": "WaterSystem"
-         }
          ,"properties": {
              "PWSId": {
                 "type": "string"
