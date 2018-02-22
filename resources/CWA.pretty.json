@@ -3929,6 +3929,9 @@
        "qp0_QueryParameters": {
           "type": "object"
          ,"description": "Query Parameters Object"
+         ,"xml": {
+             "name": "Parameter"
+         }
          ,"properties": {
              "QP": {
                 "type": "string"
@@ -7250,6 +7253,10 @@
                ,"description": "A list of submitted query parameters and their values."
                ,"items": {
                    "$ref": "#\/definitions\/qp0_QueryParameters"
+               }
+               ,"xml": {
+                   "name": "QueryParameters"
+                  ,"wrapped": true
                }
             }
             ,"Facilities": {
