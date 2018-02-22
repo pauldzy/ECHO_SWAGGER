@@ -3882,7 +3882,7 @@ definitions:
   cwa1_MapData: 
     description: Map Data Object
     xml: 
-      name: MapData
+      name: Object
     properties: 
       LAT: 
         type: string
@@ -3968,7 +3968,7 @@ definitions:
         items: 
           "$ref": "#/definitions/cwa1_MapData" 
         xml: 
-          name: Array
+          name: MapData
           wrapped: true
     required: 
     - QueryID
@@ -6737,7 +6737,7 @@ definitions:
   cwa3_MapData: 
     description: Map Data Object
     xml: 
-      name: MapData
+      name: Object
     properties: 
       LAT: 
         type: string
@@ -6823,7 +6823,7 @@ definitions:
         items: 
           "$ref": "#/definitions/cwa3_MapData" 
         xml: 
-          name: Array
+          name: MapData
           wrapped: true
     required: 
     - QueryID
