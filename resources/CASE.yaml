@@ -106,7 +106,6 @@ parameters:
       - BEGINS = Find facilities with names starting with the provided term(s).
       - ALL = Find facilities using Oracle text search terms.
       - CONTAINS = 
-
     enum: 
     - ALL
     - CONTAINS
@@ -766,6 +765,8 @@ paths:
           description: Returns a complex object containing detailed criminal case information for the provided Case Identifier.
           schema: 
             description: Service call container.
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/crs3_Results" 
@@ -801,6 +802,8 @@ paths:
           description: Returns a complex object containing detailed criminal case information for the provided Case Identifier.
           schema: 
             description: Service call container.
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/crs3_Results" 
@@ -901,6 +904,8 @@ paths:
           description: Returns an array of cases that meet the selection criteria.
           schema: 
             description: Service call container.
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/crs2_Results" 
@@ -1000,6 +1005,8 @@ paths:
           description: Returns an array of cases that meet the selection criteria.
           schema: 
             description: Service call container.
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/crs2_Results" 
@@ -1036,6 +1043,8 @@ paths:
           description: Results are an array (page)  of Cases from ICIS with the number of cases equal to the responseset (page size).
           schema: 
             description: Service call container.
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/crs5_Results" 
@@ -1071,6 +1080,8 @@ paths:
           description: Results are an array (page)  of Cases from ICIS with the number of cases equal to the responseset (page size).
           schema: 
             description: Service call container.
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/crs5_Results" 
@@ -1108,6 +1119,8 @@ paths:
           description: Results are either an array of State, County, Zip Code facility cluster map coordinates or individual facility coordinates.  Coordinates provided are in WGS84.
           schema: 
             description: Service call container.
+            xml: 
+              name: Root
             properties: 
               MapOutput: 
                 "$ref": "#/definitions/crs0_MapOutput" 
@@ -1144,6 +1157,8 @@ paths:
           description: Results are either an array of State, County, Zip Code facility cluster map coordinates or individual facility coordinates.  Coordinates provided are in WGS84.
           schema: 
             description: Service call container.
+            xml: 
+              name: Root
             properties: 
               MapOutput: 
                 "$ref": "#/definitions/crs0_MapOutput" 
@@ -1216,6 +1231,8 @@ paths:
           description: Results are an array of columns/objects.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/met_Results" 
@@ -1246,6 +1263,8 @@ paths:
           description: Results are an array of columns/objects.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/met_Results" 
@@ -1454,6 +1473,8 @@ definitions:
     - MaxScore
   crs0_MapData: 
     description: Data container providing locational information for each case.
+    xml: 
+      name: Object
     properties: 
       LAT: 
         type: string
@@ -1515,6 +1536,9 @@ definitions:
         title: Map Data
         items: 
           "$ref": "#/definitions/crs0_MapData" 
+        xml: 
+          name: MapData
+          wrapped: true
     required: 
     - QueryID
     - IconBaseURL
@@ -1527,8 +1551,6 @@ definitions:
         type: string
   crs1_CaseInformation: 
     description: The basic information section contains information that identifies the action and some key descriptive variables, such as case status and case type.
-    xml: 
-      name: CaseInformatio
     properties: 
       CaseNumber: 
         type: string
@@ -1679,7 +1701,7 @@ definitions:
   crs1_Citations: 
     description: The corresponding regulation in the Code of Federal Regulations (CFR) or U.S. Code (U.S.C.) associated with the enforcement action.
     xml: 
-      name: Citatio
+      name: Citation
     properties: 
       Title: 
         type: string
@@ -1743,7 +1765,7 @@ definitions:
   crs1_ComplyingActions: 
     description: For civil enforcement actions, the value of the costs incurred by the defendant/respondent to attain compliance with the law and restore the environment. This value does not include penalties, cost recovery, or costs associated with SEPs.
     xml: 
-      name: ComplyingActio
+      name: ComplyingAction
     properties: 
       ComplyingActionId: 
         type: string
@@ -1797,7 +1819,7 @@ definitions:
   crs1_EnforcementConclusions: 
     description: This section contains information about the conclusion(s) of the civil enforcement case, where it resulted in an order, consent decree, or other enforceable settlement.
     xml: 
-      name: EnforcementConclusio
+      name: EnforcementConclusion
     properties: 
       EnforcementConclusionId: 
         type: string
@@ -1866,28 +1888,41 @@ definitions:
         title: Pollutant Reductions
         items: 
           "$ref": "#/definitions/crs1_PollutantReductions" 
+        xml: 
+          name: PollutantReductions
+          wrapped: true
       FinalOrderStatuses: 
         type: array
-        title: |-
-          Final Order Statuses
-
+        title: Final Order Statuses
         items: 
           "$ref": "#/definitions/crs1_FinalOrderStatuses" 
+        xml: 
+          name: FinalOrderStatuses
+          wrapped: true
       ComplianceSchedules: 
         type: array
         title: Compliance Schedules
         items: 
           "$ref": "#/definitions/crs1_ComplianceSchedules" 
+        xml: 
+          name: ComplianceSchedules
+          wrapped: true
       ComplyingActions: 
         type: array
         title: Complying Actions
         items: 
           "$ref": "#/definitions/crs1_ComplyingActions" 
+        xml: 
+          name: ComplyingActions
+          wrapped: true
       SupplementalEnvironmentalProjects: 
         type: array
         title: Supplemental Environmental Projects
         items: 
           "$ref": "#/definitions/crs1_SupplementalEnvironmentalProjects" 
+        xml: 
+          name: SupplementalEnvironmentalProjects
+          wrapped: true
     required: 
     - EnforcementConclusionId
     - EnforcementConclusionType
@@ -2019,7 +2054,7 @@ definitions:
   crs1_PollutantReductions: 
     description: This section provides information relating complying actions and SEPs to their estimated or actual environmental impact on pollutant reduction.
     xml: 
-      name: PollutantReductio
+      name: PollutantReduction
     properties: 
       ComplyingActionId: 
         type: string
@@ -2139,51 +2174,81 @@ definitions:
         title: Laws And Sections
         items: 
           "$ref": "#/definitions/crs1_LawsAndSections" 
+        xml: 
+          name: LawsAndSections
+          wrapped: true
       Citations: 
         type: array
         title: Citations
         items: 
           "$ref": "#/definitions/crs1_Citations" 
+        xml: 
+          name: Citations
+          wrapped: true
       ProgramLinks: 
         type: array
         title: Program Links
         items: 
           "$ref": "#/definitions/crs1_ProgramLinks" 
+        xml: 
+          name: ProgramLinks
+          wrapped: true
       Facilities: 
         type: array
         title: Facilities
         items: 
           "$ref": "#/definitions/crs1_Facilities" 
+        xml: 
+          name: Facilities
+          wrapped: true
       Defendants: 
         type: array
         title: Defendants
         items: 
           "$ref": "#/definitions/crs1_Defendants" 
+        xml: 
+          name: Defendants
+          wrapped: true
       CaseMilestones: 
         type: array
         title: Case Milestones
         items: 
           "$ref": "#/definitions/crs1_CaseMilestones" 
+        xml: 
+          name: CaseMilestones
+          wrapped: true
       Pollutants: 
         type: array
         title: Pollutants
         items: 
           "$ref": "#/definitions/crs1_Pollutants" 
+        xml: 
+          name: Pollutants
+          wrapped: true
       RelatedActivities: 
         type: array
         title: Related Activities
         description: This section provides an Activity Type description and date for other ICIS activities (e.g., inspections, or compliance assistance) that are linked to the enforcement action.
         items: 
           "$ref": "#/definitions/crs1_RelatedActivities" 
+        xml: 
+          name: RelatedActivities
+          wrapped: true
       EnforcementConclusions: 
         type: array
         title: Enforcement Conclusions
         items: 
           "$ref": "#/definitions/crs1_EnforcementConclusions" 
+        xml: 
+          name: EnforcementConclusions
+          wrapped: true
       CAEDDocuments: 
         type: array
         items: 
           "$ref": "#/definitions/crs1_CAEDDocuments" 
+        xml: 
+          name: CAEDDocuments
+          wrapped: true
     required: 
     - Message
     - CaseInformation
@@ -2279,6 +2344,9 @@ definitions:
         description: A summary of the violation(s), environmental problem(s), and a description of the cause of action.
         items: 
           "$ref": "#/definitions/crs0_Cases" 
+        xml: 
+          name: Cases
+          wrapped: true
       MapOutput: 
         "$ref": "#/definitions/crs0_MapOutput" 
     required: 
@@ -2352,7 +2420,7 @@ definitions:
   crs3_CaseInformation: 
     description: The basic information section contains information that identifies the action and some key descriptive variables, such as case status and case type.
     xml: 
-      name: CRCaseInformatio
+      name: CRCaseInformation
     properties: 
       CaseIdentifier: 
         type: string
@@ -2446,16 +2514,25 @@ definitions:
         title: Criminal Enforcement Case Defendants
         items: 
           "$ref": "#/definitions/crs3_CRDefendants" 
+        xml: 
+          name: CRDefendants
+          wrapped: true
       CRDetails: 
         type: array
         title: Criminal Case Details
         items: 
           "$ref": "#/definitions/crs3_CRDetails" 
+        xml: 
+          name: CRDetails
+          wrapped: true
       Locations: 
         type: array
         title: Locations
         items: 
           "$ref": "#/definitions/crs3_Locations" 
+        xml: 
+          name: Locations
+          wrapped: true
     required: 
     - Message
     - CRCaseInformation
@@ -2491,6 +2568,9 @@ definitions:
         description: A summary of the violation(s), environmental problem(s), and a description of the cause of action.
         items: 
           "$ref": "#/definitions/crs0_Cases" 
+        xml: 
+          name: Cases
+          wrapped: true
     required: 
     - Message
     - QueryRows
@@ -2499,6 +2579,8 @@ definitions:
     - Cases
   met_ResultsColumns: 
     description: Results Column Object
+    xml: 
+      name: ResultColumn
     properties: 
       ColumnName: 
         type: string
@@ -2543,5 +2625,8 @@ definitions:
         title: Result Columns
         items: 
           "$ref": "#/definitions/met_ResultsColumns" 
+        xml: 
+          name: ResultColumns
+          wrapped: true
     required: 
     - Message

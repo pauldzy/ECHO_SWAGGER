@@ -96,7 +96,7 @@
       ,"p_fntype": {
           "name": "p_fntype"
          ,"in": "query"
-         ,"description": "Controls type of text search performed on facility name with parameter p_fn.\n- EXACT = Find facilities having the exact provided name(s).\n- BEGINS = Find facilities with names starting with the provided term(s).\n- ALL = Find facilities using Oracle text search terms.\n- CONTAINS = \n"
+         ,"description": "Controls type of text search performed on facility name with parameter p_fn.\n- EXACT = Find facilities having the exact provided name(s).\n- BEGINS = Find facilities with names starting with the provided term(s).\n- ALL = Find facilities using Oracle text search terms.\n- CONTAINS = "
          ,"enum": [
              "ALL"
             ,"CONTAINS"
@@ -820,6 +820,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Service call container."
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/crs3_Results"
@@ -868,6 +871,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Service call container."
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/crs3_Results"
@@ -1118,6 +1124,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Service call container."
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/crs2_Results"
@@ -1366,6 +1375,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Service call container."
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/crs2_Results"
@@ -1424,6 +1436,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Service call container."
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/crs5_Results"
@@ -1480,6 +1495,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Service call container."
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/crs5_Results"
@@ -1541,6 +1559,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Service call container."
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "MapOutput": {
                          "$ref": "#\/definitions\/crs0_MapOutput"
@@ -1600,6 +1621,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Service call container."
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "MapOutput": {
                          "$ref": "#\/definitions\/crs0_MapOutput"
@@ -1705,6 +1729,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/met_Results"
@@ -1746,6 +1773,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/met_Results"
@@ -1981,6 +2011,9 @@
       ,"crs0_MapData": {
           "type": "object"
          ,"description": "Data container providing locational information for each case."
+         ,"xml": {
+             "name": "Object"
+         }
          ,"properties": {
              "LAT": {
                 "type": "string"
@@ -2056,6 +2089,10 @@
                ,"items": {
                    "$ref": "#\/definitions\/crs0_MapData"
                }
+               ,"xml": {
+                   "name": "MapData"
+                  ,"wrapped": true
+               }
             }
          }
          ,"required": [
@@ -2076,9 +2113,6 @@
       ,"crs1_CaseInformation": {
           "type": "object"
          ,"description": "The basic information section contains information that identifies the action and some key descriptive variables, such as case status and case type."
-         ,"xml": {
-             "name": "CaseInformation"
-         }
          ,"properties": {
              "CaseNumber": {
                 "type": "string"
@@ -2499,12 +2533,20 @@
                ,"items": {
                    "$ref": "#\/definitions\/crs1_PollutantReductions"
                }
+               ,"xml": {
+                   "name": "PollutantReductions"
+                  ,"wrapped": true
+               }
             }
             ,"FinalOrderStatuses": {
                 "type": "array"
-               ,"title": "Final Order Statuses\n"
+               ,"title": "Final Order Statuses"
                ,"items": {
                    "$ref": "#\/definitions\/crs1_FinalOrderStatuses"
+               }
+               ,"xml": {
+                   "name": "FinalOrderStatuses"
+                  ,"wrapped": true
                }
             }
             ,"ComplianceSchedules": {
@@ -2513,6 +2555,10 @@
                ,"items": {
                    "$ref": "#\/definitions\/crs1_ComplianceSchedules"
                }
+               ,"xml": {
+                   "name": "ComplianceSchedules"
+                  ,"wrapped": true
+               }
             }
             ,"ComplyingActions": {
                 "type": "array"
@@ -2520,12 +2566,20 @@
                ,"items": {
                    "$ref": "#\/definitions\/crs1_ComplyingActions"
                }
+               ,"xml": {
+                   "name": "ComplyingActions"
+                  ,"wrapped": true
+               }
             }
             ,"SupplementalEnvironmentalProjects": {
                 "type": "array"
                ,"title": "Supplemental Environmental Projects"
                ,"items": {
                    "$ref": "#\/definitions\/crs1_SupplementalEnvironmentalProjects"
+               }
+               ,"xml": {
+                   "name": "SupplementalEnvironmentalProjects"
+                  ,"wrapped": true
                }
             }
          }
@@ -2852,12 +2906,20 @@
                ,"items": {
                    "$ref": "#\/definitions\/crs1_LawsAndSections"
                }
+               ,"xml": {
+                   "name": "LawsAndSections"
+                  ,"wrapped": true
+               }
             }
             ,"Citations": {
                 "type": "array"
                ,"title": "Citations"
                ,"items": {
                    "$ref": "#\/definitions\/crs1_Citations"
+               }
+               ,"xml": {
+                   "name": "Citations"
+                  ,"wrapped": true
                }
             }
             ,"ProgramLinks": {
@@ -2866,12 +2928,20 @@
                ,"items": {
                    "$ref": "#\/definitions\/crs1_ProgramLinks"
                }
+               ,"xml": {
+                   "name": "ProgramLinks"
+                  ,"wrapped": true
+               }
             }
             ,"Facilities": {
                 "type": "array"
                ,"title": "Facilities"
                ,"items": {
                    "$ref": "#\/definitions\/crs1_Facilities"
+               }
+               ,"xml": {
+                   "name": "Facilities"
+                  ,"wrapped": true
                }
             }
             ,"Defendants": {
@@ -2880,6 +2950,10 @@
                ,"items": {
                    "$ref": "#\/definitions\/crs1_Defendants"
                }
+               ,"xml": {
+                   "name": "Defendants"
+                  ,"wrapped": true
+               }
             }
             ,"CaseMilestones": {
                 "type": "array"
@@ -2887,12 +2961,20 @@
                ,"items": {
                    "$ref": "#\/definitions\/crs1_CaseMilestones"
                }
+               ,"xml": {
+                   "name": "CaseMilestones"
+                  ,"wrapped": true
+               }
             }
             ,"Pollutants": {
                 "type": "array"
                ,"title": "Pollutants"
                ,"items": {
                    "$ref": "#\/definitions\/crs1_Pollutants"
+               }
+               ,"xml": {
+                   "name": "Pollutants"
+                  ,"wrapped": true
                }
             }
             ,"RelatedActivities": {
@@ -2902,6 +2984,10 @@
                ,"items": {
                    "$ref": "#\/definitions\/crs1_RelatedActivities"
                }
+               ,"xml": {
+                   "name": "RelatedActivities"
+                  ,"wrapped": true
+               }
             }
             ,"EnforcementConclusions": {
                 "type": "array"
@@ -2909,11 +2995,19 @@
                ,"items": {
                    "$ref": "#\/definitions\/crs1_EnforcementConclusions"
                }
+               ,"xml": {
+                   "name": "EnforcementConclusions"
+                  ,"wrapped": true
+               }
             }
             ,"CAEDDocuments": {
                 "type": "array"
                ,"items": {
                    "$ref": "#\/definitions\/crs1_CAEDDocuments"
+               }
+               ,"xml": {
+                   "name": "CAEDDocuments"
+                  ,"wrapped": true
                }
             }
          }
@@ -3034,6 +3128,10 @@
                ,"description": "A summary of the violation(s), environmental problem(s), and a description of the cause of action."
                ,"items": {
                    "$ref": "#\/definitions\/crs0_Cases"
+               }
+               ,"xml": {
+                   "name": "Cases"
+                  ,"wrapped": true
                }
             }
             ,"MapOutput": {
@@ -3251,6 +3349,10 @@
                ,"items": {
                    "$ref": "#\/definitions\/crs3_CRDefendants"
                }
+               ,"xml": {
+                   "name": "CRDefendants"
+                  ,"wrapped": true
+               }
             }
             ,"CRDetails": {
                 "type": "array"
@@ -3258,12 +3360,20 @@
                ,"items": {
                    "$ref": "#\/definitions\/crs3_CRDetails"
                }
+               ,"xml": {
+                   "name": "CRDetails"
+                  ,"wrapped": true
+               }
             }
             ,"Locations": {
                 "type": "array"
                ,"title": "Locations"
                ,"items": {
                    "$ref": "#\/definitions\/crs3_Locations"
+               }
+               ,"xml": {
+                   "name": "Locations"
+                  ,"wrapped": true
                }
             }
          }
@@ -3310,6 +3420,10 @@
                ,"items": {
                    "$ref": "#\/definitions\/crs0_Cases"
                }
+               ,"xml": {
+                   "name": "Cases"
+                  ,"wrapped": true
+               }
             }
          }
          ,"required": [
@@ -3323,6 +3437,9 @@
       ,"met_ResultsColumns": {
           "type": "object"
          ,"description": "Results Column Object"
+         ,"xml": {
+             "name": "ResultColumn"
+         }
          ,"properties": {
              "ColumnName": {
                 "type": "string"
@@ -3378,6 +3495,10 @@
                ,"title": "Result Columns"
                ,"items": {
                    "$ref": "#\/definitions\/met_ResultsColumns"
+               }
+               ,"xml": {
+                   "name": "ResultColumns"
+                  ,"wrapped": true
                }
             }
          }
