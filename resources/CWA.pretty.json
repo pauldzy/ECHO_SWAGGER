@@ -510,7 +510,7 @@
       ,"p_pd": {
           "name": "p_pd"
          ,"in": "query"
-         ,"description": "Population Density Limiter (per sq mile). Enter a value to limit results to facilities located in area of a given population density.\n- NONE = 0 population density per square mile\n- GT100 = More than 100 population density per square mile\n- GT500 = More than 500 population density per square mile\n- GT1000 = More than 1000 population density per square mile\n- GT5000 = More than 5000 population density per square mile\n- GT10000 = More than 10000 population density per square mile\n- GT20000 = More than 20000 population density per square mile\n"
+         ,"description": "Population Density Limiter (per sq mile). Enter a value to limit results to facilities located in area of a given population density.\n- NONE = 0 population density per square mile\n- GT100 = More than 100 population density per square mile\n- GT500 = More than 500 population density per square mile\n- GT1000 = More than 1000 population density per square mile\n- GT5000 = More than 5000 population density per square mile\n- GT10000 = More than 10000 population density per square mile\n- GT20000 = More than 20000 population density per square mile"
          ,"enum": [
              "NONE"
             ,"GT100"
@@ -618,7 +618,7 @@
       ,"p_fntype": {
           "name": "p_fntype"
          ,"in": "query"
-         ,"description": "Controls type of text search performed on facility name with parameter p_fn.\n- EXACT = Find facilities having the exact provided name(s).\n- BEGINS = Find facilities with names starting with the provided term(s).\n- ALL = Find facilities using Oracle text search terms.\n- CONTAINS = \n"
+         ,"description": "Controls type of text search performed on facility name with parameter p_fn.\n- EXACT = Find facilities having the exact provided name(s).\n- BEGINS = Find facilities with names starting with the provided term(s).\n- ALL = Find facilities using Oracle text search terms.\n- CONTAINS = "
          ,"enum": [
              "ALL"
             ,"CONTAINS"
@@ -741,7 +741,7 @@
       ,"p_pccs": {
           "name": "p_pccs"
          ,"in": "query"
-         ,"description": "Current Compliance Status:\n||||||||||||||||||||||||||| \nSignificant Noncompliance (SNC) \n|||||||||||||||||||||||||||\n- SNC = E, S, X, T, D\n- E = E(EffViol)\n- S = S(CSchVio)\n- X = X(EffNMth)\n- T = T(CSchRpt)\n- D = D(DMR NR)\n\n|||||||||||||||||||||||||||\nNoncompliance (NC)\n|||||||||||||||||||||||||||\n- NC = N, V\n- N = N(RptViol)\n- V = V(NonRNCV)\n\n|||||||||||||||||||||||||||\nNew Violations (PQV)\n|||||||||||||||||||||||||||\n- PQV = New Violations (13th Quarter)\n\n|||||||||||||||||||||||||||\nNo Violations (NV)\n|||||||||||||||||||||||||||\n- NV = R, P, M, U, W\n, Blank, and No New Violations (no PQV)\n- R = R(Resolvd)\n- P = P(ResPend)\n- M = C(Manual)\n- U = U(N\/A)\n- W = W(N\/A)\n- Blank = (null)\n\nMay contain multiple comma-separated values.\n"
+         ,"description": "Current Compliance Status:\n||||||||||||||||||||||||||| \nSignificant Noncompliance (SNC) \n|||||||||||||||||||||||||||\n- SNC = E, S, X, T, D\n- E = E(EffViol)\n- S = S(CSchVio)\n- X = X(EffNMth)\n- T = T(CSchRpt)\n- D = D(DMR NR)\n\n|||||||||||||||||||||||||||\nNoncompliance (NC)\n|||||||||||||||||||||||||||\n- NC = N, V\n- N = N(RptViol)\n- V = V(NonRNCV)\n\n|||||||||||||||||||||||||||\nNew Violations (PQV)\n|||||||||||||||||||||||||||\n- PQV = New Violations (13th Quarter)\n\n|||||||||||||||||||||||||||\nNo Violations (NV)\n|||||||||||||||||||||||||||\n- NV = R, P, M, U, W\n, Blank, and No New Violations (no PQV)\n- R = R(Resolvd)\n- P = P(ResPend)\n- M = C(Manual)\n- U = U(N\/A)\n- W = W(N\/A)\n- Blank = (null)\n\nMay contain multiple comma-separated values."
          ,"type": "string"
          ,"required": false
       }
@@ -1023,21 +1023,21 @@
       ,"p_bio_analy_method_catgry": {
           "name": "p_bio_analy_method_catgry"
          ,"in": "query"
-         ,"description": "The unique code for the category of the analytic methods used by the facility to analyze regulated parameters (including enteric viruses, fecal coliforms, helminth ova, and Salmonella sp.) at the facility:\n\n- PAT = Pathogens\n- MET = Metals\n- NIT = Nitrogen Compounds\n- OTH = Other Analytes\n"
+         ,"description": "The unique code for the category of the analytic methods used by the facility to analyze regulated parameters (including enteric viruses, fecal coliforms, helminth ova, and Salmonella sp.) at the facility:\n\n- PAT = Pathogens\n- MET = Metals\n- NIT = Nitrogen Compounds\n- OTH = Other Analytes"
          ,"type": "string"
          ,"required": false
       }
       ,"p_bio_mgmt_prctce_stype": {
           "name": "p_bio_mgmt_prctce_stype"
          ,"in": "query"
-         ,"description": "This is the code indicating additional detail about the type of Management Practice used for a volume of Biosolids or Sewage Sludge:\n\n- ADV = Advanced Alkaline Stabilized Biosolids Distribution & Marketing\n- AGR = Agricultural Land Application\n- COM = Distribution and Marketing - Compost\n- DEE = Deep-well Injection Disposal\n- DIS = Disposal in a Municipal Landfill (under 40 CFR 258)\n- DMO = Distribution and Marketing - Other\n- HEA = Heat Dried Biosolids Distribution & Marketing\n- OTL = Other Land Application Management Practice Detail\n- OTO = Other Management Practice Detail\n- RSA = Reclamation Site Application\n- SEN = Sent to Cement Kiln for Use as Alternative Energy\n- STO = Storage\n- UIC = Use in Construction\n- UPS = Used in Production of Syngas\n- USE = Use as Daily Cover for Municipal Landfill (under 40 CFR 258)\n"
+         ,"description": "This is the code indicating additional detail about the type of Management Practice used for a volume of Biosolids or Sewage Sludge:\n\n- ADV = Advanced Alkaline Stabilized Biosolids Distribution & Marketing\n- AGR = Agricultural Land Application\n- COM = Distribution and Marketing - Compost\n- DEE = Deep-well Injection Disposal\n- DIS = Disposal in a Municipal Landfill (under 40 CFR 258)\n- DMO = Distribution and Marketing - Other\n- HEA = Heat Dried Biosolids Distribution & Marketing\n- OTL = Other Land Application Management Practice Detail\n- OTO = Other Management Practice Detail\n- RSA = Reclamation Site Application\n- SEN = Sent to Cement Kiln for Use as Alternative Energy\n- STO = Storage\n- UIC = Use in Construction\n- UPS = Used in Production of Syngas\n- USE = Use as Daily Cover for Municipal Landfill (under 40 CFR 258)"
          ,"type": "string"
          ,"required": false
       }
       ,"p_bio_mgmt_deficiencies": {
           "name": "p_bio_mgmt_deficiencies"
          ,"in": "query"
-         ,"description": "The number of times noncompliance was reported by the facility in the last 3 years. The results returned will include facilities whose number of reported noncompliance events is greater than or equal to the number entered.\n"
+         ,"description": "The number of times noncompliance was reported by the facility in the last 3 years. The results returned will include facilities whose number of reported noncompliance events is greater than or equal to the number entered."
          ,"type": "number"
          ,"required": false
       }
@@ -1057,21 +1057,21 @@
       ,"p_bio_total_volume_amt": {
           "name": "p_bio_total_volume_amt"
          ,"in": "query"
-         ,"description": "Total annual amount (in dry metric tons) of biosolids or sewage sludge generated at the facility.\n\n- EQ0 = 0\n- IN0_1 = GT 0 but LT 1\n- IN0_289  =  GT 0 but LT 290 MT\/year\n- IN290_1499  =  GE 290 but LT 1500 MT\/year\n- IN1500_14999  =  GE 1500 but LT 15,000\n- GE15000  =  GE 15,000\n"
+         ,"description": "Total annual amount (in dry metric tons) of biosolids or sewage sludge generated at the facility.\n\n- EQ0 = 0\n- IN0_1 = GT 0 but LT 1\n- IN0_289  =  GT 0 but LT 290 MT\/year\n- IN290_1499  =  GE 290 but LT 1500 MT\/year\n- IN1500_14999  =  GE 1500 but LT 15,000\n- GE15000  =  GE 15,000"
          ,"type": "string"
          ,"required": false
       }
       ,"p_bio_mgmt_prctce_type": {
           "name": "p_bio_mgmt_prctce_type"
          ,"in": "query"
-         ,"description": "The unique code that identifies the type of biosolids or sewage sludge management practice (e.g., land application, surface disposal, incineration) used by the facility. The facility will separately report the management practice for each biosolids or sewage sludge form and pathogen class. This data element will also identify the management practices used by surface disposal site owners\/operators (see 40 CFR 503.24):\n\n- BIN = Incineration\n- BLN = Land Application\n- BOT = Other Management Practice\n- BSD = Surface Disposal\n"
+         ,"description": "The unique code that identifies the type of biosolids or sewage sludge management practice (e.g., land application, surface disposal, incineration) used by the facility. The facility will separately report the management practice for each biosolids or sewage sludge form and pathogen class. This data element will also identify the management practices used by surface disposal site owners\/operators (see 40 CFR 503.24):\n\n- BIN = Incineration\n- BLN = Land Application\n- BOT = Other Management Practice\n- BSD = Surface Disposal"
          ,"type": "string"
          ,"required": false
       }
       ,"p_bio_mgmt_container": {
           "name": "p_bio_mgmt_container"
          ,"in": "query"
-         ,"description": "The code that identifies the nature of each biosolids and sewage sludge material generated by the facility in terms of whether the material is a biosolid or sewage sludge and whether the material is ultimately conveyed off-site in bulk or in bags. The facility separately reports the form for each biosolids or sewage sludge management practice or practices used by the facility and pathogen class:\n\n- BUL = Bulk\n- BAG = Bag or Container\n"
+         ,"description": "The code that identifies the nature of each biosolids and sewage sludge material generated by the facility in terms of whether the material is a biosolid or sewage sludge and whether the material is ultimately conveyed off-site in bulk or in bags. The facility separately reports the form for each biosolids or sewage sludge management practice or practices used by the facility and pathogen class:\n\n- BUL = Bulk\n- BAG = Bag or Container"
          ,"type": "string"
          ,"required": false
       }
@@ -1090,14 +1090,14 @@
       ,"p_bio_mgmt_pathogen": {
           "name": "p_bio_mgmt_pathogen"
          ,"in": "query"
-         ,"description": "This code identifies the pathogen class [e.g., Class A, Class B, Not Applicable (Incineration)] for biosolids or sewage sludge generated by the facility. The facility will separately report the pathogen class for each biosolids or sewage sludge management practice used by the facility and by each biosolids or sewage sludge form. It also is used to filter applicable Pathogen Reduction and Vector Attraction Reduction Options as well as Land Application Management Practice Deficiencies. Only reqired for some of the mgmt. practice types:\n\n- AAA = Class A\n- AEQ = Class A EQ (sale\/give away)\n- BBB = Class B\n- NAP = Not Applicable (Incineration)\n"
+         ,"description": "This code identifies the pathogen class [e.g., Class A, Class B, Not Applicable (Incineration)] for biosolids or sewage sludge generated by the facility. The facility will separately report the pathogen class for each biosolids or sewage sludge management practice used by the facility and by each biosolids or sewage sludge form. It also is used to filter applicable Pathogen Reduction and Vector Attraction Reduction Options as well as Land Application Management Practice Deficiencies. Only reqired for some of the mgmt. practice types:\n\n- AAA = Class A\n- AEQ = Class A EQ (sale\/give away)\n- BBB = Class B\n- NAP = Not Applicable (Incineration)"
          ,"type": "string"
          ,"required": false
       }
       ,"p_bio_trtmnt_procs": {
           "name": "p_bio_trtmnt_procs"
          ,"in": "query"
-         ,"description": "The biosolids or sewage sludge treatment process or processes at the facility:\n\n- AER = Aerobic Digestion\n- AIR = Air Drying (or Sludge Drying Beds)\n- ANA = Anaerobic Digestion\n- COD = Beta Ray Irradiation\n- COM = Lower Temperature Composting\n- DEW = Pasteurization\n- DIS = Gamma Ray Irradiation\n- HEA = Heat Drying (e.g., Flash Dryer, Spray Dryer, Rotary Dryer)\n- HET = Heat Treatment (Liquid Sewage Sludge Heated to 356 Deg. F\/180 Deg. C or Higher for 30 min.)\n- HTC = Higher Temperature Composting\n- MET = Methane or Biogas Capture and Recovery\n- OTH = Other Treatment Process\n- PRE = Preliminary Operations (e.g., Sludge Grinding, Degritting, Blending)\n- SLU = Sludge Lagoon\n- STA = Lime Stabilization\n- THE = Temporary Sludge Storage (Sewage Sludge Stored on Land 2 Years or Less, Not in Sewage Sludge Unit)\n- THI = Thickening (Gravity and\/or Flotation Thickening, Centrifugation, Belt Filter Press, Vacuum Filter)\n- THM = Thermophilic Aerobic Digestion\n- UND = Long-Term Sludge Storage (Sewage Sludge Stored on Land 2 Years or More, not in Sewage Sludge Unit)\"\n"
+         ,"description": "The biosolids or sewage sludge treatment process or processes at the facility:\n\n- AER = Aerobic Digestion\n- AIR = Air Drying (or Sludge Drying Beds)\n- ANA = Anaerobic Digestion\n- COD = Beta Ray Irradiation\n- COM = Lower Temperature Composting\n- DEW = Pasteurization\n- DIS = Gamma Ray Irradiation\n- HEA = Heat Drying (e.g., Flash Dryer, Spray Dryer, Rotary Dryer)\n- HET = Heat Treatment (Liquid Sewage Sludge Heated to 356 Deg. F\/180 Deg. C or Higher for 30 min.)\n- HTC = Higher Temperature Composting\n- MET = Methane or Biogas Capture and Recovery\n- OTH = Other Treatment Process\n- PRE = Preliminary Operations (e.g., Sludge Grinding, Degritting, Blending)\n- SLU = Sludge Lagoon\n- STA = Lime Stabilization\n- THE = Temporary Sludge Storage (Sewage Sludge Stored on Land 2 Years or Less, Not in Sewage Sludge Unit)\n- THI = Thickening (Gravity and\/or Flotation Thickening, Centrifugation, Belt Filter Press, Vacuum Filter)\n- THM = Thermophilic Aerobic Digestion\n- UND = Long-Term Sludge Storage (Sewage Sludge Stored on Land 2 Years or More, not in Sewage Sludge Unit)\""
          ,"type": "string"
          ,"required": false
       }
@@ -1111,7 +1111,7 @@
       ,"p_bio_qtrs_in_vio": {
           "name": "p_bio_qtrs_in_vio"
          ,"in": "query"
-         ,"description": "The number of quarters, in the last three years, where the facility was in violation for a biosolids violation type.  The results returned will include facilities whose number of quarters with violations is greater than or equal to the number entered.\n"
+         ,"description": "The number of quarters, in the last three years, where the facility was in violation for a biosolids violation type.  The results returned will include facilities whose number of quarters with violations is greater than or equal to the number entered."
          ,"type": "number"
          ,"required": false
       }
@@ -1125,7 +1125,7 @@
       ,"p_bio_current_vio": {
           "name": "p_bio_current_vio"
          ,"in": "query"
-         ,"description": "Indicator of whether the facility is currently in violation for biosolids under the Clean Water Act, in the 12th or 13th quarter:\n\n- Y = Yes\n- N = No\n"
+         ,"description": "Indicator of whether the facility is currently in violation for biosolids under the Clean Water Act, in the 12th or 13th quarter:\n\n- Y = Yes\n- N = No"
          ,"enum": [
              "Y"
             ,"N"
@@ -1170,14 +1170,14 @@
       ,"p_bio_fac_type": {
           "name": "p_bio_fac_type"
          ,"in": "query"
-         ,"description": "The code indicating the reporting obligation reason:\n\n- POT = A POTW with a design flow rate equal to or greater than one million gallons per day\n- CLI = A Class I Sludge Management Facility as defined in 40 CFR 503.9\n- PPL = A POTW that serves 10,000 people or more\n- OTH = Otherwise required to report (e.g., permit condition, enforcement action)\n- NOA = None of the above\n"
+         ,"description": "The code indicating the reporting obligation reason:\n\n- POT = A POTW with a design flow rate equal to or greater than one million gallons per day\n- CLI = A Class I Sludge Management Facility as defined in 40 CFR 503.9\n- PPL = A POTW that serves 10,000 people or more\n- OTH = Otherwise required to report (e.g., permit condition, enforcement action)\n- NOA = None of the above"
          ,"type": "string"
          ,"required": false
       }
       ,"p_alrexceed": {
           "name": "p_alrexceed"
          ,"in": "query"
-         ,"description": "Alert Limits Exceedences Limiter.  Enter a numeric value to restrict results to facilities having the given amount or more of alert limits exceedances.\n"
+         ,"description": "Alert Limits Exceedences Limiter.  Enter a numeric value to restrict results to facilities having the given amount or more of alert limits exceedances."
          ,"type": "number"
          ,"required": false
       }
@@ -1197,7 +1197,7 @@
       ,"p_iv": {
           "name": "p_iv"
          ,"in": "query"
-         ,"description": "Facility has a violation status of 'In Viol' during any of the selected quarters. \n\nRange: Fiscal Year 2018 Quarter 1 to Fiscal Year 2015 Quarter 1\n\nMultiple values are comma delimited.\n\n\n||||||  Fiscal Years ||||||\n- FY2018 or FY18 or 2018 or 18\n- FY2017 or FY17 or 2017 or 17\n- FY2016 or FY16 or 2016 or 16\n- FY2015 or FY15 or 2015 or 15\n\n||||| Fiscal Quarters |||||\n- FY2018Q1 or FY18Q1 or 20181 or 181 or 13\n- FY2017Q4 or FY17Q4 or 20174 or 174 or 12\n- FY2017Q3 or FY17Q3 or 20173 or 173 or 11\n- FY2017Q2 or FY17Q2 or 20172 or 172 or 10\n- FY2017Q1 or FY17Q1 or 20171 or 171 or 9\n- FY2016Q4 or FY16Q4 or 20164 or 164 or 8\n- FY2016Q3 or FY16Q3 or 20163 or 163 or 7\n- FY2016Q2 or FY16Q2 or 20162 or 162 or 6\n- FY2016Q1 or FY16Q1 or 20161 or 161 or 5\n- FY2015Q4 or FY15Q4 or 20154 or 154 or 4\n- FY2015Q3 or FY15Q3 or 20153 or 153 or 3\n- FY2015Q2 or FY15Q2 or 20152 or 152 or 2\n- FY2015Q1 or FY15Q1 or 20151 or 151 or 1\n"
+         ,"description": "Facility has a violation status of 'In Viol' during any of the selected quarters. \n\nRange: Fiscal Year 2018 Quarter 1 to Fiscal Year 2015 Quarter 1\n\nMultiple values are comma delimited.\n\n\n||||||  Fiscal Years ||||||\n- FY2018 or FY18 or 2018 or 18\n- FY2017 or FY17 or 2017 or 17\n- FY2016 or FY16 or 2016 or 16\n- FY2015 or FY15 or 2015 or 15\n\n||||| Fiscal Quarters |||||\n- FY2018Q1 or FY18Q1 or 20181 or 181 or 13\n- FY2017Q4 or FY17Q4 or 20174 or 174 or 12\n- FY2017Q3 or FY17Q3 or 20173 or 173 or 11\n- FY2017Q2 or FY17Q2 or 20172 or 172 or 10\n- FY2017Q1 or FY17Q1 or 20171 or 171 or 9\n- FY2016Q4 or FY16Q4 or 20164 or 164 or 8\n- FY2016Q3 or FY16Q3 or 20163 or 163 or 7\n- FY2016Q2 or FY16Q2 or 20162 or 162 or 6\n- FY2016Q1 or FY16Q1 or 20161 or 161 or 5\n- FY2015Q4 or FY15Q4 or 20154 or 154 or 4\n- FY2015Q3 or FY15Q3 or 20153 or 153 or 3\n- FY2015Q2 or FY15Q2 or 20152 or 152 or 2\n- FY2015Q1 or FY15Q1 or 20151 or 151 or 1"
          ,"type": "string"
          ,"required": false
       }
@@ -4023,7 +4023,7 @@
             }
             ,"FacFederalAgencyCode": {
                 "type": "string"
-               ,"title": "Facility Federal Agency Code\n"
+               ,"title": "Facility Federal Agency Code"
                ,"example": "E"
                ,"description": "Indicates the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government. The five-character code consists of a letter followed by four numbers. There are four possible letters that can occupy the first character position: C = Civilian Federal Agency; D = Department of Defense; E = Department of Energy; X = Unknown. The second and third characters represent the agency code, while the fourth and fifth characters represent the bureau code."
             }
@@ -4221,13 +4221,13 @@
             }
             ,"FacPopDen": {
                 "type": "string"
-               ,"title": "Facility Population Density\n"
+               ,"title": "Facility Population Density"
                ,"example": "6716.34"
                ,"description": "The number of persons per square mile in the area being profiled. This field is the ratio of total persons (displayed in the Total Persons field) to total land area (displayed in the Land Area field)."
             }
             ,"FacPercentMinority": {
                 "type": "string"
-               ,"title": "Facility Percent Minority\n"
+               ,"title": "Facility Percent Minority"
                ,"example": "45.379"
                ,"description": "Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility."
             }
@@ -5819,7 +5819,7 @@
             }
             ,"FacFederalAgencyCode": {
                 "type": "string"
-               ,"title": "Facility Federal Agency Code\n"
+               ,"title": "Facility Federal Agency Code"
                ,"example": "E"
                ,"description": "Indicates the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government. The five-character code consists of a letter followed by four numbers. There are four possible letters that can occupy the first character position: C = Civilian Federal Agency; D = Department of Defense; E = Department of Energy; X = Unknown. The second and third characters represent the agency code, while the fourth and fifth characters represent the bureau code."
             }
@@ -6017,13 +6017,13 @@
             }
             ,"FacPopDen": {
                 "type": "string"
-               ,"title": "Facility Population Density\n"
+               ,"title": "Facility Population Density"
                ,"example": "6716.34"
                ,"description": "The number of persons per square mile in the area being profiled. This field is the ratio of total persons (displayed in the Total Persons field) to total land area (displayed in the Land Area field)."
             }
             ,"FacPercentMinority": {
                 "type": "string"
-               ,"title": "Facility Percent Minority\n"
+               ,"title": "Facility Percent Minority"
                ,"example": "45.379"
                ,"description": "Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility."
             }
@@ -7393,7 +7393,7 @@
             }
             ,"FacFederalAgencyCode": {
                 "type": "string"
-               ,"title": "Facility Federal Agency Code\n"
+               ,"title": "Facility Federal Agency Code"
                ,"example": "E"
                ,"description": "Indicates the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government. The five-character code consists of a letter followed by four numbers. There are four possible letters that can occupy the first character position: C = Civilian Federal Agency; D = Department of Defense; E = Department of Energy; X = Unknown. The second and third characters represent the agency code, while the fourth and fifth characters represent the bureau code."
             }
@@ -7579,13 +7579,13 @@
             }
             ,"FacPopDen": {
                 "type": "number"
-               ,"title": "Facility Population Density\n"
+               ,"title": "Facility Population Density"
                ,"example": 6716.34
                ,"description": "The number of persons per square mile in the area being profiled. This field is the ratio of total persons (displayed in the Total Persons field) to total land area (displayed in the Land Area field)."
             }
             ,"FacPercentMinority": {
                 "type": "number"
-               ,"title": "Facility Percent Minority\n"
+               ,"title": "Facility Percent Minority"
                ,"example": 45.379
                ,"description": "Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility."
             }
