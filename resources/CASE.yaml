@@ -1550,6 +1550,8 @@ definitions:
     - MapData
   crs1_CAEDDocuments: 
     type: object
+    xml: 
+      name: CAEDDocument
     properties: 
       Dummy: 
         type: string
@@ -2248,6 +2250,7 @@ definitions:
           wrapped: true
       CAEDDocuments: 
         type: array
+        title: CAED Documents
         items: 
           "$ref": "#/definitions/crs1_CAEDDocuments" 
         xml: 
