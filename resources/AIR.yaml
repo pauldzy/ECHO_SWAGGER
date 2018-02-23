@@ -47,9 +47,7 @@ parameters:
   p_nei_pol: 
     name: p_nei_pol
     in: query
-    description: |-
-      National Emissions Inventory (NEI) Pollutant Identifier.  When a pollutant identifer is entered a corresponding formatted amount or custom amount must be entered.
-
+    description: National Emissions Inventory (NEI) Pollutant Identifier.  When a pollutant identifer is entered a corresponding formatted amount or custom amount must be entered.
     type: string
     required: false
   p_nei_amt: 
@@ -514,7 +512,6 @@ parameters:
       - GT5000 = More than 5000 population density per square mile
       - GT10000 = More than 10000 population density per square mile
       - GT20000 = More than 20000 population density per square mile
-
     enum: 
     - NONE
     - GT100
@@ -543,9 +540,7 @@ parameters:
   p_nei_any_amt: 
     name: p_nei_any_amt
     in: query
-    description: |-
-      National Emissions Inventory (NEI) Custom Pollutant Amount.  Only a number can be entered.  Identifies facilities with where the NEI Pollutant Emission Amount is greater than the number entered.
-
+    description: National Emissions Inventory (NEI) Custom Pollutant Amount.  Only a number can be entered.  Identifies facilities with where the NEI Pollutant Emission Amount is greater than the number entered.
     type: number
     required: false
   p_nei_cat: 
@@ -683,7 +678,6 @@ parameters:
       - BEGINS = Find facilities with names starting with the provided term(s).
       - ALL = Find facilities using Oracle text search terms.
       - CONTAINS = 
-
     enum: 
     - ALL
     - CONTAINS
@@ -1058,9 +1052,7 @@ parameters:
   p_des: 
     name: p_des
     in: query
-    description: |-
-      Universe Designation Limiter.  Enter one or more universe designation codes.  Provide multiple values as a comma-delimited list.  Use code "TSDF" to return the full enforcement TSDF universe and "Operating TSDF" to return the operating TSDF universe.
-
+    description: "Universe Designation Limiter.  Enter one or more universe designation codes.  Provide multiple values as a comma-delimited list.  Use code \"TSDF\" to return the full enforcement TSDF universe and \"Operating TSDF\" to return the operating TSDF universe."
     type: string
     required: false
   p_hpvmth: 
@@ -1258,6 +1250,8 @@ paths:
           description: Results are summary statistics for the query and a query identifier (QID).
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/air2_Results" 
@@ -1397,6 +1391,8 @@ paths:
           description: Results are summary statistics for the query and a query identifier (QID).
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/air2_Results" 
@@ -1536,6 +1532,8 @@ paths:
           description: Results will either be an array of Facilities or an array of Clusters. The search will return clusters if the number of facilities returned is greater than the resposeset size, otherwise individual facility records will be returned.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/air3_Results" 
@@ -1674,6 +1672,8 @@ paths:
           description: Results will either be an array of Facilities or an array of Clusters. The search will return clusters if the number of facilities returned is greater than the resposeset size, otherwise individual facility records will be returned.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/air3_Results" 
@@ -1710,6 +1710,8 @@ paths:
           description: Results are an array (page)  of CAA (ICIS Air) Facilities with the number of facilities equal to the responseset (page size).
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/air5_Results" 
@@ -1745,6 +1747,8 @@ paths:
           description: Results are an array (page)  of CAA (ICIS Air) Facilities with the number of facilities equal to the responseset (page size).
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/air5_Results" 
@@ -1783,6 +1787,8 @@ paths:
           description: Results are either an array of State, County, Zip Code facility cluster map coordinates or individual facility coordinates.  Coordinates provided are in WGS84.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               MapOutput: 
                 "$ref": "#/definitions/air4_MapOutput" 
@@ -1820,6 +1826,8 @@ paths:
           description: Results are either an array of State, County, Zip Code facility cluster map coordinates or individual facility coordinates.  Coordinates provided are in WGS84.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               MapOutput: 
                 "$ref": "#/definitions/air4_MapOutput" 
@@ -2022,6 +2030,8 @@ paths:
           description: Results are an array of columns/objects.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/met_Results" 
@@ -2052,6 +2062,8 @@ paths:
           description: Results are an array of columns/objects.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/met_Results" 
@@ -2060,6 +2072,8 @@ paths:
 definitions: 
   qp0_QueryParameters: 
     description: Query Parameters Object
+    xml: 
+      name: Parameter
     properties: 
       QP: 
         type: string
@@ -2175,6 +2189,8 @@ definitions:
           "$ref": "#/definitions/air1_ClusterData" 
   air1_MapData: 
     description: Map Data Object
+    xml: 
+      name: Object
     properties: 
       LAT: 
         type: string
@@ -2240,46 +2256,16 @@ definitions:
     xml: 
       name: Facility
     properties: 
-      SourceID: 
-        type: string
-        title: EPA Source Identifier
-        example: ALR040033
-        description: Unique Identifier assigned by EPA.
-      EPASystem: 
-        type: string
-        title: EPA Data System
-        example: ICP
-        description: |-
-          The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: 
-          - AFS: Air Facility System for Clean Air Act stationary source programs.
-          - ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.
-          - RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.
-          - NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).
-          - TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.
-          - NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.
-          - TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.
-      RegistryID: 
-        type: string
-        title: FRS ID
-        example: '110020837601'
-        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
-      Statute: 
-        type: string
-        title: Regulatory Statute
-        example: CWA
-        description: |-
-          The name of the statute associated with each of the permits and identifiers linked to the facility: 
-          - CAA = the Clean Air Act
-          - CWA = the Clean Water Act
-          - RCRA = the Resource Conservation and Recovery Act
-          - EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)
-          - TSCA = the Toxic Substances Control Act
-          - SDWA = the Safe Drinking Water Act
       AIRName: 
         type: string
         title: Air Facility Name
         example: WEST PARK CLEANERS
         description: The name of the AIR Facility.
+      SourceID: 
+        type: string
+        title: EPA Source Identifier
+        example: ALR040033
+        description: Unique Identifier assigned by EPA.
       AIRStreet: 
         type: string
         title: AIR Facility Street Address
@@ -2292,48 +2278,68 @@ definitions:
         title: AIR Facility State
         example: WI
         description: The state where the AIR facility is located.
+      LocalControlRegionCode: 
+        type: string
+        title: Local Control Region Code
+        description: Code for regions within a state. Search criteria for DFR in OTIS.
       AIRZip: 
         type: string
         title: AIR Facility Zip Code
         example: '20037'
         description: The five-digit zip code of the AIR facility.
+      RegistryID: 
+        type: string
+        title: FRS ID
+        example: '110020837601'
+        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
       AIRCounty: 
         type: string
         example: Racine
         description: The name of the county where the AIR facility is located.
-      LocalControlRegionCode: 
-        type: string
-        title: Local Control Region Code
-        description: Code for regions within a state. Search criteria for DFR in OTIS.
-      LocalControlRegionName: 
-        type: string
-        title: Local Control Region Name
-        description: Regions within a state. Search criteria for DFR in OTIS.
-      AIRFIPSCode: 
-        type: string
       AIREPARegion: 
         type: string
         example: '05'
         description: The EPA region where the AIR facility is located.
-      AIRStatus: 
+      FacFederalAgencyCode: 
         type: string
-        title: Air Facility Status
-        example: Permanently Closed
-        description: The status of the AIR facility location.
-      AIRIndianCntryFlg: 
+        title: Facility Federal Agency Code
+        example: E
+        description: "Indicates the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government. The five-character code consists of a letter followed by four numbers. There are four possible letters that can occupy the first character position: C = Civilian Federal Agency; D = Department of Defense; E = Department of Energy; X = Unknown. The second and third characters represent the agency code, while the fourth and fifth characters represent the bureau code."
+      FacFederalAgencyName: 
         type: string
-        title: AIR Facility Indian Country Flag
-        example: N
-        description: Flag indicating whether the AIR facility is located in Indian country.
-      AIRTRIbalEPAids: 
+      FacDerivedHuc: 
         type: string
-      AIRTRIbalNames: 
-        type: string
+        title: Watershed (HUC Code)
+        example: '552968'
+        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
       FacFIPSCode: 
         type: string
         title: FIPS Code
         example: '55001'
         description: The 2-digit Federal Information Processing Standards (FIPS) code to identify the county that a facility is located in.
+      FacIndianCntryFlg: 
+        type: string
+        title: Facility Indian Country Flag
+        description: Flag showing Y/N whether the facility is located in Indian Country.
+      AIRIndianCntryFlg: 
+        type: string
+        title: AIR Facility Indian Country Flag
+        example: N
+        description: Flag indicating whether the AIR facility is located in Indian country.
+      FacIndianSpatialFlg: 
+        type: string
+      FacDerivedTRIbes: 
+        type: string
+      FacUsMexBorderFlg: 
+        type: string
+        title: Near US-Mexico Border
+        example: Y
+        description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
+      FacSICCodes: 
+        type: string
+      AIRNAICS: 
+        type: string
+        example: '812320'
       FacLat: 
         type: string
         title: Latitude
@@ -2344,37 +2350,25 @@ definitions:
         title: Longitude
         example: '-77.085951'
         description: The longitude of the facility in decimal degrees expressed using the NAD83 horizontal datum. The coordinate comes from the FRS EPA Locational Reference Tables (LRT) file which represents the most accurate value for the facility based on the available spatial metadata.
-      FacUsMexBorderFlg: 
+      AIRPrograms: 
         type: string
-        title: Near US-Mexico Border
-        example: Y
-        description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
+        title: Air Programs
+        example: MACT, SIP
+        description: Comma-delimited list of AIR programs.
+      AIRMacts: 
+        type: string
+        example: ZZZZZ
+      AIRStatus: 
+        type: string
+        title: Air Facility Status
+        example: Permanently Closed
+        description: The status of the AIR facility location.
       AIRUniverse: 
         type: string
         example: Minor Emissions
-      AIRNAICS: 
+      FacDerivedWBD: 
         type: string
-        example: '812320'
-      FacSICCodes: 
-        type: string
-      FacPercentMinority: 
-        type: string
-        title: |-
-          Facility Percent Minority
-
-        example: '45.379'
-        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
-      FacPopulationDensity: 
-        type: string
-        example: '9611.17'
-      FacFederalAgencyCode: 
-        type: string
-        title: |-
-          Facility Federal Agency Code
-
-        example: E
-        description: "Indicates the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government. The five-character code consists of a letter followed by four numbers. There are four possible letters that can occupy the first character position: C = Civilian Federal Agency; D = Department of Defense; E = Department of Energy; X = Unknown. The second and third characters represent the agency code, while the fourth and fifth characters represent the bureau code."
-      FacFederalAgencyName: 
+      FacDerivedWBDName: 
         type: string
       ChesapeakeBayFlag: 
         type: string
@@ -2393,43 +2387,37 @@ definitions:
         title: Resource Conservation and Recovery Act IDs
         example: VAD981111784
         description: A unique 12-character ID assigned for each record/permit/site/facility within the RCRAInfo database.
+      RmpIDs: 
+        type: string
+      SDWAIDs: 
+        type: string
+        example: DC0000001
+        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
       TRIIDs: 
         type: string
         title: Toxics Release Inventory Program IDs
         example: 20011FRTTT5001F
         description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
-      SDWAIDs: 
-        type: string
-        example: DC0000001
-        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
-      AIRCaseIDs: 
-        type: string
-        example: 05-1993-1585 05-2014-5021
-        description: Space-delimited list of AIR cases associated with the facility.
       GHGIDs: 
         type: string
       EisIDs: 
         type: string
-      AIRMacts: 
+      CamdIDs: 
         type: string
-        example: ZZZZZ
-      AIRPrograms: 
-        type: string
-        title: Air Programs
-        example: MACT, SIP
-        description: Comma-delimited list of AIR programs.
-      AIRCurrHpv: 
-        type: string
-        example: No
+        title: Clean Air Markets Division Identifiers
+        description: Facility identifiers for the Clean Air Markets Division database.
       AIRCurrComplStatus: 
         type: string
         example: No Viol
-      AIRQtrsInHpv: 
+      AIRCurrHpv: 
         type: string
-        example: '0'
+        example: No
       AIRMnthsInHpv: 
         type: string
         example: '2'
+      AIRQtrsInHpv: 
+        type: string
+        example: '0'
       AIRQtrsWithViol: 
         type: string
         example: '2'
@@ -2443,50 +2431,29 @@ definitions:
       AIREvalCnt: 
         type: string
         example: '0'
-      AIRLastEvalDate: 
-        type: string
-        example: 05/18/2009
       AIRDaysLastEval: 
         type: string
         example: '2806'
-      AIRLastStckTestDate: 
+      AIRLastEvalDate: 
         type: string
-      AIRLastStckDateEPA: 
-        type: string
-      AIRLastStckDateState: 
-        type: string
-      AIRLastStckTestResults: 
-        type: string
-      AIRIeaCnt: 
-        type: string
-      AIRLastIeaDate: 
-        type: string
-        example: 04/25/2014
-      AIRFeaCnt: 
-        type: string
-        example: '2'
-      AIRLastFeaDate: 
-        type: string
-        example: 05/16/2014
-      AIRPenalties: 
-        type: string
-        example: "$435"
-      AIRLastPenaltyDate: 
-        type: string
+        example: 05/18/2009
       AIRLastEvalDateEPA: 
         type: string
         example: 05/16/2014
       AIRLastEvalDateState: 
         type: string
         example: 05/18/2009
-      AIRLastFeaDateEPA: 
+      LastDatePce: 
         type: string
-      AIRLastFeaDateState: 
+      LastDatePceEPA: 
         type: string
-      AIRLastIeaDateEPA: 
+      LastDatePceSta: 
         type: string
-        example: 04/25/2014
-      AIRLastIeaDateState: 
+      AIRLastStckTestDate: 
+        type: string
+      AIRLastStckTestResults: 
+        type: string
+      FacNaaFlag: 
         type: string
       FacTRIReporter: 
         type: string
@@ -2506,53 +2473,33 @@ definitions:
         type: string
       FacGHGCO2Releases: 
         type: string
-      FacDerivedHuc: 
+      AIRIeaCnt: 
         type: string
-        title: Watershed (HUC Code)
-        example: '552968'
-        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
-      FacDerivedWBD: 
+      AIRFeaCnt: 
         type: string
-      FacDerivedWBDName: 
+        example: '2'
+      AIRLastIeaDate: 
         type: string
-      FacMapFlg: 
+        example: 04/25/2014
+      AIRLastIeaDateState: 
         type: string
-        title: Facility Mapped Flag
-        example: Y
-        description: Graphical indicator denoting whether geographical data required to map a facility are available.
-      FacMapIcon: 
+      AIRLastIeaDateEPA: 
         type: string
-        title: Facility Map Icon
-        example: CWA-NC-MJ-2.png
-        description: The default map icon image file calculated for the facility by the ECHO program.
-      FacNaaFlag: 
+        example: 04/25/2014
+      AIRLastFeaDate: 
         type: string
-      FacGHGReporter: 
+        example: 05/16/2014
+      AIRLastFeaDateState: 
         type: string
-      FacEisReporter: 
+      AIRLastFeaDateEPA: 
         type: string
-      FacCamdReporter: 
+      AIRPenalties: 
         type: string
-      AIRFacilityTypeCode: 
+        example: "$435"
+      AIRLastPenaltyDate: 
         type: string
-        example: POF
-      AIRMajorFlag: 
+      Over80CountUs: 
         type: string
-        example: N
-      RmpIDs: 
-        type: string
-      AIR3yrComplQtrsStatus: 
-        type: string
-        example: ______UUUUUU
-      HasPollRpt: 
-        type: string
-        example: Y
-        description: "???"
-      CensusBlockGroup: 
-        type: string
-        title: Census Block Group
-        example: '110010096022'
-        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
       PctilePctpre1960Us: 
         type: string
         example: '14.6'
@@ -2597,6 +2544,91 @@ definitions:
         type: string
         example: '93'
         description: The national percentile of the census block group for the EJSCREEN particulate matter indicator.
+      FacPopulationDensity: 
+        type: string
+        example: '9611.17'
+      FacPercentMinority: 
+        type: string
+        title: Facility Percent Minority
+        example: '45.379'
+        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
+      EPASystem: 
+        type: string
+        title: EPA Data System
+        example: ICP
+        description: |-
+          The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: 
+          - AFS: Air Facility System for Clean Air Act stationary source programs.
+          - ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.
+          - RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.
+          - NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).
+          - TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.
+          - NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.
+          - TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.
+      Statute: 
+        type: string
+        title: Regulatory Statute
+        example: CWA
+        description: |-
+          The name of the statute associated with each of the permits and identifiers linked to the facility: 
+          - CAA = the Clean Air Act
+          - CWA = the Clean Water Act
+          - RCRA = the Resource Conservation and Recovery Act
+          - EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)
+          - TSCA = the Toxic Substances Control Act
+          - SDWA = the Safe Drinking Water Act
+      LocalControlRegionName: 
+        type: string
+        title: Local Control Region Name
+        description: Regions within a state. Search criteria for DFR in OTIS.
+      AIRFIPSCode: 
+        type: string
+      AIRTRIbalEPAids: 
+        type: string
+      AIRTRIbalNames: 
+        type: string
+      AIRCaseIDs: 
+        type: string
+        example: 05-1993-1585 05-2014-5021
+        description: Space-delimited list of AIR cases associated with the facility.
+      AIRLastStckDateEPA: 
+        type: string
+      AIRLastStckDateState: 
+        type: string
+      FacMapFlg: 
+        type: string
+        title: Facility Mapped Flag
+        example: Y
+        description: Graphical indicator denoting whether geographical data required to map a facility are available.
+      FacMapIcon: 
+        type: string
+        title: Facility Map Icon
+        example: CWA-NC-MJ-2.png
+        description: The default map icon image file calculated for the facility by the ECHO program.
+      FacGHGReporter: 
+        type: string
+      FacEisReporter: 
+        type: string
+      FacCamdReporter: 
+        type: string
+      AIRFacilityTypeCode: 
+        type: string
+        example: POF
+      AIRMajorFlag: 
+        type: string
+        example: N
+      AIR3yrComplQtrsStatus: 
+        type: string
+        example: ______UUUUUU
+      HasPollRpt: 
+        type: string
+        example: Y
+        description: "???"
+      CensusBlockGroup: 
+        type: string
+        title: Census Block Group
+        example: '110010096022'
+        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
       MaxPctileUs: 
         type: string
         example: '98'
@@ -2644,14 +2676,6 @@ definitions:
         description: Flag showing Y/N whether location is within the contiguous (lower 48) United States.
       ActiveLower48: 
         type: string
-      FacDerivedTRIbes: 
-        type: string
-      FacIndianCntryFlg: 
-        type: string
-        title: Facility Indian Country Flag
-        description: Flag showing Y/N whether the facility is located in Indian Country.
-      FacIndianSpatialFlg: 
-        type: string
       CollectionMethod: 
         type: string
         title: Collection Method
@@ -2669,23 +2693,15 @@ definitions:
       Map: 
         type: string
         title: Map
-      Over80CountUs: 
-        type: string
-      CamdIDs: 
-        type: string
-        title: Clean Air Markets Division Identifiers
-        description: Facility identifiers for the Clean Air Markets Division database.
-      LastDatePce: 
-        type: string
-      LastDatePceEPA: 
-        type: string
-      LastDatePceSta: 
-        type: string
       WebDocs: 
         type: string
         title: Web Documents
         example: C6
         description: Contains flags that identify what web accessible documents are available for the facility.
+      NaaCategories: 
+        type: string
+      NaaPollutants: 
+        type: string
       Score: 
         type: string
         title: Score
@@ -2696,94 +2712,81 @@ definitions:
         example: '1'
         description: "[Col. 121]"
     required: 
-    - SourceID
-    - EPASystem
-    - RegistryID
-    - Statute
     - AIRName
+    - SourceID
     - AIRStreet
     - AIRCity
     - AIRState
-    - AIRZip
-    - AIRCounty
     - LocalControlRegionCode
-    - LocalControlRegionName
-    - AIRFIPSCode
+    - AIRZip
+    - RegistryID
+    - AIRCounty
     - AIREPARegion
-    - AIRStatus
-    - AIRIndianCntryFlg
-    - AIRTRIbalEPAids
-    - AIRTRIbalNames
-    - FacFIPSCode
-    - FacLat
-    - FacLong
-    - FacUsMexBorderFlg
-    - AIRUniverse
-    - AIRNAICS
-    - FacSICCodes
-    - FacPercentMinority
-    - FacPopulationDensity
     - FacFederalAgencyCode
     - FacFederalAgencyName
+    - FacDerivedHuc
+    - FacFIPSCode
+    - FacIndianCntryFlg
+    - AIRIndianCntryFlg
+    - FacIndianSpatialFlg
+    - FacDerivedTRIbes
+    - FacUsMexBorderFlg
+    - FacSICCodes
+    - AIRNAICS
+    - FacLat
+    - FacLong
+    - AIRPrograms
+    - AIRMacts
+    - AIRStatus
+    - AIRUniverse
+    - FacDerivedWBD
+    - FacDerivedWBDName
     - ChesapeakeBayFlag
     - AIRIDs
     - CWAIDs
     - RCRAIDs
-    - TRIIDs
+    - RmpIDs
     - SDWAIDs
-    - AIRCaseIDs
+    - TRIIDs
     - GHGIDs
     - EisIDs
-    - AIRMacts
-    - AIRPrograms
-    - AIRCurrHpv
+    - CamdIDs
     - AIRCurrComplStatus
-    - AIRQtrsInHpv
+    - AIRCurrHpv
     - AIRMnthsInHpv
+    - AIRQtrsInHpv
     - AIRQtrsWithViol
     - AIRPollRecentViol
     - AIRRecentViolCnt
     - AIRLastViolDate
     - AIREvalCnt
-    - AIRLastEvalDate
     - AIRDaysLastEval
-    - AIRLastStckTestDate
-    - AIRLastStckDateEPA
-    - AIRLastStckDateState
-    - AIRLastStckTestResults
-    - AIRIeaCnt
-    - AIRLastIeaDate
-    - AIRFeaCnt
-    - AIRLastFeaDate
-    - AIRPenalties
-    - AIRLastPenaltyDate
+    - AIRLastEvalDate
     - AIRLastEvalDateEPA
     - AIRLastEvalDateState
-    - AIRLastFeaDateEPA
-    - AIRLastFeaDateState
-    - AIRLastIeaDateEPA
-    - AIRLastIeaDateState
+    - LastDatePce
+    - LastDatePceEPA
+    - LastDatePceSta
+    - AIRLastStckTestDate
+    - AIRLastStckTestResults
+    - FacNaaFlag
     - FacTRIReporter
     - FacTRIAIRReleases
     - FacTRICarcAIRReleases
     - FacTRIHapsAIRReleases
     - FacEisAIRReleases
     - FacGHGCO2Releases
-    - FacDerivedHuc
-    - FacDerivedWBD
-    - FacDerivedWBDName
-    - FacMapFlg
-    - FacMapIcon
-    - FacNaaFlag
-    - FacGHGReporter
-    - FacEisReporter
-    - FacCamdReporter
-    - AIRFacilityTypeCode
-    - AIRMajorFlag
-    - RmpIDs
-    - AIR3yrComplQtrsStatus
-    - HasPollRpt
-    - CensusBlockGroup
+    - AIRIeaCnt
+    - AIRFeaCnt
+    - AIRLastIeaDate
+    - AIRLastIeaDateState
+    - AIRLastIeaDateEPA
+    - AIRLastFeaDate
+    - AIRLastFeaDateState
+    - AIRLastFeaDateEPA
+    - AIRPenalties
+    - AIRLastPenaltyDate
+    - Over80CountUs
     - PctilePctpre1960Us
     - PctileDpmUs
     - PctileCancerUs
@@ -2795,6 +2798,27 @@ definitions:
     - PctileProximityTsdfUs
     - PctileO3Us
     - PctilePmUs
+    - FacPopulationDensity
+    - FacPercentMinority
+    - EPASystem
+    - Statute
+    - LocalControlRegionName
+    - AIRFIPSCode
+    - AIRTRIbalEPAids
+    - AIRTRIbalNames
+    - AIRCaseIDs
+    - AIRLastStckDateEPA
+    - AIRLastStckDateState
+    - FacMapFlg
+    - FacMapIcon
+    - FacGHGReporter
+    - FacEisReporter
+    - FacCamdReporter
+    - AIRFacilityTypeCode
+    - AIRMajorFlag
+    - AIR3yrComplQtrsStatus
+    - HasPollRpt
+    - CensusBlockGroup
     - MaxPctileUs
     - EjscreenFlagUs
     - EjscreenFlag
@@ -2807,13 +2831,15 @@ definitions:
     - Infea5yrFlag
     - Lower48
     - ActiveLower48
-    - FacDerivedTRIbes
-    - FacIndianCntryFlg
-    - FacIndianSpatialFlg
     - CollectionMethod
     - ReferencePoint
     - CalculatedAccuracyMeters
     - Map
+    - WebDocs
+    - NaaCategories
+    - NaaPollutants
+    - Score
+    - MaxScore
   air2_MapOutput: 
     description: Map Output Object
     properties: 
@@ -2837,6 +2863,9 @@ definitions:
         title: Map Data
         items: 
           "$ref": "#/definitions/air1_MapData" 
+        xml: 
+          name: MapData
+          wrapped: true
     required: 
     - QueryID
     - IconBaseURL
@@ -2905,6 +2934,9 @@ definitions:
         title: Facilities
         items: 
           "$ref": "#/definitions/air2_Facilities" 
+        xml: 
+          name: Facilities
+          wrapped: true
       MapOutput: 
         "$ref": "#/definitions/air2_MapOutput" 
     required: 
@@ -2930,46 +2962,16 @@ definitions:
         title: Object Identifier
         example: '1'
         description: Sequential number assigned to each facility returned
-      SourceID: 
-        type: string
-        title: EPA Source Identifier
-        example: ALR040033
-        description: Unique Identifier assigned by EPA.
-      EPASystem: 
-        type: string
-        title: EPA Data System
-        example: ICP
-        description: |-
-          The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: 
-          - AFS: Air Facility System for Clean Air Act stationary source programs.
-          - ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.
-          - RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.
-          - NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).
-          - TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.
-          - NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.
-          - TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.
-      RegistryID: 
-        type: string
-        title: FRS ID
-        example: '110020837601'
-        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
-      Statute: 
-        type: string
-        title: Regulatory Statute
-        example: CWA
-        description: |-
-          The name of the statute associated with each of the permits and identifiers linked to the facility: 
-          - CAA = the Clean Air Act
-          - CWA = the Clean Water Act
-          - RCRA = the Resource Conservation and Recovery Act
-          - EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)
-          - TSCA = the Toxic Substances Control Act
-          - SDWA = the Safe Drinking Water Act
       AIRName: 
         type: string
         title: Air Facility Name
         example: WEST PARK CLEANERS
         description: The name of the AIR Facility.
+      SourceID: 
+        type: string
+        title: EPA Source Identifier
+        example: ALR040033
+        description: Unique Identifier assigned by EPA.
       AIRStreet: 
         type: string
         title: AIR Facility Street Address
@@ -2982,48 +2984,68 @@ definitions:
         title: AIR Facility State
         example: WI
         description: The state where the AIR facility is located.
+      LocalControlRegionCode: 
+        type: string
+        title: Local Control Region Code
+        description: Code for regions within a state. Search criteria for DFR in OTIS.
       AIRZip: 
         type: string
         title: AIR Facility Zip Code
         example: '20037'
         description: The five-digit zip code of the AIR facility.
+      RegistryID: 
+        type: string
+        title: FRS ID
+        example: '110020837601'
+        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
       AIRCounty: 
         type: string
         example: Racine
         description: The name of the county where the AIR facility is located.
-      LocalControlRegionCode: 
-        type: string
-        title: Local Control Region Code
-        description: Code for regions within a state. Search criteria for DFR in OTIS.
-      LocalControlRegionName: 
-        type: string
-        title: Local Control Region Name
-        description: Regions within a state. Search criteria for DFR in OTIS.
-      AIRFIPSCode: 
-        type: string
       AIREPARegion: 
         type: string
         example: '05'
         description: The EPA region where the AIR facility is located.
-      AIRStatus: 
+      FacFederalAgencyCode: 
         type: string
-        title: Air Facility Status
-        example: Permanently Closed
-        description: The status of the AIR facility location.
-      AIRIndianCntryFlg: 
+        title: Facility Federal Agency Code
+        example: E
+        description: "Indicates the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government. The five-character code consists of a letter followed by four numbers. There are four possible letters that can occupy the first character position: C = Civilian Federal Agency; D = Department of Defense; E = Department of Energy; X = Unknown. The second and third characters represent the agency code, while the fourth and fifth characters represent the bureau code."
+      FacFederalAgencyName: 
         type: string
-        title: AIR Facility Indian Country Flag
-        example: N
-        description: Flag indicating whether the AIR facility is located in Indian country.
-      AIRTRIbalEPAids: 
+      FacDerivedHuc: 
         type: string
-      AIRTRIbalNames: 
-        type: string
+        title: Watershed (HUC Code)
+        example: '552968'
+        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
       FacFIPSCode: 
         type: string
         title: FIPS Code
         example: '55001'
         description: The 2-digit Federal Information Processing Standards (FIPS) code to identify the county that a facility is located in.
+      FacIndianCntryFlg: 
+        type: string
+        title: Facility Indian Country Flag
+        description: Flag showing Y/N whether the facility is located in Indian Country.
+      AIRIndianCntryFlg: 
+        type: string
+        title: AIR Facility Indian Country Flag
+        example: N
+        description: Flag indicating whether the AIR facility is located in Indian country.
+      FacIndianSpatialFlg: 
+        type: string
+      FacDerivedTRIbes: 
+        type: string
+      FacUsMexBorderFlg: 
+        type: string
+        title: Near US-Mexico Border
+        example: Y
+        description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
+      FacSICCodes: 
+        type: string
+      AIRNAICS: 
+        type: string
+        example: '812320'
       FacLat: 
         type: string
         title: Latitude
@@ -3034,37 +3056,25 @@ definitions:
         title: Longitude
         example: '-77.085951'
         description: The longitude of the facility in decimal degrees expressed using the NAD83 horizontal datum. The coordinate comes from the FRS EPA Locational Reference Tables (LRT) file which represents the most accurate value for the facility based on the available spatial metadata.
-      FacUsMexBorderFlg: 
+      AIRPrograms: 
         type: string
-        title: Near US-Mexico Border
-        example: Y
-        description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
+        title: Air Programs
+        example: MACT, SIP
+        description: Comma-delimited list of AIR programs.
+      AIRMacts: 
+        type: string
+        example: ZZZZZ
+      AIRStatus: 
+        type: string
+        title: Air Facility Status
+        example: Permanently Closed
+        description: The status of the AIR facility location.
       AIRUniverse: 
         type: string
         example: Minor Emissions
-      AIRNAICS: 
+      FacDerivedWBD: 
         type: string
-        example: '812320'
-      FacSICCodes: 
-        type: string
-      FacPercentMinority: 
-        type: string
-        title: |-
-          Facility Percent Minority
-
-        example: '45.379'
-        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
-      FacPopulationDensity: 
-        type: string
-        example: '9611.17'
-      FacFederalAgencyCode: 
-        type: string
-        title: |-
-          Facility Federal Agency Code
-
-        example: E
-        description: "Indicates the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government. The five-character code consists of a letter followed by four numbers. There are four possible letters that can occupy the first character position: C = Civilian Federal Agency; D = Department of Defense; E = Department of Energy; X = Unknown. The second and third characters represent the agency code, while the fourth and fifth characters represent the bureau code."
-      FacFederalAgencyName: 
+      FacDerivedWBDName: 
         type: string
       ChesapeakeBayFlag: 
         type: string
@@ -3083,43 +3093,37 @@ definitions:
         title: Resource Conservation and Recovery Act IDs
         example: VAD981111784
         description: A unique 12-character ID assigned for each record/permit/site/facility within the RCRAInfo database.
+      RmpIDs: 
+        type: string
+      SDWAIDs: 
+        type: string
+        example: DC0000001
+        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
       TRIIDs: 
         type: string
         title: Toxics Release Inventory Program IDs
         example: 20011FRTTT5001F
         description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
-      SDWAIDs: 
-        type: string
-        example: DC0000001
-        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
-      AIRCaseIDs: 
-        type: string
-        example: 05-1993-1585 05-2014-5021
-        description: Space-delimited list of AIR cases associated with the facility.
       GHGIDs: 
         type: string
       EisIDs: 
         type: string
-      AIRMacts: 
+      CamdIDs: 
         type: string
-        example: ZZZZZ
-      AIRPrograms: 
-        type: string
-        title: Air Programs
-        example: MACT, SIP
-        description: Comma-delimited list of AIR programs.
-      AIRCurrHpv: 
-        type: string
-        example: No
+        title: Clean Air Markets Division Identifiers
+        description: Facility identifiers for the Clean Air Markets Division database.
       AIRCurrComplStatus: 
         type: string
         example: No Viol
-      AIRQtrsInHpv: 
+      AIRCurrHpv: 
         type: string
-        example: '0'
+        example: No
       AIRMnthsInHpv: 
         type: string
         example: '2'
+      AIRQtrsInHpv: 
+        type: string
+        example: '0'
       AIRQtrsWithViol: 
         type: string
         example: '2'
@@ -3133,50 +3137,29 @@ definitions:
       AIREvalCnt: 
         type: string
         example: '0'
-      AIRLastEvalDate: 
-        type: string
-        example: 05/18/2009
       AIRDaysLastEval: 
         type: string
         example: '2806'
-      AIRLastStckTestDate: 
+      AIRLastEvalDate: 
         type: string
-      AIRLastStckDateEPA: 
-        type: string
-      AIRLastStckDateState: 
-        type: string
-      AIRLastStckTestResults: 
-        type: string
-      AIRIeaCnt: 
-        type: string
-      AIRLastIeaDate: 
-        type: string
-        example: 04/25/2014
-      AIRFeaCnt: 
-        type: string
-        example: '2'
-      AIRLastFeaDate: 
-        type: string
-        example: 05/16/2014
-      AIRPenalties: 
-        type: string
-        example: "$435"
-      AIRLastPenaltyDate: 
-        type: string
+        example: 05/18/2009
       AIRLastEvalDateEPA: 
         type: string
         example: 05/16/2014
       AIRLastEvalDateState: 
         type: string
         example: 05/18/2009
-      AIRLastFeaDateEPA: 
+      LastDatePce: 
         type: string
-      AIRLastFeaDateState: 
+      LastDatePceEPA: 
         type: string
-      AIRLastIeaDateEPA: 
+      LastDatePceSta: 
         type: string
-        example: 04/25/2014
-      AIRLastIeaDateState: 
+      AIRLastStckTestDate: 
+        type: string
+      AIRLastStckTestResults: 
+        type: string
+      FacNaaFlag: 
         type: string
       FacTRIReporter: 
         type: string
@@ -3196,53 +3179,33 @@ definitions:
         type: string
       FacGHGCO2Releases: 
         type: string
-      FacDerivedHuc: 
+      AIRIeaCnt: 
         type: string
-        title: Watershed (HUC Code)
-        example: '552968'
-        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
-      FacDerivedWBD: 
+      AIRFeaCnt: 
         type: string
-      FacDerivedWBDName: 
+        example: '2'
+      AIRLastIeaDate: 
         type: string
-      FacMapFlg: 
+        example: 04/25/2014
+      AIRLastIeaDateState: 
         type: string
-        title: Facility Mapped Flag
-        example: Y
-        description: Graphical indicator denoting whether geographical data required to map a facility are available.
-      FacMapIcon: 
+      AIRLastIeaDateEPA: 
         type: string
-        title: Facility Map Icon
-        example: CWA-NC-MJ-2.png
-        description: The default map icon image file calculated for the facility by the ECHO program.
-      FacNaaFlag: 
+        example: 04/25/2014
+      AIRLastFeaDate: 
         type: string
-      FacGHGReporter: 
+        example: 05/16/2014
+      AIRLastFeaDateState: 
         type: string
-      FacEisReporter: 
+      AIRLastFeaDateEPA: 
         type: string
-      FacCamdReporter: 
+      AIRPenalties: 
         type: string
-      AIRFacilityTypeCode: 
+        example: "$435"
+      AIRLastPenaltyDate: 
         type: string
-        example: POF
-      AIRMajorFlag: 
+      Over80CountUs: 
         type: string
-        example: N
-      RmpIDs: 
-        type: string
-      AIR3yrComplQtrsStatus: 
-        type: string
-        example: ______UUUUUU
-      HasPollRpt: 
-        type: string
-        example: Y
-        description: "???"
-      CensusBlockGroup: 
-        type: string
-        title: Census Block Group
-        example: '110010096022'
-        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
       PctilePctpre1960Us: 
         type: string
         example: '14.6'
@@ -3287,6 +3250,91 @@ definitions:
         type: string
         example: '93'
         description: The national percentile of the census block group for the EJSCREEN particulate matter indicator.
+      FacPopulationDensity: 
+        type: string
+        example: '9611.17'
+      FacPercentMinority: 
+        type: string
+        title: Facility Percent Minority
+        example: '45.379'
+        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
+      EPASystem: 
+        type: string
+        title: EPA Data System
+        example: ICP
+        description: |-
+          The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: 
+          - AFS: Air Facility System for Clean Air Act stationary source programs.
+          - ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.
+          - RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.
+          - NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).
+          - TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.
+          - NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.
+          - TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.
+      Statute: 
+        type: string
+        title: Regulatory Statute
+        example: CWA
+        description: |-
+          The name of the statute associated with each of the permits and identifiers linked to the facility: 
+          - CAA = the Clean Air Act
+          - CWA = the Clean Water Act
+          - RCRA = the Resource Conservation and Recovery Act
+          - EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)
+          - TSCA = the Toxic Substances Control Act
+          - SDWA = the Safe Drinking Water Act
+      LocalControlRegionName: 
+        type: string
+        title: Local Control Region Name
+        description: Regions within a state. Search criteria for DFR in OTIS.
+      AIRFIPSCode: 
+        type: string
+      AIRTRIbalEPAids: 
+        type: string
+      AIRTRIbalNames: 
+        type: string
+      AIRCaseIDs: 
+        type: string
+        example: 05-1993-1585 05-2014-5021
+        description: Space-delimited list of AIR cases associated with the facility.
+      AIRLastStckDateEPA: 
+        type: string
+      AIRLastStckDateState: 
+        type: string
+      FacMapFlg: 
+        type: string
+        title: Facility Mapped Flag
+        example: Y
+        description: Graphical indicator denoting whether geographical data required to map a facility are available.
+      FacMapIcon: 
+        type: string
+        title: Facility Map Icon
+        example: CWA-NC-MJ-2.png
+        description: The default map icon image file calculated for the facility by the ECHO program.
+      FacGHGReporter: 
+        type: string
+      FacEisReporter: 
+        type: string
+      FacCamdReporter: 
+        type: string
+      AIRFacilityTypeCode: 
+        type: string
+        example: POF
+      AIRMajorFlag: 
+        type: string
+        example: N
+      AIR3yrComplQtrsStatus: 
+        type: string
+        example: ______UUUUUU
+      HasPollRpt: 
+        type: string
+        example: Y
+        description: "???"
+      CensusBlockGroup: 
+        type: string
+        title: Census Block Group
+        example: '110010096022'
+        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
       MaxPctileUs: 
         type: string
         example: '98'
@@ -3334,14 +3382,6 @@ definitions:
         description: Flag showing Y/N whether location is within the contiguous (lower 48) United States.
       ActiveLower48: 
         type: string
-      FacDerivedTRIbes: 
-        type: string
-      FacIndianCntryFlg: 
-        type: string
-        title: Facility Indian Country Flag
-        description: Flag showing Y/N whether the facility is located in Indian Country.
-      FacIndianSpatialFlg: 
-        type: string
       CollectionMethod: 
         type: string
         title: Collection Method
@@ -3359,31 +3399,15 @@ definitions:
       Map: 
         type: string
         title: Map
-      Over80CountUs: 
-        type: string
-      CamdIDs: 
-        type: string
-        title: Clean Air Markets Division Identifiers
-        description: Facility identifiers for the Clean Air Markets Division database.
-      LastDatePce: 
-        type: string
-      LastDatePceEPA: 
-        type: string
-      LastDatePceSta: 
-        type: string
-      AIRCmsCategoryCode: 
-        type: string
-        title: AIR CMS Category Code
-        description: AIR CMS Category Code
-      AIRCmsCategoryDesc: 
-        type: string
-        title: AIR CMS Category Description
-        description: AIR CMS Category Description
       WebDocs: 
         type: string
         title: Web Documents
         example: C6
         description: Contains flags that identify what web accessible documents are available for the facility.
+      NaaCategories: 
+        type: string
+      NaaPollutants: 
+        type: string
       Score: 
         type: string
         title: Score
@@ -3395,94 +3419,81 @@ definitions:
         description: "[Col. 121]"
     required: 
     - ObjectId
-    - SourceID
-    - EPASystem
-    - RegistryID
-    - Statute
     - AIRName
+    - SourceID
     - AIRStreet
     - AIRCity
     - AIRState
-    - AIRZip
-    - AIRCounty
     - LocalControlRegionCode
-    - LocalControlRegionName
-    - AIRFIPSCode
+    - AIRZip
+    - RegistryID
+    - AIRCounty
     - AIREPARegion
-    - AIRStatus
-    - AIRIndianCntryFlg
-    - AIRTRIbalEPAids
-    - AIRTRIbalNames
-    - FacFIPSCode
-    - FacLat
-    - FacLong
-    - FacUsMexBorderFlg
-    - AIRUniverse
-    - AIRNAICS
-    - FacSICCodes
-    - FacPercentMinority
-    - FacPopulationDensity
     - FacFederalAgencyCode
     - FacFederalAgencyName
+    - FacDerivedHuc
+    - FacFIPSCode
+    - FacIndianCntryFlg
+    - AIRIndianCntryFlg
+    - FacIndianSpatialFlg
+    - FacDerivedTRIbes
+    - FacUsMexBorderFlg
+    - FacSICCodes
+    - AIRNAICS
+    - FacLat
+    - FacLong
+    - AIRPrograms
+    - AIRMacts
+    - AIRStatus
+    - AIRUniverse
+    - FacDerivedWBD
+    - FacDerivedWBDName
     - ChesapeakeBayFlag
     - AIRIDs
     - CWAIDs
     - RCRAIDs
-    - TRIIDs
+    - RmpIDs
     - SDWAIDs
-    - AIRCaseIDs
+    - TRIIDs
     - GHGIDs
     - EisIDs
-    - AIRMacts
-    - AIRPrograms
-    - AIRCurrHpv
+    - CamdIDs
     - AIRCurrComplStatus
-    - AIRQtrsInHpv
+    - AIRCurrHpv
     - AIRMnthsInHpv
+    - AIRQtrsInHpv
     - AIRQtrsWithViol
     - AIRPollRecentViol
     - AIRRecentViolCnt
     - AIRLastViolDate
     - AIREvalCnt
-    - AIRLastEvalDate
     - AIRDaysLastEval
-    - AIRLastStckTestDate
-    - AIRLastStckDateEPA
-    - AIRLastStckDateState
-    - AIRLastStckTestResults
-    - AIRIeaCnt
-    - AIRLastIeaDate
-    - AIRFeaCnt
-    - AIRLastFeaDate
-    - AIRPenalties
-    - AIRLastPenaltyDate
+    - AIRLastEvalDate
     - AIRLastEvalDateEPA
     - AIRLastEvalDateState
-    - AIRLastFeaDateEPA
-    - AIRLastFeaDateState
-    - AIRLastIeaDateEPA
-    - AIRLastIeaDateState
+    - LastDatePce
+    - LastDatePceEPA
+    - LastDatePceSta
+    - AIRLastStckTestDate
+    - AIRLastStckTestResults
+    - FacNaaFlag
     - FacTRIReporter
     - FacTRIAIRReleases
     - FacTRICarcAIRReleases
     - FacTRIHapsAIRReleases
     - FacEisAIRReleases
     - FacGHGCO2Releases
-    - FacDerivedHuc
-    - FacDerivedWBD
-    - FacDerivedWBDName
-    - FacMapFlg
-    - FacMapIcon
-    - FacNaaFlag
-    - FacGHGReporter
-    - FacEisReporter
-    - FacCamdReporter
-    - AIRFacilityTypeCode
-    - AIRMajorFlag
-    - RmpIDs
-    - AIR3yrComplQtrsStatus
-    - HasPollRpt
-    - CensusBlockGroup
+    - AIRIeaCnt
+    - AIRFeaCnt
+    - AIRLastIeaDate
+    - AIRLastIeaDateState
+    - AIRLastIeaDateEPA
+    - AIRLastFeaDate
+    - AIRLastFeaDateState
+    - AIRLastFeaDateEPA
+    - AIRPenalties
+    - AIRLastPenaltyDate
+    - Over80CountUs
     - PctilePctpre1960Us
     - PctileDpmUs
     - PctileCancerUs
@@ -3494,6 +3505,27 @@ definitions:
     - PctileProximityTsdfUs
     - PctileO3Us
     - PctilePmUs
+    - FacPopulationDensity
+    - FacPercentMinority
+    - EPASystem
+    - Statute
+    - LocalControlRegionName
+    - AIRFIPSCode
+    - AIRTRIbalEPAids
+    - AIRTRIbalNames
+    - AIRCaseIDs
+    - AIRLastStckDateEPA
+    - AIRLastStckDateState
+    - FacMapFlg
+    - FacMapIcon
+    - FacGHGReporter
+    - FacEisReporter
+    - FacCamdReporter
+    - AIRFacilityTypeCode
+    - AIRMajorFlag
+    - AIR3yrComplQtrsStatus
+    - HasPollRpt
+    - CensusBlockGroup
     - MaxPctileUs
     - EjscreenFlagUs
     - EjscreenFlag
@@ -3506,13 +3538,15 @@ definitions:
     - Infea5yrFlag
     - Lower48
     - ActiveLower48
-    - FacDerivedTRIbes
-    - FacIndianCntryFlg
-    - FacIndianSpatialFlg
     - CollectionMethod
     - ReferencePoint
     - CalculatedAccuracyMeters
     - Map
+    - WebDocs
+    - NaaCategories
+    - NaaPollutants
+    - Score
+    - MaxScore
   air3_Results: 
     description: Results Object
     properties: 
@@ -3586,11 +3620,17 @@ definitions:
         description: A list of submitted query parameters and their values.
         items: 
           "$ref": "#/definitions/qp0_QueryParameters" 
+        xml: 
+          name: QueryParameters
+          wrapped: true
       Facilities: 
         type: array
         title: Facilities
         items: 
           "$ref": "#/definitions/air3_Facilities" 
+        xml: 
+          name: Facilities
+          wrapped: true
       ClusterRecords: 
         type: string
         title: Cluster Records
@@ -3633,46 +3673,16 @@ definitions:
   air6_properties: 
     description: GeoJSON Properties Object
     properties: 
-      SourceID: 
-        type: string
-        title: EPA Source Identifier
-        example: ALR040033
-        description: Unique Identifier assigned by EPA.
-      EPASystem: 
-        type: string
-        title: EPA Data System
-        example: ICP
-        description: |-
-          The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: 
-          - AFS: Air Facility System for Clean Air Act stationary source programs.
-          - ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.
-          - RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.
-          - NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).
-          - TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.
-          - NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.
-          - TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.
-      RegistryID: 
-        type: string
-        title: FRS ID
-        example: '110020837601'
-        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
-      Statute: 
-        type: string
-        title: Regulatory Statute
-        example: CWA
-        description: |-
-          The name of the statute associated with each of the permits and identifiers linked to the facility: 
-          - CAA = the Clean Air Act
-          - CWA = the Clean Water Act
-          - RCRA = the Resource Conservation and Recovery Act
-          - EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)
-          - TSCA = the Toxic Substances Control Act
-          - SDWA = the Safe Drinking Water Act
       AIRName: 
         type: string
         title: Air Facility Name
         example: WEST PARK CLEANERS
         description: The name of the AIR Facility.
+      SourceID: 
+        type: string
+        title: EPA Source Identifier
+        example: ALR040033
+        description: Unique Identifier assigned by EPA.
       AIRStreet: 
         type: string
         title: AIR Facility Street Address
@@ -3685,79 +3695,87 @@ definitions:
         title: AIR Facility State
         example: WI
         description: The state where the AIR facility is located.
+      LocalControlRegionCode: 
+        type: string
+        title: Local Control Region Code
+        description: Code for regions within a state. Search criteria for DFR in OTIS.
       AIRZip: 
         type: string
         title: AIR Facility Zip Code
         example: '20037'
         description: The five-digit zip code of the AIR facility.
+      RegistryID: 
+        type: string
+        title: FRS ID
+        example: '110020837601'
+        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
       AIRCounty: 
         type: string
         example: Racine
         description: The name of the county where the AIR facility is located.
-      LocalControlRegionCode: 
-        type: string
-        title: Local Control Region Code
-        description: Code for regions within a state. Search criteria for DFR in OTIS.
-      LocalControlRegionName: 
-        type: string
-        title: Local Control Region Name
-        description: Regions within a state. Search criteria for DFR in OTIS.
-      AIRFIPSCode: 
-        type: string
       AIREPARegion: 
         type: string
         example: '05'
         description: The EPA region where the AIR facility is located.
-      AIRStatus: 
+      FacFederalAgencyCode: 
         type: string
-        title: Air Facility Status
-        example: Permanently Closed
-        description: The status of the AIR facility location.
-      AIRIndianCntryFlg: 
+        title: Facility Federal Agency Code
+        example: E
+        description: "Indicates the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government. The five-character code consists of a letter followed by four numbers. There are four possible letters that can occupy the first character position: C = Civilian Federal Agency; D = Department of Defense; E = Department of Energy; X = Unknown. The second and third characters represent the agency code, while the fourth and fifth characters represent the bureau code."
+      FacFederalAgencyName: 
         type: string
-        title: AIR Facility Indian Country Flag
-        example: N
-        description: Flag indicating whether the AIR facility is located in Indian country.
-      AIRTRIbalEPAids: 
+      FacDerivedHuc: 
         type: string
-      AIRTRIbalNames: 
-        type: string
+        title: Watershed (HUC Code)
+        example: '552968'
+        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
       FacFIPSCode: 
         type: string
         title: FIPS Code
         example: '55001'
         description: The 2-digit Federal Information Processing Standards (FIPS) code to identify the county that a facility is located in.
+      FacIndianCntryFlg: 
+        type: string
+        title: Facility Indian Country Flag
+        description: Flag showing Y/N whether the facility is located in Indian Country.
+      AIRIndianCntryFlg: 
+        type: string
+        title: AIR Facility Indian Country Flag
+        example: N
+        description: Flag indicating whether the AIR facility is located in Indian country.
+      FacIndianSpatialFlg: 
+        type: string
+      FacDerivedTRIbes: 
+        type: string
       FacUsMexBorderFlg: 
         type: string
         title: Near US-Mexico Border
         example: Y
         description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
-      AIRUniverse: 
+      FacSICCodes: 
         type: string
-        example: Minor Emissions
       AIRNAICS: 
         type: string
         example: '812320'
-      FacSICCodes: 
+      AIRPrograms: 
         type: string
-      FacPercentMinority: 
-        type: number
-        title: |-
-          Facility Percent Minority
-
-        example: 45.379
-        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
-      FacPopulationDensity: 
-        type: number
-        example: 9611.17
-      FacFederalAgencyCode: 
+        title: Air Programs
+        example: MACT, SIP
+        description: Comma-delimited list of AIR programs.
+      AIRMacts: 
         type: string
-        title: |-
-          Facility Federal Agency Code
-
-        example: E
-        description: "Indicates the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government. The five-character code consists of a letter followed by four numbers. There are four possible letters that can occupy the first character position: C = Civilian Federal Agency; D = Department of Defense; E = Department of Energy; X = Unknown. The second and third characters represent the agency code, while the fourth and fifth characters represent the bureau code."
-      FacFederalAgencyName: 
+        example: ZZZZZ
+      AIRStatus: 
+        type: string
+        title: Air Facility Status
+        example: Permanently Closed
+        description: The status of the AIR facility location.
+      AIRUniverse: 
+        type: string
+        example: Minor Emissions
+      FacDerivedWBD: 
+        type: string
+      FacDerivedWBDName: 
         type: string
       ChesapeakeBayFlag: 
         type: string
@@ -3776,43 +3794,37 @@ definitions:
         title: Resource Conservation and Recovery Act IDs
         example: VAD981111784
         description: A unique 12-character ID assigned for each record/permit/site/facility within the RCRAInfo database.
+      RmpIDs: 
+        type: string
+      SDWAIDs: 
+        type: string
+        example: DC0000001
+        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
       TRIIDs: 
         type: string
         title: Toxics Release Inventory Program IDs
         example: 20011FRTTT5001F
         description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
-      SDWAIDs: 
-        type: string
-        example: DC0000001
-        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
-      AIRCaseIDs: 
-        type: string
-        example: 05-1993-1585 05-2014-5021
-        description: Space-delimited list of AIR cases associated with the facility.
       GHGIDs: 
         type: string
       EisIDs: 
         type: string
-      AIRMacts: 
+      CamdIDs: 
         type: string
-        example: ZZZZZ
-      AIRPrograms: 
-        type: string
-        title: Air Programs
-        example: MACT, SIP
-        description: Comma-delimited list of AIR programs.
-      AIRCurrHpv: 
-        type: string
-        example: No
+        title: Clean Air Markets Division Identifiers
+        description: Facility identifiers for the Clean Air Markets Division database.
       AIRCurrComplStatus: 
         type: string
         example: No Viol
-      AIRQtrsInHpv: 
-        type: number
-        example: 0
+      AIRCurrHpv: 
+        type: string
+        example: No
       AIRMnthsInHpv: 
         type: number
         example: 1
+      AIRQtrsInHpv: 
+        type: number
+        example: 0
       AIRQtrsWithViol: 
         type: number
         example: 2
@@ -3826,50 +3838,29 @@ definitions:
       AIREvalCnt: 
         type: number
         example: 0
-      AIRLastEvalDate: 
-        type: string
-        example: 05/18/2009
       AIRDaysLastEval: 
         type: number
         example: 2806
-      AIRLastStckTestDate: 
+      AIRLastEvalDate: 
         type: string
-      AIRLastStckDateEPA: 
-        type: string
-      AIRLastStckDateState: 
-        type: string
-      AIRLastStckTestResults: 
-        type: string
-      AIRIeaCnt: 
-        type: string
-      AIRLastIeaDate: 
-        type: string
-        example: 04/25/2014
-      AIRFeaCnt: 
-        type: string
-        example: '2'
-      AIRLastFeaDate: 
-        type: string
-        example: 05/16/2014
-      AIRPenalties: 
-        type: string
-        example: "$435"
-      AIRLastPenaltyDate: 
-        type: string
+        example: 05/18/2009
       AIRLastEvalDateEPA: 
         type: string
         example: 05/16/2014
       AIRLastEvalDateState: 
         type: string
         example: 05/18/2009
-      AIRLastFeaDateEPA: 
+      LastDatePce: 
         type: string
-      AIRLastFeaDateState: 
+      LastDatePceEPA: 
         type: string
-      AIRLastIeaDateEPA: 
+      LastDatePceSta: 
         type: string
-        example: 04/25/2014
-      AIRLastIeaDateState: 
+      AIRLastStckTestDate: 
+        type: string
+      AIRLastStckTestResults: 
+        type: string
+      FacNaaFlag: 
         type: string
       FacTRIReporter: 
         type: string
@@ -3889,53 +3880,33 @@ definitions:
         type: string
       FacGHGCO2Releases: 
         type: string
-      FacDerivedHuc: 
+      AIRIeaCnt: 
         type: string
-        title: Watershed (HUC Code)
-        example: '552968'
-        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
-      FacDerivedWBD: 
+      AIRFeaCnt: 
         type: string
-      FacDerivedWBDName: 
+        example: '2'
+      AIRLastIeaDate: 
         type: string
-      FacMapFlg: 
+        example: 04/25/2014
+      AIRLastIeaDateState: 
         type: string
-        title: Facility Mapped Flag
-        example: Y
-        description: Graphical indicator denoting whether geographical data required to map a facility are available.
-      FacMapIcon: 
+      AIRLastIeaDateEPA: 
         type: string
-        title: Facility Map Icon
-        example: CWA-NC-MJ-2.png
-        description: The default map icon image file calculated for the facility by the ECHO program.
-      FacNaaFlag: 
+        example: 04/25/2014
+      AIRLastFeaDate: 
         type: string
-      FacGHGReporter: 
+        example: 05/16/2014
+      AIRLastFeaDateState: 
         type: string
-      FacEisReporter: 
+      AIRLastFeaDateEPA: 
         type: string
-      FacCamdReporter: 
+      AIRPenalties: 
         type: string
-      AIRFacilityTypeCode: 
+        example: "$435"
+      AIRLastPenaltyDate: 
         type: string
-        example: POF
-      AIRMajorFlag: 
-        type: string
-        example: N
-      RmpIDs: 
-        type: string
-      AIR3yrComplQtrsStatus: 
-        type: string
-        example: ______UUUUUU
-      HasPollRpt: 
-        type: string
-        example: Y
-        description: "???"
-      CensusBlockGroup: 
-        type: string
-        title: Census Block Group
-        example: '110010096022'
-        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
+      Over80CountUs: 
+        type: number
       PctilePctpre1960Us: 
         type: number
         example: 14.6
@@ -3980,6 +3951,91 @@ definitions:
         type: number
         example: 52.4
         description: The national percentile of the census block group for the EJSCREEN particulate matter indicator.
+      FacPopulationDensity: 
+        type: number
+        example: 9611.17
+      FacPercentMinority: 
+        type: number
+        title: Facility Percent Minority
+        example: 45.379
+        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
+      EPASystem: 
+        type: string
+        title: EPA Data System
+        example: ICP
+        description: |-
+          The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: 
+          - AFS: Air Facility System for Clean Air Act stationary source programs.
+          - ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.
+          - RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.
+          - NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).
+          - TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.
+          - NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.
+          - TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.
+      Statute: 
+        type: string
+        title: Regulatory Statute
+        example: CWA
+        description: |-
+          The name of the statute associated with each of the permits and identifiers linked to the facility: 
+          - CAA = the Clean Air Act
+          - CWA = the Clean Water Act
+          - RCRA = the Resource Conservation and Recovery Act
+          - EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)
+          - TSCA = the Toxic Substances Control Act
+          - SDWA = the Safe Drinking Water Act
+      LocalControlRegionName: 
+        type: string
+        title: Local Control Region Name
+        description: Regions within a state. Search criteria for DFR in OTIS.
+      AIRFIPSCode: 
+        type: string
+      AIRTRIbalEPAids: 
+        type: string
+      AIRTRIbalNames: 
+        type: string
+      AIRCaseIDs: 
+        type: string
+        example: 05-1993-1585 05-2014-5021
+        description: Space-delimited list of AIR cases associated with the facility.
+      AIRLastStckDateEPA: 
+        type: string
+      AIRLastStckDateState: 
+        type: string
+      FacMapFlg: 
+        type: string
+        title: Facility Mapped Flag
+        example: Y
+        description: Graphical indicator denoting whether geographical data required to map a facility are available.
+      FacMapIcon: 
+        type: string
+        title: Facility Map Icon
+        example: CWA-NC-MJ-2.png
+        description: The default map icon image file calculated for the facility by the ECHO program.
+      FacGHGReporter: 
+        type: string
+      FacEisReporter: 
+        type: string
+      FacCamdReporter: 
+        type: string
+      AIRFacilityTypeCode: 
+        type: string
+        example: POF
+      AIRMajorFlag: 
+        type: string
+        example: N
+      AIR3yrComplQtrsStatus: 
+        type: string
+        example: ______UUUUUU
+      HasPollRpt: 
+        type: string
+        example: Y
+        description: "???"
+      CensusBlockGroup: 
+        type: string
+        title: Census Block Group
+        example: '110010096022'
+        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
       MaxPctileUs: 
         type: number
         example: 54.7
@@ -4027,14 +4083,6 @@ definitions:
         description: Flag showing Y/N whether location is within the contiguous (lower 48) United States.
       ActiveLower48: 
         type: string
-      FacDerivedTRIbes: 
-        type: string
-      FacIndianCntryFlg: 
-        type: string
-        title: Facility Indian Country Flag
-        description: Flag showing Y/N whether the facility is located in Indian Country.
-      FacIndianSpatialFlg: 
-        type: string
       CollectionMethod: 
         type: string
         title: Collection Method
@@ -4052,23 +4100,15 @@ definitions:
       Map: 
         type: string
         title: Map
-      Over80CountUs: 
-        type: number
-      CamdIDs: 
-        type: string
-        title: Clean Air Markets Division Identifiers
-        description: Facility identifiers for the Clean Air Markets Division database.
-      LastDatePce: 
-        type: string
-      LastDatePceEPA: 
-        type: string
-      LastDatePceSta: 
-        type: string
       WebDocs: 
         type: string
         title: Web Documents
         example: C6
         description: Contains flags that identify what web accessible documents are available for the facility.
+      NaaCategories: 
+        type: string
+      NaaPollutants: 
+        type: string
       Score: 
         type: number
         title: Score
@@ -4079,92 +4119,79 @@ definitions:
         example: 1
         description: "[Col. 121]"
     required: 
-    - SourceID
-    - EPASystem
-    - RegistryID
-    - Statute
     - AIRName
+    - SourceID
     - AIRStreet
     - AIRCity
     - AIRState
-    - AIRZip
-    - AIRCounty
     - LocalControlRegionCode
-    - LocalControlRegionName
-    - AIRFIPSCode
+    - AIRZip
+    - RegistryID
+    - AIRCounty
     - AIREPARegion
-    - AIRStatus
-    - AIRIndianCntryFlg
-    - AIRTRIbalEPAids
-    - AIRTRIbalNames
-    - FacFIPSCode
-    - FacUsMexBorderFlg
-    - AIRUniverse
-    - AIRNAICS
-    - FacSICCodes
-    - FacPercentMinority
-    - FacPopulationDensity
     - FacFederalAgencyCode
     - FacFederalAgencyName
+    - FacDerivedHuc
+    - FacFIPSCode
+    - FacIndianCntryFlg
+    - AIRIndianCntryFlg
+    - FacIndianSpatialFlg
+    - FacDerivedTRIbes
+    - FacUsMexBorderFlg
+    - FacSICCodes
+    - AIRNAICS
+    - AIRPrograms
+    - AIRMacts
+    - AIRStatus
+    - AIRUniverse
+    - FacDerivedWBD
+    - FacDerivedWBDName
     - ChesapeakeBayFlag
     - AIRIDs
     - CWAIDs
     - RCRAIDs
-    - TRIIDs
+    - RmpIDs
     - SDWAIDs
-    - AIRCaseIDs
+    - TRIIDs
     - GHGIDs
     - EisIDs
-    - AIRMacts
-    - AIRPrograms
-    - AIRCurrHpv
+    - CamdIDs
     - AIRCurrComplStatus
-    - AIRQtrsInHpv
+    - AIRCurrHpv
     - AIRMnthsInHpv
+    - AIRQtrsInHpv
     - AIRQtrsWithViol
     - AIRPollRecentViol
     - AIRRecentViolCnt
     - AIRLastViolDate
     - AIREvalCnt
-    - AIRLastEvalDate
     - AIRDaysLastEval
-    - AIRLastStckTestDate
-    - AIRLastStckDateEPA
-    - AIRLastStckDateState
-    - AIRLastStckTestResults
-    - AIRIeaCnt
-    - AIRLastIeaDate
-    - AIRFeaCnt
-    - AIRLastFeaDate
-    - AIRPenalties
-    - AIRLastPenaltyDate
+    - AIRLastEvalDate
     - AIRLastEvalDateEPA
     - AIRLastEvalDateState
-    - AIRLastFeaDateEPA
-    - AIRLastFeaDateState
-    - AIRLastIeaDateEPA
-    - AIRLastIeaDateState
+    - LastDatePce
+    - LastDatePceEPA
+    - LastDatePceSta
+    - AIRLastStckTestDate
+    - AIRLastStckTestResults
+    - FacNaaFlag
     - FacTRIReporter
     - FacTRIAIRReleases
     - FacTRICarcAIRReleases
     - FacTRIHapsAIRReleases
     - FacEisAIRReleases
     - FacGHGCO2Releases
-    - FacDerivedHuc
-    - FacDerivedWBD
-    - FacDerivedWBDName
-    - FacMapFlg
-    - FacMapIcon
-    - FacNaaFlag
-    - FacGHGReporter
-    - FacEisReporter
-    - FacCamdReporter
-    - AIRFacilityTypeCode
-    - AIRMajorFlag
-    - RmpIDs
-    - AIR3yrComplQtrsStatus
-    - HasPollRpt
-    - CensusBlockGroup
+    - AIRIeaCnt
+    - AIRFeaCnt
+    - AIRLastIeaDate
+    - AIRLastIeaDateState
+    - AIRLastIeaDateEPA
+    - AIRLastFeaDate
+    - AIRLastFeaDateState
+    - AIRLastFeaDateEPA
+    - AIRPenalties
+    - AIRLastPenaltyDate
+    - Over80CountUs
     - PctilePctpre1960Us
     - PctileDpmUs
     - PctileCancerUs
@@ -4176,6 +4203,27 @@ definitions:
     - PctileProximityTsdfUs
     - PctileO3Us
     - PctilePmUs
+    - FacPopulationDensity
+    - FacPercentMinority
+    - EPASystem
+    - Statute
+    - LocalControlRegionName
+    - AIRFIPSCode
+    - AIRTRIbalEPAids
+    - AIRTRIbalNames
+    - AIRCaseIDs
+    - AIRLastStckDateEPA
+    - AIRLastStckDateState
+    - FacMapFlg
+    - FacMapIcon
+    - FacGHGReporter
+    - FacEisReporter
+    - FacCamdReporter
+    - AIRFacilityTypeCode
+    - AIRMajorFlag
+    - AIR3yrComplQtrsStatus
+    - HasPollRpt
+    - CensusBlockGroup
     - MaxPctileUs
     - EjscreenFlagUs
     - EjscreenFlag
@@ -4188,13 +4236,15 @@ definitions:
     - Infea5yrFlag
     - Lower48
     - ActiveLower48
-    - FacDerivedTRIbes
-    - FacIndianCntryFlg
-    - FacIndianSpatialFlg
     - CollectionMethod
     - ReferencePoint
     - CalculatedAccuracyMeters
     - Map
+    - WebDocs
+    - NaaCategories
+    - NaaPollutants
+    - Score
+    - MaxScore
   air4_MapOutput: 
     description: Map Output Object
     properties: 
@@ -4218,6 +4268,9 @@ definitions:
         title: Map Data
         items: 
           "$ref": "#/definitions/air1_MapData" 
+        xml: 
+          name: MapData
+          wrapped: true
     required: 
     - QueryID
     - IconBaseURL
@@ -4251,6 +4304,9 @@ definitions:
         title: Facilities
         items: 
           "$ref": "#/definitions/air2_Facilities" 
+        xml: 
+          name: Facilities
+          wrapped: true
     required: 
     - Message
     - QueryRows
@@ -4277,6 +4333,8 @@ definitions:
     - coordinates
   met_ResultsColumns: 
     description: Results Column Object
+    xml: 
+      name: ResultColumn
     properties: 
       ColumnName: 
         type: string
@@ -4321,5 +4379,8 @@ definitions:
         title: Result Columns
         items: 
           "$ref": "#/definitions/met_ResultsColumns" 
+        xml: 
+          name: ResultColumns
+          wrapped: true
     required: 
     - Message
