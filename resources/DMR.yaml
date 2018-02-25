@@ -560,6 +560,8 @@ paths:
           description: Results
           schema: 
             type: object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dmr1_Results" 
@@ -642,6 +644,8 @@ paths:
           description: Results
           schema: 
             type: object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dmr1_Results" 
@@ -694,6 +698,8 @@ paths:
           description: Returns a complex object (Water Pollutant Loadings) composed of objects that contain top pollutant loadings organized by geographic location, industry, or facility.
           schema: 
             type: object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dmr0_Results" 
@@ -745,6 +751,8 @@ paths:
           description: Returns a complex object (Water Pollutant Loadings) composed of objects that contain top pollutant loadings organized by geographic location, industry, or facility.
           schema: 
             type: object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dmr0_Results" 
@@ -828,6 +836,8 @@ paths:
           description: Results
           schema: 
             type: object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dmr2_Results" 
@@ -910,6 +920,8 @@ paths:
           description: Results
           schema: 
             type: object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dmr2_Results" 
@@ -993,6 +1005,8 @@ paths:
           description: Results
           schema: 
             type: object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dmr3_Results" 
@@ -1075,6 +1089,8 @@ paths:
           description: Results
           schema: 
             type: object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dmr3_Results" 
@@ -1208,6 +1224,10 @@ definitions:
         title: Monitoring Location Code
         example: '1'
         description: The code that the monitoring location at which the monitoring requirement (and effluent limit if limited) applies. One parameter may have several monitoring location codes pertaining to the same permitted feature
+      LatitudeMeasure: 
+        type: string
+      LongitudeMeasure: 
+        type: string
       PollutantCode: 
         type: string
       PollutantDesc: 
@@ -1267,7 +1287,9 @@ definitions:
       NdFlag: 
         type: string
       QcFlag: 
-        type: string
+        type: array
+        items: 
+          "$ref": "#/definitions/string/null" 
       ChemicalName: 
         type: string
         title: Chemical Name
@@ -1311,6 +1333,8 @@ definitions:
     - ActualAverageFlowNmbr
     - PermFeatureNmbr
     - MonitoringLocationCode
+    - LatitudeMeasure
+    - LongitudeMeasure
     - PollutantCode
     - PollutantDesc
     - ParameterCode
@@ -1484,7 +1508,9 @@ definitions:
       HasLoadingsData: 
         type: string
       QcFlag: 
-        type: string
+        type: array
+        items: 
+          "$ref": "#/definitions/string/null" 
       MeasurementType: 
         type: string
         title: Measurement Type
@@ -1750,11 +1776,15 @@ definitions:
       NdFlag: 
         type: string
       QcFlag: 
-        type: string
+        type: array
+        items: 
+          "$ref": "#/definitions/string/null" 
       MeasurementType: 
         type: string
         title: Measurement Type
         example: NMth
+      NodiDesc: 
+        type: string
     required: 
     - Mped
     - ExternalPermitNmbr
@@ -1831,6 +1861,7 @@ definitions:
     - NdFlag
     - QcFlag
     - MeasurementType
+    - NodiDesc
   dmr0_FacilityCounts: 
     type: object
     properties: 
@@ -1884,44 +1915,73 @@ definitions:
         type: array
         items: 
           "$ref": "#/definitions/dmr0_TopPollutantPounds" 
+        xml: 
+          name: TopPollutantPounds
+          wrapped: true
       TopPollutantTWPE: 
         type: array
         items: 
           "$ref": "#/definitions/dmr0_TopPollutantTWPE" 
+        xml: 
+          name: TopPollutantTWPE
+          wrapped: true
       TopSICPounds: 
         type: array
         items: 
           "$ref": "#/definitions/dmr0_TopSICPounds" 
+        xml: 
+          name: TopSICPounds
+          wrapped: true
       TopSICTWPE: 
         type: array
         items: 
           "$ref": "#/definitions/dmr0_TopSICTWPE" 
+        xml: 
+          name: TopSICTWPE
+          wrapped: true
       TopFacilityPounds: 
         type: array
         items: 
           "$ref": "#/definitions/dmr0_TopFacilityPounds" 
+        xml: 
+          name: TopFacilityPounds
+          wrapped: true
       TopFacilityTWPE: 
         type: array
         items: 
           "$ref": "#/definitions/dmr0_TopFacilityTWPE" 
+        xml: 
+          name: TopFacilityTWPE
+          wrapped: true
       TopWatersheds: 
         type: array
         items: 
           "$ref": "#/definitions/dmr0_TopWatersheds" 
+        xml: 
+          name: TopWatersheds
+          wrapped: true
       TopSIC: 
         type: array
         items: 
           "$ref": "#/definitions/dmr0_TopSIC" 
+        xml: 
+          name: TopSIC
+          wrapped: true
       TopFacilities: 
         type: array
         items: 
           "$ref": "#/definitions/dmr0_TopFacilities" 
+        xml: 
+          name: TopFacilities
+          wrapped: true
     required: 
     - Message
     - QueryID
     - FacilityCounts
   dmr0_TopFacilities: 
     type: object
+    xml: 
+      name: TopFacilities
     properties: 
       DataSource: 
         type: string
@@ -1973,7 +2033,9 @@ definitions:
       TRIInfoFlag: 
         type: string
       QcFlag: 
-        type: string
+        type: array
+        items: 
+          "$ref": "#/definitions/string/null" 
       LimitsInfoFlag: 
         type: string
       DmrInfoFlag: 
@@ -2006,6 +2068,8 @@ definitions:
     - DmrInfoFlag
   dmr0_TopFacilityPounds: 
     type: object
+    xml: 
+      name: TopFacilityPounds
     properties: 
       DataSource: 
         type: string
@@ -2022,6 +2086,8 @@ definitions:
         type: string
         title: City
         description: The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery.
+      CountyName: 
+        type: string
       StateCode: 
         type: string
       Huc12: 
@@ -2044,10 +2110,18 @@ definitions:
         type: string
       MajorMinorStatusFlag: 
         type: string
+      LoadOverLimit: 
+        type: string
+      LoadOverLimitTwpe: 
+        type: string
       LimitsInfoFlag: 
         type: string
-      QcFlag: 
+      ExceedanceFlag: 
         type: string
+      QcFlag: 
+        type: array
+        items: 
+          "$ref": "#/definitions/string/null" 
       TotalPounds: 
         type: string
       TotalTwpe: 
@@ -2058,6 +2132,7 @@ definitions:
     - Uin
     - FacilityName
     - City
+    - CountyName
     - StateCode
     - Huc12
     - Huc12Name
@@ -2069,12 +2144,17 @@ definitions:
     - ChemicalAbstractServiceNmbr
     - AverageDailyFlow
     - MajorMinorStatusFlag
+    - LoadOverLimit
+    - LoadOverLimitTwpe
     - LimitsInfoFlag
+    - ExceedanceFlag
     - QcFlag
     - TotalPounds
     - TotalTwpe
   dmr0_TopFacilityTWPE: 
     type: object
+    xml: 
+      name: TopFacilityTWPE
     properties: 
       DataSource: 
         type: string
@@ -2091,6 +2171,8 @@ definitions:
         type: string
         title: City
         description: The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery.
+      CountyName: 
+        type: string
       StateCode: 
         type: string
       Huc12: 
@@ -2113,10 +2195,18 @@ definitions:
         type: string
       MajorMinorStatusFlag: 
         type: string
+      LoadOverLimit: 
+        type: string
+      LoadOverLimitTwpe: 
+        type: string
       LimitsInfoFlag: 
         type: string
-      QcFlag: 
+      ExceedanceFlag: 
         type: string
+      QcFlag: 
+        type: array
+        items: 
+          "$ref": "#/definitions/string/null" 
       TotalTwpe: 
         type: string
       TotalPounds: 
@@ -2127,6 +2217,7 @@ definitions:
     - Uin
     - FacilityName
     - City
+    - CountyName
     - StateCode
     - Huc12
     - Huc12Name
@@ -2138,37 +2229,49 @@ definitions:
     - ChemicalAbstractServiceNmbr
     - AverageDailyFlow
     - MajorMinorStatusFlag
+    - LoadOverLimit
+    - LoadOverLimitTwpe
     - LimitsInfoFlag
+    - ExceedanceFlag
     - QcFlag
     - TotalTwpe
     - TotalPounds
   dmr0_TopPollutantPounds: 
     type: object
+    xml: 
+      name: TopPollutantPounds
     properties: 
       PollutantDesc: 
         type: string
       SrsID: 
         type: string
       ChemicalAbstractServiceNmbr: 
+        type: string
+      LoadOverLimit: 
+        type: string
+      LoadOverLimitTwpe: 
         type: string
       TRIInfoFlag: 
         type: string
       TotalPounds: 
         type: string
       QcFlag: 
-        type: string
-      ExceedanceFlag: 
-        type: string
+        type: array
+        items: 
+          "$ref": "#/definitions/string/null" 
     required: 
     - PollutantDesc
     - SrsID
     - ChemicalAbstractServiceNmbr
+    - LoadOverLimit
+    - LoadOverLimitTwpe
     - TRIInfoFlag
     - TotalPounds
     - QcFlag
-    - ExceedanceFlag
   dmr0_TopPollutantTWPE: 
     type: object
+    xml: 
+      name: TopPollutantTWPE
     properties: 
       PollutantDesc: 
         type: string
@@ -2176,24 +2279,31 @@ definitions:
         type: string
       ChemicalAbstractServiceNmbr: 
         type: string
+      LoadOverLimit: 
+        type: string
+      LoadOverLimitTwpe: 
+        type: string
       TRIInfoFlag: 
         type: string
       TotalTwpe: 
         type: string
       QcFlag: 
-        type: string
-      ExceedanceFlag: 
-        type: string
+        type: array
+        items: 
+          "$ref": "#/definitions/string/null" 
     required: 
     - PollutantDesc
     - SrsID
     - ChemicalAbstractServiceNmbr
+    - LoadOverLimit
+    - LoadOverLimitTwpe
     - TRIInfoFlag
     - TotalTwpe
     - QcFlag
-    - ExceedanceFlag
   dmr0_TopSIC: 
     type: object
+    xml: 
+      name: TopSIC
     properties: 
       SicCode4Digit: 
         type: string
@@ -2216,7 +2326,9 @@ definitions:
       TRIInfoFlag: 
         type: string
       QcFlag: 
-        type: string
+        type: array
+        items: 
+          "$ref": "#/definitions/string/null" 
       LimitsInfoFlag: 
         type: string
       DmrInfoFlag: 
@@ -2237,6 +2349,8 @@ definitions:
     - DmrInfoFlag
   dmr0_TopSICPounds: 
     type: object
+    xml: 
+      name: TopSICPounds
     properties: 
       SicCode4Digit: 
         type: string
@@ -2261,7 +2375,9 @@ definitions:
       TRIInfoFlag: 
         type: string
       QcFlag: 
-        type: string
+        type: array
+        items: 
+          "$ref": "#/definitions/string/null" 
       TotalPounds: 
         type: string
     required: 
@@ -2280,6 +2396,8 @@ definitions:
     - TotalPounds
   dmr0_TopSICTWPE: 
     type: object
+    xml: 
+      name: TopSICTWPE
     properties: 
       SicCode4Digit: 
         type: string
@@ -2304,7 +2422,9 @@ definitions:
       TRIInfoFlag: 
         type: string
       QcFlag: 
-        type: string
+        type: array
+        items: 
+          "$ref": "#/definitions/string/null" 
       TotalTwpe: 
         type: string
     required: 
@@ -2323,6 +2443,8 @@ definitions:
     - TotalTwpe
   dmr0_TopWatersheds: 
     type: object
+    xml: 
+      name: TopWatersheds
     properties: 
       Huc12: 
         type: string
@@ -2345,7 +2467,9 @@ definitions:
       TRIInfoFlag: 
         type: string
       QcFlag: 
-        type: string
+        type: array
+        items: 
+          "$ref": "#/definitions/string/null" 
       LimitsInfoFlag: 
         type: string
       DmrInfoFlag: 
