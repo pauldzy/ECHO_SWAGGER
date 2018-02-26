@@ -59,18 +59,6 @@ parameters:
     description: System Acronym Filter.  Enter a single system acronym to filter results.
     type: string
     required: false
-  p_lat: 
-    name: p_lat
-    in: query
-    description: Latitude location in decimal degrees.
-    type: number
-    required: false
-  p_long: 
-    name: p_long
-    in: query
-    description: Longitude location in decimal degrees.
-    type: number
-    required: false
   p_radius: 
     name: p_radius
     in: query
@@ -93,6 +81,8 @@ paths:
           description: Returns a complex object (Detailed Facility Report) composed of objects from all of the other procedures.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfr4_Results" 
@@ -113,6 +103,8 @@ paths:
           description: Returns a complex object (Detailed Facility Report) composed of objects from all of the other procedures.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfr4_Results" 
@@ -133,6 +125,8 @@ paths:
           description: Returns an object that includes an array of compliance statuses for 12 quarters.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrq_Results" 
@@ -152,6 +146,8 @@ paths:
           description: Returns an object that includes an array of compliance statuses for 12 quarters.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrq_Results" 
@@ -172,6 +168,8 @@ paths:
           description: Returns an object that includes information on air quality
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfr1_Results" 
@@ -191,6 +189,8 @@ paths:
           description: Returns an object that includes information on air quality
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfr1_Results" 
@@ -211,6 +211,8 @@ paths:
           description: Returns an object that includes an array of compliance histories
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfr2_Results" 
@@ -230,6 +232,8 @@ paths:
           description: Returns an object that includes an array of compliance histories
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfr2_Results" 
@@ -250,6 +254,8 @@ paths:
           description: Returns an object that includes an array of compliance summaries
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfr3_Results" 
@@ -269,6 +275,8 @@ paths:
           description: Returns an object that includes an array of compliance summaries
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfr3_Results" 
@@ -294,6 +302,8 @@ paths:
           description: Returns an object that includes an array of compliance statuses for 13 quarters
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrW_Results" 
@@ -318,6 +328,8 @@ paths:
           description: Returns an object that includes an array of compliance statuses for 13 quarters
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrW_Results" 
@@ -338,6 +350,8 @@ paths:
           description: Returns an object that includes an array of compliance statuses for 13 quarters.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrs_Results" 
@@ -357,6 +371,8 @@ paths:
           description: Returns an object that includes an array of compliance statuses for 13 quarters.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrs_Results" 
@@ -377,6 +393,8 @@ paths:
           description: Returns an object that includes an array of effluent ALR for 13 quarters.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrt_Results" 
@@ -396,6 +414,8 @@ paths:
           description: Returns an object that includes an array of effluent ALR for 13 quarters.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrt_Results" 
@@ -416,6 +436,8 @@ paths:
           description: Returns an object that includes an array of effluent compliance statuses for 13 quarters.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfru_Results" 
@@ -435,6 +457,8 @@ paths:
           description: Returns an object that includes an array of effluent compliance statuses for 13 quarters.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfru_Results" 
@@ -455,6 +479,8 @@ paths:
           description: Returns an object that includes an array of permit schedule violations for 13 quarters.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrv_Results" 
@@ -474,6 +500,8 @@ paths:
           description: Returns an object that includes an array of permit schedule violations for 13 quarters.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrv_Results" 
@@ -506,6 +534,8 @@ paths:
           description: Returns an object that includes an array of RNC compliance statuses for 12 quarters
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrw_Results" 
@@ -537,6 +567,8 @@ paths:
           description: Returns an object that includes an array of RNC compliance statuses for 12 quarters
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrw_Results" 
@@ -557,6 +589,8 @@ paths:
           description: Returns an object that includes an array of single-event statuses for 13 quarters.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrx_Results" 
@@ -576,89 +610,11 @@ paths:
           description: Returns an object that includes an array of single-event statuses for 13 quarters.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrx_Results" 
-            required: 
-            - Results
-  "/dfr_rest_services.get_demographics": 
-    get: 
-      summary: Detailed Facility Report Demographics Report Service
-      description: Returns a complex object with Demographics from the 2010 Census and 2010 American Community Survey based on a 3 mile radius around the facility spatial coordinates.
-      parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_lat"
-      - "$ref": "#/parameters/p_long"
-      - "$ref": "#/parameters/p_radius"
-      - "$ref": "#/parameters/callback"
-      tags: 
-      - Detailed Facility Report
-      responses: 
-        '200': 
-          description: Returns an object that includes demographics
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dfrY_Results" 
-            required: 
-            - Results
-    post: 
-      summary: Detailed Facility Report Demographics Report Service
-      description: Returns a complex object with Demographics from the 2010 Census and 2010 American Community Survey based on a 3 mile radius around the facility spatial coordinates.
-      parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_lat"
-      - "$ref": "#/parameters/p_long"
-      - "$ref": "#/parameters/p_radius"
-      - "$ref": "#/parameters/callback"
-      tags: 
-      - Detailed Facility Report
-      responses: 
-        '200': 
-          description: Returns an object that includes demographics
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dfrY_Results" 
-            required: 
-            - Results
-  "/dfr_rest_services.get_demographics_by_id": 
-    get: 
-      summary: Detailed Facility Report Demographics Report Service
-      description: Returns a complex object with Demographics from the 2010 Census and 2010 American Community Survey.
-      parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/p_radius"
-      - "$ref": "#/parameters/callback"
-      responses: 
-        '200': 
-          description: Returns an object that includes demographics
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dfrY_Results" 
-            required: 
-            - Results
-    post: 
-      summary: Detailed Facility Report Demographics Report Service
-      description: Returns a complex object with Demographics from the 2010 Census and 2010 American Community Survey.
-      parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/p_radius"
-      - "$ref": "#/parameters/callback"
-      responses: 
-        '200': 
-          description: Returns an object that includes demographics
-          schema: 
-            description: Root Object
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dfrY_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_enforcement_summary": 
@@ -676,6 +632,8 @@ paths:
           description: Returns an object that includes an array of enforcement compliance summaries
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrW1_Results" 
@@ -695,6 +653,8 @@ paths:
           description: Returns an object that includes an array of enforcement compliance summaries
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrW1_Results" 
@@ -715,6 +675,8 @@ paths:
           description: Returns an object that includes an array of formal actions.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrW2_Results" 
@@ -734,6 +696,8 @@ paths:
           description: Returns an object that includes an array of formal actions.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrW2_Results" 
@@ -754,6 +718,8 @@ paths:
           description: Returns an object that includes an array of ICIS formal actions.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfra_Results" 
@@ -773,6 +739,8 @@ paths:
           description: Returns an object that includes an array of ICIS formal actions.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfra_Results" 
@@ -793,6 +761,8 @@ paths:
           description: Returns an object that includes an array of inspection enforcement summaries
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfra1_Results" 
@@ -812,6 +782,8 @@ paths:
           description: Returns an object that includes an array of inspection enforcement summaries
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfra1_Results" 
@@ -832,6 +804,8 @@ paths:
           description: Returns an object that includes an array of NAICS codes
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfra2_Results" 
@@ -851,6 +825,8 @@ paths:
           description: Returns an object that includes an array of NAICS codes
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfra2_Results" 
@@ -871,6 +847,8 @@ paths:
           description: Returns an object that includes an array of notices
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrg_Results" 
@@ -890,6 +868,8 @@ paths:
           description: Returns an object that includes an array of notices
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrg_Results" 
@@ -918,6 +898,8 @@ paths:
           description: Returns an object that includes an array of permits
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrg1_Results" 
@@ -945,6 +927,8 @@ paths:
           description: Returns an object that includes an array of permits
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrg1_Results" 
@@ -965,6 +949,8 @@ paths:
           description: Returns an object that includes RCRA compliance statuses
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrh_Results" 
@@ -984,6 +970,8 @@ paths:
           description: Returns an object that includes RCRA compliance statuses
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrh_Results" 
@@ -1004,6 +992,8 @@ paths:
           description: Returns an object that includes an array of lead and copper rules
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrk_Results" 
@@ -1023,6 +1013,8 @@ paths:
           description: Returns an object that includes an array of lead and copper rules
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrk_Results" 
@@ -1043,6 +1035,8 @@ paths:
           description: Returns an object that includes an array of sanitary surveys
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrj_Results" 
@@ -1062,6 +1056,8 @@ paths:
           description: Returns an object that includes an array of sanitary surveys
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrj_Results" 
@@ -1082,6 +1078,8 @@ paths:
           description: Returns an object that includes an array of site visits
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfri_Results" 
@@ -1101,6 +1099,8 @@ paths:
           description: Returns an object that includes an array of site visits
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfri_Results" 
@@ -1121,6 +1121,8 @@ paths:
           description: Returns an object that includes SDWA violations
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrf_Results" 
@@ -1140,6 +1142,8 @@ paths:
           description: Returns an object that includes SDWA violations
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrf_Results" 
@@ -1160,6 +1164,8 @@ paths:
           description: Returns an object that includes an array of SDWIS compliance summaries
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrl_Results" 
@@ -1179,6 +1185,8 @@ paths:
           description: Returns an object that includes an array of SDWIS compliance summaries
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrl_Results" 
@@ -1199,6 +1207,8 @@ paths:
           description: Returns an object that includes an array of SIC codes
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrg2_Results" 
@@ -1218,6 +1228,8 @@ paths:
           description: Returns an object that includes an array of SIC codes
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrg2_Results" 
@@ -1238,6 +1250,8 @@ paths:
           description: Returns an object that includes spatial metadata
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrg3_Results" 
@@ -1257,6 +1271,8 @@ paths:
           description: Returns an object that includes spatial metadata
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrg3_Results" 
@@ -1277,6 +1293,8 @@ paths:
           description: Returns an object that includes TRI history
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrm_Results" 
@@ -1296,6 +1314,8 @@ paths:
           description: Returns an object that includes TRI history
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrm_Results" 
@@ -1316,6 +1336,8 @@ paths:
           description: Returns an object that includes TRI releases
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrn_Results" 
@@ -1335,6 +1357,8 @@ paths:
           description: Returns an object that includes TRI releases
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrn_Results" 
@@ -1355,6 +1379,8 @@ paths:
           description: Returns an object that includes an array of tribal location information.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfro_Results" 
@@ -1374,6 +1400,8 @@ paths:
           description: Returns an object that includes an array of tribal location information.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfro_Results" 
@@ -1395,6 +1423,8 @@ paths:
           description: Returns an object that includes an array of water quality information.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrp_Results" 
@@ -1415,6 +1445,8 @@ paths:
           description: Returns an object that includes an array of water quality information.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrp_Results" 
@@ -1435,6 +1467,8 @@ paths:
           description: Returns an object that includes information for displaying a map
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrZ_Results" 
@@ -1454,6 +1488,8 @@ paths:
           description: Returns an object that includes information for displaying a map
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrZ_Results" 
@@ -1610,6 +1646,8 @@ definitions:
     - Qtr12End
   dfr0_Qtr12Status: 
     description: Status Object
+    xml: 
+      name: Status
     properties: 
       SourceID: 
         type: string
@@ -1852,6 +1890,8 @@ definitions:
     - Qtr13End
   dfr0_Qtr13Status: 
     description: Status Object
+    xml: 
+      name: Status
     properties: 
       SourceID: 
         type: string
@@ -2011,7 +2051,7 @@ definitions:
     required: 
     - Message
   dfrt_Results: 
-    description: Root Object
+    description: Results Object
     properties: 
       Message: 
         type: string
@@ -2070,18 +2110,6 @@ definitions:
         "$ref": "#/definitions/dfrC_CWASECompliance" 
     required: 
     - Message
-  dfrY_Results: 
-    description: Results Object
-    properties: 
-      Message: 
-        type: string
-        title: Message
-        example: Success
-        description: Field to record messages (typically performance-related) about packet processing
-      Demographics: 
-        "$ref": "#/definitions/dfrE_Demographics" 
-    required: 
-    - Message
   dfr5_AirCompliance: 
     description: Air Compliance Object
     properties: 
@@ -2091,12 +2119,17 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrc_Source" 
+          "$ref": "#/definitions/dfrc_Sources" 
+        xml: 
+          name: Sources
+          wrapped: true
     required: 
     - Header
     - Sources
-  dfrc_Source: 
+  dfrc_Sources: 
     description: Source Object
+    xml: 
+      name: Sources
     properties: 
       PermitHistory: 
         "$ref": "#/definitions/dfr0_Qtr12Status" 
@@ -2105,24 +2138,35 @@ definitions:
       HPVProgramsPollutants: 
         type: array
         items: 
-          "$ref": "#/definitions/dfrc_HPVProgramsPollutant" 
+          "$ref": "#/definitions/dfrc_Sources.HPVProgramsPollutants" 
+        xml: 
+          name: HPVProgramsPollutants
+          wrapped: true
       FRVProgramsPollutants: 
         type: array
         title: FRV Programs Pollutants
         items: 
-          "$ref": "#/definitions/dfrc_FRVProgramsPollutant" 
+          "$ref": "#/definitions/dfrc_Sources.FRVProgramsPollutants" 
+        xml: 
+          name: FRVProgramsPollutants
+          wrapped: true
       AFSPrograms: 
         type: array
         items: 
-          "$ref": "#/definitions/dfrc_AFSProgram" 
+          "$ref": "#/definitions/dfrc_Sources.AFSPrograms" 
+        xml: 
+          name: AFSPrograms
+          wrapped: true
     required: 
     - PermitHistory
     - HPVHistory
     - HPVProgramsPollutants
     - FRVProgramsPollutants
     - AFSPrograms
-  dfrc_AFSProgram: 
+  dfrc_Sources.AFSPrograms: 
     description: AFS Program Object
+    xml: 
+      name: AFSPrograms
     properties: 
       SourceID: 
         type: string
@@ -2207,8 +2251,10 @@ definitions:
     - Qtr10Status
     - Qtr11Status
     - Qtr12Status
-  dfrc_FRVProgramsPollutant: 
+  dfrc_Sources.FRVProgramsPollutants: 
     description: FRV Programs Pollutant Object
+    xml: 
+      name: FRVProgramsPollutants
     properties: 
       SourceID: 
         type: string
@@ -2311,8 +2357,10 @@ definitions:
     - Qtr11Status
     - Qtr12Status
     - Agency
-  dfrc_HPVProgramsPollutant: 
+  dfrc_Sources.HPVProgramsPollutants: 
     description: HPV Programs Pollutant Object
+    xml: 
+      name: HPVProgramsPollutants
     properties: 
       SourceID: 
         type: string
@@ -2448,15 +2496,10 @@ definitions:
         title: Particulate Matter Area - 2006
         example: Washington, DC-MD-VA
         description: If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name
-    required: 
-    - Ozone8hr1997Area
-    - Ozone8hr2008Area
-    - Lead2008Area
-    - SulfurDioxide2010Area
-    - ParticulateMatter1997Area
-    - ParticulateMatter2006Area
   dfr4_CAEDDocuments: 
     description: CAED Documents
+    xml: 
+      name: CAEDDocuments
     properties: 
       Dummy: 
         type: string
@@ -2470,14 +2513,22 @@ definitions:
         title: Sources
         items: 
           "$ref": "#/definitions/dfr7_Sources" 
+        xml: 
+          name: Sources
+          wrapped: true
   dfr7_Sources: 
     description: CWA 3-Year Compliance Sources Object
+    xml: 
+      name: Sources
     properties: 
       Status: 
         type: array
         title: Status
         items: 
           "$ref": "#/definitions/dfr0_Qtr13Status" 
+        xml: 
+          name: Status
+          wrapped: true
     required: 
     - Status
   dfr10_CWACSCompliance: 
@@ -2489,9 +2540,29 @@ definitions:
         type: array
         title: Sources
         items: 
+          "$ref": "#/definitions/dfr10_Sources" 
+        xml: 
+          name: Sources
+          wrapped: true
+  dfr10_Sources: 
+    description: Sources Object
+    xml: 
+      name: Sources
+    properties: 
+      Violations: 
+        type: array
+        title: Sources
+        items: 
           "$ref": "#/definitions/dfr10_Violations" 
-  dfr10_Violation: 
-    description: Violation Object
+        xml: 
+          name: Violations
+          wrapped: true
+    required: 
+    - Violations
+  dfr10_Violations: 
+    description: Violations Object
+    xml: 
+      name: Violations
     properties: 
       SourceID: 
         type: string
@@ -2642,16 +2713,6 @@ definitions:
     - Qtr12Value
     - Qtr13Status
     - Qtr13Value
-  dfr10_Violations: 
-    description: Violations Object
-    properties: 
-      Violations: 
-        type: array
-        title: Sources
-        items: 
-          "$ref": "#/definitions/dfr10_Violation" 
-    required: 
-    - Violations
   dfr8_CWAEffluentALRExceedences: 
     description: CWA Effluent ALR Exceedences Object
     properties: 
@@ -2662,8 +2723,13 @@ definitions:
         title: Sources
         items: 
           "$ref": "#/definitions/dfr8_Sources" 
+        xml: 
+          name: Sources
+          wrapped: true
   dfr8_Parameters: 
     description: Parameter Object
+    xml: 
+      name: Parameters
     properties: 
       SourceID: 
         type: string
@@ -2748,12 +2814,17 @@ definitions:
     - Qtr13Value
   dfr8_Sources: 
     description: Sources Object
+    xml: 
+      name: Sources
     properties: 
       Parameters: 
         type: array
         title: Parameters
         items: 
           "$ref": "#/definitions/dfr8_Parameters" 
+        xml: 
+          name: Parameters
+          wrapped: true
     required: 
     - Parameters
   dfr9_CWAEffluentCompliance: 
@@ -2765,9 +2836,14 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfr9_Parameters" 
-  dfr9_Parameter: 
+          "$ref": "#/definitions/dfr9_Sources" 
+        xml: 
+          name: Sources
+          wrapped: true
+  dfr9_Parameters: 
     description: CWA Effluent Compliance Parameter Object
+    xml: 
+      name: Parameters
     properties: 
       SourceID: 
         type: string
@@ -2928,14 +3004,19 @@ definitions:
     - Qtr12Value
     - Qtr13Status
     - Qtr13Value
-  dfr9_Parameters: 
-    description: CWA Effluent Compliance Parameters Object
+  dfr9_Sources: 
+    description: CWA Effluent Compliance Sources Object
+    xml: 
+      name: Sources
     properties: 
       Parameters: 
         type: array
         title: Parameters
         items: 
-          "$ref": "#/definitions/dfr9_Parameter" 
+          "$ref": "#/definitions/dfr9_Parameters" 
+        xml: 
+          name: Parameters
+          wrapped: true
   dfrA_CWAPSCompliance: 
     description: CWA PS Compliance Object
     properties: 
@@ -2945,9 +3026,29 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrA_Violations" 
-  dfrA_Violation: 
+          "$ref": "#/definitions/dfrA_Sources" 
+        xml: 
+          name: Sources
+          wrapped: true
+  dfrA_Sources: 
     description: CWA PS Compliance Violation Object
+    xml: 
+      name: Sources
+    properties: 
+      Violations: 
+        type: array
+        title: Violations
+        items: 
+          "$ref": "#/definitions/dfrA_Violations" 
+        xml: 
+          name: Violations
+          wrapped: true
+    required: 
+    - Violations
+  dfrA_Violations: 
+    description: CWA PS Compliance Violations Object
+    xml: 
+      name: Violations
     properties: 
       SourceID: 
         type: string
@@ -3098,16 +3199,6 @@ definitions:
     - Qtr12Value
     - Qtr13Status
     - Qtr13Value
-  dfrA_Violations: 
-    description: CWA PS Compliance Violations Object
-    properties: 
-      Violations: 
-        type: array
-        title: Violations
-        items: 
-          "$ref": "#/definitions/dfrA_Violation" 
-    required: 
-    - Violations
   dfrB_CWARNCCompliance: 
     description: CWA RNC Compliance Object
     properties: 
@@ -3118,14 +3209,9 @@ definitions:
         title: Sources
         items: 
           "$ref": "#/definitions/dfrB_Statuses" 
-  dfrB_Statuses: 
-    description: CWA RNC Compliance Statuses Object
-    properties: 
-      Status: 
-        type: array
-        title: Status
-        items: 
-          "$ref": "#/definitions/dfr0_Qtr12Status" 
+        xml: 
+          name: Sources
+          wrapped: true
   dfrC_CWASECompliance: 
     description: CWA SE Compliance Object
     properties: 
@@ -3135,9 +3221,29 @@ definitions:
         type: array
         title: Sources
         items: 
+          "$ref": "#/definitions/dfrC_Sources" 
+        xml: 
+          name: Sources
+          wrapped: true
+  dfrC_Sources: 
+    description: CWA SE Compliance Sources Object
+    xml: 
+      name: Sources
+    properties: 
+      Violations: 
+        type: array
+        title: Violations
+        items: 
           "$ref": "#/definitions/dfrC_Violations" 
-  dfrC_Sources.Violation: 
-    description: CWA SE Compliance Violation Object
+        xml: 
+          name: Violations
+          wrapped: true
+    required: 
+    - Violations
+  dfrC_Violations: 
+    description: CWA SE Compliance Violations Object
+    xml: 
+      name: Violations
     properties: 
       SourceID: 
         type: string
@@ -3296,16 +3402,6 @@ definitions:
     - Qtr12Value
     - Qtr13Status
     - Qtr13Value
-  dfrC_Violations: 
-    description: CWA SE Compliance Violations Object
-    properties: 
-      Violations: 
-        type: array
-        title: Violations
-        items: 
-          "$ref": "#/definitions/dfrC_Sources.Violation" 
-    required: 
-    - Violations
   dfrV_ComplianceHistory: 
     description: Compliance History Object
     properties: 
@@ -3314,13 +3410,21 @@ definitions:
         title: Program Dates
         items: 
           "$ref": "#/definitions/dfr4_ProgramDates" 
+        xml: 
+          name: ProgramDates
+          wrapped: true
       Inspection: 
         type: array
         title: Inspection
         items: 
           "$ref": "#/definitions/dfrV_Inspection" 
+        xml: 
+          name: Inspection
+          wrapped: true
   dfrV_Inspection: 
     description: Inspection Object
+    xml: 
+      name: Inspection
     properties: 
       Statute: 
         type: string
@@ -3392,64 +3496,20 @@ definitions:
         title: Program Dates
         items: 
           "$ref": "#/definitions/dfr4_ProgramDates" 
+        xml: 
+          name: ProgramDates
+          wrapped: true
       Source: 
         type: array
         title: Source
         items: 
-          "$ref": "#/definitions/dfrD_Source" 
+          "$ref": "#/definitions/dfrD_Sources" 
+        xml: 
+          name: Source
+          wrapped: true
     required: 
     - ProgramDates
     - Source
-  dfrD_Source: 
-    description: Source Object
-    properties: 
-      Statute: 
-        type: string
-        title: Regulatory Statute
-        example: CWA
-        description: |-
-          The name of the statute associated with each of the permits and identifiers linked to the facility: 
-          - CAA = the Clean Air Act
-          - CWA = the Clean Water Act
-          - RCRA = the Resource Conservation and Recovery Act
-          - EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)
-          - TSCA = the Toxic Substances Control Act
-          - SDWA = the Safe Drinking Water Act
-      SourceID: 
-        type: string
-        title: EPA Source Identifier
-        example: ALR040033
-        description: Unique Identifier assigned by EPA.
-      CurrentSNC: 
-        type: string
-        example: No
-        description: The current Significant Noncompliance (SNC) or High Priority Violator (HPV) status for the facility during the most current quarter. SNC is used for RCRA and CWA, and HPV is used for CAA. Each program has its own specific criteria for making this determination. The value of Yes indicates the facility is in SNC or HPV for the permit or site in question and may pose a more severe level of environmental threat. The value of No indicates the permit or site is not considered in SNC or HPV. If the facility is Non-Federally Reportable within AFS or if it is classified as minor within PCS, the field reads N/A. The value of N/A in this field indicates Not Applicable because compliance data for these facilities are not required to be reported to the national program database
-      Description: 
-        type: string
-        title: Description
-        description: The text description for the event that results in the permit or site being in Significant Noncompliance (SNC) or in High Priority Violation (HPV)
-      CurrentAsOf: 
-        type: string
-        title: Current As Of Date
-        example: 05/21/2016
-        description: |-
-          The most recent date or calendar year quarter of record maintained in the data system for which the Current SNC/HPV status applies. A quarter could be any of the following 3-month periods:
-          - January-March
-          - April-June
-          - July-September
-          - October-December
-      QtrsInNC: 
-        type: string
-        title: Quarters In Noncompliance
-        example: '1'
-        description: The number of quarters, out of the last twelve quarters, in which the permit or site is considered either with violations, in non-compliance (NC) status, or in Significant Noncompliance (SNC) or High Priority Violation (HPV) status
-    required: 
-    - Statute
-    - SourceID
-    - CurrentSNC
-    - Description
-    - CurrentAsOf
-    - QtrsInNC
   dfrE_Demographics: 
     description: Demographics Object
     properties: 
@@ -3651,16 +3711,22 @@ definitions:
         type: array
         title: Program Dates
         items: 
-          "$ref": "#/definitions/dfrF_ProgramDate" 
+          "$ref": "#/definitions/dfrF_ProgramDates" 
+        xml: 
+          name: ProgramDates
+          wrapped: true
       Summaries: 
         type: array
         title: Summaries
         items: 
           "$ref": "#/definitions/dfr4_Summaries" 
+        xml: 
+          name: Summaries
+          wrapped: true
     required: 
     - ProgramDates
     - Summaries
-  dfrF_ProgramDate: 
+  dfrF_ProgramDates: 
     description: Program Date Object
     properties: 
       Program: 
@@ -3694,14 +3760,20 @@ definitions:
         title: Program Dates
         items: 
           "$ref": "#/definitions/dfr4_ProgramDates" 
+        xml: 
+          name: ProgramDates
+          wrapped: true
       Action: 
         type: array
         items: 
           "$ref": "#/definitions/dfrG_Action" 
+        xml: 
+          name: Action
+          wrapped: true
   dfrG_Action: 
     description: Action Object
     xml: 
-      name: Actio
+      name: Action
     properties: 
       Statute: 
         type: string
@@ -3758,10 +3830,16 @@ definitions:
         title: Program Dates
         items: 
           "$ref": "#/definitions/dfr4_ProgramDates" 
+        xml: 
+          name: ProgramDates
+          wrapped: true
       Action: 
         type: array
         items: 
           "$ref": "#/definitions/dfrH_Action" 
+        xml: 
+          name: Action
+          wrapped: true
   dfrH_Action: 
     description: Action Object
     properties: 
@@ -3861,71 +3939,17 @@ definitions:
         title: Program Dates
         items: 
           "$ref": "#/definitions/dfr4_ProgramDates" 
+        xml: 
+          name: ProgramDates
+          wrapped: true
       Source: 
         type: array
         title: Source
         items: 
-          "$ref": "#/definitions/dfrI_Source" 
-  dfrI_Source: 
-    description: Source Object
-    properties: 
-      Statute: 
-        type: string
-        title: Regulatory Statute
-        example: CWA
-        description: |-
-          The name of the statute associated with each of the permits and identifiers linked to the facility: 
-          - CAA = the Clean Air Act
-          - CWA = the Clean Water Act
-          - RCRA = the Resource Conservation and Recovery Act
-          - EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)
-          - TSCA = the Toxic Substances Control Act
-          - SDWA = the Safe Drinking Water Act
-      EPASystem: 
-        type: string
-        title: EPA Data System
-        example: ICP
-        description: |-
-          The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: 
-          - AFS: Air Facility System for Clean Air Act stationary source programs.
-          - ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.
-          - RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.
-          - NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).
-          - TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.
-          - NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.
-          - TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.
-      SourceID: 
-        type: string
-        title: EPA Source Identifier
-        example: ALR040033
-        description: Unique Identifier assigned by EPA.
-      InspectionCount: 
-        type: string
-        title: Inspection Count
-        description: The total number of inspections pertaining to compliance of the designated statute
-      DateLastInspection: 
-        type: string
-        title: Date of Last Inspection
-        example: 01/13/2007
-        description: The date on which the most recent inspection of the facility took place
-      FormalEnfActCount: 
-        type: string
-        title: Formal Enforcement Action Count
-        example: '1'
-        description: The number of formal enforcement actions that have been taken against the facility, under the corresponding statute, within the last five years.
-      TotalPenalties: 
-        type: string
-        title: Total Penalties
-        example: "$963,531"
-        description: The total dollar amount of either assessed or final penalties within the five year time period
-    required: 
-    - Statute
-    - EPASystem
-    - SourceID
-    - InspectionCount
-    - DateLastInspection
-    - FormalEnfActCount
-    - TotalPenalties
+          "$ref": "#/definitions/dfrI_Sources" 
+        xml: 
+          name: Source
+          wrapped: true
   dfrG_LeadAndCopperRule5Yr: 
     description: Lead and Copper Rule Object
     properties: 
@@ -3943,6 +3967,9 @@ definitions:
         title: Lead Samples
         items: 
           "$ref": "#/definitions/dfrG_LeadSamples" 
+        xml: 
+          name: LeadSamples
+          wrapped: true
       iPB90: 
         type: string
       CopperSamples: 
@@ -3950,6 +3977,9 @@ definitions:
         title: Copper Samples
         items: 
           "$ref": "#/definitions/dfrG_CopperSamples" 
+        xml: 
+          name: CopperSamples
+          wrapped: true
       iCU90: 
         type: string
       PbALE: 
@@ -4072,6 +4102,9 @@ definitions:
         title: Map Data
         items: 
           "$ref": "#/definitions/dfr4_MapData" 
+        xml: 
+          name: MapData
+          wrapped: true
     required: 
     - IconBaseURL
     - PopUpBaseURL
@@ -4086,6 +4119,9 @@ definitions:
         title: Registry IDs
         items: 
           "$ref": "#/definitions/dfr4_RegistryIDs" 
+        xml: 
+          name: RegistryIDs
+          wrapped: true
   dfr4_NAICS: 
     description: NAICS Object
     properties: 
@@ -4094,6 +4130,9 @@ definitions:
         title: Sources
         items: 
           "$ref": "#/definitions/dfrz_NAICS" 
+        xml: 
+          name: Sources
+          wrapped: true
     required: 
     - Sources
   dfrz_NAICS: 
@@ -4106,6 +4145,9 @@ definitions:
         title: NAICS Codes
         items: 
           "$ref": "#/definitions/dfrz_NAICSCodes" 
+        xml: 
+          name: NAICSCodes
+          wrapped: true
     required: 
     - NAICSCodes
   dfrz_NAICSCodes: 
@@ -4154,11 +4196,17 @@ definitions:
         title: Program Dates
         items: 
           "$ref": "#/definitions/dfr4_ProgramDates" 
+        xml: 
+          name: ProgramDates
+          wrapped: true
       Notice: 
         type: array
         title: Notice
         items: 
           "$ref": "#/definitions/dfrK_Notice" 
+        xml: 
+          name: Notice
+          wrapped: true
     required: 
     - ProgramDates
     - Notice
@@ -4561,33 +4609,11 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrL_Source" 
-    required: 
-    - Qtr1Start
-    - Qtr1End
-    - Qtr2Start
-    - Qtr2End
-    - Qtr3Start
-    - Qtr3End
-    - Qtr4Start
-    - Qtr4End
-    - Qtr5Start
-    - Qtr5End
-    - Qtr6Start
-    - Qtr6End
-    - Qtr7Start
-    - Qtr7End
-    - Qtr8Start
-    - Qtr8End
-    - Qtr9Start
-    - Qtr9End
-    - Qtr10Start
-    - Qtr10End
-    - Qtr11Start
-    - Qtr11End
-    - Qtr12Start
-    - Qtr12End
-  dfrL_Source: 
+          "$ref": "#/definitions/dfrL_Sources" 
+        xml: 
+          name: Sources
+          wrapped: true
+  dfrL_Sources: 
     description: Source Object
     properties: 
       Status: 
@@ -4596,8 +4622,11 @@ definitions:
         type: array
         title: Violations
         items: 
-          "$ref": "#/definitions/dfrL_Violations" 
-  dfrL_Violations: 
+          "$ref": "#/definitions/dfrL_Sources.Violations" 
+        xml: 
+          name: Violations
+          wrapped: true
+  dfrL_Sources.Violations: 
     description: Violations Object
     properties: 
       SourceID: 
@@ -4770,6 +4799,9 @@ definitions:
         title: Permits
         items: 
           "$ref": "#/definitions/dfr4_Permits" 
+        xml: 
+          name: Permits
+          wrapped: true
       EnforcementComplianceSummaries: 
         "$ref": "#/definitions/dfrF_EnforcementComplianceSummaries" 
       NAICS: 
@@ -4829,16 +4861,25 @@ definitions:
         title: Tribes
         items: 
           "$ref": "#/definitions/dfrS_Tribes" 
+        xml: 
+          name: Tribes
+          wrapped: true
       WebFireDocuments: 
         type: array
         title: Web Fire Documents
         items: 
           "$ref": "#/definitions/dfr4_WebFireDocuments" 
+        xml: 
+          name: WebFireDocuments
+          wrapped: true
       CAEDDocuments: 
         type: array
         title: Web Fire Documents
         items: 
           "$ref": "#/definitions/dfr4_CAEDDocuments" 
+        xml: 
+          name: CAEDDocuments
+          wrapped: true
       SpatialMetadata: 
         "$ref": "#/definitions/dfrP_SpatialMetadata" 
       Demographics: 
@@ -4984,9 +5025,31 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrM_Source" 
-  dfrM_RulesViolated: 
+          "$ref": "#/definitions/dfrM_Sources" 
+        xml: 
+          name: Sources
+          wrapped: true
+  dfrM_Sources: 
+    description: Sources Object
+    xml: 
+      name: Sources
+    properties: 
+      Status: 
+        "$ref": "#/definitions/dfr0_Qtr13Status" 
+      RulesViolated: 
+        type: array
+        items: 
+          "$ref": "#/definitions/dfrM_Sources.RulesViolated" 
+        xml: 
+          name: RulesViolated
+          wrapped: true
+    required: 
+    - Status
+    - RulesViolated
+  dfrM_Sources.RulesViolated: 
     description: Rules Violated Object
+    xml: 
+      name: RulesViolated
     properties: 
       SourceID: 
         type: string
@@ -5077,18 +5140,6 @@ definitions:
     - Qtr11Status
     - Qtr12Status
     - Qtr13Status
-  dfrM_Source: 
-    description: Source Object
-    properties: 
-      Status: 
-        "$ref": "#/definitions/dfr0_Qtr13Status" 
-      RulesViolated: 
-        type: array
-        items: 
-          "$ref": "#/definitions/dfrM_RulesViolated" 
-    required: 
-    - Status
-    - RulesViolated
   dfr4_SIC: 
     description: SIC Object
     properties: 
@@ -5097,10 +5148,13 @@ definitions:
         title: Sources
         items: 
           "$ref": "#/definitions/dfr4_Sources" 
+        xml: 
+          name: Sources
+          wrapped: true
     required: 
     - Sources
   dfr4_Sources: 
-    description: Source Object
+    description: Sources Object
     xml: 
       name: Sources
     properties: 
@@ -5108,6 +5162,9 @@ definitions:
         type: array
         items: 
           "$ref": "#/definitions/dfr4_SICCodes" 
+        xml: 
+          name: SICCodes
+          wrapped: true
     required: 
     - SICCodes
   dfr4_SICCodes: 
@@ -5155,19 +5212,29 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrN_Source" 
-  dfrN_Source: 
-    description: Source Object
+          "$ref": "#/definitions/dfrN_Sources" 
+        xml: 
+          name: Sources
+          wrapped: true
+  dfrN_Sources: 
+    description: Sources Object
+    xml: 
+      name: Sources
     properties: 
       SanitarySurvey: 
         type: array
         title: Sanitary Survey
         items: 
           "$ref": "#/definitions/dfrN_SanitarySurvey" 
+        xml: 
+          name: SanitarySurvey
+          wrapped: true
     required: 
     - SanitarySurvey
   dfrN_SanitarySurvey: 
     description: Sanitary Survey Object
+    xml: 
+      name: SanitarySurvey
     properties: 
       SourceID: 
         type: string
@@ -5244,19 +5311,29 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrO_Source" 
-  dfrO_Source: 
-    description: Source Object
+          "$ref": "#/definitions/dfrO_Sources" 
+        xml: 
+          name: Sources
+          wrapped: true
+  dfrO_Sources: 
+    description: Sources Object
+    xml: 
+      name: Sources
     properties: 
       SiteVisit: 
         type: array
         title: Site Visit
         items: 
           "$ref": "#/definitions/dfrO_SiteVisit" 
+        xml: 
+          name: SiteVisit
+          wrapped: true
     required: 
     - SiteVisit
   dfrO_SiteVisit: 
     description: Site Visit Object
+    xml: 
+      name: SiteVisit
     properties: 
       SourceID: 
         type: string
@@ -5465,15 +5542,23 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfre_Source" 
-  dfre_Source: 
-    description: Source Object
+          "$ref": "#/definitions/dfre_Sources" 
+        xml: 
+          name: Sources
+          wrapped: true
+  dfre_Sources: 
+    description: Sources Object
+    xml: 
+      name: Sources
     properties: 
       ReleaseYear: 
         type: array
         title: Release Year
         items: 
           "$ref": "#/definitions/dfre_ReleaseYear" 
+        xml: 
+          name: ReleaseYear
+          wrapped: true
   dfre_ReleaseYear: 
     description: Release Year Object
     xml: 
@@ -5541,15 +5626,21 @@ definitions:
         title: Header
         items: 
           "$ref": "#/definitions/dfrR_Header" 
+        xml: 
+          name: Header
+          wrapped: true
       Chemicals: 
         type: array
         title: Chemicals
         items: 
           "$ref": "#/definitions/dfrR_Chemicals" 
+        xml: 
+          name: Chemicals
+          wrapped: true
   dfrR_Chemicals: 
     description: Chemicals Object
     xml: 
-      name: Chemical
+      name: Chemicals
     properties: 
       ChemicalName: 
         type: string
@@ -5646,6 +5737,8 @@ definitions:
     - Year1
   dfrS_Tribes: 
     description: Tribes Object
+    xml: 
+      name: Tribes
     properties: 
       AreaName: 
         type: string
@@ -5676,19 +5769,29 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrd_Source" 
-  dfrd_Source: 
-    description: Source Object
+          "$ref": "#/definitions/dfrd_Sources" 
+        xml: 
+          name: Sources
+          wrapped: true
+  dfrd_Sources: 
+    description: Sources Object
+    xml: 
+      name: Sources
     properties: 
       Violations: 
         type: array
         title: Violations
         items: 
           "$ref": "#/definitions/dfrd_Violations" 
+        xml: 
+          name: Violations
+          wrapped: true
     required: 
     - Violations
   dfrd_EnforcementActions: 
     description: Enforcement Actions Object
+    xml: 
+      name: EnforcementActions
     properties: 
       EnforcementDate: 
         type: string
@@ -5722,6 +5825,8 @@ definitions:
     - Agency
   dfrd_Violations: 
     description: Violations Object
+    xml: 
+      name: Violations
     properties: 
       SourceID: 
         type: string
@@ -5783,6 +5888,9 @@ definitions:
         title: Enforcement Actions
         items: 
           "$ref": "#/definitions/dfrd_EnforcementActions" 
+        xml: 
+          name: EnforcementActions
+          wrapped: true
     required: 
     - SourceID
     - CompliancePeriodBeginDate
@@ -5805,9 +5913,14 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrU_Source" 
-  dfrU_Source: 
-    description: Source Object
+          "$ref": "#/definitions/dfrU_Sources" 
+        xml: 
+          name: Sources
+          wrapped: true
+  dfrU_Sources: 
+    description: Sources Object
+    xml: 
+      name: Sources
     properties: 
       SourceID: 
         type: string
@@ -5933,8 +6046,46 @@ definitions:
   dfr4_WebFireDocuments: 
     description: Web Fire Documents
     properties: 
-      Dummy: 
+      RegistryId: 
         type: string
+        title: FRS Registry ID
+        example: '110020837601'
+        description: 12-digit Facility Registry Service (FRS) identification number.  FRS uniquely identifies a facility by assigning an identification number (FRS ID), and uses this FRS ID to link together all EPA regulatory program database records
+      FacilityName: 
+        type: string
+        title: Facility Name
+        example: 3M COMPANY
+        description: The name of the facility.
+      ReportSubmissionDate: 
+        type: string
+        title: Most Severe Compliance Status
+        example: In Violation
+        description: The most severe compliance status for an outfall and parameter during the entire selected date range
+      DocumentName: 
+        type: string
+        title: Most Severe Compliance Status
+        example: In Violation
+        description: The most severe compliance status for an outfall and parameter during the entire selected date range
+      ReportDocType: 
+        type: string
+        title: Most Severe Compliance Status
+        example: In Violation
+        description: The most severe compliance status for an outfall and parameter during the entire selected date range
+      DocumentType: 
+        type: string
+        title: Most Severe Compliance Status
+        example: In Violation
+        description: The most severe compliance status for an outfall and parameter during the entire selected date range
+      DocumentLink: 
+        type: string
+    required: 
+    - RegistryId
+    - FacilityName
+    - ReportSubmissionDate
+    - DocumentName
+    - ReportDocType
+    - DocumentType
+    - DocumentLink
   dfrW1_Results: 
     description: Results Object
     properties: 
@@ -6034,6 +6185,9 @@ definitions:
         title: Permits
         items: 
           "$ref": "#/definitions/dfr4_Permits" 
+        xml: 
+          name: Permits
+          wrapped: true
     required: 
     - Message
   dfrh_Results: 
@@ -6167,6 +6321,9 @@ definitions:
         title: Tribes
         items: 
           "$ref": "#/definitions/dfrS_Tribes" 
+        xml: 
+          name: Tribes
+          wrapped: true
     required: 
     - Message
   dfrp_Results: 
