@@ -3222,9 +3222,22 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrB_Sources.Statuses" 
+          "$ref": "#/definitions/dfrB_Sources.Status" 
         xml: 
           name: Sources
+          wrapped: true
+  dfrB_Sources.Status: 
+    description: CWA RNC Compliance Statuses Object
+    xml: 
+      name: Status
+    properties: 
+      Status: 
+        type: array
+        title: Status
+        items: 
+          "$ref": "#/definitions/dfr0_Qtr12Status" 
+        xml: 
+          name: Status
           wrapped: true
   dfrC_CWASECompliance: 
     description: CWA SE Compliance Object
