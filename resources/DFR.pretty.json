@@ -5387,6 +5387,9 @@
       ,"dfrF_ProgramDates": {
           "type": "object"
          ,"description": "Program Date Object"
+         ,"xml": {
+             "name": "ProgramDates"
+         }
          ,"properties": {
              "Program": {
                 "type": "string"
@@ -5532,6 +5535,9 @@
       ,"dfrH_Action": {
           "type": "object"
          ,"description": "Action Object"
+         ,"xml": {
+             "name": "Action"
+         }
          ,"properties": {
              "StatuteCode": {
                 "type": "string"
@@ -5657,7 +5663,7 @@
                 "type": "array"
                ,"title": "Source"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrI_Sources"
+                   "$ref": "#\/definitions\/dfrI_Source"
                }
                ,"xml": {
                    "name": "Source"
@@ -5665,6 +5671,65 @@
                }
             }
          }
+      }
+      ,"dfrI_Source": {
+          "type": "object"
+         ,"description": "Source Object"
+         ,"xml": {
+             "name": "Source"
+         }
+         ,"properties": {
+             "Statute": {
+                "type": "string"
+               ,"title": "Regulatory Statute"
+               ,"example": "CWA"
+               ,"description": "The name of the statute associated with each of the permits and identifiers linked to the facility: \n- CAA = the Clean Air Act\n- CWA = the Clean Water Act\n- RCRA = the Resource Conservation and Recovery Act\n- EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)\n- TSCA = the Toxic Substances Control Act\n- SDWA = the Safe Drinking Water Act"
+            }
+            ,"EPASystem": {
+                "type": "string"
+               ,"title": "EPA Data System"
+               ,"example": "ICP"
+               ,"description": "The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: \n\n- AFS: Air Facility System for Clean Air Act stationary source programs.\n- ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.\n- RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.\n- NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).\n- TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.\n- NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.\n- TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals."
+            }
+            ,"SourceID": {
+                "type": "string"
+               ,"title": "EPA Source Identifier"
+               ,"example": "ALR040033"
+               ,"description": "Unique Identifier assigned by EPA."
+            }
+            ,"InspectionCount": {
+                "type": "string"
+               ,"title": "Inspection Count"
+               ,"description": "The total number of inspections pertaining to compliance of the designated statute"
+            }
+            ,"DateLastInspection": {
+                "type": "string"
+               ,"title": "Date of Last Inspection"
+               ,"example": "01\/13\/2007"
+               ,"description": "The date on which the most recent inspection of the facility took place"
+            }
+            ,"FormalEnfActCount": {
+                "type": "string"
+               ,"title": "Formal Enforcement Action Count"
+               ,"example": "1"
+               ,"description": "The number of formal enforcement actions that have been taken against the facility, under the corresponding statute, within the last five years."
+            }
+            ,"TotalPenalties": {
+                "type": "string"
+               ,"title": "Total Penalties"
+               ,"example": "$963,531"
+               ,"description": "The total dollar amount of either assessed or final penalties within the five year time period"
+            }
+         }
+         ,"required": [
+             "Statute"
+            ,"EPASystem"
+            ,"SourceID"
+            ,"InspectionCount"
+            ,"DateLastInspection"
+            ,"FormalEnfActCount"
+            ,"TotalPenalties"
+         ]
       }
       ,"dfrG_LeadAndCopperRule5Yr": {
           "type": "object"
@@ -5748,6 +5813,9 @@
       ,"dfrG_CopperSamples": {
           "type": "object"
          ,"description": "Copper Samples"
+         ,"xml": {
+             "name": "CopperSamples"
+         }
          ,"properties": {
              "CU90": {
                 "type": "string"
@@ -5772,6 +5840,9 @@
       ,"dfrG_LeadSamples": {
           "type": "object"
          ,"description": "Lead Samples"
+         ,"xml": {
+             "name": "LeadSamples"
+         }
          ,"properties": {
              "PB90": {
                 "type": "string"
@@ -5796,6 +5867,9 @@
       ,"dfr4_MapData": {
           "type": "object"
          ,"description": "Map Data Object"
+         ,"xml": {
+             "name": "Object"
+         }
          ,"properties": {
              "LAT": {
                 "type": "string"
@@ -6463,6 +6537,9 @@
       ,"dfrL_Sources": {
           "type": "object"
          ,"description": "Source Object"
+         ,"xml": {
+             "name": "Sources"
+         }
          ,"properties": {
              "Status": {
                 "$ref": "#\/definitions\/dfr0_Qtr12Status"
@@ -6483,6 +6560,9 @@
       ,"dfrL_Sources.Violations": {
           "type": "object"
          ,"description": "Violations Object"
+         ,"xml": {
+             "name": "Violations"
+         }
          ,"properties": {
              "SourceID": {
                 "type": "string"
@@ -6599,6 +6679,9 @@
       ,"dfr4_RegistryIDs": {
           "type": "object"
          ,"description": "Registry IDs Object"
+         ,"xml": {
+             "name": "RegistryIDs"
+         }
          ,"properties": {
              "RegistryId": {
                 "type": "string"
@@ -8273,6 +8356,9 @@
       ,"dfr4_WebFireDocuments": {
           "type": "object"
          ,"description": "Web Fire Documents"
+         ,"xml": {
+             "name": "WebFireDocuments"
+         }
          ,"properties": {
              "RegistryId": {
                 "type": "string"
