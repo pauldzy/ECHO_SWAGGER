@@ -529,6 +529,9 @@ definitions:
         title: MapData Object
         items: 
           "$ref": "#/definitions/caa3" 
+        xml: 
+          name: MapData
+          wrapped: true
     required: 
     - IconBaseURL
     - PopUpBaseURL
@@ -683,6 +686,9 @@ definitions:
         title: Emissions Object
         items: 
           "$ref": "#/definitions/caa2" 
+        xml: 
+          name: Emissions
+          wrapped: true
     required: 
     - Emissions
   caaa: 
@@ -693,16 +699,25 @@ definitions:
         title: RegistryIDs Object
         items: 
           "$ref": "#/definitions/caad" 
+        xml: 
+          name: RegistryIDs
+          wrapped: true
       Pollutants: 
         type: array
         title: Pollutants Object
         items: 
           "$ref": "#/definitions/caac" 
+        xml: 
+          name: Pollutants
+          wrapped: true
       Permits: 
         type: array
         title: Permits Object
         items: 
           "$ref": "#/definitions/caa5" 
+        xml: 
+          name: Permits
+          wrapped: true
       AggregateEmissions: 
         "$ref": "#/definitions/caa9" 
       EnvironmentalConditions: 
@@ -933,6 +948,9 @@ definitions:
         title: Permits Object
         items: 
           "$ref": "#/definitions/caa5" 
+        xml: 
+          name: Permits
+          wrapped: true
     required: 
     - Message
     - Permits
