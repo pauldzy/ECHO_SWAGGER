@@ -8,6 +8,12 @@ Prototype of hosting ECHO Open API resources on GitHub.  Add more blurbage here.
 
 * [View service documentation in Swagger Editor](http://editor.swagger.io?url=http://raw.githubusercontent.com/pauldzy/ECHO_SWAGGER/master/resources/AIR.yaml)
 
+#### U.S. EPA Enforcement and Compliance History Online (ECHO) - Clean Air Report Search
+
+* [View service documentation via Swagger UI](http://petstore.swagger.io?url=https://raw.githubusercontent.com/pauldzy/ECHO_SWAGGER/master/resources/CAA.json)
+
+* [View service documentation in Swagger Editor](http://editor.swagger.io?url=http://raw.githubusercontent.com/pauldzy/ECHO_SWAGGER/master/resources/CAA.yaml)
+
 #### U.S. EPA Enforcement and Compliance History Online (ECHO) - Enforcement Case Search
 
 * [View service documentation via Swagger UI](http://petstore.swagger.io?url=https://raw.githubusercontent.com/pauldzy/ECHO_SWAGGER/master/resources/CASE.json)
