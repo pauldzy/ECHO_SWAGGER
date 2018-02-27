@@ -25,7 +25,6 @@ info:
     <br><br>
     Additional ECHO Resources:   <a href="https://echo.epa.gov/tools/web-services">Web Services</a>, <a href="https://echo.epa.gov/resources/echo-data/about-the-data">About ECHO's Data</a>, <a href="https://echo.epa.gov/tools/data-downloads">Data Downloads</a>
     <br>
-
   contact: 
     name: US EPA, OECA Integration, Targeting and Access Branch
   license: 
@@ -471,7 +470,6 @@ parameters:
       - GT5000 = More than 5000 population density per square mile
       - GT10000 = More than 10000 population density per square mile
       - GT20000 = More than 20000 population density per square mile
-
     enum: 
     - NONE
     - GT100
@@ -575,7 +573,6 @@ parameters:
       - BEGINS = Find facilities with names starting with the provided term(s).
       - ALL = Find facilities using Oracle text search terms.
       - CONTAINS = 
-
     enum: 
     - ALL
     - CONTAINS
@@ -883,6 +880,8 @@ paths:
           description: Results are summary statistics for the query and a query identifier (QID).
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/ers1_Results" 
@@ -989,6 +988,8 @@ paths:
           description: Results are summary statistics for the query and a query identifier (QID).
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/ers1_Results" 
@@ -1093,6 +1094,8 @@ paths:
           description: Results will either be an array of Facilities or an array of Clusters. The determination as to whether Facilities or Clusters are returned is based on the number of facilities that meet the specified criteria. Generally, if there are more than ~2000 facilities, the search will return clusters; otherwise individual facility records will be returned.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/ers2_Results" 
@@ -1196,6 +1199,8 @@ paths:
           description: Results will either be an array of Facilities or an array of Clusters. The determination as to whether Facilities or Clusters are returned is based on the number of facilities that meet the specified criteria. Generally, if there are more than ~2000 facilities, the search will return clusters; otherwise individual facility records will be returned.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/ers2_Results" 
@@ -1236,6 +1241,8 @@ paths:
           description: Results are an array (page) Facility Registry System (FRS)  Facilities with the number of facilities equal to the responseset (page size).
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/ers4_Results" 
@@ -1275,6 +1282,8 @@ paths:
           description: Results are an array (page) Facility Registry System (FRS)  Facilities with the number of facilities equal to the responseset (page size).
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/ers4_Results" 
@@ -1313,6 +1322,8 @@ paths:
           description: Results are either an array of State, County, Zip Code facility cluster map coordinates or individual facility coordinates.  Coordinates provided are in WGS84.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               MapOutput: 
                 "$ref": "#/definitions/ers0_MapOutput" 
@@ -1350,6 +1361,8 @@ paths:
           description: Results are either an array of State, County, Zip Code facility cluster map coordinates or individual facility coordinates.  Coordinates provided are in WGS84.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               MapOutput: 
                 "$ref": "#/definitions/ers0_MapOutput" 
@@ -1568,6 +1581,8 @@ paths:
           description: Results are an array of columns/objects.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/met_Results" 
@@ -1598,6 +1613,8 @@ paths:
           description: Results are an array of columns/objects.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/met_Results" 
@@ -1606,6 +1623,8 @@ paths:
 definitions: 
   qp0_QueryParameters: 
     description: Query Parameters Object
+    xml: 
+      name: Parameter
     properties: 
       QP: 
         type: string
@@ -1622,6 +1641,8 @@ definitions:
     - QV
   ers0_MapData: 
     description: Map Data Object
+    xml: 
+      name: Object
     properties: 
       LAT: 
         type: string
@@ -1716,6 +1737,9 @@ definitions:
         title: Map Data
         items: 
           "$ref": "#/definitions/ers0_MapData" 
+        xml: 
+          name: MapData
+          wrapped: true
     required: 
     - QueryID
     - IconBaseURL
@@ -1723,12 +1747,9 @@ definitions:
     - MapData
   ers1_Facilities: 
     description: Facilities Object
+    xml: 
+      name: Facility
     properties: 
-      RegistryID: 
-        type: string
-        title: FRS ID
-        example: '110020837601'
-        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
       FacName: 
         type: string
         title: Facility Name
@@ -1754,37 +1775,38 @@ definitions:
         title: Facility Zip Code
         example: '22314'
         description: Facility ZIP code
+      RegistryID: 
+        type: string
+        title: FRS ID
+        example: '110020837601'
+        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
       FacCounty: 
         type: string
         title: Facility County
         example: ALEXANDRIA CITY
         description: The county where the facility is located.
-      FacFIPSCode: 
-        type: string
-        title: FIPS Code
-        example: '55001'
-        description: The 2-digit Federal Information Processing Standards (FIPS) code to identify the county that a facility is located in.
       FacEPARegion: 
         type: string
         title: Facility EPA Region
         example: '03'
         description: The EPA region where the facility is located. EPA has 10 regional offices that execute programs within several states and territories
+      FacFederalFlg: 
+        type: string
+      FacFederalAgencyName: 
+        type: string
       FacIndianCntryFlg: 
         type: string
         title: Facility Indian Country Flag
         description: Flag showing Y/N whether the facility is located in Indian Country.
-      FacFederalFlg: 
+      FacIndianSpatialFlg: 
         type: string
-      FacUsMexBorderFlg: 
+      FacDerivedTRIbes: 
         type: string
-        title: Near US-Mexico Border
-        example: Y
-        description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
-      FacChesapeakeBayFlg: 
+      FacSICCodes: 
         type: string
-        title: Facility in Chesapeake Bay Watershed Flag
-      FacNaaFlag: 
+      FacNAICSCodes: 
         type: string
+        title: Facility NAICS Codes
       FacLat: 
         type: string
         title: Latitude
@@ -1795,152 +1817,43 @@ definitions:
         title: Longitude
         example: '-77.085951'
         description: The longitude of the facility in decimal degrees expressed using the NAD83 horizontal datum. The coordinate comes from the FRS EPA Locational Reference Tables (LRT) file which represents the most accurate value for the facility based on the available spatial metadata.
-      FacMapIcon: 
-        type: string
-        title: Facility Map Icon
-        example: CWA-NC-MJ-2.png
-        description: The default map icon image file calculated for the facility by the ECHO program.
-      FacCollectionMethod: 
-        type: string
-      FacReferencePoint: 
-        type: string
-      FacAccuracyMeters: 
-        type: string
-        example: '35900'
-      FacDerivedTRIbes: 
-        type: string
-      FacDerivedHuc: 
-        type: string
-        title: Watershed (HUC Code)
-        example: '552968'
-        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
-      FacDerivedWBD: 
-        type: string
-      FacDerivedStctyFIPS: 
-        type: string
-      FacDerivedZip: 
-        type: string
-      FacDerivedCd113: 
-        type: string
-      FacDerivedCb2010: 
-        type: string
-      FacPercentMinority: 
-        type: string
-        title: |-
-          Facility Percent Minority
-
-        example: '45.379'
-        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
-      FacPopDen: 
-        type: string
-        title: |-
-          Facility Population Density
-
-        example: '6716.34'
-        description: The number of persons per square mile in the area being profiled. This field is the ratio of total persons (displayed in the Total Persons field) to total land area (displayed in the Land Area field).
-      FacMajorFlag: 
-        type: string
-        title: Facility Major Flag
-      FacActiveFlag: 
-        type: string
-      FacMyrtkUniverse: 
-        type: string
-      FacInspectionCount: 
-        type: string
-        title: Facility Inspection Count
-        example: '1'
-        description: The number of inspections/compliance evaluations that have occurred at the facility, under the AIR, CWA, and RCRA, within the last five years. The last 5 years will include data from the 20 most recently completed quarters, plus data from the current quarter up until the refresh date. This count only includes inspection types that are counted as inspections in official counts.
-      FacDateLastInspection: 
-        type: string
-        title: Date of Last Facility Inspection
-        example: 12/18/2012
-        description: The date on which most recent inspection of the facility took place. For the Clean Air Act, the date on which a Full Inspection (FCE) was completed. This date may or may not correspond to an actual site visit. A series of partial on- or off-site inspections may have been conducted during the fiscal year as part of this FCE.
-      FacDaysLastInspection: 
-        type: string
-        title: Days Since Last Facility Inspection
-        example: '1197'
-        description: The number of days from the last ECHO refresh to the date on which the most recent inspection of the facility took place based on data recorded into AFS, ICIS-NPDES, or RCRA Info.
-      FacInformalCount: 
-        type: string
-        title: Count of Informal Actions
-        example: '0'
-        description: Indicates the total number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years
-      FacDateLastInformalAction: 
-        type: string
-        title: Date of Last Informal Action
-        example: 8/6/2008
-        description: The date of the most recent informal action or NOV taken recorded in AFS, ICIS-NPDES, RCRA Info or SDWIS.
-      FacFormalActionCount: 
-        type: string
-        title: Count of Formal Actions
-        example: '0'
-        description: Indicates the total number of enforcement actions taken against the facility within the last five years. NA indicates that this measure is not applicable for facilities with no associated CAA, CWA, or RCRA permits
-      FacDateLastFormalAction: 
-        type: string
-        title: Date of Last Formal Action
-        example: 5/7/2009
-        description: Indicates the effective date of the most recent listed enforcement action taken against the facility within the last five years.
-      FacTotalPenalties: 
-        type: string
-        title: Total Penalties
-        example: "$850"
-        description: The total dollar amount of either assessed (or final) penalties taken against the facility within the last five years
-      FacPenaltyCount: 
-        type: string
-        title: Penalty Count
-        example: '2'
-        description: The total number of penalties assessed (or final) taken against the facility within the last five years
-      FacDateLastPenalty: 
-        type: string
-        title: Date of Last Penalty
-        example: 2/19/2011
-        description: Indicates the date on which the most recent assessed (or final) penalty was taken against the facility within the last five years
-      FacLastPenaltyAmt: 
-        type: string
-        title: Last Penalty Amount
-        example: "$200"
-        description: Indicates the dollar amount of the most recent assessed (or final) penalty taken against the facility within the last five years
-      FacQtrsInNC: 
-        type: string
-        title: Quarters in Noncompliance
-        example: '3'
-        description: Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered either in Non-compliance (NC), Significant Non-compliance (SNC) or High Priority violation (HPV) status
-      FacProgramsInSNC: 
-        type: string
-        title: Programs in Significant Noncompliance
-        example: '1'
-        description: A count of the number of programs (AIR, CWA, SDWA, RCRA) related to the facility that have a current serious violation
-      FacCurrComplianceStatus: 
-        type: string
-        title: Current Facility Compliance Status
-        description: "Current compliance status: SNC/Serious Viol, In Violation, No Violation, Unknown, NULL. (Order corresponds to priority if multiple programs/permits exist)"
-      FacCurrSNCFlg: 
-        type: string
-        title: Facility in Significant Noncompliance Flag
-        example: N
-        description: The current Significant Non-compliance (SNC), Serious Violation or High Priority Violator (HPV) status for the facility during the most current quarter reflects the time the records were extracted from the program data systems
-      Fac3yrComplianceStatus: 
-        type: string
-      AIRFlag: 
-        type: string
-      NPDESFlag: 
-        type: string
-        title: NPDES Flag
-      SDWISFlag: 
-        type: string
-        title: SDWIS Flag
-      RCRAFlag: 
-        type: string
-      TRIFlag: 
-        type: string
-        title: Toxics Release Inventory Program Flag
-      GHGFlag: 
-        type: string
       AIRIDs: 
         type: string
         title: AIR Facility System ID
         example: DC0000001100195254
         description: Air Facility System (AFS) ID.
+      CamdIDs: 
+        type: string
+        title: Clean Air Markets Division Identifiers
+        description: Facility identifiers for the Clean Air Markets Division database.
+      NPDESIDs: 
+        type: string
+        title: ICS-NPDES Clean Water Act Identifier
+        description: Clean Water Act ID from the ICIS-NPDES (Integrated Compliance Information System - National Pollutant Discharge Elimination System)
+      RCRAIDs: 
+        type: string
+        title: Resource Conservation and Recovery Act IDs
+        example: VAD981111784
+        description: A unique 12-character ID assigned for each record/permit/site/facility within the RCRAInfo database.
+      RmpIDs: 
+        type: string
+      SDWAIDs: 
+        type: string
+        example: DC0000001
+        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
+      TRIIDs: 
+        type: string
+        title: Toxics Release Inventory Program IDs
+        example: 20011FRTTT5001F
+        description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
+      EisIDs: 
+        type: string
+      GHGIDs: 
+        type: string
+      TscaIDs: 
+        type: string
+        title: Toxic Substances Control Act ID
+        description: Toxic Substances Control Act ID assigned to a facility
       CAAPermitTypes: 
         type: string
         example: Minor Emissions
@@ -1951,48 +1864,6 @@ definitions:
           - Other Minor
           - Synthetic Minor
           - NULL
-      CAANAICS: 
-        type: string
-      CAASICs: 
-        type: string
-      CAAEvaluationCount: 
-        type: string
-        example: '0'
-        description: The number of inspections/compliance evaluations under the Clean Air Act, occurring at the facility within the last five years
-      CAADaysLastEvaluation: 
-        type: string
-        example: '7051'
-      CAAInformalCount: 
-        type: string
-        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Clean Air Act.
-      CAAFormalActionCount: 
-        type: string
-        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Clean Air Act.
-      CAADateLastFormalAction: 
-        type: string
-      CAAPenalties: 
-        type: string
-        description: The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Air Act.
-      CAALastPenaltyDate: 
-        type: string
-      CAALastPenaltyAmt: 
-        type: string
-        example: "$17014"
-      CAAQtrsInNC: 
-        type: string
-        example: '0'
-      CAACurrComplianceStatus: 
-        type: string
-        example: Not Available
-        description: Current compliance status.
-      CAACurrHpvFlag: 
-        type: string
-      CAA3yrComplQtrsStatus: 
-        type: string
-      NPDESIDs: 
-        type: string
-        title: ICS-NPDES Clean Water Act Identifier
-        description: Clean Water Act ID from the ICIS-NPDES (Integrated Compliance Information System - National Pollutant Discharge Elimination System)
       CWAPermitTypes: 
         type: string
         title: Clean Water Act Permit Types
@@ -2000,59 +1871,6 @@ definitions:
           Indicates the facility's permit type or designation.
           - Major
           - Minor
-      CWAComplianceTracking: 
-        type: string
-      CWANAICS: 
-        type: string
-      CWASICs: 
-        type: string
-      CWAInspectionCount: 
-        type: string
-        title: Clean Water Act Inspection Count
-        example: '0'
-        description: The number of inspections/compliance evaluations under the Clean Water Act, occurring at the facility within the last five years.
-      CWADaysLastInspection: 
-        type: string
-        example: '184'
-      CWAInformalCount: 
-        type: string
-        title: Clean Water Act Informal Action Count
-        example: '1'
-        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Clean Water Act.
-      CWAFormalActionCount: 
-        type: string
-        title: Clean Water Act Formal Action Count
-        example: '2'
-        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Clean Water Act.
-      CWADateLastFormalAction: 
-        type: string
-      CWAPenalties: 
-        type: string
-        title: Clean Water Act Penalties
-        description: The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Water Act.
-      CWALastPenaltyDate: 
-        type: string
-      CWALastPenaltyAmt: 
-        type: string
-      CWAQtrsInNC: 
-        type: string
-      CWACurrComplianceStatus: 
-        type: string
-        title: Clean Water Act Current Compliance Status
-        description: Current compliance status
-      CWACurrSNCFlag: 
-        type: string
-      CWA13qtrsComplStatus: 
-        type: string
-      CWA13qtrsEfflntExceedances: 
-        type: string
-      CWA3YrQncrCodes: 
-        type: string
-      RCRAIDs: 
-        type: string
-        title: Resource Conservation and Recovery Act IDs
-        example: VAD981111784
-        description: A unique 12-character ID assigned for each record/permit/site/facility within the RCRAInfo database.
       RCRAPermitTypes: 
         type: string
         title: Resource Conservation and Recovery Act Permit Types
@@ -2065,154 +1883,70 @@ definitions:
           - CESQG = Conditionally-Exempt Small Quantity Generator
           - Operating TSDF
           - Transporters
-      RCRANAICS: 
+      SDWASystemTypes: 
         type: string
-      RCRAInspectionCount: 
+        description: SDWIS System Types
+      FacCurrSNCFlg: 
         type: string
-        title: Resource Conservation and Recovery Act Inspection Count
-        example: '1'
-        description: The number of inspections/compliance evaluations under the Resource Conservation and Recovery Act, occurring at the facility within the last five years
-      RCRADaysLastEvaluation: 
+        title: Facility in Significant Noncompliance Flag
+        example: N
+        description: The current Significant Non-compliance (SNC), Serious Violation or High Priority Violator (HPV) status for the facility during the most current quarter reflects the time the records were extracted from the program data systems
+      FacQtrsInNC: 
         type: string
-        example: '6848'
-      RCRAInformalCount: 
-        type: string
-        title: RCRA Informal Action Count
+        title: Quarters in Noncompliance
         example: '3'
-        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Resource Conservation and Recovery Act.
-      RCRAFormalActionCount: 
+        description: Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered either in Non-compliance (NC), Significant Non-compliance (SNC) or High Priority violation (HPV) status
+      FacCurrComplianceStatus: 
         type: string
-        title: RCRA Formal Action Count
-        example: '5'
-        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Resource Conservation and Recovery Act.
-      RCRADateLastFormalAction: 
+        title: Current Facility Compliance Status
+        description: "Current compliance status: SNC/Serious Viol, In Violation, No Violation, Unknown, NULL. (Order corresponds to priority if multiple programs/permits exist)"
+      CAACurrComplianceStatus: 
         type: string
-      RCRAPenalties: 
+        example: Not Available
+        description: Current compliance status.
+      CWACurrComplianceStatus: 
         type: string
-        example: "$987"
-      RCRALastPenaltyDate: 
-        type: string
-      RCRALastPenaltyAmt: 
-        type: string
-      RCRAQtrsInNC: 
-        type: string
-        example: '0'
+        title: Clean Water Act Current Compliance Status
+        description: Current compliance status
       RCRACurrComplianceStatus: 
         type: string
         title: RCRA Current Compliance Status
         example: No Violation
         description: Current compliance status
-      RCRACurrSNCFlag: 
-        type: string
-      RCRA3yrComplQtrsStatus: 
-        type: string
-      SDWAIDs: 
-        type: string
-        example: DC0000001
-        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
-      SDWASystemTypes: 
-        type: string
-        description: SDWIS System Types
-      SDWAInformalCount: 
-        type: string
-        example: '2'
-        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Safe Drinking Water Act
-      SDWAFormalActionCount: 
-        type: string
-        example: '11'
-        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Safe Drinking Water Act
       SDWACurrComplianceStatus: 
         type: string
         description: Current compliance status
-      SDWACurrSNCFlag: 
+      FacInspectionCount: 
         type: string
-      TRIIDs: 
-        type: string
-        title: Toxics Release Inventory Program IDs
-        example: 20011FRTTT5001F
-        description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
-      TRIReleasesTransfers: 
-        type: string
-        title: TRI Release Transfers
-        example: '170878'
-        description: Total chemical releases, in pounds, as reported to the Toxics Release Inventory (TRI) by the facility for the most recent reporting year
-      TRIOnSiteReleases: 
-        type: string
-        title: Toxics Release Inventory Onsite Releases
-        example: '11987'
-      TRIOffSiteTransfers: 
-        type: string
-        title: Toxics Release Inventory Offsite Transfer Count
-        example: '0'
-      TRIReporterInPast: 
-        type: string
-        title: Toxics Release Inventory Reporter In Past Flag
-      FecCaseIDs: 
-        type: string
-        description: All Case Numbers of Federal Enforcement Cases relating to the Facility from the ICIS System
-      FecNumberOfCases: 
-        type: string
+        title: Facility Inspection Count
         example: '1'
-      FecLastCaseDate: 
+        description: The number of inspections/compliance evaluations that have occurred at the facility, under the AIR, CWA, and RCRA, within the last five years. The last 5 years will include data from the 20 most recently completed quarters, plus data from the current quarter up until the refresh date. This count only includes inspection types that are counted as inspections in official counts.
+      FacDaysLastInspection: 
         type: string
-      FecTotalPenalties: 
+        title: Days Since Last Facility Inspection
+        example: '1197'
+        description: The number of days from the last ECHO refresh to the date on which the most recent inspection of the facility took place based on data recorded into AFS, ICIS-NPDES, or RCRA Info.
+      FacDateLastInspection: 
         type: string
-        example: "$34400"
-      GHGIDs: 
+        title: Date of Last Facility Inspection
+        example: 12/18/2012
+        description: The date on which most recent inspection of the facility took place. For the Clean Air Act, the date on which a Full Inspection (FCE) was completed. This date may or may not correspond to an actual site visit. A series of partial on- or off-site inspections may have been conducted during the fiscal year as part of this FCE.
+      CAAEvaluationCount: 
         type: string
-      GHGCO2Releases: 
+        example: '0'
+        description: The number of inspections/compliance evaluations under the Clean Air Act, occurring at the facility within the last five years
+      CWAInspectionCount: 
         type: string
-        title: Greenhouse Gas Reporting CO2 Releases
-        description: "The sum of total release amounts of all linked Greenhouse Gas IDs reported as \"metric tons of CO2 equivalents\""
-      DfrUrl: 
+        title: Clean Water Act Inspection Count
+        example: '0'
+        description: The number of inspections/compliance evaluations under the Clean Water Act, occurring at the facility within the last five years.
+      RCRAInspectionCount: 
         type: string
-      FacSICCodes: 
+        title: Resource Conservation and Recovery Act Inspection Count
+        example: '1'
+        description: The number of inspections/compliance evaluations under the Resource Conservation and Recovery Act, occurring at the facility within the last five years
+      Over80CountUs: 
         type: string
-      FacNAICSCodes: 
-        type: string
-        title: Facility NAICS Codes
-      FacDateLastInspectionEPA: 
-        type: string
-      FacDateLastInspectionState: 
-        type: string
-      FacDateLastFormalActEPA: 
-        type: string
-      FacDateLastFormalActSt: 
-        type: string
-      FacDateLastInformalActEPA: 
-        type: string
-      FacDateLastInformalActSt: 
-        type: string
-      FacFederalAgency: 
-        type: string
-      TRIReporter: 
-        type: string
-        title: Toxics Release Inventory Reporter
-      FacImpWaterFlg: 
-        type: string
-      SourceID: 
-        type: string
-        title: EPA Source Identifier
-        example: ALR040033
-        description: Unique Identifier assigned by EPA.
-      NC: 
-        type: string
-      RmpIDs: 
-        type: string
-      FacMapFlg: 
-        type: string
-        title: Facility Mapped Flag
-        example: Y
-        description: Graphical indicator denoting whether geographical data required to map a facility are available.
-      HasPollRpt: 
-        type: string
-        example: Y
-        description: "???"
-      CensusBlockGroup: 
-        type: string
-        title: Census Block Group
-        example: '110010096022'
-        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
       PctilePctpre1960Us: 
         type: string
         example: '14.6'
@@ -2257,6 +1991,320 @@ definitions:
         type: string
         example: '93'
         description: The national percentile of the census block group for the EJSCREEN particulate matter indicator.
+      FacPopDen: 
+        type: string
+        title: Facility Population Density
+        example: '6716.34'
+        description: The number of persons per square mile in the area being profiled. This field is the ratio of total persons (displayed in the Total Persons field) to total land area (displayed in the Land Area field).
+      FacPercentMinority: 
+        type: string
+        title: Facility Percent Minority
+        example: '45.379'
+        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
+      FacInformalCount: 
+        type: string
+        title: Count of Informal Actions
+        example: '0'
+        description: Indicates the total number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years
+      CAAInformalCount: 
+        type: string
+        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Clean Air Act.
+      CWAInformalCount: 
+        type: string
+        title: Clean Water Act Informal Action Count
+        example: '1'
+        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Clean Water Act.
+      RCRAInformalCount: 
+        type: string
+        title: RCRA Informal Action Count
+        example: '3'
+        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Resource Conservation and Recovery Act.
+      SDWAInformalCount: 
+        type: string
+        example: '2'
+        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Safe Drinking Water Act
+      FacFormalActionCount: 
+        type: string
+        title: Count of Formal Actions
+        example: '0'
+        description: Indicates the total number of enforcement actions taken against the facility within the last five years. NA indicates that this measure is not applicable for facilities with no associated CAA, CWA, or RCRA permits
+      FacDateLastFormalAction: 
+        type: string
+        title: Date of Last Formal Action
+        example: 5/7/2009
+        description: Indicates the effective date of the most recent listed enforcement action taken against the facility within the last five years.
+      CAAFormalActionCount: 
+        type: string
+        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Clean Air Act.
+      CWAFormalActionCount: 
+        type: string
+        title: Clean Water Act Formal Action Count
+        example: '2'
+        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Clean Water Act.
+      RCRAFormalActionCount: 
+        type: string
+        title: RCRA Formal Action Count
+        example: '5'
+        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Resource Conservation and Recovery Act.
+      SDWAFormalActionCount: 
+        type: string
+        example: '11'
+        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Safe Drinking Water Act
+      FacTotalPenalties: 
+        type: string
+        title: Total Penalties
+        example: "$850"
+        description: The total dollar amount of either assessed (or final) penalties taken against the facility within the last five years
+      FacPenaltyCount: 
+        type: string
+        title: Penalty Count
+        example: '2'
+        description: The total number of penalties assessed (or final) taken against the facility within the last five years
+      FacDateLastPenalty: 
+        type: string
+        title: Date of Last Penalty
+        example: 2/19/2011
+        description: Indicates the date on which the most recent assessed (or final) penalty was taken against the facility within the last five years
+      FacLastPenaltyAmt: 
+        type: string
+        title: Last Penalty Amount
+        example: "$200"
+        description: Indicates the dollar amount of the most recent assessed (or final) penalty taken against the facility within the last five years
+      CAAPenalties: 
+        type: string
+        description: The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Air Act.
+      CWAPenalties: 
+        type: string
+        title: Clean Water Act Penalties
+        description: The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Water Act.
+      RCRAPenalties: 
+        type: string
+        example: "$987"
+      GHGCO2Releases: 
+        type: string
+        title: Greenhouse Gas Reporting CO2 Releases
+        description: "The sum of total release amounts of all linked Greenhouse Gas IDs reported as \"metric tons of CO2 equivalents\""
+      TRIReleasesTransfers: 
+        type: string
+        title: TRI Release Transfers
+        example: '170878'
+        description: Total chemical releases, in pounds, as reported to the Toxics Release Inventory (TRI) by the facility for the most recent reporting year
+      FacDerivedWBDHu8: 
+        type: string
+      FacDerivedWBDHu8Name: 
+        type: string
+      FacDerivedRadWBDHu8: 
+        type: string
+      FacDerivedRadWBDHu8Name: 
+        type: string
+      FacMajorFlag: 
+        type: string
+        title: Facility Major Flag
+      FacDateLastInformalAction: 
+        type: string
+        title: Date of Last Informal Action
+        example: 8/6/2008
+        description: The date of the most recent informal action or NOV taken recorded in AFS, ICIS-NPDES, RCRA Info or SDWIS.
+      Fac3yrComplianceStatus: 
+        type: string
+      CAA3yrComplQtrsStatus: 
+        type: string
+      CWA13qtrsComplStatus: 
+        type: string
+      RCRA3yrComplQtrsStatus: 
+        type: string
+      SDWA3yrComplQtrsStatus: 
+        type: string
+      FecCaseIDs: 
+        type: string
+        description: All Case Numbers of Federal Enforcement Cases relating to the Facility from the ICIS System
+      FacFIPSCode: 
+        type: string
+        title: FIPS Code
+        example: '55001'
+        description: The 2-digit Federal Information Processing Standards (FIPS) code to identify the county that a facility is located in.
+      FacUsMexBorderFlg: 
+        type: string
+        title: Near US-Mexico Border
+        example: Y
+        description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
+      FacChesapeakeBayFlg: 
+        type: string
+        title: Facility in Chesapeake Bay Watershed Flag
+      FacNaaFlag: 
+        type: string
+      FacMapIcon: 
+        type: string
+        title: Facility Map Icon
+        example: CWA-NC-MJ-2.png
+        description: The default map icon image file calculated for the facility by the ECHO program.
+      FacCollectionMethod: 
+        type: string
+      FacReferencePoint: 
+        type: string
+      FacAccuracyMeters: 
+        type: string
+        example: '35900'
+      FacDerivedHuc: 
+        type: string
+        title: Watershed (HUC Code)
+        example: '552968'
+        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
+      FacDerivedWBD: 
+        type: string
+      FacDerivedStctyFIPS: 
+        type: string
+      FacDerivedZip: 
+        type: string
+      FacDerivedCd113: 
+        type: string
+      FacDerivedCb2010: 
+        type: string
+      FacActiveFlag: 
+        type: string
+      FacMyrtkUniverse: 
+        type: string
+      FacProgramsInSNC: 
+        type: string
+        title: Programs in Significant Noncompliance
+        example: '1'
+        description: A count of the number of programs (AIR, CWA, SDWA, RCRA) related to the facility that have a current serious violation
+      AIRFlag: 
+        type: string
+      NPDESFlag: 
+        type: string
+        title: NPDES Flag
+      SDWISFlag: 
+        type: string
+        title: SDWIS Flag
+      RCRAFlag: 
+        type: string
+      TRIFlag: 
+        type: string
+        title: Toxics Release Inventory Program Flag
+      GHGFlag: 
+        type: string
+      CAANAICS: 
+        type: string
+      CAASICs: 
+        type: string
+      CAADaysLastEvaluation: 
+        type: string
+        example: '7051'
+      CAADateLastFormalAction: 
+        type: string
+      CAALastPenaltyDate: 
+        type: string
+      CAALastPenaltyAmt: 
+        type: string
+        example: "$17014"
+      CAAQtrsInNC: 
+        type: string
+        example: '0'
+      CAACurrHpvFlag: 
+        type: string
+      CWAComplianceTracking: 
+        type: string
+      CWANAICS: 
+        type: string
+      CWASICs: 
+        type: string
+      CWADaysLastInspection: 
+        type: string
+        example: '184'
+      CWADateLastFormalAction: 
+        type: string
+      CWALastPenaltyDate: 
+        type: string
+      CWALastPenaltyAmt: 
+        type: string
+      CWAQtrsInNC: 
+        type: string
+      CWACurrSNCFlag: 
+        type: string
+      CWA13qtrsEfflntExceedances: 
+        type: string
+      CWA3YrQncrCodes: 
+        type: string
+      RCRANAICS: 
+        type: string
+      RCRADaysLastEvaluation: 
+        type: string
+        example: '6848'
+      RCRADateLastFormalAction: 
+        type: string
+      RCRALastPenaltyDate: 
+        type: string
+      RCRALastPenaltyAmt: 
+        type: string
+      RCRAQtrsInNC: 
+        type: string
+        example: '0'
+      RCRACurrSNCFlag: 
+        type: string
+      SDWACurrSNCFlag: 
+        type: string
+      TRIOnSiteReleases: 
+        type: string
+        title: Toxics Release Inventory Onsite Releases
+        example: '11987'
+      TRIOffSiteTransfers: 
+        type: string
+        title: Toxics Release Inventory Offsite Transfer Count
+        example: '0'
+      TRIReporterInPast: 
+        type: string
+        title: Toxics Release Inventory Reporter In Past Flag
+      FecNumberOfCases: 
+        type: string
+        example: '1'
+      FecLastCaseDate: 
+        type: string
+      FecTotalPenalties: 
+        type: string
+        example: "$34400"
+      DfrUrl: 
+        type: string
+      FacDateLastInspectionEPA: 
+        type: string
+      FacDateLastInspectionState: 
+        type: string
+      FacDateLastFormalActEPA: 
+        type: string
+      FacDateLastFormalActSt: 
+        type: string
+      FacDateLastInformalActEPA: 
+        type: string
+      FacDateLastInformalActSt: 
+        type: string
+      FacFederalAgency: 
+        type: string
+      TRIReporter: 
+        type: string
+        title: Toxics Release Inventory Reporter
+      FacImpWaterFlg: 
+        type: string
+      SourceID: 
+        type: string
+        title: EPA Source Identifier
+        example: ALR040033
+        description: Unique Identifier assigned by EPA.
+      NC: 
+        type: string
+      FacMapFlg: 
+        type: string
+        title: Facility Mapped Flag
+        example: Y
+        description: Graphical indicator denoting whether geographical data required to map a facility are available.
+      HasPollRpt: 
+        type: string
+        example: Y
+        description: "???"
+      CensusBlockGroup: 
+        type: string
+        title: Census Block Group
+        example: '110010096022'
+        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
       MaxPctileUs: 
         type: string
         example: '98'
@@ -2264,8 +2312,6 @@ definitions:
       EjscreenFlagUs: 
         type: string
       EjscreenFlag: 
-        type: string
-      SDWA3yrComplQtrsStatus: 
         type: string
       TRIbalFlag: 
         type: string
@@ -2306,41 +2352,27 @@ definitions:
         description: Flag showing Y/N whether location is within the contiguous (lower 48) United States.
       ActiveLower48: 
         type: string
-      FacFederalAgencyName: 
+      FacDerivedWBDHu12Name: 
         type: string
-      FacIndianSpatialFlg: 
+      FacDerivedRadWBDHu12: 
         type: string
-      Over80CountUs: 
+      FacDerivedRadWBDHu12Name: 
         type: string
-      FacDerivedWBDHu8: 
-        type: string
-      FacDerivedWBDHu8Name: 
-        type: string
-      FacDerivedRadWBDHu8: 
-        type: string
-      FacDerivedRadWBDHu8Name: 
-        type: string
-      CamdIDs: 
-        type: string
-        title: Clean Air Markets Division Identifiers
-        description: Facility identifiers for the Clean Air Markets Division database.
       EisFlag: 
-        type: string
-      EisIDs: 
         type: string
       TscaFlag: 
         type: string
         title: Toxic Substances Control Act Flag
         description: Flag indicating whether or not a facility has a TSCA ID
-      TscaIDs: 
-        type: string
-        title: Toxic Substances Control Act ID
-        description: Toxic Substances Control Act ID assigned to a facility
       WebDocs: 
         type: string
         title: Web Documents
         example: C6
         description: Contains flags that identify what web accessible documents are available for the facility.
+      NaaCategories: 
+        type: string
+      NaaPollutants: 
+        type: string
       Score: 
         type: string
         title: Score
@@ -2351,145 +2383,51 @@ definitions:
         example: '1'
         description: "[Col. 121]"
     required: 
-    - RegistryID
     - FacName
     - FacStreet
     - FacCity
     - FacState
     - FacZip
+    - RegistryID
     - FacCounty
-    - FacFIPSCode
     - FacEPARegion
-    - FacIndianCntryFlg
     - FacFederalFlg
-    - FacUsMexBorderFlg
-    - FacChesapeakeBayFlg
-    - FacNaaFlag
-    - FacLat
-    - FacLong
-    - FacMapIcon
-    - FacCollectionMethod
-    - FacReferencePoint
-    - FacAccuracyMeters
+    - FacFederalAgencyName
+    - FacIndianCntryFlg
+    - FacIndianSpatialFlg
     - FacDerivedTRIbes
-    - FacDerivedHuc
-    - FacDerivedWBD
-    - FacDerivedStctyFIPS
-    - FacDerivedZip
-    - FacDerivedCd113
-    - FacDerivedCb2010
-    - FacPercentMinority
-    - FacPopDen
-    - FacMajorFlag
-    - FacActiveFlag
-    - FacMyrtkUniverse
-    - FacInspectionCount
-    - FacDateLastInspection
-    - FacDaysLastInspection
-    - FacInformalCount
-    - FacDateLastInformalAction
-    - FacFormalActionCount
-    - FacDateLastFormalAction
-    - FacTotalPenalties
-    - FacPenaltyCount
-    - FacDateLastPenalty
-    - FacLastPenaltyAmt
-    - FacQtrsInNC
-    - FacProgramsInSNC
-    - FacCurrComplianceStatus
-    - FacCurrSNCFlg
-    - Fac3yrComplianceStatus
-    - AIRFlag
-    - NPDESFlag
-    - SDWISFlag
-    - RCRAFlag
-    - TRIFlag
-    - GHGFlag
-    - AIRIDs
-    - CAAPermitTypes
-    - CAANAICS
-    - CAASICs
-    - CAAEvaluationCount
-    - CAADaysLastEvaluation
-    - CAAInformalCount
-    - CAAFormalActionCount
-    - CAADateLastFormalAction
-    - CAAPenalties
-    - CAALastPenaltyDate
-    - CAALastPenaltyAmt
-    - CAAQtrsInNC
-    - CAACurrComplianceStatus
-    - CAACurrHpvFlag
-    - CAA3yrComplQtrsStatus
-    - NPDESIDs
-    - CWAPermitTypes
-    - CWAComplianceTracking
-    - CWANAICS
-    - CWASICs
-    - CWAInspectionCount
-    - CWADaysLastInspection
-    - CWAInformalCount
-    - CWAFormalActionCount
-    - CWADateLastFormalAction
-    - CWAPenalties
-    - CWALastPenaltyDate
-    - CWALastPenaltyAmt
-    - CWAQtrsInNC
-    - CWACurrComplianceStatus
-    - CWACurrSNCFlag
-    - CWA13qtrsComplStatus
-    - CWA13qtrsEfflntExceedances
-    - CWA3YrQncrCodes
-    - RCRAIDs
-    - RCRAPermitTypes
-    - RCRANAICS
-    - RCRAInspectionCount
-    - RCRADaysLastEvaluation
-    - RCRAInformalCount
-    - RCRAFormalActionCount
-    - RCRADateLastFormalAction
-    - RCRAPenalties
-    - RCRALastPenaltyDate
-    - RCRALastPenaltyAmt
-    - RCRAQtrsInNC
-    - RCRACurrComplianceStatus
-    - RCRACurrSNCFlag
-    - RCRA3yrComplQtrsStatus
-    - SDWAIDs
-    - SDWASystemTypes
-    - SDWAInformalCount
-    - SDWAFormalActionCount
-    - SDWACurrComplianceStatus
-    - SDWACurrSNCFlag
-    - TRIIDs
-    - TRIReleasesTransfers
-    - TRIOnSiteReleases
-    - TRIOffSiteTransfers
-    - TRIReporterInPast
-    - FecCaseIDs
-    - FecNumberOfCases
-    - FecLastCaseDate
-    - FecTotalPenalties
-    - GHGIDs
-    - GHGCO2Releases
-    - DfrUrl
     - FacSICCodes
     - FacNAICSCodes
-    - FacDateLastInspectionEPA
-    - FacDateLastInspectionState
-    - FacDateLastFormalActEPA
-    - FacDateLastFormalActSt
-    - FacDateLastInformalActEPA
-    - FacDateLastInformalActSt
-    - FacFederalAgency
-    - TRIReporter
-    - FacImpWaterFlg
-    - SourceID
-    - NC
+    - FacLat
+    - FacLong
+    - AIRIDs
+    - CamdIDs
+    - NPDESIDs
+    - RCRAIDs
     - RmpIDs
-    - FacMapFlg
-    - HasPollRpt
-    - CensusBlockGroup
+    - SDWAIDs
+    - TRIIDs
+    - EisIDs
+    - GHGIDs
+    - TscaIDs
+    - CAAPermitTypes
+    - CWAPermitTypes
+    - RCRAPermitTypes
+    - SDWASystemTypes
+    - FacCurrSNCFlg
+    - FacQtrsInNC
+    - FacCurrComplianceStatus
+    - CAACurrComplianceStatus
+    - CWACurrComplianceStatus
+    - RCRACurrComplianceStatus
+    - SDWACurrComplianceStatus
+    - FacInspectionCount
+    - FacDaysLastInspection
+    - FacDateLastInspection
+    - CAAEvaluationCount
+    - CWAInspectionCount
+    - RCRAInspectionCount
+    - Over80CountUs
     - PctilePctpre1960Us
     - PctileDpmUs
     - PctileCancerUs
@@ -2501,10 +2439,114 @@ definitions:
     - PctileProximityTsdfUs
     - PctileO3Us
     - PctilePmUs
+    - FacPopDen
+    - FacPercentMinority
+    - FacInformalCount
+    - CAAInformalCount
+    - CWAInformalCount
+    - RCRAInformalCount
+    - SDWAInformalCount
+    - FacFormalActionCount
+    - FacDateLastFormalAction
+    - CAAFormalActionCount
+    - CWAFormalActionCount
+    - RCRAFormalActionCount
+    - SDWAFormalActionCount
+    - FacTotalPenalties
+    - FacPenaltyCount
+    - FacDateLastPenalty
+    - FacLastPenaltyAmt
+    - CAAPenalties
+    - CWAPenalties
+    - RCRAPenalties
+    - GHGCO2Releases
+    - TRIReleasesTransfers
+    - FacDerivedWBDHu8
+    - FacDerivedWBDHu8Name
+    - FacDerivedRadWBDHu8
+    - FacDerivedRadWBDHu8Name
+    - FacMajorFlag
+    - FacDateLastInformalAction
+    - Fac3yrComplianceStatus
+    - CAA3yrComplQtrsStatus
+    - CWA13qtrsComplStatus
+    - RCRA3yrComplQtrsStatus
+    - SDWA3yrComplQtrsStatus
+    - FecCaseIDs
+    - FacFIPSCode
+    - FacUsMexBorderFlg
+    - FacChesapeakeBayFlg
+    - FacNaaFlag
+    - FacMapIcon
+    - FacCollectionMethod
+    - FacReferencePoint
+    - FacAccuracyMeters
+    - FacDerivedHuc
+    - FacDerivedWBD
+    - FacDerivedStctyFIPS
+    - FacDerivedZip
+    - FacDerivedCd113
+    - FacDerivedCb2010
+    - FacActiveFlag
+    - FacMyrtkUniverse
+    - FacProgramsInSNC
+    - AIRFlag
+    - NPDESFlag
+    - SDWISFlag
+    - RCRAFlag
+    - TRIFlag
+    - GHGFlag
+    - CAANAICS
+    - CAASICs
+    - CAADaysLastEvaluation
+    - CAADateLastFormalAction
+    - CAALastPenaltyDate
+    - CAALastPenaltyAmt
+    - CAAQtrsInNC
+    - CAACurrHpvFlag
+    - CWAComplianceTracking
+    - CWANAICS
+    - CWASICs
+    - CWADaysLastInspection
+    - CWADateLastFormalAction
+    - CWALastPenaltyDate
+    - CWALastPenaltyAmt
+    - CWAQtrsInNC
+    - CWACurrSNCFlag
+    - CWA13qtrsEfflntExceedances
+    - CWA3YrQncrCodes
+    - RCRANAICS
+    - RCRADaysLastEvaluation
+    - RCRADateLastFormalAction
+    - RCRALastPenaltyDate
+    - RCRALastPenaltyAmt
+    - RCRAQtrsInNC
+    - RCRACurrSNCFlag
+    - SDWACurrSNCFlag
+    - TRIOnSiteReleases
+    - TRIOffSiteTransfers
+    - TRIReporterInPast
+    - FecNumberOfCases
+    - FecLastCaseDate
+    - FecTotalPenalties
+    - DfrUrl
+    - FacDateLastInspectionEPA
+    - FacDateLastInspectionState
+    - FacDateLastFormalActEPA
+    - FacDateLastFormalActSt
+    - FacDateLastInformalActEPA
+    - FacDateLastInformalActSt
+    - FacFederalAgency
+    - TRIReporter
+    - FacImpWaterFlg
+    - SourceID
+    - NC
+    - FacMapFlg
+    - HasPollRpt
+    - CensusBlockGroup
     - MaxPctileUs
     - EjscreenFlagUs
     - EjscreenFlag
-    - SDWA3yrComplQtrsStatus
     - TRIbalFlag
     - CurrSvFlag
     - ViolFlag
@@ -2514,19 +2556,14 @@ definitions:
     - Infea5yrFlag
     - Lower48
     - ActiveLower48
-    - FacFederalAgencyName
-    - FacIndianSpatialFlg
-    - Over80CountUs
-    - FacDerivedWBDHu8
-    - FacDerivedWBDHu8Name
-    - FacDerivedRadWBDHu8
-    - FacDerivedRadWBDHu8Name
-    - CamdIDs
+    - FacDerivedWBDHu12Name
+    - FacDerivedRadWBDHu12
+    - FacDerivedRadWBDHu12Name
     - EisFlag
-    - EisIDs
     - TscaFlag
-    - TscaIDs
     - WebDocs
+    - NaaCategories
+    - NaaPollutants
     - Score
     - MaxScore
   ers1_Results: 
@@ -2606,6 +2643,9 @@ definitions:
         title: Facilities
         items: 
           "$ref": "#/definitions/ers1_Facilities" 
+        xml: 
+          name: Facilities
+          wrapped: true
       MapOutput: 
         "$ref": "#/definitions/ers0_MapOutput" 
     required: 
@@ -2729,17 +2769,14 @@ definitions:
     - ClusterData
   ers2_Facilities: 
     description: Facilities Object
+    xml: 
+      name: Facility
     properties: 
       ObjectId: 
         type: string
         title: Object Identifier
         example: '1'
         description: Sequential number assigned to each facility returned
-      RegistryID: 
-        type: string
-        title: FRS ID
-        example: '110020837601'
-        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
       FacName: 
         type: string
         title: Facility Name
@@ -2765,37 +2802,38 @@ definitions:
         title: Facility Zip Code
         example: '22314'
         description: Facility ZIP code
+      RegistryID: 
+        type: string
+        title: FRS ID
+        example: '110020837601'
+        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
       FacCounty: 
         type: string
         title: Facility County
         example: ALEXANDRIA CITY
         description: The county where the facility is located.
-      FacFIPSCode: 
-        type: string
-        title: FIPS Code
-        example: '55001'
-        description: The 2-digit Federal Information Processing Standards (FIPS) code to identify the county that a facility is located in.
       FacEPARegion: 
         type: string
         title: Facility EPA Region
         example: '03'
         description: The EPA region where the facility is located. EPA has 10 regional offices that execute programs within several states and territories
+      FacFederalFlg: 
+        type: string
+      FacFederalAgencyName: 
+        type: string
       FacIndianCntryFlg: 
         type: string
         title: Facility Indian Country Flag
         description: Flag showing Y/N whether the facility is located in Indian Country.
-      FacFederalFlg: 
+      FacIndianSpatialFlg: 
         type: string
-      FacUsMexBorderFlg: 
+      FacDerivedTRIbes: 
         type: string
-        title: Near US-Mexico Border
-        example: Y
-        description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
-      FacChesapeakeBayFlg: 
+      FacSICCodes: 
         type: string
-        title: Facility in Chesapeake Bay Watershed Flag
-      FacNaaFlag: 
+      FacNAICSCodes: 
         type: string
+        title: Facility NAICS Codes
       FacLat: 
         type: string
         title: Latitude
@@ -2806,152 +2844,43 @@ definitions:
         title: Longitude
         example: '-77.085951'
         description: The longitude of the facility in decimal degrees expressed using the NAD83 horizontal datum. The coordinate comes from the FRS EPA Locational Reference Tables (LRT) file which represents the most accurate value for the facility based on the available spatial metadata.
-      FacMapIcon: 
-        type: string
-        title: Facility Map Icon
-        example: CWA-NC-MJ-2.png
-        description: The default map icon image file calculated for the facility by the ECHO program.
-      FacCollectionMethod: 
-        type: string
-      FacReferencePoint: 
-        type: string
-      FacAccuracyMeters: 
-        type: string
-        example: '35900'
-      FacDerivedTRIbes: 
-        type: string
-      FacDerivedHuc: 
-        type: string
-        title: Watershed (HUC Code)
-        example: '552968'
-        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
-      FacDerivedWBD: 
-        type: string
-      FacDerivedStctyFIPS: 
-        type: string
-      FacDerivedZip: 
-        type: string
-      FacDerivedCd113: 
-        type: string
-      FacDerivedCb2010: 
-        type: string
-      FacPercentMinority: 
-        type: string
-        title: |-
-          Facility Percent Minority
-
-        example: '45.379'
-        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
-      FacPopDen: 
-        type: string
-        title: |-
-          Facility Population Density
-
-        example: '6716.34'
-        description: The number of persons per square mile in the area being profiled. This field is the ratio of total persons (displayed in the Total Persons field) to total land area (displayed in the Land Area field).
-      FacMajorFlag: 
-        type: string
-        title: Facility Major Flag
-      FacActiveFlag: 
-        type: string
-      FacMyrtkUniverse: 
-        type: string
-      FacInspectionCount: 
-        type: string
-        title: Facility Inspection Count
-        example: '1'
-        description: The number of inspections/compliance evaluations that have occurred at the facility, under the AIR, CWA, and RCRA, within the last five years. The last 5 years will include data from the 20 most recently completed quarters, plus data from the current quarter up until the refresh date. This count only includes inspection types that are counted as inspections in official counts.
-      FacDateLastInspection: 
-        type: string
-        title: Date of Last Facility Inspection
-        example: 12/18/2012
-        description: The date on which most recent inspection of the facility took place. For the Clean Air Act, the date on which a Full Inspection (FCE) was completed. This date may or may not correspond to an actual site visit. A series of partial on- or off-site inspections may have been conducted during the fiscal year as part of this FCE.
-      FacDaysLastInspection: 
-        type: string
-        title: Days Since Last Facility Inspection
-        example: '1197'
-        description: The number of days from the last ECHO refresh to the date on which the most recent inspection of the facility took place based on data recorded into AFS, ICIS-NPDES, or RCRA Info.
-      FacInformalCount: 
-        type: string
-        title: Count of Informal Actions
-        example: '0'
-        description: Indicates the total number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years
-      FacDateLastInformalAction: 
-        type: string
-        title: Date of Last Informal Action
-        example: 8/6/2008
-        description: The date of the most recent informal action or NOV taken recorded in AFS, ICIS-NPDES, RCRA Info or SDWIS.
-      FacFormalActionCount: 
-        type: string
-        title: Count of Formal Actions
-        example: '0'
-        description: Indicates the total number of enforcement actions taken against the facility within the last five years. NA indicates that this measure is not applicable for facilities with no associated CAA, CWA, or RCRA permits
-      FacDateLastFormalAction: 
-        type: string
-        title: Date of Last Formal Action
-        example: 5/7/2009
-        description: Indicates the effective date of the most recent listed enforcement action taken against the facility within the last five years.
-      FacTotalPenalties: 
-        type: string
-        title: Total Penalties
-        example: "$850"
-        description: The total dollar amount of either assessed (or final) penalties taken against the facility within the last five years
-      FacPenaltyCount: 
-        type: string
-        title: Penalty Count
-        example: '2'
-        description: The total number of penalties assessed (or final) taken against the facility within the last five years
-      FacDateLastPenalty: 
-        type: string
-        title: Date of Last Penalty
-        example: 2/19/2011
-        description: Indicates the date on which the most recent assessed (or final) penalty was taken against the facility within the last five years
-      FacLastPenaltyAmt: 
-        type: string
-        title: Last Penalty Amount
-        example: "$200"
-        description: Indicates the dollar amount of the most recent assessed (or final) penalty taken against the facility within the last five years
-      FacQtrsInNC: 
-        type: string
-        title: Quarters in Noncompliance
-        example: '3'
-        description: Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered either in Non-compliance (NC), Significant Non-compliance (SNC) or High Priority violation (HPV) status
-      FacProgramsInSNC: 
-        type: string
-        title: Programs in Significant Noncompliance
-        example: '1'
-        description: A count of the number of programs (AIR, CWA, SDWA, RCRA) related to the facility that have a current serious violation
-      FacCurrComplianceStatus: 
-        type: string
-        title: Current Facility Compliance Status
-        description: "Current compliance status: SNC/Serious Viol, In Violation, No Violation, Unknown, NULL. (Order corresponds to priority if multiple programs/permits exist)"
-      FacCurrSNCFlg: 
-        type: string
-        title: Facility in Significant Noncompliance Flag
-        example: N
-        description: The current Significant Non-compliance (SNC), Serious Violation or High Priority Violator (HPV) status for the facility during the most current quarter reflects the time the records were extracted from the program data systems
-      Fac3yrComplianceStatus: 
-        type: string
-      AIRFlag: 
-        type: string
-      NPDESFlag: 
-        type: string
-        title: NPDES Flag
-      SDWISFlag: 
-        type: string
-        title: SDWIS Flag
-      RCRAFlag: 
-        type: string
-      TRIFlag: 
-        type: string
-        title: Toxics Release Inventory Program Flag
-      GHGFlag: 
-        type: string
       AIRIDs: 
         type: string
         title: AIR Facility System ID
         example: DC0000001100195254
         description: Air Facility System (AFS) ID.
+      CamdIDs: 
+        type: string
+        title: Clean Air Markets Division Identifiers
+        description: Facility identifiers for the Clean Air Markets Division database.
+      NPDESIDs: 
+        type: string
+        title: ICS-NPDES Clean Water Act Identifier
+        description: Clean Water Act ID from the ICIS-NPDES (Integrated Compliance Information System - National Pollutant Discharge Elimination System)
+      RCRAIDs: 
+        type: string
+        title: Resource Conservation and Recovery Act IDs
+        example: VAD981111784
+        description: A unique 12-character ID assigned for each record/permit/site/facility within the RCRAInfo database.
+      RmpIDs: 
+        type: string
+      SDWAIDs: 
+        type: string
+        example: DC0000001
+        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
+      TRIIDs: 
+        type: string
+        title: Toxics Release Inventory Program IDs
+        example: 20011FRTTT5001F
+        description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
+      EisIDs: 
+        type: string
+      GHGIDs: 
+        type: string
+      TscaIDs: 
+        type: string
+        title: Toxic Substances Control Act ID
+        description: Toxic Substances Control Act ID assigned to a facility
       CAAPermitTypes: 
         type: string
         example: Minor Emissions
@@ -2962,48 +2891,6 @@ definitions:
           - Other Minor
           - Synthetic Minor
           - NULL
-      CAANAICS: 
-        type: string
-      CAASICs: 
-        type: string
-      CAAEvaluationCount: 
-        type: string
-        example: '0'
-        description: The number of inspections/compliance evaluations under the Clean Air Act, occurring at the facility within the last five years
-      CAADaysLastEvaluation: 
-        type: string
-        example: '7051'
-      CAAInformalCount: 
-        type: string
-        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Clean Air Act.
-      CAAFormalActionCount: 
-        type: string
-        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Clean Air Act.
-      CAADateLastFormalAction: 
-        type: string
-      CAAPenalties: 
-        type: string
-        description: The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Air Act.
-      CAALastPenaltyDate: 
-        type: string
-      CAALastPenaltyAmt: 
-        type: string
-        example: "$17014"
-      CAAQtrsInNC: 
-        type: string
-        example: '0'
-      CAACurrComplianceStatus: 
-        type: string
-        example: Not Available
-        description: Current compliance status.
-      CAACurrHpvFlag: 
-        type: string
-      CAA3yrComplQtrsStatus: 
-        type: string
-      NPDESIDs: 
-        type: string
-        title: ICS-NPDES Clean Water Act Identifier
-        description: Clean Water Act ID from the ICIS-NPDES (Integrated Compliance Information System - National Pollutant Discharge Elimination System)
       CWAPermitTypes: 
         type: string
         title: Clean Water Act Permit Types
@@ -3011,59 +2898,6 @@ definitions:
           Indicates the facility's permit type or designation.
           - Major
           - Minor
-      CWAComplianceTracking: 
-        type: string
-      CWANAICS: 
-        type: string
-      CWASICs: 
-        type: string
-      CWAInspectionCount: 
-        type: string
-        title: Clean Water Act Inspection Count
-        example: '0'
-        description: The number of inspections/compliance evaluations under the Clean Water Act, occurring at the facility within the last five years.
-      CWADaysLastInspection: 
-        type: string
-        example: '184'
-      CWAInformalCount: 
-        type: string
-        title: Clean Water Act Informal Action Count
-        example: '1'
-        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Clean Water Act.
-      CWAFormalActionCount: 
-        type: string
-        title: Clean Water Act Formal Action Count
-        example: '2'
-        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Clean Water Act.
-      CWADateLastFormalAction: 
-        type: string
-      CWAPenalties: 
-        type: string
-        title: Clean Water Act Penalties
-        description: The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Water Act.
-      CWALastPenaltyDate: 
-        type: string
-      CWALastPenaltyAmt: 
-        type: string
-      CWAQtrsInNC: 
-        type: string
-      CWACurrComplianceStatus: 
-        type: string
-        title: Clean Water Act Current Compliance Status
-        description: Current compliance status
-      CWACurrSNCFlag: 
-        type: string
-      CWA13qtrsComplStatus: 
-        type: string
-      CWA13qtrsEfflntExceedances: 
-        type: string
-      CWA3YrQncrCodes: 
-        type: string
-      RCRAIDs: 
-        type: string
-        title: Resource Conservation and Recovery Act IDs
-        example: VAD981111784
-        description: A unique 12-character ID assigned for each record/permit/site/facility within the RCRAInfo database.
       RCRAPermitTypes: 
         type: string
         title: Resource Conservation and Recovery Act Permit Types
@@ -3076,154 +2910,70 @@ definitions:
           - CESQG = Conditionally-Exempt Small Quantity Generator
           - Operating TSDF
           - Transporters
-      RCRANAICS: 
+      SDWASystemTypes: 
         type: string
-      RCRAInspectionCount: 
+        description: SDWIS System Types
+      FacCurrSNCFlg: 
         type: string
-        title: Resource Conservation and Recovery Act Inspection Count
-        example: '1'
-        description: The number of inspections/compliance evaluations under the Resource Conservation and Recovery Act, occurring at the facility within the last five years
-      RCRADaysLastEvaluation: 
+        title: Facility in Significant Noncompliance Flag
+        example: N
+        description: The current Significant Non-compliance (SNC), Serious Violation or High Priority Violator (HPV) status for the facility during the most current quarter reflects the time the records were extracted from the program data systems
+      FacQtrsInNC: 
         type: string
-        example: '6848'
-      RCRAInformalCount: 
-        type: string
-        title: RCRA Informal Action Count
+        title: Quarters in Noncompliance
         example: '3'
-        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Resource Conservation and Recovery Act.
-      RCRAFormalActionCount: 
+        description: Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered either in Non-compliance (NC), Significant Non-compliance (SNC) or High Priority violation (HPV) status
+      FacCurrComplianceStatus: 
         type: string
-        title: RCRA Formal Action Count
-        example: '5'
-        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Resource Conservation and Recovery Act.
-      RCRADateLastFormalAction: 
+        title: Current Facility Compliance Status
+        description: "Current compliance status: SNC/Serious Viol, In Violation, No Violation, Unknown, NULL. (Order corresponds to priority if multiple programs/permits exist)"
+      CAACurrComplianceStatus: 
         type: string
-      RCRAPenalties: 
+        example: Not Available
+        description: Current compliance status.
+      CWACurrComplianceStatus: 
         type: string
-        example: "$987"
-      RCRALastPenaltyDate: 
-        type: string
-      RCRALastPenaltyAmt: 
-        type: string
-      RCRAQtrsInNC: 
-        type: string
-        example: '0'
+        title: Clean Water Act Current Compliance Status
+        description: Current compliance status
       RCRACurrComplianceStatus: 
         type: string
         title: RCRA Current Compliance Status
         example: No Violation
         description: Current compliance status
-      RCRACurrSNCFlag: 
-        type: string
-      RCRA3yrComplQtrsStatus: 
-        type: string
-      SDWAIDs: 
-        type: string
-        example: DC0000001
-        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
-      SDWASystemTypes: 
-        type: string
-        description: SDWIS System Types
-      SDWAInformalCount: 
-        type: string
-        example: '2'
-        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Safe Drinking Water Act
-      SDWAFormalActionCount: 
-        type: string
-        example: '11'
-        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Safe Drinking Water Act
       SDWACurrComplianceStatus: 
         type: string
         description: Current compliance status
-      SDWACurrSNCFlag: 
+      FacInspectionCount: 
         type: string
-      TRIIDs: 
-        type: string
-        title: Toxics Release Inventory Program IDs
-        example: 20011FRTTT5001F
-        description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
-      TRIReleasesTransfers: 
-        type: string
-        title: TRI Release Transfers
-        example: '170878'
-        description: Total chemical releases, in pounds, as reported to the Toxics Release Inventory (TRI) by the facility for the most recent reporting year
-      TRIOnSiteReleases: 
-        type: string
-        title: Toxics Release Inventory Onsite Releases
-        example: '11987'
-      TRIOffSiteTransfers: 
-        type: string
-        title: Toxics Release Inventory Offsite Transfer Count
-        example: '0'
-      TRIReporterInPast: 
-        type: string
-        title: Toxics Release Inventory Reporter In Past Flag
-      FecCaseIDs: 
-        type: string
-        description: All Case Numbers of Federal Enforcement Cases relating to the Facility from the ICIS System
-      FecNumberOfCases: 
-        type: string
+        title: Facility Inspection Count
         example: '1'
-      FecLastCaseDate: 
+        description: The number of inspections/compliance evaluations that have occurred at the facility, under the AIR, CWA, and RCRA, within the last five years. The last 5 years will include data from the 20 most recently completed quarters, plus data from the current quarter up until the refresh date. This count only includes inspection types that are counted as inspections in official counts.
+      FacDaysLastInspection: 
         type: string
-      FecTotalPenalties: 
+        title: Days Since Last Facility Inspection
+        example: '1197'
+        description: The number of days from the last ECHO refresh to the date on which the most recent inspection of the facility took place based on data recorded into AFS, ICIS-NPDES, or RCRA Info.
+      FacDateLastInspection: 
         type: string
-        example: "$34400"
-      GHGIDs: 
+        title: Date of Last Facility Inspection
+        example: 12/18/2012
+        description: The date on which most recent inspection of the facility took place. For the Clean Air Act, the date on which a Full Inspection (FCE) was completed. This date may or may not correspond to an actual site visit. A series of partial on- or off-site inspections may have been conducted during the fiscal year as part of this FCE.
+      CAAEvaluationCount: 
         type: string
-      GHGCO2Releases: 
+        example: '0'
+        description: The number of inspections/compliance evaluations under the Clean Air Act, occurring at the facility within the last five years
+      CWAInspectionCount: 
         type: string
-        title: Greenhouse Gas Reporting CO2 Releases
-        description: "The sum of total release amounts of all linked Greenhouse Gas IDs reported as \"metric tons of CO2 equivalents\""
-      DfrUrl: 
+        title: Clean Water Act Inspection Count
+        example: '0'
+        description: The number of inspections/compliance evaluations under the Clean Water Act, occurring at the facility within the last five years.
+      RCRAInspectionCount: 
         type: string
-      FacSICCodes: 
+        title: Resource Conservation and Recovery Act Inspection Count
+        example: '1'
+        description: The number of inspections/compliance evaluations under the Resource Conservation and Recovery Act, occurring at the facility within the last five years
+      Over80CountUs: 
         type: string
-      FacNAICSCodes: 
-        type: string
-        title: Facility NAICS Codes
-      FacDateLastInspectionEPA: 
-        type: string
-      FacDateLastInspectionState: 
-        type: string
-      FacDateLastFormalActEPA: 
-        type: string
-      FacDateLastFormalActSt: 
-        type: string
-      FacDateLastInformalActEPA: 
-        type: string
-      FacDateLastInformalActSt: 
-        type: string
-      FacFederalAgency: 
-        type: string
-      TRIReporter: 
-        type: string
-        title: Toxics Release Inventory Reporter
-      FacImpWaterFlg: 
-        type: string
-      SourceID: 
-        type: string
-        title: EPA Source Identifier
-        example: ALR040033
-        description: Unique Identifier assigned by EPA.
-      NC: 
-        type: string
-      RmpIDs: 
-        type: string
-      FacMapFlg: 
-        type: string
-        title: Facility Mapped Flag
-        example: Y
-        description: Graphical indicator denoting whether geographical data required to map a facility are available.
-      HasPollRpt: 
-        type: string
-        example: Y
-        description: "???"
-      CensusBlockGroup: 
-        type: string
-        title: Census Block Group
-        example: '110010096022'
-        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
       PctilePctpre1960Us: 
         type: string
         example: '14.6'
@@ -3268,6 +3018,320 @@ definitions:
         type: string
         example: '93'
         description: The national percentile of the census block group for the EJSCREEN particulate matter indicator.
+      FacPopDen: 
+        type: string
+        title: Facility Population Density
+        example: '6716.34'
+        description: The number of persons per square mile in the area being profiled. This field is the ratio of total persons (displayed in the Total Persons field) to total land area (displayed in the Land Area field).
+      FacPercentMinority: 
+        type: string
+        title: Facility Percent Minority
+        example: '45.379'
+        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
+      FacInformalCount: 
+        type: string
+        title: Count of Informal Actions
+        example: '0'
+        description: Indicates the total number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years
+      CAAInformalCount: 
+        type: string
+        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Clean Air Act.
+      CWAInformalCount: 
+        type: string
+        title: Clean Water Act Informal Action Count
+        example: '1'
+        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Clean Water Act.
+      RCRAInformalCount: 
+        type: string
+        title: RCRA Informal Action Count
+        example: '3'
+        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Resource Conservation and Recovery Act.
+      SDWAInformalCount: 
+        type: string
+        example: '2'
+        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Safe Drinking Water Act
+      FacFormalActionCount: 
+        type: string
+        title: Count of Formal Actions
+        example: '0'
+        description: Indicates the total number of enforcement actions taken against the facility within the last five years. NA indicates that this measure is not applicable for facilities with no associated CAA, CWA, or RCRA permits
+      FacDateLastFormalAction: 
+        type: string
+        title: Date of Last Formal Action
+        example: 5/7/2009
+        description: Indicates the effective date of the most recent listed enforcement action taken against the facility within the last five years.
+      CAAFormalActionCount: 
+        type: string
+        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Clean Air Act.
+      CWAFormalActionCount: 
+        type: string
+        title: Clean Water Act Formal Action Count
+        example: '2'
+        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Clean Water Act.
+      RCRAFormalActionCount: 
+        type: string
+        title: RCRA Formal Action Count
+        example: '5'
+        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Resource Conservation and Recovery Act.
+      SDWAFormalActionCount: 
+        type: string
+        example: '11'
+        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Safe Drinking Water Act
+      FacTotalPenalties: 
+        type: string
+        title: Total Penalties
+        example: "$850"
+        description: The total dollar amount of either assessed (or final) penalties taken against the facility within the last five years
+      FacPenaltyCount: 
+        type: string
+        title: Penalty Count
+        example: '2'
+        description: The total number of penalties assessed (or final) taken against the facility within the last five years
+      FacDateLastPenalty: 
+        type: string
+        title: Date of Last Penalty
+        example: 2/19/2011
+        description: Indicates the date on which the most recent assessed (or final) penalty was taken against the facility within the last five years
+      FacLastPenaltyAmt: 
+        type: string
+        title: Last Penalty Amount
+        example: "$200"
+        description: Indicates the dollar amount of the most recent assessed (or final) penalty taken against the facility within the last five years
+      CAAPenalties: 
+        type: string
+        description: The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Air Act.
+      CWAPenalties: 
+        type: string
+        title: Clean Water Act Penalties
+        description: The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Water Act.
+      RCRAPenalties: 
+        type: string
+        example: "$987"
+      GHGCO2Releases: 
+        type: string
+        title: Greenhouse Gas Reporting CO2 Releases
+        description: "The sum of total release amounts of all linked Greenhouse Gas IDs reported as \"metric tons of CO2 equivalents\""
+      TRIReleasesTransfers: 
+        type: string
+        title: TRI Release Transfers
+        example: '170878'
+        description: Total chemical releases, in pounds, as reported to the Toxics Release Inventory (TRI) by the facility for the most recent reporting year
+      FacDerivedWBDHu8: 
+        type: string
+      FacDerivedWBDHu8Name: 
+        type: string
+      FacDerivedRadWBDHu8: 
+        type: string
+      FacDerivedRadWBDHu8Name: 
+        type: string
+      FacMajorFlag: 
+        type: string
+        title: Facility Major Flag
+      FacDateLastInformalAction: 
+        type: string
+        title: Date of Last Informal Action
+        example: 8/6/2008
+        description: The date of the most recent informal action or NOV taken recorded in AFS, ICIS-NPDES, RCRA Info or SDWIS.
+      Fac3yrComplianceStatus: 
+        type: string
+      CAA3yrComplQtrsStatus: 
+        type: string
+      CWA13qtrsComplStatus: 
+        type: string
+      RCRA3yrComplQtrsStatus: 
+        type: string
+      SDWA3yrComplQtrsStatus: 
+        type: string
+      FecCaseIDs: 
+        type: string
+        description: All Case Numbers of Federal Enforcement Cases relating to the Facility from the ICIS System
+      FacFIPSCode: 
+        type: string
+        title: FIPS Code
+        example: '55001'
+        description: The 2-digit Federal Information Processing Standards (FIPS) code to identify the county that a facility is located in.
+      FacUsMexBorderFlg: 
+        type: string
+        title: Near US-Mexico Border
+        example: Y
+        description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
+      FacChesapeakeBayFlg: 
+        type: string
+        title: Facility in Chesapeake Bay Watershed Flag
+      FacNaaFlag: 
+        type: string
+      FacMapIcon: 
+        type: string
+        title: Facility Map Icon
+        example: CWA-NC-MJ-2.png
+        description: The default map icon image file calculated for the facility by the ECHO program.
+      FacCollectionMethod: 
+        type: string
+      FacReferencePoint: 
+        type: string
+      FacAccuracyMeters: 
+        type: string
+        example: '35900'
+      FacDerivedHuc: 
+        type: string
+        title: Watershed (HUC Code)
+        example: '552968'
+        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
+      FacDerivedWBD: 
+        type: string
+      FacDerivedStctyFIPS: 
+        type: string
+      FacDerivedZip: 
+        type: string
+      FacDerivedCd113: 
+        type: string
+      FacDerivedCb2010: 
+        type: string
+      FacActiveFlag: 
+        type: string
+      FacMyrtkUniverse: 
+        type: string
+      FacProgramsInSNC: 
+        type: string
+        title: Programs in Significant Noncompliance
+        example: '1'
+        description: A count of the number of programs (AIR, CWA, SDWA, RCRA) related to the facility that have a current serious violation
+      AIRFlag: 
+        type: string
+      NPDESFlag: 
+        type: string
+        title: NPDES Flag
+      SDWISFlag: 
+        type: string
+        title: SDWIS Flag
+      RCRAFlag: 
+        type: string
+      TRIFlag: 
+        type: string
+        title: Toxics Release Inventory Program Flag
+      GHGFlag: 
+        type: string
+      CAANAICS: 
+        type: string
+      CAASICs: 
+        type: string
+      CAADaysLastEvaluation: 
+        type: string
+        example: '7051'
+      CAADateLastFormalAction: 
+        type: string
+      CAALastPenaltyDate: 
+        type: string
+      CAALastPenaltyAmt: 
+        type: string
+        example: "$17014"
+      CAAQtrsInNC: 
+        type: string
+        example: '0'
+      CAACurrHpvFlag: 
+        type: string
+      CWAComplianceTracking: 
+        type: string
+      CWANAICS: 
+        type: string
+      CWASICs: 
+        type: string
+      CWADaysLastInspection: 
+        type: string
+        example: '184'
+      CWADateLastFormalAction: 
+        type: string
+      CWALastPenaltyDate: 
+        type: string
+      CWALastPenaltyAmt: 
+        type: string
+      CWAQtrsInNC: 
+        type: string
+      CWACurrSNCFlag: 
+        type: string
+      CWA13qtrsEfflntExceedances: 
+        type: string
+      CWA3YrQncrCodes: 
+        type: string
+      RCRANAICS: 
+        type: string
+      RCRADaysLastEvaluation: 
+        type: string
+        example: '6848'
+      RCRADateLastFormalAction: 
+        type: string
+      RCRALastPenaltyDate: 
+        type: string
+      RCRALastPenaltyAmt: 
+        type: string
+      RCRAQtrsInNC: 
+        type: string
+        example: '0'
+      RCRACurrSNCFlag: 
+        type: string
+      SDWACurrSNCFlag: 
+        type: string
+      TRIOnSiteReleases: 
+        type: string
+        title: Toxics Release Inventory Onsite Releases
+        example: '11987'
+      TRIOffSiteTransfers: 
+        type: string
+        title: Toxics Release Inventory Offsite Transfer Count
+        example: '0'
+      TRIReporterInPast: 
+        type: string
+        title: Toxics Release Inventory Reporter In Past Flag
+      FecNumberOfCases: 
+        type: string
+        example: '1'
+      FecLastCaseDate: 
+        type: string
+      FecTotalPenalties: 
+        type: string
+        example: "$34400"
+      DfrUrl: 
+        type: string
+      FacDateLastInspectionEPA: 
+        type: string
+      FacDateLastInspectionState: 
+        type: string
+      FacDateLastFormalActEPA: 
+        type: string
+      FacDateLastFormalActSt: 
+        type: string
+      FacDateLastInformalActEPA: 
+        type: string
+      FacDateLastInformalActSt: 
+        type: string
+      FacFederalAgency: 
+        type: string
+      TRIReporter: 
+        type: string
+        title: Toxics Release Inventory Reporter
+      FacImpWaterFlg: 
+        type: string
+      SourceID: 
+        type: string
+        title: EPA Source Identifier
+        example: ALR040033
+        description: Unique Identifier assigned by EPA.
+      NC: 
+        type: string
+      FacMapFlg: 
+        type: string
+        title: Facility Mapped Flag
+        example: Y
+        description: Graphical indicator denoting whether geographical data required to map a facility are available.
+      HasPollRpt: 
+        type: string
+        example: Y
+        description: "???"
+      CensusBlockGroup: 
+        type: string
+        title: Census Block Group
+        example: '110010096022'
+        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
       MaxPctileUs: 
         type: string
         example: '98'
@@ -3275,8 +3339,6 @@ definitions:
       EjscreenFlagUs: 
         type: string
       EjscreenFlag: 
-        type: string
-      SDWA3yrComplQtrsStatus: 
         type: string
       TRIbalFlag: 
         type: string
@@ -3317,41 +3379,27 @@ definitions:
         description: Flag showing Y/N whether location is within the contiguous (lower 48) United States.
       ActiveLower48: 
         type: string
-      FacFederalAgencyName: 
+      FacDerivedWBDHu12Name: 
         type: string
-      FacIndianSpatialFlg: 
+      FacDerivedRadWBDHu12: 
         type: string
-      Over80CountUs: 
+      FacDerivedRadWBDHu12Name: 
         type: string
-      FacDerivedWBDHu8: 
-        type: string
-      FacDerivedWBDHu8Name: 
-        type: string
-      FacDerivedRadWBDHu8: 
-        type: string
-      FacDerivedRadWBDHu8Name: 
-        type: string
-      CamdIDs: 
-        type: string
-        title: Clean Air Markets Division Identifiers
-        description: Facility identifiers for the Clean Air Markets Division database.
       EisFlag: 
-        type: string
-      EisIDs: 
         type: string
       TscaFlag: 
         type: string
         title: Toxic Substances Control Act Flag
         description: Flag indicating whether or not a facility has a TSCA ID
-      TscaIDs: 
-        type: string
-        title: Toxic Substances Control Act ID
-        description: Toxic Substances Control Act ID assigned to a facility
       WebDocs: 
         type: string
         title: Web Documents
         example: C6
         description: Contains flags that identify what web accessible documents are available for the facility.
+      NaaCategories: 
+        type: string
+      NaaPollutants: 
+        type: string
       Score: 
         type: string
         title: Score
@@ -3363,145 +3411,51 @@ definitions:
         description: "[Col. 121]"
     required: 
     - ObjectId
-    - RegistryID
     - FacName
     - FacStreet
     - FacCity
     - FacState
     - FacZip
+    - RegistryID
     - FacCounty
-    - FacFIPSCode
     - FacEPARegion
-    - FacIndianCntryFlg
     - FacFederalFlg
-    - FacUsMexBorderFlg
-    - FacChesapeakeBayFlg
-    - FacNaaFlag
-    - FacLat
-    - FacLong
-    - FacMapIcon
-    - FacCollectionMethod
-    - FacReferencePoint
-    - FacAccuracyMeters
+    - FacFederalAgencyName
+    - FacIndianCntryFlg
+    - FacIndianSpatialFlg
     - FacDerivedTRIbes
-    - FacDerivedHuc
-    - FacDerivedWBD
-    - FacDerivedStctyFIPS
-    - FacDerivedZip
-    - FacDerivedCd113
-    - FacDerivedCb2010
-    - FacPercentMinority
-    - FacPopDen
-    - FacMajorFlag
-    - FacActiveFlag
-    - FacMyrtkUniverse
-    - FacInspectionCount
-    - FacDateLastInspection
-    - FacDaysLastInspection
-    - FacInformalCount
-    - FacDateLastInformalAction
-    - FacFormalActionCount
-    - FacDateLastFormalAction
-    - FacTotalPenalties
-    - FacPenaltyCount
-    - FacDateLastPenalty
-    - FacLastPenaltyAmt
-    - FacQtrsInNC
-    - FacProgramsInSNC
-    - FacCurrComplianceStatus
-    - FacCurrSNCFlg
-    - Fac3yrComplianceStatus
-    - AIRFlag
-    - NPDESFlag
-    - SDWISFlag
-    - RCRAFlag
-    - TRIFlag
-    - GHGFlag
-    - AIRIDs
-    - CAAPermitTypes
-    - CAANAICS
-    - CAASICs
-    - CAAEvaluationCount
-    - CAADaysLastEvaluation
-    - CAAInformalCount
-    - CAAFormalActionCount
-    - CAADateLastFormalAction
-    - CAAPenalties
-    - CAALastPenaltyDate
-    - CAALastPenaltyAmt
-    - CAAQtrsInNC
-    - CAACurrComplianceStatus
-    - CAACurrHpvFlag
-    - CAA3yrComplQtrsStatus
-    - NPDESIDs
-    - CWAPermitTypes
-    - CWAComplianceTracking
-    - CWANAICS
-    - CWASICs
-    - CWAInspectionCount
-    - CWADaysLastInspection
-    - CWAInformalCount
-    - CWAFormalActionCount
-    - CWADateLastFormalAction
-    - CWAPenalties
-    - CWALastPenaltyDate
-    - CWALastPenaltyAmt
-    - CWAQtrsInNC
-    - CWACurrComplianceStatus
-    - CWACurrSNCFlag
-    - CWA13qtrsComplStatus
-    - CWA13qtrsEfflntExceedances
-    - CWA3YrQncrCodes
-    - RCRAIDs
-    - RCRAPermitTypes
-    - RCRANAICS
-    - RCRAInspectionCount
-    - RCRADaysLastEvaluation
-    - RCRAInformalCount
-    - RCRAFormalActionCount
-    - RCRADateLastFormalAction
-    - RCRAPenalties
-    - RCRALastPenaltyDate
-    - RCRALastPenaltyAmt
-    - RCRAQtrsInNC
-    - RCRACurrComplianceStatus
-    - RCRACurrSNCFlag
-    - RCRA3yrComplQtrsStatus
-    - SDWAIDs
-    - SDWASystemTypes
-    - SDWAInformalCount
-    - SDWAFormalActionCount
-    - SDWACurrComplianceStatus
-    - SDWACurrSNCFlag
-    - TRIIDs
-    - TRIReleasesTransfers
-    - TRIOnSiteReleases
-    - TRIOffSiteTransfers
-    - TRIReporterInPast
-    - FecCaseIDs
-    - FecNumberOfCases
-    - FecLastCaseDate
-    - FecTotalPenalties
-    - GHGIDs
-    - GHGCO2Releases
-    - DfrUrl
     - FacSICCodes
     - FacNAICSCodes
-    - FacDateLastInspectionEPA
-    - FacDateLastInspectionState
-    - FacDateLastFormalActEPA
-    - FacDateLastFormalActSt
-    - FacDateLastInformalActEPA
-    - FacDateLastInformalActSt
-    - FacFederalAgency
-    - TRIReporter
-    - FacImpWaterFlg
-    - SourceID
-    - NC
+    - FacLat
+    - FacLong
+    - AIRIDs
+    - CamdIDs
+    - NPDESIDs
+    - RCRAIDs
     - RmpIDs
-    - FacMapFlg
-    - HasPollRpt
-    - CensusBlockGroup
+    - SDWAIDs
+    - TRIIDs
+    - EisIDs
+    - GHGIDs
+    - TscaIDs
+    - CAAPermitTypes
+    - CWAPermitTypes
+    - RCRAPermitTypes
+    - SDWASystemTypes
+    - FacCurrSNCFlg
+    - FacQtrsInNC
+    - FacCurrComplianceStatus
+    - CAACurrComplianceStatus
+    - CWACurrComplianceStatus
+    - RCRACurrComplianceStatus
+    - SDWACurrComplianceStatus
+    - FacInspectionCount
+    - FacDaysLastInspection
+    - FacDateLastInspection
+    - CAAEvaluationCount
+    - CWAInspectionCount
+    - RCRAInspectionCount
+    - Over80CountUs
     - PctilePctpre1960Us
     - PctileDpmUs
     - PctileCancerUs
@@ -3513,10 +3467,114 @@ definitions:
     - PctileProximityTsdfUs
     - PctileO3Us
     - PctilePmUs
+    - FacPopDen
+    - FacPercentMinority
+    - FacInformalCount
+    - CAAInformalCount
+    - CWAInformalCount
+    - RCRAInformalCount
+    - SDWAInformalCount
+    - FacFormalActionCount
+    - FacDateLastFormalAction
+    - CAAFormalActionCount
+    - CWAFormalActionCount
+    - RCRAFormalActionCount
+    - SDWAFormalActionCount
+    - FacTotalPenalties
+    - FacPenaltyCount
+    - FacDateLastPenalty
+    - FacLastPenaltyAmt
+    - CAAPenalties
+    - CWAPenalties
+    - RCRAPenalties
+    - GHGCO2Releases
+    - TRIReleasesTransfers
+    - FacDerivedWBDHu8
+    - FacDerivedWBDHu8Name
+    - FacDerivedRadWBDHu8
+    - FacDerivedRadWBDHu8Name
+    - FacMajorFlag
+    - FacDateLastInformalAction
+    - Fac3yrComplianceStatus
+    - CAA3yrComplQtrsStatus
+    - CWA13qtrsComplStatus
+    - RCRA3yrComplQtrsStatus
+    - SDWA3yrComplQtrsStatus
+    - FecCaseIDs
+    - FacFIPSCode
+    - FacUsMexBorderFlg
+    - FacChesapeakeBayFlg
+    - FacNaaFlag
+    - FacMapIcon
+    - FacCollectionMethod
+    - FacReferencePoint
+    - FacAccuracyMeters
+    - FacDerivedHuc
+    - FacDerivedWBD
+    - FacDerivedStctyFIPS
+    - FacDerivedZip
+    - FacDerivedCd113
+    - FacDerivedCb2010
+    - FacActiveFlag
+    - FacMyrtkUniverse
+    - FacProgramsInSNC
+    - AIRFlag
+    - NPDESFlag
+    - SDWISFlag
+    - RCRAFlag
+    - TRIFlag
+    - GHGFlag
+    - CAANAICS
+    - CAASICs
+    - CAADaysLastEvaluation
+    - CAADateLastFormalAction
+    - CAALastPenaltyDate
+    - CAALastPenaltyAmt
+    - CAAQtrsInNC
+    - CAACurrHpvFlag
+    - CWAComplianceTracking
+    - CWANAICS
+    - CWASICs
+    - CWADaysLastInspection
+    - CWADateLastFormalAction
+    - CWALastPenaltyDate
+    - CWALastPenaltyAmt
+    - CWAQtrsInNC
+    - CWACurrSNCFlag
+    - CWA13qtrsEfflntExceedances
+    - CWA3YrQncrCodes
+    - RCRANAICS
+    - RCRADaysLastEvaluation
+    - RCRADateLastFormalAction
+    - RCRALastPenaltyDate
+    - RCRALastPenaltyAmt
+    - RCRAQtrsInNC
+    - RCRACurrSNCFlag
+    - SDWACurrSNCFlag
+    - TRIOnSiteReleases
+    - TRIOffSiteTransfers
+    - TRIReporterInPast
+    - FecNumberOfCases
+    - FecLastCaseDate
+    - FecTotalPenalties
+    - DfrUrl
+    - FacDateLastInspectionEPA
+    - FacDateLastInspectionState
+    - FacDateLastFormalActEPA
+    - FacDateLastFormalActSt
+    - FacDateLastInformalActEPA
+    - FacDateLastInformalActSt
+    - FacFederalAgency
+    - TRIReporter
+    - FacImpWaterFlg
+    - SourceID
+    - NC
+    - FacMapFlg
+    - HasPollRpt
+    - CensusBlockGroup
     - MaxPctileUs
     - EjscreenFlagUs
     - EjscreenFlag
-    - SDWA3yrComplQtrsStatus
     - TRIbalFlag
     - CurrSvFlag
     - ViolFlag
@@ -3526,19 +3584,14 @@ definitions:
     - Infea5yrFlag
     - Lower48
     - ActiveLower48
-    - FacFederalAgencyName
-    - FacIndianSpatialFlg
-    - Over80CountUs
-    - FacDerivedWBDHu8
-    - FacDerivedWBDHu8Name
-    - FacDerivedRadWBDHu8
-    - FacDerivedRadWBDHu8Name
-    - CamdIDs
+    - FacDerivedWBDHu12Name
+    - FacDerivedRadWBDHu12
+    - FacDerivedRadWBDHu12Name
     - EisFlag
-    - EisIDs
     - TscaFlag
-    - TscaIDs
     - WebDocs
+    - NaaCategories
+    - NaaPollutants
     - Score
     - MaxScore
   ers2_Results: 
@@ -3623,11 +3676,17 @@ definitions:
         description: A list of submitted query parameters and their values.
         items: 
           "$ref": "#/definitions/qp0_QueryParameters" 
+        xml: 
+          name: QueryParameters
+          wrapped: true
       Facilities: 
         type: array
         title: Facilities
         items: 
           "$ref": "#/definitions/ers2_Facilities" 
+        xml: 
+          name: Facilities
+          wrapped: true
       ClusterRecords: 
         type: string
         title: Cluster Records
@@ -3674,11 +3733,6 @@ definitions:
   ers5_properties: 
     description: GeoJSON Properties Object
     properties: 
-      RegistryID: 
-        type: string
-        title: FRS ID
-        example: '110020837601'
-        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
       FacName: 
         type: string
         title: Facility Name
@@ -3704,183 +3758,75 @@ definitions:
         title: Facility Zip Code
         example: '22314'
         description: Facility ZIP code
+      RegistryID: 
+        type: string
+        title: FRS ID
+        example: '110020837601'
+        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
       FacCounty: 
         type: string
         title: Facility County
         example: ALEXANDRIA CITY
         description: The county where the facility is located.
-      FacFIPSCode: 
-        type: string
-        title: FIPS Code
-        example: '55001'
-        description: The 2-digit Federal Information Processing Standards (FIPS) code to identify the county that a facility is located in.
       FacEPARegion: 
         type: string
         title: Facility EPA Region
         example: '03'
         description: The EPA region where the facility is located. EPA has 10 regional offices that execute programs within several states and territories
+      FacFederalFlg: 
+        type: string
+      FacFederalAgencyName: 
+        type: string
       FacIndianCntryFlg: 
         type: string
         title: Facility Indian Country Flag
         description: Flag showing Y/N whether the facility is located in Indian Country.
-      FacFederalFlg: 
+      FacIndianSpatialFlg: 
         type: string
-      FacUsMexBorderFlg: 
-        type: string
-        title: Near US-Mexico Border
-        example: Y
-        description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
-      FacChesapeakeBayFlg: 
-        type: string
-        title: Facility in Chesapeake Bay Watershed Flag
-      FacNaaFlag: 
-        type: string
-      FacMapIcon: 
-        type: string
-        title: Facility Map Icon
-        example: CWA-NC-MJ-2.png
-        description: The default map icon image file calculated for the facility by the ECHO program.
-      FacCollectionMethod: 
-        type: string
-      FacReferencePoint: 
-        type: string
-      FacAccuracyMeters: 
-        type: number
-        example: 35900
       FacDerivedTRIbes: 
         type: string
-      FacDerivedHuc: 
+      FacSICCodes: 
         type: string
-        title: Watershed (HUC Code)
-        example: '552968'
-        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
-      FacDerivedWBD: 
+      FacNAICSCodes: 
         type: string
-      FacDerivedStctyFIPS: 
-        type: string
-      FacDerivedZip: 
-        type: string
-      FacDerivedCd113: 
-        type: string
-      FacDerivedCb2010: 
-        type: string
-      FacPercentMinority: 
-        type: number
-        title: |-
-          Facility Percent Minority
-
-        example: 45.379
-        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
-      FacPopDen: 
-        type: number
-        title: |-
-          Facility Population Density
-
-        example: 6716.34
-        description: The number of persons per square mile in the area being profiled. This field is the ratio of total persons (displayed in the Total Persons field) to total land area (displayed in the Land Area field).
-      FacMajorFlag: 
-        type: string
-        title: Facility Major Flag
-      FacActiveFlag: 
-        type: string
-      FacMyrtkUniverse: 
-        type: string
-      FacInspectionCount: 
-        type: number
-        title: Facility Inspection Count
-        example: 1
-        description: The number of inspections/compliance evaluations that have occurred at the facility, under the AIR, CWA, and RCRA, within the last five years. The last 5 years will include data from the 20 most recently completed quarters, plus data from the current quarter up until the refresh date. This count only includes inspection types that are counted as inspections in official counts.
-      FacDateLastInspection: 
-        type: string
-        title: Date of Last Facility Inspection
-        example: 12/18/2012
-        description: The date on which most recent inspection of the facility took place. For the Clean Air Act, the date on which a Full Inspection (FCE) was completed. This date may or may not correspond to an actual site visit. A series of partial on- or off-site inspections may have been conducted during the fiscal year as part of this FCE.
-      FacDaysLastInspection: 
-        type: number
-        title: Days Since Last Facility Inspection
-        example: 1197
-        description: The number of days from the last ECHO refresh to the date on which the most recent inspection of the facility took place based on data recorded into AFS, ICIS-NPDES, or RCRA Info.
-      FacInformalCount: 
-        type: number
-        title: Count of Informal Actions
-        example: 0
-        description: Indicates the total number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years
-      FacDateLastInformalAction: 
-        type: string
-        title: Date of Last Informal Action
-        example: 8/6/2008
-        description: The date of the most recent informal action or NOV taken recorded in AFS, ICIS-NPDES, RCRA Info or SDWIS.
-      FacFormalActionCount: 
-        type: number
-        title: Count of Formal Actions
-        example: 0
-        description: Indicates the total number of enforcement actions taken against the facility within the last five years. NA indicates that this measure is not applicable for facilities with no associated CAA, CWA, or RCRA permits
-      FacDateLastFormalAction: 
-        type: string
-        title: Date of Last Formal Action
-        example: 5/7/2009
-        description: Indicates the effective date of the most recent listed enforcement action taken against the facility within the last five years.
-      FacTotalPenalties: 
-        type: number
-        title: Total Penalties
-        example: 850
-        description: The total dollar amount of either assessed (or final) penalties taken against the facility within the last five years
-      FacPenaltyCount: 
-        type: number
-        title: Penalty Count
-        example: 2
-        description: The total number of penalties assessed (or final) taken against the facility within the last five years
-      FacDateLastPenalty: 
-        type: string
-        title: Date of Last Penalty
-        example: 2/19/2011
-        description: Indicates the date on which the most recent assessed (or final) penalty was taken against the facility within the last five years
-      FacLastPenaltyAmt: 
-        type: number
-        title: Last Penalty Amount
-        example: 200
-        description: Indicates the dollar amount of the most recent assessed (or final) penalty taken against the facility within the last five years
-      FacQtrsInNC: 
-        type: number
-        title: Quarters in Noncompliance
-        example: 3
-        description: Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered either in Non-compliance (NC), Significant Non-compliance (SNC) or High Priority violation (HPV) status
-      FacProgramsInSNC: 
-        type: number
-        title: Programs in Significant Noncompliance
-        example: 1
-        description: A count of the number of programs (AIR, CWA, SDWA, RCRA) related to the facility that have a current serious violation
-      FacCurrComplianceStatus: 
-        type: string
-        title: Current Facility Compliance Status
-        description: "Current compliance status: SNC/Serious Viol, In Violation, No Violation, Unknown, NULL. (Order corresponds to priority if multiple programs/permits exist)"
-      FacCurrSNCFlg: 
-        type: string
-        title: Facility in Significant Noncompliance Flag
-        example: N
-        description: The current Significant Non-compliance (SNC), Serious Violation or High Priority Violator (HPV) status for the facility during the most current quarter reflects the time the records were extracted from the program data systems
-      Fac3yrComplianceStatus: 
-        type: string
-      AIRFlag: 
-        type: string
-      NPDESFlag: 
-        type: string
-        title: NPDES Flag
-      SDWISFlag: 
-        type: string
-        title: SDWIS Flag
-      RCRAFlag: 
-        type: string
-      TRIFlag: 
-        type: string
-        title: Toxics Release Inventory Program Flag
-      GHGFlag: 
-        type: string
+        title: Facility NAICS Codes
       AIRIDs: 
         type: string
         title: AIR Facility System ID
         example: DC0000001100195254
         description: Air Facility System (AFS) ID.
+      CamdIDs: 
+        type: string
+        title: Clean Air Markets Division Identifiers
+        description: Facility identifiers for the Clean Air Markets Division database.
+      NPDESIDs: 
+        type: string
+        title: ICS-NPDES Clean Water Act Identifier
+        description: Clean Water Act ID from the ICIS-NPDES (Integrated Compliance Information System - National Pollutant Discharge Elimination System)
+      RCRAIDs: 
+        type: string
+        title: Resource Conservation and Recovery Act IDs
+        example: VAD981111784
+        description: A unique 12-character ID assigned for each record/permit/site/facility within the RCRAInfo database.
+      RmpIDs: 
+        type: string
+      SDWAIDs: 
+        type: string
+        example: DC0000001
+        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
+      TRIIDs: 
+        type: string
+        title: Toxics Release Inventory Program IDs
+        example: 20011FRTTT5001F
+        description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
+      EisIDs: 
+        type: string
+      GHGIDs: 
+        type: string
+      TscaIDs: 
+        type: string
+        title: Toxic Substances Control Act ID
+        description: Toxic Substances Control Act ID assigned to a facility
       CAAPermitTypes: 
         type: string
         example: Minor Emissions
@@ -3891,48 +3837,6 @@ definitions:
           - Other Minor
           - Synthetic Minor
           - NULL
-      CAANAICS: 
-        type: string
-      CAASICs: 
-        type: string
-      CAAEvaluationCount: 
-        type: string
-        example: '0'
-        description: The number of inspections/compliance evaluations under the Clean Air Act, occurring at the facility within the last five years
-      CAADaysLastEvaluation: 
-        type: number
-        example: 7051
-      CAAInformalCount: 
-        type: string
-        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Clean Air Act.
-      CAAFormalActionCount: 
-        type: string
-        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Clean Air Act.
-      CAADateLastFormalAction: 
-        type: string
-      CAAPenalties: 
-        type: string
-        description: The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Air Act.
-      CAALastPenaltyDate: 
-        type: string
-      CAALastPenaltyAmt: 
-        type: number
-        example: 17014
-      CAAQtrsInNC: 
-        type: number
-        example: 0
-      CAACurrComplianceStatus: 
-        type: string
-        example: Not Available
-        description: Current compliance status.
-      CAACurrHpvFlag: 
-        type: string
-      CAA3yrComplQtrsStatus: 
-        type: string
-      NPDESIDs: 
-        type: string
-        title: ICS-NPDES Clean Water Act Identifier
-        description: Clean Water Act ID from the ICIS-NPDES (Integrated Compliance Information System - National Pollutant Discharge Elimination System)
       CWAPermitTypes: 
         type: string
         title: Clean Water Act Permit Types
@@ -3940,59 +3844,6 @@ definitions:
           Indicates the facility's permit type or designation.
           - Major
           - Minor
-      CWAComplianceTracking: 
-        type: string
-      CWANAICS: 
-        type: string
-      CWASICs: 
-        type: string
-      CWAInspectionCount: 
-        type: number
-        title: Clean Water Act Inspection Count
-        example: 0
-        description: The number of inspections/compliance evaluations under the Clean Water Act, occurring at the facility within the last five years.
-      CWADaysLastInspection: 
-        type: number
-        example: 184
-      CWAInformalCount: 
-        type: number
-        title: Clean Water Act Informal Action Count
-        example: 1
-        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Clean Water Act.
-      CWAFormalActionCount: 
-        type: string
-        title: Clean Water Act Formal Action Count
-        example: '2'
-        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Clean Water Act.
-      CWADateLastFormalAction: 
-        type: string
-      CWAPenalties: 
-        type: string
-        title: Clean Water Act Penalties
-        description: The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Water Act.
-      CWALastPenaltyDate: 
-        type: string
-      CWALastPenaltyAmt: 
-        type: string
-      CWAQtrsInNC: 
-        type: string
-      CWACurrComplianceStatus: 
-        type: string
-        title: Clean Water Act Current Compliance Status
-        description: Current compliance status
-      CWACurrSNCFlag: 
-        type: string
-      CWA13qtrsComplStatus: 
-        type: string
-      CWA13qtrsEfflntExceedances: 
-        type: string
-      CWA3YrQncrCodes: 
-        type: string
-      RCRAIDs: 
-        type: string
-        title: Resource Conservation and Recovery Act IDs
-        example: VAD981111784
-        description: A unique 12-character ID assigned for each record/permit/site/facility within the RCRAInfo database.
       RCRAPermitTypes: 
         type: string
         title: Resource Conservation and Recovery Act Permit Types
@@ -4005,154 +3856,70 @@ definitions:
           - CESQG = Conditionally-Exempt Small Quantity Generator
           - Operating TSDF
           - Transporters
-      RCRANAICS: 
+      SDWASystemTypes: 
         type: string
-      RCRAInspectionCount: 
+        description: SDWIS System Types
+      FacCurrSNCFlg: 
+        type: string
+        title: Facility in Significant Noncompliance Flag
+        example: N
+        description: The current Significant Non-compliance (SNC), Serious Violation or High Priority Violator (HPV) status for the facility during the most current quarter reflects the time the records were extracted from the program data systems
+      FacQtrsInNC: 
         type: number
-        title: Resource Conservation and Recovery Act Inspection Count
-        example: 1
-        description: The number of inspections/compliance evaluations under the Resource Conservation and Recovery Act, occurring at the facility within the last five years
-      RCRADaysLastEvaluation: 
-        type: number
-        example: 6848
-      RCRAInformalCount: 
+        title: Quarters in Noncompliance
+        example: 3
+        description: Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered either in Non-compliance (NC), Significant Non-compliance (SNC) or High Priority violation (HPV) status
+      FacCurrComplianceStatus: 
         type: string
-        title: RCRA Informal Action Count
-        example: '3'
-        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Resource Conservation and Recovery Act.
-      RCRAFormalActionCount: 
+        title: Current Facility Compliance Status
+        description: "Current compliance status: SNC/Serious Viol, In Violation, No Violation, Unknown, NULL. (Order corresponds to priority if multiple programs/permits exist)"
+      CAACurrComplianceStatus: 
         type: string
-        title: RCRA Formal Action Count
-        example: '5'
-        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Resource Conservation and Recovery Act.
-      RCRADateLastFormalAction: 
+        example: Not Available
+        description: Current compliance status.
+      CWACurrComplianceStatus: 
         type: string
-      RCRAPenalties: 
-        type: string
-        example: "$987"
-      RCRALastPenaltyDate: 
-        type: string
-      RCRALastPenaltyAmt: 
-        type: string
-      RCRAQtrsInNC: 
-        type: number
-        example: 0
+        title: Clean Water Act Current Compliance Status
+        description: Current compliance status
       RCRACurrComplianceStatus: 
         type: string
         title: RCRA Current Compliance Status
         example: No Violation
         description: Current compliance status
-      RCRACurrSNCFlag: 
-        type: string
-      RCRA3yrComplQtrsStatus: 
-        type: string
-      SDWAIDs: 
-        type: string
-        example: DC0000001
-        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
-      SDWASystemTypes: 
-        type: string
-        description: SDWIS System Types
-      SDWAInformalCount: 
-        type: string
-        example: '2'
-        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Safe Drinking Water Act
-      SDWAFormalActionCount: 
-        type: string
-        example: '11'
-        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Safe Drinking Water Act
       SDWACurrComplianceStatus: 
         type: string
         description: Current compliance status
-      SDWACurrSNCFlag: 
-        type: string
-      TRIIDs: 
-        type: string
-        title: Toxics Release Inventory Program IDs
-        example: 20011FRTTT5001F
-        description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
-      TRIReleasesTransfers: 
+      FacInspectionCount: 
         type: number
-        title: TRI Release Transfers
-        example: 170878
-        description: Total chemical releases, in pounds, as reported to the Toxics Release Inventory (TRI) by the facility for the most recent reporting year
-      TRIOnSiteReleases: 
-        type: number
-        title: Toxics Release Inventory Onsite Releases
-        example: 11987
-      TRIOffSiteTransfers: 
-        type: number
-        title: Toxics Release Inventory Offsite Transfer Count
-        example: 0
-      TRIReporterInPast: 
-        type: string
-        title: Toxics Release Inventory Reporter In Past Flag
-      FecCaseIDs: 
-        type: string
-        description: All Case Numbers of Federal Enforcement Cases relating to the Facility from the ICIS System
-      FecNumberOfCases: 
-        type: number
+        title: Facility Inspection Count
         example: 1
-      FecLastCaseDate: 
-        type: string
-      FecTotalPenalties: 
+        description: The number of inspections/compliance evaluations that have occurred at the facility, under the AIR, CWA, and RCRA, within the last five years. The last 5 years will include data from the 20 most recently completed quarters, plus data from the current quarter up until the refresh date. This count only includes inspection types that are counted as inspections in official counts.
+      FacDaysLastInspection: 
         type: number
-        example: 34400
-      GHGIDs: 
+        title: Days Since Last Facility Inspection
+        example: 1197
+        description: The number of days from the last ECHO refresh to the date on which the most recent inspection of the facility took place based on data recorded into AFS, ICIS-NPDES, or RCRA Info.
+      FacDateLastInspection: 
         type: string
-      GHGCO2Releases: 
+        title: Date of Last Facility Inspection
+        example: 12/18/2012
+        description: The date on which most recent inspection of the facility took place. For the Clean Air Act, the date on which a Full Inspection (FCE) was completed. This date may or may not correspond to an actual site visit. A series of partial on- or off-site inspections may have been conducted during the fiscal year as part of this FCE.
+      CAAEvaluationCount: 
         type: string
-        title: Greenhouse Gas Reporting CO2 Releases
-        description: "The sum of total release amounts of all linked Greenhouse Gas IDs reported as \"metric tons of CO2 equivalents\""
-      DfrUrl: 
-        type: string
-      FacSICCodes: 
-        type: string
-      FacNAICSCodes: 
-        type: string
-        title: Facility NAICS Codes
-      FacDateLastInspectionEPA: 
-        type: string
-      FacDateLastInspectionState: 
-        type: string
-      FacDateLastFormalActEPA: 
-        type: string
-      FacDateLastFormalActSt: 
-        type: string
-      FacDateLastInformalActEPA: 
-        type: string
-      FacDateLastInformalActSt: 
-        type: string
-      FacFederalAgency: 
-        type: string
-      TRIReporter: 
-        type: string
-        title: Toxics Release Inventory Reporter
-      FacImpWaterFlg: 
-        type: string
-      SourceID: 
-        type: string
-        title: EPA Source Identifier
-        example: ALR040033
-        description: Unique Identifier assigned by EPA.
-      NC: 
-        type: string
-      RmpIDs: 
-        type: string
-      FacMapFlg: 
-        type: string
-        title: Facility Mapped Flag
-        example: Y
-        description: Graphical indicator denoting whether geographical data required to map a facility are available.
-      HasPollRpt: 
-        type: string
-        example: Y
-        description: "???"
-      CensusBlockGroup: 
-        type: string
-        title: Census Block Group
-        example: '110010096022'
-        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
+        example: '0'
+        description: The number of inspections/compliance evaluations under the Clean Air Act, occurring at the facility within the last five years
+      CWAInspectionCount: 
+        type: number
+        title: Clean Water Act Inspection Count
+        example: 0
+        description: The number of inspections/compliance evaluations under the Clean Water Act, occurring at the facility within the last five years.
+      RCRAInspectionCount: 
+        type: number
+        title: Resource Conservation and Recovery Act Inspection Count
+        example: 1
+        description: The number of inspections/compliance evaluations under the Resource Conservation and Recovery Act, occurring at the facility within the last five years
+      Over80CountUs: 
+        type: number
       PctilePctpre1960Us: 
         type: number
         example: 14.6
@@ -4197,6 +3964,320 @@ definitions:
         type: number
         example: 52.4
         description: The national percentile of the census block group for the EJSCREEN particulate matter indicator.
+      FacPopDen: 
+        type: number
+        title: Facility Population Density
+        example: 6716.34
+        description: The number of persons per square mile in the area being profiled. This field is the ratio of total persons (displayed in the Total Persons field) to total land area (displayed in the Land Area field).
+      FacPercentMinority: 
+        type: number
+        title: Facility Percent Minority
+        example: 45.379
+        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
+      FacInformalCount: 
+        type: number
+        title: Count of Informal Actions
+        example: 0
+        description: Indicates the total number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years
+      CAAInformalCount: 
+        type: string
+        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Clean Air Act.
+      CWAInformalCount: 
+        type: number
+        title: Clean Water Act Informal Action Count
+        example: 1
+        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Clean Water Act.
+      RCRAInformalCount: 
+        type: string
+        title: RCRA Informal Action Count
+        example: '3'
+        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Resource Conservation and Recovery Act.
+      SDWAInformalCount: 
+        type: string
+        example: '2'
+        description: Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Safe Drinking Water Act
+      FacFormalActionCount: 
+        type: number
+        title: Count of Formal Actions
+        example: 0
+        description: Indicates the total number of enforcement actions taken against the facility within the last five years. NA indicates that this measure is not applicable for facilities with no associated CAA, CWA, or RCRA permits
+      FacDateLastFormalAction: 
+        type: string
+        title: Date of Last Formal Action
+        example: 5/7/2009
+        description: Indicates the effective date of the most recent listed enforcement action taken against the facility within the last five years.
+      CAAFormalActionCount: 
+        type: string
+        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Clean Air Act.
+      CWAFormalActionCount: 
+        type: string
+        title: Clean Water Act Formal Action Count
+        example: '2'
+        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Clean Water Act.
+      RCRAFormalActionCount: 
+        type: string
+        title: RCRA Formal Action Count
+        example: '5'
+        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Resource Conservation and Recovery Act.
+      SDWAFormalActionCount: 
+        type: string
+        example: '11'
+        description: Indicates the number of enforcement actions taken against the facility within the last five years under the Safe Drinking Water Act
+      FacTotalPenalties: 
+        type: number
+        title: Total Penalties
+        example: 850
+        description: The total dollar amount of either assessed (or final) penalties taken against the facility within the last five years
+      FacPenaltyCount: 
+        type: number
+        title: Penalty Count
+        example: 2
+        description: The total number of penalties assessed (or final) taken against the facility within the last five years
+      FacDateLastPenalty: 
+        type: string
+        title: Date of Last Penalty
+        example: 2/19/2011
+        description: Indicates the date on which the most recent assessed (or final) penalty was taken against the facility within the last five years
+      FacLastPenaltyAmt: 
+        type: number
+        title: Last Penalty Amount
+        example: 200
+        description: Indicates the dollar amount of the most recent assessed (or final) penalty taken against the facility within the last five years
+      CAAPenalties: 
+        type: string
+        description: The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Air Act.
+      CWAPenalties: 
+        type: string
+        title: Clean Water Act Penalties
+        description: The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Water Act.
+      RCRAPenalties: 
+        type: string
+        example: "$987"
+      GHGCO2Releases: 
+        type: string
+        title: Greenhouse Gas Reporting CO2 Releases
+        description: "The sum of total release amounts of all linked Greenhouse Gas IDs reported as \"metric tons of CO2 equivalents\""
+      TRIReleasesTransfers: 
+        type: number
+        title: TRI Release Transfers
+        example: 170878
+        description: Total chemical releases, in pounds, as reported to the Toxics Release Inventory (TRI) by the facility for the most recent reporting year
+      FacDerivedWBDHu8: 
+        type: string
+      FacDerivedWBDHu8Name: 
+        type: string
+      FacDerivedRadWBDHu8: 
+        type: string
+      FacDerivedRadWBDHu8Name: 
+        type: string
+      FacMajorFlag: 
+        type: string
+        title: Facility Major Flag
+      FacDateLastInformalAction: 
+        type: string
+        title: Date of Last Informal Action
+        example: 8/6/2008
+        description: The date of the most recent informal action or NOV taken recorded in AFS, ICIS-NPDES, RCRA Info or SDWIS.
+      Fac3yrComplianceStatus: 
+        type: string
+      CAA3yrComplQtrsStatus: 
+        type: string
+      CWA13qtrsComplStatus: 
+        type: string
+      RCRA3yrComplQtrsStatus: 
+        type: string
+      SDWA3yrComplQtrsStatus: 
+        type: string
+      FecCaseIDs: 
+        type: string
+        description: All Case Numbers of Federal Enforcement Cases relating to the Facility from the ICIS System
+      FacFIPSCode: 
+        type: string
+        title: FIPS Code
+        example: '55001'
+        description: The 2-digit Federal Information Processing Standards (FIPS) code to identify the county that a facility is located in.
+      FacUsMexBorderFlg: 
+        type: string
+        title: Near US-Mexico Border
+        example: Y
+        description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
+      FacChesapeakeBayFlg: 
+        type: string
+        title: Facility in Chesapeake Bay Watershed Flag
+      FacNaaFlag: 
+        type: string
+      FacMapIcon: 
+        type: string
+        title: Facility Map Icon
+        example: CWA-NC-MJ-2.png
+        description: The default map icon image file calculated for the facility by the ECHO program.
+      FacCollectionMethod: 
+        type: string
+      FacReferencePoint: 
+        type: string
+      FacAccuracyMeters: 
+        type: number
+        example: 35900
+      FacDerivedHuc: 
+        type: string
+        title: Watershed (HUC Code)
+        example: '552968'
+        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
+      FacDerivedWBD: 
+        type: string
+      FacDerivedStctyFIPS: 
+        type: string
+      FacDerivedZip: 
+        type: string
+      FacDerivedCd113: 
+        type: string
+      FacDerivedCb2010: 
+        type: string
+      FacActiveFlag: 
+        type: string
+      FacMyrtkUniverse: 
+        type: string
+      FacProgramsInSNC: 
+        type: number
+        title: Programs in Significant Noncompliance
+        example: 1
+        description: A count of the number of programs (AIR, CWA, SDWA, RCRA) related to the facility that have a current serious violation
+      AIRFlag: 
+        type: string
+      NPDESFlag: 
+        type: string
+        title: NPDES Flag
+      SDWISFlag: 
+        type: string
+        title: SDWIS Flag
+      RCRAFlag: 
+        type: string
+      TRIFlag: 
+        type: string
+        title: Toxics Release Inventory Program Flag
+      GHGFlag: 
+        type: string
+      CAANAICS: 
+        type: string
+      CAASICs: 
+        type: string
+      CAADaysLastEvaluation: 
+        type: number
+        example: 7051
+      CAADateLastFormalAction: 
+        type: string
+      CAALastPenaltyDate: 
+        type: string
+      CAALastPenaltyAmt: 
+        type: number
+        example: 17014
+      CAAQtrsInNC: 
+        type: number
+        example: 0
+      CAACurrHpvFlag: 
+        type: string
+      CWAComplianceTracking: 
+        type: string
+      CWANAICS: 
+        type: string
+      CWASICs: 
+        type: string
+      CWADaysLastInspection: 
+        type: number
+        example: 184
+      CWADateLastFormalAction: 
+        type: string
+      CWALastPenaltyDate: 
+        type: string
+      CWALastPenaltyAmt: 
+        type: string
+      CWAQtrsInNC: 
+        type: string
+      CWACurrSNCFlag: 
+        type: string
+      CWA13qtrsEfflntExceedances: 
+        type: string
+      CWA3YrQncrCodes: 
+        type: string
+      RCRANAICS: 
+        type: string
+      RCRADaysLastEvaluation: 
+        type: number
+        example: 6848
+      RCRADateLastFormalAction: 
+        type: string
+      RCRALastPenaltyDate: 
+        type: string
+      RCRALastPenaltyAmt: 
+        type: string
+      RCRAQtrsInNC: 
+        type: number
+        example: 0
+      RCRACurrSNCFlag: 
+        type: string
+      SDWACurrSNCFlag: 
+        type: string
+      TRIOnSiteReleases: 
+        type: number
+        title: Toxics Release Inventory Onsite Releases
+        example: 11987
+      TRIOffSiteTransfers: 
+        type: number
+        title: Toxics Release Inventory Offsite Transfer Count
+        example: 0
+      TRIReporterInPast: 
+        type: string
+        title: Toxics Release Inventory Reporter In Past Flag
+      FecNumberOfCases: 
+        type: number
+        example: 1
+      FecLastCaseDate: 
+        type: string
+      FecTotalPenalties: 
+        type: number
+        example: 34400
+      DfrUrl: 
+        type: string
+      FacDateLastInspectionEPA: 
+        type: string
+      FacDateLastInspectionState: 
+        type: string
+      FacDateLastFormalActEPA: 
+        type: string
+      FacDateLastFormalActSt: 
+        type: string
+      FacDateLastInformalActEPA: 
+        type: string
+      FacDateLastInformalActSt: 
+        type: string
+      FacFederalAgency: 
+        type: string
+      TRIReporter: 
+        type: string
+        title: Toxics Release Inventory Reporter
+      FacImpWaterFlg: 
+        type: string
+      SourceID: 
+        type: string
+        title: EPA Source Identifier
+        example: ALR040033
+        description: Unique Identifier assigned by EPA.
+      NC: 
+        type: string
+      FacMapFlg: 
+        type: string
+        title: Facility Mapped Flag
+        example: Y
+        description: Graphical indicator denoting whether geographical data required to map a facility are available.
+      HasPollRpt: 
+        type: string
+        example: Y
+        description: "???"
+      CensusBlockGroup: 
+        type: string
+        title: Census Block Group
+        example: '110010096022'
+        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
       MaxPctileUs: 
         type: number
         example: 54.7
@@ -4204,8 +4285,6 @@ definitions:
       EjscreenFlagUs: 
         type: string
       EjscreenFlag: 
-        type: string
-      SDWA3yrComplQtrsStatus: 
         type: string
       TRIbalFlag: 
         type: number
@@ -4246,41 +4325,27 @@ definitions:
         description: Flag showing Y/N whether location is within the contiguous (lower 48) United States.
       ActiveLower48: 
         type: string
-      FacFederalAgencyName: 
+      FacDerivedWBDHu12Name: 
         type: string
-      FacIndianSpatialFlg: 
+      FacDerivedRadWBDHu12: 
         type: string
-      Over80CountUs: 
-        type: number
-      FacDerivedWBDHu8: 
+      FacDerivedRadWBDHu12Name: 
         type: string
-      FacDerivedWBDHu8Name: 
-        type: string
-      FacDerivedRadWBDHu8: 
-        type: string
-      FacDerivedRadWBDHu8Name: 
-        type: string
-      CamdIDs: 
-        type: string
-        title: Clean Air Markets Division Identifiers
-        description: Facility identifiers for the Clean Air Markets Division database.
       EisFlag: 
-        type: string
-      EisIDs: 
         type: string
       TscaFlag: 
         type: string
         title: Toxic Substances Control Act Flag
         description: Flag indicating whether or not a facility has a TSCA ID
-      TscaIDs: 
-        type: string
-        title: Toxic Substances Control Act ID
-        description: Toxic Substances Control Act ID assigned to a facility
       WebDocs: 
         type: string
         title: Web Documents
         example: C6
         description: Contains flags that identify what web accessible documents are available for the facility.
+      NaaCategories: 
+        type: string
+      NaaPollutants: 
+        type: string
       Score: 
         type: number
         title: Score
@@ -4291,143 +4356,49 @@ definitions:
         example: 1
         description: "[Col. 121]"
     required: 
-    - RegistryID
     - FacName
     - FacStreet
     - FacCity
     - FacState
     - FacZip
+    - RegistryID
     - FacCounty
-    - FacFIPSCode
     - FacEPARegion
-    - FacIndianCntryFlg
     - FacFederalFlg
-    - FacUsMexBorderFlg
-    - FacChesapeakeBayFlg
-    - FacNaaFlag
-    - FacMapIcon
-    - FacCollectionMethod
-    - FacReferencePoint
-    - FacAccuracyMeters
+    - FacFederalAgencyName
+    - FacIndianCntryFlg
+    - FacIndianSpatialFlg
     - FacDerivedTRIbes
-    - FacDerivedHuc
-    - FacDerivedWBD
-    - FacDerivedStctyFIPS
-    - FacDerivedZip
-    - FacDerivedCd113
-    - FacDerivedCb2010
-    - FacPercentMinority
-    - FacPopDen
-    - FacMajorFlag
-    - FacActiveFlag
-    - FacMyrtkUniverse
-    - FacInspectionCount
-    - FacDateLastInspection
-    - FacDaysLastInspection
-    - FacInformalCount
-    - FacDateLastInformalAction
-    - FacFormalActionCount
-    - FacDateLastFormalAction
-    - FacTotalPenalties
-    - FacPenaltyCount
-    - FacDateLastPenalty
-    - FacLastPenaltyAmt
-    - FacQtrsInNC
-    - FacProgramsInSNC
-    - FacCurrComplianceStatus
-    - FacCurrSNCFlg
-    - Fac3yrComplianceStatus
-    - AIRFlag
-    - NPDESFlag
-    - SDWISFlag
-    - RCRAFlag
-    - TRIFlag
-    - GHGFlag
-    - AIRIDs
-    - CAAPermitTypes
-    - CAANAICS
-    - CAASICs
-    - CAAEvaluationCount
-    - CAADaysLastEvaluation
-    - CAAInformalCount
-    - CAAFormalActionCount
-    - CAADateLastFormalAction
-    - CAAPenalties
-    - CAALastPenaltyDate
-    - CAALastPenaltyAmt
-    - CAAQtrsInNC
-    - CAACurrComplianceStatus
-    - CAACurrHpvFlag
-    - CAA3yrComplQtrsStatus
-    - NPDESIDs
-    - CWAPermitTypes
-    - CWAComplianceTracking
-    - CWANAICS
-    - CWASICs
-    - CWAInspectionCount
-    - CWADaysLastInspection
-    - CWAInformalCount
-    - CWAFormalActionCount
-    - CWADateLastFormalAction
-    - CWAPenalties
-    - CWALastPenaltyDate
-    - CWALastPenaltyAmt
-    - CWAQtrsInNC
-    - CWACurrComplianceStatus
-    - CWACurrSNCFlag
-    - CWA13qtrsComplStatus
-    - CWA13qtrsEfflntExceedances
-    - CWA3YrQncrCodes
-    - RCRAIDs
-    - RCRAPermitTypes
-    - RCRANAICS
-    - RCRAInspectionCount
-    - RCRADaysLastEvaluation
-    - RCRAInformalCount
-    - RCRAFormalActionCount
-    - RCRADateLastFormalAction
-    - RCRAPenalties
-    - RCRALastPenaltyDate
-    - RCRALastPenaltyAmt
-    - RCRAQtrsInNC
-    - RCRACurrComplianceStatus
-    - RCRACurrSNCFlag
-    - RCRA3yrComplQtrsStatus
-    - SDWAIDs
-    - SDWASystemTypes
-    - SDWAInformalCount
-    - SDWAFormalActionCount
-    - SDWACurrComplianceStatus
-    - SDWACurrSNCFlag
-    - TRIIDs
-    - TRIReleasesTransfers
-    - TRIOnSiteReleases
-    - TRIOffSiteTransfers
-    - TRIReporterInPast
-    - FecCaseIDs
-    - FecNumberOfCases
-    - FecLastCaseDate
-    - FecTotalPenalties
-    - GHGIDs
-    - GHGCO2Releases
-    - DfrUrl
     - FacSICCodes
     - FacNAICSCodes
-    - FacDateLastInspectionEPA
-    - FacDateLastInspectionState
-    - FacDateLastFormalActEPA
-    - FacDateLastFormalActSt
-    - FacDateLastInformalActEPA
-    - FacDateLastInformalActSt
-    - FacFederalAgency
-    - TRIReporter
-    - FacImpWaterFlg
-    - SourceID
-    - NC
+    - AIRIDs
+    - CamdIDs
+    - NPDESIDs
+    - RCRAIDs
     - RmpIDs
-    - FacMapFlg
-    - HasPollRpt
-    - CensusBlockGroup
+    - SDWAIDs
+    - TRIIDs
+    - EisIDs
+    - GHGIDs
+    - TscaIDs
+    - CAAPermitTypes
+    - CWAPermitTypes
+    - RCRAPermitTypes
+    - SDWASystemTypes
+    - FacCurrSNCFlg
+    - FacQtrsInNC
+    - FacCurrComplianceStatus
+    - CAACurrComplianceStatus
+    - CWACurrComplianceStatus
+    - RCRACurrComplianceStatus
+    - SDWACurrComplianceStatus
+    - FacInspectionCount
+    - FacDaysLastInspection
+    - FacDateLastInspection
+    - CAAEvaluationCount
+    - CWAInspectionCount
+    - RCRAInspectionCount
+    - Over80CountUs
     - PctilePctpre1960Us
     - PctileDpmUs
     - PctileCancerUs
@@ -4439,10 +4410,114 @@ definitions:
     - PctileProximityTsdfUs
     - PctileO3Us
     - PctilePmUs
+    - FacPopDen
+    - FacPercentMinority
+    - FacInformalCount
+    - CAAInformalCount
+    - CWAInformalCount
+    - RCRAInformalCount
+    - SDWAInformalCount
+    - FacFormalActionCount
+    - FacDateLastFormalAction
+    - CAAFormalActionCount
+    - CWAFormalActionCount
+    - RCRAFormalActionCount
+    - SDWAFormalActionCount
+    - FacTotalPenalties
+    - FacPenaltyCount
+    - FacDateLastPenalty
+    - FacLastPenaltyAmt
+    - CAAPenalties
+    - CWAPenalties
+    - RCRAPenalties
+    - GHGCO2Releases
+    - TRIReleasesTransfers
+    - FacDerivedWBDHu8
+    - FacDerivedWBDHu8Name
+    - FacDerivedRadWBDHu8
+    - FacDerivedRadWBDHu8Name
+    - FacMajorFlag
+    - FacDateLastInformalAction
+    - Fac3yrComplianceStatus
+    - CAA3yrComplQtrsStatus
+    - CWA13qtrsComplStatus
+    - RCRA3yrComplQtrsStatus
+    - SDWA3yrComplQtrsStatus
+    - FecCaseIDs
+    - FacFIPSCode
+    - FacUsMexBorderFlg
+    - FacChesapeakeBayFlg
+    - FacNaaFlag
+    - FacMapIcon
+    - FacCollectionMethod
+    - FacReferencePoint
+    - FacAccuracyMeters
+    - FacDerivedHuc
+    - FacDerivedWBD
+    - FacDerivedStctyFIPS
+    - FacDerivedZip
+    - FacDerivedCd113
+    - FacDerivedCb2010
+    - FacActiveFlag
+    - FacMyrtkUniverse
+    - FacProgramsInSNC
+    - AIRFlag
+    - NPDESFlag
+    - SDWISFlag
+    - RCRAFlag
+    - TRIFlag
+    - GHGFlag
+    - CAANAICS
+    - CAASICs
+    - CAADaysLastEvaluation
+    - CAADateLastFormalAction
+    - CAALastPenaltyDate
+    - CAALastPenaltyAmt
+    - CAAQtrsInNC
+    - CAACurrHpvFlag
+    - CWAComplianceTracking
+    - CWANAICS
+    - CWASICs
+    - CWADaysLastInspection
+    - CWADateLastFormalAction
+    - CWALastPenaltyDate
+    - CWALastPenaltyAmt
+    - CWAQtrsInNC
+    - CWACurrSNCFlag
+    - CWA13qtrsEfflntExceedances
+    - CWA3YrQncrCodes
+    - RCRANAICS
+    - RCRADaysLastEvaluation
+    - RCRADateLastFormalAction
+    - RCRALastPenaltyDate
+    - RCRALastPenaltyAmt
+    - RCRAQtrsInNC
+    - RCRACurrSNCFlag
+    - SDWACurrSNCFlag
+    - TRIOnSiteReleases
+    - TRIOffSiteTransfers
+    - TRIReporterInPast
+    - FecNumberOfCases
+    - FecLastCaseDate
+    - FecTotalPenalties
+    - DfrUrl
+    - FacDateLastInspectionEPA
+    - FacDateLastInspectionState
+    - FacDateLastFormalActEPA
+    - FacDateLastFormalActSt
+    - FacDateLastInformalActEPA
+    - FacDateLastInformalActSt
+    - FacFederalAgency
+    - TRIReporter
+    - FacImpWaterFlg
+    - SourceID
+    - NC
+    - FacMapFlg
+    - HasPollRpt
+    - CensusBlockGroup
     - MaxPctileUs
     - EjscreenFlagUs
     - EjscreenFlag
-    - SDWA3yrComplQtrsStatus
     - TRIbalFlag
     - CurrSvFlag
     - ViolFlag
@@ -4452,19 +4527,14 @@ definitions:
     - Infea5yrFlag
     - Lower48
     - ActiveLower48
-    - FacFederalAgencyName
-    - FacIndianSpatialFlg
-    - Over80CountUs
-    - FacDerivedWBDHu8
-    - FacDerivedWBDHu8Name
-    - FacDerivedRadWBDHu8
-    - FacDerivedRadWBDHu8Name
-    - CamdIDs
+    - FacDerivedWBDHu12Name
+    - FacDerivedRadWBDHu12
+    - FacDerivedRadWBDHu12Name
     - EisFlag
-    - EisIDs
     - TscaFlag
-    - TscaIDs
     - WebDocs
+    - NaaCategories
+    - NaaPollutants
     - Score
     - MaxScore
   ers4_Results: 
@@ -4495,6 +4565,9 @@ definitions:
         title: Facilities
         items: 
           "$ref": "#/definitions/ers1_Facilities" 
+        xml: 
+          name: Facilities
+          wrapped: true
     required: 
     - Message
     - QueryRows
@@ -4521,6 +4594,8 @@ definitions:
     - coordinates
   met_ResultsColumns: 
     description: Results Column Object
+    xml: 
+      name: ResultColumn
     properties: 
       ColumnName: 
         type: string
@@ -4565,5 +4640,8 @@ definitions:
         title: Result Columns
         items: 
           "$ref": "#/definitions/met_ResultsColumns" 
+        xml: 
+          name: ResultColumns
+          wrapped: true
     required: 
     - Message
