@@ -2,7 +2,7 @@
     "swagger": "2.0"
    ,"info": {
        "title": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Effluent Charting and Reporting"
-      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use.\nECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\n<BR><BR>EFF Rest Services provides the data for ECHO's Effluent Charts, a set of dynamic charts and tables of permitted effluent limits, releases, and violations over time for \nClean Water Act (CWA) wastewater discharge permits issued under the National Pollutant Discharge Elimination System (NPDES).  See Effluent Charts Help (https:\/\/echo.epa.gov\/help\/reports\/effluent-charts-help) for additional information.\n<BR><BR>\nThe are 3 service end points for Efffluent Charts:  get_summary_chart, get_effluent_chart, and download_effluent_chart.\n<br>\n<br><b>1)<\/b>  Use get_summary_chart to retrieve a summary matrix of effluent parameters by effluent outfall and an overall violation status for a provided NPDES Permit and date range.\n<br><b>2)<\/b>  Use get_effluent_chart to retrieve detailed Discharge Limit, DMR and NPDES Violation information for a provided NPDES Permit, date range, effluent paramater, or outfall.\n<br><b>3)<\/b>  Use download_effluent_chart to generate a Comma Separated Value (CSV) file of the detailed data provided with get_effluent chart, for a provided NPDES Permit, date range, effluent paramater, or outfall.\n<br>\n<br>\nAdditional ECHO Resources:   <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a>\n<br>\n"
+      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use.\nECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\n<BR><BR>EFF Rest Services provides the data for ECHO's Effluent Charts, a set of dynamic charts and tables of permitted effluent limits, releases, and violations over time for \nClean Water Act (CWA) wastewater discharge permits issued under the National Pollutant Discharge Elimination System (NPDES).  See Effluent Charts Help (https:\/\/echo.epa.gov\/help\/reports\/effluent-charts-help) for additional information.\n<BR><BR>\nThe are 3 service end points for Efffluent Charts:  get_summary_chart, get_effluent_chart, and download_effluent_chart.\n<br>\n<br><b>1)<\/b>  Use get_summary_chart to retrieve a summary matrix of effluent parameters by effluent outfall and an overall violation status for a provided NPDES Permit and date range.\n<br><b>2)<\/b>  Use get_effluent_chart to retrieve detailed Discharge Limit, DMR and NPDES Violation information for a provided NPDES Permit, date range, effluent paramater, or outfall.\n<br><b>3)<\/b>  Use download_effluent_chart to generate a Comma Separated Value (CSV) file of the detailed data provided with get_effluent chart, for a provided NPDES Permit, date range, effluent paramater, or outfall.\n<br>\n<br>\nAdditional ECHO Resources:   <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a>\n<br>"
       ,"contact": {
           "name": "US EPA, OECA Integration, Targeting and Access Branch"
       }
@@ -132,6 +132,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/eff1_Results"
@@ -179,6 +182,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/eff1_Results"
@@ -222,6 +228,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/eff2_Results"
@@ -263,6 +272,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/eff2_Results"
@@ -369,6 +381,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/rlk16_Results"
@@ -407,6 +422,9 @@
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/rlk16_Results"
@@ -425,6 +443,9 @@
        "eff1_DischargeMonitoringReports": {
           "type": "object"
          ,"description": "Discharge Monitoring Reports Object"
+         ,"xml": {
+             "name": "DischargeMonitoringReport"
+         }
          ,"properties": {
              "VersionNmbr": {
                 "type": "string"
@@ -665,6 +686,10 @@
                ,"items": {
                    "$ref": "#\/definitions\/eff1_NPDESViolations"
                }
+               ,"xml": {
+                   "name": "NPDESViolations"
+                  ,"wrapped": true
+               }
             }
          }
          ,"required": [
@@ -713,6 +738,9 @@
       ,"eff1_NPDESViolations": {
           "type": "object"
          ,"description": "NPDES Violations Object"
+         ,"xml": {
+             "name": "NPDESViolation"
+         }
          ,"properties": {
              "NPDESViolationId": {
                 "type": "string"
@@ -779,6 +807,9 @@
       ,"eff1_Parameters": {
           "type": "object"
          ,"description": "Parameters Object"
+         ,"xml": {
+             "name": "Parameter"
+         }
          ,"properties": {
              "ParameterCode": {
                 "type": "string"
@@ -823,6 +854,10 @@
                ,"items": {
                    "$ref": "#\/definitions\/eff1_DischargeMonitoringReports"
                }
+               ,"xml": {
+                   "name": "DischargeMonitoringReports"
+                  ,"wrapped": true
+               }
             }
          }
          ,"required": [
@@ -838,6 +873,9 @@
       ,"eff1_PermFeatures": {
           "type": "object"
          ,"description": "Permit Features Object"
+         ,"xml": {
+             "name": "PermFeature"
+         }
          ,"properties": {
              "PermFeatureNmbr": {
                 "type": "string"
@@ -857,6 +895,10 @@
                ,"description": "Array of Effuent Limit Parameters"
                ,"items": {
                    "$ref": "#\/definitions\/eff1_Parameters"
+               }
+               ,"xml": {
+                   "name": "Parameters"
+                  ,"wrapped": true
                }
             }
             ,"PermFeatureTypeDesc": {
@@ -979,6 +1021,10 @@
                ,"items": {
                    "$ref": "#\/definitions\/eff1_PermFeatures"
                }
+               ,"xml": {
+                   "name": "PermFeatures"
+                  ,"wrapped": true
+               }
             }
          }
          ,"required": [
@@ -1003,6 +1049,9 @@
       ,"eff2_LinkedPermits": {
           "type": "object"
          ,"description": "Linked Permits Object"
+         ,"xml": {
+             "name": "LinkedPermit"
+         }
          ,"properties": {
              "SourceId": {
                 "type": "string"
@@ -1080,6 +1129,9 @@
       ,"eff2_Parameters": {
           "type": "object"
          ,"description": "Parameters Object"
+         ,"xml": {
+             "name": "Parameter"
+         }
          ,"properties": {
              "ParameterCode": {
                 "type": "string"
@@ -1116,6 +1168,9 @@
       ,"eff2_PermFeatures": {
           "type": "object"
          ,"description": "Permit Features Object"
+         ,"xml": {
+             "name": "PermFeature"
+         }
          ,"properties": {
              "PermFeatureNmbr": {
                 "type": "string"
@@ -1140,6 +1195,10 @@
                ,"title": "Parameters"
                ,"items": {
                    "$ref": "#\/definitions\/eff2_Parameters"
+               }
+               ,"xml": {
+                   "name": "Parameters"
+                  ,"wrapped": true
                }
             }
          }
@@ -1255,12 +1314,20 @@
                ,"items": {
                    "$ref": "#\/definitions\/eff2_LinkedPermits"
                }
+               ,"xml": {
+                   "name": "LinkedPermits"
+                  ,"wrapped": true
+               }
             }
             ,"PermFeatures": {
                 "type": "array"
                ,"title": "Permitted Features (Pipe Outfalls)"
                ,"items": {
                    "$ref": "#\/definitions\/eff2_PermFeatures"
+               }
+               ,"xml": {
+                   "name": "PermFeatures"
+                  ,"wrapped": true
                }
             }
          }

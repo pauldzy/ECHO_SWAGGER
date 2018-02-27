@@ -17,7 +17,6 @@ info:
     <br>
     Additional ECHO Resources:   <a href="https://echo.epa.gov/tools/web-services">Web Services</a>, <a href="https://echo.epa.gov/resources/echo-data/about-the-data">About ECHO's Data</a>, <a href="https://echo.epa.gov/tools/data-downloads">Data Downloads</a>
     <br>
-
   contact: 
     name: US EPA, OECA Integration, Targeting and Access Branch
   license: 
@@ -119,6 +118,8 @@ paths:
           description: Returns an object with detailed effluent information
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/eff1_Results" 
@@ -144,6 +145,8 @@ paths:
           description: Returns an object with detailed effluent information
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/eff1_Results" 
@@ -166,6 +169,8 @@ paths:
           description: Returns an object with summary effluent information
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/eff2_Results" 
@@ -187,6 +192,8 @@ paths:
           description: Returns an object with summary effluent information
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/eff2_Results" 
@@ -243,6 +250,8 @@ paths:
             ValueDescription is the parameter description.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/rlk16_Results" 
@@ -265,6 +274,8 @@ paths:
             ValueDescription is the parameter description.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/rlk16_Results" 
@@ -273,6 +284,8 @@ paths:
 definitions: 
   eff1_DischargeMonitoringReports: 
     description: Discharge Monitoring Reports Object
+    xml: 
+      name: DischargeMonitoringReport
     properties: 
       VersionNmbr: 
         type: string
@@ -472,6 +485,9 @@ definitions:
         title: NPDES Violations
         items: 
           "$ref": "#/definitions/eff1_NPDESViolations" 
+        xml: 
+          name: NPDESViolations
+          wrapped: true
     required: 
     - VersionNmbr
     - PermFeatureId
@@ -515,6 +531,8 @@ definitions:
     - ExceedencePct
   eff1_NPDESViolations: 
     description: NPDES Violations Object
+    xml: 
+      name: NPDESViolation
     properties: 
       NPDESViolationId: 
         type: string
@@ -608,6 +626,8 @@ definitions:
           - 5 = significant noncompliance
   eff1_Parameters: 
     description: Parameters Object
+    xml: 
+      name: Parameter
     properties: 
       ParameterCode: 
         type: string
@@ -645,6 +665,9 @@ definitions:
         description: An array of Discharge Monitoring Report (DMR) data.
         items: 
           "$ref": "#/definitions/eff1_DischargeMonitoringReports" 
+        xml: 
+          name: DischargeMonitoringReports
+          wrapped: true
     required: 
     - ParameterCode
     - ParameterDesc
@@ -655,6 +678,8 @@ definitions:
     - DischargeMonitoringReports
   eff1_PermFeatures: 
     description: Permit Features Object
+    xml: 
+      name: PermFeature
     properties: 
       PermFeatureNmbr: 
         type: string
@@ -672,6 +697,9 @@ definitions:
         description: Array of Effuent Limit Parameters
         items: 
           "$ref": "#/definitions/eff1_Parameters" 
+        xml: 
+          name: Parameters
+          wrapped: true
       PermFeatureTypeDesc: 
         type: string
         title: Permit Feature Type
@@ -797,6 +825,9 @@ definitions:
         description: Array of Permitted Features
         items: 
           "$ref": "#/definitions/eff1_PermFeatures" 
+        xml: 
+          name: PermFeatures
+          wrapped: true
     required: 
     - Message
     - SourceId
@@ -816,6 +847,8 @@ definitions:
     - EndDate
   eff2_LinkedPermits: 
     description: Linked Permits Object
+    xml: 
+      name: LinkedPermit
     properties: 
       SourceId: 
         type: string
@@ -891,6 +924,8 @@ definitions:
     - CWPCurrentSNCStatus
   eff2_Parameters: 
     description: Parameters Object
+    xml: 
+      name: Parameter
     properties: 
       ParameterCode: 
         type: string
@@ -919,6 +954,8 @@ definitions:
     - CurrentVioStatus
   eff2_PermFeatures: 
     description: Permit Features Object
+    xml: 
+      name: PermFeature
     properties: 
       PermFeatureNmbr: 
         type: string
@@ -940,6 +977,9 @@ definitions:
         title: Parameters
         items: 
           "$ref": "#/definitions/eff2_Parameters" 
+        xml: 
+          name: Parameters
+          wrapped: true
     required: 
     - PermFeatureNmbr
     - PermFeatureTypeCode
@@ -1059,11 +1099,17 @@ definitions:
         title: Linked Permits
         items: 
           "$ref": "#/definitions/eff2_LinkedPermits" 
+        xml: 
+          name: LinkedPermits
+          wrapped: true
       PermFeatures: 
         type: array
         title: Permitted Features (Pipe Outfalls)
         items: 
           "$ref": "#/definitions/eff2_PermFeatures" 
+        xml: 
+          name: PermFeatures
+          wrapped: true
     required: 
     - Message
     - SourceId
