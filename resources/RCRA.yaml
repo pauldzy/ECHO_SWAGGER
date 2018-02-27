@@ -433,7 +433,6 @@ parameters:
       - GT5000 = More than 5000 population density per square mile
       - GT10000 = More than 10000 population density per square mile
       - GT20000 = More than 20000 population density per square mile
-
     enum: 
     - NONE
     - GT100
@@ -537,7 +536,6 @@ parameters:
       - BEGINS = Find facilities with names starting with the provided term(s).
       - ALL = Find facilities using Oracle text search terms.
       - CONTAINS = 
-
     enum: 
     - ALL
     - CONTAINS
@@ -860,9 +858,7 @@ parameters:
   p_des: 
     name: p_des
     in: query
-    description: |-
-      Universe Designation Limiter.  Enter one or more universe designation codes.  Provide multiple values as a comma-delimited list.  Use code "TSDF" to return the full enforcement TSDF universe and "Operating TSDF" to return the operating TSDF universe.
-
+    description: "Universe Designation Limiter.  Enter one or more universe designation codes.  Provide multiple values as a comma-delimited list.  Use code \"TSDF\" to return the full enforcement TSDF universe and \"Operating TSDF\" to return the operating TSDF universe."
     type: string
     required: false
   p_decouple: 
@@ -1023,6 +1019,8 @@ paths:
           description: Results are summary statistics for the query and a query identifier (QID).
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/rcr1_Results" 
@@ -1137,6 +1135,8 @@ paths:
           description: Results are summary statistics for the query and a query identifier (QID).
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/rcr1_Results" 
@@ -1251,6 +1251,8 @@ paths:
           description: Results will either be an array of Facilities or an array of Clusters. The search will return clusters if the number of facilities returned is greater than the resposeset size, otherwise individual facility records will be returned.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/rcr2_Results" 
@@ -1364,6 +1366,8 @@ paths:
           description: Results will either be an array of Facilities or an array of Clusters. The search will return clusters if the number of facilities returned is greater than the resposeset size, otherwise individual facility records will be returned.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/rcr2_Results" 
@@ -1400,6 +1404,8 @@ paths:
           description: Results are an array (page)  of RCRA (RCRAInfo) Facilities/Hazardous Waste Handlers with the number of facilities equal to the responseset (page size).
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/rcr4_Results" 
@@ -1435,6 +1441,8 @@ paths:
           description: Results are an array (page)  of RCRA (RCRAInfo) Facilities/Hazardous Waste Handlers with the number of facilities equal to the responseset (page size).
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/rcr4_Results" 
@@ -1473,6 +1481,8 @@ paths:
           description: Results are either an array of State, County, Zip Code facility cluster map coordinates or individual facility coordinates.  Coordinates provided are in WGS84.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               MapOutput: 
                 "$ref": "#/definitions/rcr3_MapOutput" 
@@ -1510,6 +1520,8 @@ paths:
           description: Results are either an array of State, County, Zip Code facility cluster map coordinates or individual facility coordinates.  Coordinates provided are in WGS84.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               MapOutput: 
                 "$ref": "#/definitions/rcr3_MapOutput" 
@@ -1712,6 +1724,8 @@ paths:
           description: Results are an array of columns/objects.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/met_Results" 
@@ -1742,6 +1756,8 @@ paths:
           description: Results are an array of columns/objects.
           schema: 
             description: Root Object
+            xml: 
+              name: Root
             properties: 
               Results: 
                 "$ref": "#/definitions/met_Results" 
@@ -1750,6 +1766,8 @@ paths:
 definitions: 
   qp0_QueryParameters: 
     description: Query Parameters Object
+    xml: 
+      name: Parameter
     properties: 
       QP: 
         type: string
@@ -1784,6 +1802,8 @@ definitions:
     - coordinates
   met_ResultsColumns: 
     description: Results Column Object
+    xml: 
+      name: ResultColumn
     properties: 
       ColumnName: 
         type: string
@@ -1828,48 +1848,23 @@ definitions:
         title: Result Columns
         items: 
           "$ref": "#/definitions/met_ResultsColumns" 
+        xml: 
+          name: ResultColumns
+          wrapped: true
     required: 
     - Message
   rcr1_Facilities: 
     description: Facilities Object
+    xml: 
+      name: Facility
     properties: 
+      RCRAName: 
+        type: string
       SourceID: 
         type: string
         title: EPA Source Identifier
         example: ALR040033
         description: Unique Identifier assigned by EPA.
-      EPASystem: 
-        type: string
-        title: EPA Data System
-        example: ICP
-        description: |-
-          The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: 
-          - AFS: Air Facility System for Clean Air Act stationary source programs.
-          - ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.
-          - RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.
-          - NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).
-          - TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.
-          - NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.
-          - TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.
-      RegistryID: 
-        type: string
-        title: FRS ID
-        example: '110020837601'
-        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
-      Statute: 
-        type: string
-        title: Regulatory Statute
-        example: CWA
-        description: |-
-          The name of the statute associated with each of the permits and identifiers linked to the facility: 
-          - CAA = the Clean Air Act
-          - CWA = the Clean Water Act
-          - RCRA = the Resource Conservation and Recovery Act
-          - EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)
-          - TSCA = the Toxic Substances Control Act
-          - SDWA = the Safe Drinking Water Act
-      RCRAName: 
-        type: string
       RCRAStreet: 
         type: string
       RCRACity: 
@@ -1880,21 +1875,48 @@ definitions:
         type: string
       RCRAZip: 
         type: string
+      RegistryID: 
+        type: string
+        title: FRS ID
+        example: '110020837601'
+        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
       RCRACounty: 
         type: string
       RCRAEPARegion: 
         type: string
-      RCRAStatus: 
+      FacFederalAgencyName: 
         type: string
-      RCRAIndianCntryFlg: 
+      RCRALandTypeCode: 
         type: string
-      RCRATRIbalLandCode: 
+      FacDerivedHuc: 
         type: string
+        title: Watershed (HUC Code)
+        example: '552968'
+        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
       FacFIPSCode: 
         type: string
         title: FIPS Code
         example: '55001'
         description: The 2-digit Federal Information Processing Standards (FIPS) code to identify the county that a facility is located in.
+      FacIndianCntryFlg: 
+        type: string
+        title: Facility Indian Country Flag
+        description: Flag showing Y/N whether the facility is located in Indian Country.
+      RCRAIndianCntryFlg: 
+        type: string
+      FacIndianSpatialFlg: 
+        type: string
+      FacDerivedTRIbes: 
+        type: string
+      FacUsMexBorderFlg: 
+        type: string
+        title: Near US-Mexico Border
+        example: Y
+        description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
+      FacSICCodes: 
+        type: string
+      RCRANAICS: 
+        type: string
       FacLat: 
         type: string
         title: Latitude
@@ -1905,41 +1927,12 @@ definitions:
         title: Longitude
         example: '-77.085951'
         description: The longitude of the facility in decimal degrees expressed using the NAD83 horizontal datum. The coordinate comes from the FRS EPA Locational Reference Tables (LRT) file which represents the most accurate value for the facility based on the available spatial metadata.
-      FacUsMexBorderFlg: 
-        type: string
-        title: Near US-Mexico Border
-        example: Y
-        description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
-      RCRAImpWaterFlg: 
-        type: string
       RCRAUniverse: 
         type: string
-      RCRANAICS: 
+      Tsdf: 
         type: string
-      FacSICCodes: 
+      RCRAStatus: 
         type: string
-      FacPercentMinority: 
-        type: string
-        title: |-
-          Facility Percent Minority
-
-        example: '45.379'
-        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
-      FacPopulationDensity: 
-        type: string
-        example: '9611.17'
-      FacFederalAgencyCode: 
-        type: string
-        title: |-
-          Facility Federal Agency Code
-
-        example: E
-        description: "Indicates the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government. The five-character code consists of a letter followed by four numbers. There are four possible letters that can occupy the first character position: C = Civilian Federal Agency; D = Department of Defense; E = Department of Energy; X = Unknown. The second and third characters represent the agency code, while the fourth and fifth characters represent the bureau code."
-      ChesapeakeBayFlag: 
-        type: string
-        title: Chesapeake Bay Flag
-        example: Y
-        description: "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
       AIRIDs: 
         type: string
         title: AIR Facility System ID
@@ -1952,121 +1945,86 @@ definitions:
         title: Resource Conservation and Recovery Act IDs
         example: VAD981111784
         description: A unique 12-character ID assigned for each record/permit/site/facility within the RCRAInfo database.
+      RmpIDs: 
+        type: string
+      SDWAIDs: 
+        type: string
+        example: DC0000001
+        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
       TRIIDs: 
         type: string
         title: Toxics Release Inventory Program IDs
         example: 20011FRTTT5001F
         description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
-      SDWAIDs: 
-        type: string
-        example: DC0000001
-        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
-      RCRACaseIDs: 
+      RCRACurrComplStatus: 
         type: string
       RCRACurrSNC: 
         type: string
-      RCRACurrComplStatus: 
-        type: string
-      RCRAQtrsInSNC: 
-        type: string
-        example: '0'
       RCRAQtrsInNC: 
         type: string
         example: '0'
       RCRACurrViolationTypes: 
         type: string
+      RCRAQtrsInSNC: 
+        type: string
+        example: '0'
+      RCRAOldestOpenVioDate: 
+        type: string
       RCRAInspCnt: 
         type: string
         example: '0'
-      RCRALastInspectionDate: 
-        type: string
       RCRADaysLastInspection: 
         type: string
         example: '1247'
+      RCRALastInspectionDate: 
+        type: string
+      RCRALastInspDateEPA: 
+        type: string
+      RCRALastInspDateState: 
+        type: string
+      DateLastRecordReview: 
+        type: string
+      FacTRILandReleases: 
+        type: string
+        example: '11.7'
+      FacTRIOffSiteTransfers: 
+        type: string
+      FacDerivedWBD: 
+        type: string
+      FacDerivedWBDName: 
+        type: string
+      RCRAImpWaterFlg: 
+        type: string
+      ChesapeakeBayFlag: 
+        type: string
+        title: Chesapeake Bay Flag
+        example: Y
+        description: "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
       RCRAIeaCnt: 
+        type: string
+        example: '0'
+      RCRAFeaCnt: 
         type: string
         example: '0'
       RCRALastIeaDate: 
         type: string
-      RCRAFeaCnt: 
+      RCRALastIeaDateState: 
         type: string
-        example: '0'
+      RCRALastIeaDateEPA: 
+        type: string
       RCRALastFeaDate: 
+        type: string
+      RCRALastFeaDateState: 
+        type: string
+      RCRALastFeaDateEPA: 
         type: string
       RCRAPenalties: 
         type: string
         example: "$987"
       RCRALastPenaltyDate: 
         type: string
-      RCRALastInspDateEPA: 
+      Over80CountUs: 
         type: string
-      RCRALastInspDateState: 
-        type: string
-      RCRALastFeaDateEPA: 
-        type: string
-      RCRALastFeaDateState: 
-        type: string
-      RCRALastIeaDateEPA: 
-        type: string
-      RCRALastIeaDateState: 
-        type: string
-      FacTRIReporter: 
-        type: string
-        title: Facility TRI Reporter
-        example: B
-        description: Indicates whether facility reported to the Toxics Release Inventory (TRI) for the most recent reporting year.
-      FacTRIOnSiteReleases: 
-        type: string
-      FacDerivedHuc: 
-        type: string
-        title: Watershed (HUC Code)
-        example: '552968'
-        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
-      FacDerivedWBD: 
-        type: string
-      FacDerivedWBDName: 
-        type: string
-      FacMapFlg: 
-        type: string
-        title: Facility Mapped Flag
-        example: Y
-        description: Graphical indicator denoting whether geographical data required to map a facility are available.
-      FacMapIcon: 
-        type: string
-        title: Facility Map Icon
-        example: CWA-NC-MJ-2.png
-        description: The default map icon image file calculated for the facility by the ECHO program.
-      LastViolationDate: 
-        type: string
-        title: Date of Last Violation
-        example: 5/13/2011
-      CurrentVioCnt: 
-        type: string
-        title: Count of Current Violations
-      FacFederalAgencyName: 
-        type: string
-      FacTRIOffSiteTransfers: 
-        type: string
-      RCRAFIPSCode: 
-        type: string
-      RCRALandTypeCode: 
-        type: string
-      RCRAOldestOpenVioDate: 
-        type: string
-      FacTRILandReleases: 
-        type: string
-        example: '11.7'
-      RCRAMapIcon: 
-        type: string
-      RmpIDs: 
-        type: string
-      RCRA3yrComplQtrsStatus: 
-        type: string
-      CensusBlockGroup: 
-        type: string
-        title: Census Block Group
-        example: '110010096022'
-        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
       PctilePctpre1960Us: 
         type: string
         example: '14.6'
@@ -2111,6 +2069,83 @@ definitions:
         type: string
         example: '93'
         description: The national percentile of the census block group for the EJSCREEN particulate matter indicator.
+      FacPopulationDensity: 
+        type: string
+        example: '9611.17'
+      FacPercentMinority: 
+        type: string
+        title: Facility Percent Minority
+        example: '45.379'
+        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
+      EPASystem: 
+        type: string
+        title: EPA Data System
+        example: ICP
+        description: |-
+          The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: 
+          - AFS: Air Facility System for Clean Air Act stationary source programs.
+          - ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.
+          - RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.
+          - NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).
+          - TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.
+          - NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.
+          - TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.
+      Statute: 
+        type: string
+        title: Regulatory Statute
+        example: CWA
+        description: |-
+          The name of the statute associated with each of the permits and identifiers linked to the facility: 
+          - CAA = the Clean Air Act
+          - CWA = the Clean Water Act
+          - RCRA = the Resource Conservation and Recovery Act
+          - EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)
+          - TSCA = the Toxic Substances Control Act
+          - SDWA = the Safe Drinking Water Act
+      RCRATRIbalLandCode: 
+        type: string
+      FacFederalAgencyCode: 
+        type: string
+        title: Facility Federal Agency Code
+        example: E
+        description: "Indicates the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government. The five-character code consists of a letter followed by four numbers. There are four possible letters that can occupy the first character position: C = Civilian Federal Agency; D = Department of Defense; E = Department of Energy; X = Unknown. The second and third characters represent the agency code, while the fourth and fifth characters represent the bureau code."
+      RCRACaseIDs: 
+        type: string
+      FacTRIReporter: 
+        type: string
+        title: Facility TRI Reporter
+        example: B
+        description: Indicates whether facility reported to the Toxics Release Inventory (TRI) for the most recent reporting year.
+      FacTRIOnSiteReleases: 
+        type: string
+      FacMapFlg: 
+        type: string
+        title: Facility Mapped Flag
+        example: Y
+        description: Graphical indicator denoting whether geographical data required to map a facility are available.
+      FacMapIcon: 
+        type: string
+        title: Facility Map Icon
+        example: CWA-NC-MJ-2.png
+        description: The default map icon image file calculated for the facility by the ECHO program.
+      LastViolationDate: 
+        type: string
+        title: Date of Last Violation
+        example: 5/13/2011
+      CurrentVioCnt: 
+        type: string
+        title: Count of Current Violations
+      RCRAFIPSCode: 
+        type: string
+      RCRAMapIcon: 
+        type: string
+      RCRA3yrComplQtrsStatus: 
+        type: string
+      CensusBlockGroup: 
+        type: string
+        title: Census Block Group
+        example: '110010096022'
+        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
       MaxPctileUs: 
         type: string
         example: '98'
@@ -2158,14 +2193,6 @@ definitions:
         description: Flag showing Y/N whether location is within the contiguous (lower 48) United States.
       ActiveLower48: 
         type: string
-      FacDerivedTRIbes: 
-        type: string
-      FacIndianCntryFlg: 
-        type: string
-        title: Facility Indian Country Flag
-        description: Flag showing Y/N whether the facility is located in Indian Country.
-      FacIndianSpatialFlg: 
-        type: string
       CollectionMethod: 
         type: string
         title: Collection Method
@@ -2183,12 +2210,6 @@ definitions:
       Map: 
         type: string
         title: Map
-      Over80CountUs: 
-        type: string
-      DateLastRecordReview: 
-        type: string
-      Tsdf: 
-        type: string
       WebDocs: 
         type: string
         title: Web Documents
@@ -2204,78 +2225,67 @@ definitions:
         example: '1'
         description: "[Col. 121]"
     required: 
-    - SourceID
-    - EPASystem
-    - RegistryID
-    - Statute
     - RCRAName
+    - SourceID
     - RCRAStreet
     - RCRACity
     - RCRAState
     - RCRAStateDistrict
     - RCRAZip
+    - RegistryID
     - RCRACounty
     - RCRAEPARegion
-    - RCRAStatus
-    - RCRAIndianCntryFlg
-    - RCRATRIbalLandCode
+    - FacFederalAgencyName
+    - RCRALandTypeCode
+    - FacDerivedHuc
     - FacFIPSCode
+    - FacIndianCntryFlg
+    - RCRAIndianCntryFlg
+    - FacIndianSpatialFlg
+    - FacDerivedTRIbes
+    - FacUsMexBorderFlg
+    - FacSICCodes
+    - RCRANAICS
     - FacLat
     - FacLong
-    - FacUsMexBorderFlg
-    - RCRAImpWaterFlg
     - RCRAUniverse
-    - RCRANAICS
-    - FacSICCodes
-    - FacPercentMinority
-    - FacPopulationDensity
-    - FacFederalAgencyCode
-    - ChesapeakeBayFlag
+    - Tsdf
+    - RCRAStatus
     - AIRIDs
     - CWAIDs
     - RCRAIDs
-    - TRIIDs
+    - RmpIDs
     - SDWAIDs
-    - RCRACaseIDs
-    - RCRACurrSNC
+    - TRIIDs
     - RCRACurrComplStatus
-    - RCRAQtrsInSNC
+    - RCRACurrSNC
     - RCRAQtrsInNC
     - RCRACurrViolationTypes
+    - RCRAQtrsInSNC
+    - RCRAOldestOpenVioDate
     - RCRAInspCnt
-    - RCRALastInspectionDate
     - RCRADaysLastInspection
-    - RCRAIeaCnt
-    - RCRALastIeaDate
-    - RCRAFeaCnt
-    - RCRALastFeaDate
-    - RCRAPenalties
-    - RCRALastPenaltyDate
+    - RCRALastInspectionDate
     - RCRALastInspDateEPA
     - RCRALastInspDateState
-    - RCRALastFeaDateEPA
-    - RCRALastFeaDateState
-    - RCRALastIeaDateEPA
-    - RCRALastIeaDateState
-    - FacTRIReporter
-    - FacTRIOnSiteReleases
-    - FacDerivedHuc
+    - DateLastRecordReview
+    - FacTRILandReleases
+    - FacTRIOffSiteTransfers
     - FacDerivedWBD
     - FacDerivedWBDName
-    - FacMapFlg
-    - FacMapIcon
-    - LastViolationDate
-    - CurrentVioCnt
-    - FacFederalAgencyName
-    - FacTRIOffSiteTransfers
-    - RCRAFIPSCode
-    - RCRALandTypeCode
-    - RCRAOldestOpenVioDate
-    - FacTRILandReleases
-    - RCRAMapIcon
-    - RmpIDs
-    - RCRA3yrComplQtrsStatus
-    - CensusBlockGroup
+    - RCRAImpWaterFlg
+    - ChesapeakeBayFlag
+    - RCRAIeaCnt
+    - RCRAFeaCnt
+    - RCRALastIeaDate
+    - RCRALastIeaDateState
+    - RCRALastIeaDateEPA
+    - RCRALastFeaDate
+    - RCRALastFeaDateState
+    - RCRALastFeaDateEPA
+    - RCRAPenalties
+    - RCRALastPenaltyDate
+    - Over80CountUs
     - PctilePctpre1960Us
     - PctileDpmUs
     - PctileCancerUs
@@ -2287,6 +2297,23 @@ definitions:
     - PctileProximityTsdfUs
     - PctileO3Us
     - PctilePmUs
+    - FacPopulationDensity
+    - FacPercentMinority
+    - EPASystem
+    - Statute
+    - RCRATRIbalLandCode
+    - FacFederalAgencyCode
+    - RCRACaseIDs
+    - FacTRIReporter
+    - FacTRIOnSiteReleases
+    - FacMapFlg
+    - FacMapIcon
+    - LastViolationDate
+    - CurrentVioCnt
+    - RCRAFIPSCode
+    - RCRAMapIcon
+    - RCRA3yrComplQtrsStatus
+    - CensusBlockGroup
     - MaxPctileUs
     - EjscreenFlagUs
     - EjscreenFlag
@@ -2299,15 +2326,17 @@ definitions:
     - Infea5yrFlag
     - Lower48
     - ActiveLower48
-    - FacDerivedTRIbes
-    - FacIndianCntryFlg
-    - FacIndianSpatialFlg
     - CollectionMethod
     - ReferencePoint
     - CalculatedAccuracyMeters
     - Map
+    - WebDocs
+    - Score
+    - MaxScore
   rcr1_MapData: 
     description: Map Data Object
+    xml: 
+      name: Object
     properties: 
       LAT: 
         type: string
@@ -2390,6 +2419,9 @@ definitions:
         title: Map Data
         items: 
           "$ref": "#/definitions/rcr1_MapData" 
+        xml: 
+          name: MapData
+          wrapped: true
     required: 
     - QueryID
     - IconBaseURL
@@ -2458,6 +2490,9 @@ definitions:
         title: Facilities
         items: 
           "$ref": "#/definitions/rcr1_Facilities" 
+        xml: 
+          name: Facilities
+          wrapped: true
       MapOutput: 
         "$ref": "#/definitions/rcr1_MapOutput" 
     required: 
@@ -2576,49 +2611,21 @@ definitions:
     - ClusterData
   rcr2_Facilities: 
     description: Facilities Object
+    xml: 
+      name: Facility
     properties: 
       ObjectId: 
         type: string
         title: Object Identifier
         example: '1'
         description: Sequential number assigned to each facility returned
+      RCRAName: 
+        type: string
       SourceID: 
         type: string
         title: EPA Source Identifier
         example: ALR040033
         description: Unique Identifier assigned by EPA.
-      EPASystem: 
-        type: string
-        title: EPA Data System
-        example: ICP
-        description: |-
-          The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: 
-          - AFS: Air Facility System for Clean Air Act stationary source programs.
-          - ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.
-          - RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.
-          - NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).
-          - TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.
-          - NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.
-          - TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.
-      RegistryID: 
-        type: string
-        title: FRS ID
-        example: '110020837601'
-        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
-      Statute: 
-        type: string
-        title: Regulatory Statute
-        example: CWA
-        description: |-
-          The name of the statute associated with each of the permits and identifiers linked to the facility: 
-          - CAA = the Clean Air Act
-          - CWA = the Clean Water Act
-          - RCRA = the Resource Conservation and Recovery Act
-          - EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)
-          - TSCA = the Toxic Substances Control Act
-          - SDWA = the Safe Drinking Water Act
-      RCRAName: 
-        type: string
       RCRAStreet: 
         type: string
       RCRACity: 
@@ -2629,21 +2636,48 @@ definitions:
         type: string
       RCRAZip: 
         type: string
+      RegistryID: 
+        type: string
+        title: FRS ID
+        example: '110020837601'
+        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
       RCRACounty: 
         type: string
       RCRAEPARegion: 
         type: string
-      RCRAStatus: 
+      FacFederalAgencyName: 
         type: string
-      RCRAIndianCntryFlg: 
+      RCRALandTypeCode: 
         type: string
-      RCRATRIbalLandCode: 
+      FacDerivedHuc: 
         type: string
+        title: Watershed (HUC Code)
+        example: '552968'
+        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
       FacFIPSCode: 
         type: string
         title: FIPS Code
         example: '55001'
         description: The 2-digit Federal Information Processing Standards (FIPS) code to identify the county that a facility is located in.
+      FacIndianCntryFlg: 
+        type: string
+        title: Facility Indian Country Flag
+        description: Flag showing Y/N whether the facility is located in Indian Country.
+      RCRAIndianCntryFlg: 
+        type: string
+      FacIndianSpatialFlg: 
+        type: string
+      FacDerivedTRIbes: 
+        type: string
+      FacUsMexBorderFlg: 
+        type: string
+        title: Near US-Mexico Border
+        example: Y
+        description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
+      FacSICCodes: 
+        type: string
+      RCRANAICS: 
+        type: string
       FacLat: 
         type: string
         title: Latitude
@@ -2654,41 +2688,12 @@ definitions:
         title: Longitude
         example: '-77.085951'
         description: The longitude of the facility in decimal degrees expressed using the NAD83 horizontal datum. The coordinate comes from the FRS EPA Locational Reference Tables (LRT) file which represents the most accurate value for the facility based on the available spatial metadata.
-      FacUsMexBorderFlg: 
-        type: string
-        title: Near US-Mexico Border
-        example: Y
-        description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
-      RCRAImpWaterFlg: 
-        type: string
       RCRAUniverse: 
         type: string
-      RCRANAICS: 
+      Tsdf: 
         type: string
-      FacSICCodes: 
+      RCRAStatus: 
         type: string
-      FacPercentMinority: 
-        type: string
-        title: |-
-          Facility Percent Minority
-
-        example: '45.379'
-        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
-      FacPopulationDensity: 
-        type: string
-        example: '9611.17'
-      FacFederalAgencyCode: 
-        type: string
-        title: |-
-          Facility Federal Agency Code
-
-        example: E
-        description: "Indicates the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government. The five-character code consists of a letter followed by four numbers. There are four possible letters that can occupy the first character position: C = Civilian Federal Agency; D = Department of Defense; E = Department of Energy; X = Unknown. The second and third characters represent the agency code, while the fourth and fifth characters represent the bureau code."
-      ChesapeakeBayFlag: 
-        type: string
-        title: Chesapeake Bay Flag
-        example: Y
-        description: "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
       AIRIDs: 
         type: string
         title: AIR Facility System ID
@@ -2701,121 +2706,86 @@ definitions:
         title: Resource Conservation and Recovery Act IDs
         example: VAD981111784
         description: A unique 12-character ID assigned for each record/permit/site/facility within the RCRAInfo database.
+      RmpIDs: 
+        type: string
+      SDWAIDs: 
+        type: string
+        example: DC0000001
+        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
       TRIIDs: 
         type: string
         title: Toxics Release Inventory Program IDs
         example: 20011FRTTT5001F
         description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
-      SDWAIDs: 
-        type: string
-        example: DC0000001
-        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
-      RCRACaseIDs: 
+      RCRACurrComplStatus: 
         type: string
       RCRACurrSNC: 
         type: string
-      RCRACurrComplStatus: 
-        type: string
-      RCRAQtrsInSNC: 
-        type: string
-        example: '0'
       RCRAQtrsInNC: 
         type: string
         example: '0'
       RCRACurrViolationTypes: 
         type: string
+      RCRAQtrsInSNC: 
+        type: string
+        example: '0'
+      RCRAOldestOpenVioDate: 
+        type: string
       RCRAInspCnt: 
         type: string
         example: '0'
-      RCRALastInspectionDate: 
-        type: string
       RCRADaysLastInspection: 
         type: string
         example: '1247'
+      RCRALastInspectionDate: 
+        type: string
+      RCRALastInspDateEPA: 
+        type: string
+      RCRALastInspDateState: 
+        type: string
+      DateLastRecordReview: 
+        type: string
+      FacTRILandReleases: 
+        type: string
+        example: '11.7'
+      FacTRIOffSiteTransfers: 
+        type: string
+      FacDerivedWBD: 
+        type: string
+      FacDerivedWBDName: 
+        type: string
+      RCRAImpWaterFlg: 
+        type: string
+      ChesapeakeBayFlag: 
+        type: string
+        title: Chesapeake Bay Flag
+        example: Y
+        description: "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
       RCRAIeaCnt: 
+        type: string
+        example: '0'
+      RCRAFeaCnt: 
         type: string
         example: '0'
       RCRALastIeaDate: 
         type: string
-      RCRAFeaCnt: 
+      RCRALastIeaDateState: 
         type: string
-        example: '0'
+      RCRALastIeaDateEPA: 
+        type: string
       RCRALastFeaDate: 
+        type: string
+      RCRALastFeaDateState: 
+        type: string
+      RCRALastFeaDateEPA: 
         type: string
       RCRAPenalties: 
         type: string
         example: "$987"
       RCRALastPenaltyDate: 
         type: string
-      RCRALastInspDateEPA: 
+      Over80CountUs: 
         type: string
-      RCRALastInspDateState: 
-        type: string
-      RCRALastFeaDateEPA: 
-        type: string
-      RCRALastFeaDateState: 
-        type: string
-      RCRALastIeaDateEPA: 
-        type: string
-      RCRALastIeaDateState: 
-        type: string
-      FacTRIReporter: 
-        type: string
-        title: Facility TRI Reporter
-        example: B
-        description: Indicates whether facility reported to the Toxics Release Inventory (TRI) for the most recent reporting year.
-      FacTRIOnSiteReleases: 
-        type: string
-      FacDerivedHuc: 
-        type: string
-        title: Watershed (HUC Code)
-        example: '552968'
-        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
-      FacDerivedWBD: 
-        type: string
-      FacDerivedWBDName: 
-        type: string
-      FacMapFlg: 
-        type: string
-        title: Facility Mapped Flag
-        example: Y
-        description: Graphical indicator denoting whether geographical data required to map a facility are available.
-      FacMapIcon: 
-        type: string
-        title: Facility Map Icon
-        example: CWA-NC-MJ-2.png
-        description: The default map icon image file calculated for the facility by the ECHO program.
-      LastViolationDate: 
-        type: string
-        title: Date of Last Violation
-        example: 5/13/2011
-      CurrentVioCnt: 
-        type: string
-        title: Count of Current Violations
-      FacFederalAgencyName: 
-        type: string
-      FacTRIOffSiteTransfers: 
-        type: string
-      RCRAFIPSCode: 
-        type: string
-      RCRALandTypeCode: 
-        type: string
-      RCRAOldestOpenVioDate: 
-        type: string
-      FacTRILandReleases: 
-        type: string
-        example: '11.7'
-      RCRAMapIcon: 
-        type: string
-      RmpIDs: 
-        type: string
-      RCRA3yrComplQtrsStatus: 
-        type: string
-      CensusBlockGroup: 
-        type: string
-        title: Census Block Group
-        example: '110010096022'
-        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
       PctilePctpre1960Us: 
         type: string
         example: '14.6'
@@ -2860,6 +2830,83 @@ definitions:
         type: string
         example: '93'
         description: The national percentile of the census block group for the EJSCREEN particulate matter indicator.
+      FacPopulationDensity: 
+        type: string
+        example: '9611.17'
+      FacPercentMinority: 
+        type: string
+        title: Facility Percent Minority
+        example: '45.379'
+        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
+      EPASystem: 
+        type: string
+        title: EPA Data System
+        example: ICP
+        description: |-
+          The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: 
+          - AFS: Air Facility System for Clean Air Act stationary source programs.
+          - ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.
+          - RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.
+          - NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).
+          - TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.
+          - NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.
+          - TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.
+      Statute: 
+        type: string
+        title: Regulatory Statute
+        example: CWA
+        description: |-
+          The name of the statute associated with each of the permits and identifiers linked to the facility: 
+          - CAA = the Clean Air Act
+          - CWA = the Clean Water Act
+          - RCRA = the Resource Conservation and Recovery Act
+          - EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)
+          - TSCA = the Toxic Substances Control Act
+          - SDWA = the Safe Drinking Water Act
+      RCRATRIbalLandCode: 
+        type: string
+      FacFederalAgencyCode: 
+        type: string
+        title: Facility Federal Agency Code
+        example: E
+        description: "Indicates the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government. The five-character code consists of a letter followed by four numbers. There are four possible letters that can occupy the first character position: C = Civilian Federal Agency; D = Department of Defense; E = Department of Energy; X = Unknown. The second and third characters represent the agency code, while the fourth and fifth characters represent the bureau code."
+      RCRACaseIDs: 
+        type: string
+      FacTRIReporter: 
+        type: string
+        title: Facility TRI Reporter
+        example: B
+        description: Indicates whether facility reported to the Toxics Release Inventory (TRI) for the most recent reporting year.
+      FacTRIOnSiteReleases: 
+        type: string
+      FacMapFlg: 
+        type: string
+        title: Facility Mapped Flag
+        example: Y
+        description: Graphical indicator denoting whether geographical data required to map a facility are available.
+      FacMapIcon: 
+        type: string
+        title: Facility Map Icon
+        example: CWA-NC-MJ-2.png
+        description: The default map icon image file calculated for the facility by the ECHO program.
+      LastViolationDate: 
+        type: string
+        title: Date of Last Violation
+        example: 5/13/2011
+      CurrentVioCnt: 
+        type: string
+        title: Count of Current Violations
+      RCRAFIPSCode: 
+        type: string
+      RCRAMapIcon: 
+        type: string
+      RCRA3yrComplQtrsStatus: 
+        type: string
+      CensusBlockGroup: 
+        type: string
+        title: Census Block Group
+        example: '110010096022'
+        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
       MaxPctileUs: 
         type: string
         example: '98'
@@ -2907,14 +2954,6 @@ definitions:
         description: Flag showing Y/N whether location is within the contiguous (lower 48) United States.
       ActiveLower48: 
         type: string
-      FacDerivedTRIbes: 
-        type: string
-      FacIndianCntryFlg: 
-        type: string
-        title: Facility Indian Country Flag
-        description: Flag showing Y/N whether the facility is located in Indian Country.
-      FacIndianSpatialFlg: 
-        type: string
       CollectionMethod: 
         type: string
         title: Collection Method
@@ -2932,12 +2971,6 @@ definitions:
       Map: 
         type: string
         title: Map
-      Over80CountUs: 
-        type: string
-      DateLastRecordReview: 
-        type: string
-      Tsdf: 
-        type: string
       WebDocs: 
         type: string
         title: Web Documents
@@ -2954,78 +2987,67 @@ definitions:
         description: "[Col. 121]"
     required: 
     - ObjectId
-    - SourceID
-    - EPASystem
-    - RegistryID
-    - Statute
     - RCRAName
+    - SourceID
     - RCRAStreet
     - RCRACity
     - RCRAState
     - RCRAStateDistrict
     - RCRAZip
+    - RegistryID
     - RCRACounty
     - RCRAEPARegion
-    - RCRAStatus
-    - RCRAIndianCntryFlg
-    - RCRATRIbalLandCode
+    - FacFederalAgencyName
+    - RCRALandTypeCode
+    - FacDerivedHuc
     - FacFIPSCode
+    - FacIndianCntryFlg
+    - RCRAIndianCntryFlg
+    - FacIndianSpatialFlg
+    - FacDerivedTRIbes
+    - FacUsMexBorderFlg
+    - FacSICCodes
+    - RCRANAICS
     - FacLat
     - FacLong
-    - FacUsMexBorderFlg
-    - RCRAImpWaterFlg
     - RCRAUniverse
-    - RCRANAICS
-    - FacSICCodes
-    - FacPercentMinority
-    - FacPopulationDensity
-    - FacFederalAgencyCode
-    - ChesapeakeBayFlag
+    - Tsdf
+    - RCRAStatus
     - AIRIDs
     - CWAIDs
     - RCRAIDs
-    - TRIIDs
+    - RmpIDs
     - SDWAIDs
-    - RCRACaseIDs
-    - RCRACurrSNC
+    - TRIIDs
     - RCRACurrComplStatus
-    - RCRAQtrsInSNC
+    - RCRACurrSNC
     - RCRAQtrsInNC
     - RCRACurrViolationTypes
+    - RCRAQtrsInSNC
+    - RCRAOldestOpenVioDate
     - RCRAInspCnt
-    - RCRALastInspectionDate
     - RCRADaysLastInspection
-    - RCRAIeaCnt
-    - RCRALastIeaDate
-    - RCRAFeaCnt
-    - RCRALastFeaDate
-    - RCRAPenalties
-    - RCRALastPenaltyDate
+    - RCRALastInspectionDate
     - RCRALastInspDateEPA
     - RCRALastInspDateState
-    - RCRALastFeaDateEPA
-    - RCRALastFeaDateState
-    - RCRALastIeaDateEPA
-    - RCRALastIeaDateState
-    - FacTRIReporter
-    - FacTRIOnSiteReleases
-    - FacDerivedHuc
+    - DateLastRecordReview
+    - FacTRILandReleases
+    - FacTRIOffSiteTransfers
     - FacDerivedWBD
     - FacDerivedWBDName
-    - FacMapFlg
-    - FacMapIcon
-    - LastViolationDate
-    - CurrentVioCnt
-    - FacFederalAgencyName
-    - FacTRIOffSiteTransfers
-    - RCRAFIPSCode
-    - RCRALandTypeCode
-    - RCRAOldestOpenVioDate
-    - FacTRILandReleases
-    - RCRAMapIcon
-    - RmpIDs
-    - RCRA3yrComplQtrsStatus
-    - CensusBlockGroup
+    - RCRAImpWaterFlg
+    - ChesapeakeBayFlag
+    - RCRAIeaCnt
+    - RCRAFeaCnt
+    - RCRALastIeaDate
+    - RCRALastIeaDateState
+    - RCRALastIeaDateEPA
+    - RCRALastFeaDate
+    - RCRALastFeaDateState
+    - RCRALastFeaDateEPA
+    - RCRAPenalties
+    - RCRALastPenaltyDate
+    - Over80CountUs
     - PctilePctpre1960Us
     - PctileDpmUs
     - PctileCancerUs
@@ -3037,6 +3059,23 @@ definitions:
     - PctileProximityTsdfUs
     - PctileO3Us
     - PctilePmUs
+    - FacPopulationDensity
+    - FacPercentMinority
+    - EPASystem
+    - Statute
+    - RCRATRIbalLandCode
+    - FacFederalAgencyCode
+    - RCRACaseIDs
+    - FacTRIReporter
+    - FacTRIOnSiteReleases
+    - FacMapFlg
+    - FacMapIcon
+    - LastViolationDate
+    - CurrentVioCnt
+    - RCRAFIPSCode
+    - RCRAMapIcon
+    - RCRA3yrComplQtrsStatus
+    - CensusBlockGroup
     - MaxPctileUs
     - EjscreenFlagUs
     - EjscreenFlag
@@ -3049,13 +3088,13 @@ definitions:
     - Infea5yrFlag
     - Lower48
     - ActiveLower48
-    - FacDerivedTRIbes
-    - FacIndianCntryFlg
-    - FacIndianSpatialFlg
     - CollectionMethod
     - ReferencePoint
     - CalculatedAccuracyMeters
     - Map
+    - WebDocs
+    - Score
+    - MaxScore
   rcr2_Results: 
     description: Results Object
     properties: 
@@ -3129,11 +3168,17 @@ definitions:
         description: A list of submitted query parameters and their values.
         items: 
           "$ref": "#/definitions/qp0_QueryParameters" 
+        xml: 
+          name: QueryParameters
+          wrapped: true
       Facilities: 
         type: array
         title: Facilities
         items: 
           "$ref": "#/definitions/rcr2_Facilities" 
+        xml: 
+          name: Facilities
+          wrapped: true
       ClusterRecords: 
         type: string
         title: Cluster Records
@@ -3176,43 +3221,13 @@ definitions:
   rcr5_properties: 
     description: GeoJSON Properties Object
     properties: 
+      RCRAName: 
+        type: string
       SourceID: 
         type: string
         title: EPA Source Identifier
         example: ALR040033
         description: Unique Identifier assigned by EPA.
-      EPASystem: 
-        type: string
-        title: EPA Data System
-        example: ICP
-        description: |-
-          The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: 
-          - AFS: Air Facility System for Clean Air Act stationary source programs.
-          - ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.
-          - RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.
-          - NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).
-          - TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.
-          - NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.
-          - TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.
-      RegistryID: 
-        type: string
-        title: FRS ID
-        example: '110020837601'
-        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
-      Statute: 
-        type: string
-        title: Regulatory Statute
-        example: CWA
-        description: |-
-          The name of the statute associated with each of the permits and identifiers linked to the facility: 
-          - CAA = the Clean Air Act
-          - CWA = the Clean Water Act
-          - RCRA = the Resource Conservation and Recovery Act
-          - EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)
-          - TSCA = the Toxic Substances Control Act
-          - SDWA = the Safe Drinking Water Act
-      RCRAName: 
-        type: string
       RCRAStreet: 
         type: string
       RCRACity: 
@@ -3223,56 +3238,54 @@ definitions:
         type: string
       RCRAZip: 
         type: string
+      RegistryID: 
+        type: string
+        title: FRS ID
+        example: '110020837601'
+        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
       RCRACounty: 
         type: string
       RCRAEPARegion: 
         type: string
-      RCRAStatus: 
+      FacFederalAgencyName: 
         type: string
-      RCRAIndianCntryFlg: 
+      RCRALandTypeCode: 
         type: string
-      RCRATRIbalLandCode: 
+      FacDerivedHuc: 
         type: string
+        title: Watershed (HUC Code)
+        example: '552968'
+        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
       FacFIPSCode: 
         type: string
         title: FIPS Code
         example: '55001'
         description: The 2-digit Federal Information Processing Standards (FIPS) code to identify the county that a facility is located in.
+      FacIndianCntryFlg: 
+        type: string
+        title: Facility Indian Country Flag
+        description: Flag showing Y/N whether the facility is located in Indian Country.
+      RCRAIndianCntryFlg: 
+        type: string
+      FacIndianSpatialFlg: 
+        type: string
+      FacDerivedTRIbes: 
+        type: string
       FacUsMexBorderFlg: 
         type: string
         title: Near US-Mexico Border
         example: Y
         description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
-      RCRAImpWaterFlg: 
-        type: string
-      RCRAUniverse: 
+      FacSICCodes: 
         type: string
       RCRANAICS: 
         type: string
-      FacSICCodes: 
+      RCRAUniverse: 
         type: string
-      FacPercentMinority: 
-        type: number
-        title: |-
-          Facility Percent Minority
-
-        example: 45.379
-        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
-      FacPopulationDensity: 
-        type: number
-        example: 9611.17
-      FacFederalAgencyCode: 
+      Tsdf: 
         type: string
-        title: |-
-          Facility Federal Agency Code
-
-        example: E
-        description: "Indicates the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government. The five-character code consists of a letter followed by four numbers. There are four possible letters that can occupy the first character position: C = Civilian Federal Agency; D = Department of Defense; E = Department of Energy; X = Unknown. The second and third characters represent the agency code, while the fourth and fifth characters represent the bureau code."
-      ChesapeakeBayFlag: 
+      RCRAStatus: 
         type: string
-        title: Chesapeake Bay Flag
-        example: Y
-        description: "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
       AIRIDs: 
         type: string
         title: AIR Facility System ID
@@ -3285,121 +3298,86 @@ definitions:
         title: Resource Conservation and Recovery Act IDs
         example: VAD981111784
         description: A unique 12-character ID assigned for each record/permit/site/facility within the RCRAInfo database.
+      RmpIDs: 
+        type: string
+      SDWAIDs: 
+        type: string
+        example: DC0000001
+        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
       TRIIDs: 
         type: string
         title: Toxics Release Inventory Program IDs
         example: 20011FRTTT5001F
         description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
-      SDWAIDs: 
-        type: string
-        example: DC0000001
-        description: A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).
-      RCRACaseIDs: 
+      RCRACurrComplStatus: 
         type: string
       RCRACurrSNC: 
         type: string
-      RCRACurrComplStatus: 
-        type: string
-      RCRAQtrsInSNC: 
-        type: number
-        example: 0
       RCRAQtrsInNC: 
         type: number
         example: 0
       RCRACurrViolationTypes: 
         type: string
+      RCRAQtrsInSNC: 
+        type: number
+        example: 0
+      RCRAOldestOpenVioDate: 
+        type: string
       RCRAInspCnt: 
         type: number
         example: 0
-      RCRALastInspectionDate: 
-        type: string
       RCRADaysLastInspection: 
         type: number
         example: 1247
+      RCRALastInspectionDate: 
+        type: string
+      RCRALastInspDateEPA: 
+        type: string
+      RCRALastInspDateState: 
+        type: string
+      DateLastRecordReview: 
+        type: string
+      FacTRILandReleases: 
+        type: string
+        example: '11.7'
+      FacTRIOffSiteTransfers: 
+        type: string
+      FacDerivedWBD: 
+        type: string
+      FacDerivedWBDName: 
+        type: string
+      RCRAImpWaterFlg: 
+        type: string
+      ChesapeakeBayFlag: 
+        type: string
+        title: Chesapeake Bay Flag
+        example: Y
+        description: "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed."
       RCRAIeaCnt: 
+        type: number
+        example: 0
+      RCRAFeaCnt: 
         type: number
         example: 0
       RCRALastIeaDate: 
         type: string
-      RCRAFeaCnt: 
-        type: number
-        example: 0
+      RCRALastIeaDateState: 
+        type: string
+      RCRALastIeaDateEPA: 
+        type: string
       RCRALastFeaDate: 
+        type: string
+      RCRALastFeaDateState: 
+        type: string
+      RCRALastFeaDateEPA: 
         type: string
       RCRAPenalties: 
         type: number
         example: 987
       RCRALastPenaltyDate: 
         type: string
-      RCRALastInspDateEPA: 
-        type: string
-      RCRALastInspDateState: 
-        type: string
-      RCRALastFeaDateEPA: 
-        type: string
-      RCRALastFeaDateState: 
-        type: string
-      RCRALastIeaDateEPA: 
-        type: string
-      RCRALastIeaDateState: 
-        type: string
-      FacTRIReporter: 
-        type: string
-        title: Facility TRI Reporter
-        example: B
-        description: Indicates whether facility reported to the Toxics Release Inventory (TRI) for the most recent reporting year.
-      FacTRIOnSiteReleases: 
-        type: string
-      FacDerivedHuc: 
-        type: string
-        title: Watershed (HUC Code)
-        example: '552968'
-        description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
-      FacDerivedWBD: 
-        type: string
-      FacDerivedWBDName: 
-        type: string
-      FacMapFlg: 
-        type: string
-        title: Facility Mapped Flag
-        example: Y
-        description: Graphical indicator denoting whether geographical data required to map a facility are available.
-      FacMapIcon: 
-        type: string
-        title: Facility Map Icon
-        example: CWA-NC-MJ-2.png
-        description: The default map icon image file calculated for the facility by the ECHO program.
-      LastViolationDate: 
-        type: string
-        title: Date of Last Violation
-        example: 5/13/2011
-      CurrentVioCnt: 
-        type: string
-        title: Count of Current Violations
-      FacFederalAgencyName: 
-        type: string
-      FacTRIOffSiteTransfers: 
-        type: string
-      RCRAFIPSCode: 
-        type: string
-      RCRALandTypeCode: 
-        type: string
-      RCRAOldestOpenVioDate: 
-        type: string
-      FacTRILandReleases: 
-        type: string
-        example: '11.7'
-      RCRAMapIcon: 
-        type: string
-      RmpIDs: 
-        type: string
-      RCRA3yrComplQtrsStatus: 
-        type: string
-      CensusBlockGroup: 
-        type: string
-        title: Census Block Group
-        example: '110010096022'
-        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
+      Over80CountUs: 
+        type: number
       PctilePctpre1960Us: 
         type: number
         example: 14.6
@@ -3444,6 +3422,83 @@ definitions:
         type: number
         example: 52.4
         description: The national percentile of the census block group for the EJSCREEN particulate matter indicator.
+      FacPopulationDensity: 
+        type: number
+        example: 9611.17
+      FacPercentMinority: 
+        type: number
+        title: Facility Percent Minority
+        example: 45.379
+        description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
+      EPASystem: 
+        type: string
+        title: EPA Data System
+        example: ICP
+        description: |-
+          The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: 
+          - AFS: Air Facility System for Clean Air Act stationary source programs.
+          - ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.
+          - RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.
+          - NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).
+          - TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.
+          - NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.
+          - TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.
+      Statute: 
+        type: string
+        title: Regulatory Statute
+        example: CWA
+        description: |-
+          The name of the statute associated with each of the permits and identifiers linked to the facility: 
+          - CAA = the Clean Air Act
+          - CWA = the Clean Water Act
+          - RCRA = the Resource Conservation and Recovery Act
+          - EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)
+          - TSCA = the Toxic Substances Control Act
+          - SDWA = the Safe Drinking Water Act
+      RCRATRIbalLandCode: 
+        type: string
+      FacFederalAgencyCode: 
+        type: string
+        title: Facility Federal Agency Code
+        example: E
+        description: "Indicates the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government. The five-character code consists of a letter followed by four numbers. There are four possible letters that can occupy the first character position: C = Civilian Federal Agency; D = Department of Defense; E = Department of Energy; X = Unknown. The second and third characters represent the agency code, while the fourth and fifth characters represent the bureau code."
+      RCRACaseIDs: 
+        type: string
+      FacTRIReporter: 
+        type: string
+        title: Facility TRI Reporter
+        example: B
+        description: Indicates whether facility reported to the Toxics Release Inventory (TRI) for the most recent reporting year.
+      FacTRIOnSiteReleases: 
+        type: string
+      FacMapFlg: 
+        type: string
+        title: Facility Mapped Flag
+        example: Y
+        description: Graphical indicator denoting whether geographical data required to map a facility are available.
+      FacMapIcon: 
+        type: string
+        title: Facility Map Icon
+        example: CWA-NC-MJ-2.png
+        description: The default map icon image file calculated for the facility by the ECHO program.
+      LastViolationDate: 
+        type: string
+        title: Date of Last Violation
+        example: 5/13/2011
+      CurrentVioCnt: 
+        type: string
+        title: Count of Current Violations
+      RCRAFIPSCode: 
+        type: string
+      RCRAMapIcon: 
+        type: string
+      RCRA3yrComplQtrsStatus: 
+        type: string
+      CensusBlockGroup: 
+        type: string
+        title: Census Block Group
+        example: '110010096022'
+        description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
       MaxPctileUs: 
         type: number
         example: 54.7
@@ -3491,14 +3546,6 @@ definitions:
         description: Flag showing Y/N whether location is within the contiguous (lower 48) United States.
       ActiveLower48: 
         type: string
-      FacDerivedTRIbes: 
-        type: string
-      FacIndianCntryFlg: 
-        type: string
-        title: Facility Indian Country Flag
-        description: Flag showing Y/N whether the facility is located in Indian Country.
-      FacIndianSpatialFlg: 
-        type: string
       CollectionMethod: 
         type: string
         title: Collection Method
@@ -3516,12 +3563,6 @@ definitions:
       Map: 
         type: string
         title: Map
-      Over80CountUs: 
-        type: number
-      DateLastRecordReview: 
-        type: string
-      Tsdf: 
-        type: string
       WebDocs: 
         type: string
         title: Web Documents
@@ -3537,76 +3578,65 @@ definitions:
         example: 1
         description: "[Col. 121]"
     required: 
-    - SourceID
-    - EPASystem
-    - RegistryID
-    - Statute
     - RCRAName
+    - SourceID
     - RCRAStreet
     - RCRACity
     - RCRAState
     - RCRAStateDistrict
     - RCRAZip
+    - RegistryID
     - RCRACounty
     - RCRAEPARegion
-    - RCRAStatus
-    - RCRAIndianCntryFlg
-    - RCRATRIbalLandCode
+    - FacFederalAgencyName
+    - RCRALandTypeCode
+    - FacDerivedHuc
     - FacFIPSCode
+    - FacIndianCntryFlg
+    - RCRAIndianCntryFlg
+    - FacIndianSpatialFlg
+    - FacDerivedTRIbes
     - FacUsMexBorderFlg
-    - RCRAImpWaterFlg
-    - RCRAUniverse
-    - RCRANAICS
     - FacSICCodes
-    - FacPercentMinority
-    - FacPopulationDensity
-    - FacFederalAgencyCode
-    - ChesapeakeBayFlag
+    - RCRANAICS
+    - RCRAUniverse
+    - Tsdf
+    - RCRAStatus
     - AIRIDs
     - CWAIDs
     - RCRAIDs
-    - TRIIDs
+    - RmpIDs
     - SDWAIDs
-    - RCRACaseIDs
-    - RCRACurrSNC
+    - TRIIDs
     - RCRACurrComplStatus
-    - RCRAQtrsInSNC
+    - RCRACurrSNC
     - RCRAQtrsInNC
     - RCRACurrViolationTypes
+    - RCRAQtrsInSNC
+    - RCRAOldestOpenVioDate
     - RCRAInspCnt
-    - RCRALastInspectionDate
     - RCRADaysLastInspection
-    - RCRAIeaCnt
-    - RCRALastIeaDate
-    - RCRAFeaCnt
-    - RCRALastFeaDate
-    - RCRAPenalties
-    - RCRALastPenaltyDate
+    - RCRALastInspectionDate
     - RCRALastInspDateEPA
     - RCRALastInspDateState
-    - RCRALastFeaDateEPA
-    - RCRALastFeaDateState
-    - RCRALastIeaDateEPA
-    - RCRALastIeaDateState
-    - FacTRIReporter
-    - FacTRIOnSiteReleases
-    - FacDerivedHuc
+    - DateLastRecordReview
+    - FacTRILandReleases
+    - FacTRIOffSiteTransfers
     - FacDerivedWBD
     - FacDerivedWBDName
-    - FacMapFlg
-    - FacMapIcon
-    - LastViolationDate
-    - CurrentVioCnt
-    - FacFederalAgencyName
-    - FacTRIOffSiteTransfers
-    - RCRAFIPSCode
-    - RCRALandTypeCode
-    - RCRAOldestOpenVioDate
-    - FacTRILandReleases
-    - RCRAMapIcon
-    - RmpIDs
-    - RCRA3yrComplQtrsStatus
-    - CensusBlockGroup
+    - RCRAImpWaterFlg
+    - ChesapeakeBayFlag
+    - RCRAIeaCnt
+    - RCRAFeaCnt
+    - RCRALastIeaDate
+    - RCRALastIeaDateState
+    - RCRALastIeaDateEPA
+    - RCRALastFeaDate
+    - RCRALastFeaDateState
+    - RCRALastFeaDateEPA
+    - RCRAPenalties
+    - RCRALastPenaltyDate
+    - Over80CountUs
     - PctilePctpre1960Us
     - PctileDpmUs
     - PctileCancerUs
@@ -3618,6 +3648,23 @@ definitions:
     - PctileProximityTsdfUs
     - PctileO3Us
     - PctilePmUs
+    - FacPopulationDensity
+    - FacPercentMinority
+    - EPASystem
+    - Statute
+    - RCRATRIbalLandCode
+    - FacFederalAgencyCode
+    - RCRACaseIDs
+    - FacTRIReporter
+    - FacTRIOnSiteReleases
+    - FacMapFlg
+    - FacMapIcon
+    - LastViolationDate
+    - CurrentVioCnt
+    - RCRAFIPSCode
+    - RCRAMapIcon
+    - RCRA3yrComplQtrsStatus
+    - CensusBlockGroup
     - MaxPctileUs
     - EjscreenFlagUs
     - EjscreenFlag
@@ -3630,15 +3677,17 @@ definitions:
     - Infea5yrFlag
     - Lower48
     - ActiveLower48
-    - FacDerivedTRIbes
-    - FacIndianCntryFlg
-    - FacIndianSpatialFlg
     - CollectionMethod
     - ReferencePoint
     - CalculatedAccuracyMeters
     - Map
+    - WebDocs
+    - Score
+    - MaxScore
   rcr3_MapData: 
     description: Map Data Object
+    xml: 
+      name: Object
     properties: 
       LAT: 
         type: string
@@ -3749,6 +3798,9 @@ definitions:
         title: Facilities
         items: 
           "$ref": "#/definitions/rcr1_Facilities" 
+        xml: 
+          name: Facilities
+          wrapped: true
       PageNo: 
         type: string
         title: Page Number
