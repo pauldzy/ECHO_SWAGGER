@@ -1353,6 +1353,9 @@
       ,"rlk00_LuValues": {
           "type": "object"
          ,"description": "Lookup Values"
+         ,"xml": {
+             "name": "LuValue"
+         }
          ,"properties": {
              "ValueCode": {
                 "type": "string"
@@ -1384,6 +1387,10 @@
                 "type": "array"
                ,"items": {
                    "$ref": "#\/definitions\/rlk00_LuValues"
+               }
+               ,"xml": {
+                   "name": "LuValues"
+                  ,"wrapped": true
                }
             }
          }
