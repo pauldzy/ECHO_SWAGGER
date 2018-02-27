@@ -155,6 +155,11 @@ parameters:
     in: query
     type: string
     required: false
+  p_chem_univ_metric: 
+    name: p_chem_univ_metric
+    in: query
+    type: string
+    required: false
   p_watershed_group: 
     name: p_watershed_group
     in: query
@@ -171,10 +176,20 @@ parameters:
     - N
     type: string
     required: false
+  p_rpt_disch_units: 
+    name: p_rpt_disch_units
+    in: query
+    type: string
+    required: false
   p_pct_limit_disch: 
     name: p_pct_limit_disch
     in: query
     type: number
+    required: false
+  p_fac_univ_metric: 
+    name: p_fac_univ_metric
+    in: query
+    type: string
     required: false
   p_dmr_tri_release: 
     name: p_dmr_tri_release
@@ -187,8 +202,18 @@ parameters:
     in: query
     type: string
     required: false
+  p_tri_npdes_link: 
+    name: p_tri_npdes_link
+    in: query
+    type: string
+    required: false
   p_treatment_tech: 
     name: p_treatment_tech
+    in: query
+    type: string
+    required: false
+  p_discharge_type: 
+    name: p_discharge_type
     in: query
     type: string
     required: false
@@ -198,8 +223,53 @@ parameters:
     description: 5-Digit Watershed ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values.
     type: string
     required: false
+  p_top_chem_univ: 
+    name: p_top_chem_univ
+    in: query
+    type: string
+    required: false
+  p_rpt_disch_amt: 
+    name: p_rpt_disch_amt
+    in: query
+    type: string
+    required: false
+  p_ind_sector_id: 
+    name: p_ind_sector_id
+    in: query
+    type: string
+    required: false
+  p_imp_sw_source: 
+    name: p_imp_sw_source
+    in: query
+    type: string
+    required: false
+  p_chem_group_id: 
+    name: p_chem_group_id
+    in: query
+    type: string
+    required: false
+  p_top_ind_univ: 
+    name: p_top_ind_univ
+    in: query
+    type: string
+    required: false
+  p_rpt_disch_gt: 
+    name: p_rpt_disch_gt
+    in: query
+    type: string
+    required: false
   p_nutrient_agg: 
     name: p_nutrient_agg
+    in: query
+    type: string
+    required: false
+  p_exceed_scope: 
+    name: p_exceed_scope
+    in: query
+    type: string
+    required: false
+  p_exceed_count: 
+    name: p_exceed_count
     in: query
     type: string
     required: false
@@ -214,6 +284,11 @@ parameters:
     in: query
     type: string
     required: false
+  p_twpe_exceed: 
+    name: p_twpe_exceed
+    in: query
+    type: string
+    required: false
   p_permit_type: 
     name: p_permit_type
     in: query
@@ -221,6 +296,21 @@ parameters:
     required: false
   p_param_group: 
     name: p_param_group
+    in: query
+    type: string
+    required: false
+  p_exceed_type: 
+    name: p_exceed_type
+    in: query
+    type: string
+    required: false
+  p_top_metric: 
+    name: p_top_metric
+    in: query
+    type: string
+    required: false
+  p_start_year: 
+    name: p_start_year
     in: query
     type: string
     required: false
@@ -259,10 +349,20 @@ parameters:
     in: query
     type: string
     required: false
+  p_chem_slice: 
+    name: p_chem_slice
+    in: query
+    type: string
+    required: false
   p_watershed: 
     name: p_watershed
     in: query
     description: Watershed. Provide a watershed name in combination with p_watershed_group to restrict results.
+    type: string
+    required: false
+  p_rpt_disch: 
+    name: p_rpt_disch
+    in: query
     type: string
     required: false
   p_poll_name: 
@@ -286,6 +386,31 @@ parameters:
     name: p_imp_water
     in: query
     description: Discharge to impaired waterbodies flag. Provide Y or N to restrict results to DMR facilities that discharge to impaired waterbodies
+    type: string
+    required: false
+  p_get_chart: 
+    name: p_get_chart
+    in: query
+    type: string
+    required: false
+  p_fac_slice: 
+    name: p_fac_slice
+    in: query
+    type: string
+    required: false
+  p_drilldown: 
+    name: p_drilldown
+    in: query
+    type: string
+    required: false
+  p_chem_name: 
+    name: p_chem_name
+    in: query
+    type: string
+    required: false
+  p_top_sort: 
+    name: p_top_sort
+    in: query
     type: string
     required: false
   p_sig_flag: 
@@ -342,13 +467,28 @@ parameters:
     in: query
     type: string
     required: false
+  p_end_year: 
+    name: p_end_year
+    in: query
+    type: string
+    required: false
   p_end_date: 
     name: p_end_date
     in: query
     type: string
     required: false
+  srch_type: 
+    name: srch_type
+    in: query
+    type: string
+    required: false
   p_qc_flag: 
     name: p_qc_flag
+    in: query
+    type: string
+    required: false
+  p_outfall: 
+    name: p_outfall
     in: query
     type: string
     required: false
@@ -366,6 +506,11 @@ parameters:
     name: p_naics2
     in: query
     description: "North American Industry Classification System Filter. Enter two digit code to filter results to facilities having matching NAICS codes.  A final wild-card is always present allowing \"22\" to match all NAICS codes beginning with 22. "
+    type: string
+    required: false
+  p_imp_sw: 
+    name: p_imp_sw
+    in: query
     type: string
     required: false
   p_exceed: 
@@ -486,7 +631,45 @@ paths:
     get: 
       summary: Discharge Monitoring Report Custom Service
       parameters: 
-      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/srch_type"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_cas"
+      - "$ref": "#/parameters/p_poll_cat"
+      - "$ref": "#/parameters/p_exceed"
+      - "$ref": "#/parameters/p_potw"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_maj"
+      - "$ref": "#/parameters/p_dmr_tri_link"
+      - "$ref": "#/parameters/p_dmr_tri_release"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_chem_name"
+      - "$ref": "#/parameters/p_discharge_type"
+      - "$ref": "#/parameters/p_tri_npdes_link"
+      - "$ref": "#/parameters/p_rpt_disch"
+      - "$ref": "#/parameters/p_rpt_disch_gt"
+      - "$ref": "#/parameters/p_rpt_disch_units"
+      - "$ref": "#/parameters/p_rpt_disch_amt"
+      - "$ref": "#/parameters/p_imp_sw"
+      - "$ref": "#/parameters/p_imp_sw_source"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -504,7 +687,45 @@ paths:
     post: 
       summary: Discharge Monitoring Report Custom Service
       parameters: 
-      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/srch_type"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_cas"
+      - "$ref": "#/parameters/p_poll_cat"
+      - "$ref": "#/parameters/p_exceed"
+      - "$ref": "#/parameters/p_potw"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_maj"
+      - "$ref": "#/parameters/p_dmr_tri_link"
+      - "$ref": "#/parameters/p_dmr_tri_release"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_chem_name"
+      - "$ref": "#/parameters/p_discharge_type"
+      - "$ref": "#/parameters/p_tri_npdes_link"
+      - "$ref": "#/parameters/p_rpt_disch"
+      - "$ref": "#/parameters/p_rpt_disch_gt"
+      - "$ref": "#/parameters/p_rpt_disch_units"
+      - "$ref": "#/parameters/p_rpt_disch_amt"
+      - "$ref": "#/parameters/p_imp_sw"
+      - "$ref": "#/parameters/p_imp_sw_source"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -523,7 +744,25 @@ paths:
     get: 
       summary: Discharge Monitoring Report Custom Service
       parameters: 
-      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_drilldown"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_ind_sector_id"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_top_chem_univ"
+      - "$ref": "#/parameters/p_top_ind_univ"
+      - "$ref": "#/parameters/p_top_metric"
+      - "$ref": "#/parameters/p_top_sort"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -541,7 +780,25 @@ paths:
     post: 
       summary: Discharge Monitoring Report Custom Service
       parameters: 
-      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_drilldown"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_ind_sector_id"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_top_chem_univ"
+      - "$ref": "#/parameters/p_top_ind_univ"
+      - "$ref": "#/parameters/p_top_metric"
+      - "$ref": "#/parameters/p_top_sort"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -561,6 +818,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_param_code"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -579,6 +841,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_param_code"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -598,6 +865,48 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_cas"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_dmr_tri_link"
+      - "$ref": "#/parameters/p_dmr_tri_release"
+      - "$ref": "#/parameters/p_end_year"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_exceed_count"
+      - "$ref": "#/parameters/p_exceed_scope"
+      - "$ref": "#/parameters/p_exceed_type"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_lbs_exceed"
+      - "$ref": "#/parameters/p_maj"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_pct_exceed"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_permit_type"
+      - "$ref": "#/parameters/p_poll_cat"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_potw"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_qc_flag"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_start_year"
+      - "$ref": "#/parameters/p_twpe_exceed"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/newsort"
+      - "$ref": "#/parameters/descending"
+      - "$ref": "#/parameters/responseset"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -616,6 +925,48 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_cas"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_dmr_tri_link"
+      - "$ref": "#/parameters/p_dmr_tri_release"
+      - "$ref": "#/parameters/p_end_year"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_exceed_count"
+      - "$ref": "#/parameters/p_exceed_scope"
+      - "$ref": "#/parameters/p_exceed_type"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_lbs_exceed"
+      - "$ref": "#/parameters/p_maj"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_pct_exceed"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_permit_type"
+      - "$ref": "#/parameters/p_poll_cat"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_potw"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_qc_flag"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_start_year"
+      - "$ref": "#/parameters/p_twpe_exceed"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/newsort"
+      - "$ref": "#/parameters/descending"
+      - "$ref": "#/parameters/responseset"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -804,6 +1155,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_poll_cat"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -822,6 +1178,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_poll_cat"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -841,6 +1202,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_end_date"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_start_date"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -859,6 +1225,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_end_date"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_start_date"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -878,6 +1249,10 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -896,6 +1271,10 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -914,7 +1293,25 @@ paths:
     get: 
       summary: Discharge Monitoring Report Custom Service
       parameters: 
-      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_chem_group_id"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_drilldown"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_top_chem_univ"
+      - "$ref": "#/parameters/p_top_ind_univ"
+      - "$ref": "#/parameters/p_top_metric"
+      - "$ref": "#/parameters/p_top_sort"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -932,7 +1329,25 @@ paths:
     post: 
       summary: Discharge Monitoring Report Custom Service
       parameters: 
-      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_chem_group_id"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_drilldown"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_top_chem_univ"
+      - "$ref": "#/parameters/p_top_ind_univ"
+      - "$ref": "#/parameters/p_top_metric"
+      - "$ref": "#/parameters/p_top_sort"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -952,6 +1367,12 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_outfall"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_param_code"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -970,6 +1391,12 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_outfall"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_param_code"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -989,6 +1416,8 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1007,6 +1436,8 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1026,6 +1457,10 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1044,6 +1479,10 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1063,6 +1502,23 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_fac_slice"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_top_chem_univ"
+      - "$ref": "#/parameters/p_top_ind_univ"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1081,6 +1537,23 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_fac_slice"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_top_chem_univ"
+      - "$ref": "#/parameters/p_top_ind_univ"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1100,6 +1573,22 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_top_chem_univ"
+      - "$ref": "#/parameters/p_top_ind_univ"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1118,6 +1607,22 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_top_chem_univ"
+      - "$ref": "#/parameters/p_top_ind_univ"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1243,7 +1748,36 @@ paths:
     get: 
       summary: Discharge Monitoring Report Custom Service
       parameters: 
-      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/srch_type"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_cas"
+      - "$ref": "#/parameters/p_poll_cat"
+      - "$ref": "#/parameters/p_exceed"
+      - "$ref": "#/parameters/p_potw"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_maj"
+      - "$ref": "#/parameters/p_dmr_tri_link"
+      - "$ref": "#/parameters/p_dmr_tri_release"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_permit_id"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1261,7 +1795,36 @@ paths:
     post: 
       summary: Discharge Monitoring Report Custom Service
       parameters: 
-      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/srch_type"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_cas"
+      - "$ref": "#/parameters/p_poll_cat"
+      - "$ref": "#/parameters/p_exceed"
+      - "$ref": "#/parameters/p_potw"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_maj"
+      - "$ref": "#/parameters/p_dmr_tri_link"
+      - "$ref": "#/parameters/p_dmr_tri_release"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_permit_id"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1281,6 +1844,40 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_cas"
+      - "$ref": "#/parameters/p_poll_cat"
+      - "$ref": "#/parameters/p_exceed"
+      - "$ref": "#/parameters/p_potw"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_maj"
+      - "$ref": "#/parameters/p_dmr_tri_link"
+      - "$ref": "#/parameters/p_dmr_tri_release"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/newsort"
+      - "$ref": "#/parameters/descending"
+      - "$ref": "#/parameters/responseset"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1299,6 +1896,40 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_cas"
+      - "$ref": "#/parameters/p_poll_cat"
+      - "$ref": "#/parameters/p_exceed"
+      - "$ref": "#/parameters/p_potw"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_maj"
+      - "$ref": "#/parameters/p_dmr_tri_link"
+      - "$ref": "#/parameters/p_dmr_tri_release"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/newsort"
+      - "$ref": "#/parameters/descending"
+      - "$ref": "#/parameters/responseset"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1318,6 +1949,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_end_date"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_start_date"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1336,6 +1972,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_end_date"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_start_date"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1355,6 +1996,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_param_code"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1373,6 +2019,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_param_code"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1392,6 +2043,13 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_huc_region"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1410,6 +2068,13 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_huc_region"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1429,6 +2094,13 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_huc_region"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1447,6 +2119,13 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_huc_region"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1466,6 +2145,9 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1484,6 +2166,9 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1841,6 +2526,40 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_chem_name"
+      - "$ref": "#/parameters/p_discharge_type"
+      - "$ref": "#/parameters/p_exceed"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_tri_npdes_link"
+      - "$ref": "#/parameters/p_rpt_disch"
+      - "$ref": "#/parameters/p_rpt_disch_gt"
+      - "$ref": "#/parameters/p_rpt_disch_units"
+      - "$ref": "#/parameters/p_rpt_disch_amt"
+      - "$ref": "#/parameters/p_imp_sw"
+      - "$ref": "#/parameters/p_imp_sw_source"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/newsort"
+      - "$ref": "#/parameters/descending"
+      - "$ref": "#/parameters/responseset"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1859,6 +2578,40 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_chem_name"
+      - "$ref": "#/parameters/p_discharge_type"
+      - "$ref": "#/parameters/p_exceed"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_tri_npdes_link"
+      - "$ref": "#/parameters/p_rpt_disch"
+      - "$ref": "#/parameters/p_rpt_disch_gt"
+      - "$ref": "#/parameters/p_rpt_disch_units"
+      - "$ref": "#/parameters/p_rpt_disch_amt"
+      - "$ref": "#/parameters/p_imp_sw"
+      - "$ref": "#/parameters/p_imp_sw_source"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/newsort"
+      - "$ref": "#/parameters/descending"
+      - "$ref": "#/parameters/responseset"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1878,6 +2631,10 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_end_year"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_start_year"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1896,6 +2653,10 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_end_year"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_start_year"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1915,6 +2676,30 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_chem_group_id"
+      - "$ref": "#/parameters/p_chem_univ_metric"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_drilldown"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_fac_univ_metric"
+      - "$ref": "#/parameters/p_get_chart"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_ind_sector_id"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_top_chem_univ"
+      - "$ref": "#/parameters/p_top_ind_univ"
+      - "$ref": "#/parameters/p_top_metric"
+      - "$ref": "#/parameters/p_top_sort"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1933,6 +2718,30 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_chem_group_id"
+      - "$ref": "#/parameters/p_chem_univ_metric"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_drilldown"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_fac_univ_metric"
+      - "$ref": "#/parameters/p_get_chart"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_ind_sector_id"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_top_chem_univ"
+      - "$ref": "#/parameters/p_top_ind_univ"
+      - "$ref": "#/parameters/p_top_metric"
+      - "$ref": "#/parameters/p_top_sort"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1952,6 +2761,23 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_chem_slice"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_top_chem_univ"
+      - "$ref": "#/parameters/p_top_ind_univ"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1970,6 +2796,23 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_chem_slice"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_imp_water"
+      - "$ref": "#/parameters/p_imp_poll"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_top_chem_univ"
+      - "$ref": "#/parameters/p_top_ind_univ"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -1989,6 +2832,12 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_outfall"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_param_code"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -2007,6 +2856,12 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_outfall"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_poll_name"
+      - "$ref": "#/parameters/p_param_code"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -2026,6 +2881,8 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -2044,6 +2901,8 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -2063,6 +2922,40 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_chem_name"
+      - "$ref": "#/parameters/p_discharge_type"
+      - "$ref": "#/parameters/p_exceed"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_tri_npdes_link"
+      - "$ref": "#/parameters/p_rpt_disch"
+      - "$ref": "#/parameters/p_rpt_disch_gt"
+      - "$ref": "#/parameters/p_rpt_disch_units"
+      - "$ref": "#/parameters/p_rpt_disch_amt"
+      - "$ref": "#/parameters/p_imp_sw"
+      - "$ref": "#/parameters/p_imp_sw_source"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/newsort"
+      - "$ref": "#/parameters/descending"
+      - "$ref": "#/parameters/responseset"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -2081,6 +2974,40 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/download"
+      - "$ref": "#/parameters/p_year"
+      - "$ref": "#/parameters/p_zip"
+      - "$ref": "#/parameters/p_reg"
+      - "$ref": "#/parameters/p_st"
+      - "$ref": "#/parameters/p_co"
+      - "$ref": "#/parameters/p_ct"
+      - "$ref": "#/parameters/p_watershed_zip"
+      - "$ref": "#/parameters/p_watershed_group"
+      - "$ref": "#/parameters/p_watershed"
+      - "$ref": "#/parameters/p_huc"
+      - "$ref": "#/parameters/p_esa"
+      - "$ref": "#/parameters/p_chem_name"
+      - "$ref": "#/parameters/p_discharge_type"
+      - "$ref": "#/parameters/p_exceed"
+      - "$ref": "#/parameters/p_psc"
+      - "$ref": "#/parameters/p_sic2"
+      - "$ref": "#/parameters/p_sic"
+      - "$ref": "#/parameters/p_naics2"
+      - "$ref": "#/parameters/p_naics"
+      - "$ref": "#/parameters/p_fname"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_tri_npdes_link"
+      - "$ref": "#/parameters/p_rpt_disch"
+      - "$ref": "#/parameters/p_rpt_disch_gt"
+      - "$ref": "#/parameters/p_rpt_disch_units"
+      - "$ref": "#/parameters/p_rpt_disch_amt"
+      - "$ref": "#/parameters/p_imp_sw"
+      - "$ref": "#/parameters/p_imp_sw_source"
+      - "$ref": "#/parameters/pageno"
+      - "$ref": "#/parameters/newsort"
+      - "$ref": "#/parameters/descending"
+      - "$ref": "#/parameters/responseset"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -2100,6 +3027,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_chem_group_id"
+      - "$ref": "#/parameters/p_end_year"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_start_year"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
@@ -2118,6 +3050,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_chem_group_id"
+      - "$ref": "#/parameters/p_end_year"
+      - "$ref": "#/parameters/p_permit_id"
+      - "$ref": "#/parameters/p_start_year"
+      - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
       responses: 
