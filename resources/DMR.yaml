@@ -6214,7 +6214,7 @@ definitions:
         type: array
         title: Chemical Group Discharges Object
         items: 
-          "$ref": "#/definitions/dmr17_ChemicalGroups.ChemicalGroupDischarges" 
+          "$ref": "#/definitions/dmr30_ChemicalGroupDischarges" 
         xml: 
           name: ChemicalGroupDischarges
           wrapped: true
@@ -6223,7 +6223,7 @@ definitions:
     - ChemicalGroupName
     - CoveredByTRI
     - ChemicalGroupDischarges
-  dmr17_ChemicalGroups.ChemicalGroupDischarges: 
+  dmr30_ChemicalGroupDischarges: 
     description: Chemical Group Discharges Object
     xml: 
       name: ChemicalGroupDischarges
@@ -6322,7 +6322,7 @@ definitions:
         type: array
         title: Pollutant Discharges
         items: 
-          "$ref": "#/definitions/dmr18_Pollutants.PollutantDischarges" 
+          "$ref": "#/definitions/dmr28_PollutantDischarges" 
         xml: 
           name: PollutantDischarges
           wrapped: true
@@ -6330,7 +6330,7 @@ definitions:
     - PollutantType
     - Pollutant
     - PollutantDischarges
-  dmr18_Pollutants.PollutantDischarges: 
+  dmr28_PollutantDischarges: 
     type: object
     xml: 
       name: PollutantDischarges
@@ -6463,7 +6463,7 @@ definitions:
         type: array
         title: Pollutant Limits
         items: 
-          "$ref": "#/definitions/dmr20_Outfalls.PollutantLimits" 
+          "$ref": "#/definitions/dmr29_PollutantLimits" 
         xml: 
           name: PollutantLimits
           wrapped: true
@@ -6471,7 +6471,7 @@ definitions:
         type: array
         title: Pollutant Measurements
         items: 
-          "$ref": "#/definitions/dmr20_Outfalls.PollutantMeasurements" 
+          "$ref": "#/definitions/dmr29_PollutantMeasurements" 
         xml: 
           name: PollutantMeasurements
           wrapped: true
@@ -6482,7 +6482,7 @@ definitions:
     - LimitSetDesignator
     - PollutantLimits
     - PollutantMeasurements
-  dmr20_Outfalls.PollutantLimits: 
+  dmr29_PollutantLimits: 
     description: Pollutant Limits Object
     xml: 
       name: PollutantLimits
@@ -6512,7 +6512,7 @@ definitions:
     - LimitValue
     - LimitUnitDesc
     - LimitType
-  dmr20_Outfalls.PollutantMeasurements: 
+  dmr29_PollutantMeasurements: 
     description: Pollutant Measurements Object
     xml: 
       name: PollutantMeasurements
