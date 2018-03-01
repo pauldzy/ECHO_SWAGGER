@@ -532,12 +532,6 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"srch_type": {
-          "name": "srch_type"
-         ,"in": "query"
-         ,"type": "string"
-         ,"required": false
-      }
       ,"p_qc_flag": {
           "name": "p_qc_flag"
          ,"in": "query"
@@ -710,467 +704,7 @@
       }
    }
    ,"paths": {
-       "\/dmr_rest_services.get_tri_fac_counts": {
-          "get": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/srch_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/download"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cas"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_cat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_potw"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_psc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_link"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_release"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fname"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_chem_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_discharge_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_tri_npdes_link"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_rpt_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_rpt_disch_gt"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_rpt_disch_units"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_rpt_disch_amt"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_sw"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_sw_source"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/DEF.dmr_rest_services.get_tri_fac_counts.Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/srch_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/download"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cas"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_cat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_potw"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_psc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_link"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_release"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fname"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_chem_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_discharge_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_tri_npdes_link"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_rpt_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_rpt_disch_gt"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_rpt_disch_units"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_rpt_disch_amt"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_sw"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_sw_source"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/DEF.dmr_rest_services.get_tri_fac_counts.Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/dmr_rest_services.get_dashboard_top_chem": {
-          "get": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_drilldown"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ind_sector_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_chem_univ"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_ind_univ"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_metric"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_sort"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/DEF.dmr_rest_services.get_dashboard_top_chem.Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_drilldown"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ind_sector_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_chem_univ"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_ind_univ"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_metric"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_sort"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/DEF.dmr_rest_services.get_dashboard_top_chem.Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/dmr_rest_services.get_pollutant_loads": {
+       "\/dmr_rest_services.get_pollutant_loads": {
           "get": {
              "summary": "Discharge Monitoring Report Custom Service"
             ,"parameters": [
@@ -2304,176 +1838,6 @@
             }
          }
       }
-      ,"\/dmr_rest_services.get_dashboard_top_ind": {
-          "get": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/p_chem_group_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_drilldown"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_chem_univ"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_ind_univ"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_metric"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_sort"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/DEF.dmr_rest_services.get_dashboard_top_ind.Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/p_chem_group_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_drilldown"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_chem_univ"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_ind_univ"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_metric"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_sort"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/DEF.dmr_rest_services.get_dashboard_top_ind.Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
       ,"\/dmr_rest_services.get_facility_loads": {
           "get": {
              "summary": "Discharge Monitoring Report Custom Service"
@@ -3316,242 +2680,6 @@
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/dmr0_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/dmr_rest_services.get_dmr_fac_counts": {
-          "get": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/srch_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/download"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cas"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_cat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_potw"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_psc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_link"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_release"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fname"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/DEF.dmr_rest_services.get_dmr_fac_counts.Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/srch_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/download"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cas"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_cat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_potw"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_psc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_link"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_release"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fname"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/DEF.dmr_rest_services.get_dmr_fac_counts.Results"
                      }
                   }
                   ,"required": [
@@ -6470,37 +5598,545 @@
       }
    }
    ,"definitions": {
-       "DEF.dmr_rest_services.get_all_dmr_facilities.Results": {
+       "DEF.dmr_rest_services.get_all_dmr_facilities.Facilities": {
+          "type": "object"
+         ,"description": "Facilities Object"
+         ,"xml": {
+             "name": "Facilities"
+         }
+         ,"properties": {
+             "NPDES": {
+                "type": "string"
+               ,"title": "NPDES Flag"
+            }
+            ,"FacilityName": {
+                "type": "string"
+               ,"title": "Facility Name"
+               ,"example": "3M COMPANY"
+               ,"description": "The name of the facility."
+            }
+            ,"City": {
+                "type": "string"
+               ,"title": "City"
+               ,"description": "The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery."
+            }
+            ,"CountyName": {
+                "type": "string"
+            }
+            ,"StateCode": {
+                "type": "string"
+            }
+            ,"GeocodeLatitude": {
+                "type": "string"
+            }
+            ,"GeocodeLongitude": {
+                "type": "string"
+            }
+            ,"MajorMinorStatusFlag": {
+                "type": "string"
+            }
+            ,"FacInfoOnly": {
+                "type": "string"
+            }
+            ,"FacPermitData": {
+                "type": "string"
+               ,"title": "NPDES Flag"
+            }
+            ,"MonReqOnly": {
+                "type": "string"
+               ,"title": "NPDES Flag"
+            }
+            ,"MonReqAndLimits": {
+                "type": "string"
+               ,"title": "NPDES Flag"
+            }
+            ,"FacPermitDmrData": {
+                "type": "string"
+               ,"title": "NPDES Flag"
+            }
+         }
+         ,"required": [
+             "NPDES"
+            ,"FacilityName"
+            ,"City"
+            ,"CountyName"
+            ,"StateCode"
+            ,"GeocodeLatitude"
+            ,"GeocodeLongitude"
+            ,"MajorMinorStatusFlag"
+            ,"FacInfoOnly"
+            ,"FacPermitData"
+            ,"MonReqOnly"
+            ,"MonReqAndLimits"
+            ,"FacPermitDmrData"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_all_dmr_facilities.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"QueryRows": {
+                "type": "string"
+               ,"title": "Query Row Count"
+               ,"example": "5"
+               ,"description": "Number of query results returned"
+            }
+            ,"PageCount": {
+                "type": "string"
+            }
+            ,"PageNo": {
+                "type": "string"
+               ,"title": "Page Number"
+               ,"example": "1"
+               ,"description": "The number of pages of results returned"
+            }
+            ,"StartRec": {
+                "type": "string"
+            }
+            ,"EndRec": {
+                "type": "string"
+            }
+            ,"Facilities": {
+                "type": "array"
+               ,"title": "Facilities"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_all_dmr_facilities.Facilities"
+               }
+               ,"xml": {
+                   "name": "Facilities"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+            ,"QueryRows"
+            ,"PageCount"
+            ,"PageNo"
+            ,"StartRec"
+            ,"EndRec"
+            ,"Facilities"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_all_tri_facilities.Facilities": {
+          "type": "object"
+         ,"xml": {
+             "name": "Facilities"
+         }
+         ,"properties": {
+             "TRIFacilityID": {
+                "type": "string"
+            }
+            ,"Uin": {
+                "type": "string"
+            }
+            ,"FacilityName": {
+                "type": "string"
+               ,"title": "Facility Name"
+               ,"example": "3M COMPANY"
+               ,"description": "The name of the facility."
+            }
+            ,"City": {
+                "type": "string"
+               ,"title": "City"
+               ,"description": "The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery."
+            }
+            ,"CountyName": {
+                "type": "string"
+            }
+            ,"StateCode": {
+                "type": "string"
+            }
+            ,"DirectReleaseOnly": {
+                "type": "string"
+            }
+            ,"IndirectReleaseOnly": {
+                "type": "string"
+            }
+            ,"ReleaseBoth": {
+                "type": "string"
+            }
+            ,"Linktodmr": {
+                "type": "string"
+            }
+            ,"DmrDischarges": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "TRIFacilityID"
+            ,"Uin"
+            ,"FacilityName"
+            ,"City"
+            ,"CountyName"
+            ,"StateCode"
+            ,"DirectReleaseOnly"
+            ,"IndirectReleaseOnly"
+            ,"ReleaseBoth"
+            ,"Linktodmr"
+            ,"DmrDischarges"
          ]
       }
       ,"DEF.dmr_rest_services.get_all_tri_facilities.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"QueryRows": {
+                "type": "string"
+               ,"title": "Query Row Count"
+               ,"example": "5"
+               ,"description": "Number of query results returned"
+            }
+            ,"PageCount": {
+                "type": "string"
+            }
+            ,"PageNo": {
+                "type": "string"
+               ,"title": "Page Number"
+               ,"example": "1"
+               ,"description": "The number of pages of results returned"
+            }
+            ,"StartRec": {
+                "type": "string"
+            }
+            ,"EndRec": {
+                "type": "string"
+            }
+            ,"Facilities": {
+                "type": "array"
+               ,"title": "Facilities"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_all_tri_facilities.Facilities"
+               }
+               ,"xml": {
+                   "name": "Facilities"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+            ,"QueryRows"
+            ,"PageCount"
+            ,"PageNo"
+            ,"StartRec"
+            ,"EndRec"
+            ,"Facilities"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_comparison_dashboard.DmrChemicals": {
+          "type": "object"
+         ,"properties": {
+             "Total": {
+                "type": "string"
+            }
+            ,"AlsoReportTri": {
+                "type": "string"
+            }
+            ,"NotOnTriList": {
+                "type": "string"
+            }
+            ,"OnTriList": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "Total"
+            ,"AlsoReportTri"
+            ,"NotOnTriList"
+            ,"OnTriList"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_comparison_dashboard.DmrFacilities": {
+          "type": "object"
+         ,"properties": {
+             "Total": {
+                "type": "string"
+            }
+            ,"AlsoReportTri": {
+                "type": "string"
+            }
+            ,"Potws": {
+                "type": "string"
+            }
+            ,"OtherNonTri": {
+                "type": "string"
+            }
+            ,"NoTriForm": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "Total"
+            ,"AlsoReportTri"
+            ,"Potws"
+            ,"OtherNonTri"
+            ,"NoTriForm"
          ]
       }
       ,"DEF.dmr_rest_services.get_comparison_dashboard.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"SearchCriteria": {
+                "type": "string"
+            }
+            ,"TriFacilities": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_comparison_dashboard.TriFacilities"
+            }
+            ,"DmrFacilities": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_comparison_dashboard.DmrFacilities"
+            }
+            ,"TriChemicals": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_comparison_dashboard.TriChemicals"
+            }
+            ,"DmrChemicals": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_comparison_dashboard.DmrChemicals"
+            }
+            ,"Summary": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_comparison_dashboard.Summary"
+            }
+            ,"TopIndustries": {
+                "type": "array"
+               ,"title": "Top Industries"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_comparison_dashboard.TopIndustries"
+               }
+               ,"xml": {
+                   "name": "TopIndustries"
+                  ,"wrapped": true
+               }
+            }
+            ,"TopChemicals": {
+                "type": "array"
+               ,"title": "Top Chemicals"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_comparison_dashboard.TopChemicals"
+               }
+               ,"xml": {
+                   "name": "TopChemicals"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+            ,"SearchCriteria"
+            ,"TriFacilities"
+            ,"DmrFacilities"
+            ,"TriChemicals"
+            ,"DmrChemicals"
+            ,"Summary"
+            ,"TopIndustries"
+            ,"TopChemicals"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_comparison_dashboard.Summary": {
+          "type": "object"
+         ,"properties": {
+             "TriDischargers": {
+                "type": "string"
+            }
+            ,"TriChemicals": {
+                "type": "string"
+            }
+            ,"TriPounds": {
+                "type": "string"
+            }
+            ,"TriTwpe": {
+                "type": "string"
+            }
+            ,"DmrDischargers": {
+                "type": "string"
+            }
+            ,"DmrChemicals": {
+                "type": "string"
+            }
+            ,"DmrPounds": {
+                "type": "string"
+            }
+            ,"DmrTwpe": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "TriDischargers"
+            ,"TriChemicals"
+            ,"TriPounds"
+            ,"TriTwpe"
+            ,"DmrDischargers"
+            ,"DmrChemicals"
+            ,"DmrPounds"
+            ,"DmrTwpe"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_comparison_dashboard.TopChemicals": {
+          "type": "object"
+         ,"xml": {
+             "name": "TopChemicals"
+         }
+         ,"properties": {
+             "ChemGroupID": {
+                "type": "string"
+            }
+            ,"GroupName": {
+                "type": "string"
+            }
+            ,"Dmrfac": {
+                "type": "string"
+            }
+            ,"TRIfac": {
+                "type": "string"
+            }
+            ,"DmrPounds": {
+                "type": "string"
+            }
+            ,"TRIDirectPounds": {
+                "type": "string"
+            }
+            ,"DmrTwpe": {
+                "type": "string"
+            }
+            ,"TRIDirectTwpe": {
+                "type": "string"
+            }
+            ,"DmrValue": {
+                "type": "string"
+            }
+            ,"TRIValue": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "ChemGroupID"
+            ,"GroupName"
+            ,"Dmrfac"
+            ,"TRIfac"
+            ,"DmrPounds"
+            ,"TRIDirectPounds"
+            ,"DmrTwpe"
+            ,"TRIDirectTwpe"
+            ,"DmrValue"
+            ,"TRIValue"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_comparison_dashboard.TopIndustries": {
+          "type": "object"
+         ,"xml": {
+             "name": "TopIndustries"
+         }
+         ,"properties": {
+             "IndSectorID": {
+                "type": "string"
+            }
+            ,"IndSectorDesc": {
+                "type": "string"
+            }
+            ,"Dmrfac": {
+                "type": "string"
+            }
+            ,"TRIfac": {
+                "type": "string"
+            }
+            ,"DmrPounds": {
+                "type": "string"
+            }
+            ,"TRIDirectPounds": {
+                "type": "string"
+            }
+            ,"DmrTwpe": {
+                "type": "string"
+            }
+            ,"TRIDirectTwpe": {
+                "type": "string"
+            }
+            ,"DmrValue": {
+                "type": "string"
+            }
+            ,"TRIValue": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "IndSectorID"
+            ,"IndSectorDesc"
+            ,"Dmrfac"
+            ,"TRIfac"
+            ,"DmrPounds"
+            ,"TRIDirectPounds"
+            ,"DmrTwpe"
+            ,"TRIDirectTwpe"
+            ,"DmrValue"
+            ,"TRIValue"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_comparison_dashboard.TriChemicals": {
+          "type": "object"
+         ,"properties": {
+             "Total": {
+                "type": "string"
+            }
+            ,"AlsoReportDmr": {
+                "type": "string"
+            }
+            ,"ReportOnlyTri": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "Total"
+            ,"AlsoReportDmr"
+            ,"ReportOnlyTri"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_comparison_dashboard.TriFacilities": {
+          "type": "object"
+         ,"properties": {
+             "Total": {
+                "type": "string"
+            }
+            ,"DmrDirectDsch": {
+                "type": "string"
+            }
+            ,"DmrDirectIndDsch": {
+                "type": "string"
+            }
+            ,"DmrIndDsch": {
+                "type": "string"
+            }
+            ,"NodmrDirectDisch": {
+                "type": "string"
+            }
+            ,"NodmrDirectIndDsch": {
+                "type": "string"
+            }
+            ,"NodmrIndDsch": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "Total"
+            ,"DmrDirectDsch"
+            ,"DmrDirectIndDsch"
+            ,"DmrIndDsch"
+            ,"NodmrDirectDisch"
+            ,"NodmrDirectIndDsch"
+            ,"NodmrIndDsch"
          ]
       }
       ,"dmr2_Results": {
@@ -7492,70 +7128,359 @@
             ,"NodiDesc"
          ]
       }
-      ,"DEF.dmr_rest_services.get_dashboard_chemicals.Results": {
+      ,"DEF.dmr_rest_services.get_dashboard_chemicals.Chemicals": {
           "type": "object"
+         ,"description": "Chemicals Object"
+         ,"xml": {
+             "name": "Chemicals"
+         }
          ,"properties": {
-             "Dummy": {
+             "GroupName": {
+                "type": "string"
+            }
+            ,"DmrFacCount": {
+                "type": "string"
+            }
+            ,"TRIFacCount": {
+                "type": "string"
+            }
+            ,"DmrPounds": {
+                "type": "string"
+            }
+            ,"DmrTwpe": {
+                "type": "string"
+            }
+            ,"TRIDirectPounds": {
+                "type": "string"
+            }
+            ,"TRIDirectTwpe": {
+                "type": "string"
+            }
+            ,"DmrQcFlag": {
+                "type": "string"
+            }
+            ,"HasToxicWeight": {
+                "type": "string"
+            }
+            ,"OnTRIList": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "GroupName"
+            ,"DmrFacCount"
+            ,"TRIFacCount"
+            ,"DmrPounds"
+            ,"DmrTwpe"
+            ,"TRIDirectPounds"
+            ,"TRIDirectTwpe"
+            ,"DmrQcFlag"
+            ,"HasToxicWeight"
+            ,"OnTRIList"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_dashboard_chemicals.Results": {
+          "type": "object"
+         ,"properties": {
+             "QueryRows": {
+                "type": "string"
+               ,"title": "Query Row Count"
+               ,"example": "5"
+               ,"description": "Number of query results returned"
+            }
+            ,"PageCount": {
+                "type": "string"
+            }
+            ,"PageNo": {
+                "type": "string"
+               ,"title": "Page Number"
+               ,"example": "1"
+               ,"description": "The number of pages of results returned"
+            }
+            ,"StartRec": {
+                "type": "string"
+            }
+            ,"EndRec": {
+                "type": "string"
+            }
+            ,"Chemicals": {
+                "type": "array"
+               ,"title": "Chemicals"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_dashboard_chemicals.Chemicals"
+               }
+               ,"xml": {
+                   "name": "Chemicals"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "QueryRows"
+            ,"PageCount"
+            ,"PageNo"
+            ,"StartRec"
+            ,"EndRec"
+            ,"Chemicals"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_dashboard_facilities.Facilities": {
+          "type": "object"
+         ,"xml": {
+             "name": "Facilities"
+         }
+         ,"properties": {
+             "Uin": {
+                "type": "string"
+            }
+            ,"NPDESIDs": {
+                "type": "string"
+               ,"title": "ICS-NPDES Clean Water Act Identifier"
+               ,"description": "Clean Water Act ID from the ICIS-NPDES (Integrated Compliance Information System - National Pollutant Discharge Elimination System)"
+            }
+            ,"TRIFids": {
+                "type": "string"
+            }
+            ,"FacilityName": {
+                "type": "string"
+               ,"title": "Facility Name"
+               ,"example": "3M COMPANY"
+               ,"description": "The name of the facility."
+            }
+            ,"City": {
+                "type": "string"
+               ,"title": "City"
+               ,"description": "The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery."
+            }
+            ,"CountyName": {
+                "type": "string"
+            }
+            ,"StateCode": {
+                "type": "string"
+            }
+            ,"EPARegionCode": {
+                "type": "string"
+               ,"title": "EPA Region Code"
+               ,"example": "03"
+               ,"description": "The EPA region where the facility is located. EPA has 10 regional offices that execute programs within several states and territories"
+            }
+            ,"Zip": {
+                "type": "string"
+               ,"title": "Zip Code"
+               ,"example": "53140"
+               ,"description": "US postal ZIP code, as maintained by ICIS."
+            }
+            ,"Huc12": {
+                "type": "string"
+            }
+            ,"ImpWtrFlag": {
+                "type": "string"
+            }
+            ,"ImpWtrPollFlag": {
+                "type": "string"
+            }
+            ,"FacilityTypeIndicator": {
+                "type": "string"
+            }
+            ,"DmrIndSectorDesc": {
+                "type": "string"
+            }
+            ,"TRIIndFlag": {
+                "type": "string"
+            }
+            ,"TRIIndSectorDesc": {
+                "type": "string"
+            }
+            ,"DmrPounds": {
+                "type": "string"
+            }
+            ,"DmrTwpe": {
+                "type": "string"
+            }
+            ,"DmrQcFlag": {
+                "type": "string"
+            }
+            ,"TRIDirectPounds": {
+                "type": "string"
+            }
+            ,"TRIDirectTwpe": {
+                "type": "string"
+            }
+            ,"TRIIndirectPounds": {
+                "type": "string"
+            }
+            ,"TRIIndirectTwpe": {
+                "type": "string"
+            }
+            ,"MultiyrLink": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "Uin"
+            ,"NPDESIDs"
+            ,"TRIFids"
+            ,"FacilityName"
+            ,"City"
+            ,"CountyName"
+            ,"StateCode"
+            ,"EPARegionCode"
+            ,"Zip"
+            ,"Huc12"
+            ,"ImpWtrFlag"
+            ,"ImpWtrPollFlag"
+            ,"FacilityTypeIndicator"
+            ,"DmrIndSectorDesc"
+            ,"TRIIndFlag"
+            ,"TRIIndSectorDesc"
+            ,"DmrPounds"
+            ,"DmrTwpe"
+            ,"DmrQcFlag"
+            ,"TRIDirectPounds"
+            ,"TRIDirectTwpe"
+            ,"TRIIndirectPounds"
+            ,"TRIIndirectTwpe"
+            ,"MultiyrLink"
          ]
       }
       ,"DEF.dmr_rest_services.get_dashboard_facilities.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "QueryRows": {
+                "type": "string"
+               ,"title": "Query Row Count"
+               ,"example": "5"
+               ,"description": "Number of query results returned"
+            }
+            ,"PageCount": {
+                "type": "string"
+            }
+            ,"PageNo": {
+                "type": "string"
+               ,"title": "Page Number"
+               ,"example": "1"
+               ,"description": "The number of pages of results returned"
+            }
+            ,"StartRec": {
+                "type": "string"
+            }
+            ,"EndRec": {
+                "type": "string"
+            }
+            ,"Facilities": {
+                "type": "array"
+               ,"title": "Facilities"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_dashboard_facilities.Facilities"
+               }
+               ,"xml": {
+                   "name": "Facilities"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "QueryRows"
+            ,"PageCount"
+            ,"PageNo"
+            ,"StartRec"
+            ,"EndRec"
+            ,"Facilities"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_dashboard_industries.Industries": {
+          "type": "object"
+         ,"xml": {
+             "name": "Industries"
+         }
+         ,"properties": {
+             "IndSectorDesc": {
+                "type": "string"
+            }
+            ,"DmrFacCount": {
+                "type": "string"
+            }
+            ,"TRIFacCount": {
+                "type": "string"
+            }
+            ,"DmrPounds": {
+                "type": "string"
+            }
+            ,"DmrTwpe": {
+                "type": "string"
+            }
+            ,"TRIDirectPounds": {
+                "type": "string"
+            }
+            ,"TRIDirectTwpe": {
+                "type": "string"
+            }
+            ,"DmrQcFlag": {
+                "type": "string"
+            }
+            ,"HasToxicWeight": {
+                "type": "string"
+            }
+            ,"OnTRIList": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "IndSectorDesc"
+            ,"DmrFacCount"
+            ,"TRIFacCount"
+            ,"DmrPounds"
+            ,"DmrTwpe"
+            ,"TRIDirectPounds"
+            ,"TRIDirectTwpe"
+            ,"DmrQcFlag"
+            ,"HasToxicWeight"
+            ,"OnTRIList"
          ]
       }
       ,"DEF.dmr_rest_services.get_dashboard_industries.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "QueryRows": {
                 "type": "string"
+               ,"title": "Query Row Count"
+               ,"example": "5"
+               ,"description": "Number of query results returned"
+            }
+            ,"PageCount": {
+                "type": "string"
+            }
+            ,"PageNo": {
+                "type": "string"
+               ,"title": "Page Number"
+               ,"example": "1"
+               ,"description": "The number of pages of results returned"
+            }
+            ,"StartRec": {
+                "type": "string"
+            }
+            ,"EndRec": {
+                "type": "string"
+            }
+            ,"Industries": {
+                "type": "array"
+               ,"title": "Industries"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_dashboard_industries.Industries"
+               }
+               ,"xml": {
+                   "name": "Industries"
+                  ,"wrapped": true
+               }
             }
          }
          ,"required": [
-             "Dummy"
-         ]
-      }
-      ,"DEF.dmr_rest_services.get_dashboard_top_chem.Results": {
-          "type": "object"
-         ,"properties": {
-             "Dummy": {
-                "type": "string"
-            }
-         }
-         ,"required": [
-             "Dummy"
-         ]
-      }
-      ,"DEF.dmr_rest_services.get_dashboard_top_ind.Results": {
-          "type": "object"
-         ,"properties": {
-             "Dummy": {
-                "type": "string"
-            }
-         }
-         ,"required": [
-             "Dummy"
-         ]
-      }
-      ,"DEF.dmr_rest_services.get_dmr_fac_counts.Results": {
-          "type": "object"
-         ,"properties": {
-             "Dummy": {
-                "type": "string"
-            }
-         }
-         ,"required": [
-             "Dummy"
+             "QueryRows"
+            ,"PageCount"
+            ,"PageNo"
+            ,"StartRec"
+            ,"EndRec"
+            ,"Industries"
          ]
       }
       ,"dmr0_FacilityCounts": {
@@ -7705,6 +7630,7 @@
             }
             ,"TopFacilities": {
                 "type": "array"
+               ,"title": "Top Facilities"
                ,"items": {
                    "$ref": "#\/definitions\/dmr0_TopFacilities"
                }
@@ -8389,213 +8315,3766 @@
             ,"DmrInfoFlag"
          ]
       }
-      ,"DEF.dmr_rest_services.get_eff_exceedances.Results": {
+      ,"DEF.dmr_rest_services.get_eff_exceedances.FacilityExceedances": {
           "type": "object"
+         ,"xml": {
+             "name": "FacilityExceedances"
+         }
          ,"properties": {
-             "Dummy": {
+             "ExternalPermitNmbr": {
+                "type": "string"
+            }
+            ,"FacilityName": {
+                "type": "string"
+               ,"title": "Facility Name"
+               ,"example": "3M COMPANY"
+               ,"description": "The name of the facility."
+            }
+            ,"MajorMinorStatusFlag": {
+                "type": "string"
+            }
+            ,"SicCode1": {
+                "type": "string"
+            }
+            ,"NaicsCode": {
+                "type": "string"
+            }
+            ,"PermitStatus": {
+                "type": "string"
+            }
+            ,"PermitIssuer": {
+                "type": "string"
+            }
+            ,"ExpirationDate": {
+                "type": "string"
+            }
+            ,"FederalFacility": {
+                "type": "string"
+            }
+            ,"PretreatmentFlag": {
+                "type": "string"
+            }
+            ,"TRIbalFlag": {
+                "type": "string"
+               ,"title": "Tribal Lands Flag"
+               ,"example": "1"
+            }
+            ,"QcFlag": {
+                "type": "string"
+            }
+            ,"ActualAverageFlowNmbr": {
+                "type": "string"
+            }
+            ,"QrtsSNC": {
+                "type": "string"
+            }
+            ,"NmbrInspections": {
+                "type": "string"
+            }
+            ,"DateLastInsp": {
+                "type": "string"
+            }
+            ,"NmbrFea": {
+                "type": "string"
+            }
+            ,"DateLastFea": {
+                "type": "string"
+            }
+            ,"FacTotalE90": {
+                "type": "string"
+            }
+            ,"MaxOutfallE90": {
+                "type": "string"
+            }
+            ,"Year1E90": {
+                "type": "string"
+            }
+            ,"Year2E90": {
+                "type": "string"
+            }
+            ,"Year3E90": {
+                "type": "string"
+            }
+            ,"Lby": {
+                "type": "string"
+            }
+            ,"Twpe": {
+                "type": "string"
+            }
+            ,"TotalPounds": {
+                "type": "string"
+            }
+            ,"TotalTwpe": {
+                "type": "string"
+            }
+            ,"LoadOverLimit": {
+                "type": "string"
+            }
+            ,"TwpeOverLimit": {
+                "type": "string"
+            }
+            ,"LoadOverLimitTwpe": {
+                "type": "string"
+            }
+            ,"Year1LoadOverLimit": {
+                "type": "string"
+            }
+            ,"Year2LoadOverLimit": {
+                "type": "string"
+            }
+            ,"Year3LoadOverLimit": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "ExternalPermitNmbr"
+            ,"FacilityName"
+            ,"MajorMinorStatusFlag"
+            ,"SicCode1"
+            ,"NaicsCode"
+            ,"PermitStatus"
+            ,"PermitIssuer"
+            ,"ExpirationDate"
+            ,"FederalFacility"
+            ,"PretreatmentFlag"
+            ,"TRIbalFlag"
+            ,"QcFlag"
+            ,"ActualAverageFlowNmbr"
+            ,"QrtsSNC"
+            ,"NmbrInspections"
+            ,"DateLastInsp"
+            ,"NmbrFea"
+            ,"DateLastFea"
+            ,"FacTotalE90"
+            ,"MaxOutfallE90"
+            ,"Year1E90"
+            ,"Year2E90"
+            ,"Year3E90"
+            ,"Lby"
+            ,"Twpe"
+            ,"TotalPounds"
+            ,"TotalTwpe"
+            ,"LoadOverLimit"
+            ,"TwpeOverLimit"
+            ,"LoadOverLimitTwpe"
+            ,"Year1LoadOverLimit"
+            ,"Year2LoadOverLimit"
+            ,"Year3LoadOverLimit"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_eff_exceedances.Results": {
+          "type": "object"
+         ,"properties": {
+             "QueryRows": {
+                "type": "string"
+               ,"title": "Query Row Count"
+               ,"example": "5"
+               ,"description": "Number of query results returned"
+            }
+            ,"PageCount": {
+                "type": "string"
+            }
+            ,"PageNo": {
+                "type": "string"
+               ,"title": "Page Number"
+               ,"example": "1"
+               ,"description": "The number of pages of results returned"
+            }
+            ,"StartRec": {
+                "type": "string"
+            }
+            ,"EndRec": {
+                "type": "string"
+            }
+            ,"FacilityExceedances": {
+                "type": "array"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_eff_exceedances.FacilityExceedances"
+               }
+               ,"xml": {
+                   "name": "FacilityExceedances"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "QueryRows"
+            ,"PageCount"
+            ,"PageNo"
+            ,"StartRec"
+            ,"EndRec"
+            ,"FacilityExceedances"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_eff_exceedances_report.EnforcementInfo": {
+          "type": "object"
+         ,"properties": {
+             "LastFea": {
+                "type": "string"
+            }
+            ,"CaseNumber": {
+                "type": "string"
+               ,"title": "Case Number"
+               ,"example": "05-200021274"
+               ,"description": "A unique number identifying the enforcement action. For EPA civil cases, these numbers begin with either the two digit EPA Region Code, \"HQ\" (headquarters initiated cases), and \"EF\" or \"WF\" (Eastern or Western Field Office CAA Mobile Source Program cases); followed by the fiscal year in which the action was initiated. After the fiscal year there is a sequence number. State NPDES civil cases start with the two character post abbreviation, followed by a sequence number."
+            }
+            ,"DocketNumber": {
+                "type": "string"
+               ,"title": "Court Docket Number"
+               ,"example": "04-20324-CR-FOOO"
+               ,"description": "The number the Clerk of the Court assigned to the case that is filed or to a consent decree when it is lodged. For administrative cases, this number is assigned to the case by the Regional Hearing Clerk."
+            }
+            ,"TypeDescription": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "LastFea"
+            ,"CaseNumber"
+            ,"DocketNumber"
+            ,"TypeDescription"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_eff_exceedances_report.ExceedanceDetails": {
+          "type": "object"
+         ,"xml": {
+             "name": "ExceedanceDetails"
+         }
+         ,"properties": {
+             "Mped": {
+                "type": "string"
+            }
+            ,"Outfall": {
+                "type": "string"
+            }
+            ,"ParameterCode": {
+                "type": "string"
+               ,"title": "Parameter Code"
+               ,"example": "00400"
+               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
+            }
+            ,"Parameter": {
+                "type": "string"
+            }
+            ,"AvgWastewaterFlow": {
+                "type": "string"
+            }
+            ,"LimitType": {
+                "type": "string"
+            }
+            ,"DmrValue": {
+                "type": "string"
+            }
+            ,"DmrValueUnit": {
+                "type": "string"
+            }
+            ,"QcFlag": {
+                "type": "string"
+            }
+            ,"LimitValue": {
+                "type": "string"
+            }
+            ,"LimitValueUnit": {
+                "type": "string"
+            }
+            ,"ExceedencePct": {
+                "type": "string"
+               ,"title": "Exceedance Percentage"
+               ,"example": "0"
+               ,"description": "The percent by which the DMR value (or adjusted value) exceeded its limit (or stay) value, as generated in ICIS-NPDES"
+            }
+            ,"LoadOverLimitLbs": {
+                "type": "string"
+            }
+            ,"NmbrOfDays": {
+                "type": "string"
+            }
+            ,"ViolationDays": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "Mped"
+            ,"Outfall"
+            ,"ParameterCode"
+            ,"Parameter"
+            ,"AvgWastewaterFlow"
+            ,"LimitType"
+            ,"DmrValue"
+            ,"DmrValueUnit"
+            ,"QcFlag"
+            ,"LimitValue"
+            ,"LimitValueUnit"
+            ,"ExceedencePct"
+            ,"LoadOverLimitLbs"
+            ,"NmbrOfDays"
+            ,"ViolationDays"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_eff_exceedances_report.FacilityInfo": {
+          "type": "object"
+         ,"properties": {
+             "FacName": {
+                "type": "string"
+               ,"title": "Facility Name"
+               ,"example": "W M A T A CENTRAL MAINT FAC"
+               ,"description": "Name of facility"
+            }
+            ,"FacCity": {
+                "type": "string"
+               ,"title": "Facility City"
+               ,"example": "ALEXANDRIA"
+               ,"description": "The city where the facility is located."
+            }
+            ,"FacState": {
+                "type": "string"
+               ,"title": "Facility State"
+               ,"example": "VA"
+               ,"description": "Facility state"
+            }
+            ,"FacZip": {
+                "type": "string"
+               ,"title": "Facility Zip Code"
+               ,"example": "22314"
+               ,"description": "Facility ZIP code"
+            }
+            ,"NpdesId": {
+                "type": "string"
+            }
+            ,"FrsId": {
+                "type": "string"
+            }
+            ,"OtherNpdesIds": {
+                "type": "string"
+            }
+            ,"TriIds": {
+                "type": "string"
+            }
+            ,"CwnsId": {
+                "type": "string"
+            }
+            ,"FacilityType": {
+                "type": "string"
+            }
+            ,"MajorMinor": {
+                "type": "string"
+            }
+            ,"County": {
+                "type": "string"
+            }
+            ,"CongressionalDistrict": {
+                "type": "string"
+            }
+            ,"Latitude": {
+                "type": "string"
+               ,"format": "double"
+               ,"title": "Latitude"
+               ,"example": "34.606651"
+               ,"description": "The latitude of the facility or permit holder as maintained in each data system."
+            }
+            ,"Longitude": {
+                "type": "string"
+               ,"format": "double"
+               ,"title": "Longitude"
+               ,"example": "-86.982419"
+               ,"description": "The longitude of the facility or permit holder as maintained in each data system"
+            }
+            ,"FacilityDesignFlow": {
+                "type": "string"
+            }
+            ,"AvgFacilityFlow": {
+                "type": "string"
+            }
+            ,"SicCode": {
+                "type": "string"
+            }
+            ,"NaicsCode": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "FacName"
+            ,"FacCity"
+            ,"FacState"
+            ,"FacZip"
+            ,"NpdesId"
+            ,"FrsId"
+            ,"OtherNpdesIds"
+            ,"TriIds"
+            ,"CwnsId"
+            ,"FacilityType"
+            ,"MajorMinor"
+            ,"County"
+            ,"CongressionalDistrict"
+            ,"Latitude"
+            ,"Longitude"
+            ,"FacilityDesignFlow"
+            ,"AvgFacilityFlow"
+            ,"SicCode"
+            ,"NaicsCode"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_eff_exceedances_report.PermitInfo": {
+          "type": "object"
+         ,"properties": {
+             "PermitType": {
+                "type": "string"
+            }
+            ,"PermitStatus": {
+                "type": "string"
+            }
+            ,"PermitIssuance": {
+                "type": "string"
+            }
+            ,"PermitOriginalDate": {
+                "type": "string"
+            }
+            ,"PermitLastIssueDate": {
+                "type": "string"
+            }
+            ,"PermitEffectiveDate": {
+                "type": "string"
+            }
+            ,"PermitExpirationDate": {
+                "type": "string"
+            }
+            ,"DmrSigner": {
+                "type": "string"
+            }
+            ,"PretreatProgram": {
+                "type": "string"
+            }
+            ,"CsoOutfall": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "PermitType"
+            ,"PermitStatus"
+            ,"PermitIssuance"
+            ,"PermitOriginalDate"
+            ,"PermitLastIssueDate"
+            ,"PermitEffectiveDate"
+            ,"PermitExpirationDate"
+            ,"DmrSigner"
+            ,"PretreatProgram"
+            ,"CsoOutfall"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_eff_exceedances_report.PollutantExceedanceCounts": {
+          "type": "object"
+         ,"xml": {
+             "name": "PollutantExceedanceCounts"
+         }
+         ,"properties": {
+             "ParameterCode": {
+                "type": "string"
+               ,"title": "Parameter Code"
+               ,"example": "00400"
+               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
+            }
+            ,"ParameterDesc": {
+                "type": "string"
+               ,"title": "Parameter Description"
+               ,"example": "pH"
+               ,"description": "The pollutant name and form (e.g., dissolved, suspended) associated with the parameter code"
+            }
+            ,"StatisticalBaseShortDesc": {
+                "type": "string"
+            }
+            ,"ViolCount": {
+                "type": "string"
+            }
+            ,"ViolationDays": {
+                "type": "string"
+            }
+            ,"QcFlag": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "ParameterCode"
+            ,"ParameterDesc"
+            ,"StatisticalBaseShortDesc"
+            ,"ViolCount"
+            ,"ViolationDays"
+            ,"QcFlag"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_eff_exceedances_report.ReceivingWater": {
+          "type": "object"
+         ,"properties": {
+             "WbName": {
+                "type": "string"
+            }
+            ,"ReachCode": {
+                "type": "string"
+            }
+            ,"WaterNameNumber": {
+                "type": "string"
+            }
+            ,"ListedImpairment": {
+                "type": "string"
+            }
+            ,"ImpairmentClass": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "WbName"
+            ,"ReachCode"
+            ,"WaterNameNumber"
+            ,"ListedImpairment"
+            ,"ImpairmentClass"
          ]
       }
       ,"DEF.dmr_rest_services.get_eff_exceedances_report.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"StartDate": {
+                "type": "string"
+               ,"title": "Start Date"
+               ,"example": "01\/01\/2016"
+               ,"description": "Starting date for the date range of interest. Formatted as mm\/dd\/yyyy"
+            }
+            ,"EndDate": {
+                "type": "string"
+               ,"title": "End Date"
+               ,"example": "01\/01\/2016"
+               ,"description": "End date for the date range of interest. Formatted as mm\/dd\/yyyy"
+            }
+            ,"FacilityInfo": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_eff_exceedances_report.FacilityInfo"
+            }
+            ,"PermitInfo": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_eff_exceedances_report.PermitInfo"
+            }
+            ,"EnforcementInfo": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_eff_exceedances_report.EnforcementInfo"
+            }
+            ,"ReceivingWater": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_eff_exceedances_report.ReceivingWater"
+            }
+            ,"TotalExceedanceCounts": {
+                "type": "array"
+               ,"title": "Total Exceedance Counts"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_eff_exceedances_report.TotalExceedanceCounts"
+               }
+               ,"xml": {
+                   "name": "TotalExceedanceCounts"
+                  ,"wrapped": true
+               }
+            }
+            ,"PollutantExceedanceCounts": {
+                "type": "array"
+               ,"title": "Pollutant Exceedance Counts"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_eff_exceedances_report.PollutantExceedanceCounts"
+               }
+               ,"xml": {
+                   "name": "PollutantExceedanceCounts"
+                  ,"wrapped": true
+               }
+            }
+            ,"ExceedanceDetails": {
+                "type": "array"
+               ,"title": "Exceedance Details"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_eff_exceedances_report.ExceedanceDetails"
+               }
+               ,"xml": {
+                   "name": "ExceedanceDetails"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+            ,"StartDate"
+            ,"EndDate"
+            ,"FacilityInfo"
+            ,"PermitInfo"
+            ,"EnforcementInfo"
+            ,"ReceivingWater"
+            ,"TotalExceedanceCounts"
+            ,"PollutantExceedanceCounts"
+            ,"ExceedanceDetails"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_eff_exceedances_report.TotalExceedanceCounts": {
+          "type": "object"
+         ,"xml": {
+             "name": "TotalExceedanceCounts"
+         }
+         ,"properties": {
+             "MonitoringPeriodEndDate": {
+                "type": "string"
+               ,"title": "Monitoring Period End Date"
+               ,"example": "30-APR-14"
+               ,"description": "The date that the monitoring period for the values covered by the DMR Form ends"
+            }
+            ,"ViolCount": {
+                "type": "string"
+            }
+            ,"ViolationDays": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "MonitoringPeriodEndDate"
+            ,"ViolCount"
+            ,"ViolationDays"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_facility_annual_discharges.AnnualDischarges": {
+          "type": "object"
+         ,"description": "Annua Discharges Object"
+         ,"xml": {
+             "name": "AnnualDischarges"
+         }
+         ,"properties": {
+             "NPDESID": {
+                "type": "string"
+            }
+            ,"DmrYear": {
+                "type": "string"
+            }
+            ,"TotalLoadoverlimit": {
+                "type": "string"
+            }
+            ,"TotalLbs": {
+                "type": "string"
+            }
+            ,"TotalLbsMetals": {
+                "type": "string"
+            }
+            ,"TotalLbsNitrogen": {
+                "type": "string"
+            }
+            ,"TotalLbsOrganics": {
+                "type": "string"
+            }
+            ,"TotalLbsPhosphorus": {
+                "type": "string"
+            }
+            ,"TotalLbsPrioritypoll": {
+                "type": "string"
+            }
+            ,"TotalLbsSolids": {
+                "type": "string"
+            }
+            ,"TotalTwpe": {
+                "type": "string"
+            }
+            ,"TotalTwpeMetals": {
+                "type": "string"
+            }
+            ,"TotalTwpeNitrogen": {
+                "type": "string"
+            }
+            ,"TotalTwpeOrganics": {
+                "type": "string"
+            }
+            ,"TotalTwpePhosphorus": {
+                "type": "string"
+            }
+            ,"TotalTwpePrioritypoll": {
+                "type": "string"
+            }
+            ,"TotalTwpeSolids": {
+                "type": "string"
+            }
+            ,"PathAvgConc": {
+                "type": "string"
+            }
+            ,"PathMaxConc": {
+                "type": "string"
+            }
+            ,"AvgTemp": {
+                "type": "string"
+            }
+            ,"MaxTemp": {
+                "type": "string"
+            }
+            ,"AvgDailyFlow": {
+                "type": "string"
+            }
+            ,"TotalAnnualFlow": {
+                "type": "string"
+            }
+            ,"TopLbsPollutant": {
+                "type": "string"
+            }
+            ,"TopLbs": {
+                "type": "string"
+            }
+            ,"TopTwpePollutant": {
+                "type": "string"
+            }
+            ,"TopTwpe": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "NPDESID"
+            ,"DmrYear"
+            ,"TotalLoadoverlimit"
+            ,"TotalLbs"
+            ,"TotalLbsMetals"
+            ,"TotalLbsNitrogen"
+            ,"TotalLbsOrganics"
+            ,"TotalLbsPhosphorus"
+            ,"TotalLbsPrioritypoll"
+            ,"TotalLbsSolids"
+            ,"TotalTwpe"
+            ,"TotalTwpeMetals"
+            ,"TotalTwpeNitrogen"
+            ,"TotalTwpeOrganics"
+            ,"TotalTwpePhosphorus"
+            ,"TotalTwpePrioritypoll"
+            ,"TotalTwpeSolids"
+            ,"PathAvgConc"
+            ,"PathMaxConc"
+            ,"AvgTemp"
+            ,"MaxTemp"
+            ,"AvgDailyFlow"
+            ,"TotalAnnualFlow"
+            ,"TopLbsPollutant"
+            ,"TopLbs"
+            ,"TopTwpePollutant"
+            ,"TopTwpe"
          ]
       }
       ,"DEF.dmr_rest_services.get_facility_annual_discharges.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "AnnualDischarges": {
+                "type": "array"
+               ,"title": "Annual Discharges"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_facility_annual_discharges.AnnualDischarges"
+               }
+               ,"xml": {
+                   "name": "AnnualDischarges"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "AnnualDischarges"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_facility_loads.FacilityInfo": {
+          "type": "object"
+         ,"description": "Facility Info Object"
+         ,"properties": {
+             "FacName": {
+                "type": "string"
+               ,"title": "Facility Name"
+               ,"example": "W M A T A CENTRAL MAINT FAC"
+               ,"description": "Name of facility"
+            }
+            ,"FacCity": {
+                "type": "string"
+               ,"title": "Facility City"
+               ,"example": "ALEXANDRIA"
+               ,"description": "The city where the facility is located."
+            }
+            ,"FacState": {
+                "type": "string"
+               ,"title": "Facility State"
+               ,"example": "VA"
+               ,"description": "Facility state"
+            }
+            ,"FacZip": {
+                "type": "string"
+               ,"title": "Facility Zip Code"
+               ,"example": "22314"
+               ,"description": "Facility ZIP code"
+            }
+         }
+         ,"required": [
+             "FacName"
+            ,"FacCity"
+            ,"FacState"
+            ,"FacZip"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_facility_loads.FacilityTotals": {
+          "type": "object"
+         ,"description": "Facility Totals Object"
+         ,"properties": {
+             "ReportedAnnualLoad": {
+                "type": "string"
+            }
+            ,"NumEstMonths": {
+                "type": "string"
+            }
+            ,"AnnualLoad": {
+                "type": "string"
+            }
+            ,"AnnualLoadEquation": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "ReportedAnnualLoad"
+            ,"NumEstMonths"
+            ,"AnnualLoad"
+            ,"AnnualLoadEquation"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_facility_loads.MonitorPeriodLoads": {
+          "type": "object"
+         ,"description": "Monitor Period Loads Object"
+         ,"xml": {
+             "name": "MonitorPeriodLoads"
+         }
+         ,"properties": {
+             "Mped": {
+                "type": "string"
+            }
+            ,"PollutantName": {
+                "type": "string"
+               ,"title": "Pollutant Name"
+               ,"example": "NONE"
+               ,"description": "The name designating the waste material substance or chemical involved at the facility that has a Quantitative Environmental Impact addressed in the SEP or Complying Actions."
+            }
+            ,"ParameterCode": {
+                "type": "string"
+               ,"title": "Parameter Code"
+               ,"example": "00400"
+               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
+            }
+            ,"Outfall": {
+                "type": "string"
+            }
+            ,"DschOccurred": {
+                "type": "string"
+            }
+            ,"DmrReported": {
+                "type": "string"
+            }
+            ,"EstNeeded": {
+                "type": "string"
+            }
+            ,"BelowLimit": {
+                "type": "string"
+            }
+            ,"NodiCode": {
+                "type": "string"
+            }
+            ,"MeasurementType": {
+                "type": "string"
+               ,"title": "Measurement Type"
+               ,"example": "NMth"
+            }
+            ,"AvgDailyValue": {
+                "type": "string"
+            }
+            ,"LimitValue": {
+                "type": "string"
+            }
+            ,"AvgWastewaterFlow": {
+                "type": "string"
+            }
+            ,"NmbrOfDays": {
+                "type": "string"
+            }
+            ,"MonitorPdLoad": {
+                "type": "string"
+            }
+            ,"LoadOverLimit": {
+                "type": "string"
+            }
+            ,"QcFlag": {
+                "type": "string"
+            }
+            ,"ExceedanceCount": {
+                "type": "string"
+            }
+            ,"Equation": {
+                "type": "string"
+            }
+            ,"QcReviewMonitorPdLoad": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "Mped"
+            ,"PollutantName"
+            ,"ParameterCode"
+            ,"Outfall"
+            ,"DschOccurred"
+            ,"DmrReported"
+            ,"EstNeeded"
+            ,"BelowLimit"
+            ,"NodiCode"
+            ,"MeasurementType"
+            ,"AvgDailyValue"
+            ,"LimitValue"
+            ,"AvgWastewaterFlow"
+            ,"NmbrOfDays"
+            ,"MonitorPdLoad"
+            ,"LoadOverLimit"
+            ,"QcFlag"
+            ,"ExceedanceCount"
+            ,"Equation"
+            ,"QcReviewMonitorPdLoad"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_facility_loads.OutfallLoads": {
+          "type": "object"
+         ,"description": "Outfall Loads Object"
+         ,"xml": {
+             "name": "OutfallLoads"
+         }
+         ,"properties": {
+             "PollutantName": {
+                "type": "string"
+               ,"title": "Pollutant Name"
+               ,"example": "NONE"
+               ,"description": "The name designating the waste material substance or chemical involved at the facility that has a Quantitative Environmental Impact addressed in the SEP or Complying Actions."
+            }
+            ,"ParameterCode": {
+                "type": "string"
+               ,"title": "Parameter Code"
+               ,"example": "00400"
+               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
+            }
+            ,"Outfall": {
+                "type": "string"
+            }
+            ,"TotalPounds": {
+                "type": "string"
+            }
+            ,"MaxAllowablePounds": {
+                "type": "string"
+            }
+            ,"LoadOverLimit": {
+                "type": "string"
+            }
+            ,"TotalTwpe": {
+                "type": "string"
+            }
+            ,"MaxAllowableTwpe": {
+                "type": "string"
+            }
+            ,"LoadOverLimitTwpe": {
+                "type": "string"
+            }
+            ,"QcFlag": {
+                "type": "string"
+            }
+            ,"ExceedanceCount": {
+                "type": "string"
+            }
+            ,"QcReviewPounds": {
+                "type": "string"
+            }
+            ,"QcReviewTwpe": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "PollutantName"
+            ,"ParameterCode"
+            ,"Outfall"
+            ,"TotalPounds"
+            ,"MaxAllowablePounds"
+            ,"LoadOverLimit"
+            ,"TotalTwpe"
+            ,"MaxAllowableTwpe"
+            ,"LoadOverLimitTwpe"
+            ,"QcFlag"
+            ,"ExceedanceCount"
+            ,"QcReviewPounds"
+            ,"QcReviewTwpe"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_facility_loads.PollutantLoads": {
+          "type": "object"
+         ,"description": "Pollutant Loads Object"
+         ,"xml": {
+             "name": "PollutantLoads"
+         }
+         ,"properties": {
+             "PollutantName": {
+                "type": "string"
+               ,"title": "Pollutant Name"
+               ,"example": "NONE"
+               ,"description": "The name designating the waste material substance or chemical involved at the facility that has a Quantitative Environmental Impact addressed in the SEP or Complying Actions."
+            }
+            ,"ParameterCode": {
+                "type": "string"
+               ,"title": "Parameter Code"
+               ,"example": "00400"
+               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
+            }
+            ,"TotalPounds": {
+                "type": "string"
+            }
+            ,"MaxAllowablePounds": {
+                "type": "string"
+            }
+            ,"LoadOverLimit": {
+                "type": "string"
+            }
+            ,"TotalTwpe": {
+                "type": "string"
+            }
+            ,"MaxAllowableTwpe": {
+                "type": "string"
+            }
+            ,"LoadOverLimitTwpe": {
+                "type": "string"
+            }
+            ,"QcFlag": {
+                "type": "string"
+            }
+            ,"ExceedanceCount": {
+                "type": "string"
+            }
+            ,"QcReviewPounds": {
+                "type": "string"
+            }
+            ,"QcReviewTwpe": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "PollutantName"
+            ,"ParameterCode"
+            ,"TotalPounds"
+            ,"MaxAllowablePounds"
+            ,"LoadOverLimit"
+            ,"TotalTwpe"
+            ,"MaxAllowableTwpe"
+            ,"LoadOverLimitTwpe"
+            ,"QcFlag"
+            ,"ExceedanceCount"
+            ,"QcReviewPounds"
+            ,"QcReviewTwpe"
          ]
       }
       ,"DEF.dmr_rest_services.get_facility_loads.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"PollutantLoads": {
+                "type": "array"
+               ,"title": "Pollutant Loads"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_facility_loads.PollutantLoads"
+               }
+               ,"xml": {
+                   "name": "PollutantLoads"
+                  ,"wrapped": true
+               }
+            }
+            ,"OutfallLoads": {
+                "type": "array"
+               ,"title": "Outfall Loads"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_facility_loads.OutfallLoads"
+               }
+               ,"xml": {
+                   "name": "OutfallLoads"
+                  ,"wrapped": true
+               }
+            }
+            ,"FacilityInfo": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_facility_loads.FacilityInfo"
+            }
+            ,"MonitorPeriodLoads": {
+                "type": "array"
+               ,"title": "Monitor Period Loads"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_facility_loads.MonitorPeriodLoads"
+               }
+               ,"xml": {
+                   "name": "MonitorPeriodLoads"
+                  ,"wrapped": true
+               }
+            }
+            ,"FacilityTotals": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_facility_loads.FacilityTotals"
+            }
+         }
+         ,"required": [
+             "Message"
+            ,"PollutantLoads"
+            ,"OutfallLoads"
+            ,"FacilityInfo"
+            ,"MonitorPeriodLoads"
+            ,"FacilityTotals"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_facility_report.FacilityInfo": {
+          "type": "object"
+         ,"description": "Facility Info Object"
+         ,"properties": {
+             "FacName": {
+                "type": "string"
+               ,"title": "Facility Name"
+               ,"example": "W M A T A CENTRAL MAINT FAC"
+               ,"description": "Name of facility"
+            }
+            ,"FacCity": {
+                "type": "string"
+               ,"title": "Facility City"
+               ,"example": "ALEXANDRIA"
+               ,"description": "The city where the facility is located."
+            }
+            ,"FacState": {
+                "type": "string"
+               ,"title": "Facility State"
+               ,"example": "VA"
+               ,"description": "Facility state"
+            }
+            ,"FacZip": {
+                "type": "string"
+               ,"title": "Facility Zip Code"
+               ,"example": "22314"
+               ,"description": "Facility ZIP code"
+            }
+            ,"NpdesId": {
+                "type": "string"
+            }
+            ,"FrsId": {
+                "type": "string"
+            }
+            ,"OtherNpdesIds": {
+                "type": "string"
+            }
+            ,"TriIds": {
+                "type": "string"
+            }
+            ,"CwnsId": {
+                "type": "string"
+            }
+            ,"FacilityType": {
+                "type": "string"
+            }
+            ,"PermitType": {
+                "type": "string"
+            }
+            ,"PermitEffectiveDate": {
+                "type": "string"
+            }
+            ,"PermitExpirationDate": {
+                "type": "string"
+            }
+            ,"MajorMinor": {
+                "type": "string"
+            }
+            ,"PermitIssuance": {
+                "type": "string"
+            }
+            ,"PretreatProgram": {
+                "type": "string"
+            }
+            ,"CsoOutfall": {
+                "type": "string"
+            }
+            ,"County": {
+                "type": "string"
+            }
+            ,"CongressionalDistrict": {
+                "type": "string"
+            }
+            ,"Latitude": {
+                "type": "string"
+               ,"format": "double"
+               ,"title": "Latitude"
+               ,"example": "34.606651"
+               ,"description": "The latitude of the facility or permit holder as maintained in each data system."
+            }
+            ,"Longitude": {
+                "type": "string"
+               ,"format": "double"
+               ,"title": "Longitude"
+               ,"example": "-86.982419"
+               ,"description": "The longitude of the facility or permit holder as maintained in each data system"
+            }
+            ,"FacilityDesignFlow": {
+                "type": "string"
+            }
+            ,"ActualAvgFacilityFlow": {
+                "type": "string"
+            }
+            ,"AvgFacilityFlow": {
+                "type": "string"
+            }
+            ,"SicCode": {
+                "type": "string"
+            }
+            ,"NaicsCode": {
+                "type": "string"
+            }
+            ,"LikelyPsc": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "FacName"
+            ,"FacCity"
+            ,"FacState"
+            ,"FacZip"
+            ,"NpdesId"
+            ,"FrsId"
+            ,"OtherNpdesIds"
+            ,"TriIds"
+            ,"CwnsId"
+            ,"FacilityType"
+            ,"PermitType"
+            ,"PermitEffectiveDate"
+            ,"PermitExpirationDate"
+            ,"MajorMinor"
+            ,"PermitIssuance"
+            ,"PretreatProgram"
+            ,"CsoOutfall"
+            ,"County"
+            ,"CongressionalDistrict"
+            ,"Latitude"
+            ,"Longitude"
+            ,"FacilityDesignFlow"
+            ,"ActualAvgFacilityFlow"
+            ,"AvgFacilityFlow"
+            ,"SicCode"
+            ,"NaicsCode"
+            ,"LikelyPsc"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_facility_report.IndustrialDischargers": {
+          "type": "object"
+         ,"description": "Industrial Dischargers Object"
+         ,"xml": {
+             "name": "IndustrialDischargers"
+         }
+         ,"properties": {
+             "TriId": {
+                "type": "string"
+            }
+            ,"FacilityName": {
+                "type": "string"
+               ,"title": "Facility Name"
+               ,"example": "3M COMPANY"
+               ,"description": "The name of the facility."
+            }
+            ,"City": {
+                "type": "string"
+               ,"title": "City"
+               ,"description": "The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery."
+            }
+            ,"State": {
+                "type": "string"
+               ,"title": "State"
+               ,"example": "FL"
+               ,"description": "The two letter abbreviation that represents the state or state equivalent for the U.S."
+            }
+            ,"NaicsCode": {
+                "type": "string"
+            }
+            ,"TopChemical": {
+                "type": "string"
+            }
+            ,"IndirectPounds": {
+                "type": "string"
+            }
+            ,"IndirectTwpe": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "TriId"
+            ,"FacilityName"
+            ,"City"
+            ,"State"
+            ,"NaicsCode"
+            ,"TopChemical"
+            ,"IndirectPounds"
+            ,"IndirectTwpe"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_facility_report.PollutantLoads": {
+          "type": "object"
+         ,"description": "Pollutant Loads Object"
+         ,"xml": {
+             "name": "PollutantLoads"
+         }
+         ,"properties": {
+             "PollutantName": {
+                "type": "string"
+               ,"title": "Pollutant Name"
+               ,"example": "NONE"
+               ,"description": "The name designating the waste material substance or chemical involved at the facility that has a Quantitative Environmental Impact addressed in the SEP or Complying Actions."
+            }
+            ,"ParameterCode": {
+                "type": "string"
+               ,"title": "Parameter Code"
+               ,"example": "00400"
+               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
+            }
+            ,"TotalPounds": {
+                "type": "string"
+            }
+            ,"MaxAllowablePounds": {
+                "type": "string"
+            }
+            ,"LoadOverLimit": {
+                "type": "string"
+            }
+            ,"TotalTwpe": {
+                "type": "string"
+            }
+            ,"MaxAllowableTwpe": {
+                "type": "string"
+            }
+            ,"LoadOverLimitTwpe": {
+                "type": "string"
+            }
+            ,"QcFlag": {
+                "type": "string"
+            }
+            ,"ExceedanceCount": {
+                "type": "string"
+            }
+            ,"QcReviewPounds": {
+                "type": "string"
+            }
+            ,"QcReviewTwpe": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "PollutantName"
+            ,"ParameterCode"
+            ,"TotalPounds"
+            ,"MaxAllowablePounds"
+            ,"LoadOverLimit"
+            ,"TotalTwpe"
+            ,"MaxAllowableTwpe"
+            ,"LoadOverLimitTwpe"
+            ,"QcFlag"
+            ,"ExceedanceCount"
+            ,"QcReviewPounds"
+            ,"QcReviewTwpe"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_facility_report.PotwWastewaterTreatment": {
+          "type": "object"
+         ,"description": "Potw Wastewater Treatment Object"
+         ,"properties": {
+             "CwnsIds": {
+                "type": "string"
+            }
+            ,"CwnsLinkId": {
+                "type": "string"
+            }
+            ,"TreatmentInPlace": {
+                "type": "string"
+            }
+            ,"BodRemoval": {
+                "type": "string"
+            }
+            ,"SynthOrgRemoval": {
+                "type": "string"
+            }
+            ,"MetalRemoval": {
+                "type": "string"
+            }
+            ,"NutrientRemoval": {
+                "type": "string"
+            }
+            ,"NitrogenRemoval": {
+                "type": "string"
+            }
+            ,"PhosphorusRemoval": {
+                "type": "string"
+            }
+            ,"AmmoniaRemoval": {
+                "type": "string"
+            }
+            ,"Residents": {
+                "type": "string"
+            }
+            ,"NonResidents": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "CwnsIds"
+            ,"CwnsLinkId"
+            ,"TreatmentInPlace"
+            ,"BodRemoval"
+            ,"SynthOrgRemoval"
+            ,"MetalRemoval"
+            ,"NutrientRemoval"
+            ,"NitrogenRemoval"
+            ,"PhosphorusRemoval"
+            ,"AmmoniaRemoval"
+            ,"Residents"
+            ,"NonResidents"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_facility_report.ReceivingWater": {
+          "type": "object"
+         ,"description": "Receiving Water Object"
+         ,"properties": {
+             "WbName": {
+                "type": "string"
+            }
+            ,"ReachCode": {
+                "type": "string"
+            }
+            ,"WaterNameNumber": {
+                "type": "string"
+            }
+            ,"ListedImpairment": {
+                "type": "string"
+            }
+            ,"ImpairmentClass": {
+                "type": "string"
+            }
+            ,"ImpairmentCause": {
+                "type": "string"
+            }
+            ,"ImpairmentPolls": {
+                "type": "string"
+            }
+            ,"EsaDischarge": {
+                "type": "string"
+            }
+            ,"EsaFips": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "WbName"
+            ,"ReachCode"
+            ,"WaterNameNumber"
+            ,"ListedImpairment"
+            ,"ImpairmentClass"
+            ,"ImpairmentCause"
+            ,"ImpairmentPolls"
+            ,"EsaDischarge"
+            ,"EsaFips"
          ]
       }
       ,"DEF.dmr_rest_services.get_facility_report.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"FacilityInfo": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_facility_report.FacilityInfo"
+            }
+            ,"TopPollutantPounds": {
+                "type": "array"
+               ,"title": "Top Pollutant Pounds"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_facility_report.TopPollutantPounds"
+               }
+               ,"xml": {
+                   "name": "TopPollutantPounds"
+                  ,"wrapped": true
+               }
+            }
+            ,"TopPollutantTWPE": {
+                "type": "array"
+               ,"title": "Top Pollutant TWPE"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_facility_report.TopPollutantTWPE"
+               }
+               ,"xml": {
+                   "name": "TopPollutantTWPE"
+                  ,"wrapped": true
+               }
+            }
+            ,"PollutantLoads": {
+                "type": "array"
+               ,"title": "Pollutant Loads"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_facility_report.PollutantLoads"
+               }
+               ,"xml": {
+                   "name": "PollutantLoads"
+                  ,"wrapped": true
+               }
+            }
+            ,"ReceivingWater": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_facility_report.ReceivingWater"
+            }
+            ,"PotwWastewaterTreatment": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_facility_report.PotwWastewaterTreatment"
+            }
+            ,"IndustrialDischargers": {
+                "type": "array"
+               ,"title": "Industrial Dischargers"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_facility_report.IndustrialDischargers"
+               }
+               ,"xml": {
+                   "name": "IndustrialDischargers"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+            ,"FacilityInfo"
+            ,"TopPollutantPounds"
+            ,"TopPollutantTWPE"
+            ,"PollutantLoads"
+            ,"ReceivingWater"
+            ,"PotwWastewaterTreatment"
+            ,"IndustrialDischargers"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_facility_report.TopPollutantPounds": {
+          "type": "object"
+         ,"description": "Top Pollutant Pounds Object"
+         ,"xml": {
+             "name": "TopPollutantPounds"
+         }
+         ,"properties": {
+             "PollutantName": {
+                "type": "string"
+               ,"title": "Pollutant Name"
+               ,"example": "NONE"
+               ,"description": "The name designating the waste material substance or chemical involved at the facility that has a Quantitative Environmental Impact addressed in the SEP or Complying Actions."
+            }
+            ,"SrsId": {
+                "type": "string"
+            }
+            ,"TotalPounds": {
+                "type": "string"
+            }
+            ,"QcReviewPounds": {
+                "type": "string"
+            }
+            ,"QcReviewFlag": {
+                "type": "string"
+            }
+            ,"QcFlag": {
+                "type": "string"
+            }
+            ,"MaxAllowable": {
+                "type": "string"
+            }
+            ,"ExceedanceFlag": {
+                "type": "string"
+            }
+            ,"LoadOverLimit": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "PollutantName"
+            ,"SrsId"
+            ,"TotalPounds"
+            ,"QcReviewPounds"
+            ,"QcReviewFlag"
+            ,"QcFlag"
+            ,"MaxAllowable"
+            ,"ExceedanceFlag"
+            ,"LoadOverLimit"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_facility_report.TopPollutantTWPE": {
+          "type": "object"
+         ,"description": "Top Pollutant TWPE Object"
+         ,"xml": {
+             "name": "TopPollutantTWPE"
+         }
+         ,"properties": {
+             "PollutantName": {
+                "type": "string"
+               ,"title": "Pollutant Name"
+               ,"example": "NONE"
+               ,"description": "The name designating the waste material substance or chemical involved at the facility that has a Quantitative Environmental Impact addressed in the SEP or Complying Actions."
+            }
+            ,"SrsId": {
+                "type": "string"
+            }
+            ,"TotalTwpe": {
+                "type": "string"
+            }
+            ,"QcReviewTwpe": {
+                "type": "string"
+            }
+            ,"QcReviewFlag": {
+                "type": "string"
+            }
+            ,"QcFlag": {
+                "type": "string"
+            }
+            ,"MaxAllowable": {
+                "type": "string"
+            }
+            ,"ExceedanceFlag": {
+                "type": "string"
+            }
+            ,"LoadOverLimit": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "PollutantName"
+            ,"SrsId"
+            ,"TotalTwpe"
+            ,"QcReviewTwpe"
+            ,"QcReviewFlag"
+            ,"QcFlag"
+            ,"MaxAllowable"
+            ,"ExceedanceFlag"
+            ,"LoadOverLimit"
          ]
       }
       ,"DEF.dmr_rest_services.get_manual_corrections.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "QueryRows": {
+                "type": "string"
+               ,"title": "Query Row Count"
+               ,"example": "5"
+               ,"description": "Number of query results returned"
+            }
+            ,"PageCount": {
+                "type": "string"
+            }
+            ,"PageNo": {
+                "type": "string"
+               ,"title": "Page Number"
+               ,"example": "1"
+               ,"description": "The number of pages of results returned"
+            }
+            ,"StartRec": {
+                "type": "string"
+            }
+            ,"EndRec": {
+                "type": "string"
+            }
+            ,"Results": {
+                "type": "array"
+               ,"title": "Results Object"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_manual_corrections.Results-2"
+               }
+               ,"xml": {
+                   "name": "Results"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "QueryRows"
+            ,"PageCount"
+            ,"PageNo"
+            ,"StartRec"
+            ,"EndRec"
+            ,"Results"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_manual_corrections.Results-2": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"xml": {
+             "name": "Results"
+         }
+         ,"properties": {
+             "ExternalPermitNmbr": {
+                "type": "string"
+            }
+            ,"DmrYear": {
+                "type": "string"
+            }
+            ,"PermFeatureNmbr": {
+                "type": "string"
+               ,"title": "Discharge Point"
+               ,"example": "001"
+               ,"description": "A three-character code in ICIS-NPDES that identifies the point of discharge (e.g., outfall) for a facility. A NPDES permit may have multiple points of discharge. If the code is less than three characters in the .CSV, append zeros to the beginning of the number (e.g., 1 is equivalent to 001)"
+            }
+            ,"MonitoringLocationCode": {
+                "type": "string"
+               ,"title": "Monitoring Location Code"
+               ,"example": "1"
+               ,"description": "The code that the monitoring location at which the monitoring requirement (and effluent limit if limited) applies. One parameter may have several monitoring location codes pertaining to the same permitted feature"
+            }
+            ,"LimitSetDesignator": {
+                "type": "string"
+            }
+            ,"LimitSeasonID": {
+                "type": "string"
+            }
+            ,"MonitoringPeriodEndDate": {
+                "type": "string"
+               ,"title": "Monitoring Period End Date"
+               ,"example": "30-APR-14"
+               ,"description": "The date that the monitoring period for the values covered by the DMR Form ends"
+            }
+            ,"ParameterDesc": {
+                "type": "string"
+               ,"title": "Parameter Description"
+               ,"example": "pH"
+               ,"description": "The pollutant name and form (e.g., dissolved, suspended) associated with the parameter code"
+            }
+            ,"ParameterCode": {
+                "type": "string"
+               ,"title": "Parameter Code"
+               ,"example": "00400"
+               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
+            }
+            ,"DataField": {
+                "type": "string"
+            }
+            ,"OldValue": {
+                "type": "string"
+            }
+            ,"NewValue": {
+                "type": "string"
+            }
+            ,"CorrDesc": {
+                "type": "string"
+            }
+            ,"CorrectionTypeCode": {
+                "type": "string"
+            }
+            ,"ReviewCycle": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "ExternalPermitNmbr"
+            ,"DmrYear"
+            ,"PermFeatureNmbr"
+            ,"MonitoringLocationCode"
+            ,"LimitSetDesignator"
+            ,"LimitSeasonID"
+            ,"MonitoringPeriodEndDate"
+            ,"ParameterDesc"
+            ,"ParameterCode"
+            ,"DataField"
+            ,"OldValue"
+            ,"NewValue"
+            ,"CorrDesc"
+            ,"CorrectionTypeCode"
+            ,"ReviewCycle"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_monitor_pd_loads.FacilityInfo": {
+          "type": "object"
+         ,"description": "Facility Info Object"
+         ,"properties": {
+             "FacName": {
+                "type": "string"
+               ,"title": "Facility Name"
+               ,"example": "W M A T A CENTRAL MAINT FAC"
+               ,"description": "Name of facility"
+            }
+            ,"FacCity": {
+                "type": "string"
+               ,"title": "Facility City"
+               ,"example": "ALEXANDRIA"
+               ,"description": "The city where the facility is located."
+            }
+            ,"FacState": {
+                "type": "string"
+               ,"title": "Facility State"
+               ,"example": "VA"
+               ,"description": "Facility state"
+            }
+            ,"FacZip": {
+                "type": "string"
+               ,"title": "Facility Zip Code"
+               ,"example": "22314"
+               ,"description": "Facility ZIP code"
+            }
+         }
+         ,"required": [
+             "FacName"
+            ,"FacCity"
+            ,"FacState"
+            ,"FacZip"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_monitor_pd_loads.FacilityTotals": {
+          "type": "object"
+         ,"description": "Facility Totals Object"
+         ,"properties": {
+             "ReportedAnnualLoad": {
+                "type": "string"
+            }
+            ,"NumEstMonths": {
+                "type": "string"
+            }
+            ,"AnnualLoad": {
+                "type": "string"
+            }
+            ,"AnnualLoadEquation": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "ReportedAnnualLoad"
+            ,"NumEstMonths"
+            ,"AnnualLoad"
+            ,"AnnualLoadEquation"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_monitor_pd_loads.MonitorPeriodLoads": {
+          "type": "object"
+         ,"description": "Monitor Period Loads Object"
+         ,"xml": {
+             "name": "MonitorPeriodLoads"
+         }
+         ,"properties": {
+             "Mped": {
+                "type": "string"
+            }
+            ,"PollutantName": {
+                "type": "string"
+               ,"title": "Pollutant Name"
+               ,"example": "NONE"
+               ,"description": "The name designating the waste material substance or chemical involved at the facility that has a Quantitative Environmental Impact addressed in the SEP or Complying Actions."
+            }
+            ,"ParameterCode": {
+                "type": "string"
+               ,"title": "Parameter Code"
+               ,"example": "00400"
+               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
+            }
+            ,"Outfall": {
+                "type": "string"
+            }
+            ,"DschOccurred": {
+                "type": "string"
+            }
+            ,"DmrReported": {
+                "type": "string"
+            }
+            ,"EstNeeded": {
+                "type": "string"
+            }
+            ,"BelowLimit": {
+                "type": "string"
+            }
+            ,"NodiCode": {
+                "type": "string"
+            }
+            ,"MeasurementType": {
+                "type": "string"
+               ,"title": "Measurement Type"
+               ,"example": "NMth"
+            }
+            ,"AvgDailyValue": {
+                "type": "string"
+            }
+            ,"LimitValue": {
+                "type": "string"
+            }
+            ,"AvgWastewaterFlow": {
+                "type": "string"
+            }
+            ,"NmbrOfDays": {
+                "type": "string"
+            }
+            ,"MonitorPdLoad": {
+                "type": "string"
+            }
+            ,"LoadOverLimit": {
+                "type": "string"
+            }
+            ,"QcFlag": {
+                "type": "string"
+            }
+            ,"ExceedanceCount": {
+                "type": "string"
+            }
+            ,"Equation": {
+                "type": "string"
+            }
+            ,"QcReviewMonitorPdLoad": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "Mped"
+            ,"PollutantName"
+            ,"ParameterCode"
+            ,"Outfall"
+            ,"DschOccurred"
+            ,"DmrReported"
+            ,"EstNeeded"
+            ,"BelowLimit"
+            ,"NodiCode"
+            ,"MeasurementType"
+            ,"AvgDailyValue"
+            ,"LimitValue"
+            ,"AvgWastewaterFlow"
+            ,"NmbrOfDays"
+            ,"MonitorPdLoad"
+            ,"LoadOverLimit"
+            ,"QcFlag"
+            ,"ExceedanceCount"
+            ,"Equation"
+            ,"QcReviewMonitorPdLoad"
          ]
       }
       ,"DEF.dmr_rest_services.get_monitor_pd_loads.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"FacilityInfo": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_monitor_pd_loads.FacilityInfo"
+            }
+            ,"MonitorPeriodLoads": {
+                "type": "array"
+               ,"title": "Monitor Period Loads Object"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_monitor_pd_loads.MonitorPeriodLoads"
+               }
+               ,"xml": {
+                   "name": "MonitorPeriodLoads"
+                  ,"wrapped": true
+               }
+            }
+            ,"FacilityTotals": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_monitor_pd_loads.FacilityTotals"
+            }
+         }
+         ,"required": [
+             "Message"
+            ,"FacilityInfo"
+            ,"MonitorPeriodLoads"
+            ,"FacilityTotals"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_multiyear_loading.ChemicalGroups": {
+          "type": "object"
+         ,"description": "Chemical Groups Object"
+         ,"xml": {
+             "name": "ChemicalGroups"
+         }
+         ,"properties": {
+             "ChemicalGroupID": {
+                "type": "string"
+            }
+            ,"ChemicalGroupName": {
+                "type": "string"
+            }
+            ,"CoveredByTRI": {
+                "type": "string"
+            }
+            ,"ChemicalGroupDischarges": {
+                "type": "array"
+               ,"title": "Chemical Group Discharges Object"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_multiyear_loading.ChemicalGroups.ChemicalGroupDischarges"
+               }
+               ,"xml": {
+                   "name": "ChemicalGroupDischarges"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "ChemicalGroupID"
+            ,"ChemicalGroupName"
+            ,"CoveredByTRI"
+            ,"ChemicalGroupDischarges"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_multiyear_loading.ChemicalGroups.ChemicalGroupDischarges": {
+          "type": "object"
+         ,"description": "Chemical Group Discharges Object"
+         ,"xml": {
+             "name": "ChemicalGroupDischarges"
+         }
+         ,"properties": {
+             "ReportingYear": {
+                "type": "string"
+            }
+            ,"DmrPounds": {
+                "type": "string"
+            }
+            ,"TriDirectPounds": {
+                "type": "string"
+            }
+            ,"DmrTwpe": {
+                "type": "string"
+            }
+            ,"TriDirectTwpe": {
+                "type": "string"
+            }
+            ,"QcFlag": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "ReportingYear"
+            ,"DmrPounds"
+            ,"TriDirectPounds"
+            ,"DmrTwpe"
+            ,"TriDirectTwpe"
+            ,"QcFlag"
          ]
       }
       ,"DEF.dmr_rest_services.get_multiyear_loading.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"FacilityInfo": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_multiyear_loading.FacilityInfo"
+            }
+            ,"ChemicalGroups": {
+                "type": "array"
+               ,"title": "Chemical Groups Object"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_multiyear_loading.ChemicalGroups"
+               }
+               ,"xml": {
+                   "name": "ChemicalGroups"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+            ,"FacilityInfo"
+            ,"ChemicalGroups"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_multiyear_loading_detail.FacilityInfo": {
+          "type": "object"
+         ,"properties": {
+             "FacName": {
+                "type": "string"
+               ,"title": "Facility Name"
+               ,"example": "W M A T A CENTRAL MAINT FAC"
+               ,"description": "Name of facility"
+            }
+            ,"FacCity": {
+                "type": "string"
+               ,"title": "Facility City"
+               ,"example": "ALEXANDRIA"
+               ,"description": "The city where the facility is located."
+            }
+            ,"FacState": {
+                "type": "string"
+               ,"title": "Facility State"
+               ,"example": "VA"
+               ,"description": "Facility state"
+            }
+            ,"FacZip": {
+                "type": "string"
+               ,"title": "Facility Zip Code"
+               ,"example": "22314"
+               ,"description": "Facility ZIP code"
+            }
+            ,"FrsId": {
+                "type": "string"
+            }
+            ,"NpdesIds": {
+                "type": "string"
+            }
+            ,"TriIds": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "FacName"
+            ,"FacCity"
+            ,"FacState"
+            ,"FacZip"
+            ,"FrsId"
+            ,"NpdesIds"
+            ,"TriIds"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_multiyear_loading_detail.Pollutants": {
+          "type": "object"
+         ,"xml": {
+             "name": "Pollutants"
+         }
+         ,"properties": {
+             "PollutantType": {
+                "type": "string"
+            }
+            ,"Pollutant": {
+                "type": "string"
+               ,"title": "Pollutant"
+               ,"example": "Carbon monoxide"
+               ,"description": "The name that EPA has selected as its preferred name for a substance (also known as registry name). If the registry name is not available, use the systematic name instead."
+            }
+            ,"PollutantDischarges": {
+                "type": "array"
+               ,"title": "Pollutant Discharges"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_multiyear_loading_detail.Pollutants.PollutantDischarges"
+               }
+               ,"xml": {
+                   "name": "PollutantDischarges"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "PollutantType"
+            ,"Pollutant"
+            ,"PollutantDischarges"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_multiyear_loading_detail.Pollutants.PollutantDischarges": {
+          "type": "object"
+         ,"xml": {
+             "name": "PollutantDischarges"
+         }
+         ,"properties": {
+             "ReportingYear": {
+                "type": "string"
+            }
+            ,"Pounds": {
+                "type": "string"
+            }
+            ,"Twpe": {
+                "type": "string"
+            }
+            ,"QcFlag": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "ReportingYear"
+            ,"Pounds"
+            ,"Twpe"
+            ,"QcFlag"
          ]
       }
       ,"DEF.dmr_rest_services.get_multiyear_loading_detail.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"FacilityInfo": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_multiyear_loading_detail.FacilityInfo"
+            }
+            ,"Pollutants": {
+                "type": "array"
+               ,"title": "Pollutants"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_multiyear_loading_detail.Pollutants"
+               }
+               ,"xml": {
+                   "name": "Pollutants"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+            ,"FacilityInfo"
+            ,"Pollutants"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_outfall_loads.OutfallLoads": {
+          "type": "object"
+         ,"description": "Outfall Loads Object"
+         ,"xml": {
+             "name": "OutfallLoads"
+         }
+         ,"properties": {
+             "PollutantName": {
+                "type": "string"
+               ,"title": "Pollutant Name"
+               ,"example": "NONE"
+               ,"description": "The name designating the waste material substance or chemical involved at the facility that has a Quantitative Environmental Impact addressed in the SEP or Complying Actions."
+            }
+            ,"ParameterCode": {
+                "type": "string"
+               ,"title": "Parameter Code"
+               ,"example": "00400"
+               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
+            }
+            ,"Outfall": {
+                "type": "string"
+            }
+            ,"TotalPounds": {
+                "type": "string"
+            }
+            ,"MaxAllowablePounds": {
+                "type": "string"
+            }
+            ,"LoadOverLimit": {
+                "type": "string"
+            }
+            ,"TotalTwpe": {
+                "type": "string"
+            }
+            ,"MaxAllowableTwpe": {
+                "type": "string"
+            }
+            ,"LoadOverLimitTwpe": {
+                "type": "string"
+            }
+            ,"QcFlag": {
+                "type": "string"
+            }
+            ,"ExceedanceCount": {
+                "type": "string"
+            }
+            ,"QcReviewPounds": {
+                "type": "string"
+            }
+            ,"QcReviewTwpe": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "PollutantName"
+            ,"ParameterCode"
+            ,"Outfall"
+            ,"TotalPounds"
+            ,"MaxAllowablePounds"
+            ,"LoadOverLimit"
+            ,"TotalTwpe"
+            ,"MaxAllowableTwpe"
+            ,"LoadOverLimitTwpe"
+            ,"QcFlag"
+            ,"ExceedanceCount"
+            ,"QcReviewPounds"
+            ,"QcReviewTwpe"
          ]
       }
       ,"DEF.dmr_rest_services.get_outfall_loads.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"OutfallLoads": {
+                "type": "array"
+               ,"title": "Outfall Loads"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_outfall_loads.OutfallLoads"
+               }
+               ,"xml": {
+                   "name": "OutfallLoads"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+            ,"OutfallLoads"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_permit_fact_sheet.Outfalls": {
+          "type": "object"
+         ,"description": "Outfalls Object"
+         ,"xml": {
+             "name": "Outfalls"
+         }
+         ,"properties": {
+             "ExternalPermitNmbr": {
+                "type": "string"
+            }
+            ,"PermFeatureNmbr": {
+                "type": "string"
+               ,"title": "Discharge Point"
+               ,"example": "001"
+               ,"description": "A three-character code in ICIS-NPDES that identifies the point of discharge (e.g., outfall) for a facility. A NPDES permit may have multiple points of discharge. If the code is less than three characters in the .CSV, append zeros to the beginning of the number (e.g., 1 is equivalent to 001)"
+            }
+            ,"MonitoringLocationCode": {
+                "type": "string"
+               ,"title": "Monitoring Location Code"
+               ,"example": "1"
+               ,"description": "The code that the monitoring location at which the monitoring requirement (and effluent limit if limited) applies. One parameter may have several monitoring location codes pertaining to the same permitted feature"
+            }
+            ,"LimitSetDesignator": {
+                "type": "string"
+            }
+            ,"PollutantLimits": {
+                "type": "array"
+               ,"title": "Pollutant Limits"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_permit_fact_sheet.Outfalls.PollutantLimits"
+               }
+               ,"xml": {
+                   "name": "PollutantLimits"
+                  ,"wrapped": true
+               }
+            }
+            ,"PollutantMeasurements": {
+                "type": "array"
+               ,"title": "Pollutant Measurements"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_permit_fact_sheet.Outfalls.PollutantMeasurements"
+               }
+               ,"xml": {
+                   "name": "PollutantMeasurements"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "ExternalPermitNmbr"
+            ,"PermFeatureNmbr"
+            ,"MonitoringLocationCode"
+            ,"LimitSetDesignator"
+            ,"PollutantLimits"
+            ,"PollutantMeasurements"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_permit_fact_sheet.Outfalls.PollutantLimits": {
+          "type": "object"
+         ,"description": "Pollutant Limits Object"
+         ,"xml": {
+             "name": "PollutantLimits"
+         }
+         ,"properties": {
+             "ParameterCode": {
+                "type": "string"
+               ,"title": "Parameter Code"
+               ,"example": "00400"
+               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
+            }
+            ,"ParameterName": {
+                "type": "string"
+               ,"title": "Parameter Name"
+               ,"example": "Iron, total [as Fe]"
+               ,"description": "The pollutant name."
+            }
+            ,"LimitValue": {
+                "type": "string"
+            }
+            ,"LimitUnitDesc": {
+                "type": "string"
+               ,"title": "Limit Unit Description"
+               ,"example": "SU"
+               ,"description": "The short description of the unit of measure applicable to limit or DMR values"
+            }
+            ,"LimitType": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "ParameterCode"
+            ,"ParameterName"
+            ,"LimitValue"
+            ,"LimitUnitDesc"
+            ,"LimitType"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_permit_fact_sheet.Outfalls.PollutantMeasurements": {
+          "type": "object"
+         ,"description": "Pollutant Measurements Object"
+         ,"xml": {
+             "name": "PollutantMeasurements"
+         }
+         ,"properties": {
+             "MonitoringPeriodEndDate": {
+                "type": "string"
+               ,"title": "Monitoring Period End Date"
+               ,"example": "30-APR-14"
+               ,"description": "The date that the monitoring period for the values covered by the DMR Form ends"
+            }
+            ,"ParameterCode": {
+                "type": "string"
+               ,"title": "Parameter Code"
+               ,"example": "00400"
+               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
+            }
+            ,"ParameterName": {
+                "type": "string"
+               ,"title": "Parameter Name"
+               ,"example": "Iron, total [as Fe]"
+               ,"description": "The pollutant name."
+            }
+            ,"LimitValue": {
+                "type": "string"
+            }
+            ,"LimitUnitDesc": {
+                "type": "string"
+               ,"title": "Limit Unit Description"
+               ,"example": "SU"
+               ,"description": "The short description of the unit of measure applicable to limit or DMR values"
+            }
+            ,"LimitType": {
+                "type": "string"
+            }
+            ,"DmrUnitDesc": {
+                "type": "string"
+            }
+            ,"DmrValue": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "MonitoringPeriodEndDate"
+            ,"ParameterCode"
+            ,"ParameterName"
+            ,"LimitValue"
+            ,"LimitUnitDesc"
+            ,"LimitType"
+            ,"DmrUnitDesc"
+            ,"DmrValue"
          ]
       }
       ,"DEF.dmr_rest_services.get_permit_fact_sheet.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "Outfalls": {
+                "type": "array"
+               ,"title": "Outfalls"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_permit_fact_sheet.Outfalls"
+               }
+               ,"xml": {
+                   "name": "Outfalls"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Outfalls"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_permit_limits.PermitLimits": {
+          "type": "object"
+         ,"description": "Permit Limits Object"
+         ,"xml": {
+             "name": "PermitLimits"
+         }
+         ,"properties": {
+             "PollutantDesc": {
+                "type": "string"
+            }
+            ,"ParameterCode": {
+                "type": "string"
+               ,"title": "Parameter Code"
+               ,"example": "00400"
+               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
+            }
+            ,"ChemicalAbstractServiceNmbr": {
+                "type": "string"
+            }
+            ,"SrsID": {
+                "type": "string"
+            }
+            ,"PermFeatureNmbr": {
+                "type": "string"
+               ,"title": "Discharge Point"
+               ,"example": "001"
+               ,"description": "A three-character code in ICIS-NPDES that identifies the point of discharge (e.g., outfall) for a facility. A NPDES permit may have multiple points of discharge. If the code is less than three characters in the .CSV, append zeros to the beginning of the number (e.g., 1 is equivalent to 001)"
+            }
+            ,"InitialMonitoringDate": {
+                "type": "string"
+            }
+            ,"EndMonitoringDate": {
+                "type": "string"
+            }
+            ,"LimitSetDesignator": {
+                "type": "string"
+            }
+            ,"MonitoringFrequency": {
+                "type": "string"
+            }
+            ,"LimitSeasonID": {
+                "type": "string"
+            }
+            ,"SeasonBeginDate": {
+                "type": "string"
+            }
+            ,"SeasonEndDate": {
+                "type": "string"
+            }
+            ,"LimitQuantity1": {
+                "type": "string"
+            }
+            ,"LimitQuantity1Basis": {
+                "type": "string"
+            }
+            ,"LimitQuantity2": {
+                "type": "string"
+            }
+            ,"LimitQuantity2Basis": {
+                "type": "string"
+            }
+            ,"LimitConc1": {
+                "type": "string"
+            }
+            ,"LimitConc1Basis": {
+                "type": "string"
+            }
+            ,"LimitConc2": {
+                "type": "string"
+            }
+            ,"LimitConc2Basis": {
+                "type": "string"
+            }
+            ,"LimitConc3": {
+                "type": "string"
+            }
+            ,"LimitConc3Basis": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "PollutantDesc"
+            ,"ParameterCode"
+            ,"ChemicalAbstractServiceNmbr"
+            ,"SrsID"
+            ,"PermFeatureNmbr"
+            ,"InitialMonitoringDate"
+            ,"EndMonitoringDate"
+            ,"LimitSetDesignator"
+            ,"MonitoringFrequency"
+            ,"LimitSeasonID"
+            ,"SeasonBeginDate"
+            ,"SeasonEndDate"
+            ,"LimitQuantity1"
+            ,"LimitQuantity1Basis"
+            ,"LimitQuantity2"
+            ,"LimitQuantity2Basis"
+            ,"LimitConc1"
+            ,"LimitConc1Basis"
+            ,"LimitConc2"
+            ,"LimitConc2Basis"
+            ,"LimitConc3"
+            ,"LimitConc3Basis"
          ]
       }
       ,"DEF.dmr_rest_services.get_permit_limits.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "PermitLimits": {
+                "type": "array"
+               ,"title": "Permit Limits"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_permit_limits.PermitLimits"
+               }
+               ,"xml": {
+                   "name": "PermitLimits"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "PermitLimits"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_pollutant_loads.PollutantLoads": {
+          "type": "object"
+         ,"description": "Pollutant Loads Object"
+         ,"xml": {
+             "name": "PollutantLoads"
+         }
+         ,"properties": {
+             "PollutantName": {
+                "type": "string"
+               ,"title": "Pollutant Name"
+               ,"example": "NONE"
+               ,"description": "The name designating the waste material substance or chemical involved at the facility that has a Quantitative Environmental Impact addressed in the SEP or Complying Actions."
+            }
+            ,"ParameterCode": {
+                "type": "string"
+               ,"title": "Parameter Code"
+               ,"example": "00400"
+               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
+            }
+            ,"TotalPounds": {
+                "type": "string"
+            }
+            ,"MaxAllowablePounds": {
+                "type": "string"
+            }
+            ,"LoadOverLimit": {
+                "type": "string"
+            }
+            ,"TotalTwpe": {
+                "type": "string"
+            }
+            ,"MaxAllowableTwpe": {
+                "type": "string"
+            }
+            ,"LoadOverLimitTwpe": {
+                "type": "string"
+            }
+            ,"QcFlag": {
+                "type": "string"
+            }
+            ,"ExceedanceCount": {
+                "type": "string"
+            }
+            ,"QcReviewPounds": {
+                "type": "string"
+            }
+            ,"QcReviewTwpe": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "PollutantName"
+            ,"ParameterCode"
+            ,"TotalPounds"
+            ,"MaxAllowablePounds"
+            ,"LoadOverLimit"
+            ,"TotalTwpe"
+            ,"MaxAllowableTwpe"
+            ,"LoadOverLimitTwpe"
+            ,"QcFlag"
+            ,"ExceedanceCount"
+            ,"QcReviewPounds"
+            ,"QcReviewTwpe"
          ]
       }
       ,"DEF.dmr_rest_services.get_pollutant_loads.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "Message": {
                 "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"PollutantLoads": {
+                "type": "array"
+               ,"title": "Pollutant Loads"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_pollutant_loads.PollutantLoads"
+               }
+               ,"xml": {
+                   "name": "PollutantLoads"
+                  ,"wrapped": true
+               }
             }
          }
          ,"required": [
-             "Dummy"
+             "Message"
+            ,"PollutantLoads"
          ]
       }
       ,"DEF.dmr_rest_services.get_state_stats.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
-                "type": "string"
+             "StateStatistics": {
+                "type": "array"
+               ,"title": "State Statistics"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_state_stats.StateStatistics"
+               }
+               ,"xml": {
+                   "name": "StateStatistics"
+                  ,"wrapped": true
+               }
             }
          }
          ,"required": [
-             "Dummy"
+             "StateStatistics"
          ]
       }
-      ,"DEF.dmr_rest_services.get_tri_fac_counts.Results": {
+      ,"DEF.dmr_rest_services.get_state_stats.StateStatistics": {
           "type": "object"
+         ,"description": "State Statistics Object"
+         ,"xml": {
+             "name": "StateStatistics"
+         }
          ,"properties": {
-             "Dummy": {
+             "EPARegion": {
+                "type": "string"
+               ,"title": "EPA Region"
+               ,"example": "04"
+               ,"description": "The EPA region in which the facility is located"
+            }
+            ,"StateName": {
+                "type": "string"
+            }
+            ,"FacCountMaj": {
+                "type": "string"
+            }
+            ,"FacCountMin": {
+                "type": "string"
+            }
+            ,"LoadFacCountMaj": {
+                "type": "string"
+            }
+            ,"LoadFacCountMin": {
+                "type": "string"
+            }
+            ,"PercentCountMaj": {
+                "type": "string"
+            }
+            ,"PercentCountMin": {
+                "type": "string"
+            }
+            ,"PoundsMaj": {
+                "type": "string"
+            }
+            ,"PoundsMin": {
+                "type": "string"
+            }
+            ,"TwpeMaj": {
+                "type": "string"
+            }
+            ,"TwpeMin": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "EPARegion"
+            ,"StateName"
+            ,"FacCountMaj"
+            ,"FacCountMin"
+            ,"LoadFacCountMaj"
+            ,"LoadFacCountMin"
+            ,"PercentCountMaj"
+            ,"PercentCountMin"
+            ,"PoundsMaj"
+            ,"PoundsMin"
+            ,"TwpeMaj"
+            ,"TwpeMin"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_tri_facility_report.FacilityInfo": {
+          "type": "object"
+         ,"properties": {
+             "FacName": {
+                "type": "string"
+               ,"title": "Facility Name"
+               ,"example": "W M A T A CENTRAL MAINT FAC"
+               ,"description": "Name of facility"
+            }
+            ,"FacCity": {
+                "type": "string"
+               ,"title": "Facility City"
+               ,"example": "ALEXANDRIA"
+               ,"description": "The city where the facility is located."
+            }
+            ,"FacState": {
+                "type": "string"
+               ,"title": "Facility State"
+               ,"example": "VA"
+               ,"description": "Facility state"
+            }
+            ,"FacZip": {
+                "type": "string"
+               ,"title": "Facility Zip Code"
+               ,"example": "22314"
+               ,"description": "Facility ZIP code"
+            }
+            ,"TriId": {
+                "type": "string"
+            }
+            ,"FrsId": {
+                "type": "string"
+            }
+            ,"TriIds": {
+                "type": "string"
+            }
+            ,"NpdesIds": {
+                "type": "string"
+            }
+            ,"County": {
+                "type": "string"
+            }
+            ,"Latitude": {
+                "type": "string"
+               ,"format": "double"
+               ,"title": "Latitude"
+               ,"example": "34.606651"
+               ,"description": "The latitude of the facility or permit holder as maintained in each data system."
+            }
+            ,"Longitude": {
+                "type": "string"
+               ,"format": "double"
+               ,"title": "Longitude"
+               ,"example": "-86.982419"
+               ,"description": "The longitude of the facility or permit holder as maintained in each data system"
+            }
+            ,"SicCode": {
+                "type": "string"
+            }
+            ,"NaicsCode": {
+                "type": "string"
+            }
+            ,"LikelyPsc": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "FacName"
+            ,"FacCity"
+            ,"FacState"
+            ,"FacZip"
+            ,"TriId"
+            ,"FrsId"
+            ,"TriIds"
+            ,"NpdesIds"
+            ,"County"
+            ,"Latitude"
+            ,"Longitude"
+            ,"SicCode"
+            ,"NaicsCode"
+            ,"LikelyPsc"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_tri_facility_report.PotwTransfers": {
+          "type": "object"
+         ,"properties": {
+             "PotwNoInfo": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "PotwNoInfo"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_tri_facility_report.ReceivingWater": {
+          "type": "object"
+         ,"properties": {
+             "WbName": {
+                "type": "string"
+            }
+            ,"ReachCode": {
+                "type": "string"
+            }
+            ,"WaterNameNumber": {
+                "type": "string"
+            }
+            ,"ListedImpairment": {
+                "type": "string"
+            }
+            ,"ImpairmentClass": {
+                "type": "string"
+            }
+            ,"ImpairmentCause": {
+                "type": "string"
+            }
+            ,"ImpairmentChems": {
+                "type": "string"
+            }
+            ,"EsaDischarge": {
+                "type": "string"
+            }
+            ,"EsaFips": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "WbName"
+            ,"ReachCode"
+            ,"WaterNameNumber"
+            ,"ListedImpairment"
+            ,"ImpairmentClass"
+            ,"ImpairmentCause"
+            ,"ImpairmentChems"
+            ,"EsaDischarge"
+            ,"EsaFips"
          ]
       }
       ,"DEF.dmr_rest_services.get_tri_facility_report.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"ValidationMessage": {
+                "type": "string"
+            }
+            ,"FacilityInfo": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_tri_facility_report.FacilityInfo"
+            }
+            ,"TopChemicalPounds": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_tri_facility_report.TopChemicalPounds"
+            }
+            ,"TopChemicalTWPE": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_tri_facility_report.TopChemicalTWPE"
+            }
+            ,"ReceivingWater": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_tri_facility_report.ReceivingWater"
+            }
+            ,"PotwTransfers": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_tri_facility_report.PotwTransfers"
+            }
+            ,"TriWastewaterTreatment": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_tri_facility_report.TriWastewaterTreatment"
+            }
+            ,"UpstreamStationUrl": {
+                "type": "string"
+            }
+            ,"DownstreamStationUrl": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "Message"
+            ,"ValidationMessage"
+            ,"FacilityInfo"
+            ,"TopChemicalPounds"
+            ,"TopChemicalTWPE"
+            ,"ReceivingWater"
+            ,"PotwTransfers"
+            ,"TriWastewaterTreatment"
+            ,"UpstreamStationUrl"
+            ,"DownstreamStationUrl"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_tri_facility_report.TopChemicalPounds": {
+          "type": "object"
+         ,"properties": {
+             "NoDataMsg": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "NoDataMsg"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_tri_facility_report.TopChemicalTWPE": {
+          "type": "object"
+         ,"properties": {
+             "NoDataMsg": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "NoDataMsg"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_tri_facility_report.TriWastewaterTreatment": {
+          "type": "object"
+         ,"properties": {
+             "TreatmentInPlace": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "TreatmentInPlace"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_tri_releases.FacilityCounts": {
+          "type": "object"
+         ,"properties": {
+             "AllFacs": {
+                "type": "string"
+            }
+            ,"DirectOnly": {
+                "type": "string"
+            }
+            ,"IndirectOnly": {
+                "type": "string"
+            }
+            ,"BothDischarges": {
+                "type": "string"
+            }
+            ,"NoDischarges": {
+                "type": "string"
+            }
+            ,"Nationwide": {
+                "type": "string"
+            }
+            ,"AllPollutants": {
+                "type": "string"
+            }
+            ,"AllIndustries": {
+                "type": "string"
+            }
+            ,"LinkToNpdes": {
+                "type": "string"
+            }
+            ,"WithDataIcis": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "AllFacs"
+            ,"DirectOnly"
+            ,"IndirectOnly"
+            ,"BothDischarges"
+            ,"NoDischarges"
+            ,"Nationwide"
+            ,"AllPollutants"
+            ,"AllIndustries"
+            ,"LinkToNpdes"
+            ,"WithDataIcis"
          ]
       }
       ,"DEF.dmr_rest_services.get_tri_releases.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"QueryID": {
+                "type": "string"
+               ,"title": "Query Identifier"
+               ,"example": "245"
+               ,"description": "Sequential number assigned to entire search result"
+            }
+            ,"FacilityCounts": {
+                "$ref": "#\/definitions\/DEF.dmr_rest_services.get_tri_releases.FacilityCounts"
+            }
+            ,"TopChemicalPounds": {
+                "type": "array"
+               ,"title": "Top Chemical Pounds Object"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_tri_releases.TopChemicalPounds"
+               }
+               ,"xml": {
+                   "name": "TopChemicalPounds"
+                  ,"wrapped": true
+               }
+            }
+            ,"TopChemicalTWPE": {
+                "type": "array"
+               ,"title": "Top Chemical TWPE Object"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_tri_releases.TopChemicalTWPE"
+               }
+               ,"xml": {
+                   "name": "TopChemicalTWPE"
+                  ,"wrapped": true
+               }
+            }
+            ,"TopNAICSPounds": {
+                "type": "array"
+               ,"title": "Top NAICS Pounds Object"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_tri_releases.TopNAICSPounds"
+               }
+               ,"xml": {
+                   "name": "TopNAICSPounds"
+                  ,"wrapped": true
+               }
+            }
+            ,"TopNAICSTWPE": {
+                "type": "array"
+               ,"title": "Top NAICS TWPE Object"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_tri_releases.TopNAICSTWPE"
+               }
+               ,"xml": {
+                   "name": "TopNAICSTWPE"
+                  ,"wrapped": true
+               }
+            }
+            ,"TopFacilityPounds": {
+                "type": "array"
+               ,"title": "Top Facility Pounds"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_tri_releases.TopFacilityPounds"
+               }
+               ,"xml": {
+                   "name": "TopFacilityPounds"
+                  ,"wrapped": true
+               }
+            }
+            ,"TopFacilityTWPE": {
+                "type": "array"
+               ,"title": "Top Facility TWPE"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_tri_releases.TopFacilityTWPE"
+               }
+               ,"xml": {
+                   "name": "TopFacilityTWPE"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+            ,"QueryID"
+            ,"FacilityCounts"
+            ,"TopChemicalPounds"
+            ,"TopChemicalTWPE"
+            ,"TopNAICSPounds"
+            ,"TopNAICSTWPE"
+            ,"TopFacilityPounds"
+            ,"TopFacilityTWPE"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_tri_releases.TopChemicalPounds": {
+          "type": "object"
+         ,"description": "Top Chemical Pounds Object"
+         ,"xml": {
+             "name": "TopChemicalPounds"
+         }
+         ,"properties": {
+             "ChemicalName": {
+                "type": "string"
+               ,"title": "Chemical Name"
+               ,"description": "The TRI chemical to which the data in this row applies."
+            }
+            ,"DirectRelease": {
+                "type": "string"
+            }
+            ,"IndirectRelease": {
+                "type": "string"
+            }
+            ,"TotalRelease": {
+                "type": "string"
+            }
+            ,"DmrInfoFlag": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "ChemicalName"
+            ,"DirectRelease"
+            ,"IndirectRelease"
+            ,"TotalRelease"
+            ,"DmrInfoFlag"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_tri_releases.TopChemicalTWPE": {
+          "type": "object"
+         ,"description": "Top Chemical TWPE Object"
+         ,"xml": {
+             "name": "TopChemicalTWPE"
+         }
+         ,"properties": {
+             "ChemicalName": {
+                "type": "string"
+               ,"title": "Chemical Name"
+               ,"description": "The TRI chemical to which the data in this row applies."
+            }
+            ,"DirectTwpe": {
+                "type": "string"
+            }
+            ,"IndirectTwpe": {
+                "type": "string"
+            }
+            ,"TotalTwpe": {
+                "type": "string"
+            }
+            ,"DmrInfoFlag": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "ChemicalName"
+            ,"DirectTwpe"
+            ,"IndirectTwpe"
+            ,"TotalTwpe"
+            ,"DmrInfoFlag"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_tri_releases.TopFacilityPounds": {
+          "type": "object"
+         ,"description": "Top Facility Pounds Object"
+         ,"xml": {
+             "name": "TopFacilityPounds"
+         }
+         ,"properties": {
+             "TRIFacilityID": {
+                "type": "string"
+            }
+            ,"Uin": {
+                "type": "string"
+            }
+            ,"FacilityName": {
+                "type": "string"
+               ,"title": "Facility Name"
+               ,"example": "3M COMPANY"
+               ,"description": "The name of the facility."
+            }
+            ,"City": {
+                "type": "string"
+               ,"title": "City"
+               ,"description": "The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery."
+            }
+            ,"CountyName": {
+                "type": "string"
+            }
+            ,"StateCode": {
+                "type": "string"
+            }
+            ,"NaicsCode": {
+                "type": "string"
+            }
+            ,"Huc12": {
+                "type": "string"
+            }
+            ,"Huc12Name": {
+                "type": "string"
+            }
+            ,"ChemicalName": {
+                "type": "string"
+               ,"title": "Chemical Name"
+               ,"description": "The TRI chemical to which the data in this row applies."
+            }
+            ,"DirectRelease": {
+                "type": "string"
+            }
+            ,"IndirectRelease": {
+                "type": "string"
+            }
+            ,"TotalRelease": {
+                "type": "string"
+            }
+            ,"DmrInfoFlag": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "TRIFacilityID"
+            ,"Uin"
+            ,"FacilityName"
+            ,"City"
+            ,"CountyName"
+            ,"StateCode"
+            ,"NaicsCode"
+            ,"Huc12"
+            ,"Huc12Name"
+            ,"ChemicalName"
+            ,"DirectRelease"
+            ,"IndirectRelease"
+            ,"TotalRelease"
+            ,"DmrInfoFlag"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_tri_releases.TopFacilityTWPE": {
+          "type": "object"
+         ,"description": "Top Facility TWPE Object"
+         ,"xml": {
+             "name": "TopFacilityTWPE"
+         }
+         ,"properties": {
+             "TRIFacilityID": {
+                "type": "string"
+            }
+            ,"Uin": {
+                "type": "string"
+            }
+            ,"FacilityName": {
+                "type": "string"
+               ,"title": "Facility Name"
+               ,"example": "3M COMPANY"
+               ,"description": "The name of the facility."
+            }
+            ,"City": {
+                "type": "string"
+               ,"title": "City"
+               ,"description": "The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery."
+            }
+            ,"CountyName": {
+                "type": "string"
+            }
+            ,"StateCode": {
+                "type": "string"
+            }
+            ,"NaicsCode": {
+                "type": "string"
+            }
+            ,"Huc12": {
+                "type": "string"
+            }
+            ,"Huc12Name": {
+                "type": "string"
+            }
+            ,"ChemicalName": {
+                "type": "string"
+               ,"title": "Chemical Name"
+               ,"description": "The TRI chemical to which the data in this row applies."
+            }
+            ,"DirectTwpe": {
+                "type": "string"
+            }
+            ,"IndirectTwpe": {
+                "type": "string"
+            }
+            ,"TotalTwpe": {
+                "type": "string"
+            }
+            ,"DmrInfoFlag": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "TRIFacilityID"
+            ,"Uin"
+            ,"FacilityName"
+            ,"City"
+            ,"CountyName"
+            ,"StateCode"
+            ,"NaicsCode"
+            ,"Huc12"
+            ,"Huc12Name"
+            ,"ChemicalName"
+            ,"DirectTwpe"
+            ,"IndirectTwpe"
+            ,"TotalTwpe"
+            ,"DmrInfoFlag"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_tri_releases.TopNAICSPounds": {
+          "type": "object"
+         ,"description": "Top NAICS Pounds Object"
+         ,"xml": {
+             "name": "TopNAICSPounds"
+         }
+         ,"properties": {
+             "NaicsCode": {
+                "type": "string"
+            }
+            ,"NaicsDesc": {
+                "type": "string"
+            }
+            ,"ChemicalName": {
+                "type": "string"
+               ,"title": "Chemical Name"
+               ,"description": "The TRI chemical to which the data in this row applies."
+            }
+            ,"DirectRelease": {
+                "type": "string"
+            }
+            ,"IndirectRelease": {
+                "type": "string"
+            }
+            ,"TotalRelease": {
+                "type": "string"
+            }
+            ,"DmrInfoFlag": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "NaicsCode"
+            ,"NaicsDesc"
+            ,"ChemicalName"
+            ,"DirectRelease"
+            ,"IndirectRelease"
+            ,"TotalRelease"
+            ,"DmrInfoFlag"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_tri_releases.TopNAICSTWPE": {
+          "type": "object"
+         ,"description": "Top NAICS TWPE Object"
+         ,"xml": {
+             "name": "TopNAICSTWPE"
+         }
+         ,"properties": {
+             "NaicsCode": {
+                "type": "string"
+            }
+            ,"NaicsDesc": {
+                "type": "string"
+            }
+            ,"ChemicalName": {
+                "type": "string"
+               ,"title": "Chemical Name"
+               ,"description": "The TRI chemical to which the data in this row applies."
+            }
+            ,"DirectTwpe": {
+                "type": "string"
+            }
+            ,"IndirectTwpe": {
+                "type": "string"
+            }
+            ,"TotalTwpe": {
+                "type": "string"
+            }
+            ,"DmrInfoFlag": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "NaicsCode"
+            ,"NaicsDesc"
+            ,"ChemicalName"
+            ,"DirectTwpe"
+            ,"IndirectTwpe"
+            ,"TotalTwpe"
+            ,"DmrInfoFlag"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_watershed_facilities.Facilities": {
+          "type": "object"
+         ,"xml": {
+             "name": "Facilities"
+         }
+         ,"properties": {
+             "ReportingYear": {
+                "type": "string"
+            }
+            ,"FrsID": {
+                "type": "string"
+            }
+            ,"NPDESIDs": {
+                "type": "string"
+               ,"title": "ICS-NPDES Clean Water Act Identifier"
+               ,"description": "Clean Water Act ID from the ICIS-NPDES (Integrated Compliance Information System - National Pollutant Discharge Elimination System)"
+            }
+            ,"TRIFids": {
+                "type": "string"
+            }
+            ,"FacilityName": {
+                "type": "string"
+               ,"title": "Facility Name"
+               ,"example": "3M COMPANY"
+               ,"description": "The name of the facility."
+            }
+            ,"Address": {
+                "type": "string"
+            }
+            ,"City": {
+                "type": "string"
+               ,"title": "City"
+               ,"description": "The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery."
+            }
+            ,"State": {
+                "type": "string"
+               ,"title": "State"
+               ,"example": "FL"
+               ,"description": "The two letter abbreviation that represents the state or state equivalent for the U.S."
+            }
+            ,"Zip": {
+                "type": "string"
+               ,"title": "Zip Code"
+               ,"example": "53140"
+               ,"description": "US postal ZIP code, as maintained by ICIS."
+            }
+            ,"Latitude": {
+                "type": "string"
+               ,"format": "double"
+               ,"title": "Latitude"
+               ,"example": "34.606651"
+               ,"description": "The latitude of the facility or permit holder as maintained in each data system."
+            }
+            ,"Longitude": {
+                "type": "string"
+               ,"format": "double"
+               ,"title": "Longitude"
+               ,"example": "-86.982419"
+               ,"description": "The longitude of the facility or permit holder as maintained in each data system"
+            }
+            ,"Huc12Code": {
+                "type": "string"
+            }
+            ,"Huc12Name": {
+                "type": "string"
+            }
+            ,"SicCode": {
+                "type": "string"
+            }
+            ,"SicDesc": {
+                "type": "string"
+            }
+            ,"NaicsCode": {
+                "type": "string"
+            }
+            ,"NaicsDesc": {
+                "type": "string"
+            }
+            ,"FacilityType": {
+                "type": "string"
+            }
+            ,"MajorMinor": {
+                "type": "string"
+            }
+            ,"InIcisOnly": {
+                "type": "string"
+            }
+            ,"InTRIOnly": {
+                "type": "string"
+            }
+            ,"InBothIcisAndTRI": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "ReportingYear"
+            ,"FrsID"
+            ,"NPDESIDs"
+            ,"TRIFids"
+            ,"FacilityName"
+            ,"Address"
+            ,"City"
+            ,"State"
+            ,"Zip"
+            ,"Latitude"
+            ,"Longitude"
+            ,"Huc12Code"
+            ,"Huc12Name"
+            ,"SicCode"
+            ,"SicDesc"
+            ,"NaicsCode"
+            ,"NaicsDesc"
+            ,"FacilityType"
+            ,"MajorMinor"
+            ,"InIcisOnly"
+            ,"InTRIOnly"
+            ,"InBothIcisAndTRI"
          ]
       }
       ,"DEF.dmr_rest_services.get_watershed_facilities.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "QueryRows": {
                 "type": "string"
+               ,"title": "Query Row Count"
+               ,"example": "5"
+               ,"description": "Number of query results returned"
+            }
+            ,"PageCount": {
+                "type": "string"
+            }
+            ,"PageNo": {
+                "type": "string"
+               ,"title": "Page Number"
+               ,"example": "1"
+               ,"description": "The number of pages of results returned"
+            }
+            ,"StartRec": {
+                "type": "string"
+            }
+            ,"EndRec": {
+                "type": "string"
+            }
+            ,"Facilities": {
+                "type": "array"
+               ,"title": "Facilities"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_watershed_facilities.Facilities"
+               }
+               ,"xml": {
+                   "name": "Facilities"
+                  ,"wrapped": true
+               }
             }
          }
          ,"required": [
-             "Dummy"
+             "QueryRows"
+            ,"PageCount"
+            ,"PageNo"
+            ,"StartRec"
+            ,"EndRec"
+            ,"Facilities"
          ]
       }
       ,"DEF.dmr_rest_services.get_watershed_stats.Results": {
           "type": "object"
          ,"properties": {
-             "Dummy": {
+             "QueryRows": {
+                "type": "string"
+               ,"title": "Query Row Count"
+               ,"example": "5"
+               ,"description": "Number of query results returned"
+            }
+            ,"PageCount": {
+                "type": "string"
+            }
+            ,"PageNo": {
+                "type": "string"
+               ,"title": "Page Number"
+               ,"example": "1"
+               ,"description": "The number of pages of results returned"
+            }
+            ,"StartRec": {
+                "type": "string"
+            }
+            ,"EndRec": {
+                "type": "string"
+            }
+            ,"Watersheds": {
+                "type": "array"
+               ,"title": "Watersheds"
+               ,"items": {
+                   "$ref": "#\/definitions\/DEF.dmr_rest_services.get_watershed_stats.Watersheds"
+               }
+               ,"xml": {
+                   "name": "Watersheds"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "QueryRows"
+            ,"PageCount"
+            ,"PageNo"
+            ,"StartRec"
+            ,"EndRec"
+            ,"Watersheds"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_watershed_stats.Watersheds": {
+          "type": "object"
+         ,"xml": {
+             "name": "Watersheds"
+         }
+         ,"properties": {
+             "ReportingYear": {
+                "type": "string"
+            }
+            ,"Huc12Code": {
+                "type": "string"
+            }
+            ,"Huc12Name": {
+                "type": "string"
+            }
+            ,"DmrFacCount": {
+                "type": "string"
+            }
+            ,"TRIFacCount": {
+                "type": "string"
+            }
+            ,"DmrLby": {
+                "type": "string"
+            }
+            ,"TRILby": {
+                "type": "string"
+            }
+            ,"DmrTwpe": {
+                "type": "string"
+            }
+            ,"TRITwpe": {
+                "type": "string"
+            }
+            ,"DmrMetLby": {
+                "type": "string"
+            }
+            ,"TRIMetLby": {
+                "type": "string"
+            }
+            ,"DmrMetTwpe": {
+                "type": "string"
+            }
+            ,"TRIMetTwpe": {
+                "type": "string"
+            }
+            ,"DmrPpLby": {
+                "type": "string"
+            }
+            ,"TRIPpLby": {
+                "type": "string"
+            }
+            ,"DmrPpTwpe": {
+                "type": "string"
+            }
+            ,"TRIPpTwpe": {
+                "type": "string"
+            }
+            ,"DmrSsLby": {
+                "type": "string"
+            }
+            ,"DmrOrgLby": {
+                "type": "string"
+            }
+            ,"DmrTotalNLby": {
+                "type": "string"
+            }
+            ,"DmrPotwNLby": {
+                "type": "string"
+            }
+            ,"DmrTotalPLby": {
+                "type": "string"
+            }
+            ,"DmrPotwPPby": {
+                "type": "string"
+            }
+            ,"DmrNonpotwNLby": {
+                "type": "string"
+            }
+            ,"DmrNonpotwPLby": {
+                "type": "string"
+            }
+            ,"DmrPatAvg": {
+                "type": "string"
+            }
+            ,"DmrPatMax": {
+                "type": "string"
+            }
+            ,"DmrTempAvg": {
+                "type": "string"
+            }
+            ,"DmrTempMax": {
+                "type": "string"
+            }
+            ,"DmrDailyFlow": {
+                "type": "string"
+            }
+            ,"DmrAnnualFlow": {
+                "type": "string"
+            }
+            ,"DmrCsoCount": {
                 "type": "string"
             }
          }
          ,"required": [
-             "Dummy"
+             "ReportingYear"
+            ,"Huc12Code"
+            ,"Huc12Name"
+            ,"DmrFacCount"
+            ,"TRIFacCount"
+            ,"DmrLby"
+            ,"TRILby"
+            ,"DmrTwpe"
+            ,"TRITwpe"
+            ,"DmrMetLby"
+            ,"TRIMetLby"
+            ,"DmrMetTwpe"
+            ,"TRIMetTwpe"
+            ,"DmrPpLby"
+            ,"TRIPpLby"
+            ,"DmrPpTwpe"
+            ,"TRIPpTwpe"
+            ,"DmrSsLby"
+            ,"DmrOrgLby"
+            ,"DmrTotalNLby"
+            ,"DmrPotwNLby"
+            ,"DmrTotalPLby"
+            ,"DmrPotwPPby"
+            ,"DmrNonpotwNLby"
+            ,"DmrNonpotwPLby"
+            ,"DmrPatAvg"
+            ,"DmrPatMax"
+            ,"DmrTempAvg"
+            ,"DmrTempMax"
+            ,"DmrDailyFlow"
+            ,"DmrAnnualFlow"
+            ,"DmrCsoCount"
          ]
       }
    }
