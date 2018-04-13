@@ -6451,6 +6451,43 @@ definitions:
     - DmrTwpe
     - TriDirectTwpe
     - QcFlag
+  dmr17_FacilityInfo: 
+    description: Facility Info Object
+    properties: 
+      FacName: 
+        type: string
+        title: Facility Name
+        example: W M A T A CENTRAL MAINT FAC
+        description: Name of facility
+      FacCity: 
+        type: string
+        title: Facility City
+        example: ALEXANDRIA
+        description: The city where the facility is located.
+      FacState: 
+        type: string
+        title: Facility State
+        example: VA
+        description: Facility state
+      FacZip: 
+        type: string
+        title: Facility Zip Code
+        example: '22314'
+        description: Facility ZIP code
+      FrsId: 
+        type: string
+      NpdesIds: 
+        type: string
+      TriIds: 
+        type: string
+    required: 
+    - FacName
+    - FacCity
+    - FacState
+    - FacZip
+    - FrsId
+    - NpdesIds
+    - TriIds
   dmr17_Results: 
     type: object
     properties: 
