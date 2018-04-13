@@ -541,12 +541,6 @@ parameters:
     in: query
     type: string
     required: false
-  p_year: 
-    name: p_year
-    in: query
-    description: The calendar year for the annual pollutant loadings. 
-    type: string
-    required: false
   p_tmdl: 
     name: p_tmdl
     in: query
@@ -627,7 +621,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_permit_id"
       - "$ref": "#/parameters/p_poll_name"
       - "$ref": "#/parameters/p_param_code"
@@ -650,7 +648,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_permit_id"
       - "$ref": "#/parameters/p_poll_name"
       - "$ref": "#/parameters/p_param_code"
@@ -852,7 +854,11 @@ paths:
       - "$ref": "#/parameters/p_treatment_tech_present"
       - "$ref": "#/parameters/p_watershed"
       - "$ref": "#/parameters/p_watershed_group"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/pageno"
       - "$ref": "#/parameters/newsort"
@@ -936,7 +942,11 @@ paths:
       - "$ref": "#/parameters/p_treatment_tech_present"
       - "$ref": "#/parameters/p_watershed"
       - "$ref": "#/parameters/p_watershed_group"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/pageno"
       - "$ref": "#/parameters/newsort"
@@ -964,7 +974,24 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the DMR annual pollutant loadings.
+        enum: 
+        - 2018
+        - 2017
+        - 2016
+        - 2015
+        - 2014
+        - 2013
+        - 2012
+        - 2011
+        - 2010
+        - 2009
+        - 2008
+        - 2007
+        type: string
+        required: false
       - "$ref": "#/parameters/p_permit_id"
       - "$ref": "#/parameters/p_poll_cat"
       - "$ref": "#/parameters/p_poll_name"
@@ -987,7 +1014,24 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the DMR annual pollutant loadings.
+        enum: 
+        - 2018
+        - 2017
+        - 2016
+        - 2015
+        - 2014
+        - 2013
+        - 2012
+        - 2011
+        - 2010
+        - 2009
+        - 2008
+        - 2007
+        type: string
+        required: false
       - "$ref": "#/parameters/p_permit_id"
       - "$ref": "#/parameters/p_poll_cat"
       - "$ref": "#/parameters/p_poll_name"
@@ -1059,7 +1103,11 @@ paths:
       parameters: 
       - "$ref": "#/parameters/output"
       - "$ref": "#/parameters/download"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_permit_id"
       - "$ref": "#/parameters/callback"
       tags: 
@@ -1081,7 +1129,11 @@ paths:
       parameters: 
       - "$ref": "#/parameters/output"
       - "$ref": "#/parameters/download"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_permit_id"
       - "$ref": "#/parameters/callback"
       tags: 
@@ -1103,7 +1155,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_outfall"
       - "$ref": "#/parameters/p_permit_id"
       - "$ref": "#/parameters/p_poll_name"
@@ -1127,7 +1183,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_outfall"
       - "$ref": "#/parameters/p_permit_id"
       - "$ref": "#/parameters/p_poll_name"
@@ -1152,7 +1212,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
@@ -1172,7 +1236,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
@@ -1194,7 +1262,11 @@ paths:
       parameters: 
       - "$ref": "#/parameters/output"
       - "$ref": "#/parameters/download"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_permit_id"
       - "$ref": "#/parameters/callback"
       tags: 
@@ -1216,7 +1288,11 @@ paths:
       parameters: 
       - "$ref": "#/parameters/output"
       - "$ref": "#/parameters/download"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_permit_id"
       - "$ref": "#/parameters/callback"
       tags: 
@@ -1252,7 +1328,11 @@ paths:
       - "$ref": "#/parameters/p_watershed"
       - "$ref": "#/parameters/p_watershed_group"
       - "$ref": "#/parameters/p_watershed_zip"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/callback"
       tags: 
@@ -1287,7 +1367,11 @@ paths:
       - "$ref": "#/parameters/p_watershed"
       - "$ref": "#/parameters/p_watershed_group"
       - "$ref": "#/parameters/p_watershed_zip"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/callback"
       tags: 
@@ -1322,7 +1406,11 @@ paths:
       - "$ref": "#/parameters/p_watershed"
       - "$ref": "#/parameters/p_watershed_group"
       - "$ref": "#/parameters/p_watershed_zip"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/callback"
       tags: 
@@ -1356,7 +1444,11 @@ paths:
       - "$ref": "#/parameters/p_watershed"
       - "$ref": "#/parameters/p_watershed_group"
       - "$ref": "#/parameters/p_watershed_zip"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/callback"
       tags: 
@@ -1379,7 +1471,11 @@ paths:
       parameters: 
       - "$ref": "#/parameters/output"
       - "$ref": "#/parameters/download"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/p_reg"
       - "$ref": "#/parameters/p_st"
@@ -1432,7 +1528,11 @@ paths:
       parameters: 
       - "$ref": "#/parameters/output"
       - "$ref": "#/parameters/download"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/p_reg"
       - "$ref": "#/parameters/p_st"
@@ -1486,7 +1586,11 @@ paths:
       parameters: 
       - "$ref": "#/parameters/output"
       - "$ref": "#/parameters/download"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/p_reg"
       - "$ref": "#/parameters/p_st"
@@ -1538,7 +1642,11 @@ paths:
       parameters: 
       - "$ref": "#/parameters/output"
       - "$ref": "#/parameters/download"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/p_reg"
       - "$ref": "#/parameters/p_st"
@@ -1637,7 +1745,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_permit_id"
       - "$ref": "#/parameters/p_poll_name"
       - "$ref": "#/parameters/p_param_code"
@@ -1660,7 +1772,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_permit_id"
       - "$ref": "#/parameters/p_poll_name"
       - "$ref": "#/parameters/p_param_code"
@@ -1688,7 +1804,11 @@ paths:
       - "$ref": "#/parameters/p_huc_region"
       - "$ref": "#/parameters/p_watershed"
       - "$ref": "#/parameters/p_watershed_group"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/pageno"
       - "$ref": "#/parameters/callback"
       tags: 
@@ -1713,7 +1833,11 @@ paths:
       - "$ref": "#/parameters/p_huc_region"
       - "$ref": "#/parameters/p_watershed"
       - "$ref": "#/parameters/p_watershed_group"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/pageno"
       - "$ref": "#/parameters/callback"
       tags: 
@@ -1739,7 +1863,11 @@ paths:
       - "$ref": "#/parameters/p_huc_region"
       - "$ref": "#/parameters/p_watershed"
       - "$ref": "#/parameters/p_watershed_group"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/pageno"
       - "$ref": "#/parameters/callback"
       tags: 
@@ -1764,7 +1892,11 @@ paths:
       - "$ref": "#/parameters/p_huc_region"
       - "$ref": "#/parameters/p_watershed"
       - "$ref": "#/parameters/p_watershed_group"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/pageno"
       - "$ref": "#/parameters/callback"
       tags: 
@@ -1787,7 +1919,11 @@ paths:
       parameters: 
       - "$ref": "#/parameters/output"
       - "$ref": "#/parameters/p_permit_id"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
@@ -1808,7 +1944,11 @@ paths:
       parameters: 
       - "$ref": "#/parameters/output"
       - "$ref": "#/parameters/p_permit_id"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
@@ -1886,7 +2026,11 @@ paths:
       - "$ref": "#/parameters/p_treatment_tech_present"
       - "$ref": "#/parameters/p_watershed"
       - "$ref": "#/parameters/p_watershed_group"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/pageno"
       - "$ref": "#/parameters/newsort"
@@ -1970,7 +2114,11 @@ paths:
       - "$ref": "#/parameters/p_treatment_tech_present"
       - "$ref": "#/parameters/p_watershed"
       - "$ref": "#/parameters/p_watershed_group"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/pageno"
       - "$ref": "#/parameters/newsort"
@@ -2055,7 +2203,11 @@ paths:
       - "$ref": "#/parameters/p_treatment_tech_present"
       - "$ref": "#/parameters/p_watershed"
       - "$ref": "#/parameters/p_watershed_group"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/pageno"
       - "$ref": "#/parameters/newsort"
@@ -2139,7 +2291,11 @@ paths:
       - "$ref": "#/parameters/p_treatment_tech_present"
       - "$ref": "#/parameters/p_watershed"
       - "$ref": "#/parameters/p_watershed_group"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/pageno"
       - "$ref": "#/parameters/newsort"
@@ -2168,7 +2324,11 @@ paths:
       parameters: 
       - "$ref": "#/parameters/output"
       - "$ref": "#/parameters/download"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/p_reg"
       - "$ref": "#/parameters/p_st"
@@ -2220,7 +2380,11 @@ paths:
       parameters: 
       - "$ref": "#/parameters/output"
       - "$ref": "#/parameters/download"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/p_reg"
       - "$ref": "#/parameters/p_st"
@@ -2338,7 +2502,11 @@ paths:
       - "$ref": "#/parameters/p_watershed"
       - "$ref": "#/parameters/p_watershed_group"
       - "$ref": "#/parameters/p_watershed_zip"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/callback"
       tags: 
@@ -2380,7 +2548,11 @@ paths:
       - "$ref": "#/parameters/p_watershed"
       - "$ref": "#/parameters/p_watershed_group"
       - "$ref": "#/parameters/p_watershed_zip"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/callback"
       tags: 
@@ -2416,7 +2588,11 @@ paths:
       - "$ref": "#/parameters/p_watershed"
       - "$ref": "#/parameters/p_watershed_group"
       - "$ref": "#/parameters/p_watershed_zip"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/callback"
       tags: 
@@ -2451,7 +2627,11 @@ paths:
       - "$ref": "#/parameters/p_watershed"
       - "$ref": "#/parameters/p_watershed_group"
       - "$ref": "#/parameters/p_watershed_zip"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/callback"
       tags: 
@@ -2473,7 +2653,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_outfall"
       - "$ref": "#/parameters/p_permit_id"
       - "$ref": "#/parameters/p_poll_name"
@@ -2497,7 +2681,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_outfall"
       - "$ref": "#/parameters/p_permit_id"
       - "$ref": "#/parameters/p_poll_name"
@@ -2522,7 +2710,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
@@ -2542,7 +2734,11 @@ paths:
       summary: Discharge Monitoring Report Custom Service
       parameters: 
       - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/callback"
       tags: 
       - Discharge Monitoring Report
@@ -2564,7 +2760,11 @@ paths:
       parameters: 
       - "$ref": "#/parameters/output"
       - "$ref": "#/parameters/download"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/p_reg"
       - "$ref": "#/parameters/p_st"
@@ -2616,7 +2816,11 @@ paths:
       parameters: 
       - "$ref": "#/parameters/output"
       - "$ref": "#/parameters/download"
-      - "$ref": "#/parameters/p_year"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
       - "$ref": "#/parameters/p_zip"
       - "$ref": "#/parameters/p_reg"
       - "$ref": "#/parameters/p_st"
