@@ -195,6 +195,45 @@ paths:
                 "$ref": "#/definitions/dfr1_Results" 
             required: 
             - Results
+  "/dfr_rest_services.get_case_formal_actions": 
+    get: 
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_id"
+      - "$ref": "#/parameters/callback"
+      tags: 
+      - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dfr0_get_case_formal_actions.Results" 
+            required: 
+            - Results
+    post: 
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_id"
+      - "$ref": "#/parameters/callback"
+      tags: 
+      - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dfr0_get_case_formal_actions.Results" 
+            required: 
+            - Results
   "/dfr_rest_services.get_compliance_history": 
     get: 
       summary: Detailed Facility Report 5 Year Compliance Monitoring History Service
@@ -614,6 +653,47 @@ paths:
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrx_Results" 
+            required: 
+            - Results
+  "/dfr_rest_services.get_demographics_by_id": 
+    get: 
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_id"
+      - "$ref": "#/parameters/p_radius"
+      - "$ref": "#/parameters/callback"
+      tags: 
+      - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Returns an object that includes demographics
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dfrY_Results" 
+            required: 
+            - Results
+    post: 
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_id"
+      - "$ref": "#/parameters/p_radius"
+      - "$ref": "#/parameters/callback"
+      tags: 
+      - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Returns an object that includes demographics
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dfrY_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_enforcement_summary": 
@@ -1494,6 +1574,47 @@ paths:
                 "$ref": "#/definitions/dfrZ_Results" 
             required: 
             - Results
+  "/dfr_rest_services.get_water_quality_details": 
+    get: 
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_id"
+      - "$ref": "#/parameters/p_radius"
+      - "$ref": "#/parameters/callback"
+      tags: 
+      - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dfrp__details.Results" 
+            required: 
+            - Results
+    post: 
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_id"
+      - "$ref": "#/parameters/p_radius"
+      - "$ref": "#/parameters/callback"
+      tags: 
+      - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dfrp__details.Results" 
+            required: 
+            - Results
 definitions: 
   dfr0_Qtr12Header: 
     description: Header Object
@@ -2001,6 +2122,18 @@ definitions:
         "$ref": "#/definitions/dfr6_AirQuality" 
     required: 
     - Message
+  dfr0_get_case_formal_actions.Results: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      CaseFormalActions: 
+        "$ref": "#/definitions/dfr4_CaseFormalActions" 
+    required: 
+    - Message
   dfr2_Results: 
     description: Results Object
     properties: 
@@ -2107,6 +2240,18 @@ definitions:
         description: Field to record messages (typically performance-related) about packet processing
       CWASECompliance: 
         "$ref": "#/definitions/dfrC_CWASECompliance" 
+    required: 
+    - Message
+  dfrY_Results: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      Demographics: 
+        "$ref": "#/definitions/dfrE_Demographics" 
     required: 
     - Message
   dfr5_AirCompliance: 
@@ -3428,6 +3573,140 @@ definitions:
     - Qtr12Value
     - Qtr13Status
     - Qtr13Value
+  dfr4_CaseFormalActions: 
+    description: Case Formal Actions
+    xml: 
+      name: CaseFormalActions
+    properties: 
+      ProgramDates: 
+        type: array
+        title: Program Dates
+        items: 
+          "$ref": "#/definitions/dfr4_ProgramDates" 
+        xml: 
+          name: ProgramDates
+          wrapped: true
+      Action: 
+        type: array
+        items: 
+          "$ref": "#/definitions/dfr4_CaseFormalActions.Action" 
+        xml: 
+          name: Action
+          wrapped: true
+    required: 
+    - ProgramDates
+    - Action
+  dfr4_CaseFormalActions.Action: 
+    description: Case Formal Action
+    properties: 
+      StatuteCode: 
+        type: string
+        title: Statute Code
+        example: VA0000005151044014
+        description: Air Facility System (AFS) ID.
+      LawSectionCode: 
+        type: string
+        title: Law Section Code
+        example: 112D
+        description: The unique identifier for the Section(s) of law violated and cited in the activity.
+      CaseID: 
+        type: string
+        title: Case Identifier
+        example: VA0000005151044014
+        description: Air Facility System (AFS) ID.
+      EPASystem: 
+        type: string
+        title: EPA Data System
+        example: ICP
+        description: |-
+          The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: 
+          - AFS: Air Facility System for Clean Air Act stationary source programs.
+          - ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.
+          - RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.
+          - NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).
+          - TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.
+          - NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.
+          - TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.
+      SourceID: 
+        type: string
+        title: EPA Source Identifier
+        example: ALR040033
+        description: Unique Identifier assigned by EPA.
+      ActivityName: 
+        type: string
+        description: The user-created name for an activity.
+      LeadAgency: 
+        type: string
+        title: Lead Agency
+        example: State
+        description: The lead agency (e.g., EPA, State) conducting the inspection
+      CaseType: 
+        type: string
+        title: Case Type
+        example: AFR
+        description: The unique code that identifies a type of compliance event or enforcement action.
+      CaseName: 
+        type: string
+        title: Case Name
+        example: Baltes Real Estate Company
+        description: |-
+          A unique number identifying the enforcement action. For EPA civil cases, these numbers begin with either the two digit EPA Region Code, "HQ" (headquarters initiated cases), and "EF" or "WF" (Eastern or Western Field Office CAA Mobile Source Program cases); followed by the fiscal year in which the action was initiated. After the fiscal year there is a sequence number. State NPDES civil cases start with the two character post abbreviation, followed by a sequence number.
+          For criminal cases, the ID was generated in ECHO based on the following format: CR [prosecution_summary_id]. The source of the Prosecution Summary ID is the Summary of Criminal Prosecutions database.
+      IssueDate: 
+        type: string
+        title: Administratice Case Issue Date
+        description: For administrative cases, this field indicates the date that the complaint or Administrative Order (AO) was signed by the appropriate authority and issued to the respondent. For judicial cases, this field indicates the date that the complaint was filed with the Clerk of the Court.
+      NumberSettlements: 
+        type: string
+        title: Number of Settlements
+        example: '1'
+      TotalCostRecovery: 
+        type: string
+        title: Total Cost Recovery
+        example: "$6,598"
+        description: The amount of the cost recovery ordered or agreed to be repaid by the responsible parties, cost recovery whole dollar amount awarded by the Court and due the the Superfund. For administrative cases, it is the cost recovery whole dollar amount of the Final Order.
+      SettlementDate: 
+        type: string
+        title: Settlement Date
+        example: 05/5/2005
+        description: For federal judicial actions, this is the date the settlement document is signed by the presiding judge and entered by the Clerk of the Court. At that point, the settlement becomes a binding court order. For administrative actions, this is the date that the final order is signed and issued by the enforcement authority.
+      LatestSettlementEnteredDate: 
+        type: string
+      FederalPenalty: 
+        type: string
+        title: Federal Penalty
+        example: "$65,000.00"
+        description: For civil judicial Enforcement Actions, this amount is the Federal penalty assessed against the defendant(s) as specified in the final entered Consent Decree or Court Order.  For administrative Enforcement Actions, it is the penalty assessed in the Consent/Final Order.  It does not include the amount of the penalty mitigated due to a SEP or the amount shared with the state or local entities.  Interest payments associated with a penalty paid over time are not to be included in this amount.  It is the total Federal amount for each Final Order.
+      StateLocalPenalty: 
+        type: string
+        title: State Local Penalty
+      SepCost: 
+        type: string
+        example: "$4,100.00"
+        description: The total value of all SEPs for all settlements at the enforcement case.
+      CompActionCost: 
+        type: string
+        title: Compliance Action Cost
+        example: "$12,000"
+    required: 
+    - StatuteCode
+    - LawSectionCode
+    - CaseID
+    - EPASystem
+    - SourceID
+    - ActivityName
+    - LeadAgency
+    - CaseType
+    - CaseName
+    - IssueDate
+    - NumberSettlements
+    - TotalCostRecovery
+    - SettlementDate
+    - LatestSettlementEnteredDate
+    - FederalPenalty
+    - StateLocalPenalty
+    - SepCost
+    - CompActionCost
   dfrV_ComplianceHistory: 
     description: Compliance History Object
     properties: 
@@ -4992,12 +5271,16 @@ definitions:
         "$ref": "#/definitions/dfrM_SDWISCompliance" 
       WaterQuality: 
         "$ref": "#/definitions/dfrU_WaterQuality" 
+      WaterQualityDetails: 
+        "$ref": "#/definitions/dfrU_WaterQualityDetails" 
       Notices: 
         "$ref": "#/definitions/dfrK_Notices" 
       FormalActions: 
         "$ref": "#/definitions/dfrG_FormalActions" 
       ICISFormalActions: 
         "$ref": "#/definitions/dfrH_ICISFormalActions" 
+      CaseFormalActions: 
+        "$ref": "#/definitions/dfr4_CaseFormalActions" 
       TRIHistory: 
         "$ref": "#/definitions/dfrQ_TRIHistory" 
       TRIReleases: 
@@ -6199,6 +6482,91 @@ definitions:
     - BeachCloseLastYearFlg
     - BeachCloseLast2yrsFlg
     - EsaAquaticSpeciesFlg
+  dfrU_WaterQualityDetails: 
+    description: Water Quality Details
+    properties: 
+      Sources: 
+        type: array
+        title: Sources
+        items: 
+          "$ref": "#/definitions/dfrU_WaterQualityDetails.Sources" 
+        xml: 
+          name: Sources
+          wrapped: true
+  dfrU_WaterQualityDetails.Sources: 
+    description: Sources Object
+    xml: 
+      name: Sources
+    properties: 
+      SourceID: 
+        type: string
+        title: EPA Source Identifier
+        example: ALR040033
+        description: Unique Identifier assigned by EPA.
+      CycleYear: 
+        type: string
+      GNISName: 
+        type: string
+      ReachCode: 
+        type: string
+      WBD12: 
+        type: string
+        title: Watershed Boundary Dataset Level 12 Code
+      WBD12Name: 
+        type: string
+        title: Watershed Boundary Dataset Level 12 Name
+      AssessedOr303dFlg: 
+        type: string
+      ImpairedWatersFlg: 
+        type: string
+      AssessmentUnitEPACategory: 
+        type: string
+      AttainsAquaticLifeUseFlg: 
+        type: string
+        title: ATTAINS Aquatic Life Use Flag
+        example: Y
+        description: "Displays \"Y\" if the waterbody in which the facility resides is designated for aquatic life use. The data are from the ATTAINS database."
+      AttainsExceptnlUseFlg: 
+        type: string
+        title: ATTAINS Exceptional Use Flag
+        example: Y
+        description: "Displays \"Y\" if the waterbody in which the facility resides is designated for exceptional use. The data are from the ATTAINS database."
+      AttainsRecreationUseFlg: 
+        type: string
+        title: ATTAINS Recreational Use Flag
+        example: Y
+        description: "Displays \"Y\" if the waterbody in which the facility resides is designated for recreational use. The data are from the ATTAINS database."
+      AttainsShelffishUseFlg: 
+        type: string
+      AttainsStateCauses: 
+        type: string
+        title: ATTAINS State Causes
+        example: PH | POLYCHLORINATED BIPHENYLS (PCBS)
+        description: Lists all pollutants or stressors that are causing impairment in the assessed waterbody. The data are from the ATTAINS database.
+      AttainsCauseGroups: 
+        type: string
+        title: ATTAINS Cause Groups
+        example: POLYCHLORINATED BIPHENYLS (PCBS) | TOXIC ORGANICS
+        description: Lists all groups of pollutants or stressors that are causing impairment in the assessed waterbody. The data are from the ATTAINS database.
+      AttainsPossiblePollutants: 
+        type: string
+    required: 
+    - SourceID
+    - CycleYear
+    - GNISName
+    - ReachCode
+    - WBD12
+    - WBD12Name
+    - AssessedOr303dFlg
+    - ImpairedWatersFlg
+    - AssessmentUnitEPACategory
+    - AttainsAquaticLifeUseFlg
+    - AttainsExceptnlUseFlg
+    - AttainsRecreationUseFlg
+    - AttainsShelffishUseFlg
+    - AttainsStateCauses
+    - AttainsCauseGroups
+    - AttainsPossiblePollutants
   dfr4_WebFireDocuments: 
     description: Web Fire Documents
     xml: 
@@ -6497,5 +6865,17 @@ definitions:
         description: Field to record messages (typically performance-related) about packet processing
       WaterQuality: 
         "$ref": "#/definitions/dfrU_WaterQuality" 
+    required: 
+    - Message
+  dfrp__details.Results: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      WaterQualityDetails: 
+        "$ref": "#/definitions/dfrU_WaterQualityDetails" 
     required: 
     - Message
