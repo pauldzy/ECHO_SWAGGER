@@ -697,12 +697,15 @@
       }
    }
    ,"paths": {
-       "\/dmr_rest_services.get_pollutant_loads": {
+       "\/dmr_rest_services.get_all_dmr_facilities": {
           "get": {
              "summary": "Discharge Monitoring Report Custom Service"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/download"
                }
                ,{
                    "name": "p_year"
@@ -712,16 +715,100 @@
                   ,"required": false
                }
                ,{
-                   "$ref": "#\/parameters\/p_permit_id"
+                   "$ref": "#\/parameters\/p_zip"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_reg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_st"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_co"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ct"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_zip"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_water"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_poll"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_esa"
                }
                ,{
                    "$ref": "#\/parameters\/p_poll_name"
                }
                ,{
-                   "$ref": "#\/parameters\/p_param_code"
+                   "$ref": "#\/parameters\/p_cas"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_cat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_potw"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_psc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_dmr_tri_link"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_dmr_tri_release"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fname"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
                }
                ,{
                    "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/pageno"
+               }
+               ,{
+                   "$ref": "#\/parameters\/newsort"
+               }
+               ,{
+                   "$ref": "#\/parameters\/descending"
+               }
+               ,{
+                   "$ref": "#\/parameters\/responseset"
                }
             ]
             ,"tags": [
@@ -737,7 +824,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr22_Results"
+                         "$ref": "#\/definitions\/dmr4_Results"
                      }
                   }
                   ,"required": [
@@ -754,6 +841,9 @@
                    "$ref": "#\/parameters\/output"
                }
                ,{
+                   "$ref": "#\/parameters\/download"
+               }
+               ,{
                    "name": "p_year"
                   ,"in": "query"
                   ,"description": "The calendar year for the annual pollutant loadings. "
@@ -761,16 +851,100 @@
                   ,"required": false
                }
                ,{
-                   "$ref": "#\/parameters\/p_permit_id"
+                   "$ref": "#\/parameters\/p_zip"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_reg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_st"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_co"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ct"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_zip"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_water"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_poll"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_esa"
                }
                ,{
                    "$ref": "#\/parameters\/p_poll_name"
                }
                ,{
-                   "$ref": "#\/parameters\/p_param_code"
+                   "$ref": "#\/parameters\/p_cas"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_cat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_potw"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_psc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_dmr_tri_link"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_dmr_tri_release"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fname"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
                }
                ,{
                    "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/pageno"
+               }
+               ,{
+                   "$ref": "#\/parameters\/newsort"
+               }
+               ,{
+                   "$ref": "#\/parameters\/descending"
+               }
+               ,{
+                   "$ref": "#\/parameters\/responseset"
                }
             ]
             ,"tags": [
@@ -786,7 +960,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr22_Results"
+                         "$ref": "#\/definitions\/dmr4_Results"
                      }
                   }
                   ,"required": [
@@ -797,7 +971,7 @@
             }
          }
       }
-      ,"\/dmr_rest_services.get_eff_exceedances": {
+      ,"\/dmr_rest_services.get_all_tri_facilities": {
           "get": {
              "summary": "Discharge Monitoring Report Custom Service"
             ,"parameters": [
@@ -808,7 +982,20 @@
                    "$ref": "#\/parameters\/download"
                }
                ,{
-                   "$ref": "#\/parameters\/p_cas"
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_zip"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_reg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_st"
                }
                ,{
                    "$ref": "#\/parameters\/p_co"
@@ -817,103 +1004,73 @@
                    "$ref": "#\/parameters\/p_ct"
                }
                ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_link"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_release"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_end_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_exceed_count"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_exceed_scope"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_exceed_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fname"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lbs_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pct_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_cat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_potw"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_psc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_qc_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_start_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_twpe_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
+                   "$ref": "#\/parameters\/p_watershed_zip"
                }
                ,{
                    "$ref": "#\/parameters\/p_watershed_group"
                }
                ,{
-                   "$ref": "#\/parameters\/p_watershed_zip"
+                   "$ref": "#\/parameters\/p_watershed"
                }
                ,{
-                   "$ref": "#\/parameters\/p_zip"
+                   "$ref": "#\/parameters\/p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_esa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_chem_name"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_discharge_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_psc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fname"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_tri_npdes_link"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_rpt_disch"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_rpt_disch_gt"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_rpt_disch_units"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_rpt_disch_amt"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_sw"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_sw_source"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
                }
                ,{
                    "$ref": "#\/parameters\/pageno"
@@ -926,9 +1083,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/responseset"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
                }
             ]
             ,"tags": [
@@ -944,7 +1098,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr10_Results"
+                         "$ref": "#\/definitions\/dmr5_Results"
                      }
                   }
                   ,"required": [
@@ -964,7 +1118,20 @@
                    "$ref": "#\/parameters\/download"
                }
                ,{
-                   "$ref": "#\/parameters\/p_cas"
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_zip"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_reg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_st"
                }
                ,{
                    "$ref": "#\/parameters\/p_co"
@@ -973,25 +1140,379 @@
                    "$ref": "#\/parameters\/p_ct"
                }
                ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_link"
+                   "$ref": "#\/parameters\/p_watershed_zip"
                }
                ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_release"
+                   "$ref": "#\/parameters\/p_watershed_group"
                }
                ,{
-                   "$ref": "#\/parameters\/p_end_year"
+                   "$ref": "#\/parameters\/p_watershed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc"
                }
                ,{
                    "$ref": "#\/parameters\/p_esa"
                }
                ,{
-                   "$ref": "#\/parameters\/p_exceed_count"
+                   "$ref": "#\/parameters\/p_chem_name"
                }
                ,{
-                   "$ref": "#\/parameters\/p_exceed_scope"
+                   "$ref": "#\/parameters\/p_discharge_type"
                }
                ,{
-                   "$ref": "#\/parameters\/p_exceed_type"
+                   "$ref": "#\/parameters\/p_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_psc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fname"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_tri_npdes_link"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_rpt_disch"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_rpt_disch_gt"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_rpt_disch_units"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_rpt_disch_amt"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_sw"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_sw_source"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/pageno"
+               }
+               ,{
+                   "$ref": "#\/parameters\/newsort"
+               }
+               ,{
+                   "$ref": "#\/parameters\/descending"
+               }
+               ,{
+                   "$ref": "#\/parameters\/responseset"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr5_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/dmr_rest_services.get_comparison_dashboard": {
+          "get": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_chem_group_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_chem_univ_metric"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_co"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ct"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_drilldown"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_esa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fac_univ_metric"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_get_chart"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_water"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_poll"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ind_sector_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_reg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_st"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_top_chem_univ"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_top_ind_univ"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_top_metric"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_top_sort"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_zip"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_zip"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr6_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_chem_group_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_chem_univ_metric"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_co"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ct"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_drilldown"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_esa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fac_univ_metric"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_get_chart"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_water"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_poll"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ind_sector_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_reg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_st"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_top_chem_univ"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_top_ind_univ"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_top_metric"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_top_sort"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_zip"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_zip"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr6_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/dmr_rest_services.get_custom_data_annual": {
+          "get": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_count"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cas"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cerclis"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_co"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cso_outfalls"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ct"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_dmr_tri_link"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_end_date"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_esa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_est"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_long"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_radius"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fac_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fifra"
                }
                ,{
                    "$ref": "#\/parameters\/p_fname"
@@ -1000,16 +1521,34 @@
                    "$ref": "#\/parameters\/p_huc"
                }
                ,{
+                   "$ref": "#\/parameters\/p_huc_region"
+               }
+               ,{
                    "$ref": "#\/parameters\/p_imp_poll"
                }
                ,{
                    "$ref": "#\/parameters\/p_imp_water"
                }
                ,{
+                   "$ref": "#\/parameters\/p_intermittent_disch"
+               }
+               ,{
                    "$ref": "#\/parameters\/p_lbs_exceed"
                }
                ,{
+                   "$ref": "#\/parameters\/p_loads_data"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lod"
+               }
+               ,{
                    "$ref": "#\/parameters\/p_maj"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj_model"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_mon_loc"
                }
                ,{
                    "$ref": "#\/parameters\/p_naics"
@@ -1018,13 +1557,31 @@
                    "$ref": "#\/parameters\/p_naics2"
                }
                ,{
+                   "$ref": "#\/parameters\/p_nd"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_nutrient_agg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_group"
+               }
+               ,{
                    "$ref": "#\/parameters\/p_pct_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pct_limit_disch"
                }
                ,{
                    "$ref": "#\/parameters\/p_permit_id"
                }
                ,{
                    "$ref": "#\/parameters\/p_permit_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pf_id"
                }
                ,{
                    "$ref": "#\/parameters\/p_poll_cat"
@@ -1039,10 +1596,13 @@
                    "$ref": "#\/parameters\/p_psc"
                }
                ,{
-                   "$ref": "#\/parameters\/p_reg"
+                   "$ref": "#\/parameters\/p_ptreatment"
                }
                ,{
                    "$ref": "#\/parameters\/p_qc_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_reg"
                }
                ,{
                    "$ref": "#\/parameters\/p_sic"
@@ -1051,13 +1611,25 @@
                    "$ref": "#\/parameters\/p_sic2"
                }
                ,{
+                   "$ref": "#\/parameters\/p_sig_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_spcc"
+               }
+               ,{
                    "$ref": "#\/parameters\/p_st"
                }
                ,{
-                   "$ref": "#\/parameters\/p_start_year"
+                   "$ref": "#\/parameters\/p_start_date"
                }
                ,{
-                   "$ref": "#\/parameters\/p_twpe_exceed"
+                   "$ref": "#\/parameters\/p_tmdl"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_treatment_tech"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_treatment_tech_present"
                }
                ,{
                    "$ref": "#\/parameters\/p_watershed"
@@ -1066,7 +1638,11 @@
                    "$ref": "#\/parameters\/p_watershed_group"
                }
                ,{
-                   "$ref": "#\/parameters\/p_watershed_zip"
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/p_zip"
@@ -1086,6 +1662,12 @@
                ,{
                    "$ref": "#\/parameters\/callback"
                }
+               ,{
+                   "$ref": "#\/parameters\/qcolumns"
+               }
+               ,{
+                   "$ref": "#\/parameters\/suppress_headers"
+               }
             ]
             ,"tags": [
                 "Discharge Monitoring Report"
@@ -1100,7 +1682,239 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr10_Results"
+                         "$ref": "#\/definitions\/dmr2_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_count"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cas"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cerclis"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_co"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cso_outfalls"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ct"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_dmr_tri_link"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_end_date"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_esa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_est"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_long"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_radius"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fac_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fifra"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fname"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc_region"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_poll"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_water"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_intermittent_disch"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lbs_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_loads_data"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lod"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj_model"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_mon_loc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_nd"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_nutrient_agg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pct_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pct_limit_disch"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pf_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_cat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_name"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_potw"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_psc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ptreatment"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_qc_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_reg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sig_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_spcc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_st"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_start_date"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_tmdl"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_treatment_tech"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_treatment_tech_present"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_group"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_zip"
+               }
+               ,{
+                   "$ref": "#\/parameters\/pageno"
+               }
+               ,{
+                   "$ref": "#\/parameters\/newsort"
+               }
+               ,{
+                   "$ref": "#\/parameters\/descending"
+               }
+               ,{
+                   "$ref": "#\/parameters\/responseset"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/qcolumns"
+               }
+               ,{
+                   "$ref": "#\/parameters\/suppress_headers"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr2_Results"
                      }
                   }
                   ,"required": [
@@ -1577,7 +2391,7 @@
             }
          }
       }
-      ,"\/dmr_rest_services.get_permit_limits": {
+      ,"\/dmr_rest_services.get_custom_data_monitor_pd": {
           "get": {
              "summary": "Discharge Monitoring Report Custom Service"
             ,"parameters": [
@@ -1585,28 +2399,121 @@
                    "$ref": "#\/parameters\/output"
                }
                ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the DMR annual pollutant loadings."
-                  ,"enum": [
-                      2018
-                     ,2017
-                     ,2016
-                     ,2015
-                     ,2014
-                     ,2013
-                     ,2012
-                     ,2011
-                     ,2010
-                     ,2009
-                     ,2008
-                     ,2007
-                  ]
-                  ,"type": "string"
-                  ,"required": false
+                   "$ref": "#\/parameters\/p_count"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cas"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cerclis"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_co"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cso_outfalls"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ct"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_dmr_tri_link"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_end_date"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_esa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_est"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_long"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_radius"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fac_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fifra"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fname"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc_region"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_poll"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_water"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_intermittent_disch"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lbs_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_loads_data"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lod"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj_model"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_mon_loc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_nd"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_nutrient_agg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pct_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pct_limit_disch"
                }
                ,{
                    "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pf_id"
                }
                ,{
                    "$ref": "#\/parameters\/p_poll_cat"
@@ -1615,7 +2522,83 @@
                    "$ref": "#\/parameters\/p_poll_name"
                }
                ,{
+                   "$ref": "#\/parameters\/p_potw"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_psc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ptreatment"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_qc_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_reg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sig_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_spcc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_st"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_start_date"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_tmdl"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_treatment_tech"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_treatment_tech_present"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_group"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_zip"
+               }
+               ,{
+                   "$ref": "#\/parameters\/pageno"
+               }
+               ,{
+                   "$ref": "#\/parameters\/newsort"
+               }
+               ,{
+                   "$ref": "#\/parameters\/descending"
+               }
+               ,{
+                   "$ref": "#\/parameters\/responseset"
+               }
+               ,{
                    "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/qcolumns"
+               }
+               ,{
+                   "$ref": "#\/parameters\/suppress_headers"
                }
             ]
             ,"tags": [
@@ -1631,7 +2614,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr21_Results"
+                         "$ref": "#\/definitions\/dmr3_Results"
                      }
                   }
                   ,"required": [
@@ -1648,28 +2631,121 @@
                    "$ref": "#\/parameters\/output"
                }
                ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the DMR annual pollutant loadings."
-                  ,"enum": [
-                      2018
-                     ,2017
-                     ,2016
-                     ,2015
-                     ,2014
-                     ,2013
-                     ,2012
-                     ,2011
-                     ,2010
-                     ,2009
-                     ,2008
-                     ,2007
-                  ]
-                  ,"type": "string"
-                  ,"required": false
+                   "$ref": "#\/parameters\/p_count"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cas"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cerclis"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_co"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_cso_outfalls"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ct"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_dmr_tri_link"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_end_date"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_esa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_est"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_long"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_radius"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fac_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fifra"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fname"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc_region"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_poll"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_water"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_intermittent_disch"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lbs_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_loads_data"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lod"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj_model"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_mon_loc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_nd"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_nutrient_agg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pct_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pct_limit_disch"
                }
                ,{
                    "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pf_id"
                }
                ,{
                    "$ref": "#\/parameters\/p_poll_cat"
@@ -1678,54 +2754,83 @@
                    "$ref": "#\/parameters\/p_poll_name"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr21_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/dmr_rest_services.get_permit_fact_sheet": {
-          "get": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/p_potw"
                }
                ,{
-                   "$ref": "#\/parameters\/p_end_date"
+                   "$ref": "#\/parameters\/p_psc"
                }
                ,{
-                   "$ref": "#\/parameters\/p_fname"
+                   "$ref": "#\/parameters\/p_ptreatment"
                }
                ,{
-                   "$ref": "#\/parameters\/p_permit_id"
+                   "$ref": "#\/parameters\/p_qc_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_reg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sic2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_sig_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_spcc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_st"
                }
                ,{
                    "$ref": "#\/parameters\/p_start_date"
                }
                ,{
+                   "$ref": "#\/parameters\/p_tmdl"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_treatment_tech"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_treatment_tech_present"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_group"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_zip"
+               }
+               ,{
+                   "$ref": "#\/parameters\/pageno"
+               }
+               ,{
+                   "$ref": "#\/parameters\/newsort"
+               }
+               ,{
+                   "$ref": "#\/parameters\/descending"
+               }
+               ,{
+                   "$ref": "#\/parameters\/responseset"
+               }
+               ,{
                    "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/qcolumns"
+               }
+               ,{
+                   "$ref": "#\/parameters\/suppress_headers"
                }
             ]
             ,"tags": [
@@ -1741,52 +2846,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr20_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_end_date"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fname"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_start_date"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr20_Results"
+                         "$ref": "#\/definitions\/dmr3_Results"
                      }
                   }
                   ,"required": [
@@ -1797,7 +2857,7 @@
             }
          }
       }
-      ,"\/dmr_rest_services.get_tri_facility_report": {
+      ,"\/dmr_rest_services.get_dashboard_chemicals": {
           "get": {
              "summary": "Discharge Monitoring Report Custom Service"
             ,"parameters": [
@@ -1805,7 +2865,46 @@
                    "$ref": "#\/parameters\/output"
                }
                ,{
-                   "$ref": "#\/parameters\/download"
+                   "$ref": "#\/parameters\/p_chem_slice"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_co"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ct"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_esa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_water"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_poll"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_reg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_st"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_top_chem_univ"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_top_ind_univ"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_zip"
                }
                ,{
                    "name": "p_year"
@@ -1815,7 +2914,7 @@
                   ,"required": false
                }
                ,{
-                   "$ref": "#\/parameters\/p_permit_id"
+                   "$ref": "#\/parameters\/p_zip"
                }
                ,{
                    "$ref": "#\/parameters\/callback"
@@ -1834,7 +2933,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr24_Results"
+                         "$ref": "#\/definitions\/dmr7_Results"
                      }
                   }
                   ,"required": [
@@ -1851,7 +2950,46 @@
                    "$ref": "#\/parameters\/output"
                }
                ,{
-                   "$ref": "#\/parameters\/download"
+                   "$ref": "#\/parameters\/p_chem_slice"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_co"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_ct"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_esa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_water"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_poll"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_reg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_st"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_top_chem_univ"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_top_ind_univ"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_zip"
                }
                ,{
                    "name": "p_year"
@@ -1861,7 +2999,7 @@
                   ,"required": false
                }
                ,{
-                   "$ref": "#\/parameters\/p_permit_id"
+                   "$ref": "#\/parameters\/p_zip"
                }
                ,{
                    "$ref": "#\/parameters\/callback"
@@ -1880,289 +3018,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr24_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/dmr_rest_services.get_facility_loads": {
-          "get": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_outfall"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr13_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_outfall"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr13_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/dmr_rest_services.get_state_stats": {
-          "get": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr23_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr23_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/dmr_rest_services.get_facility_report": {
-          "get": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/download"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr14_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/download"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr14_Results"
+                         "$ref": "#\/definitions\/dmr7_Results"
                      }
                   }
                   ,"required": [
@@ -2791,7 +3647,7 @@
             }
          }
       }
-      ,"\/dmr_rest_services.get_all_dmr_facilities": {
+      ,"\/dmr_rest_services.get_eff_exceedances": {
           "get": {
              "summary": "Discharge Monitoring Report Custom Service"
             ,"parameters": [
@@ -2802,20 +3658,7 @@
                    "$ref": "#\/parameters\/download"
                }
                ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
+                   "$ref": "#\/parameters\/p_cas"
                }
                ,{
                    "$ref": "#\/parameters\/p_co"
@@ -2824,37 +3667,64 @@
                    "$ref": "#\/parameters\/p_ct"
                }
                ,{
-                   "$ref": "#\/parameters\/p_watershed_zip"
+                   "$ref": "#\/parameters\/p_dmr_tri_link"
                }
                ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
+                   "$ref": "#\/parameters\/p_dmr_tri_release"
                }
                ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
+                   "$ref": "#\/parameters\/p_end_year"
                }
                ,{
                    "$ref": "#\/parameters\/p_esa"
                }
                ,{
-                   "$ref": "#\/parameters\/p_poll_name"
+                   "$ref": "#\/parameters\/p_exceed_count"
                }
                ,{
-                   "$ref": "#\/parameters\/p_cas"
+                   "$ref": "#\/parameters\/p_exceed_scope"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_exceed_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fname"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_poll"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_water"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lbs_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pct_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_type"
                }
                ,{
                    "$ref": "#\/parameters\/p_poll_cat"
                }
                ,{
-                   "$ref": "#\/parameters\/p_exceed"
+                   "$ref": "#\/parameters\/p_poll_name"
                }
                ,{
                    "$ref": "#\/parameters\/p_potw"
@@ -2863,34 +3733,37 @@
                    "$ref": "#\/parameters\/p_psc"
                }
                ,{
-                   "$ref": "#\/parameters\/p_sic2"
+                   "$ref": "#\/parameters\/p_reg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_qc_flag"
                }
                ,{
                    "$ref": "#\/parameters\/p_sic"
                }
                ,{
-                   "$ref": "#\/parameters\/p_naics2"
+                   "$ref": "#\/parameters\/p_sic2"
                }
                ,{
-                   "$ref": "#\/parameters\/p_naics"
+                   "$ref": "#\/parameters\/p_st"
                }
                ,{
-                   "$ref": "#\/parameters\/p_maj"
+                   "$ref": "#\/parameters\/p_start_year"
                }
                ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_link"
+                   "$ref": "#\/parameters\/p_twpe_exceed"
                }
                ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_release"
+                   "$ref": "#\/parameters\/p_watershed"
                }
                ,{
-                   "$ref": "#\/parameters\/p_fname"
+                   "$ref": "#\/parameters\/p_watershed_group"
                }
                ,{
-                   "$ref": "#\/parameters\/p_permit_id"
+                   "$ref": "#\/parameters\/p_watershed_zip"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/p_zip"
                }
                ,{
                    "$ref": "#\/parameters\/pageno"
@@ -2903,6 +3776,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/responseset"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
                }
             ]
             ,"tags": [
@@ -2918,7 +3794,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr4_Results"
+                         "$ref": "#\/definitions\/dmr10_Results"
                      }
                   }
                   ,"required": [
@@ -2938,20 +3814,7 @@
                    "$ref": "#\/parameters\/download"
                }
                ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
+                   "$ref": "#\/parameters\/p_cas"
                }
                ,{
                    "$ref": "#\/parameters\/p_co"
@@ -2960,37 +3823,64 @@
                    "$ref": "#\/parameters\/p_ct"
                }
                ,{
-                   "$ref": "#\/parameters\/p_watershed_zip"
+                   "$ref": "#\/parameters\/p_dmr_tri_link"
                }
                ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
+                   "$ref": "#\/parameters\/p_dmr_tri_release"
                }
                ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
+                   "$ref": "#\/parameters\/p_end_year"
                }
                ,{
                    "$ref": "#\/parameters\/p_esa"
                }
                ,{
-                   "$ref": "#\/parameters\/p_poll_name"
+                   "$ref": "#\/parameters\/p_exceed_count"
                }
                ,{
-                   "$ref": "#\/parameters\/p_cas"
+                   "$ref": "#\/parameters\/p_exceed_scope"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_exceed_type"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fname"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_poll"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_imp_water"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lbs_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_maj"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_naics2"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_pct_exceed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_type"
                }
                ,{
                    "$ref": "#\/parameters\/p_poll_cat"
                }
                ,{
-                   "$ref": "#\/parameters\/p_exceed"
+                   "$ref": "#\/parameters\/p_poll_name"
                }
                ,{
                    "$ref": "#\/parameters\/p_potw"
@@ -2999,34 +3889,37 @@
                    "$ref": "#\/parameters\/p_psc"
                }
                ,{
-                   "$ref": "#\/parameters\/p_sic2"
+                   "$ref": "#\/parameters\/p_reg"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_qc_flag"
                }
                ,{
                    "$ref": "#\/parameters\/p_sic"
                }
                ,{
-                   "$ref": "#\/parameters\/p_naics2"
+                   "$ref": "#\/parameters\/p_sic2"
                }
                ,{
-                   "$ref": "#\/parameters\/p_naics"
+                   "$ref": "#\/parameters\/p_st"
                }
                ,{
-                   "$ref": "#\/parameters\/p_maj"
+                   "$ref": "#\/parameters\/p_start_year"
                }
                ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_link"
+                   "$ref": "#\/parameters\/p_twpe_exceed"
                }
                ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_release"
+                   "$ref": "#\/parameters\/p_watershed"
                }
                ,{
-                   "$ref": "#\/parameters\/p_fname"
+                   "$ref": "#\/parameters\/p_watershed_group"
                }
                ,{
-                   "$ref": "#\/parameters\/p_permit_id"
+                   "$ref": "#\/parameters\/p_watershed_zip"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/p_zip"
                }
                ,{
                    "$ref": "#\/parameters\/pageno"
@@ -3039,6 +3932,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/responseset"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
                }
             ]
             ,"tags": [
@@ -3054,7 +3950,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr4_Results"
+                         "$ref": "#\/definitions\/dmr10_Results"
                      }
                   }
                   ,"required": [
@@ -3157,330 +4053,6 @@
             }
          }
       }
-      ,"\/dmr_rest_services.get_outfall_loads": {
-          "get": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr19_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr19_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/dmr_rest_services.get_watershed_stats": {
-          "get": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc_region"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/pageno"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr27_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc_region"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/pageno"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr27_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/dmr_rest_services.get_watershed_facilities": {
-          "get": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc_region"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/pageno"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr26_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc_region"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/pageno"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr26_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
       ,"\/dmr_rest_services.get_facility_annual_discharges": {
           "get": {
              "summary": "Discharge Monitoring Report Custom Service"
@@ -3569,183 +4141,15 @@
             }
          }
       }
-      ,"\/dmr_rest_services.get_custom_data_annual": {
+      ,"\/dmr_rest_services.get_industrial_dischargers": {
           "get": {
-             "summary": "Discharge Monitoring Report Custom Service"
+             "summary": null
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_count"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cas"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cerclis"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cso_outfalls"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_link"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_end_date"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_est"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_long"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_radius"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fifra"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fname"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc_region"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_intermittent_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lbs_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_loads_data"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lod"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj_model"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_mon_loc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_nd"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_nutrient_agg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pct_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pct_limit_disch"
-               }
-               ,{
                    "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_cat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_potw"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_psc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ptreatment"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_qc_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sig_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_spcc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_start_date"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_tmdl"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_treatment_tech"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_treatment_tech_present"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
                }
                ,{
                    "name": "p_year"
@@ -3755,28 +4159,76 @@
                   ,"required": false
                }
                ,{
-                   "$ref": "#\/parameters\/p_zip"
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
                }
                ,{
-                   "$ref": "#\/parameters\/pageno"
+                   "$ref": "#\/parameters\/p_permit_id"
                }
                ,{
-                   "$ref": "#\/parameters\/newsort"
-               }
-               ,{
-                   "$ref": "#\/parameters\/descending"
-               }
-               ,{
-                   "$ref": "#\/parameters\/responseset"
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/callback"
                }
-               ,{
-                   "$ref": "#\/parameters\/qcolumns"
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+            }
+            }
+         }
+      }
+      ,"\/dmr_rest_services.get_facility_loads": {
+          "get": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
                }
                ,{
-                   "$ref": "#\/parameters\/suppress_headers"
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_outfall"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_name"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
                }
             ]
             ,"tags": [
@@ -3792,7 +4244,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr2_Results"
+                         "$ref": "#\/definitions\/dmr13_Results"
                      }
                   }
                   ,"required": [
@@ -3809,177 +4261,6 @@
                    "$ref": "#\/parameters\/output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_count"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cas"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cerclis"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cso_outfalls"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_link"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_end_date"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_est"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_long"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_radius"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fifra"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fname"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc_region"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_intermittent_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lbs_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_loads_data"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lod"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj_model"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_mon_loc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_nd"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_nutrient_agg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pct_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pct_limit_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_cat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_potw"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_psc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ptreatment"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_qc_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sig_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_spcc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_start_date"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_tmdl"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_treatment_tech"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_treatment_tech_present"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
                    "name": "p_year"
                   ,"in": "query"
                   ,"description": "The calendar year for the annual pollutant loadings. "
@@ -3987,28 +4268,19 @@
                   ,"required": false
                }
                ,{
-                   "$ref": "#\/parameters\/p_zip"
+                   "$ref": "#\/parameters\/p_outfall"
                }
                ,{
-                   "$ref": "#\/parameters\/pageno"
+                   "$ref": "#\/parameters\/p_permit_id"
                }
                ,{
-                   "$ref": "#\/parameters\/newsort"
+                   "$ref": "#\/parameters\/p_poll_name"
                }
                ,{
-                   "$ref": "#\/parameters\/descending"
-               }
-               ,{
-                   "$ref": "#\/parameters\/responseset"
+                   "$ref": "#\/parameters\/p_param_code"
                }
                ,{
                    "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/qcolumns"
-               }
-               ,{
-                   "$ref": "#\/parameters\/suppress_headers"
                }
             ]
             ,"tags": [
@@ -4024,7 +4296,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr2_Results"
+                         "$ref": "#\/definitions\/dmr13_Results"
                      }
                   }
                   ,"required": [
@@ -4035,473 +4307,7 @@
             }
          }
       }
-      ,"\/dmr_rest_services.get_custom_data_monitor_pd": {
-          "get": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_count"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cas"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cerclis"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cso_outfalls"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_link"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_end_date"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_est"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_long"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_radius"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fifra"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fname"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc_region"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_intermittent_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lbs_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_loads_data"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lod"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj_model"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_mon_loc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_nd"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_nutrient_agg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pct_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pct_limit_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_cat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_potw"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_psc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ptreatment"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_qc_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sig_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_spcc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_start_date"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_tmdl"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_treatment_tech"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_treatment_tech_present"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/pageno"
-               }
-               ,{
-                   "$ref": "#\/parameters\/newsort"
-               }
-               ,{
-                   "$ref": "#\/parameters\/descending"
-               }
-               ,{
-                   "$ref": "#\/parameters\/responseset"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/qcolumns"
-               }
-               ,{
-                   "$ref": "#\/parameters\/suppress_headers"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr3_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_count"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cas"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cerclis"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_cso_outfalls"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_dmr_tri_link"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_end_date"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_est"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_long"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_radius"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fifra"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fname"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc_region"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_intermittent_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lbs_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_loads_data"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_lod"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_maj_model"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_mon_loc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_nd"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_nutrient_agg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_param_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pct_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pct_limit_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_pf_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_cat"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_potw"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_psc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ptreatment"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_qc_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sig_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_spcc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_start_date"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_tmdl"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_treatment_tech"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_treatment_tech_present"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/pageno"
-               }
-               ,{
-                   "$ref": "#\/parameters\/newsort"
-               }
-               ,{
-                   "$ref": "#\/parameters\/descending"
-               }
-               ,{
-                   "$ref": "#\/parameters\/responseset"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/qcolumns"
-               }
-               ,{
-                   "$ref": "#\/parameters\/suppress_headers"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr3_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/dmr_rest_services.get_all_tri_facilities": {
+      ,"\/dmr_rest_services.get_facility_report": {
           "get": {
              "summary": "Discharge Monitoring Report Custom Service"
             ,"parameters": [
@@ -4519,100 +4325,10 @@
                   ,"required": false
                }
                ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_chem_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_discharge_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_psc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fname"
-               }
-               ,{
                    "$ref": "#\/parameters\/p_permit_id"
                }
                ,{
-                   "$ref": "#\/parameters\/p_tri_npdes_link"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_rpt_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_rpt_disch_gt"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_rpt_disch_units"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_rpt_disch_amt"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_sw"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_sw_source"
-               }
-               ,{
                    "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/pageno"
-               }
-               ,{
-                   "$ref": "#\/parameters\/newsort"
-               }
-               ,{
-                   "$ref": "#\/parameters\/descending"
-               }
-               ,{
-                   "$ref": "#\/parameters\/responseset"
                }
             ]
             ,"tags": [
@@ -4628,7 +4344,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr5_Results"
+                         "$ref": "#\/definitions\/dmr14_Results"
                      }
                   }
                   ,"required": [
@@ -4655,100 +4371,10 @@
                   ,"required": false
                }
                ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_chem_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_discharge_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_exceed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_psc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_sic"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_naics"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fname"
-               }
-               ,{
                    "$ref": "#\/parameters\/p_permit_id"
                }
                ,{
-                   "$ref": "#\/parameters\/p_tri_npdes_link"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_rpt_disch"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_rpt_disch_gt"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_rpt_disch_units"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_rpt_disch_amt"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_sw"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_sw_source"
-               }
-               ,{
                    "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/pageno"
-               }
-               ,{
-                   "$ref": "#\/parameters\/newsort"
-               }
-               ,{
-                   "$ref": "#\/parameters\/descending"
-               }
-               ,{
-                   "$ref": "#\/parameters\/responseset"
                }
             ]
             ,"tags": [
@@ -4764,7 +4390,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr5_Results"
+                         "$ref": "#\/definitions\/dmr14_Results"
                      }
                   }
                   ,"required": [
@@ -4775,7 +4401,7 @@
             }
          }
       }
-      ,"\/dmr_rest_services.get_multiyear_loading": {
+      ,"\/dmr_rest_services.get_manual_corrections": {
           "get": {
              "summary": "Discharge Monitoring Report Custom Service"
             ,"parameters": [
@@ -4783,13 +4409,11 @@
                    "$ref": "#\/parameters\/output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_end_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_start_year"
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/callback"
@@ -4808,7 +4432,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr17_Results"
+                         "$ref": "#\/definitions\/dmr15_Results"
                      }
                   }
                   ,"required": [
@@ -4825,113 +4449,6 @@
                    "$ref": "#\/parameters\/output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_end_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_start_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr17_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/dmr_rest_services.get_comparison_dashboard": {
-          "get": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_chem_group_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_chem_univ_metric"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_drilldown"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_univ_metric"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_get_chart"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ind_sector_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_chem_univ"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_ind_univ"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_metric"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_sort"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_zip"
-               }
-               ,{
                    "name": "p_year"
                   ,"in": "query"
                   ,"description": "The calendar year for the annual pollutant loadings. "
@@ -4939,9 +4456,6 @@
                   ,"required": false
                }
                ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-               ,{
                    "$ref": "#\/parameters\/callback"
                }
             ]
@@ -4958,285 +4472,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr6_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_chem_group_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_chem_univ_metric"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_drilldown"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_fac_univ_metric"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_get_chart"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ind_sector_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_chem_univ"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_ind_univ"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_metric"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_sort"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_zip"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr6_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/dmr_rest_services.get_dashboard_chemicals": {
-          "get": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_chem_slice"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_chem_univ"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_ind_univ"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_zip"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr7_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Discharge Monitoring Report Custom Service"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_chem_slice"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_co"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_ct"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_huc"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_water"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_imp_poll"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_reg"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_chem_univ"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_top_ind_univ"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_group"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_watershed_zip"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_zip"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr7_Results"
+                         "$ref": "#\/definitions\/dmr15_Results"
                      }
                   }
                   ,"required": [
@@ -5353,7 +4589,605 @@
             }
          }
       }
-      ,"\/dmr_rest_services.get_manual_corrections": {
+      ,"\/dmr_rest_services.get_multiyear_loading": {
+          "get": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_end_year"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_start_year"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr17_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_end_year"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_start_year"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr17_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/dmr_rest_services.get_multiyear_loading_detail": {
+          "get": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_chem_group_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_end_year"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_start_year"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr18_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_chem_group_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_end_year"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_start_year"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr18_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/dmr_rest_services.get_outfall_loads": {
+          "get": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_name"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr19_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_name"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr19_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/dmr_rest_services.get_permit_fact_sheet": {
+          "get": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_end_date"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fname"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_start_date"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr20_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_end_date"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_fname"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_start_date"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr20_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/dmr_rest_services.get_permit_limits": {
+          "get": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the DMR annual pollutant loadings."
+                  ,"enum": [
+                      2018
+                     ,2017
+                     ,2016
+                     ,2015
+                     ,2014
+                     ,2013
+                     ,2012
+                     ,2011
+                     ,2010
+                     ,2009
+                     ,2008
+                     ,2007
+                  ]
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_cat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_name"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr21_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the DMR annual pollutant loadings."
+                  ,"enum": [
+                      2018
+                     ,2017
+                     ,2016
+                     ,2015
+                     ,2014
+                     ,2013
+                     ,2012
+                     ,2011
+                     ,2010
+                     ,2009
+                     ,2008
+                     ,2007
+                  ]
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_cat"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_name"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr21_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/dmr_rest_services.get_pollutant_loads": {
+          "get": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_name"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr22_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_poll_name"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_param_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr22_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/dmr_rest_services.get_state_stats": {
           "get": {
              "summary": "Discharge Monitoring Report Custom Service"
             ,"parameters": [
@@ -5384,7 +5218,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr15_Results"
+                         "$ref": "#\/definitions\/dmr23_Results"
                      }
                   }
                   ,"required": [
@@ -5424,7 +5258,101 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr15_Results"
+                         "$ref": "#\/definitions\/dmr23_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/dmr_rest_services.get_tri_facility_report": {
+          "get": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/download"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr24_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/download"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr24_Results"
                      }
                   }
                   ,"required": [
@@ -5709,7 +5637,7 @@
             }
          }
       }
-      ,"\/dmr_rest_services.get_multiyear_loading_detail": {
+      ,"\/dmr_rest_services.get_watershed_facilities": {
           "get": {
              "summary": "Discharge Monitoring Report Custom Service"
             ,"parameters": [
@@ -5717,16 +5645,26 @@
                    "$ref": "#\/parameters\/output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_chem_group_id"
+                   "$ref": "#\/parameters\/p_huc"
                }
                ,{
-                   "$ref": "#\/parameters\/p_end_year"
+                   "$ref": "#\/parameters\/p_huc_region"
                }
                ,{
-                   "$ref": "#\/parameters\/p_permit_id"
+                   "$ref": "#\/parameters\/p_watershed"
                }
                ,{
-                   "$ref": "#\/parameters\/p_start_year"
+                   "$ref": "#\/parameters\/p_watershed_group"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/pageno"
                }
                ,{
                    "$ref": "#\/parameters\/callback"
@@ -5745,7 +5683,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr18_Results"
+                         "$ref": "#\/definitions\/dmr26_Results"
                      }
                   }
                   ,"required": [
@@ -5762,16 +5700,26 @@
                    "$ref": "#\/parameters\/output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_chem_group_id"
+                   "$ref": "#\/parameters\/p_huc"
                }
                ,{
-                   "$ref": "#\/parameters\/p_end_year"
+                   "$ref": "#\/parameters\/p_huc_region"
                }
                ,{
-                   "$ref": "#\/parameters\/p_permit_id"
+                   "$ref": "#\/parameters\/p_watershed"
                }
                ,{
-                   "$ref": "#\/parameters\/p_start_year"
+                   "$ref": "#\/parameters\/p_watershed_group"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/pageno"
                }
                ,{
                    "$ref": "#\/parameters\/callback"
@@ -5790,7 +5738,119 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr18_Results"
+                         "$ref": "#\/definitions\/dmr26_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/dmr_rest_services.get_watershed_stats": {
+          "get": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc_region"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_group"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/pageno"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr27_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Discharge Monitoring Report Custom Service"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_huc_region"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_watershed_group"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/pageno"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr27_Results"
                      }
                   }
                   ,"required": [
@@ -8535,6 +8595,29 @@
                ,"example": "3M COMPANY"
                ,"description": "The name of the facility."
             }
+            ,"City": {
+                "type": "string"
+               ,"title": "City"
+               ,"description": "The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery."
+            }
+            ,"StateCode": {
+                "type": "string"
+            }
+            ,"EPARegionCode": {
+                "type": "string"
+               ,"title": "EPA Region Code"
+               ,"example": "03"
+               ,"description": "The EPA region where the facility is located. EPA has 10 regional offices that execute programs within several states and territories"
+            }
+            ,"GeocodeLatitude": {
+                "type": "string"
+            }
+            ,"GeocodeLongitude": {
+                "type": "string"
+            }
+            ,"Huc12": {
+                "type": "string"
+            }
             ,"MajorMinorStatusFlag": {
                 "type": "string"
             }
@@ -8634,6 +8717,12 @@
          ,"required": [
              "ExternalPermitNmbr"
             ,"FacilityName"
+            ,"City"
+            ,"StateCode"
+            ,"EPARegionCode"
+            ,"GeocodeLatitude"
+            ,"GeocodeLongitude"
+            ,"Huc12"
             ,"MajorMinorStatusFlag"
             ,"SicCode1"
             ,"NaicsCode"
