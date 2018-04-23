@@ -2145,9 +2145,55 @@ paths:
                 "$ref": "#/definitions/dmr14_Results" 
             required: 
             - Results
-  "/dmr_rest_services.get_industrial_discharges": 
+  "/dmr_rest_services.get_industrial_dischargers": 
     get: 
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_permit_id"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
+      - "$ref": "#/parameters/callback"
+      tags: 
+      - Discharge Monitoring Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            type: object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/DEF.dmr_rest_services.get_industrial_dischargers.Results" 
+            required: 
+            - Results
     post: 
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_permit_id"
+      - name: p_year
+        in: query
+        description: The calendar year for the annual pollutant loadings. 
+        type: string
+        required: false
+      - "$ref": "#/parameters/callback"
+      tags: 
+      - Discharge Monitoring Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            type: object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/DEF.dmr_rest_services.get_industrial_dischargers.Results" 
+            required: 
+            - Results
   "/dmr_rest_services.get_manual_corrections": 
     get: 
       summary: Discharge Monitoring Report Custom Service
@@ -6186,6 +6232,13 @@ definitions:
     - MaxAllowable
     - ExceedanceFlag
     - LoadOverLimit
+  DEF.dmr_rest_services.get_industrial_dischargers.Results: 
+    type: object
+    properties: 
+      Dummy: 
+        type: string
+    required: 
+    - Dummy
   dmr15_Results: 
     type: object
     properties: 

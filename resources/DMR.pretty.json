@@ -4341,12 +4341,92 @@
             }
          }
       }
-      ,"\/dmr_rest_services.get_industrial_discharges": {
+      ,"\/dmr_rest_services.get_industrial_dischargers": {
           "get": {
              "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/DEF.dmr_rest_services.get_industrial_dischargers.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
          }
          ,"post": {
              "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_permit_id"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Discharge Monitoring Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/DEF.dmr_rest_services.get_industrial_dischargers.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
          }
       }
       ,"\/dmr_rest_services.get_manual_corrections": {
@@ -10188,6 +10268,17 @@
             ,"MaxAllowable"
             ,"ExceedanceFlag"
             ,"LoadOverLimit"
+         ]
+      }
+      ,"DEF.dmr_rest_services.get_industrial_dischargers.Results": {
+          "type": "object"
+         ,"properties": {
+             "Dummy": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "Dummy"
          ]
       }
       ,"dmr15_Results": {
