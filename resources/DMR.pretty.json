@@ -4141,66 +4141,6 @@
             }
          }
       }
-      ,"\/dmr_rest_services.get_industrial_dischargers": {
-          "get": {
-             "summary": null
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-            }
-            }
-         }
-         ,"post": {
-             "summary": null
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_permit_id"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-            }
-            }
-         }
-      }
       ,"\/dmr_rest_services.get_facility_loads": {
           "get": {
              "summary": "Discharge Monitoring Report Custom Service"
@@ -4399,6 +4339,14 @@
                }
             }
             }
+         }
+      }
+      ,"\/dmr_rest_services.get_industrial_discharges": {
+          "get": {
+             "summary": null
+         }
+         ,"post": {
+             "summary": null
          }
       }
       ,"\/dmr_rest_services.get_manual_corrections": {

@@ -2035,39 +2035,6 @@ paths:
                 "$ref": "#/definitions/dmr12_Results" 
             required: 
             - Results
-  "/dmr_rest_services.get_industrial_dischargers": 
-    get: 
-      parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_permit_id"
-      - name: p_year
-        in: query
-        description: The calendar year for the annual pollutant loadings. 
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      tags: 
-      - Discharge Monitoring Report
-      responses: 
-        '200': 
-          description: Results
-          schema: 
-    post: 
-      parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_permit_id"
-      - name: p_year
-        in: query
-        description: The calendar year for the annual pollutant loadings. 
-        type: string
-        required: false
-      - "$ref": "#/parameters/callback"
-      tags: 
-      - Discharge Monitoring Report
-      responses: 
-        '200': 
-          description: Results
-          schema: 
   "/dmr_rest_services.get_facility_loads": 
     get: 
       summary: Discharge Monitoring Report Custom Service
@@ -2178,6 +2145,9 @@ paths:
                 "$ref": "#/definitions/dmr14_Results" 
             required: 
             - Results
+  "/dmr_rest_services.get_industrial_discharges": 
+    get: 
+    post: 
   "/dmr_rest_services.get_manual_corrections": 
     get: 
       summary: Discharge Monitoring Report Custom Service
