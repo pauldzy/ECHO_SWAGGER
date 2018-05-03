@@ -768,6 +768,12 @@
          ,"type": "number"
          ,"required": false
       }
+      ,"p_lsdate": {
+          "name": "p_lsdate"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
       ,"qcolumns": {
           "name": "qcolumns"
          ,"in": "query"
@@ -903,11 +909,25 @@
          ,"type": "string"
          ,"required": false
       }
+      ,"p_law": {
+          "name": "p_law"
+         ,"in": "query"
+         ,"description": "Law Statute Code Filter.  Enter a single statute code to limit results."
+         ,"type": "string"
+         ,"required": false
+      }
       ,"p_long": {
           "name": "p_long"
          ,"in": "query"
          ,"description": "Longitude location in decimal degrees."
          ,"type": "number"
+         ,"required": false
+      }
+      ,"p_section": {
+          "name": "p_section"
+         ,"in": "query"
+         ,"description": "Law Section Code Filter. Enter one or more law section codes to limit results.  Provide multiple values as a comma-delimited list."
+         ,"type": "string"
          ,"required": false
       }
       ,"p_cifdi": {
@@ -1038,6 +1058,15 @@
                }
                ,{
                    "$ref": "#\/parameters\/p_cmps"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_law"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_section"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lsdate"
                }
                ,{
                    "$ref": "#\/parameters\/p_qiv"
@@ -1334,6 +1363,15 @@
                }
                ,{
                    "$ref": "#\/parameters\/p_cmps"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_law"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_section"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lsdate"
                }
                ,{
                    "$ref": "#\/parameters\/p_qiv"
@@ -1629,6 +1667,15 @@
                    "$ref": "#\/parameters\/p_cmps"
                }
                ,{
+                   "$ref": "#\/parameters\/p_law"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_section"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lsdate"
+               }
+               ,{
                    "$ref": "#\/parameters\/p_qiv"
                }
                ,{
@@ -1915,6 +1962,15 @@
                }
                ,{
                    "$ref": "#\/parameters\/p_cmps"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_law"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_section"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_lsdate"
                }
                ,{
                    "$ref": "#\/parameters\/p_qiv"

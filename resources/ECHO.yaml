@@ -721,6 +721,21 @@ parameters:
     in: query
     type: string
     required: false
+  p_isection: 
+    name: p_isection
+    in: query
+    type: string
+    required: false
+  p_iea_5yr: 
+    name: p_iea_5yr
+    in: query
+    type: string
+    required: false
+  p_fea_5yr: 
+    name: p_fea_5yr
+    in: query
+    type: string
+    required: false
   p_feac: 
     name: p_feac
     in: query
@@ -826,9 +841,11 @@ paths:
       - "$ref": "#/parameters/p_feay"
       - "$ref": "#/parameters/p_feaa"
       - "$ref": "#/parameters/p_feac"
+      - "$ref": "#/parameters/p_fea_5yr"
       - "$ref": "#/parameters/p_iea"
       - "$ref": "#/parameters/p_ieay"
       - "$ref": "#/parameters/p_ieaa"
+      - "$ref": "#/parameters/p_iea_5yr"
       - "$ref": "#/parameters/p_cs"
       - "$ref": "#/parameters/p_qiv"
       - "$ref": "#/parameters/p_naa"
@@ -843,6 +860,7 @@ paths:
       - "$ref": "#/parameters/p_pid"
       - "$ref": "#/parameters/p_med"
       - "$ref": "#/parameters/p_istatute"
+      - "$ref": "#/parameters/p_isection"
       - "$ref": "#/parameters/p_ysl"
       - "$ref": "#/parameters/p_ysly"
       - "$ref": "#/parameters/p_ysla"
@@ -934,9 +952,11 @@ paths:
       - "$ref": "#/parameters/p_feay"
       - "$ref": "#/parameters/p_feaa"
       - "$ref": "#/parameters/p_feac"
+      - "$ref": "#/parameters/p_fea_5yr"
       - "$ref": "#/parameters/p_iea"
       - "$ref": "#/parameters/p_ieay"
       - "$ref": "#/parameters/p_ieaa"
+      - "$ref": "#/parameters/p_iea_5yr"
       - "$ref": "#/parameters/p_cs"
       - "$ref": "#/parameters/p_qiv"
       - "$ref": "#/parameters/p_naa"
@@ -951,6 +971,7 @@ paths:
       - "$ref": "#/parameters/p_pid"
       - "$ref": "#/parameters/p_med"
       - "$ref": "#/parameters/p_istatute"
+      - "$ref": "#/parameters/p_isection"
       - "$ref": "#/parameters/p_ysl"
       - "$ref": "#/parameters/p_ysly"
       - "$ref": "#/parameters/p_ysla"
@@ -1046,6 +1067,7 @@ paths:
       - "$ref": "#/parameters/p_iea"
       - "$ref": "#/parameters/p_ieay"
       - "$ref": "#/parameters/p_ieaa"
+      - "$ref": "#/parameters/p_iea_5yr"
       - "$ref": "#/parameters/p_cs"
       - "$ref": "#/parameters/p_qiv"
       - "$ref": "#/parameters/p_naa"
@@ -1060,6 +1082,7 @@ paths:
       - "$ref": "#/parameters/p_pid"
       - "$ref": "#/parameters/p_med"
       - "$ref": "#/parameters/p_istatute"
+      - "$ref": "#/parameters/p_isection"
       - "$ref": "#/parameters/p_ysl"
       - "$ref": "#/parameters/p_ysly"
       - "$ref": "#/parameters/p_ysla"
@@ -1151,6 +1174,7 @@ paths:
       - "$ref": "#/parameters/p_iea"
       - "$ref": "#/parameters/p_ieay"
       - "$ref": "#/parameters/p_ieaa"
+      - "$ref": "#/parameters/p_iea_5yr"
       - "$ref": "#/parameters/p_cs"
       - "$ref": "#/parameters/p_qiv"
       - "$ref": "#/parameters/p_naa"
@@ -1165,6 +1189,7 @@ paths:
       - "$ref": "#/parameters/p_pid"
       - "$ref": "#/parameters/p_med"
       - "$ref": "#/parameters/p_istatute"
+      - "$ref": "#/parameters/p_isection"
       - "$ref": "#/parameters/p_ysl"
       - "$ref": "#/parameters/p_ysly"
       - "$ref": "#/parameters/p_ysla"
@@ -2373,6 +2398,14 @@ definitions:
         type: string
       NaaPollutants: 
         type: string
+      EpcraInspections5yr: 
+        type: string
+      FifraInspections5yr: 
+        type: string
+      TscaInspections5yr: 
+        type: string
+      SDWAInspections5yr: 
+        type: string
       Score: 
         type: string
         title: Score
@@ -2564,6 +2597,10 @@ definitions:
     - WebDocs
     - NaaCategories
     - NaaPollutants
+    - EpcraInspections5yr
+    - FifraInspections5yr
+    - TscaInspections5yr
+    - SDWAInspections5yr
     - Score
     - MaxScore
   ers1_Results: 
@@ -3400,6 +3437,14 @@ definitions:
         type: string
       NaaPollutants: 
         type: string
+      EpcraInspections5yr: 
+        type: string
+      FifraInspections5yr: 
+        type: string
+      TscaInspections5yr: 
+        type: string
+      SDWAInspections5yr: 
+        type: string
       Score: 
         type: string
         title: Score
@@ -3592,6 +3637,10 @@ definitions:
     - WebDocs
     - NaaCategories
     - NaaPollutants
+    - EpcraInspections5yr
+    - FifraInspections5yr
+    - TscaInspections5yr
+    - SDWAInspections5yr
     - Score
     - MaxScore
   ers2_Results: 
@@ -4346,6 +4395,14 @@ definitions:
         type: string
       NaaPollutants: 
         type: string
+      EpcraInspections5yr: 
+        type: string
+      FifraInspections5yr: 
+        type: string
+      TscaInspections5yr: 
+        type: string
+      SDWAInspections5yr: 
+        type: string
       Score: 
         type: number
         title: Score
@@ -4535,6 +4592,10 @@ definitions:
     - WebDocs
     - NaaCategories
     - NaaPollutants
+    - EpcraInspections5yr
+    - FifraInspections5yr
+    - TscaInspections5yr
+    - SDWAInspections5yr
     - Score
     - MaxScore
   ers4_Results: 

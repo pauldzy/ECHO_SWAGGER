@@ -3761,6 +3761,346 @@
             }
          }
       }
+      ,"\/rest_lookups.wbd_lu": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/wbd_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/wbd_name"
+               }
+               ,{
+                   "$ref": "#\/parameters\/wbd_level"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk00_wbd_lu.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/wbd_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/wbd_name"
+               }
+               ,{
+                   "$ref": "#\/parameters\/wbd_level"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk00_wbd_lu.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.npdes_tribes_region": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk00_npdes_tribes_region.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk00_npdes_tribes_region.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.icis_ref_program": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/statute_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/status_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/sort_order"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk00_icis_ref_program.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/statute_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/status_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/sort_order"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk00_icis_ref_program.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.ecatt_ams_years": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk00_ecatt_ams_years.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk00_ecatt_ams_years.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
       ,"\/rest_lookups.prog_deficiency": {
           "get": {
              "summary": null
@@ -4740,6 +5080,46 @@
             ,"ValueDescription"
          ]
       }
+      ,"rlk00_LuValues5": {
+          "type": "object"
+         ,"description": "Lookup Values"
+         ,"xml": {
+             "name": "LuValue"
+         }
+         ,"properties": {
+             "Statute": {
+                "type": "string"
+               ,"title": "Regulatory Statute"
+               ,"example": "CWA"
+               ,"description": "The name of the statute associated with each of the permits and identifiers linked to the facility: \n- CAA = the Clean Air Act\n- CWA = the Clean Water Act\n- RCRA = the Resource Conservation and Recovery Act\n- EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)\n- TSCA = the Toxic Substances Control Act\n- SDWA = the Safe Drinking Water Act"
+            }
+            ,"StatuteDescription": {
+                "type": "string"
+            }
+            ,"Program": {
+                "type": "string"
+               ,"title": "Program"
+               ,"example": "CWA"
+               ,"description": "The source database for the EPA programs information."
+            }
+            ,"ProgramDescription": {
+                "type": "string"
+               ,"title": "Program Description"
+            }
+            ,"Status": {
+                "type": "string"
+               ,"title": "Status"
+               ,"example": "Resolved"
+            }
+         }
+         ,"required": [
+             "Statute"
+            ,"StatuteDescription"
+            ,"Program"
+            ,"ProgramDescription"
+            ,"Status"
+         ]
+      }
       ,"rlk01_Results": {
           "type": "object"
          ,"description": "Results Object"
@@ -5265,6 +5645,31 @@
              "Message"
          ]
       }
+      ,"rlk00_ecatt_ams_years.Results": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"LuValues": {
+                "type": "array"
+               ,"items": {
+                   "$ref": "#\/definitions\/rlk00_LuValues"
+               }
+               ,"xml": {
+                   "name": "LuValues"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+         ]
+      }
       ,"rlk34_Results": {
           "type": "object"
          ,"description": "Results Object"
@@ -5715,6 +6120,31 @@
              "Message"
          ]
       }
+      ,"rlk00_icis_ref_program.Results": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"LuValues": {
+                "type": "array"
+               ,"items": {
+                   "$ref": "#\/definitions\/rlk00_LuValues5"
+               }
+               ,"xml": {
+                   "name": "LuValues"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+         ]
+      }
       ,"rlk52_Results": {
           "type": "object"
          ,"description": "Results Object"
@@ -5834,6 +6264,21 @@
                    "name": "LuValues"
                   ,"wrapped": true
                }
+            }
+         }
+         ,"required": [
+             "Message"
+         ]
+      }
+      ,"rlk00_npdes_tribes_region.Results": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
          }
          ,"required": [
@@ -6066,6 +6511,31 @@
          ]
       }
       ,"rlk66_Results": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"LuValues": {
+                "type": "array"
+               ,"items": {
+                   "$ref": "#\/definitions\/rlk00_LuValues"
+               }
+               ,"xml": {
+                   "name": "LuValues"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+         ]
+      }
+      ,"rlk00_wbd_lu.Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {

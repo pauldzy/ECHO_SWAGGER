@@ -759,6 +759,11 @@ parameters:
     description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
     type: number
     required: false
+  p_lsdate: 
+    name: p_lsdate
+    in: query
+    type: string
+    required: false
   qcolumns: 
     name: qcolumns
     in: query
@@ -885,11 +890,23 @@ parameters:
     - N
     type: string
     required: false
+  p_law: 
+    name: p_law
+    in: query
+    description: Law Statute Code Filter.  Enter a single statute code to limit results.
+    type: string
+    required: false
   p_long: 
     name: p_long
     in: query
     description: Longitude location in decimal degrees.
     type: number
+    required: false
+  p_section: 
+    name: p_section
+    in: query
+    description: Law Section Code Filter. Enter one or more law section codes to limit results.  Provide multiple values as a comma-delimited list.
+    type: string
     required: false
   p_cifdi: 
     name: p_cifdi
@@ -957,6 +974,9 @@ paths:
       - "$ref": "#/parameters/p_ieay"
       - "$ref": "#/parameters/p_ieaa"
       - "$ref": "#/parameters/p_cmps"
+      - "$ref": "#/parameters/p_law"
+      - "$ref": "#/parameters/p_section"
+      - "$ref": "#/parameters/p_lsdate"
       - "$ref": "#/parameters/p_qiv"
       - "$ref": "#/parameters/p_impw"
       - "$ref": "#/parameters/p_trep"
@@ -1073,6 +1093,9 @@ paths:
       - "$ref": "#/parameters/p_ieay"
       - "$ref": "#/parameters/p_ieaa"
       - "$ref": "#/parameters/p_cmps"
+      - "$ref": "#/parameters/p_law"
+      - "$ref": "#/parameters/p_section"
+      - "$ref": "#/parameters/p_lsdate"
       - "$ref": "#/parameters/p_qiv"
       - "$ref": "#/parameters/p_impw"
       - "$ref": "#/parameters/p_trep"
@@ -1190,6 +1213,9 @@ paths:
       - "$ref": "#/parameters/p_ieay"
       - "$ref": "#/parameters/p_ieaa"
       - "$ref": "#/parameters/p_cmps"
+      - "$ref": "#/parameters/p_law"
+      - "$ref": "#/parameters/p_section"
+      - "$ref": "#/parameters/p_lsdate"
       - "$ref": "#/parameters/p_qiv"
       - "$ref": "#/parameters/p_impw"
       - "$ref": "#/parameters/p_trep"
@@ -1305,6 +1331,9 @@ paths:
       - "$ref": "#/parameters/p_ieay"
       - "$ref": "#/parameters/p_ieaa"
       - "$ref": "#/parameters/p_cmps"
+      - "$ref": "#/parameters/p_law"
+      - "$ref": "#/parameters/p_section"
+      - "$ref": "#/parameters/p_lsdate"
       - "$ref": "#/parameters/p_qiv"
       - "$ref": "#/parameters/p_impw"
       - "$ref": "#/parameters/p_trep"

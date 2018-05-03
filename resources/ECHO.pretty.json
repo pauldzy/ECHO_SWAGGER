@@ -740,6 +740,24 @@
          ,"type": "string"
          ,"required": false
       }
+      ,"p_isection": {
+          "name": "p_isection"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_iea_5yr": {
+          "name": "p_iea_5yr"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"p_fea_5yr": {
+          "name": "p_fea_5yr"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
       ,"p_feac": {
           "name": "p_feac"
          ,"in": "query"
@@ -916,6 +934,9 @@
                    "$ref": "#\/parameters\/p_feac"
                }
                ,{
+                   "$ref": "#\/parameters\/p_fea_5yr"
+               }
+               ,{
                    "$ref": "#\/parameters\/p_iea"
                }
                ,{
@@ -923,6 +944,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/p_ieaa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_iea_5yr"
                }
                ,{
                    "$ref": "#\/parameters\/p_cs"
@@ -965,6 +989,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/p_istatute"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_isection"
                }
                ,{
                    "$ref": "#\/parameters\/p_ysl"
@@ -1180,6 +1207,9 @@
                    "$ref": "#\/parameters\/p_feac"
                }
                ,{
+                   "$ref": "#\/parameters\/p_fea_5yr"
+               }
+               ,{
                    "$ref": "#\/parameters\/p_iea"
                }
                ,{
@@ -1187,6 +1217,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/p_ieaa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_iea_5yr"
                }
                ,{
                    "$ref": "#\/parameters\/p_cs"
@@ -1229,6 +1262,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/p_istatute"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_isection"
                }
                ,{
                    "$ref": "#\/parameters\/p_ysl"
@@ -1450,6 +1486,9 @@
                    "$ref": "#\/parameters\/p_ieaa"
                }
                ,{
+                   "$ref": "#\/parameters\/p_iea_5yr"
+               }
+               ,{
                    "$ref": "#\/parameters\/p_cs"
                }
                ,{
@@ -1490,6 +1529,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/p_istatute"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_isection"
                }
                ,{
                    "$ref": "#\/parameters\/p_ysl"
@@ -1700,6 +1742,9 @@
                    "$ref": "#\/parameters\/p_ieaa"
                }
                ,{
+                   "$ref": "#\/parameters\/p_iea_5yr"
+               }
+               ,{
                    "$ref": "#\/parameters\/p_cs"
                }
                ,{
@@ -1740,6 +1785,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/p_istatute"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_isection"
                }
                ,{
                    "$ref": "#\/parameters\/p_ysl"
@@ -3420,6 +3468,18 @@
             ,"NaaPollutants": {
                 "type": "string"
             }
+            ,"EpcraInspections5yr": {
+                "type": "string"
+            }
+            ,"FifraInspections5yr": {
+                "type": "string"
+            }
+            ,"TscaInspections5yr": {
+                "type": "string"
+            }
+            ,"SDWAInspections5yr": {
+                "type": "string"
+            }
             ,"Score": {
                 "type": "string"
                ,"title": "Score"
@@ -3614,6 +3674,10 @@
             ,"WebDocs"
             ,"NaaCategories"
             ,"NaaPollutants"
+            ,"EpcraInspections5yr"
+            ,"FifraInspections5yr"
+            ,"TscaInspections5yr"
+            ,"SDWAInspections5yr"
             ,"Score"
             ,"MaxScore"
          ]
@@ -4672,6 +4736,18 @@
             ,"NaaPollutants": {
                 "type": "string"
             }
+            ,"EpcraInspections5yr": {
+                "type": "string"
+            }
+            ,"FifraInspections5yr": {
+                "type": "string"
+            }
+            ,"TscaInspections5yr": {
+                "type": "string"
+            }
+            ,"SDWAInspections5yr": {
+                "type": "string"
+            }
             ,"Score": {
                 "type": "string"
                ,"title": "Score"
@@ -4867,6 +4943,10 @@
             ,"WebDocs"
             ,"NaaCategories"
             ,"NaaPollutants"
+            ,"EpcraInspections5yr"
+            ,"FifraInspections5yr"
+            ,"TscaInspections5yr"
+            ,"SDWAInspections5yr"
             ,"Score"
             ,"MaxScore"
          ]
@@ -5824,6 +5904,18 @@
             ,"NaaPollutants": {
                 "type": "string"
             }
+            ,"EpcraInspections5yr": {
+                "type": "string"
+            }
+            ,"FifraInspections5yr": {
+                "type": "string"
+            }
+            ,"TscaInspections5yr": {
+                "type": "string"
+            }
+            ,"SDWAInspections5yr": {
+                "type": "string"
+            }
             ,"Score": {
                 "type": "number"
                ,"title": "Score"
@@ -6016,6 +6108,10 @@
             ,"WebDocs"
             ,"NaaCategories"
             ,"NaaPollutants"
+            ,"EpcraInspections5yr"
+            ,"FifraInspections5yr"
+            ,"TscaInspections5yr"
+            ,"SDWAInspections5yr"
             ,"Score"
             ,"MaxScore"
          ]
