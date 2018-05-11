@@ -2021,7 +2021,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk00_wbd_lu.Results" 
+                "$ref": "#/definitions/rlk72_Results" 
             required: 
             - Results
     post: 
@@ -2042,7 +2042,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk00_wbd_lu.Results" 
+                "$ref": "#/definitions/rlk72_Results" 
             required: 
             - Results
   "/rest_lookups.npdes_tribes_region": 
@@ -2063,7 +2063,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk00_npdes_tribes_region.Results" 
+                "$ref": "#/definitions/rlk69_Results" 
             required: 
             - Results
     post: 
@@ -2083,7 +2083,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk00_npdes_tribes_region.Results" 
+                "$ref": "#/definitions/rlk69_Results" 
             required: 
             - Results
   "/rest_lookups.icis_ref_program": 
@@ -2107,7 +2107,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk00_icis_ref_program.Results" 
+                "$ref": "#/definitions/rlk71_Results" 
             required: 
             - Results
     post: 
@@ -2130,7 +2130,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk00_icis_ref_program.Results" 
+                "$ref": "#/definitions/rlk71_Results" 
             required: 
             - Results
   "/rest_lookups.ecatt_ams_years": 
@@ -2149,7 +2149,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk00_ecatt_ams_years.Results" 
+                "$ref": "#/definitions/rlk70_Results" 
             required: 
             - Results
     post: 
@@ -2167,7 +2167,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk00_ecatt_ams_years.Results" 
+                "$ref": "#/definitions/rlk70_Results" 
             required: 
             - Results
   "/rest_lookups.prog_deficiency": 
@@ -2389,6 +2389,7 @@ paths:
       - "$ref": "#/parameters/output"
       - "$ref": "#/parameters/callback"
       - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
       tags: 
       - Lookups
       responses: 
@@ -2410,6 +2411,7 @@ paths:
       - "$ref": "#/parameters/output"
       - "$ref": "#/parameters/callback"
       - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/search_code"
       tags: 
       - Lookups
       responses: 
@@ -3094,7 +3096,7 @@ definitions:
           wrapped: true
     required: 
     - Message
-  rlk00_ecatt_ams_years.Results: 
+  rlk70_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -3417,7 +3419,7 @@ definitions:
           wrapped: true
     required: 
     - Message
-  rlk00_icis_ref_program.Results: 
+  rlk71_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -3519,7 +3521,7 @@ definitions:
           wrapped: true
     required: 
     - Message
-  rlk00_npdes_tribes_region.Results: 
+  rlk69_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -3699,7 +3701,7 @@ definitions:
           wrapped: true
     required: 
     - Message
-  rlk00_wbd_lu.Results: 
+  rlk72_Results: 
     description: Results Object
     properties: 
       Message: 

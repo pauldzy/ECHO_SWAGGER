@@ -1361,33 +1361,22 @@
              "name": "WaterSystem"
          }
          ,"properties": {
-             "PWSId": {
-                "type": "string"
-               ,"title": "Public Water System Identifier"
-               ,"example": "VA0033235"
-               ,"description": "Unique identifying code for a public water system, consisting of a two-letter state or region code, followed by seven digits"
-            }
-            ,"PWSName": {
+             "PWSName": {
                 "type": "string"
                ,"title": "System Name"
                ,"example": "ARBOR CHRISTIAN HOME"
                ,"description": "Name of the system regulated under the Safe Drinking Water Act (SDWA)"
             }
+            ,"PWSId": {
+                "type": "string"
+               ,"title": "Public Water System Identifier"
+               ,"example": "VA0033235"
+               ,"description": "Unique identifying code for a public water system, consisting of a two-letter state or region code, followed by seven digits"
+            }
             ,"CitiesServed": {
                 "type": "string"
                ,"example": "CAROLINE"
                ,"description": "County"
-            }
-            ,"CountiesServed": {
-                "type": "string"
-               ,"title": "City"
-               ,"example": "ALEXANDRIA"
-               ,"description": "City"
-            }
-            ,"FIPSCodes": {
-                "type": "string"
-               ,"example": "51033"
-               ,"description": "Five-character Federal Information Processing Standards (FIPS) value: 2-character state || 3-character county"
             }
             ,"StateCode": {
                 "type": "string"
@@ -1398,13 +1387,40 @@
                ,"example": "22302"
                ,"description": "ZIP code"
             }
+            ,"CountiesServed": {
+                "type": "string"
+               ,"title": "City"
+               ,"example": "ALEXANDRIA"
+               ,"description": "City"
+            }
+            ,"EPARegion": {
+                "type": "string"
+               ,"title": "EPA Region"
+               ,"example": "04"
+               ,"description": "The EPA region in which the facility is located"
+            }
+            ,"IndianCountry": {
+                "type": "string"
+               ,"title": "Indian Country"
+               ,"example": "N"
+               ,"description": "Indicates whether the facility is located in Indian Country"
+            }
             ,"PWSTypeCode": {
                 "type": "string"
                ,"title": "System Type"
                ,"example": "TNCWS"
                ,"description": "Type of public water system:\n- CWS   = Community water system\n- NCWS  = Non-community water system\n- NTCWS = Non-transient non-community water system\n- TNCWS = Transient non-community water system"
             }
+            ,"PWSTypeDesc": {
+                "type": "string"
+               ,"title": "System Type Description"
+               ,"example": "Transient non-community system"
+               ,"description": "The type of public water system (PWS) and description of corresponding SystemType code. A public water system is a system for the provision to the public of piped water for human consumption, which has at least 15 service connections or regularly serves a"
+            }
             ,"PrimarySourceCode": {
+                "type": "string"
+            }
+            ,"PrimarySourceDesc": {
                 "type": "string"
             }
             ,"PopulationServedCount": {
@@ -1413,25 +1429,86 @@
                ,"example": "34"
                ,"description": "Estimated average daily population served by a system"
             }
+            ,"PWSActivityCode": {
+                "type": "string"
+            }
+            ,"PWSActivityDesc": {
+                "type": "string"
+               ,"title": "PWS Activity Description"
+               ,"example": "Active"
+               ,"description": "Description of activity status code (ACT), e.g., active, inactive."
+            }
+            ,"OwnerTypeCode": {
+                "type": "string"
+               ,"title": "Owner Type Code"
+               ,"example": "P"
+               ,"description": "Owner\/Operator:\n- P = Private\n- F = Federal Government\n- S = State Government\n- L = Local Government"
+            }
+            ,"OwnerDesc": {
+                "type": "string"
+               ,"title": "Owner Description"
+               ,"example": "Local Government"
+               ,"description": "Description of Owner code"
+            }
             ,"QtrsInVio": {
                 "type": "string"
             }
-            ,"SNC": {
+            ,"QtrsInSNC": {
                 "type": "string"
+               ,"title": "Quarters In Significant Noncompliance"
+               ,"example": "1"
+               ,"description": "The number of formal enforcement actions that have been taken against the facility, under the corresponding statute, within the five year time period"
             }
-            ,"Ifea": {
+            ,"SeriousViolator": {
                 "type": "string"
+               ,"title": "Serious Violator"
+               ,"example": "No"
+               ,"description": "Indicates whether system is a Serious Violator (has unresolved serious, multiple, and\/or continuing violations that is designated as a priority candidate for formal enforcement)"
             }
-            ,"Feas": {
+            ,"HealthFlag": {
                 "type": "string"
+               ,"title": "Health Flag"
+               ,"example": "Y"
+               ,"description": "Indicates whether system has violations of health-based drinking water standards"
             }
-            ,"PWSActivityCode": {
+            ,"MrFlag": {
                 "type": "string"
+               ,"example": "Y"
+               ,"description": "Indicates whether system has monitoring and reporting violations"
+            }
+            ,"PnFlag": {
+                "type": "string"
+               ,"title": "Public Notice Violation Flag"
+               ,"example": "Y"
+               ,"description": "Indicates whether system has Public Notice Violations (failure to immediately alert consumers of serious problem with drinking water)"
+            }
+            ,"OtherFlag": {
+                "type": "string"
+               ,"title": "Other Flag"
+               ,"example": "Y"
+               ,"description": "Indicates whether system has other violations, such as failing to issue annual consumer confidence reports or maintain required records"
+            }
+            ,"NewVioFlg": {
+                "type": "string"
+               ,"example": "N"
+            }
+            ,"RulesVio3yr": {
+                "type": "string"
+               ,"example": "5"
+            }
+            ,"RulesVioCurr": {
+                "type": "string"
+               ,"example": "4"
             }
             ,"Viopaccr": {
                 "type": "string"
                ,"example": "12"
                ,"description": "Sum of all violation points for violations reported during the past five years (20 most recent quarters), as of the last quarterly refresh"
+            }
+            ,"Vioremain": {
+                "type": "string"
+               ,"example": "4"
+               ,"description": "Sum of violation points that were not returned to compliance as of the last quarterly refresh.  Includes points that have received formal enforcement but have not returned to compliance"
             }
             ,"Viofeanot": {
                 "type": "string"
@@ -1448,122 +1525,40 @@
                ,"example": "2"
                ,"description": "Sum of violation points during past 5 years (20 most recent quarters) that did not receive formal enforcement but did return to compliance, as of the last quarterly refresh"
             }
-            ,"Vioremain": {
-                "type": "string"
-               ,"example": "4"
-               ,"description": "Sum of violation points that were not returned to compliance as of the last quarterly refresh.  Includes points that have received formal enforcement but have not returned to compliance"
-            }
-            ,"EPARegion": {
-                "type": "string"
-               ,"title": "EPA Region"
-               ,"example": "04"
-               ,"description": "The EPA region in which the facility is located"
-            }
-            ,"OwnerTypeCode": {
-                "type": "string"
-               ,"title": "Owner Type Code"
-               ,"example": "P"
-               ,"description": "Owner\/Operator:\n- P = Private\n- F = Federal Government\n- S = State Government\n- L = Local Government"
-            }
-            ,"IndianCountry": {
-                "type": "string"
-               ,"title": "Indian Country"
-               ,"example": "N"
-               ,"description": "Indicates whether the facility is located in Indian Country"
-            }
-            ,"GwSwCode": {
+            ,"Ifea": {
                 "type": "string"
             }
-            ,"MrFlag": {
+            ,"Feas": {
                 "type": "string"
-               ,"example": "Y"
-               ,"description": "Indicates whether system has monitoring and reporting violations"
-            }
-            ,"HealthFlag": {
-                "type": "string"
-               ,"title": "Health Flag"
-               ,"example": "Y"
-               ,"description": "Indicates whether system has violations of health-based drinking water standards"
-            }
-            ,"OtherFlag": {
-                "type": "string"
-               ,"title": "Other Flag"
-               ,"example": "Y"
-               ,"description": "Indicates whether system has other violations, such as failing to issue annual consumer confidence reports or maintain required records"
-            }
-            ,"PnFlag": {
-                "type": "string"
-               ,"title": "Public Notice Violation Flag"
-               ,"example": "Y"
-               ,"description": "Indicates whether system has Public Notice Violations (failure to immediately alert consumers of serious problem with drinking water)"
-            }
-            ,"PWSTypeDesc": {
-                "type": "string"
-               ,"title": "System Type Description"
-               ,"example": "Transient non-community system"
-               ,"description": "The type of public water system (PWS) and description of corresponding SystemType code. A public water system is a system for the provision to the public of piped water for human consumption, which has at least 15 service connections or regularly serves a"
-            }
-            ,"PrimarySourceDesc": {
-                "type": "string"
-            }
-            ,"PWSActivityDesc": {
-                "type": "string"
-               ,"title": "PWS Activity Description"
-               ,"example": "Active"
-               ,"description": "Description of activity status code (ACT), e.g., active, inactive."
-            }
-            ,"OwnerDesc": {
-                "type": "string"
-               ,"title": "Owner Description"
-               ,"example": "Local Government"
-               ,"description": "Description of Owner code"
-            }
-            ,"SeriousViolator": {
-                "type": "string"
-               ,"title": "Serious Violator"
-               ,"example": "No"
-               ,"description": "Indicates whether system is a Serious Violator (has unresolved serious, multiple, and\/or continuing violations that is designated as a priority candidate for formal enforcement)"
-            }
-            ,"SDWA3yrComplQtrsStatus": {
-                "type": "string"
-            }
-            ,"SDWAContaminantsInViol3yr": {
-                "type": "string"
-               ,"example": "2456=Total Haloacetic Acids (HAA5); 7500=Public Notice"
-               ,"description": "The contaminant name and code in violation of a SDWA regulation in the past three years"
-            }
-            ,"SDWAContaminants": {
-                "type": "string"
-            }
-            ,"SDWDateLastFea": {
-                "type": "string"
-               ,"example": "1\/27\/2013"
-            }
-            ,"SDWDateLastFeaSt": {
-                "type": "string"
-               ,"example": "2\/19\/2010"
-            }
-            ,"SDWDateLastFeaEPA": {
-                "type": "string"
-               ,"example": "4\/5\/2011"
             }
             ,"SDWDateLastIea": {
                 "type": "string"
                ,"example": "6\/30\/2008"
             }
-            ,"SDWDateLastIeaSt": {
-                "type": "string"
-               ,"example": "7\/17\/2010"
-            }
             ,"SDWDateLastIeaEPA": {
                 "type": "string"
                ,"example": "4\/11\/2013"
             }
-            ,"QtrsInSNC": {
+            ,"SDWDateLastIeaSt": {
                 "type": "string"
-               ,"title": "Quarters In Significant Noncompliance"
-               ,"example": "1"
-               ,"description": "The number of formal enforcement actions that have been taken against the facility, under the corresponding statute, within the five year time period"
+               ,"example": "7\/17\/2010"
+            }
+            ,"SDWDateLastFea": {
+                "type": "string"
+               ,"example": "1\/27\/2013"
+            }
+            ,"SDWDateLastFeaEPA": {
+                "type": "string"
+               ,"example": "4\/5\/2011"
+            }
+            ,"SDWDateLastFeaSt": {
+                "type": "string"
+               ,"example": "2\/19\/2010"
+            }
+            ,"SDWAContaminantsInViol3yr": {
+                "type": "string"
+               ,"example": "2456=Total Haloacetic Acids (HAA5); 7500=Public Notice"
+               ,"description": "The contaminant name and code in violation of a SDWA regulation in the past three years"
             }
             ,"SDWAContaminantsInCurViol": {
                 "type": "string"
@@ -1578,6 +1573,26 @@
             ,"Rc350Viol": {
                 "type": "string"
             }
+            ,"DfrUrl": {
+                "type": "string"
+            }
+            ,"FIPSCodes": {
+                "type": "string"
+               ,"example": "51033"
+               ,"description": "Five-character Federal Information Processing Standards (FIPS) value: 2-character state || 3-character county"
+            }
+            ,"SNC": {
+                "type": "string"
+            }
+            ,"GwSwCode": {
+                "type": "string"
+            }
+            ,"SDWA3yrComplQtrsStatus": {
+                "type": "string"
+            }
+            ,"SDWAContaminants": {
+                "type": "string"
+            }
             ,"PbViol": {
                 "type": "string"
             }
@@ -1586,18 +1601,6 @@
             }
             ,"LeadAndCopperViol": {
                 "type": "string"
-            }
-            ,"NewVioFlg": {
-                "type": "string"
-               ,"example": "N"
-            }
-            ,"RulesVio3yr": {
-                "type": "string"
-               ,"example": "5"
-            }
-            ,"RulesVioCurr": {
-                "type": "string"
-               ,"example": "4"
             }
             ,"TRIbalFlag": {
                 "type": "string"
@@ -1638,59 +1641,60 @@
             }
          }
          ,"required": [
-             "PWSId"
-            ,"PWSName"
+             "PWSName"
+            ,"PWSId"
             ,"CitiesServed"
-            ,"CountiesServed"
-            ,"FIPSCodes"
             ,"StateCode"
             ,"ZipCodesServed"
+            ,"CountiesServed"
+            ,"EPARegion"
+            ,"IndianCountry"
             ,"PWSTypeCode"
+            ,"PWSTypeDesc"
             ,"PrimarySourceCode"
+            ,"PrimarySourceDesc"
             ,"PopulationServedCount"
-            ,"QtrsInVio"
-            ,"SNC"
-            ,"Ifea"
-            ,"Feas"
             ,"PWSActivityCode"
+            ,"PWSActivityDesc"
+            ,"OwnerTypeCode"
+            ,"OwnerDesc"
+            ,"QtrsInVio"
+            ,"QtrsInSNC"
+            ,"SeriousViolator"
+            ,"HealthFlag"
+            ,"MrFlag"
+            ,"PnFlag"
+            ,"OtherFlag"
+            ,"NewVioFlg"
+            ,"RulesVio3yr"
+            ,"RulesVioCurr"
             ,"Viopaccr"
+            ,"Vioremain"
             ,"Viofeanot"
             ,"Viortcfea"
             ,"Viortcnofea"
-            ,"Vioremain"
-            ,"EPARegion"
-            ,"OwnerTypeCode"
-            ,"IndianCountry"
-            ,"GwSwCode"
-            ,"MrFlag"
-            ,"HealthFlag"
-            ,"OtherFlag"
-            ,"PnFlag"
-            ,"PWSTypeDesc"
-            ,"PrimarySourceDesc"
-            ,"PWSActivityDesc"
-            ,"OwnerDesc"
-            ,"SeriousViolator"
-            ,"SDWA3yrComplQtrsStatus"
-            ,"SDWAContaminantsInViol3yr"
-            ,"SDWAContaminants"
-            ,"SDWDateLastFea"
-            ,"SDWDateLastFeaSt"
-            ,"SDWDateLastFeaEPA"
+            ,"Ifea"
+            ,"Feas"
             ,"SDWDateLastIea"
-            ,"SDWDateLastIeaSt"
             ,"SDWDateLastIeaEPA"
-            ,"QtrsInSNC"
+            ,"SDWDateLastIeaSt"
+            ,"SDWDateLastFea"
+            ,"SDWDateLastFeaEPA"
+            ,"SDWDateLastFeaSt"
+            ,"SDWAContaminantsInViol3yr"
             ,"SDWAContaminantsInCurViol"
             ,"PbAle"
             ,"CuAle"
             ,"Rc350Viol"
+            ,"DfrUrl"
+            ,"FIPSCodes"
+            ,"SNC"
+            ,"GwSwCode"
+            ,"SDWA3yrComplQtrsStatus"
+            ,"SDWAContaminants"
             ,"PbViol"
             ,"CuViol"
             ,"LeadAndCopperViol"
-            ,"NewVioFlg"
-            ,"RulesVio3yr"
-            ,"RulesVioCurr"
             ,"TRIbalFlag"
             ,"FeaFlag"
             ,"IeaFlag"
