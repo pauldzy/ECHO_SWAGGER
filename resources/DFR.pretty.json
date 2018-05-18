@@ -617,6 +617,82 @@
             }
          }
       }
+      ,"\/dfr_rest_services.get_cwa_3yr_d80d90_counts": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Detailed Facility Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dfr0_get_cwa_3yr_d80d90_counts.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Detailed Facility Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dfr0_get_cwa_3yr_d80d90_counts.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
       ,"\/dfr_rest_services.get_cwa_cs_compliance": {
           "get": {
              "summary": "Detailed Facility Report CWA CSV Compliance Service"
@@ -3502,6 +3578,25 @@
              "Message"
          ]
       }
+      ,"dfr0_get_cwa_3yr_d80d90_counts.Results": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"CWA3YrD80D90Counts": {
+                "$ref": "#\/definitions\/dfr712"
+            }
+         }
+         ,"required": [
+             "Message"
+            ,"CWA3YrD80D90Counts"
+         ]
+      }
       ,"dfrs_Results": {
           "type": "object"
          ,"description": "Results Object"
@@ -3647,10 +3742,6 @@
                }
             }
          }
-         ,"required": [
-             "Header"
-            ,"Sources"
-         ]
       }
       ,"dfrc_Sources": {
           "type": "object"
@@ -4177,6 +4268,120 @@
          }
          ,"required": [
              "Status"
+         ]
+      }
+      ,"dfr712": {
+          "type": "object"
+         ,"description": "CWA 3-Year D80D90 Counts"
+         ,"properties": {
+             "Header": {
+                "$ref": "#\/definitions\/dfr0_Qtr13Header"
+            }
+            ,"Sources": {
+                "type": "array"
+               ,"title": "Sources"
+               ,"items": {
+                   "$ref": "#\/definitions\/dfr713"
+               }
+               ,"xml": {
+                   "name": "Sources"
+                  ,"wrapped": true
+               }
+            }
+         }
+      }
+      ,"dfr713": {
+          "type": "object"
+         ,"description": "CWA 3-Year D80D90 Sources Object"
+         ,"xml": {
+             "name": "Sources"
+         }
+         ,"properties": {
+             "Status": {
+                "type": "array"
+               ,"title": "Status"
+               ,"items": {
+                   "$ref": "#\/definitions\/dfr714"
+               }
+               ,"xml": {
+                   "name": "Status"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Status"
+         ]
+      }
+      ,"dfr714": {
+          "type": "object"
+         ,"description": "Status Object"
+         ,"properties": {
+             "SourceID": {
+                "type": "string"
+               ,"title": "EPA Source Identifier"
+               ,"example": "ALR040033"
+               ,"description": "Unique Identifier assigned by EPA."
+            }
+            ,"MissingLate": {
+                "type": "string"
+            }
+            ,"Qtr1Count": {
+                "type": "string"
+            }
+            ,"Qtr2Count": {
+                "type": "string"
+            }
+            ,"Qtr3Count": {
+                "type": "string"
+            }
+            ,"Qtr4Count": {
+                "type": "string"
+            }
+            ,"Qtr5Count": {
+                "type": "string"
+            }
+            ,"Qtr6Count": {
+                "type": "string"
+            }
+            ,"Qtr7Count": {
+                "type": "string"
+            }
+            ,"Qtr8Count": {
+                "type": "string"
+            }
+            ,"Qtr9Count": {
+                "type": "string"
+            }
+            ,"Qtr10Count": {
+                "type": "string"
+            }
+            ,"Qtr11Count": {
+                "type": "string"
+            }
+            ,"Qtr12Count": {
+                "type": "string"
+            }
+            ,"Qtr13Count": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "SourceID"
+            ,"MissingLate"
+            ,"Qtr1Count"
+            ,"Qtr2Count"
+            ,"Qtr3Count"
+            ,"Qtr4Count"
+            ,"Qtr5Count"
+            ,"Qtr6Count"
+            ,"Qtr7Count"
+            ,"Qtr8Count"
+            ,"Qtr9Count"
+            ,"Qtr10Count"
+            ,"Qtr11Count"
+            ,"Qtr12Count"
+            ,"Qtr13Count"
          ]
       }
       ,"dfr10_CWACSCompliance": {
@@ -5340,10 +5545,6 @@
                }
             }
          }
-         ,"required": [
-             "ProgramDates"
-            ,"Action"
-         ]
       }
       ,"dfr4_CaseFormalActions.Action": {
           "type": "object"
@@ -5411,7 +5612,40 @@
                ,"title": "Number of Settlements"
                ,"example": "1"
             }
-            ,"TotalCostRecovery": {
+            ,"Settlements": {
+                "type": "array"
+               ,"title": "Settlements"
+               ,"items": {
+                   "$ref": "#\/definitions\/dfr4_CaseFormalActions.Action.Settlements"
+               }
+               ,"xml": {
+                   "name": "Settlements"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "StatuteCode"
+            ,"LawSectionCode"
+            ,"CaseID"
+            ,"EPASystem"
+            ,"SourceID"
+            ,"ActivityName"
+            ,"LeadAgency"
+            ,"CaseType"
+            ,"CaseName"
+            ,"IssueDate"
+            ,"NumberSettlements"
+            ,"Settlements"
+         ]
+      }
+      ,"dfr4_CaseFormalActions.Action.Settlements": {
+          "type": "object"
+         ,"xml": {
+             "name": "Settlements"
+         }
+         ,"properties": {
+             "TotalCostRecovery": {
                 "type": "string"
                ,"title": "Total Cost Recovery"
                ,"example": "$6,598"
@@ -5422,9 +5656,6 @@
                ,"title": "Settlement Date"
                ,"example": "05\/5\/2005"
                ,"description": "For federal judicial actions, this is the date the settlement document is signed by the presiding judge and entered by the Clerk of the Court. At that point, the settlement becomes a binding court order. For administrative actions, this is the date that the final order is signed and issued by the enforcement authority."
-            }
-            ,"LatestSettlementEnteredDate": {
-                "type": "string"
             }
             ,"FederalPenalty": {
                 "type": "string"
@@ -5448,20 +5679,8 @@
             }
          }
          ,"required": [
-             "StatuteCode"
-            ,"LawSectionCode"
-            ,"CaseID"
-            ,"EPASystem"
-            ,"SourceID"
-            ,"ActivityName"
-            ,"LeadAgency"
-            ,"CaseType"
-            ,"CaseName"
-            ,"IssueDate"
-            ,"NumberSettlements"
-            ,"TotalCostRecovery"
+             "TotalCostRecovery"
             ,"SettlementDate"
-            ,"LatestSettlementEnteredDate"
             ,"FederalPenalty"
             ,"StateLocalPenalty"
             ,"SepCost"
@@ -7317,6 +7536,9 @@
             }
             ,"CWARNCCompliance": {
                 "$ref": "#\/definitions\/dfrB_CWARNCCompliance"
+            }
+            ,"CWA3YrD80D90Counts": {
+                "$ref": "#\/definitions\/dfr712"
             }
             ,"CWAEffluentCompliance": {
                 "$ref": "#\/definitions\/dfr9_CWAEffluentCompliance"
