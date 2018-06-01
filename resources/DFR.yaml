@@ -1609,6 +1609,47 @@ paths:
                 "$ref": "#/definitions/dfrp_Results" 
             required: 
             - Results
+  "/dfr_rest_services.get_water_quality_details": 
+    get: 
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_id"
+      - "$ref": "#/parameters/p_radius"
+      - "$ref": "#/parameters/callback"
+      tags: 
+      - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dfrp1_Results" 
+            required: 
+            - Results
+    post: 
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_id"
+      - "$ref": "#/parameters/p_radius"
+      - "$ref": "#/parameters/callback"
+      tags: 
+      - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dfrp1_Results" 
+            required: 
+            - Results
   "/dfr_rest_services.get_map": 
     get: 
       summary: Detailed Facility Report Map Service
@@ -1650,47 +1691,6 @@ paths:
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrZ_Results" 
-            required: 
-            - Results
-  "/dfr_rest_services.get_water_quality_details": 
-    get: 
-      parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/p_radius"
-      - "$ref": "#/parameters/callback"
-      tags: 
-      - Detailed Facility Report
-      responses: 
-        '200': 
-          description: Results
-          schema: 
-            description: Root Object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dfrp1_Results" 
-            required: 
-            - Results
-    post: 
-      parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/p_radius"
-      - "$ref": "#/parameters/callback"
-      tags: 
-      - Detailed Facility Report
-      responses: 
-        '200': 
-          description: Results
-          schema: 
-            description: Root Object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dfrp1_Results" 
             required: 
             - Results
 definitions: 

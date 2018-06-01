@@ -309,7 +309,7 @@
       }
       ,"\/dfr_rest_services.get_case_formal_actions": {
           "get": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -346,7 +346,7 @@
             }
          }
          ,"post": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -619,7 +619,7 @@
       }
       ,"\/dfr_rest_services.get_cwa_3yr_d80d90_counts": {
           "get": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -656,7 +656,7 @@
             }
          }
          ,"post": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -1163,7 +1163,7 @@
       }
       ,"\/dfr_rest_services.get_demographics_by_id": {
           "get": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -1203,7 +1203,7 @@
             }
          }
          ,"post": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -1323,7 +1323,7 @@
       }
       ,"\/dfr_rest_services.get_extract_dates": {
           "get": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -1360,7 +1360,7 @@
             }
          }
          ,"post": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -2807,6 +2807,88 @@
             }
          }
       }
+      ,"\/dfr_rest_services.get_water_quality_details": {
+          "get": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_radius"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Detailed Facility Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dfrp1_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_radius"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Detailed Facility Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dfrp1_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
       ,"\/dfr_rest_services.get_map": {
           "get": {
              "summary": "Detailed Facility Report Map Service"
@@ -2875,88 +2957,6 @@
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/dfrZ_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/dfr_rest_services.get_water_quality_details": {
-          "get": {
-             "summary": null
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_radius"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Detailed Facility Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dfrp1_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": null
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/p_radius"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Detailed Facility Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dfrp1_Results"
                      }
                   }
                   ,"required": [
