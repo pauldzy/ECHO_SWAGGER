@@ -225,7 +225,7 @@
       }
       ,"\/rest_lookups.bio_analy_method_category": {
           "get": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -265,7 +265,7 @@
             }
          }
          ,"post": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -307,7 +307,7 @@
       }
       ,"\/rest_lookups.bio_analytical_method": {
           "get": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -347,7 +347,7 @@
             }
          }
          ,"post": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -389,7 +389,7 @@
       }
       ,"\/rest_lookups.bio_container_type": {
           "get": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -429,7 +429,7 @@
             }
          }
          ,"post": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -471,7 +471,7 @@
       }
       ,"\/rest_lookups.bio_mgmt_practice_handler": {
           "get": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -511,7 +511,7 @@
             }
          }
          ,"post": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -553,7 +553,7 @@
       }
       ,"\/rest_lookups.bio_mgmt_practice_subtype": {
           "get": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -596,7 +596,7 @@
             }
          }
          ,"post": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -641,7 +641,7 @@
       }
       ,"\/rest_lookups.bio_mgmt_practice_type": {
           "get": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -681,7 +681,7 @@
             }
          }
          ,"post": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -723,7 +723,7 @@
       }
       ,"\/rest_lookups.bio_mgmt_practice_typesubtype": {
           "get": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -763,7 +763,7 @@
             }
          }
          ,"post": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -805,7 +805,7 @@
       }
       ,"\/rest_lookups.bio_pathogen_class": {
           "get": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -845,7 +845,7 @@
             }
          }
          ,"post": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -887,7 +887,7 @@
       }
       ,"\/rest_lookups.bio_pathogen_reduction": {
           "get": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -930,7 +930,7 @@
             }
          }
          ,"post": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -975,7 +975,7 @@
       }
       ,"\/rest_lookups.bio_treatment_process": {
           "get": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -1015,7 +1015,7 @@
             }
          }
          ,"post": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -1045,88 +1045,6 @@
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/rlk11_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.bio_vio_code": {
-          "get": {
-             "summary": null
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk68_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": null
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk68_Results"
                      }
                   }
                   ,"required": [
@@ -1139,7 +1057,7 @@
       }
       ,"\/rest_lookups.bio_vector_reduction": {
           "get": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -1179,7 +1097,7 @@
             }
          }
          ,"post": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -1209,6 +1127,88 @@
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/rlk12_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.bio_vio_code": {
+          "get": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk68_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk68_Results"
                      }
                   }
                   ,"required": [
@@ -1863,6 +1863,76 @@
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/rlk33_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.ecatt_ams_years": {
+          "get": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk70_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk70_Results"
                      }
                   }
                   ,"required": [
@@ -3361,6 +3431,106 @@
             }
          }
       }
+      ,"\/rest_lookups.icis_ref_program": {
+          "get": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/statute_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/status_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/sort_order"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk71_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/statute_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/status_flag"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_term"
+               }
+               ,{
+                   "$ref": "#\/parameters\/search_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/sort_order"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk71_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
       ,"\/rest_lookups.naics_codes": {
           "get": {
              "summary": "ECHO NAICS Codes Lookup Service"
@@ -3767,103 +3937,9 @@
             }
          }
       }
-      ,"\/rest_lookups.wbd_lu": {
-          "get": {
-             "summary": null
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/wbd_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/wbd_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/wbd_level"
-               }
-               ,{
-                   "$ref": "#\/parameters\/exact_match"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk72_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": null
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/wbd_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/wbd_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/wbd_level"
-               }
-               ,{
-                   "$ref": "#\/parameters\/exact_match"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk72_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
       ,"\/rest_lookups.npdes_tribes_region": {
           "get": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -3903,7 +3979,7 @@
             }
          }
          ,"post": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -3933,176 +4009,6 @@
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/rlk69_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.icis_ref_program": {
-          "get": {
-             "summary": null
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/statute_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/status_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/sort_order"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk71_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": null
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/statute_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/status_flag"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/sort_order"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk71_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.ecatt_ams_years": {
-          "get": {
-             "summary": null
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk70_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": null
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk70_Results"
                      }
                   }
                   ,"required": [
@@ -4115,7 +4021,7 @@
       }
       ,"\/rest_lookups.prog_deficiency": {
           "get": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -4155,7 +4061,7 @@
             }
          }
          ,"post": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -4273,7 +4179,7 @@
       }
       ,"\/rest_lookups.reporting_obligation": {
           "get": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -4316,7 +4222,7 @@
             }
          }
          ,"post": {
-             "summary": null
+             "summary": "Placeholder"
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/output"
@@ -4921,6 +4827,100 @@
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/rlk66_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.wbd_lu": {
+          "get": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/wbd_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/wbd_name"
+               }
+               ,{
+                   "$ref": "#\/parameters\/wbd_level"
+               }
+               ,{
+                   "$ref": "#\/parameters\/exact_match"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk72_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/wbd_code"
+               }
+               ,{
+                   "$ref": "#\/parameters\/wbd_name"
+               }
+               ,{
+                   "$ref": "#\/parameters\/wbd_level"
+               }
+               ,{
+                   "$ref": "#\/parameters\/exact_match"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk72_Results"
                      }
                   }
                   ,"required": [
