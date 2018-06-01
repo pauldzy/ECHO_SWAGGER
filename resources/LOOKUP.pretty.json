@@ -113,6 +113,12 @@
          ,"type": "number"
          ,"required": false
       }
+      ,"exact_match": {
+          "name": "exact_match"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
       ,"status_flag": {
           "name": "status_flag"
          ,"in": "query"
@@ -3780,6 +3786,9 @@
                ,{
                    "$ref": "#\/parameters\/wbd_level"
                }
+               ,{
+                   "$ref": "#\/parameters\/exact_match"
+               }
             ]
             ,"tags": [
                 "Lookups"
@@ -3822,6 +3831,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/wbd_level"
+               }
+               ,{
+                   "$ref": "#\/parameters\/exact_match"
                }
             ]
             ,"tags": [

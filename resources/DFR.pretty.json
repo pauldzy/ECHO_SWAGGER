@@ -335,7 +335,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfr0_get_case_formal_actions.Results"
+                         "$ref": "#\/definitions\/dfr200"
                      }
                   }
                   ,"required": [
@@ -372,7 +372,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfr0_get_case_formal_actions.Results"
+                         "$ref": "#\/definitions\/dfr200"
                      }
                   }
                   ,"required": [
@@ -1311,6 +1311,82 @@
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/dfrW1_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/dfr_rest_services.get_extract_dates": {
+          "get": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Detailed Facility Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dfr300"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": null
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/p_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+            ]
+            ,"tags": [
+                "Detailed Facility Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dfr300"
                      }
                   }
                   ,"required": [
@@ -3506,7 +3582,7 @@
              "Message"
          ]
       }
-      ,"dfr0_get_case_formal_actions.Results": {
+      ,"dfr200": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -3517,7 +3593,7 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"CaseFormalActions": {
-                "$ref": "#\/definitions\/dfr4_CaseFormalActions"
+                "$ref": "#\/definitions\/dfr720"
             }
          }
          ,"required": [
@@ -5516,7 +5592,7 @@
             ,"Qtr13Value"
          ]
       }
-      ,"dfr4_CaseFormalActions": {
+      ,"dfr720": {
           "type": "object"
          ,"description": "Case Formal Actions"
          ,"xml": {
@@ -5537,7 +5613,7 @@
             ,"Action": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr4_CaseFormalActions.Action"
+                   "$ref": "#\/definitions\/dfr722"
                }
                ,"xml": {
                    "name": "Action"
@@ -5546,7 +5622,7 @@
             }
          }
       }
-      ,"dfr4_CaseFormalActions.Action": {
+      ,"dfr722": {
           "type": "object"
          ,"description": "Case Formal Action"
          ,"properties": {
@@ -5613,15 +5689,7 @@
                ,"example": "1"
             }
             ,"Settlements": {
-                "type": "array"
-               ,"title": "Settlements"
-               ,"items": {
-                   "$ref": "#\/definitions\/dfr4_CaseFormalActions.Action.Settlements"
-               }
-               ,"xml": {
-                   "name": "Settlements"
-                  ,"wrapped": true
-               }
+                "$ref": "#\/definitions\/dfr724"
             }
          }
          ,"required": [
@@ -5639,11 +5707,8 @@
             ,"Settlements"
          ]
       }
-      ,"dfr4_CaseFormalActions.Action.Settlements": {
+      ,"dfr723": {
           "type": "object"
-         ,"xml": {
-             "name": "Settlements"
-         }
          ,"properties": {
              "TotalCostRecovery": {
                 "type": "string"
@@ -5685,6 +5750,28 @@
             ,"StateLocalPenalty"
             ,"SepCost"
             ,"CompActionCost"
+         ]
+      }
+      ,"dfr724": {
+          "type": "object"
+         ,"xml": {
+             "name": "Settlements"
+         }
+         ,"properties": {
+             "Settlement": {
+                "type": "array"
+               ,"title": "Settlement"
+               ,"items": {
+                   "$ref": "#\/definitions\/dfr723"
+               }
+               ,"xml": {
+                   "name": "Settlements"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Settlement"
          ]
       }
       ,"dfrV_ComplianceHistory": {
@@ -7513,6 +7600,9 @@
                   ,"wrapped": true
                }
             }
+            ,"SystemExtractDates": {
+                "$ref": "#\/definitions\/dfr730"
+            }
             ,"EnforcementComplianceSummaries": {
                 "$ref": "#\/definitions\/dfrF_EnforcementComplianceSummaries"
             }
@@ -7580,7 +7670,7 @@
                 "$ref": "#\/definitions\/dfrH_ICISFormalActions"
             }
             ,"CaseFormalActions": {
-                "$ref": "#\/definitions\/dfr4_CaseFormalActions"
+                "$ref": "#\/definitions\/dfr720"
             }
             ,"TRIHistory": {
                 "$ref": "#\/definitions\/dfrQ_TRIHistory"
@@ -8459,6 +8549,45 @@
             ,"TotalCasePenalties"
          ]
       }
+      ,"dfr730": {
+          "type": "object"
+         ,"description": "System Extract Dates Object"
+         ,"properties": {
+             "Dates": {
+                "type": "array"
+               ,"title": "System Extract Dates Dates"
+               ,"items": {
+                   "$ref": "#\/definitions\/dfr732"
+               }
+               ,"xml": {
+                   "name": "Dates"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Dates"
+         ]
+      }
+      ,"dfr732": {
+          "type": "object"
+         ,"description": "System Extract Dates Dates Object"
+         ,"properties": {
+             "EPASystem": {
+                "type": "string"
+               ,"title": "EPA Data System"
+               ,"example": "ICP"
+               ,"description": "The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: \n\n- AFS: Air Facility System for Clean Air Act stationary source programs.\n- ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.\n- RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.\n- NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).\n- TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.\n- NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.\n- TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals."
+            }
+            ,"SystemExtractDate": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "EPASystem"
+            ,"SystemExtractDate"
+         ]
+      }
       ,"dfrQ_TRIHistory": {
           "type": "object"
          ,"description": "TRI History Object"
@@ -9284,6 +9413,24 @@
             }
             ,"EnforcementComplianceSummaries": {
                 "$ref": "#\/definitions\/dfrF_EnforcementComplianceSummaries"
+            }
+         }
+         ,"required": [
+             "Message"
+         ]
+      }
+      ,"dfr300": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"SystemExtractDates": {
+                "$ref": "#\/definitions\/dfr730"
             }
          }
          ,"required": [

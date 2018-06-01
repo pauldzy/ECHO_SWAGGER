@@ -212,7 +212,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfr0_get_case_formal_actions.Results" 
+                "$ref": "#/definitions/dfr200" 
             required: 
             - Results
     post: 
@@ -231,7 +231,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfr0_get_case_formal_actions.Results" 
+                "$ref": "#/definitions/dfr200" 
             required: 
             - Results
   "/dfr_rest_services.get_compliance_history": 
@@ -776,6 +776,45 @@ paths:
             properties: 
               Results: 
                 "$ref": "#/definitions/dfrW1_Results" 
+            required: 
+            - Results
+  "/dfr_rest_services.get_extract_dates": 
+    get: 
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_id"
+      - "$ref": "#/parameters/callback"
+      tags: 
+      - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dfr300" 
+            required: 
+            - Results
+    post: 
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/p_id"
+      - "$ref": "#/parameters/callback"
+      tags: 
+      - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dfr300" 
             required: 
             - Results
   "/dfr_rest_services.get_formal_actions": 
@@ -2161,7 +2200,7 @@ definitions:
         "$ref": "#/definitions/dfr6_AirQuality" 
     required: 
     - Message
-  dfr0_get_case_formal_actions.Results: 
+  dfr200: 
     description: Results Object
     properties: 
       Message: 
@@ -2170,7 +2209,7 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       CaseFormalActions: 
-        "$ref": "#/definitions/dfr4_CaseFormalActions" 
+        "$ref": "#/definitions/dfr720" 
     required: 
     - Message
   dfr2_Results: 
@@ -3702,7 +3741,7 @@ definitions:
     - Qtr12Value
     - Qtr13Status
     - Qtr13Value
-  dfr4_CaseFormalActions: 
+  dfr720: 
     description: Case Formal Actions
     xml: 
       name: CaseFormalActions
@@ -3718,11 +3757,11 @@ definitions:
       Action: 
         type: array
         items: 
-          "$ref": "#/definitions/dfr4_CaseFormalActions.Action" 
+          "$ref": "#/definitions/dfr722" 
         xml: 
           name: Action
           wrapped: true
-  dfr4_CaseFormalActions.Action: 
+  dfr722: 
     description: Case Formal Action
     properties: 
       StatuteCode: 
@@ -3787,13 +3826,7 @@ definitions:
         title: Number of Settlements
         example: '1'
       Settlements: 
-        type: array
-        title: Settlements
-        items: 
-          "$ref": "#/definitions/dfr4_CaseFormalActions.Action.Settlements" 
-        xml: 
-          name: Settlements
-          wrapped: true
+        "$ref": "#/definitions/dfr724" 
     required: 
     - StatuteCode
     - LawSectionCode
@@ -3807,10 +3840,8 @@ definitions:
     - IssueDate
     - NumberSettlements
     - Settlements
-  dfr4_CaseFormalActions.Action.Settlements: 
+  dfr723: 
     type: object
-    xml: 
-      name: Settlements
     properties: 
       TotalCostRecovery: 
         type: string
@@ -3845,6 +3876,21 @@ definitions:
     - StateLocalPenalty
     - SepCost
     - CompActionCost
+  dfr724: 
+    type: object
+    xml: 
+      name: Settlements
+    properties: 
+      Settlement: 
+        type: array
+        title: Settlement
+        items: 
+          "$ref": "#/definitions/dfr723" 
+        xml: 
+          name: Settlements
+          wrapped: true
+    required: 
+    - Settlement
   dfrV_ComplianceHistory: 
     description: Compliance History Object
     properties: 
@@ -5375,6 +5421,8 @@ definitions:
         xml: 
           name: Permits
           wrapped: true
+      SystemExtractDates: 
+        "$ref": "#/definitions/dfr730" 
       EnforcementComplianceSummaries: 
         "$ref": "#/definitions/dfrF_EnforcementComplianceSummaries" 
       NAICS: 
@@ -5420,7 +5468,7 @@ definitions:
       ICISFormalActions: 
         "$ref": "#/definitions/dfrH_ICISFormalActions" 
       CaseFormalActions: 
-        "$ref": "#/definitions/dfr4_CaseFormalActions" 
+        "$ref": "#/definitions/dfr720" 
       TRIHistory: 
         "$ref": "#/definitions/dfrQ_TRIHistory" 
       TRIReleases: 
@@ -6114,6 +6162,40 @@ definitions:
     - Cases
     - TotalPenalties
     - TotalCasePenalties
+  dfr730: 
+    description: System Extract Dates Object
+    properties: 
+      Dates: 
+        type: array
+        title: System Extract Dates Dates
+        items: 
+          "$ref": "#/definitions/dfr732" 
+        xml: 
+          name: Dates
+          wrapped: true
+    required: 
+    - Dates
+  dfr732: 
+    description: System Extract Dates Dates Object
+    properties: 
+      EPASystem: 
+        type: string
+        title: EPA Data System
+        example: ICP
+        description: |-
+          The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: 
+          - AFS: Air Facility System for Clean Air Act stationary source programs.
+          - ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.
+          - RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.
+          - NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).
+          - TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.
+          - NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.
+          - TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.
+      SystemExtractDate: 
+        type: string
+    required: 
+    - EPASystem
+    - SystemExtractDate
   dfrQ_TRIHistory: 
     description: TRI History Object
     properties: 
@@ -6762,6 +6844,18 @@ definitions:
         description: Field to record messages (typically performance-related) about packet processing
       EnforcementComplianceSummaries: 
         "$ref": "#/definitions/dfrF_EnforcementComplianceSummaries" 
+    required: 
+    - Message
+  dfr300: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      SystemExtractDates: 
+        "$ref": "#/definitions/dfr730" 
     required: 
     - Message
   dfrW2_Results: 

@@ -477,22 +477,10 @@ parameters:
     description: "Copper Violation.  A \"Y\" value will select water systems with at least 1 Copper Violation."
     type: string
     required: false
-  p_pbv: 
-    name: p_pbv
+  p_rc350v: 
+    name: p_rc350v
     in: query
-    description: "Lead Violations.  A \"Y\" value will select water systems with at least 1 Lead Violation."
-    type: string
-    required: false
-  p_lcrv: 
-    name: p_lcrv
-    in: query
-    description: "Lead or Copper rule violations.  A \"Y\" value will select water systems with at least 1 Lead or Copper Rule Violation."
-    type: string
-    required: false
-  p_cuale: 
-    name: p_cuale
-    in: query
-    description: "Copper Action Level Exceedance.  A \"Y\" value will select water systems with at least 1 Copper Action Level Exceedance."
+    description: "Rule code 350 violation. A \"Y\" value will select water systems with at least one rule code 350 violation."
     type: string
     required: false
   p_pbale: 
@@ -501,10 +489,43 @@ parameters:
     description: "Lead Action Level Exceedance.  A \"Y\" value will select water systems with at least 1 Lead Action Level Exceedance."
     type: string
     required: false
-  p_rc350v: 
-    name: p_rc350v
+  p_cuale: 
+    name: p_cuale
     in: query
-    description: "Rule code 350 violation. A \"Y\" value will select water systems with at least one rule code 350 violation."
+    description: "Copper Action Level Exceedance.  A \"Y\" value will select water systems with at least 1 Copper Action Level Exceedance."
+    type: string
+    required: false
+  p_lcrv: 
+    name: p_lcrv
+    in: query
+    description: "Lead or Copper rule violations.  A \"Y\" value will select water systems with at least 1 Lead or Copper Rule Violation."
+    type: string
+    required: false
+  p_pbv: 
+    name: p_pbv
+    in: query
+    description: "Lead Violations.  A \"Y\" value will select water systems with at least 1 Lead Violation."
+    type: string
+    required: false
+  p_ss5yr: 
+    name: p_ss5yr
+    in: query
+    description: |-
+      Sanitary Surveys (in past 5 years) flag.  Values of visit_reason_code are either "SNSV" or "SNSP" in the past 5 years indicate a Sanitary Survey.  
+      Enter "Y" to select facilities with Sanitary Surveys within the past 5 years.  
+      Enter "N" to select facilities without Sanitary Surveys in the past 5 years.
+      Enter a number to search for greater for facilities with a quantity than or equal to that value.
+
+    type: string
+    required: false
+  p_sdc: 
+    name: p_sdc
+    in: query
+    description: |-
+      Significant Deficiency Count (in past 5 years) flag.  
+      Enter "Y" to select facilities with Sanitary Surveys within the past 5 years.  
+      Enter "N" to select facilities without Sanitary Surveys in the past 5 years.
+      Enter a number to search for facilities with a quantity greater than or equal to that value.
     type: string
     required: false
 paths: 
@@ -568,6 +589,8 @@ paths:
       - "$ref": "#/parameters/p_pfead1"
       - "$ref": "#/parameters/p_pfead2"
       - "$ref": "#/parameters/p_pfeat"
+      - "$ref": "#/parameters/p_ss5yr"
+      - "$ref": "#/parameters/p_sdc"
       - "$ref": "#/parameters/queryset"
       - "$ref": "#/parameters/responseset"
       - "$ref": "#/parameters/callback"
@@ -645,6 +668,8 @@ paths:
       - "$ref": "#/parameters/p_pfead1"
       - "$ref": "#/parameters/p_pfead2"
       - "$ref": "#/parameters/p_pfeat"
+      - "$ref": "#/parameters/p_ss5yr"
+      - "$ref": "#/parameters/p_sdc"
       - "$ref": "#/parameters/queryset"
       - "$ref": "#/parameters/responseset"
       - "$ref": "#/parameters/callback"
@@ -1239,6 +1264,10 @@ definitions:
         title: Inspected Within Last Five Years Flag
         example: '1'
         description: Indicates if the facility has an inspection within the last 5 years. 1 = Yes
+      Sansurvey5yr: 
+        type: string
+      SignificantDeficiencyCount: 
+        type: string
       MaxScore: 
         type: string
         title: Max Score
@@ -1306,4 +1335,6 @@ definitions:
     - CurrVioFlag
     - VioFlag
     - Insp5yrFlag
+    - Sansurvey5yr
+    - SignificantDeficiencyCount
     - MaxScore
