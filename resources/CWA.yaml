@@ -1291,6 +1291,16 @@ parameters:
     description: A Y value will select all biosolid-related permits.
     type: string
     required: false
+  p_radwbd: 
+    name: p_radwbd
+    in: query
+    type: string
+    required: false
+  p_frswbd: 
+    name: p_frswbd
+    in: query
+    type: string
+    required: false
   p_iv: 
     name: p_iv
     in: query
@@ -1610,6 +1620,8 @@ paths:
       - "$ref": "#/parameters/p_pswparam"
       - "$ref": "#/parameters/p_pswvio"
       - "$ref": "#/parameters/p_wbd"
+      - "$ref": "#/parameters/p_radwbd"
+      - "$ref": "#/parameters/p_frswbd"
       - "$ref": "#/parameters/p_fntype"
       - "$ref": "#/parameters/p_pidall"
       - "$ref": "#/parameters/p_months_last_dmr"
@@ -1788,6 +1800,8 @@ paths:
       - "$ref": "#/parameters/p_pswparam"
       - "$ref": "#/parameters/p_pswvio"
       - "$ref": "#/parameters/p_wbd"
+      - "$ref": "#/parameters/p_radwbd"
+      - "$ref": "#/parameters/p_frswbd"
       - "$ref": "#/parameters/p_fntype"
       - "$ref": "#/parameters/p_pidall"
       - "$ref": "#/parameters/p_months_last_dmr"
@@ -1967,6 +1981,8 @@ paths:
       - "$ref": "#/parameters/p_pswparam"
       - "$ref": "#/parameters/p_pswvio"
       - "$ref": "#/parameters/p_wbd"
+      - "$ref": "#/parameters/p_radwbd"
+      - "$ref": "#/parameters/p_frswbd"
       - "$ref": "#/parameters/p_fntype"
       - "$ref": "#/parameters/p_pidall"
       - "$ref": "#/parameters/p_months_last_dmr"
@@ -2142,6 +2158,8 @@ paths:
       - "$ref": "#/parameters/p_pswparam"
       - "$ref": "#/parameters/p_pswvio"
       - "$ref": "#/parameters/p_wbd"
+      - "$ref": "#/parameters/p_radwbd"
+      - "$ref": "#/parameters/p_frswbd"
       - "$ref": "#/parameters/p_fntype"
       - "$ref": "#/parameters/p_pidall"
       - "$ref": "#/parameters/p_months_last_dmr"
@@ -2780,12 +2798,6 @@ definitions:
       BioReportingObligations: 
         type: string
         description: Indicates the reporting obligation reason.
-      BioReportingObligations2016: 
-        type: string
-        description: Indicates the reporting obligation reason.
-      BioReportingObligations2017: 
-        type: string
-        description: Indicates the reporting obligation reason.
       DschToMs4: 
         type: string
       ReceivingMs4Name: 
@@ -2956,21 +2968,6 @@ definitions:
         type: string
       MsgpCorrectiveActionSmmry: 
         type: string
-      OperatorName: 
-        type: string
-        title: Operator Name
-      OperatorAddress: 
-        type: string
-        title: Operator Address
-      OperatorCity: 
-        type: string
-        title: Operator City
-      OperatorState: 
-        type: string
-        title: Operator State
-      OperatorZip: 
-        type: string
-        title: Operator Zip Code
       AIRIDs: 
         type: string
         title: AIR Facility System ID
@@ -2996,15 +2993,10 @@ definitions:
         description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
       RmpIDs: 
         type: string
-      BioInspDef5yrCnt: 
-        type: string
-        example: 0
-        description: The count of Biosolids Inspection Deficiencies that have been found in the last 5 years.
       BioVioLastYearFlag: 
         type: string
-      BioQtrsInVio: 
+      BioQtrsWithVio: 
         type: string
-        description: The number of quarters, in the last three years, where the facility was in violation for a biosolids violation type.
       CWPStatus: 
         type: string
         title: Current Compliance Status
@@ -3015,26 +3007,16 @@ definitions:
           - Noncompliance
           - No Violation
           - Unknown
-      CWPCurrentSNCStatus: 
+      CWPSNCStatus: 
         type: string
-        example: D (DMR NR)
-        description: The type of noncompliance when a major source is in significant violation or a minor source has a Category 1 violation.
-      CWPCurrentSNCStatusDate: 
+      CWPSNCStatusDate: 
         type: string
-        example: 12/31/2015
-        description: "The status date of the facility's Significant Noncompliance designation."
-      CWPQtrsInNC: 
+      CWPQtrsWithNC: 
         type: string
-        example: '4'
-        description: Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered either with violations, in non-compliance (NC) status, or in Significant Non-compliance (SNC), as described above under Current Compliance Status.
-      CWPCurrentViol: 
+      CWPViolStatus: 
         type: string
-        example: Y
-        description: "Displays \"Y\" if the facility is currently in any violation under the Clean Water Act, either in Noncompliance or Significant Noncompliance."
-      CWPQtrsInSNC: 
+      CWPQtrsWithSNC: 
         type: string
-        example: '0'
-        description: Count of the number of quarters, out of the last twelve quarters, in which the permit is considered in Significant Non-compliance (SNC).
       MissDMRQtrs: 
         type: string
       CWPE90Cnt: 
@@ -3051,8 +3033,6 @@ definitions:
       BioReportYear: 
         type: string
         description: The calendar year corresponding to the Annual Biosolids Report.
-      BioReportYears: 
-        type: string
       CWPInspectionCount: 
         type: string
         title: Inspections (5 yrs)
@@ -3144,13 +3124,15 @@ definitions:
         description: The total amount of Biosolids related penalties that have been assessed against the facility.
       CWPDateLastBioPenalty: 
         type: string
+      BioReportYears: 
+        type: string
+      BioReportingObligations2016: 
+        type: string
+        description: Indicates the reporting obligation reason.
       BioTotalVolumeAmt: 
         type: string
         description: The amount (in dry metric tons) of biosolids or sewage sludge generated at the facility.
       BioTotalVolumeAmt2016: 
-        type: string
-        description: The amount (in dry metric tons) of biosolids or sewage sludge generated at the facility.
-      BioTotalVolumeAmt2017: 
         type: string
         description: The amount (in dry metric tons) of biosolids or sewage sludge generated at the facility.
       BioLandApplicationSum: 
@@ -3159,16 +3141,10 @@ definitions:
       BioLandApplicationSum2016: 
         type: string
         description: The amount (dry metric tons) of biosolids land applied.
-      BioLandApplicationSum2017: 
-        type: string
-        description: The amount (dry metric tons) of biosolids land applied.
       BioSurfaceDispSum: 
         type: string
         description: The amount of surface disposal in dry metric tons (DMT).
       BioSurfaceDispSum2016: 
-        type: string
-        description: The amount of surface disposal in dry metric tons (DMT).
-      BioSurfaceDispSum2017: 
         type: string
         description: The amount of surface disposal in dry metric tons (DMT).
       BioIncinerationSum: 
@@ -3177,16 +3153,10 @@ definitions:
       BioIncinerationSum2016: 
         type: string
         description: The amount (dry metric tons) of biosolids incinerated.
-      BioIncinerationSum2017: 
-        type: string
-        description: The amount (dry metric tons) of biosolids incinerated.
       BioOtherManagementSum: 
         type: string
         description: The amount (dry metric tons) of biosolids managed using methods not previously described.
       BioOtherManagementSum2016: 
-        type: string
-        description: The amount (dry metric tons) of biosolids managed using methods not previously described.
-      BioOtherManagementSum2017: 
         type: string
         description: The amount (dry metric tons) of biosolids managed using methods not previously described.
       BioTrtmntProcesses: 
@@ -3195,16 +3165,10 @@ definitions:
       BioTrtmntProcesses2016: 
         type: string
         description: Identifies the biosolids or sewage sludge treatment process or processes at the facility.
-      BioTrtmntProcesses2017: 
-        type: string
-        description: Identifies the biosolids or sewage sludge treatment process or processes at the facility.
       BioTrtmntPrcssCmmntTxts: 
         type: string
         description: "Free text additional description of \"other\" biotreatment processes."
       BioTrmntPrcssCmntTxts2016: 
-        type: string
-        description: "Free text additional description of \"other\" biotreatment processes."
-      BioTrmntPrcssCmntTxts2017: 
         type: string
         description: "Free text additional description of \"other\" biotreatment processes."
       BioAnalyMethodCatgrys: 
@@ -3213,16 +3177,10 @@ definitions:
       BioAnalyMethodCatgrys2016: 
         type: string
         description: Displays the categories of the analytic methods used by the facility to analyze regulated parameters at the facility.
-      BioAnalyMethodCatgrys2017: 
-        type: string
-        description: Displays the categories of the analytic methods used by the facility to analyze regulated parameters at the facility.
       BioAnalyMethods: 
         type: string
         description: Displays the analytic methods used by the facility to analyze enteric viruses, fecal coliforms, helminth ova, Salmonella sp., and other regulated parameters as reported on the Biosolids Program Report.
       BioAnalyMethods2016: 
-        type: string
-        description: Displays the analytic methods used by the facility to analyze enteric viruses, fecal coliforms, helminth ova, Salmonella sp., and other regulated parameters as reported on the Biosolids Program Report.
-      BioAnalyMethods2017: 
         type: string
         description: Displays the analytic methods used by the facility to analyze enteric viruses, fecal coliforms, helminth ova, Salmonella sp., and other regulated parameters as reported on the Biosolids Program Report.
       BioMgmtPrctceTypes: 
@@ -3231,16 +3189,10 @@ definitions:
       BioMgmtPrctceTypes2016: 
         type: string
         description: The type of biosolids or sewage sludge management practice (e.g., land application, surface disposal, incineration) used by the facility.
-      BioMgmtPrctceTypes2017: 
-        type: string
-        description: The type of biosolids or sewage sludge management practice (e.g., land application, surface disposal, incineration) used by the facility.
       BioOtherMgmtPrctcTxts: 
         type: string
         description: "Free text additional description of \"other\" Biosolids Management Practices."
       BioOtherMgmtPrctcTxts2016: 
-        type: string
-        description: "Free text additional description of \"other\" Biosolids Management Practices."
-      BioOtherMgmtPrctcTxts2017: 
         type: string
         description: "Free text additional description of \"other\" Biosolids Management Practices."
       BioMgmtPrctceStypes: 
@@ -3249,16 +3201,10 @@ definitions:
       BioMgmtPrctceStypes2016: 
         type: string
         description: Additional detail about the type of Management Practice used for an amount of Biosolids or Sewage Sludge.
-      BioMgmtPrctceStypes2017: 
-        type: string
-        description: Additional detail about the type of Management Practice used for an amount of Biosolids or Sewage Sludge.
       BioMgmtHandlers: 
         type: string
         description: Indicates the type of Biosolids or Sewage Sludge handlers/preparers, either owner/operator or off-site third-party handler/preparer.
       BioMgmtHandlers2016: 
-        type: string
-        description: Indicates the type of Biosolids or Sewage Sludge handlers/preparers, either owner/operator or off-site third-party handler/preparer.
-      BioMgmtHandlers2017: 
         type: string
         description: Indicates the type of Biosolids or Sewage Sludge handlers/preparers, either owner/operator or off-site third-party handler/preparer.
       BioMgmtContainers: 
@@ -3267,16 +3213,10 @@ definitions:
       BioMgmtContainers2016: 
         type: string
         description: Identifies the nature of each biosolids and sewage sludge material generated by the facility in terms of whether the material is a biosolid or sewage sludge and whether the material is ultimately conveyed off-site in bulk or in bags.
-      BioMgmtContainers2017: 
-        type: string
-        description: Identifies the nature of each biosolids and sewage sludge material generated by the facility in terms of whether the material is a biosolid or sewage sludge and whether the material is ultimately conveyed off-site in bulk or in bags.
       BioMgmtPathogens: 
         type: string
         description: Identifies the pathogen class for biosolids or sewage sludge generated by the facility.
       BioMgmtPathogens2016: 
-        type: string
-        description: Identifies the pathogen class for biosolids or sewage sludge generated by the facility.
-      BioMgmtPathogens2017: 
         type: string
         description: Identifies the pathogen class for biosolids or sewage sludge generated by the facility.
       BioMgmtPathreds: 
@@ -3285,16 +3225,10 @@ definitions:
       BioMgmtPathreds2016: 
         type: string
         description: Identifies the options used by the facility to control pathogens for a Biosolids Management Practice.
-      BioMgmtPathreds2017: 
-        type: string
-        description: Identifies the options used by the facility to control pathogens for a Biosolids Management Practice.
       BioMgmtVectors: 
         type: string
         description: Identifies the option used by the facility for vector attraction reduction.
       BioMgmtVectors2016: 
-        type: string
-        description: Identifies the option used by the facility for vector attraction reduction.
-      BioMgmtVectors2017: 
         type: string
         description: Identifies the option used by the facility for vector attraction reduction.
       BioCommentText: 
@@ -3303,20 +3237,109 @@ definitions:
       BioCommentText2016: 
         type: string
         description: Free text allowing the user to provide comments on the annual program report.
+      BioReportDate: 
+        type: string
+        description: The date the report was received by EPA.
+      BioReportDate2016: 
+        type: string
+        description: The date the report was received by EPA.
+      BioMgmtDefCurrentCnt: 
+        type: string
+        description: The number of times noncompliance reported by the facility in the last 3 years.
+      BioMgmtDefCurrentCnt2016: 
+        type: string
+        description: The number of times noncompliance reported by the facility in the last 3 years.
+      BioMgmtDefCategories: 
+        type: string
+        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
+      BioMgmtDefCategories2016: 
+        type: string
+        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
+      BioMgmtDeficiencies: 
+        type: string
+        description: Indicates the type of NPDES special regulatory program deficiency.
+      BioMgmtDeficiencies2016: 
+        type: string
+        description: Indicates the type of NPDES special regulatory program deficiency.
+      BioVioStatus: 
+        type: string
+      BioViolFlag: 
+        type: string
+        description: "Displays \"Yes\" if the facility is in violation for biosolids under the Clean Water Act, in the last three years."
+      BioVioLastYear: 
+        type: string
+        description: A flag (values of 1 for Yes, 0 for No) that a Bisolids Violation occurred in the last 4 quarters.
+      BioReportingObligations2017: 
+        type: string
+        description: Indicates the reporting obligation reason.
+      BioTotalVolumeAmt2017: 
+        type: string
+        description: The amount (in dry metric tons) of biosolids or sewage sludge generated at the facility.
+      BioLandApplicationSum2017: 
+        type: string
+        description: The amount (dry metric tons) of biosolids land applied.
+      BioSurfaceDispSum2017: 
+        type: string
+        description: The amount of surface disposal in dry metric tons (DMT).
+      BioIncinerationSum2017: 
+        type: string
+        description: The amount (dry metric tons) of biosolids incinerated.
+      BioOtherManagementSum2017: 
+        type: string
+        description: The amount (dry metric tons) of biosolids managed using methods not previously described.
+      BioTrtmntProcesses2017: 
+        type: string
+        description: Identifies the biosolids or sewage sludge treatment process or processes at the facility.
+      BioTrmntPrcssCmntTxts2017: 
+        type: string
+        description: "Free text additional description of \"other\" biotreatment processes."
+      BioAnalyMethodCatgrys2017: 
+        type: string
+        description: Displays the categories of the analytic methods used by the facility to analyze regulated parameters at the facility.
+      BioAnalyMethods2017: 
+        type: string
+        description: Displays the analytic methods used by the facility to analyze enteric viruses, fecal coliforms, helminth ova, Salmonella sp., and other regulated parameters as reported on the Biosolids Program Report.
+      BioOtherMgmtPrctcTxts2017: 
+        type: string
+        description: "Free text additional description of \"other\" Biosolids Management Practices."
+      BioMgmtPrctceTypes2017: 
+        type: string
+        description: The type of biosolids or sewage sludge management practice (e.g., land application, surface disposal, incineration) used by the facility.
+      BioMgmtPrctceStypes2017: 
+        type: string
+        description: Additional detail about the type of Management Practice used for an amount of Biosolids or Sewage Sludge.
+      BioMgmtHandlers2017: 
+        type: string
+        description: Indicates the type of Biosolids or Sewage Sludge handlers/preparers, either owner/operator or off-site third-party handler/preparer.
+      BioMgmtContainers2017: 
+        type: string
+        description: Identifies the nature of each biosolids and sewage sludge material generated by the facility in terms of whether the material is a biosolid or sewage sludge and whether the material is ultimately conveyed off-site in bulk or in bags.
+      BioMgmtPathogens2017: 
+        type: string
+        description: Identifies the pathogen class for biosolids or sewage sludge generated by the facility.
+      BioMgmtPathreds2017: 
+        type: string
+        description: Identifies the options used by the facility to control pathogens for a Biosolids Management Practice.
+      BioMgmtVectors2017: 
+        type: string
+        description: Identifies the option used by the facility for vector attraction reduction.
       BioCommentText2017: 
         type: string
         description: Free text allowing the user to provide comments on the annual program report.
-      BioCertifier: 
+      BioReportDate2017: 
         type: string
-      BioCertifier2016: 
+        description: The date the report was received by EPA.
+      BioMgmtDefCurrentCnt2017: 
         type: string
-      BioCertifier2017: 
+        description: The number of times noncompliance reported by the facility in the last 3 years.
+      BioMgmtDefCategories2017: 
         type: string
-      PollInViolation: 
+        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
+      BioMgmtDeficiencies2017: 
         type: string
-        title: Pollutants with Reporting Violations
-        example: Chlorine|Flow, in conduit or thru treatment plant|Oil and grease|Solids, total suspended|Thermal Discharge|pH
-        description: The names of pollutants with reporting violations (i.e., violation codes D80 and D90) or effluent exceedances (i.e., violation code E90) in the past three years in ICIS-NPDES.
+        description: Indicates the type of NPDES special regulatory program deficiency.
+      PollWithViolation: 
+        type: string
       LimPollutant: 
         type: string
       DMRPounds: 
@@ -3543,10 +3566,8 @@ definitions:
         title: Facility TRI Reporter
         example: B
         description: Indicates whether facility reported to the Toxics Release Inventory (TRI) for the most recent reporting year.
-      CWP13qtrsComplStatus: 
+      CWP13qtrsComplHistory: 
         type: string
-        example: UUUUUUUU__VV_
-        description: Each letter indicates the compliance status for the corresponding quarter.
       CWPCaseIDs: 
         type: string
         example: '03-2014-0228'
@@ -3620,7 +3641,7 @@ definitions:
         type: string
       PastCalYrToxicPollutants: 
         type: string
-      CWPCurrentVioStatus: 
+      CWPVioStatus: 
         type: string
       IndswFlag: 
         type: string
@@ -3647,51 +3668,6 @@ definitions:
       BiosolidsFlag: 
         type: string
         description: A Yes/No field to indicate permits with biosolids management and compliance information.
-      BioReportDate: 
-        type: string
-        description: The date the report was received by EPA.
-      BioReportDate2016: 
-        type: string
-        description: The date the report was received by EPA.
-      BioReportDate2017: 
-        type: string
-        description: The date the report was received by EPA.
-      BioMgmtDeficiencies: 
-        type: string
-        description: Indicates the type of NPDES special regulatory program deficiency.
-      BioMgmtDeficiencies2016: 
-        type: string
-        description: Indicates the type of NPDES special regulatory program deficiency.
-      BioMgmtDeficiencies2017: 
-        type: string
-        description: Indicates the type of NPDES special regulatory program deficiency.
-      BioMgmtDefCategories: 
-        type: string
-        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
-      BioMgmtDefCategories2016: 
-        type: string
-        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
-      BioMgmtDefCategories2017: 
-        type: string
-        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
-      BioMgmtDefCurrentCnt: 
-        type: string
-        description: The number of times noncompliance reported by the facility in the last 3 years.
-      BioMgmtDefCurrentCnt2016: 
-        type: string
-        description: The number of times noncompliance reported by the facility in the last 3 years.
-      BioMgmtDefCurrentCnt2017: 
-        type: string
-        description: The number of times noncompliance reported by the facility in the last 3 years.
-      BioCurrVioFlag: 
-        type: string
-        description: Indicates if the facility is currently in violation for biosolids under the Clean Water Act, in the 12th or 13th quarter.
-      BioViolFlag: 
-        type: string
-        description: "Displays \"Yes\" if the facility is in violation for biosolids under the Clean Water Act, in the last three years."
-      BioVioLastYear: 
-        type: string
-        description: A flag (values of 1 for Yes, 0 for No) that a Bisolids Violation occurred in the last 4 quarters.
       VioLastYear: 
         type: string
         title: Water Program Violation Flag
@@ -3782,8 +3758,6 @@ definitions:
     - CWPActualAverageFlowNmbr
     - CWPFacilityTypeIndicator
     - BioReportingObligations
-    - BioReportingObligations2016
-    - BioReportingObligations2017
     - DschToMs4
     - ReceivingMs4Name
     - StormWaterArea
@@ -3831,32 +3805,25 @@ definitions:
     - MsgpVisualAssessmentSmmry
     - MsgpNoFurtherRdctnRtnle
     - MsgpCorrectiveActionSmmry
-    - OperatorName
-    - OperatorAddress
-    - OperatorCity
-    - OperatorState
-    - OperatorZip
     - AIRIDs
     - NPDESIDs
     - RCRAIDs
     - SDWAIDs
     - TRIIDs
     - RmpIDs
-    - BioInspDef5yrCnt
     - BioVioLastYearFlag
-    - BioQtrsInVio
+    - BioQtrsWithVio
     - CWPStatus
-    - CWPCurrentSNCStatus
-    - CWPCurrentSNCStatusDate
-    - CWPQtrsInNC
-    - CWPCurrentViol
-    - CWPQtrsInSNC
+    - CWPSNCStatus
+    - CWPSNCStatusDate
+    - CWPQtrsWithNC
+    - CWPViolStatus
+    - CWPQtrsWithSNC
     - MissDMRQtrs
     - CWPE90Cnt
     - CWPComplianceTracking
     - AlrExceedences
     - BioReportYear
-    - BioReportYears
     - CWPInspectionCount
     - CWPDaysLastInspection
     - CWPDateLastInspection
@@ -3885,64 +3852,79 @@ definitions:
     - CWPDateLastBioFeaSt
     - CWPBioPenalties
     - CWPDateLastBioPenalty
+    - BioReportYears
+    - BioReportingObligations2016
     - BioTotalVolumeAmt
     - BioTotalVolumeAmt2016
-    - BioTotalVolumeAmt2017
     - BioLandApplicationSum
     - BioLandApplicationSum2016
-    - BioLandApplicationSum2017
     - BioSurfaceDispSum
     - BioSurfaceDispSum2016
-    - BioSurfaceDispSum2017
     - BioIncinerationSum
     - BioIncinerationSum2016
-    - BioIncinerationSum2017
     - BioOtherManagementSum
     - BioOtherManagementSum2016
-    - BioOtherManagementSum2017
     - BioTrtmntProcesses
     - BioTrtmntProcesses2016
-    - BioTrtmntProcesses2017
     - BioTrtmntPrcssCmmntTxts
     - BioTrmntPrcssCmntTxts2016
-    - BioTrmntPrcssCmntTxts2017
     - BioAnalyMethodCatgrys
     - BioAnalyMethodCatgrys2016
-    - BioAnalyMethodCatgrys2017
     - BioAnalyMethods
     - BioAnalyMethods2016
-    - BioAnalyMethods2017
     - BioMgmtPrctceTypes
     - BioMgmtPrctceTypes2016
-    - BioMgmtPrctceTypes2017
     - BioOtherMgmtPrctcTxts
     - BioOtherMgmtPrctcTxts2016
-    - BioOtherMgmtPrctcTxts2017
     - BioMgmtPrctceStypes
     - BioMgmtPrctceStypes2016
-    - BioMgmtPrctceStypes2017
     - BioMgmtHandlers
     - BioMgmtHandlers2016
-    - BioMgmtHandlers2017
     - BioMgmtContainers
     - BioMgmtContainers2016
-    - BioMgmtContainers2017
     - BioMgmtPathogens
     - BioMgmtPathogens2016
-    - BioMgmtPathogens2017
     - BioMgmtPathreds
     - BioMgmtPathreds2016
-    - BioMgmtPathreds2017
     - BioMgmtVectors
     - BioMgmtVectors2016
-    - BioMgmtVectors2017
     - BioCommentText
     - BioCommentText2016
+    - BioReportDate
+    - BioReportDate2016
+    - BioMgmtDefCurrentCnt
+    - BioMgmtDefCurrentCnt2016
+    - BioMgmtDefCategories
+    - BioMgmtDefCategories2016
+    - BioMgmtDeficiencies
+    - BioMgmtDeficiencies2016
+    - BioVioStatus
+    - BioViolFlag
+    - BioVioLastYear
+    - BioReportingObligations2017
+    - BioTotalVolumeAmt2017
+    - BioLandApplicationSum2017
+    - BioSurfaceDispSum2017
+    - BioIncinerationSum2017
+    - BioOtherManagementSum2017
+    - BioTrtmntProcesses2017
+    - BioTrmntPrcssCmntTxts2017
+    - BioAnalyMethodCatgrys2017
+    - BioAnalyMethods2017
+    - BioOtherMgmtPrctcTxts2017
+    - BioMgmtPrctceTypes2017
+    - BioMgmtPrctceStypes2017
+    - BioMgmtHandlers2017
+    - BioMgmtContainers2017
+    - BioMgmtPathogens2017
+    - BioMgmtPathreds2017
+    - BioMgmtVectors2017
     - BioCommentText2017
-    - BioCertifier
-    - BioCertifier2016
-    - BioCertifier2017
-    - PollInViolation
+    - BioReportDate2017
+    - BioMgmtDefCurrentCnt2017
+    - BioMgmtDefCategories2017
+    - BioMgmtDeficiencies2017
+    - PollWithViolation
     - LimPollutant
     - DMRPounds
     - DMRTwpe
@@ -3990,7 +3972,7 @@ definitions:
     - FacMapIcon
     - CWPDateLastPenalty
     - FacTRIReporter
-    - CWP13qtrsComplStatus
+    - CWP13qtrsComplHistory
     - CWPCaseIDs
     - CWPFIPSCode
     - DMRImpairedPoll
@@ -4011,7 +3993,7 @@ definitions:
     - EffExceeds
     - PastCalYrAverageFlow
     - PastCalYrToxicPollutants
-    - CWPCurrentVioStatus
+    - CWPVioStatus
     - IndswFlag
     - CertifiedDate
     - CollectionMethod
@@ -4019,21 +4001,6 @@ definitions:
     - CalculatedAccuracyMeters
     - Map
     - BiosolidsFlag
-    - BioReportDate
-    - BioReportDate2016
-    - BioReportDate2017
-    - BioMgmtDeficiencies
-    - BioMgmtDeficiencies2016
-    - BioMgmtDeficiencies2017
-    - BioMgmtDefCategories
-    - BioMgmtDefCategories2016
-    - BioMgmtDefCategories2017
-    - BioMgmtDefCurrentCnt
-    - BioMgmtDefCurrentCnt2016
-    - BioMgmtDefCurrentCnt2017
-    - BioCurrVioFlag
-    - BioViolFlag
-    - BioVioLastYear
     - VioLastYear
     - StateAuthNPDES
     - StateAuthFedfac
@@ -4489,12 +4456,6 @@ definitions:
       BioReportingObligations: 
         type: string
         description: Indicates the reporting obligation reason.
-      BioReportingObligations2016: 
-        type: string
-        description: Indicates the reporting obligation reason.
-      BioReportingObligations2017: 
-        type: string
-        description: Indicates the reporting obligation reason.
       DschToMs4: 
         type: string
       ReceivingMs4Name: 
@@ -4665,21 +4626,6 @@ definitions:
         type: string
       MsgpCorrectiveActionSmmry: 
         type: string
-      OperatorName: 
-        type: string
-        title: Operator Name
-      OperatorAddress: 
-        type: string
-        title: Operator Address
-      OperatorCity: 
-        type: string
-        title: Operator City
-      OperatorState: 
-        type: string
-        title: Operator State
-      OperatorZip: 
-        type: string
-        title: Operator Zip Code
       AIRIDs: 
         type: string
         title: AIR Facility System ID
@@ -4705,15 +4651,10 @@ definitions:
         description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
       RmpIDs: 
         type: string
-      BioInspDef5yrCnt: 
-        type: string
-        example: 0
-        description: The count of Biosolids Inspection Deficiencies that have been found in the last 5 years.
       BioVioLastYearFlag: 
         type: string
-      BioQtrsInVio: 
+      BioQtrsWithVio: 
         type: string
-        description: The number of quarters, in the last three years, where the facility was in violation for a biosolids violation type.
       CWPStatus: 
         type: string
         title: Current Compliance Status
@@ -4724,26 +4665,16 @@ definitions:
           - Noncompliance
           - No Violation
           - Unknown
-      CWPCurrentSNCStatus: 
+      CWPSNCStatus: 
         type: string
-        example: D (DMR NR)
-        description: The type of noncompliance when a major source is in significant violation or a minor source has a Category 1 violation.
-      CWPCurrentSNCStatusDate: 
+      CWPSNCStatusDate: 
         type: string
-        example: 12/31/2015
-        description: "The status date of the facility's Significant Noncompliance designation."
-      CWPQtrsInNC: 
+      CWPQtrsWithNC: 
         type: string
-        example: '4'
-        description: Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered either with violations, in non-compliance (NC) status, or in Significant Non-compliance (SNC), as described above under Current Compliance Status.
-      CWPCurrentViol: 
+      CWPViolStatus: 
         type: string
-        example: Y
-        description: "Displays \"Y\" if the facility is currently in any violation under the Clean Water Act, either in Noncompliance or Significant Noncompliance."
-      CWPQtrsInSNC: 
+      CWPQtrsWithSNC: 
         type: string
-        example: '0'
-        description: Count of the number of quarters, out of the last twelve quarters, in which the permit is considered in Significant Non-compliance (SNC).
       MissDMRQtrs: 
         type: string
       CWPE90Cnt: 
@@ -4760,8 +4691,6 @@ definitions:
       BioReportYear: 
         type: string
         description: The calendar year corresponding to the Annual Biosolids Report.
-      BioReportYears: 
-        type: string
       CWPInspectionCount: 
         type: string
         title: Inspections (5 yrs)
@@ -4853,13 +4782,15 @@ definitions:
         description: The total amount of Biosolids related penalties that have been assessed against the facility.
       CWPDateLastBioPenalty: 
         type: string
+      BioReportYears: 
+        type: string
+      BioReportingObligations2016: 
+        type: string
+        description: Indicates the reporting obligation reason.
       BioTotalVolumeAmt: 
         type: string
         description: The amount (in dry metric tons) of biosolids or sewage sludge generated at the facility.
       BioTotalVolumeAmt2016: 
-        type: string
-        description: The amount (in dry metric tons) of biosolids or sewage sludge generated at the facility.
-      BioTotalVolumeAmt2017: 
         type: string
         description: The amount (in dry metric tons) of biosolids or sewage sludge generated at the facility.
       BioLandApplicationSum: 
@@ -4868,16 +4799,10 @@ definitions:
       BioLandApplicationSum2016: 
         type: string
         description: The amount (dry metric tons) of biosolids land applied.
-      BioLandApplicationSum2017: 
-        type: string
-        description: The amount (dry metric tons) of biosolids land applied.
       BioSurfaceDispSum: 
         type: string
         description: The amount of surface disposal in dry metric tons (DMT).
       BioSurfaceDispSum2016: 
-        type: string
-        description: The amount of surface disposal in dry metric tons (DMT).
-      BioSurfaceDispSum2017: 
         type: string
         description: The amount of surface disposal in dry metric tons (DMT).
       BioIncinerationSum: 
@@ -4886,16 +4811,10 @@ definitions:
       BioIncinerationSum2016: 
         type: string
         description: The amount (dry metric tons) of biosolids incinerated.
-      BioIncinerationSum2017: 
-        type: string
-        description: The amount (dry metric tons) of biosolids incinerated.
       BioOtherManagementSum: 
         type: string
         description: The amount (dry metric tons) of biosolids managed using methods not previously described.
       BioOtherManagementSum2016: 
-        type: string
-        description: The amount (dry metric tons) of biosolids managed using methods not previously described.
-      BioOtherManagementSum2017: 
         type: string
         description: The amount (dry metric tons) of biosolids managed using methods not previously described.
       BioTrtmntProcesses: 
@@ -4904,16 +4823,10 @@ definitions:
       BioTrtmntProcesses2016: 
         type: string
         description: Identifies the biosolids or sewage sludge treatment process or processes at the facility.
-      BioTrtmntProcesses2017: 
-        type: string
-        description: Identifies the biosolids or sewage sludge treatment process or processes at the facility.
       BioTrtmntPrcssCmmntTxts: 
         type: string
         description: "Free text additional description of \"other\" biotreatment processes."
       BioTrmntPrcssCmntTxts2016: 
-        type: string
-        description: "Free text additional description of \"other\" biotreatment processes."
-      BioTrmntPrcssCmntTxts2017: 
         type: string
         description: "Free text additional description of \"other\" biotreatment processes."
       BioAnalyMethodCatgrys: 
@@ -4922,16 +4835,10 @@ definitions:
       BioAnalyMethodCatgrys2016: 
         type: string
         description: Displays the categories of the analytic methods used by the facility to analyze regulated parameters at the facility.
-      BioAnalyMethodCatgrys2017: 
-        type: string
-        description: Displays the categories of the analytic methods used by the facility to analyze regulated parameters at the facility.
       BioAnalyMethods: 
         type: string
         description: Displays the analytic methods used by the facility to analyze enteric viruses, fecal coliforms, helminth ova, Salmonella sp., and other regulated parameters as reported on the Biosolids Program Report.
       BioAnalyMethods2016: 
-        type: string
-        description: Displays the analytic methods used by the facility to analyze enteric viruses, fecal coliforms, helminth ova, Salmonella sp., and other regulated parameters as reported on the Biosolids Program Report.
-      BioAnalyMethods2017: 
         type: string
         description: Displays the analytic methods used by the facility to analyze enteric viruses, fecal coliforms, helminth ova, Salmonella sp., and other regulated parameters as reported on the Biosolids Program Report.
       BioMgmtPrctceTypes: 
@@ -4940,16 +4847,10 @@ definitions:
       BioMgmtPrctceTypes2016: 
         type: string
         description: The type of biosolids or sewage sludge management practice (e.g., land application, surface disposal, incineration) used by the facility.
-      BioMgmtPrctceTypes2017: 
-        type: string
-        description: The type of biosolids or sewage sludge management practice (e.g., land application, surface disposal, incineration) used by the facility.
       BioOtherMgmtPrctcTxts: 
         type: string
         description: "Free text additional description of \"other\" Biosolids Management Practices."
       BioOtherMgmtPrctcTxts2016: 
-        type: string
-        description: "Free text additional description of \"other\" Biosolids Management Practices."
-      BioOtherMgmtPrctcTxts2017: 
         type: string
         description: "Free text additional description of \"other\" Biosolids Management Practices."
       BioMgmtPrctceStypes: 
@@ -4958,16 +4859,10 @@ definitions:
       BioMgmtPrctceStypes2016: 
         type: string
         description: Additional detail about the type of Management Practice used for an amount of Biosolids or Sewage Sludge.
-      BioMgmtPrctceStypes2017: 
-        type: string
-        description: Additional detail about the type of Management Practice used for an amount of Biosolids or Sewage Sludge.
       BioMgmtHandlers: 
         type: string
         description: Indicates the type of Biosolids or Sewage Sludge handlers/preparers, either owner/operator or off-site third-party handler/preparer.
       BioMgmtHandlers2016: 
-        type: string
-        description: Indicates the type of Biosolids or Sewage Sludge handlers/preparers, either owner/operator or off-site third-party handler/preparer.
-      BioMgmtHandlers2017: 
         type: string
         description: Indicates the type of Biosolids or Sewage Sludge handlers/preparers, either owner/operator or off-site third-party handler/preparer.
       BioMgmtContainers: 
@@ -4976,16 +4871,10 @@ definitions:
       BioMgmtContainers2016: 
         type: string
         description: Identifies the nature of each biosolids and sewage sludge material generated by the facility in terms of whether the material is a biosolid or sewage sludge and whether the material is ultimately conveyed off-site in bulk or in bags.
-      BioMgmtContainers2017: 
-        type: string
-        description: Identifies the nature of each biosolids and sewage sludge material generated by the facility in terms of whether the material is a biosolid or sewage sludge and whether the material is ultimately conveyed off-site in bulk or in bags.
       BioMgmtPathogens: 
         type: string
         description: Identifies the pathogen class for biosolids or sewage sludge generated by the facility.
       BioMgmtPathogens2016: 
-        type: string
-        description: Identifies the pathogen class for biosolids or sewage sludge generated by the facility.
-      BioMgmtPathogens2017: 
         type: string
         description: Identifies the pathogen class for biosolids or sewage sludge generated by the facility.
       BioMgmtPathreds: 
@@ -4994,16 +4883,10 @@ definitions:
       BioMgmtPathreds2016: 
         type: string
         description: Identifies the options used by the facility to control pathogens for a Biosolids Management Practice.
-      BioMgmtPathreds2017: 
-        type: string
-        description: Identifies the options used by the facility to control pathogens for a Biosolids Management Practice.
       BioMgmtVectors: 
         type: string
         description: Identifies the option used by the facility for vector attraction reduction.
       BioMgmtVectors2016: 
-        type: string
-        description: Identifies the option used by the facility for vector attraction reduction.
-      BioMgmtVectors2017: 
         type: string
         description: Identifies the option used by the facility for vector attraction reduction.
       BioCommentText: 
@@ -5012,20 +4895,109 @@ definitions:
       BioCommentText2016: 
         type: string
         description: Free text allowing the user to provide comments on the annual program report.
+      BioReportDate: 
+        type: string
+        description: The date the report was received by EPA.
+      BioReportDate2016: 
+        type: string
+        description: The date the report was received by EPA.
+      BioMgmtDefCurrentCnt: 
+        type: string
+        description: The number of times noncompliance reported by the facility in the last 3 years.
+      BioMgmtDefCurrentCnt2016: 
+        type: string
+        description: The number of times noncompliance reported by the facility in the last 3 years.
+      BioMgmtDefCategories: 
+        type: string
+        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
+      BioMgmtDefCategories2016: 
+        type: string
+        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
+      BioMgmtDeficiencies: 
+        type: string
+        description: Indicates the type of NPDES special regulatory program deficiency.
+      BioMgmtDeficiencies2016: 
+        type: string
+        description: Indicates the type of NPDES special regulatory program deficiency.
+      BioVioStatus: 
+        type: string
+      BioViolFlag: 
+        type: string
+        description: "Displays \"Yes\" if the facility is in violation for biosolids under the Clean Water Act, in the last three years."
+      BioVioLastYear: 
+        type: string
+        description: A flag (values of 1 for Yes, 0 for No) that a Bisolids Violation occurred in the last 4 quarters.
+      BioReportingObligations2017: 
+        type: string
+        description: Indicates the reporting obligation reason.
+      BioTotalVolumeAmt2017: 
+        type: string
+        description: The amount (in dry metric tons) of biosolids or sewage sludge generated at the facility.
+      BioLandApplicationSum2017: 
+        type: string
+        description: The amount (dry metric tons) of biosolids land applied.
+      BioSurfaceDispSum2017: 
+        type: string
+        description: The amount of surface disposal in dry metric tons (DMT).
+      BioIncinerationSum2017: 
+        type: string
+        description: The amount (dry metric tons) of biosolids incinerated.
+      BioOtherManagementSum2017: 
+        type: string
+        description: The amount (dry metric tons) of biosolids managed using methods not previously described.
+      BioTrtmntProcesses2017: 
+        type: string
+        description: Identifies the biosolids or sewage sludge treatment process or processes at the facility.
+      BioTrmntPrcssCmntTxts2017: 
+        type: string
+        description: "Free text additional description of \"other\" biotreatment processes."
+      BioAnalyMethodCatgrys2017: 
+        type: string
+        description: Displays the categories of the analytic methods used by the facility to analyze regulated parameters at the facility.
+      BioAnalyMethods2017: 
+        type: string
+        description: Displays the analytic methods used by the facility to analyze enteric viruses, fecal coliforms, helminth ova, Salmonella sp., and other regulated parameters as reported on the Biosolids Program Report.
+      BioMgmtPrctceTypes2017: 
+        type: string
+        description: The type of biosolids or sewage sludge management practice (e.g., land application, surface disposal, incineration) used by the facility.
+      BioOtherMgmtPrctcTxts2017: 
+        type: string
+        description: "Free text additional description of \"other\" Biosolids Management Practices."
+      BioMgmtPrctceStypes2017: 
+        type: string
+        description: Additional detail about the type of Management Practice used for an amount of Biosolids or Sewage Sludge.
+      BioMgmtHandlers2017: 
+        type: string
+        description: Indicates the type of Biosolids or Sewage Sludge handlers/preparers, either owner/operator or off-site third-party handler/preparer.
+      BioMgmtContainers2017: 
+        type: string
+        description: Identifies the nature of each biosolids and sewage sludge material generated by the facility in terms of whether the material is a biosolid or sewage sludge and whether the material is ultimately conveyed off-site in bulk or in bags.
+      BioMgmtPathogens2017: 
+        type: string
+        description: Identifies the pathogen class for biosolids or sewage sludge generated by the facility.
+      BioMgmtPathreds2017: 
+        type: string
+        description: Identifies the options used by the facility to control pathogens for a Biosolids Management Practice.
+      BioMgmtVectors2017: 
+        type: string
+        description: Identifies the option used by the facility for vector attraction reduction.
       BioCommentText2017: 
         type: string
         description: Free text allowing the user to provide comments on the annual program report.
-      BioCertifier: 
+      BioReportDate2017: 
         type: string
-      BioCertifier2016: 
+        description: The date the report was received by EPA.
+      BioMgmtDefCurrentCnt2017: 
         type: string
-      BioCertifier2017: 
+        description: The number of times noncompliance reported by the facility in the last 3 years.
+      BioMgmtDefCategories2017: 
         type: string
-      PollInViolation: 
+        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
+      BioMgmtDeficiencies2017: 
         type: string
-        title: Pollutants with Reporting Violations
-        example: Chlorine|Flow, in conduit or thru treatment plant|Oil and grease|Solids, total suspended|Thermal Discharge|pH
-        description: The names of pollutants with reporting violations (i.e., violation codes D80 and D90) or effluent exceedances (i.e., violation code E90) in the past three years in ICIS-NPDES.
+        description: Indicates the type of NPDES special regulatory program deficiency.
+      PollWithViolation: 
+        type: string
       LimPollutant: 
         type: string
       DMRPounds: 
@@ -5252,10 +5224,8 @@ definitions:
         title: Facility TRI Reporter
         example: B
         description: Indicates whether facility reported to the Toxics Release Inventory (TRI) for the most recent reporting year.
-      CWP13qtrsComplStatus: 
+      CWP13qtrsComplHistory: 
         type: string
-        example: UUUUUUUU__VV_
-        description: Each letter indicates the compliance status for the corresponding quarter.
       CWPCaseIDs: 
         type: string
         example: '03-2014-0228'
@@ -5329,7 +5299,7 @@ definitions:
         type: string
       PastCalYrToxicPollutants: 
         type: string
-      CWPCurrentVioStatus: 
+      CWPVioStatus: 
         type: string
       IndswFlag: 
         type: string
@@ -5356,51 +5326,6 @@ definitions:
       BiosolidsFlag: 
         type: string
         description: A Yes/No field to indicate permits with biosolids management and compliance information.
-      BioReportDate: 
-        type: string
-        description: The date the report was received by EPA.
-      BioReportDate2016: 
-        type: string
-        description: The date the report was received by EPA.
-      BioReportDate2017: 
-        type: string
-        description: The date the report was received by EPA.
-      BioMgmtDeficiencies: 
-        type: string
-        description: Indicates the type of NPDES special regulatory program deficiency.
-      BioMgmtDeficiencies2016: 
-        type: string
-        description: Indicates the type of NPDES special regulatory program deficiency.
-      BioMgmtDeficiencies2017: 
-        type: string
-        description: Indicates the type of NPDES special regulatory program deficiency.
-      BioMgmtDefCategories: 
-        type: string
-        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
-      BioMgmtDefCategories2016: 
-        type: string
-        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
-      BioMgmtDefCategories2017: 
-        type: string
-        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
-      BioMgmtDefCurrentCnt: 
-        type: string
-        description: The number of times noncompliance reported by the facility in the last 3 years.
-      BioMgmtDefCurrentCnt2016: 
-        type: string
-        description: The number of times noncompliance reported by the facility in the last 3 years.
-      BioMgmtDefCurrentCnt2017: 
-        type: string
-        description: The number of times noncompliance reported by the facility in the last 3 years.
-      BioCurrVioFlag: 
-        type: string
-        description: Indicates if the facility is currently in violation for biosolids under the Clean Water Act, in the 12th or 13th quarter.
-      BioViolFlag: 
-        type: string
-        description: "Displays \"Yes\" if the facility is in violation for biosolids under the Clean Water Act, in the last three years."
-      BioVioLastYear: 
-        type: string
-        description: A flag (values of 1 for Yes, 0 for No) that a Bisolids Violation occurred in the last 4 quarters.
       VioLastYear: 
         type: string
         title: Water Program Violation Flag
@@ -5492,8 +5417,6 @@ definitions:
     - CWPActualAverageFlowNmbr
     - CWPFacilityTypeIndicator
     - BioReportingObligations
-    - BioReportingObligations2016
-    - BioReportingObligations2017
     - DschToMs4
     - ReceivingMs4Name
     - StormWaterArea
@@ -5541,32 +5464,25 @@ definitions:
     - MsgpVisualAssessmentSmmry
     - MsgpNoFurtherRdctnRtnle
     - MsgpCorrectiveActionSmmry
-    - OperatorName
-    - OperatorAddress
-    - OperatorCity
-    - OperatorState
-    - OperatorZip
     - AIRIDs
     - NPDESIDs
     - RCRAIDs
     - SDWAIDs
     - TRIIDs
     - RmpIDs
-    - BioInspDef5yrCnt
     - BioVioLastYearFlag
-    - BioQtrsInVio
+    - BioQtrsWithVio
     - CWPStatus
-    - CWPCurrentSNCStatus
-    - CWPCurrentSNCStatusDate
-    - CWPQtrsInNC
-    - CWPCurrentViol
-    - CWPQtrsInSNC
+    - CWPSNCStatus
+    - CWPSNCStatusDate
+    - CWPQtrsWithNC
+    - CWPViolStatus
+    - CWPQtrsWithSNC
     - MissDMRQtrs
     - CWPE90Cnt
     - CWPComplianceTracking
     - AlrExceedences
     - BioReportYear
-    - BioReportYears
     - CWPInspectionCount
     - CWPDaysLastInspection
     - CWPDateLastInspection
@@ -5595,64 +5511,79 @@ definitions:
     - CWPDateLastBioFeaSt
     - CWPBioPenalties
     - CWPDateLastBioPenalty
+    - BioReportYears
+    - BioReportingObligations2016
     - BioTotalVolumeAmt
     - BioTotalVolumeAmt2016
-    - BioTotalVolumeAmt2017
     - BioLandApplicationSum
     - BioLandApplicationSum2016
-    - BioLandApplicationSum2017
     - BioSurfaceDispSum
     - BioSurfaceDispSum2016
-    - BioSurfaceDispSum2017
     - BioIncinerationSum
     - BioIncinerationSum2016
-    - BioIncinerationSum2017
     - BioOtherManagementSum
     - BioOtherManagementSum2016
-    - BioOtherManagementSum2017
     - BioTrtmntProcesses
     - BioTrtmntProcesses2016
-    - BioTrtmntProcesses2017
     - BioTrtmntPrcssCmmntTxts
     - BioTrmntPrcssCmntTxts2016
-    - BioTrmntPrcssCmntTxts2017
     - BioAnalyMethodCatgrys
     - BioAnalyMethodCatgrys2016
-    - BioAnalyMethodCatgrys2017
     - BioAnalyMethods
     - BioAnalyMethods2016
-    - BioAnalyMethods2017
     - BioMgmtPrctceTypes
     - BioMgmtPrctceTypes2016
-    - BioMgmtPrctceTypes2017
     - BioOtherMgmtPrctcTxts
     - BioOtherMgmtPrctcTxts2016
-    - BioOtherMgmtPrctcTxts2017
     - BioMgmtPrctceStypes
     - BioMgmtPrctceStypes2016
-    - BioMgmtPrctceStypes2017
     - BioMgmtHandlers
     - BioMgmtHandlers2016
-    - BioMgmtHandlers2017
     - BioMgmtContainers
     - BioMgmtContainers2016
-    - BioMgmtContainers2017
     - BioMgmtPathogens
     - BioMgmtPathogens2016
-    - BioMgmtPathogens2017
     - BioMgmtPathreds
     - BioMgmtPathreds2016
-    - BioMgmtPathreds2017
     - BioMgmtVectors
     - BioMgmtVectors2016
-    - BioMgmtVectors2017
     - BioCommentText
     - BioCommentText2016
+    - BioReportDate
+    - BioReportDate2016
+    - BioMgmtDefCurrentCnt
+    - BioMgmtDefCurrentCnt2016
+    - BioMgmtDefCategories
+    - BioMgmtDefCategories2016
+    - BioMgmtDeficiencies
+    - BioMgmtDeficiencies2016
+    - BioVioStatus
+    - BioViolFlag
+    - BioVioLastYear
+    - BioReportingObligations2017
+    - BioTotalVolumeAmt2017
+    - BioLandApplicationSum2017
+    - BioSurfaceDispSum2017
+    - BioIncinerationSum2017
+    - BioOtherManagementSum2017
+    - BioTrtmntProcesses2017
+    - BioTrmntPrcssCmntTxts2017
+    - BioAnalyMethodCatgrys2017
+    - BioAnalyMethods2017
+    - BioMgmtPrctceTypes2017
+    - BioOtherMgmtPrctcTxts2017
+    - BioMgmtPrctceStypes2017
+    - BioMgmtHandlers2017
+    - BioMgmtContainers2017
+    - BioMgmtPathogens2017
+    - BioMgmtPathreds2017
+    - BioMgmtVectors2017
     - BioCommentText2017
-    - BioCertifier
-    - BioCertifier2016
-    - BioCertifier2017
-    - PollInViolation
+    - BioReportDate2017
+    - BioMgmtDefCurrentCnt2017
+    - BioMgmtDefCategories2017
+    - BioMgmtDeficiencies2017
+    - PollWithViolation
     - LimPollutant
     - DMRPounds
     - DMRTwpe
@@ -5700,7 +5631,7 @@ definitions:
     - FacMapIcon
     - CWPDateLastPenalty
     - FacTRIReporter
-    - CWP13qtrsComplStatus
+    - CWP13qtrsComplHistory
     - CWPCaseIDs
     - CWPFIPSCode
     - DMRImpairedPoll
@@ -5721,7 +5652,7 @@ definitions:
     - EffExceeds
     - PastCalYrAverageFlow
     - PastCalYrToxicPollutants
-    - CWPCurrentVioStatus
+    - CWPVioStatus
     - IndswFlag
     - CertifiedDate
     - CollectionMethod
@@ -5729,21 +5660,6 @@ definitions:
     - CalculatedAccuracyMeters
     - Map
     - BiosolidsFlag
-    - BioReportDate
-    - BioReportDate2016
-    - BioReportDate2017
-    - BioMgmtDeficiencies
-    - BioMgmtDeficiencies2016
-    - BioMgmtDeficiencies2017
-    - BioMgmtDefCategories
-    - BioMgmtDefCategories2016
-    - BioMgmtDefCategories2017
-    - BioMgmtDefCurrentCnt
-    - BioMgmtDefCurrentCnt2016
-    - BioMgmtDefCurrentCnt2017
-    - BioCurrVioFlag
-    - BioViolFlag
-    - BioVioLastYear
     - VioLastYear
     - StateAuthNPDES
     - StateAuthFedfac
@@ -6011,12 +5927,6 @@ definitions:
       BioReportingObligations: 
         type: string
         description: Indicates the reporting obligation reason.
-      BioReportingObligations2016: 
-        type: string
-        description: Indicates the reporting obligation reason.
-      BioReportingObligations2017: 
-        type: string
-        description: Indicates the reporting obligation reason.
       DschToMs4: 
         type: string
       ReceivingMs4Name: 
@@ -6187,21 +6097,6 @@ definitions:
         type: string
       MsgpCorrectiveActionSmmry: 
         type: string
-      OperatorName: 
-        type: string
-        title: Operator Name
-      OperatorAddress: 
-        type: string
-        title: Operator Address
-      OperatorCity: 
-        type: string
-        title: Operator City
-      OperatorState: 
-        type: string
-        title: Operator State
-      OperatorZip: 
-        type: string
-        title: Operator Zip Code
       AIRIDs: 
         type: string
         title: AIR Facility System ID
@@ -6227,15 +6122,10 @@ definitions:
         description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
       RmpIDs: 
         type: string
-      BioInspDef5yrCnt: 
-        type: number
-        example: 0
-        description: The count of Biosolids Inspection Deficiencies that have been found in the last 5 years.
       BioVioLastYearFlag: 
         type: string
-      BioQtrsInVio: 
+      BioQtrsWithVio: 
         type: number
-        description: The number of quarters, in the last three years, where the facility was in violation for a biosolids violation type.
       CWPStatus: 
         type: string
         title: Current Compliance Status
@@ -6246,26 +6136,16 @@ definitions:
           - Noncompliance
           - No Violation
           - Unknown
-      CWPCurrentSNCStatus: 
+      CWPSNCStatus: 
         type: string
-        example: D (DMR NR)
-        description: The type of noncompliance when a major source is in significant violation or a minor source has a Category 1 violation.
-      CWPCurrentSNCStatusDate: 
+      CWPSNCStatusDate: 
         type: string
-        example: 12/31/2015
-        description: "The status date of the facility's Significant Noncompliance designation."
-      CWPQtrsInNC: 
+      CWPQtrsWithNC: 
         type: number
-        example: 4
-        description: Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered either with violations, in non-compliance (NC) status, or in Significant Non-compliance (SNC), as described above under Current Compliance Status.
-      CWPCurrentViol: 
+      CWPViolStatus: 
         type: string
-        example: Y
-        description: "Displays \"Y\" if the facility is currently in any violation under the Clean Water Act, either in Noncompliance or Significant Noncompliance."
-      CWPQtrsInSNC: 
+      CWPQtrsWithSNC: 
         type: number
-        example: 2
-        description: Count of the number of quarters, out of the last twelve quarters, in which the permit is considered in Significant Non-compliance (SNC).
       MissDMRQtrs: 
         type: number
         example: 0
@@ -6283,8 +6163,6 @@ definitions:
       BioReportYear: 
         type: string
         description: The calendar year corresponding to the Annual Biosolids Report.
-      BioReportYears: 
-        type: string
       CWPInspectionCount: 
         type: number
         title: Inspections (5 yrs)
@@ -6376,14 +6254,16 @@ definitions:
         description: The total amount of Biosolids related penalties that have been assessed against the facility.
       CWPDateLastBioPenalty: 
         type: string
+      BioReportYears: 
+        type: string
+      BioReportingObligations2016: 
+        type: string
+        description: Indicates the reporting obligation reason.
       BioTotalVolumeAmt: 
         type: number
         example: 0
         description: The amount (in dry metric tons) of biosolids or sewage sludge generated at the facility.
       BioTotalVolumeAmt2016: 
-        type: number
-        description: The amount (in dry metric tons) of biosolids or sewage sludge generated at the facility.
-      BioTotalVolumeAmt2017: 
         type: number
         description: The amount (in dry metric tons) of biosolids or sewage sludge generated at the facility.
       BioLandApplicationSum: 
@@ -6392,16 +6272,10 @@ definitions:
       BioLandApplicationSum2016: 
         type: number
         description: The amount (dry metric tons) of biosolids land applied.
-      BioLandApplicationSum2017: 
-        type: number
-        description: The amount (dry metric tons) of biosolids land applied.
       BioSurfaceDispSum: 
         type: number
         description: The amount of surface disposal in dry metric tons (DMT).
       BioSurfaceDispSum2016: 
-        type: number
-        description: The amount of surface disposal in dry metric tons (DMT).
-      BioSurfaceDispSum2017: 
         type: number
         description: The amount of surface disposal in dry metric tons (DMT).
       BioIncinerationSum: 
@@ -6410,16 +6284,10 @@ definitions:
       BioIncinerationSum2016: 
         type: number
         description: The amount (dry metric tons) of biosolids incinerated.
-      BioIncinerationSum2017: 
-        type: number
-        description: The amount (dry metric tons) of biosolids incinerated.
       BioOtherManagementSum: 
         type: number
         description: The amount (dry metric tons) of biosolids managed using methods not previously described.
       BioOtherManagementSum2016: 
-        type: number
-        description: The amount (dry metric tons) of biosolids managed using methods not previously described.
-      BioOtherManagementSum2017: 
         type: number
         description: The amount (dry metric tons) of biosolids managed using methods not previously described.
       BioTrtmntProcesses: 
@@ -6428,16 +6296,10 @@ definitions:
       BioTrtmntProcesses2016: 
         type: string
         description: Identifies the biosolids or sewage sludge treatment process or processes at the facility.
-      BioTrtmntProcesses2017: 
-        type: string
-        description: Identifies the biosolids or sewage sludge treatment process or processes at the facility.
       BioTrtmntPrcssCmmntTxts: 
         type: string
         description: "Free text additional description of \"other\" biotreatment processes."
       BioTrmntPrcssCmntTxts2016: 
-        type: string
-        description: "Free text additional description of \"other\" biotreatment processes."
-      BioTrmntPrcssCmntTxts2017: 
         type: string
         description: "Free text additional description of \"other\" biotreatment processes."
       BioAnalyMethodCatgrys: 
@@ -6446,16 +6308,10 @@ definitions:
       BioAnalyMethodCatgrys2016: 
         type: string
         description: Displays the categories of the analytic methods used by the facility to analyze regulated parameters at the facility.
-      BioAnalyMethodCatgrys2017: 
-        type: string
-        description: Displays the categories of the analytic methods used by the facility to analyze regulated parameters at the facility.
       BioAnalyMethods: 
         type: string
         description: Displays the analytic methods used by the facility to analyze enteric viruses, fecal coliforms, helminth ova, Salmonella sp., and other regulated parameters as reported on the Biosolids Program Report.
       BioAnalyMethods2016: 
-        type: string
-        description: Displays the analytic methods used by the facility to analyze enteric viruses, fecal coliforms, helminth ova, Salmonella sp., and other regulated parameters as reported on the Biosolids Program Report.
-      BioAnalyMethods2017: 
         type: string
         description: Displays the analytic methods used by the facility to analyze enteric viruses, fecal coliforms, helminth ova, Salmonella sp., and other regulated parameters as reported on the Biosolids Program Report.
       BioMgmtPrctceTypes: 
@@ -6464,16 +6320,10 @@ definitions:
       BioMgmtPrctceTypes2016: 
         type: string
         description: The type of biosolids or sewage sludge management practice (e.g., land application, surface disposal, incineration) used by the facility.
-      BioMgmtPrctceTypes2017: 
-        type: string
-        description: The type of biosolids or sewage sludge management practice (e.g., land application, surface disposal, incineration) used by the facility.
       BioOtherMgmtPrctcTxts: 
         type: string
         description: "Free text additional description of \"other\" Biosolids Management Practices."
       BioOtherMgmtPrctcTxts2016: 
-        type: string
-        description: "Free text additional description of \"other\" Biosolids Management Practices."
-      BioOtherMgmtPrctcTxts2017: 
         type: string
         description: "Free text additional description of \"other\" Biosolids Management Practices."
       BioMgmtPrctceStypes: 
@@ -6482,16 +6332,10 @@ definitions:
       BioMgmtPrctceStypes2016: 
         type: string
         description: Additional detail about the type of Management Practice used for an amount of Biosolids or Sewage Sludge.
-      BioMgmtPrctceStypes2017: 
-        type: string
-        description: Additional detail about the type of Management Practice used for an amount of Biosolids or Sewage Sludge.
       BioMgmtHandlers: 
         type: string
         description: Indicates the type of Biosolids or Sewage Sludge handlers/preparers, either owner/operator or off-site third-party handler/preparer.
       BioMgmtHandlers2016: 
-        type: string
-        description: Indicates the type of Biosolids or Sewage Sludge handlers/preparers, either owner/operator or off-site third-party handler/preparer.
-      BioMgmtHandlers2017: 
         type: string
         description: Indicates the type of Biosolids or Sewage Sludge handlers/preparers, either owner/operator or off-site third-party handler/preparer.
       BioMgmtContainers: 
@@ -6500,16 +6344,10 @@ definitions:
       BioMgmtContainers2016: 
         type: string
         description: Identifies the nature of each biosolids and sewage sludge material generated by the facility in terms of whether the material is a biosolid or sewage sludge and whether the material is ultimately conveyed off-site in bulk or in bags.
-      BioMgmtContainers2017: 
-        type: string
-        description: Identifies the nature of each biosolids and sewage sludge material generated by the facility in terms of whether the material is a biosolid or sewage sludge and whether the material is ultimately conveyed off-site in bulk or in bags.
       BioMgmtPathogens: 
         type: string
         description: Identifies the pathogen class for biosolids or sewage sludge generated by the facility.
       BioMgmtPathogens2016: 
-        type: string
-        description: Identifies the pathogen class for biosolids or sewage sludge generated by the facility.
-      BioMgmtPathogens2017: 
         type: string
         description: Identifies the pathogen class for biosolids or sewage sludge generated by the facility.
       BioMgmtPathreds: 
@@ -6518,16 +6356,10 @@ definitions:
       BioMgmtPathreds2016: 
         type: string
         description: Identifies the options used by the facility to control pathogens for a Biosolids Management Practice.
-      BioMgmtPathreds2017: 
-        type: string
-        description: Identifies the options used by the facility to control pathogens for a Biosolids Management Practice.
       BioMgmtVectors: 
         type: string
         description: Identifies the option used by the facility for vector attraction reduction.
       BioMgmtVectors2016: 
-        type: string
-        description: Identifies the option used by the facility for vector attraction reduction.
-      BioMgmtVectors2017: 
         type: string
         description: Identifies the option used by the facility for vector attraction reduction.
       BioCommentText: 
@@ -6536,20 +6368,110 @@ definitions:
       BioCommentText2016: 
         type: string
         description: Free text allowing the user to provide comments on the annual program report.
+      BioReportDate: 
+        type: string
+        description: The date the report was received by EPA.
+      BioReportDate2016: 
+        type: string
+        description: The date the report was received by EPA.
+      BioMgmtDefCurrentCnt: 
+        type: number
+        example: 0
+        description: The number of times noncompliance reported by the facility in the last 3 years.
+      BioMgmtDefCurrentCnt2016: 
+        type: number
+        description: The number of times noncompliance reported by the facility in the last 3 years.
+      BioMgmtDefCategories: 
+        type: string
+        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
+      BioMgmtDefCategories2016: 
+        type: string
+        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
+      BioMgmtDeficiencies: 
+        type: string
+        description: Indicates the type of NPDES special regulatory program deficiency.
+      BioMgmtDeficiencies2016: 
+        type: string
+        description: Indicates the type of NPDES special regulatory program deficiency.
+      BioVioStatus: 
+        type: number
+      BioViolFlag: 
+        type: number
+        description: "Displays \"Yes\" if the facility is in violation for biosolids under the Clean Water Act, in the last three years."
+      BioVioLastYear: 
+        type: number
+        description: A flag (values of 1 for Yes, 0 for No) that a Bisolids Violation occurred in the last 4 quarters.
+      BioReportingObligations2017: 
+        type: string
+        description: Indicates the reporting obligation reason.
+      BioTotalVolumeAmt2017: 
+        type: number
+        description: The amount (in dry metric tons) of biosolids or sewage sludge generated at the facility.
+      BioLandApplicationSum2017: 
+        type: number
+        description: The amount (dry metric tons) of biosolids land applied.
+      BioSurfaceDispSum2017: 
+        type: number
+        description: The amount of surface disposal in dry metric tons (DMT).
+      BioIncinerationSum2017: 
+        type: number
+        description: The amount (dry metric tons) of biosolids incinerated.
+      BioOtherManagementSum2017: 
+        type: number
+        description: The amount (dry metric tons) of biosolids managed using methods not previously described.
+      BioTrtmntProcesses2017: 
+        type: string
+        description: Identifies the biosolids or sewage sludge treatment process or processes at the facility.
+      BioTrmntPrcssCmntTxts2017: 
+        type: string
+        description: "Free text additional description of \"other\" biotreatment processes."
+      BioAnalyMethodCatgrys2017: 
+        type: string
+        description: Displays the categories of the analytic methods used by the facility to analyze regulated parameters at the facility.
+      BioAnalyMethods2017: 
+        type: string
+        description: Displays the analytic methods used by the facility to analyze enteric viruses, fecal coliforms, helminth ova, Salmonella sp., and other regulated parameters as reported on the Biosolids Program Report.
+      BioMgmtPrctceTypes2017: 
+        type: string
+        description: The type of biosolids or sewage sludge management practice (e.g., land application, surface disposal, incineration) used by the facility.
+      BioOtherMgmtPrctcTxts2017: 
+        type: string
+        description: "Free text additional description of \"other\" Biosolids Management Practices."
+      BioMgmtPrctceStypes2017: 
+        type: string
+        description: Additional detail about the type of Management Practice used for an amount of Biosolids or Sewage Sludge.
+      BioMgmtHandlers2017: 
+        type: string
+        description: Indicates the type of Biosolids or Sewage Sludge handlers/preparers, either owner/operator or off-site third-party handler/preparer.
+      BioMgmtContainers2017: 
+        type: string
+        description: Identifies the nature of each biosolids and sewage sludge material generated by the facility in terms of whether the material is a biosolid or sewage sludge and whether the material is ultimately conveyed off-site in bulk or in bags.
+      BioMgmtPathogens2017: 
+        type: string
+        description: Identifies the pathogen class for biosolids or sewage sludge generated by the facility.
+      BioMgmtPathreds2017: 
+        type: string
+        description: Identifies the options used by the facility to control pathogens for a Biosolids Management Practice.
+      BioMgmtVectors2017: 
+        type: string
+        description: Identifies the option used by the facility for vector attraction reduction.
       BioCommentText2017: 
         type: string
         description: Free text allowing the user to provide comments on the annual program report.
-      BioCertifier: 
+      BioReportDate2017: 
         type: string
-      BioCertifier2016: 
+        description: The date the report was received by EPA.
+      BioMgmtDefCurrentCnt2017: 
+        type: number
+        description: The number of times noncompliance reported by the facility in the last 3 years.
+      BioMgmtDefCategories2017: 
         type: string
-      BioCertifier2017: 
+        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
+      BioMgmtDeficiencies2017: 
         type: string
-      PollInViolation: 
+        description: Indicates the type of NPDES special regulatory program deficiency.
+      PollWithViolation: 
         type: string
-        title: Pollutants with Reporting Violations
-        example: Chlorine|Flow, in conduit or thru treatment plant|Oil and grease|Solids, total suspended|Thermal Discharge|pH
-        description: The names of pollutants with reporting violations (i.e., violation codes D80 and D90) or effluent exceedances (i.e., violation code E90) in the past three years in ICIS-NPDES.
       LimPollutant: 
         type: string
       DMRPounds: 
@@ -6776,10 +6698,8 @@ definitions:
         title: Facility TRI Reporter
         example: B
         description: Indicates whether facility reported to the Toxics Release Inventory (TRI) for the most recent reporting year.
-      CWP13qtrsComplStatus: 
+      CWP13qtrsComplHistory: 
         type: string
-        example: UUUUUUUU__VV_
-        description: Each letter indicates the compliance status for the corresponding quarter.
       CWPCaseIDs: 
         type: string
         example: '03-2014-0228'
@@ -6853,7 +6773,7 @@ definitions:
         type: string
       PastCalYrToxicPollutants: 
         type: string
-      CWPCurrentVioStatus: 
+      CWPVioStatus: 
         type: string
       IndswFlag: 
         type: string
@@ -6880,52 +6800,6 @@ definitions:
       BiosolidsFlag: 
         type: string
         description: A Yes/No field to indicate permits with biosolids management and compliance information.
-      BioReportDate: 
-        type: string
-        description: The date the report was received by EPA.
-      BioReportDate2016: 
-        type: string
-        description: The date the report was received by EPA.
-      BioReportDate2017: 
-        type: string
-        description: The date the report was received by EPA.
-      BioMgmtDeficiencies: 
-        type: string
-        description: Indicates the type of NPDES special regulatory program deficiency.
-      BioMgmtDeficiencies2016: 
-        type: string
-        description: Indicates the type of NPDES special regulatory program deficiency.
-      BioMgmtDeficiencies2017: 
-        type: string
-        description: Indicates the type of NPDES special regulatory program deficiency.
-      BioMgmtDefCategories: 
-        type: string
-        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
-      BioMgmtDefCategories2016: 
-        type: string
-        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
-      BioMgmtDefCategories2017: 
-        type: string
-        description: Indicates the program deficiency category to assist in reporting and displaying program deficiencies on web screens.
-      BioMgmtDefCurrentCnt: 
-        type: number
-        example: 0
-        description: The number of times noncompliance reported by the facility in the last 3 years.
-      BioMgmtDefCurrentCnt2016: 
-        type: number
-        description: The number of times noncompliance reported by the facility in the last 3 years.
-      BioMgmtDefCurrentCnt2017: 
-        type: number
-        description: The number of times noncompliance reported by the facility in the last 3 years.
-      BioCurrVioFlag: 
-        type: number
-        description: Indicates if the facility is currently in violation for biosolids under the Clean Water Act, in the 12th or 13th quarter.
-      BioViolFlag: 
-        type: number
-        description: "Displays \"Yes\" if the facility is in violation for biosolids under the Clean Water Act, in the last three years."
-      BioVioLastYear: 
-        type: number
-        description: A flag (values of 1 for Yes, 0 for No) that a Bisolids Violation occurred in the last 4 quarters.
       VioLastYear: 
         type: number
         title: Water Program Violation Flag
@@ -7014,8 +6888,6 @@ definitions:
     - CWPActualAverageFlowNmbr
     - CWPFacilityTypeIndicator
     - BioReportingObligations
-    - BioReportingObligations2016
-    - BioReportingObligations2017
     - DschToMs4
     - ReceivingMs4Name
     - StormWaterArea
@@ -7063,32 +6935,25 @@ definitions:
     - MsgpVisualAssessmentSmmry
     - MsgpNoFurtherRdctnRtnle
     - MsgpCorrectiveActionSmmry
-    - OperatorName
-    - OperatorAddress
-    - OperatorCity
-    - OperatorState
-    - OperatorZip
     - AIRIDs
     - NPDESIDs
     - RCRAIDs
     - SDWAIDs
     - TRIIDs
     - RmpIDs
-    - BioInspDef5yrCnt
     - BioVioLastYearFlag
-    - BioQtrsInVio
+    - BioQtrsWithVio
     - CWPStatus
-    - CWPCurrentSNCStatus
-    - CWPCurrentSNCStatusDate
-    - CWPQtrsInNC
-    - CWPCurrentViol
-    - CWPQtrsInSNC
+    - CWPSNCStatus
+    - CWPSNCStatusDate
+    - CWPQtrsWithNC
+    - CWPViolStatus
+    - CWPQtrsWithSNC
     - MissDMRQtrs
     - CWPE90Cnt
     - CWPComplianceTracking
     - AlrExceedences
     - BioReportYear
-    - BioReportYears
     - CWPInspectionCount
     - CWPDaysLastInspection
     - CWPDateLastInspEPA
@@ -7117,64 +6982,79 @@ definitions:
     - CWPDateLastBioFeaSt
     - CWPBioPenalties
     - CWPDateLastBioPenalty
+    - BioReportYears
+    - BioReportingObligations2016
     - BioTotalVolumeAmt
     - BioTotalVolumeAmt2016
-    - BioTotalVolumeAmt2017
     - BioLandApplicationSum
     - BioLandApplicationSum2016
-    - BioLandApplicationSum2017
     - BioSurfaceDispSum
     - BioSurfaceDispSum2016
-    - BioSurfaceDispSum2017
     - BioIncinerationSum
     - BioIncinerationSum2016
-    - BioIncinerationSum2017
     - BioOtherManagementSum
     - BioOtherManagementSum2016
-    - BioOtherManagementSum2017
     - BioTrtmntProcesses
     - BioTrtmntProcesses2016
-    - BioTrtmntProcesses2017
     - BioTrtmntPrcssCmmntTxts
     - BioTrmntPrcssCmntTxts2016
-    - BioTrmntPrcssCmntTxts2017
     - BioAnalyMethodCatgrys
     - BioAnalyMethodCatgrys2016
-    - BioAnalyMethodCatgrys2017
     - BioAnalyMethods
     - BioAnalyMethods2016
-    - BioAnalyMethods2017
     - BioMgmtPrctceTypes
     - BioMgmtPrctceTypes2016
-    - BioMgmtPrctceTypes2017
     - BioOtherMgmtPrctcTxts
     - BioOtherMgmtPrctcTxts2016
-    - BioOtherMgmtPrctcTxts2017
     - BioMgmtPrctceStypes
     - BioMgmtPrctceStypes2016
-    - BioMgmtPrctceStypes2017
     - BioMgmtHandlers
     - BioMgmtHandlers2016
-    - BioMgmtHandlers2017
     - BioMgmtContainers
     - BioMgmtContainers2016
-    - BioMgmtContainers2017
     - BioMgmtPathogens
     - BioMgmtPathogens2016
-    - BioMgmtPathogens2017
     - BioMgmtPathreds
     - BioMgmtPathreds2016
-    - BioMgmtPathreds2017
     - BioMgmtVectors
     - BioMgmtVectors2016
-    - BioMgmtVectors2017
     - BioCommentText
     - BioCommentText2016
+    - BioReportDate
+    - BioReportDate2016
+    - BioMgmtDefCurrentCnt
+    - BioMgmtDefCurrentCnt2016
+    - BioMgmtDefCategories
+    - BioMgmtDefCategories2016
+    - BioMgmtDeficiencies
+    - BioMgmtDeficiencies2016
+    - BioVioStatus
+    - BioViolFlag
+    - BioVioLastYear
+    - BioReportingObligations2017
+    - BioTotalVolumeAmt2017
+    - BioLandApplicationSum2017
+    - BioSurfaceDispSum2017
+    - BioIncinerationSum2017
+    - BioOtherManagementSum2017
+    - BioTrtmntProcesses2017
+    - BioTrmntPrcssCmntTxts2017
+    - BioAnalyMethodCatgrys2017
+    - BioAnalyMethods2017
+    - BioMgmtPrctceTypes2017
+    - BioOtherMgmtPrctcTxts2017
+    - BioMgmtPrctceStypes2017
+    - BioMgmtHandlers2017
+    - BioMgmtContainers2017
+    - BioMgmtPathogens2017
+    - BioMgmtPathreds2017
+    - BioMgmtVectors2017
     - BioCommentText2017
-    - BioCertifier
-    - BioCertifier2016
-    - BioCertifier2017
-    - PollInViolation
+    - BioReportDate2017
+    - BioMgmtDefCurrentCnt2017
+    - BioMgmtDefCategories2017
+    - BioMgmtDeficiencies2017
+    - PollWithViolation
     - LimPollutant
     - DMRPounds
     - DMRTwpe
@@ -7222,7 +7102,7 @@ definitions:
     - FacMapIcon
     - CWPDateLastPenalty
     - FacTRIReporter
-    - CWP13qtrsComplStatus
+    - CWP13qtrsComplHistory
     - CWPCaseIDs
     - CWPFIPSCode
     - DMRImpairedPoll
@@ -7243,7 +7123,7 @@ definitions:
     - EffExceeds
     - PastCalYrAverageFlow
     - PastCalYrToxicPollutants
-    - CWPCurrentVioStatus
+    - CWPVioStatus
     - IndswFlag
     - CertifiedDate
     - CollectionMethod
@@ -7251,21 +7131,6 @@ definitions:
     - CalculatedAccuracyMeters
     - Map
     - BiosolidsFlag
-    - BioReportDate
-    - BioReportDate2016
-    - BioReportDate2017
-    - BioMgmtDeficiencies
-    - BioMgmtDeficiencies2016
-    - BioMgmtDeficiencies2017
-    - BioMgmtDefCategories
-    - BioMgmtDefCategories2016
-    - BioMgmtDefCategories2017
-    - BioMgmtDefCurrentCnt
-    - BioMgmtDefCurrentCnt2016
-    - BioMgmtDefCurrentCnt2017
-    - BioCurrVioFlag
-    - BioViolFlag
-    - BioVioLastYear
     - VioLastYear
     - StateAuthNPDES
     - StateAuthFedfac

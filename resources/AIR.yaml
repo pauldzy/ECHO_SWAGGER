@@ -2406,18 +2406,14 @@ definitions:
         type: string
         title: Clean Air Markets Division Identifiers
         description: Facility identifiers for the Clean Air Markets Division database.
-      AIRCurrComplStatus: 
+      AIRComplStatus: 
         type: string
-        example: No Viol
-      AIRCurrHpv: 
+      AIRHpvStatus: 
         type: string
-        example: No
-      AIRMnthsInHpv: 
+      AIRMnthsWithHpv: 
         type: string
-        example: '2'
-      AIRQtrsInHpv: 
+      AIRQtrsWithHpv: 
         type: string
-        example: '0'
       AIRQtrsWithViol: 
         type: string
         example: '2'
@@ -2466,7 +2462,7 @@ definitions:
       FacTRICarcAIRReleases: 
         type: string
         example: '24'
-      FacTRIHapsAIRReleases: 
+      FacTRIHapsReleases: 
         type: string
         example: '35.5'
       FacEisAIRReleases: 
@@ -2617,9 +2613,8 @@ definitions:
       AIRMajorFlag: 
         type: string
         example: N
-      AIR3yrComplQtrsStatus: 
+      AIR3yrComplQtrsHistory: 
         type: string
-        example: ______UUUUUU
       HasPollRpt: 
         type: string
         example: Y
@@ -2751,10 +2746,10 @@ definitions:
     - GHGIDs
     - EisIDs
     - CamdIDs
-    - AIRCurrComplStatus
-    - AIRCurrHpv
-    - AIRMnthsInHpv
-    - AIRQtrsInHpv
+    - AIRComplStatus
+    - AIRHpvStatus
+    - AIRMnthsWithHpv
+    - AIRQtrsWithHpv
     - AIRQtrsWithViol
     - AIRPollRecentViol
     - AIRRecentViolCnt
@@ -2773,7 +2768,7 @@ definitions:
     - FacTRIReporter
     - FacTRIAIRReleases
     - FacTRICarcAIRReleases
-    - FacTRIHapsAIRReleases
+    - FacTRIHapsReleases
     - FacEisAIRReleases
     - FacGHGCO2Releases
     - AIRIeaCnt
@@ -2816,7 +2811,7 @@ definitions:
     - FacCamdReporter
     - AIRFacilityTypeCode
     - AIRMajorFlag
-    - AIR3yrComplQtrsStatus
+    - AIR3yrComplQtrsHistory
     - HasPollRpt
     - CensusBlockGroup
     - MaxPctileUs
@@ -3112,18 +3107,14 @@ definitions:
         type: string
         title: Clean Air Markets Division Identifiers
         description: Facility identifiers for the Clean Air Markets Division database.
-      AIRCurrComplStatus: 
+      AIRComplStatus: 
         type: string
-        example: No Viol
-      AIRCurrHpv: 
+      AIRHpvStatus: 
         type: string
-        example: No
-      AIRMnthsInHpv: 
+      AIRMnthsWithHpv: 
         type: string
-        example: '2'
-      AIRQtrsInHpv: 
+      AIRQtrsWithHpv: 
         type: string
-        example: '0'
       AIRQtrsWithViol: 
         type: string
         example: '2'
@@ -3172,7 +3163,7 @@ definitions:
       FacTRICarcAIRReleases: 
         type: string
         example: '24'
-      FacTRIHapsAIRReleases: 
+      FacTRIHapsReleases: 
         type: string
         example: '35.5'
       FacEisAIRReleases: 
@@ -3323,9 +3314,8 @@ definitions:
       AIRMajorFlag: 
         type: string
         example: N
-      AIR3yrComplQtrsStatus: 
+      AIR3yrComplQtrsHistory: 
         type: string
-        example: ______UUUUUU
       HasPollRpt: 
         type: string
         example: Y
@@ -3458,10 +3448,10 @@ definitions:
     - GHGIDs
     - EisIDs
     - CamdIDs
-    - AIRCurrComplStatus
-    - AIRCurrHpv
-    - AIRMnthsInHpv
-    - AIRQtrsInHpv
+    - AIRComplStatus
+    - AIRHpvStatus
+    - AIRMnthsWithHpv
+    - AIRQtrsWithHpv
     - AIRQtrsWithViol
     - AIRPollRecentViol
     - AIRRecentViolCnt
@@ -3480,7 +3470,7 @@ definitions:
     - FacTRIReporter
     - FacTRIAIRReleases
     - FacTRICarcAIRReleases
-    - FacTRIHapsAIRReleases
+    - FacTRIHapsReleases
     - FacEisAIRReleases
     - FacGHGCO2Releases
     - AIRIeaCnt
@@ -3523,7 +3513,7 @@ definitions:
     - FacCamdReporter
     - AIRFacilityTypeCode
     - AIRMajorFlag
-    - AIR3yrComplQtrsStatus
+    - AIR3yrComplQtrsHistory
     - HasPollRpt
     - CensusBlockGroup
     - MaxPctileUs
@@ -3813,18 +3803,14 @@ definitions:
         type: string
         title: Clean Air Markets Division Identifiers
         description: Facility identifiers for the Clean Air Markets Division database.
-      AIRCurrComplStatus: 
+      AIRComplStatus: 
         type: string
-        example: No Viol
-      AIRCurrHpv: 
+      AIRHpvStatus: 
         type: string
-        example: No
-      AIRMnthsInHpv: 
+      AIRMnthsWithHpv: 
         type: number
-        example: 1
-      AIRQtrsInHpv: 
+      AIRQtrsWithHpv: 
         type: number
-        example: 0
       AIRQtrsWithViol: 
         type: number
         example: 2
@@ -3873,7 +3859,7 @@ definitions:
       FacTRICarcAIRReleases: 
         type: string
         example: '24'
-      FacTRIHapsAIRReleases: 
+      FacTRIHapsReleases: 
         type: string
         example: '35.5'
       FacEisAIRReleases: 
@@ -4024,9 +4010,8 @@ definitions:
       AIRMajorFlag: 
         type: string
         example: N
-      AIR3yrComplQtrsStatus: 
+      AIR3yrComplQtrsHistory: 
         type: string
-        example: ______UUUUUU
       HasPollRpt: 
         type: string
         example: Y
@@ -4156,10 +4141,10 @@ definitions:
     - GHGIDs
     - EisIDs
     - CamdIDs
-    - AIRCurrComplStatus
-    - AIRCurrHpv
-    - AIRMnthsInHpv
-    - AIRQtrsInHpv
+    - AIRComplStatus
+    - AIRHpvStatus
+    - AIRMnthsWithHpv
+    - AIRQtrsWithHpv
     - AIRQtrsWithViol
     - AIRPollRecentViol
     - AIRRecentViolCnt
@@ -4178,7 +4163,7 @@ definitions:
     - FacTRIReporter
     - FacTRIAIRReleases
     - FacTRICarcAIRReleases
-    - FacTRIHapsAIRReleases
+    - FacTRIHapsReleases
     - FacEisAIRReleases
     - FacGHGCO2Releases
     - AIRIeaCnt
@@ -4221,7 +4206,7 @@ definitions:
     - FacCamdReporter
     - AIRFacilityTypeCode
     - AIRMajorFlag
-    - AIR3yrComplQtrsStatus
+    - AIR3yrComplQtrsHistory
     - HasPollRpt
     - CensusBlockGroup
     - MaxPctileUs

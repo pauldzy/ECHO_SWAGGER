@@ -3021,22 +3021,20 @@
                ,"example": "20011FRTTT5001F"
                ,"description": "A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address."
             }
-            ,"RCRACurrComplStatus": {
+            ,"RCRAComplStatus": {
                 "type": "string"
             }
-            ,"RCRACurrSNC": {
+            ,"RCRASNC": {
                 "type": "string"
             }
-            ,"RCRAQtrsInNC": {
-                "type": "string"
-               ,"example": "0"
-            }
-            ,"RCRACurrViolationTypes": {
+            ,"RCRAQtrsWithNC": {
                 "type": "string"
             }
-            ,"RCRAQtrsInSNC": {
+            ,"RCRAViolationTypes": {
                 "type": "string"
-               ,"example": "0"
+            }
+            ,"RCRAQtrsWithSNC": {
+                "type": "string"
             }
             ,"RCRAOldestOpenVioDate": {
                 "type": "string"
@@ -3244,7 +3242,7 @@
             ,"RCRAMapIcon": {
                 "type": "string"
             }
-            ,"RCRA3yrComplQtrsStatus": {
+            ,"RCRA3yrComplQtrsHistory": {
                 "type": "string"
             }
             ,"CensusBlockGroup": {
@@ -3384,11 +3382,11 @@
             ,"RmpIDs"
             ,"SDWAIDs"
             ,"TRIIDs"
-            ,"RCRACurrComplStatus"
-            ,"RCRACurrSNC"
-            ,"RCRAQtrsInNC"
-            ,"RCRACurrViolationTypes"
-            ,"RCRAQtrsInSNC"
+            ,"RCRAComplStatus"
+            ,"RCRASNC"
+            ,"RCRAQtrsWithNC"
+            ,"RCRAViolationTypes"
+            ,"RCRAQtrsWithSNC"
             ,"RCRAOldestOpenVioDate"
             ,"RCRAInspCnt"
             ,"RCRADaysLastInspection"
@@ -3439,7 +3437,7 @@
             ,"CurrentVioCnt"
             ,"RCRAFIPSCode"
             ,"RCRAMapIcon"
-            ,"RCRA3yrComplQtrsStatus"
+            ,"RCRA3yrComplQtrsHistory"
             ,"CensusBlockGroup"
             ,"MaxPctileUs"
             ,"EjscreenFlagUs"
@@ -3953,22 +3951,20 @@
                ,"example": "20011FRTTT5001F"
                ,"description": "A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address."
             }
-            ,"RCRACurrComplStatus": {
+            ,"RCRAComplStatus": {
                 "type": "string"
             }
-            ,"RCRACurrSNC": {
+            ,"RCRASNC": {
                 "type": "string"
             }
-            ,"RCRAQtrsInNC": {
-                "type": "string"
-               ,"example": "0"
-            }
-            ,"RCRACurrViolationTypes": {
+            ,"RCRAQtrsWithNC": {
                 "type": "string"
             }
-            ,"RCRAQtrsInSNC": {
+            ,"RCRAViolationTypes": {
                 "type": "string"
-               ,"example": "0"
+            }
+            ,"RCRAQtrsWithSNC": {
+                "type": "string"
             }
             ,"RCRAOldestOpenVioDate": {
                 "type": "string"
@@ -4176,7 +4172,7 @@
             ,"RCRAMapIcon": {
                 "type": "string"
             }
-            ,"RCRA3yrComplQtrsStatus": {
+            ,"RCRA3yrComplQtrsHistory": {
                 "type": "string"
             }
             ,"CensusBlockGroup": {
@@ -4317,11 +4313,11 @@
             ,"RmpIDs"
             ,"SDWAIDs"
             ,"TRIIDs"
-            ,"RCRACurrComplStatus"
-            ,"RCRACurrSNC"
-            ,"RCRAQtrsInNC"
-            ,"RCRACurrViolationTypes"
-            ,"RCRAQtrsInSNC"
+            ,"RCRAComplStatus"
+            ,"RCRASNC"
+            ,"RCRAQtrsWithNC"
+            ,"RCRAViolationTypes"
+            ,"RCRAQtrsWithSNC"
             ,"RCRAOldestOpenVioDate"
             ,"RCRAInspCnt"
             ,"RCRADaysLastInspection"
@@ -4372,7 +4368,7 @@
             ,"CurrentVioCnt"
             ,"RCRAFIPSCode"
             ,"RCRAMapIcon"
-            ,"RCRA3yrComplQtrsStatus"
+            ,"RCRA3yrComplQtrsHistory"
             ,"CensusBlockGroup"
             ,"MaxPctileUs"
             ,"EjscreenFlagUs"
@@ -4673,22 +4669,20 @@
                ,"example": "20011FRTTT5001F"
                ,"description": "A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address."
             }
-            ,"RCRACurrComplStatus": {
+            ,"RCRAComplStatus": {
                 "type": "string"
             }
-            ,"RCRACurrSNC": {
+            ,"RCRASNC": {
                 "type": "string"
             }
-            ,"RCRAQtrsInNC": {
+            ,"RCRAQtrsWithNC": {
                 "type": "number"
-               ,"example": 0
             }
-            ,"RCRACurrViolationTypes": {
+            ,"RCRAViolationTypes": {
                 "type": "string"
             }
-            ,"RCRAQtrsInSNC": {
+            ,"RCRAQtrsWithSNC": {
                 "type": "number"
-               ,"example": 0
             }
             ,"RCRAOldestOpenVioDate": {
                 "type": "string"
@@ -4896,7 +4890,7 @@
             ,"RCRAMapIcon": {
                 "type": "string"
             }
-            ,"RCRA3yrComplQtrsStatus": {
+            ,"RCRA3yrComplQtrsHistory": {
                 "type": "string"
             }
             ,"CensusBlockGroup": {
@@ -5034,11 +5028,11 @@
             ,"RmpIDs"
             ,"SDWAIDs"
             ,"TRIIDs"
-            ,"RCRACurrComplStatus"
-            ,"RCRACurrSNC"
-            ,"RCRAQtrsInNC"
-            ,"RCRACurrViolationTypes"
-            ,"RCRAQtrsInSNC"
+            ,"RCRAComplStatus"
+            ,"RCRASNC"
+            ,"RCRAQtrsWithNC"
+            ,"RCRAViolationTypes"
+            ,"RCRAQtrsWithSNC"
             ,"RCRAOldestOpenVioDate"
             ,"RCRAInspCnt"
             ,"RCRADaysLastInspection"
@@ -5089,7 +5083,7 @@
             ,"CurrentVioCnt"
             ,"RCRAFIPSCode"
             ,"RCRAMapIcon"
-            ,"RCRA3yrComplQtrsStatus"
+            ,"RCRA3yrComplQtrsHistory"
             ,"CensusBlockGroup"
             ,"MaxPctileUs"
             ,"EjscreenFlagUs"

@@ -2831,42 +2831,26 @@
                 "type": "string"
                ,"description": "SDWIS System Types"
             }
-            ,"FacCurrSNCFlg": {
+            ,"FacSNCFlg": {
                 "type": "string"
-               ,"title": "Facility in Significant Noncompliance Flag"
-               ,"example": "N"
-               ,"description": "The current Significant Non-compliance (SNC), Serious Violation or High Priority Violator (HPV) status for the facility during the most current quarter reflects the time the records were extracted from the program data systems"
             }
-            ,"FacQtrsInNC": {
+            ,"FacQtrsWithNC": {
                 "type": "string"
-               ,"title": "Quarters in Noncompliance"
-               ,"example": "3"
-               ,"description": "Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered either in Non-compliance (NC), Significant Non-compliance (SNC) or High Priority violation (HPV) status"
             }
-            ,"FacCurrComplianceStatus": {
+            ,"FacComplianceStatus": {
                 "type": "string"
-               ,"title": "Current Facility Compliance Status"
-               ,"description": "Current compliance status: SNC\/Serious Viol, In Violation, No Violation, Unknown, NULL. (Order corresponds to priority if multiple programs\/permits exist)"
             }
-            ,"CAACurrComplianceStatus": {
+            ,"CAAComplianceStatus": {
                 "type": "string"
-               ,"example": "Not Available"
-               ,"description": "Current compliance status."
             }
-            ,"CWACurrComplianceStatus": {
+            ,"CWAComplianceStatus": {
                 "type": "string"
-               ,"title": "Clean Water Act Current Compliance Status"
-               ,"description": "Current compliance status"
             }
-            ,"RCRACurrComplianceStatus": {
+            ,"RCRAComplianceStatus": {
                 "type": "string"
-               ,"title": "RCRA Current Compliance Status"
-               ,"example": "No Violation"
-               ,"description": "Current compliance status"
             }
-            ,"SDWACurrComplianceStatus": {
+            ,"SDWAComplianceStatus": {
                 "type": "string"
-               ,"description": "Current compliance status"
             }
             ,"FacInspectionCount": {
                 "type": "string"
@@ -3103,19 +3087,19 @@
                ,"example": "8\/6\/2008"
                ,"description": "The date of the most recent informal action or NOV taken recorded in AFS, ICIS-NPDES, RCRA Info or SDWIS."
             }
-            ,"Fac3yrComplianceStatus": {
+            ,"Fac3yrComplianceHistory": {
                 "type": "string"
             }
-            ,"CAA3yrComplQtrsStatus": {
+            ,"CAA3yrComplQtrsHistory": {
                 "type": "string"
             }
-            ,"CWA13qtrsComplStatus": {
+            ,"CWA13qtrsComplHistory": {
                 "type": "string"
             }
-            ,"RCRA3yrComplQtrsStatus": {
+            ,"RCRA3yrComplQtrsHistory": {
                 "type": "string"
             }
-            ,"SDWA3yrComplQtrsStatus": {
+            ,"SDWA3yrComplQtrsHistory": {
                 "type": "string"
             }
             ,"FecCaseIDs": {
@@ -3184,11 +3168,8 @@
             ,"FacMyrtkUniverse": {
                 "type": "string"
             }
-            ,"FacProgramsInSNC": {
+            ,"FacProgramsWithSNC": {
                 "type": "string"
-               ,"title": "Programs in Significant Noncompliance"
-               ,"example": "1"
-               ,"description": "A count of the number of programs (AIR, CWA, SDWA, RCRA) related to the facility that have a current serious violation"
             }
             ,"AIRFlag": {
                 "type": "string"
@@ -3231,11 +3212,10 @@
                 "type": "string"
                ,"example": "$17014"
             }
-            ,"CAAQtrsInNC": {
+            ,"CAAQtrsWithNC": {
                 "type": "string"
-               ,"example": "0"
             }
-            ,"CAACurrHpvFlag": {
+            ,"CAAHpvFlag": {
                 "type": "string"
             }
             ,"CWAComplianceTracking": {
@@ -3260,10 +3240,10 @@
             ,"CWALastPenaltyAmt": {
                 "type": "string"
             }
-            ,"CWAQtrsInNC": {
+            ,"CWAQtrsWithNC": {
                 "type": "string"
             }
-            ,"CWACurrSNCFlag": {
+            ,"CWASNCFlag": {
                 "type": "string"
             }
             ,"CWA13qtrsEfflntExceedances": {
@@ -3288,14 +3268,13 @@
             ,"RCRALastPenaltyAmt": {
                 "type": "string"
             }
-            ,"RCRAQtrsInNC": {
-                "type": "string"
-               ,"example": "0"
-            }
-            ,"RCRACurrSNCFlag": {
+            ,"RCRAQtrsWithNC": {
                 "type": "string"
             }
-            ,"SDWACurrSNCFlag": {
+            ,"RCRASNCFlag": {
+                "type": "string"
+            }
+            ,"SDWASNCFlag": {
                 "type": "string"
             }
             ,"TRIOnSiteReleases": {
@@ -3480,7 +3459,7 @@
             ,"SDWAInspections5yr": {
                 "type": "string"
             }
-            ,"SDWAQtrsInNC": {
+            ,"SDWAQtrsWithNC": {
                 "type": "string"
             }
             ,"Score": {
@@ -3527,13 +3506,13 @@
             ,"CWAPermitTypes"
             ,"RCRAPermitTypes"
             ,"SDWASystemTypes"
-            ,"FacCurrSNCFlg"
-            ,"FacQtrsInNC"
-            ,"FacCurrComplianceStatus"
-            ,"CAACurrComplianceStatus"
-            ,"CWACurrComplianceStatus"
-            ,"RCRACurrComplianceStatus"
-            ,"SDWACurrComplianceStatus"
+            ,"FacSNCFlg"
+            ,"FacQtrsWithNC"
+            ,"FacComplianceStatus"
+            ,"CAAComplianceStatus"
+            ,"CWAComplianceStatus"
+            ,"RCRAComplianceStatus"
+            ,"SDWAComplianceStatus"
             ,"FacInspectionCount"
             ,"FacDaysLastInspection"
             ,"FacDateLastInspection"
@@ -3580,11 +3559,11 @@
             ,"FacDerivedRadWBDHu8Name"
             ,"FacMajorFlag"
             ,"FacDateLastInformalAction"
-            ,"Fac3yrComplianceStatus"
-            ,"CAA3yrComplQtrsStatus"
-            ,"CWA13qtrsComplStatus"
-            ,"RCRA3yrComplQtrsStatus"
-            ,"SDWA3yrComplQtrsStatus"
+            ,"Fac3yrComplianceHistory"
+            ,"CAA3yrComplQtrsHistory"
+            ,"CWA13qtrsComplHistory"
+            ,"RCRA3yrComplQtrsHistory"
+            ,"SDWA3yrComplQtrsHistory"
             ,"FecCaseIDs"
             ,"FacFIPSCode"
             ,"FacUsMexBorderFlg"
@@ -3602,7 +3581,7 @@
             ,"FacDerivedCb2010"
             ,"FacActiveFlag"
             ,"FacMyrtkUniverse"
-            ,"FacProgramsInSNC"
+            ,"FacProgramsWithSNC"
             ,"AIRFlag"
             ,"NPDESFlag"
             ,"SDWISFlag"
@@ -3615,8 +3594,8 @@
             ,"CAADateLastFormalAction"
             ,"CAALastPenaltyDate"
             ,"CAALastPenaltyAmt"
-            ,"CAAQtrsInNC"
-            ,"CAACurrHpvFlag"
+            ,"CAAQtrsWithNC"
+            ,"CAAHpvFlag"
             ,"CWAComplianceTracking"
             ,"CWANAICS"
             ,"CWASICs"
@@ -3624,8 +3603,8 @@
             ,"CWADateLastFormalAction"
             ,"CWALastPenaltyDate"
             ,"CWALastPenaltyAmt"
-            ,"CWAQtrsInNC"
-            ,"CWACurrSNCFlag"
+            ,"CWAQtrsWithNC"
+            ,"CWASNCFlag"
             ,"CWA13qtrsEfflntExceedances"
             ,"CWA3YrQncrCodes"
             ,"RCRANAICS"
@@ -3633,9 +3612,9 @@
             ,"RCRADateLastFormalAction"
             ,"RCRALastPenaltyDate"
             ,"RCRALastPenaltyAmt"
-            ,"RCRAQtrsInNC"
-            ,"RCRACurrSNCFlag"
-            ,"SDWACurrSNCFlag"
+            ,"RCRAQtrsWithNC"
+            ,"RCRASNCFlag"
+            ,"SDWASNCFlag"
             ,"TRIOnSiteReleases"
             ,"TRIOffSiteTransfers"
             ,"TRIReporterInPast"
@@ -3681,7 +3660,7 @@
             ,"FifraInspections5yr"
             ,"TscaInspections5yr"
             ,"SDWAInspections5yr"
-            ,"SDWAQtrsInNC"
+            ,"SDWAQtrsWithNC"
             ,"Score"
             ,"MaxScore"
          ]
@@ -4103,42 +4082,26 @@
                 "type": "string"
                ,"description": "SDWIS System Types"
             }
-            ,"FacCurrSNCFlg": {
+            ,"FacSNCFlg": {
                 "type": "string"
-               ,"title": "Facility in Significant Noncompliance Flag"
-               ,"example": "N"
-               ,"description": "The current Significant Non-compliance (SNC), Serious Violation or High Priority Violator (HPV) status for the facility during the most current quarter reflects the time the records were extracted from the program data systems"
             }
-            ,"FacQtrsInNC": {
+            ,"FacQtrsWithNC": {
                 "type": "string"
-               ,"title": "Quarters in Noncompliance"
-               ,"example": "3"
-               ,"description": "Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered either in Non-compliance (NC), Significant Non-compliance (SNC) or High Priority violation (HPV) status"
             }
-            ,"FacCurrComplianceStatus": {
+            ,"FacComplianceStatus": {
                 "type": "string"
-               ,"title": "Current Facility Compliance Status"
-               ,"description": "Current compliance status: SNC\/Serious Viol, In Violation, No Violation, Unknown, NULL. (Order corresponds to priority if multiple programs\/permits exist)"
             }
-            ,"CAACurrComplianceStatus": {
+            ,"CAAComplianceStatus": {
                 "type": "string"
-               ,"example": "Not Available"
-               ,"description": "Current compliance status."
             }
-            ,"CWACurrComplianceStatus": {
+            ,"CWAComplianceStatus": {
                 "type": "string"
-               ,"title": "Clean Water Act Current Compliance Status"
-               ,"description": "Current compliance status"
             }
-            ,"RCRACurrComplianceStatus": {
+            ,"RCRAComplianceStatus": {
                 "type": "string"
-               ,"title": "RCRA Current Compliance Status"
-               ,"example": "No Violation"
-               ,"description": "Current compliance status"
             }
-            ,"SDWACurrComplianceStatus": {
+            ,"SDWAComplianceStatus": {
                 "type": "string"
-               ,"description": "Current compliance status"
             }
             ,"FacInspectionCount": {
                 "type": "string"
@@ -4375,19 +4338,19 @@
                ,"example": "8\/6\/2008"
                ,"description": "The date of the most recent informal action or NOV taken recorded in AFS, ICIS-NPDES, RCRA Info or SDWIS."
             }
-            ,"Fac3yrComplianceStatus": {
+            ,"Fac3yrComplianceHistory": {
                 "type": "string"
             }
-            ,"CAA3yrComplQtrsStatus": {
+            ,"CAA3yrComplQtrsHistory": {
                 "type": "string"
             }
-            ,"CWA13qtrsComplStatus": {
+            ,"CWA13qtrsComplHistory": {
                 "type": "string"
             }
-            ,"RCRA3yrComplQtrsStatus": {
+            ,"RCRA3yrComplQtrsHistory": {
                 "type": "string"
             }
-            ,"SDWA3yrComplQtrsStatus": {
+            ,"SDWA3yrComplQtrsHistory": {
                 "type": "string"
             }
             ,"FecCaseIDs": {
@@ -4456,11 +4419,8 @@
             ,"FacMyrtkUniverse": {
                 "type": "string"
             }
-            ,"FacProgramsInSNC": {
+            ,"FacProgramsWithSNC": {
                 "type": "string"
-               ,"title": "Programs in Significant Noncompliance"
-               ,"example": "1"
-               ,"description": "A count of the number of programs (AIR, CWA, SDWA, RCRA) related to the facility that have a current serious violation"
             }
             ,"AIRFlag": {
                 "type": "string"
@@ -4503,11 +4463,10 @@
                 "type": "string"
                ,"example": "$17014"
             }
-            ,"CAAQtrsInNC": {
+            ,"CAAQtrsWithNC": {
                 "type": "string"
-               ,"example": "0"
             }
-            ,"CAACurrHpvFlag": {
+            ,"CAAHpvFlag": {
                 "type": "string"
             }
             ,"CWAComplianceTracking": {
@@ -4532,10 +4491,10 @@
             ,"CWALastPenaltyAmt": {
                 "type": "string"
             }
-            ,"CWAQtrsInNC": {
+            ,"CWAQtrsWithNC": {
                 "type": "string"
             }
-            ,"CWACurrSNCFlag": {
+            ,"CWASNCFlag": {
                 "type": "string"
             }
             ,"CWA13qtrsEfflntExceedances": {
@@ -4560,14 +4519,13 @@
             ,"RCRALastPenaltyAmt": {
                 "type": "string"
             }
-            ,"RCRAQtrsInNC": {
-                "type": "string"
-               ,"example": "0"
-            }
-            ,"RCRACurrSNCFlag": {
+            ,"RCRAQtrsWithNC": {
                 "type": "string"
             }
-            ,"SDWACurrSNCFlag": {
+            ,"RCRASNCFlag": {
+                "type": "string"
+            }
+            ,"SDWASNCFlag": {
                 "type": "string"
             }
             ,"TRIOnSiteReleases": {
@@ -4752,7 +4710,7 @@
             ,"SDWAInspections5yr": {
                 "type": "string"
             }
-            ,"SDWAQtrsInNC": {
+            ,"SDWAQtrsWithNC": {
                 "type": "string"
             }
             ,"Score": {
@@ -4800,13 +4758,13 @@
             ,"CWAPermitTypes"
             ,"RCRAPermitTypes"
             ,"SDWASystemTypes"
-            ,"FacCurrSNCFlg"
-            ,"FacQtrsInNC"
-            ,"FacCurrComplianceStatus"
-            ,"CAACurrComplianceStatus"
-            ,"CWACurrComplianceStatus"
-            ,"RCRACurrComplianceStatus"
-            ,"SDWACurrComplianceStatus"
+            ,"FacSNCFlg"
+            ,"FacQtrsWithNC"
+            ,"FacComplianceStatus"
+            ,"CAAComplianceStatus"
+            ,"CWAComplianceStatus"
+            ,"RCRAComplianceStatus"
+            ,"SDWAComplianceStatus"
             ,"FacInspectionCount"
             ,"FacDaysLastInspection"
             ,"FacDateLastInspection"
@@ -4853,11 +4811,11 @@
             ,"FacDerivedRadWBDHu8Name"
             ,"FacMajorFlag"
             ,"FacDateLastInformalAction"
-            ,"Fac3yrComplianceStatus"
-            ,"CAA3yrComplQtrsStatus"
-            ,"CWA13qtrsComplStatus"
-            ,"RCRA3yrComplQtrsStatus"
-            ,"SDWA3yrComplQtrsStatus"
+            ,"Fac3yrComplianceHistory"
+            ,"CAA3yrComplQtrsHistory"
+            ,"CWA13qtrsComplHistory"
+            ,"RCRA3yrComplQtrsHistory"
+            ,"SDWA3yrComplQtrsHistory"
             ,"FecCaseIDs"
             ,"FacFIPSCode"
             ,"FacUsMexBorderFlg"
@@ -4875,7 +4833,7 @@
             ,"FacDerivedCb2010"
             ,"FacActiveFlag"
             ,"FacMyrtkUniverse"
-            ,"FacProgramsInSNC"
+            ,"FacProgramsWithSNC"
             ,"AIRFlag"
             ,"NPDESFlag"
             ,"SDWISFlag"
@@ -4888,8 +4846,8 @@
             ,"CAADateLastFormalAction"
             ,"CAALastPenaltyDate"
             ,"CAALastPenaltyAmt"
-            ,"CAAQtrsInNC"
-            ,"CAACurrHpvFlag"
+            ,"CAAQtrsWithNC"
+            ,"CAAHpvFlag"
             ,"CWAComplianceTracking"
             ,"CWANAICS"
             ,"CWASICs"
@@ -4897,8 +4855,8 @@
             ,"CWADateLastFormalAction"
             ,"CWALastPenaltyDate"
             ,"CWALastPenaltyAmt"
-            ,"CWAQtrsInNC"
-            ,"CWACurrSNCFlag"
+            ,"CWAQtrsWithNC"
+            ,"CWASNCFlag"
             ,"CWA13qtrsEfflntExceedances"
             ,"CWA3YrQncrCodes"
             ,"RCRANAICS"
@@ -4906,9 +4864,9 @@
             ,"RCRADateLastFormalAction"
             ,"RCRALastPenaltyDate"
             ,"RCRALastPenaltyAmt"
-            ,"RCRAQtrsInNC"
-            ,"RCRACurrSNCFlag"
-            ,"SDWACurrSNCFlag"
+            ,"RCRAQtrsWithNC"
+            ,"RCRASNCFlag"
+            ,"SDWASNCFlag"
             ,"TRIOnSiteReleases"
             ,"TRIOffSiteTransfers"
             ,"TRIReporterInPast"
@@ -4954,7 +4912,7 @@
             ,"FifraInspections5yr"
             ,"TscaInspections5yr"
             ,"SDWAInspections5yr"
-            ,"SDWAQtrsInNC"
+            ,"SDWAQtrsWithNC"
             ,"Score"
             ,"MaxScore"
          ]
@@ -5275,42 +5233,26 @@
                 "type": "string"
                ,"description": "SDWIS System Types"
             }
-            ,"FacCurrSNCFlg": {
+            ,"FacSNCFlg": {
                 "type": "string"
-               ,"title": "Facility in Significant Noncompliance Flag"
-               ,"example": "N"
-               ,"description": "The current Significant Non-compliance (SNC), Serious Violation or High Priority Violator (HPV) status for the facility during the most current quarter reflects the time the records were extracted from the program data systems"
             }
-            ,"FacQtrsInNC": {
+            ,"FacQtrsWithNC": {
                 "type": "number"
-               ,"title": "Quarters in Noncompliance"
-               ,"example": 3
-               ,"description": "Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered either in Non-compliance (NC), Significant Non-compliance (SNC) or High Priority violation (HPV) status"
             }
-            ,"FacCurrComplianceStatus": {
+            ,"FacComplianceStatus": {
                 "type": "string"
-               ,"title": "Current Facility Compliance Status"
-               ,"description": "Current compliance status: SNC\/Serious Viol, In Violation, No Violation, Unknown, NULL. (Order corresponds to priority if multiple programs\/permits exist)"
             }
-            ,"CAACurrComplianceStatus": {
+            ,"CAAComplianceStatus": {
                 "type": "string"
-               ,"example": "Not Available"
-               ,"description": "Current compliance status."
             }
-            ,"CWACurrComplianceStatus": {
+            ,"CWAComplianceStatus": {
                 "type": "string"
-               ,"title": "Clean Water Act Current Compliance Status"
-               ,"description": "Current compliance status"
             }
-            ,"RCRACurrComplianceStatus": {
+            ,"RCRAComplianceStatus": {
                 "type": "string"
-               ,"title": "RCRA Current Compliance Status"
-               ,"example": "No Violation"
-               ,"description": "Current compliance status"
             }
-            ,"SDWACurrComplianceStatus": {
+            ,"SDWAComplianceStatus": {
                 "type": "string"
-               ,"description": "Current compliance status"
             }
             ,"FacInspectionCount": {
                 "type": "number"
@@ -5547,19 +5489,19 @@
                ,"example": "8\/6\/2008"
                ,"description": "The date of the most recent informal action or NOV taken recorded in AFS, ICIS-NPDES, RCRA Info or SDWIS."
             }
-            ,"Fac3yrComplianceStatus": {
+            ,"Fac3yrComplianceHistory": {
                 "type": "string"
             }
-            ,"CAA3yrComplQtrsStatus": {
+            ,"CAA3yrComplQtrsHistory": {
                 "type": "string"
             }
-            ,"CWA13qtrsComplStatus": {
+            ,"CWA13qtrsComplHistory": {
                 "type": "string"
             }
-            ,"RCRA3yrComplQtrsStatus": {
+            ,"RCRA3yrComplQtrsHistory": {
                 "type": "string"
             }
-            ,"SDWA3yrComplQtrsStatus": {
+            ,"SDWA3yrComplQtrsHistory": {
                 "type": "string"
             }
             ,"FecCaseIDs": {
@@ -5628,11 +5570,8 @@
             ,"FacMyrtkUniverse": {
                 "type": "string"
             }
-            ,"FacProgramsInSNC": {
+            ,"FacProgramsWithSNC": {
                 "type": "number"
-               ,"title": "Programs in Significant Noncompliance"
-               ,"example": 1
-               ,"description": "A count of the number of programs (AIR, CWA, SDWA, RCRA) related to the facility that have a current serious violation"
             }
             ,"AIRFlag": {
                 "type": "string"
@@ -5675,11 +5614,10 @@
                 "type": "number"
                ,"example": 17014
             }
-            ,"CAAQtrsInNC": {
+            ,"CAAQtrsWithNC": {
                 "type": "number"
-               ,"example": 0
             }
-            ,"CAACurrHpvFlag": {
+            ,"CAAHpvFlag": {
                 "type": "string"
             }
             ,"CWAComplianceTracking": {
@@ -5704,10 +5642,10 @@
             ,"CWALastPenaltyAmt": {
                 "type": "string"
             }
-            ,"CWAQtrsInNC": {
+            ,"CWAQtrsWithNC": {
                 "type": "string"
             }
-            ,"CWACurrSNCFlag": {
+            ,"CWASNCFlag": {
                 "type": "string"
             }
             ,"CWA13qtrsEfflntExceedances": {
@@ -5732,14 +5670,13 @@
             ,"RCRALastPenaltyAmt": {
                 "type": "string"
             }
-            ,"RCRAQtrsInNC": {
+            ,"RCRAQtrsWithNC": {
                 "type": "number"
-               ,"example": 0
             }
-            ,"RCRACurrSNCFlag": {
+            ,"RCRASNCFlag": {
                 "type": "string"
             }
-            ,"SDWACurrSNCFlag": {
+            ,"SDWASNCFlag": {
                 "type": "string"
             }
             ,"TRIOnSiteReleases": {
@@ -5924,7 +5861,7 @@
             ,"SDWAInspections5yr": {
                 "type": "string"
             }
-            ,"SDWAQtrsInNC": {
+            ,"SDWAQtrsWithNC": {
                 "type": "string"
             }
             ,"Score": {
@@ -5969,13 +5906,13 @@
             ,"CWAPermitTypes"
             ,"RCRAPermitTypes"
             ,"SDWASystemTypes"
-            ,"FacCurrSNCFlg"
-            ,"FacQtrsInNC"
-            ,"FacCurrComplianceStatus"
-            ,"CAACurrComplianceStatus"
-            ,"CWACurrComplianceStatus"
-            ,"RCRACurrComplianceStatus"
-            ,"SDWACurrComplianceStatus"
+            ,"FacSNCFlg"
+            ,"FacQtrsWithNC"
+            ,"FacComplianceStatus"
+            ,"CAAComplianceStatus"
+            ,"CWAComplianceStatus"
+            ,"RCRAComplianceStatus"
+            ,"SDWAComplianceStatus"
             ,"FacInspectionCount"
             ,"FacDaysLastInspection"
             ,"FacDateLastInspection"
@@ -6022,11 +5959,11 @@
             ,"FacDerivedRadWBDHu8Name"
             ,"FacMajorFlag"
             ,"FacDateLastInformalAction"
-            ,"Fac3yrComplianceStatus"
-            ,"CAA3yrComplQtrsStatus"
-            ,"CWA13qtrsComplStatus"
-            ,"RCRA3yrComplQtrsStatus"
-            ,"SDWA3yrComplQtrsStatus"
+            ,"Fac3yrComplianceHistory"
+            ,"CAA3yrComplQtrsHistory"
+            ,"CWA13qtrsComplHistory"
+            ,"RCRA3yrComplQtrsHistory"
+            ,"SDWA3yrComplQtrsHistory"
             ,"FecCaseIDs"
             ,"FacFIPSCode"
             ,"FacUsMexBorderFlg"
@@ -6044,7 +5981,7 @@
             ,"FacDerivedCb2010"
             ,"FacActiveFlag"
             ,"FacMyrtkUniverse"
-            ,"FacProgramsInSNC"
+            ,"FacProgramsWithSNC"
             ,"AIRFlag"
             ,"NPDESFlag"
             ,"SDWISFlag"
@@ -6057,8 +5994,8 @@
             ,"CAADateLastFormalAction"
             ,"CAALastPenaltyDate"
             ,"CAALastPenaltyAmt"
-            ,"CAAQtrsInNC"
-            ,"CAACurrHpvFlag"
+            ,"CAAQtrsWithNC"
+            ,"CAAHpvFlag"
             ,"CWAComplianceTracking"
             ,"CWANAICS"
             ,"CWASICs"
@@ -6066,8 +6003,8 @@
             ,"CWADateLastFormalAction"
             ,"CWALastPenaltyDate"
             ,"CWALastPenaltyAmt"
-            ,"CWAQtrsInNC"
-            ,"CWACurrSNCFlag"
+            ,"CWAQtrsWithNC"
+            ,"CWASNCFlag"
             ,"CWA13qtrsEfflntExceedances"
             ,"CWA3YrQncrCodes"
             ,"RCRANAICS"
@@ -6075,9 +6012,9 @@
             ,"RCRADateLastFormalAction"
             ,"RCRALastPenaltyDate"
             ,"RCRALastPenaltyAmt"
-            ,"RCRAQtrsInNC"
-            ,"RCRACurrSNCFlag"
-            ,"SDWACurrSNCFlag"
+            ,"RCRAQtrsWithNC"
+            ,"RCRASNCFlag"
+            ,"SDWASNCFlag"
             ,"TRIOnSiteReleases"
             ,"TRIOffSiteTransfers"
             ,"TRIReporterInPast"
@@ -6123,7 +6060,7 @@
             ,"FifraInspections5yr"
             ,"TscaInspections5yr"
             ,"SDWAInspections5yr"
-            ,"SDWAQtrsInNC"
+            ,"SDWAQtrsWithNC"
             ,"Score"
             ,"MaxScore"
          ]
