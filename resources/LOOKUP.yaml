@@ -103,6 +103,11 @@ parameters:
     in: query
     type: string
     required: false
+  registry_id: 
+    name: registry_id
+    in: query
+    type: string
+    required: false
   status_flag: 
     name: status_flag
     in: query
@@ -617,6 +622,45 @@ paths:
             properties: 
               Results: 
                 "$ref": "#/definitions/rlk12_Results" 
+            required: 
+            - Results
+  "/rest_lookups.biosolids_by_registry_id": 
+    get: 
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/registry_id"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk00_biosolids_by_registry_id.Results" 
+            required: 
+            - Results
+    post: 
+      parameters: 
+      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/registry_id"
+      tags: 
+      - Lookups
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/rlk00_biosolids_by_registry_id.Results" 
             required: 
             - Results
   "/rest_lookups.bio_vio_code": 
@@ -2746,6 +2790,18 @@ definitions:
     - Program
     - ProgramDescription
     - Status
+  rlk00_LuValues6: 
+    description: Lookup Values
+    xml: 
+      name: LuValue
+    properties: 
+      IdPassed: 
+        type: string
+      IdReturned: 
+        type: string
+    required: 
+    - IdPassed
+    - IdReturned
   rlk01_Results: 
     description: Results Object
     properties: 
@@ -2967,6 +3023,24 @@ definitions:
           wrapped: true
     required: 
     - Message
+  rlk00_biosolids_by_registry_id.Results: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      LuValues: 
+        type: array
+        items: 
+          "$ref": "#/definitions/rlk00_LuValues6" 
+        xml: 
+          name: LuValues
+          wrapped: true
+    required: 
+    - Message
+    - LuValues
   rlk13_Results: 
     description: Results Object
     properties: 

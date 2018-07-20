@@ -119,6 +119,12 @@
          ,"type": "string"
          ,"required": false
       }
+      ,"registry_id": {
+          "name": "registry_id"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
       ,"status_flag": {
           "name": "status_flag"
          ,"in": "query"
@@ -1127,6 +1133,82 @@
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/rlk12_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.biosolids_by_registry_id": {
+          "get": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/registry_id"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk00_biosolids_by_registry_id.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/registry_id"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlk00_biosolids_by_registry_id.Results"
                      }
                   }
                   ,"required": [
@@ -5138,6 +5220,25 @@
             ,"Status"
          ]
       }
+      ,"rlk00_LuValues6": {
+          "type": "object"
+         ,"description": "Lookup Values"
+         ,"xml": {
+             "name": "LuValue"
+         }
+         ,"properties": {
+             "IdPassed": {
+                "type": "string"
+            }
+            ,"IdReturned": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "IdPassed"
+            ,"IdReturned"
+         ]
+      }
       ,"rlk01_Results": {
           "type": "object"
          ,"description": "Results Object"
@@ -5461,6 +5562,32 @@
          }
          ,"required": [
              "Message"
+         ]
+      }
+      ,"rlk00_biosolids_by_registry_id.Results": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"LuValues": {
+                "type": "array"
+               ,"items": {
+                   "$ref": "#\/definitions\/rlk00_LuValues6"
+               }
+               ,"xml": {
+                   "name": "LuValues"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+            ,"LuValues"
          ]
       }
       ,"rlk13_Results": {
