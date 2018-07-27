@@ -4019,88 +4019,6 @@
             }
          }
       }
-      ,"\/rest_lookups.npdes_tribes_region": {
-          "get": {
-             "summary": "Placeholder"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk69_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Placeholder"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_term"
-               }
-               ,{
-                   "$ref": "#\/parameters\/search_code"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlk69_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
       ,"\/rest_lookups.prog_deficiency": {
           "get": {
              "summary": "Placeholder"
@@ -6409,21 +6327,6 @@
                    "name": "LuValues"
                   ,"wrapped": true
                }
-            }
-         }
-         ,"required": [
-             "Message"
-         ]
-      }
-      ,"rlk69_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Message": {
-                "type": "string"
-               ,"title": "Message"
-               ,"example": "Success"
-               ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
          }
          ,"required": [

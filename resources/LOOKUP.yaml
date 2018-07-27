@@ -2135,47 +2135,6 @@ paths:
                 "$ref": "#/definitions/rlk56_Results" 
             required: 
             - Results
-  "/rest_lookups.npdes_tribes_region": 
-    get: 
-      parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Results
-          schema: 
-            description: Root Object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk69_Results" 
-            required: 
-            - Results
-    post: 
-      parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      tags: 
-      - Lookups
-      responses: 
-        '200': 
-          description: Results
-          schema: 
-            description: Root Object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/rlk69_Results" 
-            required: 
-            - Results
   "/rest_lookups.prog_deficiency": 
     get: 
       parameters: 
@@ -3600,16 +3559,6 @@ definitions:
         xml: 
           name: LuValues
           wrapped: true
-    required: 
-    - Message
-  rlk69_Results: 
-    description: Results Object
-    properties: 
-      Message: 
-        type: string
-        title: Message
-        example: Success
-        description: Field to record messages (typically performance-related) about packet processing
     required: 
     - Message
   rlk57_Results: 
