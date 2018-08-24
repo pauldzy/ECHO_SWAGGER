@@ -1104,7 +1104,7 @@ paths:
       description: Returns an array of public water systems that meet the specified search criteria.
       parameters: 
       - name: output
-        in: query
+        in: formData
         description: |-
           Output Format Flag.  Enter one of the following keywords:
           - JSON = Data model formatted as Javascript Object Notation (default).
@@ -1221,7 +1221,7 @@ paths:
       description: GET_QID is passed with a query ID corresponding to a previously run get_systems query. It then returns a Systems object containing all matching water systems. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. 
       parameters: 
       - name: output
-        in: query
+        in: formData
         description: |-
           Output Format Flag.  Enter one of the following keywords:
           - JSON = Data model formatted as Javascript Object Notation (default).
@@ -1279,7 +1279,7 @@ paths:
       description: Based on the QID obtained from a get_systems query, return a comma separated value (CSV) file of the water systems found.
       parameters: 
       - name: output
-        in: query
+        in: formData
         description: |-
           Output Format Flag.  Enter one of the following keywords:
           - CSV = Facility results formatted as comma delimited file download (default).
@@ -1332,7 +1332,7 @@ paths:
       description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_systems endpoint.
       parameters: 
       - name: output
-        in: query
+        in: formData
         description: |-
           Output Format Flag.  Enter one of the following keywords:
           - JSON = Data model formatted as Javascript Object Notation (default).
