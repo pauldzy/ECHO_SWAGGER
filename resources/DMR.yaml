@@ -4995,6 +4995,24 @@ definitions:
     - QcFlag
     - LimitsInfoFlag
     - DmrInfoFlag
+  dmr11_ExceedanceYears: 
+    description: Exceedance Years Object
+    xml: 
+      name: ExceedanceYears
+    properties: 
+      Year: 
+        type: string
+        description: The calendar year of a time dimension (reporting table) record.
+      ViolationCount: 
+        type: string
+        title: Violation Count
+        example: '3'
+      LoadOverLimit: 
+        type: string
+    required: 
+    - Year
+    - ViolationCount
+    - LoadOverLimit
   dmr11_FacilityExceedances: 
     type: object
     xml: 
@@ -5068,17 +5086,11 @@ definitions:
         type: string
       Year3E90: 
         type: string
-      Lby: 
-        type: string
-      Twpe: 
-        type: string
       TotalPounds: 
         type: string
       TotalTwpe: 
         type: string
       LoadOverLimit: 
-        type: string
-      TwpeOverLimit: 
         type: string
       LoadOverLimitTwpe: 
         type: string
@@ -5088,6 +5100,13 @@ definitions:
         type: string
       Year3LoadOverLimit: 
         type: string
+      ExceedanceYears: 
+        type: array
+        items: 
+          "$ref": "#/definitions/dmr11_ExceedanceYears" 
+        xml: 
+          name: ExceedanceYears
+          wrapped: true
     required: 
     - ExternalPermitNmbr
     - FacilityName
@@ -5118,16 +5137,14 @@ definitions:
     - Year1E90
     - Year2E90
     - Year3E90
-    - Lby
-    - Twpe
     - TotalPounds
     - TotalTwpe
     - LoadOverLimit
-    - TwpeOverLimit
     - LoadOverLimitTwpe
     - Year1LoadOverLimit
     - Year2LoadOverLimit
     - Year3LoadOverLimit
+    - ExceedanceYears
   dmr11_Results: 
     type: object
     properties: 

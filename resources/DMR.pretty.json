@@ -8608,6 +8608,32 @@
             ,"DmrInfoFlag"
          ]
       }
+      ,"dmr11_ExceedanceYears": {
+          "type": "object"
+         ,"description": "Exceedance Years Object"
+         ,"xml": {
+             "name": "ExceedanceYears"
+         }
+         ,"properties": {
+             "Year": {
+                "type": "string"
+               ,"description": "The calendar year of a time dimension (reporting table) record."
+            }
+            ,"ViolationCount": {
+                "type": "string"
+               ,"title": "Violation Count"
+               ,"example": "3"
+            }
+            ,"LoadOverLimit": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "Year"
+            ,"ViolationCount"
+            ,"LoadOverLimit"
+         ]
+      }
       ,"dmr11_FacilityExceedances": {
           "type": "object"
          ,"xml": {
@@ -8711,12 +8737,6 @@
             ,"Year3E90": {
                 "type": "string"
             }
-            ,"Lby": {
-                "type": "string"
-            }
-            ,"Twpe": {
-                "type": "string"
-            }
             ,"TotalPounds": {
                 "type": "string"
             }
@@ -8724,9 +8744,6 @@
                 "type": "string"
             }
             ,"LoadOverLimit": {
-                "type": "string"
-            }
-            ,"TwpeOverLimit": {
                 "type": "string"
             }
             ,"LoadOverLimitTwpe": {
@@ -8740,6 +8757,16 @@
             }
             ,"Year3LoadOverLimit": {
                 "type": "string"
+            }
+            ,"ExceedanceYears": {
+                "type": "array"
+               ,"items": {
+                   "$ref": "#\/definitions\/dmr11_ExceedanceYears"
+               }
+               ,"xml": {
+                   "name": "ExceedanceYears"
+                  ,"wrapped": true
+               }
             }
          }
          ,"required": [
@@ -8772,16 +8799,14 @@
             ,"Year1E90"
             ,"Year2E90"
             ,"Year3E90"
-            ,"Lby"
-            ,"Twpe"
             ,"TotalPounds"
             ,"TotalTwpe"
             ,"LoadOverLimit"
-            ,"TwpeOverLimit"
             ,"LoadOverLimitTwpe"
             ,"Year1LoadOverLimit"
             ,"Year2LoadOverLimit"
             ,"Year3LoadOverLimit"
+            ,"ExceedanceYears"
          ]
       }
       ,"dmr11_Results": {

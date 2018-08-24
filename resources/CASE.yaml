@@ -236,6 +236,11 @@ parameters:
     description: "Activity Contact Last Name Filter.  Enter a single last name or partial last name to filter results.  Use \"%\" as a wild-card for advanced searching."
     type: string
     required: false
+  p_open_case: 
+    name: p_open_case
+    in: query
+    type: string
+    required: false
   p_role: 
     name: p_role
     in: query
@@ -528,6 +533,11 @@ parameters:
     name: p_district
     in: query
     description: Case Location Court District Limiter.  Enter a single state court district code to limit results.
+    type: string
+    required: false
+  p_case_summary_type: 
+    name: p_case_summary_type
+    in: query
     type: string
     required: false
   p_case_summary: 
@@ -832,6 +842,7 @@ paths:
         required: false
       - "$ref": "#/parameters/p_case_category"
       - "$ref": "#/parameters/p_case_status"
+      - "$ref": "#/parameters/p_open_case"
       - "$ref": "#/parameters/p_milestone"
       - "$ref": "#/parameters/p_from_date"
       - "$ref": "#/parameters/p_to_date"
@@ -885,6 +896,7 @@ paths:
       - "$ref": "#/parameters/p_fac_zip"
       - "$ref": "#/parameters/p_fac_county"
       - "$ref": "#/parameters/p_case_summary"
+      - "$ref": "#/parameters/p_case_summary_type"
       - "$ref": "#/parameters/p_usmex"
       - "$ref": "#/parameters/p_c1lat"
       - "$ref": "#/parameters/p_c1lon"
@@ -933,6 +945,7 @@ paths:
         required: false
       - "$ref": "#/parameters/p_case_category"
       - "$ref": "#/parameters/p_case_status"
+      - "$ref": "#/parameters/p_open_case"
       - "$ref": "#/parameters/p_milestone"
       - "$ref": "#/parameters/p_from_date"
       - "$ref": "#/parameters/p_to_date"
@@ -986,6 +999,7 @@ paths:
       - "$ref": "#/parameters/p_fac_zip"
       - "$ref": "#/parameters/p_fac_county"
       - "$ref": "#/parameters/p_case_summary"
+      - "$ref": "#/parameters/p_case_summary_type"
       - "$ref": "#/parameters/p_usmex"
       - "$ref": "#/parameters/p_c1lat"
       - "$ref": "#/parameters/p_c1lon"
@@ -1238,7 +1252,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/met_Results" 
+                "$ref": "#/definitions/met1" 
             required: 
             - Results
     post: 
@@ -1270,7 +1284,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/met_Results" 
+                "$ref": "#/definitions/met1" 
             required: 
             - Results
 definitions: 
@@ -2603,7 +2617,7 @@ definitions:
     - QueryID
     - PageNo
     - Cases
-  met_ResultsColumns: 
+  met2: 
     description: Results Column Object
     xml: 
       name: ResultColumn
@@ -2638,7 +2652,7 @@ definitions:
     - ColumnID
     - ObjectName
     - Description
-  met_Results: 
+  met1: 
     description: Results Object
     properties: 
       Message: 
@@ -2650,7 +2664,7 @@ definitions:
         type: array
         title: Result Columns
         items: 
-          "$ref": "#/definitions/met_ResultsColumns" 
+          "$ref": "#/definitions/met2" 
         xml: 
           name: ResultColumns
           wrapped: true
