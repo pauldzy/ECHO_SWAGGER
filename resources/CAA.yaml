@@ -14,13 +14,12 @@ basePath: /echo
 schemes: 
 - https
 consumes: 
-- application/json
-- application/xml
+- application/x-www-form-urlencoded
 produces: 
 - application/json
 - application/xml
 parameters: 
-  output: 
+  g.output: 
     name: output
     in: query
     description: |-
@@ -34,27 +33,65 @@ parameters:
     - XML
     type: string
     required: false
-  callback: 
+  f.output: 
+    name: output
+    in: formData
+    description: |-
+      Output Format Flag.  Enter one of the following keywords:
+      - JSON = Data model formatted as Javascript Object Notation (default).
+      - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+      - XML = Data model formatted as Extensible Markup Language.
+    enum: 
+    - JSONP
+    - JSON
+    - XML
+    type: string
+    required: false
+  g.callback: 
     name: callback
     in: query
     description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
     type: string
     required: false
-  p_units: 
+  f.callback: 
+    name: callback
+    in: formData
+    description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+    type: string
+    required: false
+  g.p_units: 
     name: p_units
     in: query
     description: "Units of Measurement.  For the Air Pollutant Report, the default value is 'lbs'.  Enter \"TWPE\" for Toxic Weighted Pounds Equivalents (TWPE). "
     type: string
     required: false
-  nn2: 
+  f.p_units: 
+    name: p_units
+    in: formData
+    description: "Units of Measurement.  For the Air Pollutant Report, the default value is 'lbs'.  Enter \"TWPE\" for Toxic Weighted Pounds Equivalents (TWPE). "
+    type: string
+    required: false
+  g.nn2: 
     name: nn2
     in: query
     description: "Secondary statute filter, provide a single statute code to filter permit results (e.g., \"EP313\")"
     type: string
     required: false
-  nnn: 
+  f.nn2: 
+    name: nn2
+    in: formData
+    description: "Secondary statute filter, provide a single statute code to filter permit results (e.g., \"EP313\")"
+    type: string
+    required: false
+  g.nnn: 
     name: nnn
     in: query
+    description: "Statute filter, provide a single statute code to filter permit results (e.g., \"CAA\")"
+    type: string
+    required: false
+  f.nnn: 
+    name: nnn
+    in: formData
     description: "Statute filter, provide a single statute code to filter permit results (e.g., \"CAA\")"
     type: string
     required: false
@@ -64,14 +101,14 @@ paths:
       summary: Air Pollutant Report Service
       description: This procedure is the overall service for the Air Polltuant Report. It returns all of the data displayed in the Air Pollutant web report by invoking individual procedures that each return a targeted portion of the report.
       parameters: 
-      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/g.output"
       - name: p_id
         in: query
         description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
         type: string
         required: true
-      - "$ref": "#/parameters/p_units"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.p_units"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Air Pollution Report
       responses: 
@@ -90,14 +127,14 @@ paths:
       summary: Air Pollutant Report Service
       description: This procedure is the overall service for the Air Polltuant Report. It returns all of the data displayed in the Air Pollutant web report by invoking individual procedures that each return a targeted portion of the report.
       parameters: 
-      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/f.output"
       - name: p_id
-        in: query
+        in: formData
         description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
         type: string
         required: true
-      - "$ref": "#/parameters/p_units"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.p_units"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Air Pollution Report
       responses: 
@@ -116,15 +153,15 @@ paths:
     get: 
       summary: Air Pollutant Report Permits Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/nnn"
-      - "$ref": "#/parameters/nn2"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.nnn"
+      - "$ref": "#/parameters/g.nn2"
       - name: p_id
         in: query
         description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
         type: string
         required: true
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Air Pollution Report
       responses: 
@@ -142,15 +179,15 @@ paths:
     post: 
       summary: Air Pollutant Report Permits Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/nnn"
-      - "$ref": "#/parameters/nn2"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.nnn"
+      - "$ref": "#/parameters/f.nn2"
       - name: p_id
-        in: query
+        in: formData
         description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
         type: string
         required: true
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Air Pollution Report
       responses: 
@@ -170,14 +207,14 @@ paths:
       summary: Air Pollutant Report Aggregated Emissions Service
       description: This procedure obtains data for Total Aggregate Emissions in the Emissions section of the Air Pollutant Report.
       parameters: 
-      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/g.output"
       - name: p_id
         in: query
         description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
         type: string
         required: true
-      - "$ref": "#/parameters/p_units"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.p_units"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Air Pollution Report
       responses: 
@@ -196,14 +233,14 @@ paths:
       summary: Air Pollutant Report Aggregated Emissions Service
       description: This procedure obtains data for Total Aggregate Emissions in the Emissions section of the Air Pollutant Report.
       parameters: 
-      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/f.output"
       - name: p_id
-        in: query
+        in: formData
         description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
         type: string
         required: true
-      - "$ref": "#/parameters/p_units"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.p_units"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Air Pollution Report
       responses: 
@@ -223,13 +260,13 @@ paths:
       summary: Air Pollutant Report Air Quality Service
       description: This procedure obtains data for Air Quality in the Environmental Conditions Section of the Air Pollutant Report.
       parameters: 
-      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/g.output"
       - name: p_id
         in: query
         description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
         type: string
         required: true
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Air Pollution Report
       responses: 
@@ -248,13 +285,13 @@ paths:
       summary: Air Pollutant Report Air Quality Service
       description: This procedure obtains data for Air Quality in the Environmental Conditions Section of the Air Pollutant Report.
       parameters: 
-      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/f.output"
       - name: p_id
-        in: query
+        in: formData
         description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
         type: string
         required: true
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Air Pollution Report
       responses: 
@@ -274,13 +311,13 @@ paths:
       summary: Air Pollutant Report Map Service
       description: "Returns an object with the facility's latitude and longitude coordinates."
       parameters: 
-      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/g.output"
       - name: p_id
         in: query
         description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
         type: string
         required: true
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Air Pollution Report
       responses: 
@@ -299,13 +336,13 @@ paths:
       summary: Air Pollutant Report Map Service
       description: "Returns an object with the facility's latitude and longitude coordinates."
       parameters: 
-      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/f.output"
       - name: p_id
-        in: query
+        in: formData
         description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
         type: string
         required: true
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Air Pollution Report
       responses: 
@@ -325,13 +362,13 @@ paths:
       summary: Air Pollutant Report Spatial Metadata Service
       description: Returns an object with the facility coordinate spatial metadata.
       parameters: 
-      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/g.output"
       - name: p_id
         in: query
         description: Identifier for the service.
         type: string
         required: true
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Air Pollution Report
       responses: 
@@ -350,13 +387,13 @@ paths:
       summary: Air Pollutant Report Spatial Metadata Service
       description: Returns an object with the facility coordinate spatial metadata.
       parameters: 
-      - "$ref": "#/parameters/output"
+      - "$ref": "#/parameters/f.output"
       - name: p_id
-        in: query
+        in: formData
         description: Identifier for the service.
         type: string
         required: true
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Air Pollution Report
       responses: 

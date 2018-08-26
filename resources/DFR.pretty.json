@@ -18,15 +18,14 @@
        "https"
    ]
    ,"consumes": [
-       "application\/json"
-      ,"application\/xml"
+       "application\/x-www-form-urlencoded"
    ]
    ,"produces": [
        "application\/json"
       ,"application\/xml"
    ]
    ,"parameters": {
-       "output": {
+       "g.output": {
           "name": "output"
          ,"in": "query"
          ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
@@ -38,30 +37,69 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"p_id": {
+      ,"f.output": {
+          "name": "output"
+         ,"in": "formData"
+         ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+         ,"enum": [
+             "JSONP"
+            ,"JSON"
+            ,"XML"
+         ]
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"g.p_id": {
           "name": "p_id"
          ,"in": "query"
          ,"description": "Either the EPA Facility Registry System's REGISTRY_ID for a facility or the facility identifier from the following EPA Systems: RCRAINFO (HANDLER_ID), AFS (SCSC), ICIS NPDES (NPDES_ID), or SDWIS (PWS_ID)."
          ,"type": "string"
          ,"required": true
       }
-      ,"callback": {
+      ,"f.p_id": {
+          "name": "p_id"
+         ,"in": "formData"
+         ,"description": "Either the EPA Facility Registry System's REGISTRY_ID for a facility or the facility identifier from the following EPA Systems: RCRAINFO (HANDLER_ID), AFS (SCSC), ICIS NPDES (NPDES_ID), or SDWIS (PWS_ID)."
+         ,"type": "string"
+         ,"required": true
+      }
+      ,"g.callback": {
           "name": "callback"
          ,"in": "query"
          ,"description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
          ,"type": "string"
          ,"required": false
       }
-      ,"p_system": {
+      ,"f.callback": {
+          "name": "callback"
+         ,"in": "formData"
+         ,"description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"f.p_system": {
+          "name": "p_system"
+         ,"in": "formData"
+         ,"description": "System Acronym Filter.  Enter a single system acronym to filter results."
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"g.p_system": {
           "name": "p_system"
          ,"in": "query"
          ,"description": "System Acronym Filter.  Enter a single system acronym to filter results."
          ,"type": "string"
          ,"required": false
       }
-      ,"p_radius": {
+      ,"g.p_radius": {
           "name": "p_radius"
          ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"f.p_radius": {
+          "name": "p_radius"
+         ,"in": "formData"
          ,"type": "string"
          ,"required": false
       }
@@ -73,16 +111,16 @@
             ,"description": "This procedure is the overall service for the Detailed Facility Report. It returns all of the data displayed in the DFR web report by invoking individual procedures that each return a targeted portion of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/p_system"
+                   "$ref": "#\/parameters\/g.p_system"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -99,7 +137,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfr4_Results"
+                         "$ref": "#\/definitions\/dfr018_Results"
                      }
                   }
                   ,"required": [
@@ -114,16 +152,16 @@
             ,"description": "This procedure is the overall service for the Detailed Facility Report. It returns all of the data displayed in the DFR web report by invoking individual procedures that each return a targeted portion of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/p_system"
+                   "$ref": "#\/parameters\/f.p_system"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -140,7 +178,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfr4_Results"
+                         "$ref": "#\/definitions\/dfr018_Results"
                      }
                   }
                   ,"required": [
@@ -157,13 +195,13 @@
             ,"description": "This procedure obtains data for Air Compliance in the Environmental Conditions Section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -180,7 +218,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrq_Results"
+                         "$ref": "#\/definitions\/dfr001_Results"
                      }
                   }
                   ,"required": [
@@ -195,13 +233,13 @@
             ,"description": "This procedure obtains data for Air Compliance in the Environmental Conditions Section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -218,7 +256,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrq_Results"
+                         "$ref": "#\/definitions\/dfr001_Results"
                      }
                   }
                   ,"required": [
@@ -235,13 +273,13 @@
             ,"description": "This procedure obtains data for Air Quality in the Environmental Conditions Section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -258,7 +296,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfr1_Results"
+                         "$ref": "#\/definitions\/dfr002_Results"
                      }
                   }
                   ,"required": [
@@ -273,13 +311,13 @@
             ,"description": "This procedure obtains data for Air Quality in the Environmental Conditions Section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -296,7 +334,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfr1_Results"
+                         "$ref": "#\/definitions\/dfr002_Results"
                      }
                   }
                   ,"required": [
@@ -312,13 +350,13 @@
              "summary": "Placeholder"
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -335,7 +373,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfr200"
+                         "$ref": "#\/definitions\/dfr004"
                      }
                   }
                   ,"required": [
@@ -349,13 +387,13 @@
              "summary": "Placeholder"
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -372,7 +410,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfr200"
+                         "$ref": "#\/definitions\/dfr004"
                      }
                   }
                   ,"required": [
@@ -389,13 +427,13 @@
             ,"description": "This procedure obtains data for the Compliance Monitoring History (5 years) in the Enforcement and Compliance Section of the Detailed Facility report."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -412,7 +450,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfr2_Results"
+                         "$ref": "#\/definitions\/dfr005_Results"
                      }
                   }
                   ,"required": [
@@ -427,13 +465,13 @@
             ,"description": "This procedure obtains data for the Compliance Monitoring History (5 years) in the Enforcement and Compliance Section of the Detailed Facility report."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -450,7 +488,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfr2_Results"
+                         "$ref": "#\/definitions\/dfr005_Results"
                      }
                   }
                   ,"required": [
@@ -467,13 +505,13 @@
             ,"description": "This procedure obtains data for Compliance Summary Data in the Enforcement and Compliance Section of the Detailed Facility report."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -490,7 +528,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfr3_Results"
+                         "$ref": "#\/definitions\/dfr006_Results"
                      }
                   }
                   ,"required": [
@@ -505,13 +543,13 @@
             ,"description": "This procedure obtains data for Compliance Summary Data in the Enforcement and Compliance Section of the Detailed Facility report."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -528,7 +566,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfr3_Results"
+                         "$ref": "#\/definitions\/dfr006_Results"
                      }
                   }
                   ,"required": [
@@ -545,13 +583,13 @@
             ,"description": "This procedure obtains data for the CWA Facility-Level Status section located in the Three Year Compliance Status by Quarter portion of the DFR. Valid Compliance Statuses are as follows:\n> \"In Viol\" = Facility is in violation\n> \"No Viol\" = No violation found\n> \"Unk\" = Unknown status\n> \"SNC\/Cat 1\" = SNC\/Category I violation found"
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -568,7 +606,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrW_Results"
+                         "$ref": "#\/definitions\/dfr009_Results"
                      }
                   }
                   ,"required": [
@@ -583,13 +621,13 @@
             ,"description": "This procedure obtains data for the CWA Facility-Level Status section located in the Three Year Compliance Status by Quarter portion of the DFR. Valid Compliance Statuses are as follows:\n> \"In Viol\" = Facility is in violation\n> \"No Viol\" = No violation found\n> \"Unk\" = Unknown status\n> \"SNC\/Cat 1\" = SNC\/Category I violation found"
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -606,7 +644,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrW_Results"
+                         "$ref": "#\/definitions\/dfr009_Results"
                      }
                   }
                   ,"required": [
@@ -622,13 +660,13 @@
              "summary": "Placeholder"
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -645,7 +683,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfr0_get_cwa_3yr_d80d90_counts.Results"
+                         "$ref": "#\/definitions\/dfr007_Results"
                      }
                   }
                   ,"required": [
@@ -659,13 +697,13 @@
              "summary": "Placeholder"
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -682,7 +720,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfr0_get_cwa_3yr_d80d90_counts.Results"
+                         "$ref": "#\/definitions\/dfr007_Results"
                      }
                   }
                   ,"required": [
@@ -699,13 +737,13 @@
             ,"description": "This procedure obtains data for the CWA Compliance Schedule Violations section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -722,7 +760,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrs_Results"
+                         "$ref": "#\/definitions\/dfr010_Results"
                      }
                   }
                   ,"required": [
@@ -737,13 +775,13 @@
             ,"description": "This procedure obtains data for the CWA Compliance Schedule Violations section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -760,7 +798,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrs_Results"
+                         "$ref": "#\/definitions\/dfr010_Results"
                      }
                   }
                   ,"required": [
@@ -777,13 +815,13 @@
             ,"description": "This procedure obtains data for the CWA Pollutant Discharge section located in the Three Year Compliance Status by Quarter portion of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -800,7 +838,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrt_Results"
+                         "$ref": "#\/definitions\/dfr011_Results"
                      }
                   }
                   ,"required": [
@@ -815,13 +853,13 @@
             ,"description": "This procedure obtains data for the CWA Pollutant Discharge section located in the Three Year Compliance Status by Quarter portion of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -838,7 +876,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrt_Results"
+                         "$ref": "#\/definitions\/dfr011_Results"
                      }
                   }
                   ,"required": [
@@ -855,13 +893,13 @@
             ,"description": "This procedure obtains data for the CWA Effluent Compliance section on the DFR.  "
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -878,7 +916,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfru_Results"
+                         "$ref": "#\/definitions\/dfr012_Results"
                      }
                   }
                   ,"required": [
@@ -893,13 +931,13 @@
             ,"description": "This procedure obtains data for the CWA Effluent Compliance section on the DFR.  "
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -916,7 +954,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfru_Results"
+                         "$ref": "#\/definitions\/dfr012_Results"
                      }
                   }
                   ,"required": [
@@ -933,13 +971,13 @@
             ,"description": "This procedure obtains data for the CWA Permit Schedule Violations section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -956,7 +994,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrv_Results"
+                         "$ref": "#\/definitions\/dfr013_Results"
                      }
                   }
                   ,"required": [
@@ -971,13 +1009,13 @@
             ,"description": "This procedure obtains data for the CWA Permit Schedule Violations section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -994,7 +1032,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrv_Results"
+                         "$ref": "#\/definitions\/dfr013_Results"
                      }
                   }
                   ,"required": [
@@ -1011,13 +1049,13 @@
             ,"description": "This procedure obtains data for the CWA SNC\/RNC History section located in the Three Year ompliance Status by Quarter portion of the DFR. Valid Compliance Statuses are as follows.\n> S = SNC\/Category I - an enforcement action has been issued, and the facility is not meeting its compliance schedule\n> E = SNC\/Category I - effluent violations of monthly average limits (Technical Review Criteria and chronic)\n> X = SNC\/Category I - effluent violations of non-monthly average limits (Technical Review Criteria and chronic)\n> T = SNC\/Category I - compliance schedule reporting violation\n> D = SNC\/Category I - reporting violation - nonreceipt of DMR\n> N = RNC\/Category II - reportable non-compliance\n> P = Resolved Pending - an enforcement action has been issued, and facility compliance with the action is pending final completion\n> R = Resolved - the facility has returned to compliance with its permit conditions, either with or without issuance of an enforcement action\n> C = Not considered in RNC\/SNC based on manual review of data by state or EPA region. This manual override status is also indicated by a superscripted \"m\".\n> Blank = Not considered in RNC\/SNC\n> N\/A = EPA's data system is not able to determine the facility-level compliance status based upon the information available. This information may be available from a state database."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -1034,7 +1072,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrw_Results"
+                         "$ref": "#\/definitions\/dfr014_Results"
                      }
                   }
                   ,"required": [
@@ -1049,13 +1087,13 @@
             ,"description": "This procedure obtains data for the CWA SNC\/RNC History section located in the Three Year ompliance Status by Quarter portion of the DFR. Valid Compliance Statuses are as follows.\n> S = SNC\/Category I - an enforcement action has been issued, and the facility is not meeting its compliance schedule\n> E = SNC\/Category I - effluent violations of monthly average limits (Technical Review Criteria and chronic)\n> X = SNC\/Category I - effluent violations of non-monthly average limits (Technical Review Criteria and chronic)\n> T = SNC\/Category I - compliance schedule reporting violation\n> D = SNC\/Category I - reporting violation - nonreceipt of DMR\n> N = RNC\/Category II - reportable non-compliance\n> P = Resolved Pending - an enforcement action has been issued, and facility compliance with the action is pending final completion\n> R = Resolved - the facility has returned to compliance with its permit conditions, either with or without issuance of an enforcement action\n> C = Not considered in RNC\/SNC based on manual review of data by state or EPA region. This manual override status is also indicated by a superscripted \"m\".\n> Blank = Not considered in RNC\/SNC\n> N\/A = EPA's data system is not able to determine the facility-level compliance status based upon the information available. This information may be available from a state database."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -1072,7 +1110,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrw_Results"
+                         "$ref": "#\/definitions\/dfr014_Results"
                      }
                   }
                   ,"required": [
@@ -1089,13 +1127,13 @@
             ,"description": "This procedure obtains data for the CWA Single Event Violations section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -1112,7 +1150,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrx_Results"
+                         "$ref": "#\/definitions\/dfr015_Results"
                      }
                   }
                   ,"required": [
@@ -1127,13 +1165,13 @@
             ,"description": "This procedure obtains data for the CWA Single Event Violations section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -1150,7 +1188,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrx_Results"
+                         "$ref": "#\/definitions\/dfr015_Results"
                      }
                   }
                   ,"required": [
@@ -1166,16 +1204,16 @@
              "summary": "Placeholder"
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/p_radius"
+                   "$ref": "#\/parameters\/g.p_radius"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -1192,7 +1230,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrY_Results"
+                         "$ref": "#\/definitions\/dfr017_Results"
                      }
                   }
                   ,"required": [
@@ -1206,16 +1244,16 @@
              "summary": "Placeholder"
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/p_radius"
+                   "$ref": "#\/parameters\/f.p_radius"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -1232,7 +1270,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrY_Results"
+                         "$ref": "#\/definitions\/dfr017_Results"
                      }
                   }
                   ,"required": [
@@ -1249,13 +1287,13 @@
             ,"description": "This procedure obtains data for the Enforcement and Compliance Summary in the Facility Summary section of the Detailed Facility Report."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -1272,7 +1310,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrW1_Results"
+                         "$ref": "#\/definitions\/dfr114_Results"
                      }
                   }
                   ,"required": [
@@ -1287,13 +1325,13 @@
             ,"description": "This procedure obtains data for the Enforcement and Compliance Summary in the Facility Summary section of the Detailed Facility Report."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -1310,7 +1348,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrW1_Results"
+                         "$ref": "#\/definitions\/dfr114_Results"
                      }
                   }
                   ,"required": [
@@ -1326,13 +1364,13 @@
              "summary": "Placeholder"
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -1349,7 +1387,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfr300"
+                         "$ref": "#\/definitions\/dfr115"
                      }
                   }
                   ,"required": [
@@ -1363,13 +1401,13 @@
              "summary": "Placeholder"
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -1386,7 +1424,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfr300"
+                         "$ref": "#\/definitions\/dfr115"
                      }
                   }
                   ,"required": [
@@ -1403,13 +1441,13 @@
             ,"description": "This procedure obtains data for the Formal Enforcement Actions section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -1426,7 +1464,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrW2_Results"
+                         "$ref": "#\/definitions\/dfr116_Results"
                      }
                   }
                   ,"required": [
@@ -1441,13 +1479,13 @@
             ,"description": "This procedure obtains data for the Formal Enforcement Actions section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -1464,7 +1502,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrW2_Results"
+                         "$ref": "#\/definitions\/dfr116_Results"
                      }
                   }
                   ,"required": [
@@ -1481,13 +1519,13 @@
             ,"description": "This procedure obtains data for the Integrated Compliance Information System, Formal Enforcement Actions section of the DFR. "
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -1504,7 +1542,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfra_Results"
+                         "$ref": "#\/definitions\/dfr117_Results"
                      }
                   }
                   ,"required": [
@@ -1519,13 +1557,13 @@
             ,"description": "This procedure obtains data for the Integrated Compliance Information System, Formal Enforcement Actions section of the DFR. "
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -1542,7 +1580,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfra_Results"
+                         "$ref": "#\/definitions\/dfr117_Results"
                      }
                   }
                   ,"required": [
@@ -1559,13 +1597,13 @@
             ,"description": "This procedure obtains data for Enforcement and Compliance Summary Section of the Detailed Facility report."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -1582,7 +1620,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfra1_Results"
+                         "$ref": "#\/definitions\/dfr118_Results"
                      }
                   }
                   ,"required": [
@@ -1597,13 +1635,13 @@
             ,"description": "This procedure obtains data for Enforcement and Compliance Summary Section of the Detailed Facility report."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -1620,7 +1658,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfra1_Results"
+                         "$ref": "#\/definitions\/dfr118_Results"
                      }
                   }
                   ,"required": [
@@ -1637,13 +1675,13 @@
             ,"description": "This procedure obtains data for the Facility NAICS Codes section in Facility\/System Characteristics of the Detailed Facility Report."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -1660,7 +1698,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfra2_Results"
+                         "$ref": "#\/definitions\/dfr120_Results"
                      }
                   }
                   ,"required": [
@@ -1675,13 +1713,13 @@
             ,"description": "This procedure obtains data for the Facility NAICS Codes section in Facility\/System Characteristics of the Detailed Facility Report."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -1698,7 +1736,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfra2_Results"
+                         "$ref": "#\/definitions\/dfr120_Results"
                      }
                   }
                   ,"required": [
@@ -1715,13 +1753,13 @@
             ,"description": "This procedure obtains data for the Notices\/Informal Actions section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -1738,7 +1776,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrg_Results"
+                         "$ref": "#\/definitions\/dfr122_Results"
                      }
                   }
                   ,"required": [
@@ -1753,13 +1791,13 @@
             ,"description": "This procedure obtains data for the Notices\/Informal Actions section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -1776,7 +1814,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrg_Results"
+                         "$ref": "#\/definitions\/dfr122_Results"
                      }
                   }
                   ,"required": [
@@ -1793,13 +1831,13 @@
             ,"description": "This procedure obtains data for the following sections of the Detailed Facility Report.\n> Facility Information (FRS) in the Facility Summary.\n> Regulatory Interests in the Facility Summary.\n> Also Reports in the Facility Summary.\n> Facility\/System Characteristics in Facility\/System Characteristics.\n> Facility Contact Information in Facility\/System Characteristics.\n> Facility SIC Codes in Facility\/System Characteristics section.\n> Facility NAICS Codes in Facility\/System Characteristics section."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -1816,7 +1854,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrg1_Results"
+                         "$ref": "#\/definitions\/dfr123_Results"
                      }
                   }
                   ,"required": [
@@ -1831,13 +1869,13 @@
             ,"description": "This procedure obtains data for the following sections of the Detailed Facility Report.\n> Facility Information (FRS) in the Facility Summary.\n> Regulatory Interests in the Facility Summary.\n> Also Reports in the Facility Summary.\n> Facility\/System Characteristics in Facility\/System Characteristics.\n> Facility Contact Information in Facility\/System Characteristics.\n> Facility SIC Codes in Facility\/System Characteristics section.\n> Facility NAICS Codes in Facility\/System Characteristics section."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -1854,7 +1892,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrg1_Results"
+                         "$ref": "#\/definitions\/dfr123_Results"
                      }
                   }
                   ,"required": [
@@ -1871,13 +1909,13 @@
             ,"description": "This procedure obtains data for the RCRA Compliance section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -1894,7 +1932,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrh_Results"
+                         "$ref": "#\/definitions\/dfr124_Results"
                      }
                   }
                   ,"required": [
@@ -1909,13 +1947,13 @@
             ,"description": "This procedure obtains data for the RCRA Compliance section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -1932,7 +1970,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrh_Results"
+                         "$ref": "#\/definitions\/dfr124_Results"
                      }
                   }
                   ,"required": [
@@ -1949,13 +1987,13 @@
             ,"description": "This procedure obtains data for the SDWA, Lead and Copper Rule section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -1972,7 +2010,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrk_Results"
+                         "$ref": "#\/definitions\/dfr125_Results"
                      }
                   }
                   ,"required": [
@@ -1987,13 +2025,13 @@
             ,"description": "This procedure obtains data for the SDWA, Lead and Copper Rule section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -2010,7 +2048,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrk_Results"
+                         "$ref": "#\/definitions\/dfr125_Results"
                      }
                   }
                   ,"required": [
@@ -2027,13 +2065,13 @@
             ,"description": "This procedure obtains data for the SDWA, Sanitary Surveys section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -2050,7 +2088,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrj_Results"
+                         "$ref": "#\/definitions\/dfr126_Results"
                      }
                   }
                   ,"required": [
@@ -2065,13 +2103,13 @@
             ,"description": "This procedure obtains data for the SDWA, Sanitary Surveys section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -2088,7 +2126,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrj_Results"
+                         "$ref": "#\/definitions\/dfr126_Results"
                      }
                   }
                   ,"required": [
@@ -2105,13 +2143,13 @@
             ,"description": "This procedure obtains data for the SDWA, Sanitary Site Visits section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -2128,7 +2166,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfri_Results"
+                         "$ref": "#\/definitions\/dfr127_Results"
                      }
                   }
                   ,"required": [
@@ -2143,13 +2181,13 @@
             ,"description": "This procedure obtains data for the SDWA, Sanitary Site Visits section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -2166,7 +2204,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfri_Results"
+                         "$ref": "#\/definitions\/dfr127_Results"
                      }
                   }
                   ,"required": [
@@ -2183,13 +2221,13 @@
             ,"description": "This procedure obtains data for the SDWA Violations section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -2206,7 +2244,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrf_Results"
+                         "$ref": "#\/definitions\/dfr128_Results"
                      }
                   }
                   ,"required": [
@@ -2221,13 +2259,13 @@
             ,"description": "This procedure obtains data for the SDWA Violations section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -2244,7 +2282,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrf_Results"
+                         "$ref": "#\/definitions\/dfr128_Results"
                      }
                   }
                   ,"required": [
@@ -2261,13 +2299,13 @@
             ,"description": "This procedure obtains data for the SDWA Compliance section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -2284,7 +2322,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrl_Results"
+                         "$ref": "#\/definitions\/dfr129_Results"
                      }
                   }
                   ,"required": [
@@ -2299,13 +2337,13 @@
             ,"description": "This procedure obtains data for the SDWA Compliance section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -2322,7 +2360,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrl_Results"
+                         "$ref": "#\/definitions\/dfr129_Results"
                      }
                   }
                   ,"required": [
@@ -2339,13 +2377,13 @@
             ,"description": "This procedure obtains data for the Facility SIC Codes section in Facility\/System Characteristics of the Detailed Facility Report."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -2362,7 +2400,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrg2_Results"
+                         "$ref": "#\/definitions\/dfr130_Results"
                      }
                   }
                   ,"required": [
@@ -2377,13 +2415,13 @@
             ,"description": "This procedure obtains data for the Facility SIC Codes section in Facility\/System Characteristics of the Detailed Facility Report."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -2400,7 +2438,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrg2_Results"
+                         "$ref": "#\/definitions\/dfr130_Results"
                      }
                   }
                   ,"required": [
@@ -2417,13 +2455,13 @@
             ,"description": "Returns an object with the facility coordinate spatial metadata."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -2440,7 +2478,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrg3_Results"
+                         "$ref": "#\/definitions\/dfr131_Results"
                      }
                   }
                   ,"required": [
@@ -2455,13 +2493,13 @@
             ,"description": "Returns an object with the facility coordinate spatial metadata."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -2478,7 +2516,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrg3_Results"
+                         "$ref": "#\/definitions\/dfr131_Results"
                      }
                   }
                   ,"required": [
@@ -2495,13 +2533,13 @@
             ,"description": "This procedure obtains data for the TRI History section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -2518,7 +2556,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrm_Results"
+                         "$ref": "#\/definitions\/dfr132_Results"
                      }
                   }
                   ,"required": [
@@ -2533,13 +2571,13 @@
             ,"description": "This procedure obtains data for the TRI History section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -2556,7 +2594,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrm_Results"
+                         "$ref": "#\/definitions\/dfr132_Results"
                      }
                   }
                   ,"required": [
@@ -2573,13 +2611,13 @@
             ,"description": "This procedrue obtains data for the TRI Releases section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -2596,7 +2634,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrn_Results"
+                         "$ref": "#\/definitions\/dfr133_Results"
                      }
                   }
                   ,"required": [
@@ -2611,13 +2649,13 @@
             ,"description": "This procedrue obtains data for the TRI Releases section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -2634,7 +2672,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrn_Results"
+                         "$ref": "#\/definitions\/dfr133_Results"
                      }
                   }
                   ,"required": [
@@ -2651,13 +2689,13 @@
             ,"description": "This procedure obtains data for the Tribes and Reservations section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -2674,7 +2712,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfro_Results"
+                         "$ref": "#\/definitions\/dfr134_Results"
                      }
                   }
                   ,"required": [
@@ -2689,13 +2727,13 @@
             ,"description": "This procedure obtains data for the Tribes and Reservations section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -2712,7 +2750,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfro_Results"
+                         "$ref": "#\/definitions\/dfr134_Results"
                      }
                   }
                   ,"required": [
@@ -2729,16 +2767,16 @@
             ,"description": "This procedure obtains data for the Water Quality section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/p_radius"
+                   "$ref": "#\/parameters\/g.p_radius"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -2755,7 +2793,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrp_Results"
+                         "$ref": "#\/definitions\/dfr135_Results"
                      }
                   }
                   ,"required": [
@@ -2770,16 +2808,16 @@
             ,"description": "This procedure obtains data for the Water Quality section of the DFR."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/p_radius"
+                   "$ref": "#\/parameters\/f.p_radius"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -2796,7 +2834,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrp_Results"
+                         "$ref": "#\/definitions\/dfr135_Results"
                      }
                   }
                   ,"required": [
@@ -2812,16 +2850,16 @@
              "summary": "Placeholder"
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/p_radius"
+                   "$ref": "#\/parameters\/g.p_radius"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -2838,7 +2876,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrp1_Results"
+                         "$ref": "#\/definitions\/dfr136_Results"
                      }
                   }
                   ,"required": [
@@ -2852,16 +2890,16 @@
              "summary": "Placeholder"
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/p_radius"
+                   "$ref": "#\/parameters\/f.p_radius"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -2878,7 +2916,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrp1_Results"
+                         "$ref": "#\/definitions\/dfr136_Results"
                      }
                   }
                   ,"required": [
@@ -2895,13 +2933,13 @@
             ,"description": "Returns an object with the facility's latitude and longitude coordinates."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/g.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/g.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/g.callback"
                }
             ]
             ,"tags": [
@@ -2918,7 +2956,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrZ_Results"
+                         "$ref": "#\/definitions\/dfr119_Results"
                      }
                   }
                   ,"required": [
@@ -2933,13 +2971,13 @@
             ,"description": "Returns an object with the facility's latitude and longitude coordinates."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/output"
+                   "$ref": "#\/parameters\/f.output"
                }
                ,{
-                   "$ref": "#\/parameters\/p_id"
+                   "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/callback"
+                   "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
@@ -2956,7 +2994,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dfrZ_Results"
+                         "$ref": "#\/definitions\/dfr119_Results"
                      }
                   }
                   ,"required": [
@@ -4634,7 +4672,7 @@
             ,"Qtr13Status"
          ]
       }
-      ,"dfrq_Results": {
+      ,"dfr001_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4645,14 +4683,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"AirCompliance": {
-                "$ref": "#\/definitions\/dfr5_AirCompliance"
+                "$ref": "#\/definitions\/dfr019"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfr1_Results": {
+      ,"dfr002_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4663,14 +4701,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"AirQuality": {
-                "$ref": "#\/definitions\/dfr6_AirQuality"
+                "$ref": "#\/definitions\/dfr024"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfr200": {
+      ,"dfr004": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4681,14 +4719,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"CaseFormalActions": {
-                "$ref": "#\/definitions\/dfr720"
+                "$ref": "#\/definitions\/dfr052"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfr2_Results": {
+      ,"dfr005_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4699,14 +4737,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"ComplianceHistory": {
-                "$ref": "#\/definitions\/dfrV_ComplianceHistory"
+                "$ref": "#\/definitions\/dfr057"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfr3_Results": {
+      ,"dfr006_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4717,14 +4755,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"ComplianceSummary": {
-                "$ref": "#\/definitions\/dfrD_ComplianceSummary"
+                "$ref": "#\/definitions\/dfr059"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrW_Results": {
+      ,"dfr009_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4735,14 +4773,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"CWA3YrCompliance": {
-                "$ref": "#\/definitions\/dfr7_CWA3YrCompliance"
+                "$ref": "#\/definitions\/dfr025"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfr0_get_cwa_3yr_d80d90_counts.Results": {
+      ,"dfr007_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4753,7 +4791,7 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"CWA3YrD80D90Counts": {
-                "$ref": "#\/definitions\/dfr712"
+                "$ref": "#\/definitions\/dfr027"
             }
          }
          ,"required": [
@@ -4761,7 +4799,7 @@
             ,"CWA3YrD80D90Counts"
          ]
       }
-      ,"dfrs_Results": {
+      ,"dfr010_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4772,14 +4810,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"CWACSCompliance": {
-                "$ref": "#\/definitions\/dfr10_CWACSCompliance"
+                "$ref": "#\/definitions\/dfr031"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrt_Results": {
+      ,"dfr011_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4790,14 +4828,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"CWAEffluentALRExceedences": {
-                "$ref": "#\/definitions\/dfr8_CWAEffluentALRExceedences"
+                "$ref": "#\/definitions\/dfr035"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfru_Results": {
+      ,"dfr012_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4808,14 +4846,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"CWAEffluentCompliance": {
-                "$ref": "#\/definitions\/dfr9_CWAEffluentCompliance"
+                "$ref": "#\/definitions\/dfr038"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrv_Results": {
+      ,"dfr013_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4826,14 +4864,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"CWAPSCompliance": {
-                "$ref": "#\/definitions\/dfrA_CWAPSCompliance"
+                "$ref": "#\/definitions\/dfr042"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrw_Results": {
+      ,"dfr014_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4844,14 +4882,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"CWARNCCompliance": {
-                "$ref": "#\/definitions\/dfrB_CWARNCCompliance"
+                "$ref": "#\/definitions\/dfr046"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrx_Results": {
+      ,"dfr015_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4862,14 +4900,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"CWASECompliance": {
-                "$ref": "#\/definitions\/dfrC_CWASECompliance"
+                "$ref": "#\/definitions\/dfr049"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrY_Results": {
+      ,"dfr017_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4880,14 +4918,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"Demographics": {
-                "$ref": "#\/definitions\/dfrE_Demographics"
+                "$ref": "#\/definitions\/dfr061"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfr5_AirCompliance": {
+      ,"dfr019": {
           "type": "object"
          ,"description": "Air Compliance Object"
          ,"properties": {
@@ -4898,7 +4936,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrc_Sources"
+                   "$ref": "#\/definitions\/dfr020_s"
                }
                ,"xml": {
                    "name": "Sources"
@@ -4907,7 +4945,7 @@
             }
          }
       }
-      ,"dfrc_Sources": {
+      ,"dfr020_s": {
           "type": "object"
          ,"description": "Source Object"
          ,"xml": {
@@ -4923,7 +4961,7 @@
             ,"HPVProgramsPollutants": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrc_Sources.HPVProgramsPollutants"
+                   "$ref": "#\/definitions\/dfr020_s.HPVProgramsPollutants"
                }
                ,"xml": {
                    "name": "HPVProgramsPollutants"
@@ -4934,7 +4972,7 @@
                 "type": "array"
                ,"title": "FRV Programs Pollutants"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrc_Sources.FRVProgramsPollutants"
+                   "$ref": "#\/definitions\/dfr020_s.FRVProgramsPollutants"
                }
                ,"xml": {
                    "name": "FRVProgramsPollutants"
@@ -4944,7 +4982,7 @@
             ,"AFSPrograms": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrc_Sources.AFSPrograms"
+                   "$ref": "#\/definitions\/dfr020_s.AFSPrograms"
                }
                ,"xml": {
                    "name": "AFSPrograms"
@@ -4960,7 +4998,7 @@
             ,"AFSPrograms"
          ]
       }
-      ,"dfrc_Sources.AFSPrograms": {
+      ,"dfr020_s.AFSPrograms": {
           "type": "object"
          ,"description": "AFS Program Object"
          ,"xml": {
@@ -5067,7 +5105,7 @@
             ,"Qtr12Status"
          ]
       }
-      ,"dfrc_Sources.FRVProgramsPollutants": {
+      ,"dfr020_s.FRVProgramsPollutants": {
           "type": "object"
          ,"description": "FRV Programs Pollutant Object"
          ,"xml": {
@@ -5193,7 +5231,7 @@
             ,"Agency"
          ]
       }
-      ,"dfrc_Sources.HPVProgramsPollutants": {
+      ,"dfr020_s.HPVProgramsPollutants": {
           "type": "object"
          ,"description": "HPV Programs Pollutant Object"
          ,"xml": {
@@ -5319,7 +5357,7 @@
             ,"Agency"
          ]
       }
-      ,"dfr6_AirQuality": {
+      ,"dfr024": {
           "type": "object"
          ,"description": "Air Quality Object"
          ,"properties": {
@@ -5361,7 +5399,7 @@
             }
          }
       }
-      ,"dfr4_CAEDDocuments": {
+      ,"dfr018_CAEDDocuments": {
           "type": "object"
          ,"description": "CAED Documents"
          ,"xml": {
@@ -5391,7 +5429,7 @@
             }
          }
       }
-      ,"dfr7_CWA3YrCompliance": {
+      ,"dfr025": {
           "type": "object"
          ,"description": "CWA 3-Year Compliance Object"
          ,"properties": {
@@ -5402,7 +5440,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr7_Sources"
+                   "$ref": "#\/definitions\/dfr026"
                }
                ,"xml": {
                    "name": "Sources"
@@ -5411,7 +5449,7 @@
             }
          }
       }
-      ,"dfr7_Sources": {
+      ,"dfr026": {
           "type": "object"
          ,"description": "CWA 3-Year Compliance Sources Object"
          ,"xml": {
@@ -5434,7 +5472,7 @@
              "Status"
          ]
       }
-      ,"dfr712": {
+      ,"dfr027": {
           "type": "object"
          ,"description": "CWA 3-Year D80D90 Counts"
          ,"properties": {
@@ -5445,7 +5483,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr713"
+                   "$ref": "#\/definitions\/dfr029"
                }
                ,"xml": {
                    "name": "Sources"
@@ -5454,7 +5492,7 @@
             }
          }
       }
-      ,"dfr713": {
+      ,"dfr029": {
           "type": "object"
          ,"description": "CWA 3-Year D80D90 Sources Object"
          ,"xml": {
@@ -5465,7 +5503,7 @@
                 "type": "array"
                ,"title": "Status"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr714"
+                   "$ref": "#\/definitions\/dfr030"
                }
                ,"xml": {
                    "name": "Status"
@@ -5477,7 +5515,7 @@
              "Status"
          ]
       }
-      ,"dfr714": {
+      ,"dfr030": {
           "type": "object"
          ,"description": "Status Object"
          ,"properties": {
@@ -5548,7 +5586,7 @@
             ,"Qtr13Count"
          ]
       }
-      ,"dfr10_CWACSCompliance": {
+      ,"dfr031": {
           "type": "object"
          ,"description": "CWA CS Compliance Object"
          ,"properties": {
@@ -5559,7 +5597,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr10_Sources"
+                   "$ref": "#\/definitions\/dfr032"
                }
                ,"xml": {
                    "name": "Sources"
@@ -5568,7 +5606,7 @@
             }
          }
       }
-      ,"dfr10_Sources": {
+      ,"dfr032": {
           "type": "object"
          ,"description": "Sources Object"
          ,"xml": {
@@ -5579,7 +5617,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr10_Violations"
+                   "$ref": "#\/definitions\/dfr034"
                }
                ,"xml": {
                    "name": "Violations"
@@ -5591,7 +5629,7 @@
              "Violations"
          ]
       }
-      ,"dfr10_Violations": {
+      ,"dfr034": {
           "type": "object"
          ,"description": "Violations Object"
          ,"xml": {
@@ -5779,7 +5817,7 @@
             ,"Qtr13Value"
          ]
       }
-      ,"dfr8_CWAEffluentALRExceedences": {
+      ,"dfr035": {
           "type": "object"
          ,"description": "CWA Effluent ALR Exceedences Object"
          ,"properties": {
@@ -5790,7 +5828,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr8_Sources"
+                   "$ref": "#\/definitions\/dfr037"
                }
                ,"xml": {
                    "name": "Sources"
@@ -5799,7 +5837,7 @@
             }
          }
       }
-      ,"dfr8_Parameters": {
+      ,"dfr036": {
           "type": "object"
          ,"description": "Parameter Object"
          ,"xml": {
@@ -5908,7 +5946,7 @@
             ,"Qtr13Value"
          ]
       }
-      ,"dfr8_Sources": {
+      ,"dfr037": {
           "type": "object"
          ,"description": "Sources Object"
          ,"xml": {
@@ -5919,7 +5957,7 @@
                 "type": "array"
                ,"title": "Parameters"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr8_Parameters"
+                   "$ref": "#\/definitions\/dfr036"
                }
                ,"xml": {
                    "name": "Parameters"
@@ -5931,7 +5969,7 @@
              "Parameters"
          ]
       }
-      ,"dfr9_CWAEffluentCompliance": {
+      ,"dfr038": {
           "type": "object"
          ,"description": "CWA Effluent Compliance Object"
          ,"properties": {
@@ -5942,7 +5980,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr9_Sources"
+                   "$ref": "#\/definitions\/dfr041"
                }
                ,"xml": {
                    "name": "Sources"
@@ -5951,7 +5989,7 @@
             }
          }
       }
-      ,"dfr9_Parameters": {
+      ,"dfr040": {
           "type": "object"
          ,"description": "CWA Effluent Compliance Parameter Object"
          ,"xml": {
@@ -6463,7 +6501,7 @@
             ,"Mnth39Value"
          ]
       }
-      ,"dfr9_Sources": {
+      ,"dfr041": {
           "type": "object"
          ,"description": "CWA Effluent Compliance Sources Object"
          ,"xml": {
@@ -6474,7 +6512,7 @@
                 "type": "array"
                ,"title": "Parameters"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr9_Parameters"
+                   "$ref": "#\/definitions\/dfr040"
                }
                ,"xml": {
                    "name": "Parameters"
@@ -6483,7 +6521,7 @@
             }
          }
       }
-      ,"dfrA_CWAPSCompliance": {
+      ,"dfr042": {
           "type": "object"
          ,"description": "CWA PS Compliance Object"
          ,"properties": {
@@ -6494,7 +6532,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrA_Sources"
+                   "$ref": "#\/definitions\/dfr043"
                }
                ,"xml": {
                    "name": "Sources"
@@ -6503,7 +6541,7 @@
             }
          }
       }
-      ,"dfrA_Sources": {
+      ,"dfr043": {
           "type": "object"
          ,"description": "CWA PS Compliance Violation Object"
          ,"xml": {
@@ -6514,7 +6552,7 @@
                 "type": "array"
                ,"title": "Violations"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrA_Violations"
+                   "$ref": "#\/definitions\/dfr045"
                }
                ,"xml": {
                    "name": "Violations"
@@ -6526,7 +6564,7 @@
              "Violations"
          ]
       }
-      ,"dfrA_Violations": {
+      ,"dfr045": {
           "type": "object"
          ,"description": "CWA PS Compliance Violations Object"
          ,"xml": {
@@ -6714,7 +6752,7 @@
             ,"Qtr13Value"
          ]
       }
-      ,"dfrB_CWARNCCompliance": {
+      ,"dfr046": {
           "type": "object"
          ,"description": "CWA RNC Compliance Object"
          ,"properties": {
@@ -6725,7 +6763,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrB_Sources.Status"
+                   "$ref": "#\/definitions\/dfr047_.Status"
                }
                ,"xml": {
                    "name": "Sources"
@@ -6734,7 +6772,7 @@
             }
          }
       }
-      ,"dfrB_Sources.Status": {
+      ,"dfr047_.Status": {
           "type": "object"
          ,"description": "CWA RNC Compliance Statuses Object"
          ,"xml": {
@@ -6754,7 +6792,7 @@
             }
          }
       }
-      ,"dfrC_CWASECompliance": {
+      ,"dfr049": {
           "type": "object"
          ,"description": "CWA SE Compliance Object"
          ,"properties": {
@@ -6765,7 +6803,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrC_Sources"
+                   "$ref": "#\/definitions\/dfr050"
                }
                ,"xml": {
                    "name": "Sources"
@@ -6774,7 +6812,7 @@
             }
          }
       }
-      ,"dfrC_Sources": {
+      ,"dfr050": {
           "type": "object"
          ,"description": "CWA SE Compliance Sources Object"
          ,"xml": {
@@ -6785,7 +6823,7 @@
                 "type": "array"
                ,"title": "Violations"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrC_Violations"
+                   "$ref": "#\/definitions\/dfr051"
                }
                ,"xml": {
                    "name": "Violations"
@@ -6797,7 +6835,7 @@
              "Violations"
          ]
       }
-      ,"dfrC_Violations": {
+      ,"dfr051": {
           "type": "object"
          ,"description": "CWA SE Compliance Violations Object"
          ,"xml": {
@@ -6992,7 +7030,7 @@
             ,"Qtr13Value"
          ]
       }
-      ,"dfr720": {
+      ,"dfr052": {
           "type": "object"
          ,"description": "Case Formal Actions"
          ,"xml": {
@@ -7003,7 +7041,7 @@
                 "type": "array"
                ,"title": "Program Dates"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr4_ProgramDates"
+                   "$ref": "#\/definitions\/dfr018_ProgramDates"
                }
                ,"xml": {
                    "name": "ProgramDates"
@@ -7013,7 +7051,7 @@
             ,"Action": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr722"
+                   "$ref": "#\/definitions\/dfr053"
                }
                ,"xml": {
                    "name": "Action"
@@ -7022,7 +7060,7 @@
             }
          }
       }
-      ,"dfr722": {
+      ,"dfr053": {
           "type": "object"
          ,"description": "Case Formal Action"
          ,"properties": {
@@ -7089,7 +7127,7 @@
                ,"example": "1"
             }
             ,"Settlements": {
-                "$ref": "#\/definitions\/dfr724"
+                "$ref": "#\/definitions\/dfr055"
             }
          }
          ,"required": [
@@ -7107,7 +7145,7 @@
             ,"Settlements"
          ]
       }
-      ,"dfr723": {
+      ,"dfr054": {
           "type": "object"
          ,"properties": {
              "TotalCostRecovery": {
@@ -7152,7 +7190,7 @@
             ,"CompActionCost"
          ]
       }
-      ,"dfr724": {
+      ,"dfr055": {
           "type": "object"
          ,"xml": {
              "name": "Settlements"
@@ -7162,7 +7200,7 @@
                 "type": "array"
                ,"title": "Settlement"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr723"
+                   "$ref": "#\/definitions\/dfr054"
                }
                ,"xml": {
                    "name": "Settlements"
@@ -7174,7 +7212,7 @@
              "Settlement"
          ]
       }
-      ,"dfrV_ComplianceHistory": {
+      ,"dfr057": {
           "type": "object"
          ,"description": "Compliance History Object"
          ,"properties": {
@@ -7182,7 +7220,7 @@
                 "type": "array"
                ,"title": "Program Dates"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr4_ProgramDates"
+                   "$ref": "#\/definitions\/dfr018_ProgramDates"
                }
                ,"xml": {
                    "name": "ProgramDates"
@@ -7193,7 +7231,7 @@
                 "type": "array"
                ,"title": "Inspection"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrV_Inspection"
+                   "$ref": "#\/definitions\/dfr058"
                }
                ,"xml": {
                    "name": "Inspection"
@@ -7202,7 +7240,7 @@
             }
          }
       }
-      ,"dfrV_Inspection": {
+      ,"dfr058": {
           "type": "object"
          ,"description": "Inspection Object"
          ,"xml": {
@@ -7267,7 +7305,7 @@
             ,"Finding"
          ]
       }
-      ,"dfrD_ComplianceSummary": {
+      ,"dfr059": {
           "type": "object"
          ,"description": "Compliance Summary Object"
          ,"properties": {
@@ -7275,7 +7313,7 @@
                 "type": "array"
                ,"title": "Program Dates"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr4_ProgramDates"
+                   "$ref": "#\/definitions\/dfr018_ProgramDates"
                }
                ,"xml": {
                    "name": "ProgramDates"
@@ -7286,7 +7324,7 @@
                 "type": "array"
                ,"title": "Source"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrD_Source"
+                   "$ref": "#\/definitions\/dfr060"
                }
                ,"xml": {
                    "name": "Source"
@@ -7299,7 +7337,7 @@
             ,"Source"
          ]
       }
-      ,"dfrD_Source": {
+      ,"dfr060": {
           "type": "object"
          ,"description": "Source Object"
          ,"xml": {
@@ -7350,7 +7388,7 @@
             ,"QtrsInNC"
          ]
       }
-      ,"dfrE_Demographics": {
+      ,"dfr061": {
           "type": "object"
          ,"description": "Demographics Object"
          ,"properties": {
@@ -7580,7 +7618,7 @@
             ,"Income75kPlus"
          ]
       }
-      ,"dfrF_EnforcementComplianceSummaries": {
+      ,"dfr062": {
           "type": "object"
          ,"description": "Enforcement Compliance Summaries Object"
          ,"properties": {
@@ -7588,7 +7626,7 @@
                 "type": "array"
                ,"title": "Program Dates"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrF_ProgramDates"
+                   "$ref": "#\/definitions\/dfr063_s"
                }
                ,"xml": {
                    "name": "ProgramDates"
@@ -7599,7 +7637,7 @@
                 "type": "array"
                ,"title": "Summaries"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr4_Summaries"
+                   "$ref": "#\/definitions\/dfr018_Summaries"
                }
                ,"xml": {
                    "name": "Summaries"
@@ -7612,7 +7650,7 @@
             ,"Summaries"
          ]
       }
-      ,"dfrF_ProgramDates": {
+      ,"dfr063_s": {
           "type": "object"
          ,"description": "Program Date Object"
          ,"xml": {
@@ -7649,7 +7687,7 @@
             ,"EndDate"
          ]
       }
-      ,"dfrG_FormalActions": {
+      ,"dfr064": {
           "type": "object"
          ,"description": "Formal Actions Object"
          ,"properties": {
@@ -7657,7 +7695,7 @@
                 "type": "array"
                ,"title": "Program Dates"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr4_ProgramDates"
+                   "$ref": "#\/definitions\/dfr018_ProgramDates"
                }
                ,"xml": {
                    "name": "ProgramDates"
@@ -7667,7 +7705,7 @@
             ,"Action": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrG_Action"
+                   "$ref": "#\/definitions\/dfr065"
                }
                ,"xml": {
                    "name": "Action"
@@ -7676,7 +7714,7 @@
             }
          }
       }
-      ,"dfrG_Action": {
+      ,"dfr065": {
           "type": "object"
          ,"description": "Action Object"
          ,"xml": {
@@ -7733,7 +7771,7 @@
             ,"PenaltyDesc"
          ]
       }
-      ,"dfrH_ICISFormalActions": {
+      ,"dfr066": {
           "type": "object"
          ,"description": "ICIS Formal Actions Object"
          ,"properties": {
@@ -7741,7 +7779,7 @@
                 "type": "array"
                ,"title": "Program Dates"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr4_ProgramDates"
+                   "$ref": "#\/definitions\/dfr018_ProgramDates"
                }
                ,"xml": {
                    "name": "ProgramDates"
@@ -7751,7 +7789,7 @@
             ,"Action": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrH_Action"
+                   "$ref": "#\/definitions\/dfr067"
                }
                ,"xml": {
                    "name": "Action"
@@ -7760,7 +7798,7 @@
             }
          }
       }
-      ,"dfrH_Action": {
+      ,"dfr067": {
           "type": "object"
          ,"description": "Action Object"
          ,"xml": {
@@ -7872,7 +7910,7 @@
             ,"CompActionCost"
          ]
       }
-      ,"dfrI_InspectionEnforcementSummary": {
+      ,"dfr068": {
           "type": "object"
          ,"description": "Inspection Enforcement Summary Object"
          ,"properties": {
@@ -7880,7 +7918,7 @@
                 "type": "array"
                ,"title": "Program Dates"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr4_ProgramDates"
+                   "$ref": "#\/definitions\/dfr018_ProgramDates"
                }
                ,"xml": {
                    "name": "ProgramDates"
@@ -7891,7 +7929,7 @@
                 "type": "array"
                ,"title": "Source"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrI_Source"
+                   "$ref": "#\/definitions\/dfr069"
                }
                ,"xml": {
                    "name": "Source"
@@ -7900,7 +7938,7 @@
             }
          }
       }
-      ,"dfrI_Source": {
+      ,"dfr069": {
           "type": "object"
          ,"description": "Source Object"
          ,"xml": {
@@ -7959,7 +7997,7 @@
             ,"TotalPenalties"
          ]
       }
-      ,"dfrG_LeadAndCopperRule5Yr": {
+      ,"dfr070": {
           "type": "object"
          ,"description": "Lead and Copper Rule Object"
          ,"properties": {
@@ -7979,7 +8017,7 @@
                 "type": "array"
                ,"title": "Lead Samples"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrG_LeadSamples"
+                   "$ref": "#\/definitions\/dfr072"
                }
                ,"xml": {
                    "name": "LeadSamples"
@@ -7993,7 +8031,7 @@
                 "type": "array"
                ,"title": "Copper Samples"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrG_CopperSamples"
+                   "$ref": "#\/definitions\/dfr071"
                }
                ,"xml": {
                    "name": "CopperSamples"
@@ -8038,7 +8076,7 @@
             }
          }
       }
-      ,"dfrG_CopperSamples": {
+      ,"dfr071": {
           "type": "object"
          ,"description": "Copper Samples"
          ,"xml": {
@@ -8065,7 +8103,7 @@
             ,"CU90Dates"
          ]
       }
-      ,"dfrG_LeadSamples": {
+      ,"dfr072": {
           "type": "object"
          ,"description": "Lead Samples"
          ,"xml": {
@@ -8092,7 +8130,7 @@
             ,"PB90Dates"
          ]
       }
-      ,"dfr4_MapData": {
+      ,"dfr018_MapData": {
           "type": "object"
          ,"description": "Map Data Object"
          ,"xml": {
@@ -8145,7 +8183,7 @@
             ,"PUV"
          ]
       }
-      ,"dfrJ_MapOutput": {
+      ,"dfr073": {
           "type": "object"
          ,"description": "Map Output Object"
          ,"properties": {
@@ -8175,7 +8213,7 @@
                 "type": "array"
                ,"title": "Map Data"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr4_MapData"
+                   "$ref": "#\/definitions\/dfr018_MapData"
                }
                ,"xml": {
                    "name": "MapData"
@@ -8191,7 +8229,7 @@
             ,"MapData"
          ]
       }
-      ,"dfr4_MultipleFRSFacilities": {
+      ,"dfr018_MultipleFRSFacilities": {
           "type": "object"
          ,"description": "Multiple FRS Facilities Object"
          ,"properties": {
@@ -8199,7 +8237,7 @@
                 "type": "array"
                ,"title": "Registry IDs"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr4_RegistryIDs"
+                   "$ref": "#\/definitions\/dfr018_RegistryIDs"
                }
                ,"xml": {
                    "name": "RegistryIDs"
@@ -8208,7 +8246,7 @@
             }
          }
       }
-      ,"dfr4_NAICS": {
+      ,"dfr018_NAICS": {
           "type": "object"
          ,"description": "NAICS Object"
          ,"properties": {
@@ -8216,7 +8254,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrz_NAICS"
+                   "$ref": "#\/definitions\/dfr074"
                }
                ,"xml": {
                    "name": "Sources"
@@ -8228,7 +8266,7 @@
              "Sources"
          ]
       }
-      ,"dfrz_NAICS": {
+      ,"dfr074": {
           "type": "object"
          ,"description": "NAICS Sources Object"
          ,"xml": {
@@ -8239,7 +8277,7 @@
                 "type": "array"
                ,"title": "NAICS Codes"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrz_NAICSCodes"
+                   "$ref": "#\/definitions\/dfr075"
                }
                ,"xml": {
                    "name": "NAICSCodes"
@@ -8251,7 +8289,7 @@
              "NAICSCodes"
          ]
       }
-      ,"dfrz_NAICSCodes": {
+      ,"dfr075": {
           "type": "object"
          ,"description": "NAICS Codes Object"
          ,"xml": {
@@ -8290,7 +8328,7 @@
             ,"NAICSDesc"
          ]
       }
-      ,"dfrK_Notices": {
+      ,"dfr076": {
           "type": "object"
          ,"description": "Notices Object"
          ,"properties": {
@@ -8298,7 +8336,7 @@
                 "type": "array"
                ,"title": "Program Dates"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr4_ProgramDates"
+                   "$ref": "#\/definitions\/dfr018_ProgramDates"
                }
                ,"xml": {
                    "name": "ProgramDates"
@@ -8309,7 +8347,7 @@
                 "type": "array"
                ,"title": "Notice"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrK_Notice"
+                   "$ref": "#\/definitions\/dfr077"
                }
                ,"xml": {
                    "name": "Notice"
@@ -8322,7 +8360,7 @@
             ,"Notice"
          ]
       }
-      ,"dfrK_Notice": {
+      ,"dfr077": {
           "type": "object"
          ,"description": "Notice Object"
          ,"xml": {
@@ -8379,7 +8417,7 @@
             ,"EnfIdentifier"
          ]
       }
-      ,"dfr4_Permits": {
+      ,"dfr018_Permits": {
           "type": "object"
          ,"description": "Permits Object"
          ,"xml": {
@@ -8573,7 +8611,7 @@
             ,"FacilityStatus"
          ]
       }
-      ,"dfr4_ProgramDates": {
+      ,"dfr018_ProgramDates": {
           "type": "object"
          ,"description": "Program Dates Object"
          ,"xml": {
@@ -8605,7 +8643,7 @@
             ,"EndDate"
          ]
       }
-      ,"dfrL_RCRACompliance": {
+      ,"dfr078": {
           "type": "object"
          ,"description": "Resource Conservation and Recovery Act Compliance Object"
          ,"properties": {
@@ -8973,7 +9011,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrL_Sources"
+                   "$ref": "#\/definitions\/dfr079_s"
                }
                ,"xml": {
                    "name": "Sources"
@@ -8982,7 +9020,7 @@
             }
          }
       }
-      ,"dfrL_Sources": {
+      ,"dfr079_s": {
           "type": "object"
          ,"description": "Source Object"
          ,"xml": {
@@ -8996,7 +9034,7 @@
                 "type": "array"
                ,"title": "Violations"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrL_Sources.Violations"
+                   "$ref": "#\/definitions\/dfr079_s.Violations"
                }
                ,"xml": {
                    "name": "Violations"
@@ -9005,7 +9043,7 @@
             }
          }
       }
-      ,"dfrL_Sources.Violations": {
+      ,"dfr079_s.Violations": {
           "type": "object"
          ,"description": "Violations Object"
          ,"xml": {
@@ -9124,7 +9162,7 @@
             ,"Qtr12Status"
          ]
       }
-      ,"dfr4_RegistryIDs": {
+      ,"dfr018_RegistryIDs": {
           "type": "object"
          ,"description": "Registry IDs Object"
          ,"xml": {
@@ -9179,7 +9217,7 @@
             }
          }
       }
-      ,"dfr4_Reports": {
+      ,"dfr018_Reports": {
           "type": "object"
          ,"description": "Reports Object"
          ,"properties": {
@@ -9193,7 +9231,7 @@
              "HasPollRpt"
          ]
       }
-      ,"dfr4_Results": {
+      ,"dfr018_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -9204,16 +9242,16 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"MultipleFRSFacilities": {
-                "$ref": "#\/definitions\/dfr4_MultipleFRSFacilities"
+                "$ref": "#\/definitions\/dfr018_MultipleFRSFacilities"
             }
             ,"Reports": {
-                "$ref": "#\/definitions\/dfr4_Reports"
+                "$ref": "#\/definitions\/dfr018_Reports"
             }
             ,"Permits": {
                 "type": "array"
                ,"title": "Permits"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr4_Permits"
+                   "$ref": "#\/definitions\/dfr018_Permits"
                }
                ,"xml": {
                    "name": "Permits"
@@ -9221,103 +9259,103 @@
                }
             }
             ,"SystemExtractDates": {
-                "$ref": "#\/definitions\/dfr730"
+                "$ref": "#\/definitions\/dfr095"
             }
             ,"EnforcementComplianceSummaries": {
-                "$ref": "#\/definitions\/dfrF_EnforcementComplianceSummaries"
+                "$ref": "#\/definitions\/dfr062"
             }
             ,"NAICS": {
-                "$ref": "#\/definitions\/dfr4_NAICS"
+                "$ref": "#\/definitions\/dfr018_NAICS"
             }
             ,"SIC": {
-                "$ref": "#\/definitions\/dfr4_SIC"
+                "$ref": "#\/definitions\/dfr084"
             }
             ,"InspectionEnforcementSummary": {
-                "$ref": "#\/definitions\/dfrI_InspectionEnforcementSummary"
+                "$ref": "#\/definitions\/dfr068"
             }
             ,"ComplianceHistory": {
-                "$ref": "#\/definitions\/dfrV_ComplianceHistory"
+                "$ref": "#\/definitions\/dfr057"
             }
             ,"ComplianceSummary": {
-                "$ref": "#\/definitions\/dfrD_ComplianceSummary"
+                "$ref": "#\/definitions\/dfr059"
             }
             ,"CWA3YrCompliance": {
-                "$ref": "#\/definitions\/dfr7_CWA3YrCompliance"
+                "$ref": "#\/definitions\/dfr025"
             }
             ,"CWARNCCompliance": {
-                "$ref": "#\/definitions\/dfrB_CWARNCCompliance"
+                "$ref": "#\/definitions\/dfr046"
             }
             ,"CWA3YrD80D90Counts": {
-                "$ref": "#\/definitions\/dfr712"
+                "$ref": "#\/definitions\/dfr027"
             }
             ,"CWAEffluentCompliance": {
-                "$ref": "#\/definitions\/dfr9_CWAEffluentCompliance"
+                "$ref": "#\/definitions\/dfr038"
             }
             ,"CWAPSCompliance": {
-                "$ref": "#\/definitions\/dfrA_CWAPSCompliance"
+                "$ref": "#\/definitions\/dfr042"
             }
             ,"CWASECompliance": {
-                "$ref": "#\/definitions\/dfrC_CWASECompliance"
+                "$ref": "#\/definitions\/dfr049"
             }
             ,"CWACSCompliance": {
-                "$ref": "#\/definitions\/dfr10_CWACSCompliance"
+                "$ref": "#\/definitions\/dfr031"
             }
             ,"CWAEffluentALRExceedences": {
-                "$ref": "#\/definitions\/dfr8_CWAEffluentALRExceedences"
+                "$ref": "#\/definitions\/dfr035"
             }
             ,"AirCompliance": {
-                "$ref": "#\/definitions\/dfr5_AirCompliance"
+                "$ref": "#\/definitions\/dfr019"
             }
             ,"RCRACompliance": {
-                "$ref": "#\/definitions\/dfrL_RCRACompliance"
+                "$ref": "#\/definitions\/dfr078"
             }
             ,"SDWISCompliance": {
-                "$ref": "#\/definitions\/dfrM_SDWISCompliance"
+                "$ref": "#\/definitions\/dfr081"
             }
             ,"WaterQuality": {
-                "$ref": "#\/definitions\/dfrU_WaterQuality"
+                "$ref": "#\/definitions\/dfr111"
             }
             ,"WaterQualityDetails": {
-                "$ref": "#\/definitions\/dfrU_WaterQualityDetails"
+                "$ref": "#\/definitions\/dfr111_Details"
             }
             ,"Notices": {
-                "$ref": "#\/definitions\/dfrK_Notices"
+                "$ref": "#\/definitions\/dfr076"
             }
             ,"FormalActions": {
-                "$ref": "#\/definitions\/dfrG_FormalActions"
+                "$ref": "#\/definitions\/dfr064"
             }
             ,"ICISFormalActions": {
-                "$ref": "#\/definitions\/dfrH_ICISFormalActions"
+                "$ref": "#\/definitions\/dfr066"
             }
             ,"CaseFormalActions": {
-                "$ref": "#\/definitions\/dfr720"
+                "$ref": "#\/definitions\/dfr052"
             }
             ,"TRIHistory": {
-                "$ref": "#\/definitions\/dfrQ_TRIHistory"
+                "$ref": "#\/definitions\/dfr098"
             }
             ,"TRIReleases": {
-                "$ref": "#\/definitions\/dfrR_TRIReleases"
+                "$ref": "#\/definitions\/dfr102"
             }
             ,"AirQuality": {
-                "$ref": "#\/definitions\/dfr6_AirQuality"
+                "$ref": "#\/definitions\/dfr024"
             }
             ,"SiteVisits": {
-                "$ref": "#\/definitions\/dfrO_SiteVisits"
+                "$ref": "#\/definitions\/dfr090"
             }
             ,"SanitarySurveys": {
-                "$ref": "#\/definitions\/dfrN_SanitarySurveys"
+                "$ref": "#\/definitions\/dfr086"
             }
             ,"ViolationsEnforcementActions": {
-                "$ref": "#\/definitions\/dfrT_ViolationsEnforcementActions"
+                "$ref": "#\/definitions\/dfr106"
             }
             ,"LeadAndCopperRule5Yr": {
-                "$ref": "#\/definitions\/dfrG_LeadAndCopperRule5Yr"
+                "$ref": "#\/definitions\/dfr070"
             }
             ,"Tribes": {
                 "type": "array"
                ,"title": "Tribes"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrS_Tribes"
+                   "$ref": "#\/definitions\/dfr105"
                }
                ,"xml": {
                    "name": "Tribes"
@@ -9328,7 +9366,7 @@
                 "type": "array"
                ,"title": "Web Fire Documents"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr4_WebFireDocuments"
+                   "$ref": "#\/definitions\/dfr018_WebFireDocuments"
                }
                ,"xml": {
                    "name": "WebFireDocuments"
@@ -9339,7 +9377,7 @@
                 "type": "array"
                ,"title": "Web Fire Documents"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr4_CAEDDocuments"
+                   "$ref": "#\/definitions\/dfr018_CAEDDocuments"
                }
                ,"xml": {
                    "name": "CAEDDocuments"
@@ -9347,20 +9385,20 @@
                }
             }
             ,"SpatialMetadata": {
-                "$ref": "#\/definitions\/dfrP_SpatialMetadata"
+                "$ref": "#\/definitions\/dfr094"
             }
             ,"Demographics": {
-                "$ref": "#\/definitions\/dfrE_Demographics"
+                "$ref": "#\/definitions\/dfr061"
             }
             ,"MapOutput": {
-                "$ref": "#\/definitions\/dfrJ_MapOutput"
+                "$ref": "#\/definitions\/dfr073"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrM_SDWISCompliance": {
+      ,"dfr081": {
           "type": "object"
          ,"description": "SDWIS Compliance Object"
          ,"properties": {
@@ -9758,7 +9796,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrM_Sources"
+                   "$ref": "#\/definitions\/dfr083_s"
                }
                ,"xml": {
                    "name": "Sources"
@@ -9767,7 +9805,7 @@
             }
          }
       }
-      ,"dfrM_Sources": {
+      ,"dfr083_s": {
           "type": "object"
          ,"description": "Sources Object"
          ,"xml": {
@@ -9780,7 +9818,7 @@
             ,"RulesViolated": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrM_Sources.RulesViolated"
+                   "$ref": "#\/definitions\/dfr083_s.RulesViolated"
                }
                ,"xml": {
                    "name": "RulesViolated"
@@ -9793,7 +9831,7 @@
             ,"RulesViolated"
          ]
       }
-      ,"dfrM_Sources.RulesViolated": {
+      ,"dfr083_s.RulesViolated": {
           "type": "object"
          ,"description": "Rules Violated Object"
          ,"xml": {
@@ -9907,7 +9945,7 @@
             ,"Qtr13Status"
          ]
       }
-      ,"dfr4_SIC": {
+      ,"dfr084": {
           "type": "object"
          ,"description": "SIC Object"
          ,"properties": {
@@ -9915,7 +9953,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr4_Sources"
+                   "$ref": "#\/definitions\/dfr085"
                }
                ,"xml": {
                    "name": "Sources"
@@ -9927,7 +9965,7 @@
              "Sources"
          ]
       }
-      ,"dfr4_Sources": {
+      ,"dfr085": {
           "type": "object"
          ,"description": "Sources Object"
          ,"xml": {
@@ -9937,7 +9975,7 @@
              "SICCodes": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr4_SICCodes"
+                   "$ref": "#\/definitions\/dfr084_Codes"
                }
                ,"xml": {
                    "name": "SICCodes"
@@ -9949,7 +9987,7 @@
              "SICCodes"
          ]
       }
-      ,"dfr4_SICCodes": {
+      ,"dfr084_Codes": {
           "type": "object"
          ,"description": "SIC Codes Object"
          ,"xml": {
@@ -9988,7 +10026,7 @@
             ,"SICDesc"
          ]
       }
-      ,"dfrN_SanitarySurveys": {
+      ,"dfr086": {
           "type": "object"
          ,"description": "Sanitary Surveys Object"
          ,"properties": {
@@ -9996,7 +10034,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrN_Sources"
+                   "$ref": "#\/definitions\/dfr088"
                }
                ,"xml": {
                    "name": "Sources"
@@ -10005,7 +10043,7 @@
             }
          }
       }
-      ,"dfrN_Sources": {
+      ,"dfr088": {
           "type": "object"
          ,"description": "Sources Object"
          ,"xml": {
@@ -10016,7 +10054,7 @@
                 "type": "array"
                ,"title": "Sanitary Survey"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrN_SanitarySurvey"
+                   "$ref": "#\/definitions\/dfr089"
                }
                ,"xml": {
                    "name": "SanitarySurvey"
@@ -10028,7 +10066,7 @@
              "SanitarySurvey"
          ]
       }
-      ,"dfrN_SanitarySurvey": {
+      ,"dfr089": {
           "type": "object"
          ,"description": "Sanitary Survey Object"
          ,"xml": {
@@ -10119,7 +10157,7 @@
             ,"Treatment"
          ]
       }
-      ,"dfrO_SiteVisits": {
+      ,"dfr090": {
           "type": "object"
          ,"description": "Site Visits Object"
          ,"properties": {
@@ -10127,7 +10165,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrO_Sources"
+                   "$ref": "#\/definitions\/dfr092"
                }
                ,"xml": {
                    "name": "Sources"
@@ -10136,7 +10174,7 @@
             }
          }
       }
-      ,"dfrO_Sources": {
+      ,"dfr092": {
           "type": "object"
          ,"description": "Sources Object"
          ,"xml": {
@@ -10147,7 +10185,7 @@
                 "type": "array"
                ,"title": "Site Visit"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrO_SiteVisit"
+                   "$ref": "#\/definitions\/dfr093"
                }
                ,"xml": {
                    "name": "SiteVisit"
@@ -10159,7 +10197,7 @@
              "SiteVisit"
          ]
       }
-      ,"dfrO_SiteVisit": {
+      ,"dfr093": {
           "type": "object"
          ,"description": "Site Visit Object"
          ,"xml": {
@@ -10251,7 +10289,7 @@
             ,"Treatment"
          ]
       }
-      ,"dfrP_SpatialMetadata": {
+      ,"dfr094": {
           "type": "object"
          ,"description": "Spatial Metadata Object"
          ,"properties": {
@@ -10317,7 +10355,7 @@
             ,"CoordinateSourceSystemId"
          ]
       }
-      ,"dfr4_Summaries": {
+      ,"dfr018_Summaries": {
           "type": "object"
          ,"description": "Summaries Object"
          ,"xml": {
@@ -10403,7 +10441,7 @@
             ,"TotalCasePenalties"
          ]
       }
-      ,"dfr730": {
+      ,"dfr095": {
           "type": "object"
          ,"description": "System Extract Dates Object"
          ,"properties": {
@@ -10411,7 +10449,7 @@
                 "type": "array"
                ,"title": "System Extract Dates Dates"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr732"
+                   "$ref": "#\/definitions\/dfr096"
                }
                ,"xml": {
                    "name": "Dates"
@@ -10423,7 +10461,7 @@
              "Dates"
          ]
       }
-      ,"dfr732": {
+      ,"dfr096": {
           "type": "object"
          ,"description": "System Extract Dates Dates Object"
          ,"properties": {
@@ -10442,7 +10480,7 @@
             ,"SystemExtractDate"
          ]
       }
-      ,"dfrQ_TRIHistory": {
+      ,"dfr098": {
           "type": "object"
          ,"description": "TRI History Object"
          ,"properties": {
@@ -10450,7 +10488,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfre_Sources"
+                   "$ref": "#\/definitions\/dfr100"
                }
                ,"xml": {
                    "name": "Sources"
@@ -10459,7 +10497,7 @@
             }
          }
       }
-      ,"dfre_Sources": {
+      ,"dfr100": {
           "type": "object"
          ,"description": "Sources Object"
          ,"xml": {
@@ -10470,7 +10508,7 @@
                 "type": "array"
                ,"title": "Release Year"
                ,"items": {
-                   "$ref": "#\/definitions\/dfre_ReleaseYear"
+                   "$ref": "#\/definitions\/dfr101"
                }
                ,"xml": {
                    "name": "ReleaseYear"
@@ -10479,7 +10517,7 @@
             }
          }
       }
-      ,"dfre_ReleaseYear": {
+      ,"dfr101": {
           "type": "object"
          ,"description": "Release Year Object"
          ,"xml": {
@@ -10553,7 +10591,7 @@
             ,"TotalReleasesTransfers"
          ]
       }
-      ,"dfrR_TRIReleases": {
+      ,"dfr102": {
           "type": "object"
          ,"description": "TRI Releases Object"
          ,"properties": {
@@ -10561,7 +10599,7 @@
                 "type": "array"
                ,"title": "Header"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrR_Header"
+                   "$ref": "#\/definitions\/dfr104"
                }
                ,"xml": {
                    "name": "Header"
@@ -10572,7 +10610,7 @@
                 "type": "array"
                ,"title": "Chemicals"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrR_Chemicals"
+                   "$ref": "#\/definitions\/dfr103"
                }
                ,"xml": {
                    "name": "Chemicals"
@@ -10581,7 +10619,7 @@
             }
          }
       }
-      ,"dfrR_Chemicals": {
+      ,"dfr103": {
           "type": "object"
          ,"description": "Chemicals Object"
          ,"xml": {
@@ -10661,7 +10699,7 @@
             ,"Year1Pounds"
          ]
       }
-      ,"dfrR_Header": {
+      ,"dfr104": {
           "type": "object"
          ,"description": "Header Object"
          ,"xml": {
@@ -10708,7 +10746,7 @@
             ,"Year1"
          ]
       }
-      ,"dfrS_Tribes": {
+      ,"dfr105": {
           "type": "object"
          ,"description": "Tribes Object"
          ,"xml": {
@@ -10744,7 +10782,7 @@
             ,"DistanceToArea"
          ]
       }
-      ,"dfrT_ViolationsEnforcementActions": {
+      ,"dfr106": {
           "type": "object"
          ,"description": "Violations Enforcement Actions Object"
          ,"properties": {
@@ -10752,7 +10790,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrd_Sources"
+                   "$ref": "#\/definitions\/dfr108"
                }
                ,"xml": {
                    "name": "Sources"
@@ -10761,7 +10799,7 @@
             }
          }
       }
-      ,"dfrd_Sources": {
+      ,"dfr108": {
           "type": "object"
          ,"description": "Sources Object"
          ,"xml": {
@@ -10772,7 +10810,7 @@
                 "type": "array"
                ,"title": "Violations"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrd_Violations"
+                   "$ref": "#\/definitions\/dfr110"
                }
                ,"xml": {
                    "name": "Violations"
@@ -10784,7 +10822,7 @@
              "Violations"
          ]
       }
-      ,"dfrd_EnforcementActions": {
+      ,"dfr109": {
           "type": "object"
          ,"description": "Enforcement Actions Object"
          ,"xml": {
@@ -10827,7 +10865,7 @@
             ,"Agency"
          ]
       }
-      ,"dfrd_Violations": {
+      ,"dfr110": {
           "type": "object"
          ,"description": "Violations Object"
          ,"xml": {
@@ -10906,7 +10944,7 @@
                 "type": "array"
                ,"title": "Enforcement Actions"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrd_EnforcementActions"
+                   "$ref": "#\/definitions\/dfr109"
                }
                ,"xml": {
                    "name": "EnforcementActions"
@@ -10931,7 +10969,7 @@
             ,"EnforcementActions"
          ]
       }
-      ,"dfrU_WaterQuality": {
+      ,"dfr111": {
           "type": "object"
          ,"description": "Water Quality Object"
          ,"properties": {
@@ -10939,7 +10977,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrU_Sources"
+                   "$ref": "#\/definitions\/dfr112_s"
                }
                ,"xml": {
                    "name": "Sources"
@@ -10948,7 +10986,7 @@
             }
          }
       }
-      ,"dfrU_Sources": {
+      ,"dfr112_s": {
           "type": "object"
          ,"description": "Sources Object"
          ,"xml": {
@@ -11086,7 +11124,7 @@
             ,"EsaAquaticSpeciesFlg"
          ]
       }
-      ,"dfrU_WaterQualityDetails": {
+      ,"dfr111_Details": {
           "type": "object"
          ,"description": "Water Quality Details"
          ,"properties": {
@@ -11094,7 +11132,7 @@
                 "type": "array"
                ,"title": "Sources"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrU_WaterQualityDetails.Sources"
+                   "$ref": "#\/definitions\/dfr111_Details.Sources"
                }
                ,"xml": {
                    "name": "Sources"
@@ -11103,7 +11141,7 @@
             }
          }
       }
-      ,"dfrU_WaterQualityDetails.Sources": {
+      ,"dfr111_Details.Sources": {
           "type": "object"
          ,"description": "Sources Object"
          ,"xml": {
@@ -11198,7 +11236,7 @@
             ,"AttainsPossiblePollutants"
          ]
       }
-      ,"dfr4_WebFireDocuments": {
+      ,"dfr018_WebFireDocuments": {
           "type": "object"
          ,"description": "Web Fire Documents"
          ,"xml": {
@@ -11255,7 +11293,7 @@
             ,"DocumentLink"
          ]
       }
-      ,"dfrW1_Results": {
+      ,"dfr114_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11266,14 +11304,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"EnforcementComplianceSummaries": {
-                "$ref": "#\/definitions\/dfrF_EnforcementComplianceSummaries"
+                "$ref": "#\/definitions\/dfr062"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfr300": {
+      ,"dfr115": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11284,14 +11322,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"SystemExtractDates": {
-                "$ref": "#\/definitions\/dfr730"
+                "$ref": "#\/definitions\/dfr095"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrW2_Results": {
+      ,"dfr116_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11302,14 +11340,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"FormalActions": {
-                "$ref": "#\/definitions\/dfrG_FormalActions"
+                "$ref": "#\/definitions\/dfr064"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfra_Results": {
+      ,"dfr117_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11320,14 +11358,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"ICISFormalActions": {
-                "$ref": "#\/definitions\/dfrH_ICISFormalActions"
+                "$ref": "#\/definitions\/dfr066"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfra1_Results": {
+      ,"dfr118_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11338,14 +11376,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"InspectionEnforcementSummary": {
-                "$ref": "#\/definitions\/dfrI_InspectionEnforcementSummary"
+                "$ref": "#\/definitions\/dfr068"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrZ_Results": {
+      ,"dfr119_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11356,14 +11394,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"MapOutput": {
-                "$ref": "#\/definitions\/dfrJ_MapOutput"
+                "$ref": "#\/definitions\/dfr073"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfra2_Results": {
+      ,"dfr120_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11374,14 +11412,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"NAICS": {
-                "$ref": "#\/definitions\/dfr4_NAICS"
+                "$ref": "#\/definitions\/dfr018_NAICS"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrg_Results": {
+      ,"dfr122_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11392,14 +11430,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"Notices": {
-                "$ref": "#\/definitions\/dfrK_Notices"
+                "$ref": "#\/definitions\/dfr076"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrg1_Results": {
+      ,"dfr123_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11410,13 +11448,13 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"Reports": {
-                "$ref": "#\/definitions\/dfr4_Reports"
+                "$ref": "#\/definitions\/dfr018_Reports"
             }
             ,"Permits": {
                 "type": "array"
                ,"title": "Permits"
                ,"items": {
-                   "$ref": "#\/definitions\/dfr4_Permits"
+                   "$ref": "#\/definitions\/dfr018_Permits"
                }
                ,"xml": {
                    "name": "Permits"
@@ -11428,7 +11466,7 @@
              "Message"
          ]
       }
-      ,"dfrh_Results": {
+      ,"dfr124_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11439,14 +11477,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"RCRACompliance": {
-                "$ref": "#\/definitions\/dfrL_RCRACompliance"
+                "$ref": "#\/definitions\/dfr078"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrk_Results": {
+      ,"dfr125_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11457,7 +11495,7 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"LeadAndCopperRule5Yr": {
-                "$ref": "#\/definitions\/dfrG_LeadAndCopperRule5Yr"
+                "$ref": "#\/definitions\/dfr070"
             }
          }
          ,"required": [
@@ -11465,7 +11503,7 @@
             ,"LeadAndCopperRule5Yr"
          ]
       }
-      ,"dfrj_Results": {
+      ,"dfr126_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11476,14 +11514,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"SanitarySurveys": {
-                "$ref": "#\/definitions\/dfrN_SanitarySurveys"
+                "$ref": "#\/definitions\/dfr086"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfri_Results": {
+      ,"dfr127_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11494,14 +11532,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"SiteVisits": {
-                "$ref": "#\/definitions\/dfrO_SiteVisits"
+                "$ref": "#\/definitions\/dfr090"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrf_Results": {
+      ,"dfr128_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11512,14 +11550,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"ViolationsEnforcementActions": {
-                "$ref": "#\/definitions\/dfrT_ViolationsEnforcementActions"
+                "$ref": "#\/definitions\/dfr106"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrl_Results": {
+      ,"dfr129_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11530,14 +11568,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"SDWISCompliance": {
-                "$ref": "#\/definitions\/dfrM_SDWISCompliance"
+                "$ref": "#\/definitions\/dfr081"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrg2_Results": {
+      ,"dfr130_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11548,14 +11586,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"SIC": {
-                "$ref": "#\/definitions\/dfr4_SIC"
+                "$ref": "#\/definitions\/dfr084"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrg3_Results": {
+      ,"dfr131_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11566,14 +11604,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"SpatialMetadata": {
-                "$ref": "#\/definitions\/dfrP_SpatialMetadata"
+                "$ref": "#\/definitions\/dfr094"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrm_Results": {
+      ,"dfr132_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11584,14 +11622,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"TRIHistory": {
-                "$ref": "#\/definitions\/dfrQ_TRIHistory"
+                "$ref": "#\/definitions\/dfr098"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrn_Results": {
+      ,"dfr133_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11602,14 +11640,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"TRIReleases": {
-                "$ref": "#\/definitions\/dfrR_TRIReleases"
+                "$ref": "#\/definitions\/dfr102"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfro_Results": {
+      ,"dfr134_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11623,7 +11661,7 @@
                 "type": "array"
                ,"title": "Tribes"
                ,"items": {
-                   "$ref": "#\/definitions\/dfrS_Tribes"
+                   "$ref": "#\/definitions\/dfr105"
                }
                ,"xml": {
                    "name": "Tribes"
@@ -11635,7 +11673,7 @@
              "Message"
          ]
       }
-      ,"dfrp_Results": {
+      ,"dfr135_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11646,14 +11684,14 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"WaterQuality": {
-                "$ref": "#\/definitions\/dfrU_WaterQuality"
+                "$ref": "#\/definitions\/dfr111"
             }
          }
          ,"required": [
              "Message"
          ]
       }
-      ,"dfrp1_Results": {
+      ,"dfr136_Results": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11664,7 +11702,7 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"WaterQualityDetails": {
-                "$ref": "#\/definitions\/dfrU_WaterQualityDetails"
+                "$ref": "#\/definitions\/dfr111_Details"
             }
          }
          ,"required": [

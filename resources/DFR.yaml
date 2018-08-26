@@ -20,13 +20,12 @@ basePath: /echo
 schemes: 
 - https
 consumes: 
-- application/json
-- application/xml
+- application/x-www-form-urlencoded
 produces: 
 - application/json
 - application/xml
 parameters: 
-  output: 
+  g.output: 
     name: output
     in: query
     description: |-
@@ -40,27 +39,64 @@ parameters:
     - XML
     type: string
     required: false
-  p_id: 
+  f.output: 
+    name: output
+    in: formData
+    description: |-
+      Output Format Flag.  Enter one of the following keywords:
+      - JSON = Data model formatted as Javascript Object Notation (default).
+      - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+      - XML = Data model formatted as Extensible Markup Language.
+    enum: 
+    - JSONP
+    - JSON
+    - XML
+    type: string
+    required: false
+  g.p_id: 
     name: p_id
     in: query
     description: "Either the EPA Facility Registry System's REGISTRY_ID for a facility or the facility identifier from the following EPA Systems: RCRAINFO (HANDLER_ID), AFS (SCSC), ICIS NPDES (NPDES_ID), or SDWIS (PWS_ID)."
     type: string
     required: true
-  callback: 
+  f.p_id: 
+    name: p_id
+    in: formData
+    description: "Either the EPA Facility Registry System's REGISTRY_ID for a facility or the facility identifier from the following EPA Systems: RCRAINFO (HANDLER_ID), AFS (SCSC), ICIS NPDES (NPDES_ID), or SDWIS (PWS_ID)."
+    type: string
+    required: true
+  g.callback: 
     name: callback
     in: query
     description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
     type: string
     required: false
-  p_system: 
+  f.callback: 
+    name: callback
+    in: formData
+    description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+    type: string
+    required: false
+  f.p_system: 
+    name: p_system
+    in: formData
+    description: System Acronym Filter.  Enter a single system acronym to filter results.
+    type: string
+    required: false
+  g.p_system: 
     name: p_system
     in: query
     description: System Acronym Filter.  Enter a single system acronym to filter results.
     type: string
     required: false
-  p_radius: 
+  g.p_radius: 
     name: p_radius
     in: query
+    type: string
+    required: false
+  f.p_radius: 
+    name: p_radius
+    in: formData
     type: string
     required: false
 paths: 
@@ -69,10 +105,10 @@ paths:
       summary: Detailed Facility Report Service
       description: This procedure is the overall service for the Detailed Facility Report. It returns all of the data displayed in the DFR web report by invoking individual procedures that each return a targeted portion of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/p_system"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.p_system"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -84,17 +120,17 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfr4_Results" 
+                "$ref": "#/definitions/dfr018_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report Service
       description: This procedure is the overall service for the Detailed Facility Report. It returns all of the data displayed in the DFR web report by invoking individual procedures that each return a targeted portion of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/p_system"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.p_system"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -106,7 +142,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfr4_Results" 
+                "$ref": "#/definitions/dfr018_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_air_compliance": 
@@ -114,9 +150,9 @@ paths:
       summary: Detailed Facility Report Air Compliance Report Service
       description: This procedure obtains data for Air Compliance in the Environmental Conditions Section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -128,16 +164,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrq_Results" 
+                "$ref": "#/definitions/dfr001_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report Air Compliance Report Service
       description: This procedure obtains data for Air Compliance in the Environmental Conditions Section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -149,7 +185,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrq_Results" 
+                "$ref": "#/definitions/dfr001_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_air_quality": 
@@ -157,9 +193,9 @@ paths:
       summary: Detailed Facility Report Air Quality Report Service
       description: This procedure obtains data for Air Quality in the Environmental Conditions Section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -171,16 +207,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfr1_Results" 
+                "$ref": "#/definitions/dfr002_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report Air Quality Report Service
       description: This procedure obtains data for Air Quality in the Environmental Conditions Section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -192,15 +228,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfr1_Results" 
+                "$ref": "#/definitions/dfr002_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_case_formal_actions": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -212,14 +249,15 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfr200" 
+                "$ref": "#/definitions/dfr004" 
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -231,7 +269,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfr200" 
+                "$ref": "#/definitions/dfr004" 
             required: 
             - Results
   "/dfr_rest_services.get_compliance_history": 
@@ -239,9 +277,9 @@ paths:
       summary: Detailed Facility Report 5 Year Compliance Monitoring History Service
       description: This procedure obtains data for the Compliance Monitoring History (5 years) in the Enforcement and Compliance Section of the Detailed Facility report.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -253,16 +291,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfr2_Results" 
+                "$ref": "#/definitions/dfr005_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report 5 Year Compliance Monitoring History Service
       description: This procedure obtains data for the Compliance Monitoring History (5 years) in the Enforcement and Compliance Section of the Detailed Facility report.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -274,7 +312,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfr2_Results" 
+                "$ref": "#/definitions/dfr005_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_compliance_summary": 
@@ -282,9 +320,9 @@ paths:
       summary: Detailed Facility Report Compliance Summary Service
       description: This procedure obtains data for Compliance Summary Data in the Enforcement and Compliance Section of the Detailed Facility report.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -296,16 +334,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfr3_Results" 
+                "$ref": "#/definitions/dfr006_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report Compliance Summary Service
       description: This procedure obtains data for Compliance Summary Data in the Enforcement and Compliance Section of the Detailed Facility report.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -317,7 +355,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfr3_Results" 
+                "$ref": "#/definitions/dfr006_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_cwa_3yr_compliance": 
@@ -330,9 +368,9 @@ paths:
         > "Unk" = Unknown status
         > "SNC/Cat 1" = SNC/Category I violation found
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -344,7 +382,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrW_Results" 
+                "$ref": "#/definitions/dfr009_Results" 
             required: 
             - Results
     post: 
@@ -356,9 +394,9 @@ paths:
         > "Unk" = Unknown status
         > "SNC/Cat 1" = SNC/Category I violation found
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -370,15 +408,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrW_Results" 
+                "$ref": "#/definitions/dfr009_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_cwa_3yr_d80d90_counts": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -390,14 +429,15 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfr0_get_cwa_3yr_d80d90_counts.Results" 
+                "$ref": "#/definitions/dfr007_Results" 
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -409,7 +449,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfr0_get_cwa_3yr_d80d90_counts.Results" 
+                "$ref": "#/definitions/dfr007_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_cwa_cs_compliance": 
@@ -417,9 +457,9 @@ paths:
       summary: Detailed Facility Report CWA CSV Compliance Service
       description: This procedure obtains data for the CWA Compliance Schedule Violations section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -431,16 +471,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrs_Results" 
+                "$ref": "#/definitions/dfr010_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report CWA CSV Compliance Service
       description: This procedure obtains data for the CWA Compliance Schedule Violations section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -452,7 +492,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrs_Results" 
+                "$ref": "#/definitions/dfr010_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_cwa_eff_alr": 
@@ -460,9 +500,9 @@ paths:
       summary: Detailed Facility Report CWA Effluent ALR Service
       description: This procedure obtains data for the CWA Pollutant Discharge section located in the Three Year Compliance Status by Quarter portion of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -474,16 +514,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrt_Results" 
+                "$ref": "#/definitions/dfr011_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report CWA Effluent ALR Service
       description: This procedure obtains data for the CWA Pollutant Discharge section located in the Three Year Compliance Status by Quarter portion of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -495,7 +535,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrt_Results" 
+                "$ref": "#/definitions/dfr011_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_cwa_eff_compliance": 
@@ -503,9 +543,9 @@ paths:
       summary: Detailed Facility Report CWA Effluent Compliance Service
       description: This procedure obtains data for the CWA Effluent Compliance section on the DFR.  
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -517,16 +557,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfru_Results" 
+                "$ref": "#/definitions/dfr012_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report CWA Effluent Compliance Service
       description: This procedure obtains data for the CWA Effluent Compliance section on the DFR.  
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -538,7 +578,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfru_Results" 
+                "$ref": "#/definitions/dfr012_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_cwa_ps_compliance": 
@@ -546,9 +586,9 @@ paths:
       summary: Detailed Facility Report CWA PSV Compliance Service
       description: This procedure obtains data for the CWA Permit Schedule Violations section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -560,16 +600,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrv_Results" 
+                "$ref": "#/definitions/dfr013_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report CWA PSV Compliance Service
       description: This procedure obtains data for the CWA Permit Schedule Violations section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -581,7 +621,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrv_Results" 
+                "$ref": "#/definitions/dfr013_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_cwa_rnc_compliance": 
@@ -601,9 +641,9 @@ paths:
         > Blank = Not considered in RNC/SNC
         > N/A = EPA's data system is not able to determine the facility-level compliance status based upon the information available. This information may be available from a state database.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -615,7 +655,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrw_Results" 
+                "$ref": "#/definitions/dfr014_Results" 
             required: 
             - Results
     post: 
@@ -634,9 +674,9 @@ paths:
         > Blank = Not considered in RNC/SNC
         > N/A = EPA's data system is not able to determine the facility-level compliance status based upon the information available. This information may be available from a state database.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -648,7 +688,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrw_Results" 
+                "$ref": "#/definitions/dfr014_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_cwa_se_compliance": 
@@ -656,9 +696,9 @@ paths:
       summary: Detailed Facility Report CWA SEV Compliance Service
       description: This procedure obtains data for the CWA Single Event Violations section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -670,16 +710,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrx_Results" 
+                "$ref": "#/definitions/dfr015_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report CWA SEV Compliance Service
       description: This procedure obtains data for the CWA Single Event Violations section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -691,16 +731,17 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrx_Results" 
+                "$ref": "#/definitions/dfr015_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_demographics_by_id": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/p_radius"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.p_radius"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -712,15 +753,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrY_Results" 
+                "$ref": "#/definitions/dfr017_Results" 
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/p_radius"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.p_radius"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -732,7 +774,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrY_Results" 
+                "$ref": "#/definitions/dfr017_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_enforcement_summary": 
@@ -740,9 +782,9 @@ paths:
       summary: Detailed Facility Report Enforcement Summary Service
       description: This procedure obtains data for the Enforcement and Compliance Summary in the Facility Summary section of the Detailed Facility Report.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -754,16 +796,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrW1_Results" 
+                "$ref": "#/definitions/dfr114_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report Enforcement Summary Service
       description: This procedure obtains data for the Enforcement and Compliance Summary in the Facility Summary section of the Detailed Facility Report.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -775,15 +817,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrW1_Results" 
+                "$ref": "#/definitions/dfr114_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_extract_dates": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -795,14 +838,15 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfr300" 
+                "$ref": "#/definitions/dfr115" 
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -814,7 +858,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfr300" 
+                "$ref": "#/definitions/dfr115" 
             required: 
             - Results
   "/dfr_rest_services.get_formal_actions": 
@@ -822,9 +866,9 @@ paths:
       summary: Detailed Facility Report Formal Actions Service
       description: This procedure obtains data for the Formal Enforcement Actions section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -836,16 +880,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrW2_Results" 
+                "$ref": "#/definitions/dfr116_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report Formal Actions Service
       description: This procedure obtains data for the Formal Enforcement Actions section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -857,7 +901,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrW2_Results" 
+                "$ref": "#/definitions/dfr116_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_icis_formal_actions": 
@@ -865,9 +909,9 @@ paths:
       summary: Detailed Facility Report ICIS Formal Actions Service
       description: This procedure obtains data for the Integrated Compliance Information System, Formal Enforcement Actions section of the DFR. 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -879,16 +923,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfra_Results" 
+                "$ref": "#/definitions/dfr117_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report ICIS Formal Actions Service
       description: This procedure obtains data for the Integrated Compliance Information System, Formal Enforcement Actions section of the DFR. 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -900,7 +944,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfra_Results" 
+                "$ref": "#/definitions/dfr117_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_inspections": 
@@ -908,9 +952,9 @@ paths:
       summary: Detailed Facility Report Inspections Summary Service
       description: This procedure obtains data for Enforcement and Compliance Summary Section of the Detailed Facility report.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -922,16 +966,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfra1_Results" 
+                "$ref": "#/definitions/dfr118_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report Inspections Summary Service
       description: This procedure obtains data for Enforcement and Compliance Summary Section of the Detailed Facility report.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -943,7 +987,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfra1_Results" 
+                "$ref": "#/definitions/dfr118_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_naics": 
@@ -951,9 +995,9 @@ paths:
       summary: Detailed Facility Report NAICS Code Service
       description: This procedure obtains data for the Facility NAICS Codes section in Facility/System Characteristics of the Detailed Facility Report.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -965,16 +1009,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfra2_Results" 
+                "$ref": "#/definitions/dfr120_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report NAICS Code Service
       description: This procedure obtains data for the Facility NAICS Codes section in Facility/System Characteristics of the Detailed Facility Report.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -986,7 +1030,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfra2_Results" 
+                "$ref": "#/definitions/dfr120_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_notices": 
@@ -994,9 +1038,9 @@ paths:
       summary: Detailed Facility Report Notices Service
       description: This procedure obtains data for the Notices/Informal Actions section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1008,16 +1052,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrg_Results" 
+                "$ref": "#/definitions/dfr122_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report Notices Service
       description: This procedure obtains data for the Notices/Informal Actions section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1029,7 +1073,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrg_Results" 
+                "$ref": "#/definitions/dfr122_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_permits": 
@@ -1045,9 +1089,9 @@ paths:
         > Facility SIC Codes in Facility/System Characteristics section.
         > Facility NAICS Codes in Facility/System Characteristics section.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1059,7 +1103,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrg1_Results" 
+                "$ref": "#/definitions/dfr123_Results" 
             required: 
             - Results
     post: 
@@ -1074,9 +1118,9 @@ paths:
         > Facility SIC Codes in Facility/System Characteristics section.
         > Facility NAICS Codes in Facility/System Characteristics section.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1088,7 +1132,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrg1_Results" 
+                "$ref": "#/definitions/dfr123_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_rcra_compliance": 
@@ -1096,9 +1140,9 @@ paths:
       summary: Detailed Facility Report RCRA Compliance Service
       description: This procedure obtains data for the RCRA Compliance section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1110,16 +1154,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrh_Results" 
+                "$ref": "#/definitions/dfr124_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report RCRA Compliance Service
       description: This procedure obtains data for the RCRA Compliance section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1131,7 +1175,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrh_Results" 
+                "$ref": "#/definitions/dfr124_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_sdwa_lead_and_copper": 
@@ -1139,9 +1183,9 @@ paths:
       summary: Detailed Facility Report SDWA Lead and Copper Service
       description: This procedure obtains data for the SDWA, Lead and Copper Rule section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1153,16 +1197,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrk_Results" 
+                "$ref": "#/definitions/dfr125_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report SDWA Lead and Copper Service
       description: This procedure obtains data for the SDWA, Lead and Copper Rule section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1174,7 +1218,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrk_Results" 
+                "$ref": "#/definitions/dfr125_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_sdwa_sanitary_surveys": 
@@ -1182,9 +1226,9 @@ paths:
       summary: Detailed Facility Report SDWA Sanitary Surveys Service
       description: This procedure obtains data for the SDWA, Sanitary Surveys section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1196,16 +1240,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrj_Results" 
+                "$ref": "#/definitions/dfr126_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report SDWA Sanitary Surveys Service
       description: This procedure obtains data for the SDWA, Sanitary Surveys section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1217,7 +1261,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrj_Results" 
+                "$ref": "#/definitions/dfr126_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_sdwa_site_visits": 
@@ -1225,9 +1269,9 @@ paths:
       summary: Detailed Facility Report SDWA Sanitary Site Visits Service
       description: This procedure obtains data for the SDWA, Sanitary Site Visits section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1239,16 +1283,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfri_Results" 
+                "$ref": "#/definitions/dfr127_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report SDWA Sanitary Site Visits Service
       description: This procedure obtains data for the SDWA, Sanitary Site Visits section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1260,7 +1304,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfri_Results" 
+                "$ref": "#/definitions/dfr127_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_sdwa_violations": 
@@ -1268,9 +1312,9 @@ paths:
       summary: Detailed Facility Report SDWA Violations Service
       description: This procedure obtains data for the SDWA Violations section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1282,16 +1326,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrf_Results" 
+                "$ref": "#/definitions/dfr128_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report SDWA Violations Service
       description: This procedure obtains data for the SDWA Violations section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1303,7 +1347,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrf_Results" 
+                "$ref": "#/definitions/dfr128_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_sdwis_compliance": 
@@ -1311,9 +1355,9 @@ paths:
       summary: Detailed Facility Report SDWIS Compliance Service
       description: This procedure obtains data for the SDWA Compliance section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1325,16 +1369,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrl_Results" 
+                "$ref": "#/definitions/dfr129_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report SDWIS Compliance Service
       description: This procedure obtains data for the SDWA Compliance section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1346,7 +1390,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrl_Results" 
+                "$ref": "#/definitions/dfr129_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_sic_codes": 
@@ -1354,9 +1398,9 @@ paths:
       summary: Detailed Facility Report SIC Code Service
       description: This procedure obtains data for the Facility SIC Codes section in Facility/System Characteristics of the Detailed Facility Report.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1368,16 +1412,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrg2_Results" 
+                "$ref": "#/definitions/dfr130_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report SIC Code Service
       description: This procedure obtains data for the Facility SIC Codes section in Facility/System Characteristics of the Detailed Facility Report.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1389,7 +1433,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrg2_Results" 
+                "$ref": "#/definitions/dfr130_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_spatial_metadata": 
@@ -1397,9 +1441,9 @@ paths:
       summary: Detailed Facility Report Spatial Metadata Service
       description: Returns an object with the facility coordinate spatial metadata.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1411,16 +1455,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrg3_Results" 
+                "$ref": "#/definitions/dfr131_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report Spatial Metadata Service
       description: Returns an object with the facility coordinate spatial metadata.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1432,7 +1476,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrg3_Results" 
+                "$ref": "#/definitions/dfr131_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_tri_history": 
@@ -1440,9 +1484,9 @@ paths:
       summary: Detailed Facility Report TRI History Service
       description: This procedure obtains data for the TRI History section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1454,16 +1498,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrm_Results" 
+                "$ref": "#/definitions/dfr132_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report TRI History Service
       description: This procedure obtains data for the TRI History section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1475,7 +1519,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrm_Results" 
+                "$ref": "#/definitions/dfr132_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_tri_releases": 
@@ -1483,9 +1527,9 @@ paths:
       summary: Detailed Facility Report TRI Releases Service
       description: This procedrue obtains data for the TRI Releases section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1497,16 +1541,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrn_Results" 
+                "$ref": "#/definitions/dfr133_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report TRI Releases Service
       description: This procedrue obtains data for the TRI Releases section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1518,7 +1562,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrn_Results" 
+                "$ref": "#/definitions/dfr133_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_tribes": 
@@ -1526,9 +1570,9 @@ paths:
       summary: Detailed Facility Report Tribes Service
       description: This procedure obtains data for the Tribes and Reservations section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1540,16 +1584,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfro_Results" 
+                "$ref": "#/definitions/dfr134_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report Tribes Service
       description: This procedure obtains data for the Tribes and Reservations section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1561,7 +1605,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfro_Results" 
+                "$ref": "#/definitions/dfr134_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_water_quality": 
@@ -1569,10 +1613,10 @@ paths:
       summary: Detailed Facility Report Water Quality Service
       description: This procedure obtains data for the Water Quality section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/p_radius"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.p_radius"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1584,17 +1628,17 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrp_Results" 
+                "$ref": "#/definitions/dfr135_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report Water Quality Service
       description: This procedure obtains data for the Water Quality section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/p_radius"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.p_radius"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1606,16 +1650,17 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrp_Results" 
+                "$ref": "#/definitions/dfr135_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_water_quality_details": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/p_radius"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.p_radius"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1627,15 +1672,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrp1_Results" 
+                "$ref": "#/definitions/dfr136_Results" 
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/p_radius"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.p_radius"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1647,7 +1693,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrp1_Results" 
+                "$ref": "#/definitions/dfr136_Results" 
             required: 
             - Results
   "/dfr_rest_services.get_map": 
@@ -1655,9 +1701,9 @@ paths:
       summary: Detailed Facility Report Map Service
       description: "Returns an object with the facility's latitude and longitude coordinates."
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1669,16 +1715,16 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrZ_Results" 
+                "$ref": "#/definitions/dfr119_Results" 
             required: 
             - Results
     post: 
       summary: Detailed Facility Report Map Service
       description: "Returns an object with the facility's latitude and longitude coordinates."
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/p_id"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.p_id"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1690,7 +1736,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dfrZ_Results" 
+                "$ref": "#/definitions/dfr119_Results" 
             required: 
             - Results
 definitions: 
@@ -3008,7 +3054,7 @@ definitions:
     - Qtr11Status
     - Qtr12Status
     - Qtr13Status
-  dfrq_Results: 
+  dfr001_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -3017,10 +3063,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       AirCompliance: 
-        "$ref": "#/definitions/dfr5_AirCompliance" 
+        "$ref": "#/definitions/dfr019" 
     required: 
     - Message
-  dfr1_Results: 
+  dfr002_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -3029,10 +3075,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       AirQuality: 
-        "$ref": "#/definitions/dfr6_AirQuality" 
+        "$ref": "#/definitions/dfr024" 
     required: 
     - Message
-  dfr200: 
+  dfr004: 
     description: Results Object
     properties: 
       Message: 
@@ -3041,10 +3087,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       CaseFormalActions: 
-        "$ref": "#/definitions/dfr720" 
+        "$ref": "#/definitions/dfr052" 
     required: 
     - Message
-  dfr2_Results: 
+  dfr005_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -3053,10 +3099,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       ComplianceHistory: 
-        "$ref": "#/definitions/dfrV_ComplianceHistory" 
+        "$ref": "#/definitions/dfr057" 
     required: 
     - Message
-  dfr3_Results: 
+  dfr006_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -3065,10 +3111,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       ComplianceSummary: 
-        "$ref": "#/definitions/dfrD_ComplianceSummary" 
+        "$ref": "#/definitions/dfr059" 
     required: 
     - Message
-  dfrW_Results: 
+  dfr009_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -3077,10 +3123,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       CWA3YrCompliance: 
-        "$ref": "#/definitions/dfr7_CWA3YrCompliance" 
+        "$ref": "#/definitions/dfr025" 
     required: 
     - Message
-  dfr0_get_cwa_3yr_d80d90_counts.Results: 
+  dfr007_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -3089,11 +3135,11 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       CWA3YrD80D90Counts: 
-        "$ref": "#/definitions/dfr712" 
+        "$ref": "#/definitions/dfr027" 
     required: 
     - Message
     - CWA3YrD80D90Counts
-  dfrs_Results: 
+  dfr010_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -3102,10 +3148,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       CWACSCompliance: 
-        "$ref": "#/definitions/dfr10_CWACSCompliance" 
+        "$ref": "#/definitions/dfr031" 
     required: 
     - Message
-  dfrt_Results: 
+  dfr011_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -3114,10 +3160,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       CWAEffluentALRExceedences: 
-        "$ref": "#/definitions/dfr8_CWAEffluentALRExceedences" 
+        "$ref": "#/definitions/dfr035" 
     required: 
     - Message
-  dfru_Results: 
+  dfr012_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -3126,10 +3172,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       CWAEffluentCompliance: 
-        "$ref": "#/definitions/dfr9_CWAEffluentCompliance" 
+        "$ref": "#/definitions/dfr038" 
     required: 
     - Message
-  dfrv_Results: 
+  dfr013_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -3138,10 +3184,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       CWAPSCompliance: 
-        "$ref": "#/definitions/dfrA_CWAPSCompliance" 
+        "$ref": "#/definitions/dfr042" 
     required: 
     - Message
-  dfrw_Results: 
+  dfr014_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -3150,10 +3196,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       CWARNCCompliance: 
-        "$ref": "#/definitions/dfrB_CWARNCCompliance" 
+        "$ref": "#/definitions/dfr046" 
     required: 
     - Message
-  dfrx_Results: 
+  dfr015_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -3162,10 +3208,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       CWASECompliance: 
-        "$ref": "#/definitions/dfrC_CWASECompliance" 
+        "$ref": "#/definitions/dfr049" 
     required: 
     - Message
-  dfrY_Results: 
+  dfr017_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -3174,10 +3220,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       Demographics: 
-        "$ref": "#/definitions/dfrE_Demographics" 
+        "$ref": "#/definitions/dfr061" 
     required: 
     - Message
-  dfr5_AirCompliance: 
+  dfr019: 
     description: Air Compliance Object
     properties: 
       Header: 
@@ -3186,11 +3232,11 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrc_Sources" 
+          "$ref": "#/definitions/dfr020_s" 
         xml: 
           name: Sources
           wrapped: true
-  dfrc_Sources: 
+  dfr020_s: 
     description: Source Object
     xml: 
       name: Sources
@@ -3202,7 +3248,7 @@ definitions:
       HPVProgramsPollutants: 
         type: array
         items: 
-          "$ref": "#/definitions/dfrc_Sources.HPVProgramsPollutants" 
+          "$ref": "#/definitions/dfr020_s.HPVProgramsPollutants" 
         xml: 
           name: HPVProgramsPollutants
           wrapped: true
@@ -3210,14 +3256,14 @@ definitions:
         type: array
         title: FRV Programs Pollutants
         items: 
-          "$ref": "#/definitions/dfrc_Sources.FRVProgramsPollutants" 
+          "$ref": "#/definitions/dfr020_s.FRVProgramsPollutants" 
         xml: 
           name: FRVProgramsPollutants
           wrapped: true
       AFSPrograms: 
         type: array
         items: 
-          "$ref": "#/definitions/dfrc_Sources.AFSPrograms" 
+          "$ref": "#/definitions/dfr020_s.AFSPrograms" 
         xml: 
           name: AFSPrograms
           wrapped: true
@@ -3227,7 +3273,7 @@ definitions:
     - HPVProgramsPollutants
     - FRVProgramsPollutants
     - AFSPrograms
-  dfrc_Sources.AFSPrograms: 
+  dfr020_s.AFSPrograms: 
     description: AFS Program Object
     xml: 
       name: AFSPrograms
@@ -3315,7 +3361,7 @@ definitions:
     - Qtr10Status
     - Qtr11Status
     - Qtr12Status
-  dfrc_Sources.FRVProgramsPollutants: 
+  dfr020_s.FRVProgramsPollutants: 
     description: FRV Programs Pollutant Object
     xml: 
       name: FRVProgramsPollutants
@@ -3421,7 +3467,7 @@ definitions:
     - Qtr11Status
     - Qtr12Status
     - Agency
-  dfrc_Sources.HPVProgramsPollutants: 
+  dfr020_s.HPVProgramsPollutants: 
     description: HPV Programs Pollutant Object
     xml: 
       name: HPVProgramsPollutants
@@ -3527,7 +3573,7 @@ definitions:
     - Qtr11Status
     - Qtr12Status
     - Agency
-  dfr6_AirQuality: 
+  dfr024: 
     description: Air Quality Object
     properties: 
       Ozone8hr1997Area: 
@@ -3560,7 +3606,7 @@ definitions:
         title: Particulate Matter Area - 2006
         example: Washington, DC-MD-VA
         description: If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name
-  dfr4_CAEDDocuments: 
+  dfr018_CAEDDocuments: 
     description: CAED Documents
     xml: 
       name: CAEDDocuments
@@ -3581,7 +3627,7 @@ definitions:
         type: string
       DocumentLink: 
         type: string
-  dfr7_CWA3YrCompliance: 
+  dfr025: 
     description: CWA 3-Year Compliance Object
     properties: 
       Header: 
@@ -3590,11 +3636,11 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfr7_Sources" 
+          "$ref": "#/definitions/dfr026" 
         xml: 
           name: Sources
           wrapped: true
-  dfr7_Sources: 
+  dfr026: 
     description: CWA 3-Year Compliance Sources Object
     xml: 
       name: Sources
@@ -3609,7 +3655,7 @@ definitions:
           wrapped: true
     required: 
     - Status
-  dfr712: 
+  dfr027: 
     description: CWA 3-Year D80D90 Counts
     properties: 
       Header: 
@@ -3618,11 +3664,11 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfr713" 
+          "$ref": "#/definitions/dfr029" 
         xml: 
           name: Sources
           wrapped: true
-  dfr713: 
+  dfr029: 
     description: CWA 3-Year D80D90 Sources Object
     xml: 
       name: Sources
@@ -3631,13 +3677,13 @@ definitions:
         type: array
         title: Status
         items: 
-          "$ref": "#/definitions/dfr714" 
+          "$ref": "#/definitions/dfr030" 
         xml: 
           name: Status
           wrapped: true
     required: 
     - Status
-  dfr714: 
+  dfr030: 
     description: Status Object
     properties: 
       SourceID: 
@@ -3689,7 +3735,7 @@ definitions:
     - Qtr11Count
     - Qtr12Count
     - Qtr13Count
-  dfr10_CWACSCompliance: 
+  dfr031: 
     description: CWA CS Compliance Object
     properties: 
       Header: 
@@ -3698,11 +3744,11 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfr10_Sources" 
+          "$ref": "#/definitions/dfr032" 
         xml: 
           name: Sources
           wrapped: true
-  dfr10_Sources: 
+  dfr032: 
     description: Sources Object
     xml: 
       name: Sources
@@ -3711,13 +3757,13 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfr10_Violations" 
+          "$ref": "#/definitions/dfr034" 
         xml: 
           name: Violations
           wrapped: true
     required: 
     - Violations
-  dfr10_Violations: 
+  dfr034: 
     description: Violations Object
     xml: 
       name: Violations
@@ -3871,7 +3917,7 @@ definitions:
     - Qtr12Value
     - Qtr13Status
     - Qtr13Value
-  dfr8_CWAEffluentALRExceedences: 
+  dfr035: 
     description: CWA Effluent ALR Exceedences Object
     properties: 
       Header: 
@@ -3880,11 +3926,11 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfr8_Sources" 
+          "$ref": "#/definitions/dfr037" 
         xml: 
           name: Sources
           wrapped: true
-  dfr8_Parameters: 
+  dfr036: 
     description: Parameter Object
     xml: 
       name: Parameters
@@ -3970,7 +4016,7 @@ definitions:
     - Qtr11Value
     - Qtr12Value
     - Qtr13Value
-  dfr8_Sources: 
+  dfr037: 
     description: Sources Object
     xml: 
       name: Sources
@@ -3979,13 +4025,13 @@ definitions:
         type: array
         title: Parameters
         items: 
-          "$ref": "#/definitions/dfr8_Parameters" 
+          "$ref": "#/definitions/dfr036" 
         xml: 
           name: Parameters
           wrapped: true
     required: 
     - Parameters
-  dfr9_CWAEffluentCompliance: 
+  dfr038: 
     description: CWA Effluent Compliance Object
     properties: 
       Header: 
@@ -3994,11 +4040,11 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfr9_Sources" 
+          "$ref": "#/definitions/dfr041" 
         xml: 
           name: Sources
           wrapped: true
-  dfr9_Parameters: 
+  dfr040: 
     description: CWA Effluent Compliance Parameter Object
     xml: 
       name: Parameters
@@ -4396,7 +4442,7 @@ definitions:
     - Mnth38Value
     - Mnth39Status
     - Mnth39Value
-  dfr9_Sources: 
+  dfr041: 
     description: CWA Effluent Compliance Sources Object
     xml: 
       name: Sources
@@ -4405,11 +4451,11 @@ definitions:
         type: array
         title: Parameters
         items: 
-          "$ref": "#/definitions/dfr9_Parameters" 
+          "$ref": "#/definitions/dfr040" 
         xml: 
           name: Parameters
           wrapped: true
-  dfrA_CWAPSCompliance: 
+  dfr042: 
     description: CWA PS Compliance Object
     properties: 
       Header: 
@@ -4418,11 +4464,11 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrA_Sources" 
+          "$ref": "#/definitions/dfr043" 
         xml: 
           name: Sources
           wrapped: true
-  dfrA_Sources: 
+  dfr043: 
     description: CWA PS Compliance Violation Object
     xml: 
       name: Sources
@@ -4431,13 +4477,13 @@ definitions:
         type: array
         title: Violations
         items: 
-          "$ref": "#/definitions/dfrA_Violations" 
+          "$ref": "#/definitions/dfr045" 
         xml: 
           name: Violations
           wrapped: true
     required: 
     - Violations
-  dfrA_Violations: 
+  dfr045: 
     description: CWA PS Compliance Violations Object
     xml: 
       name: Violations
@@ -4591,7 +4637,7 @@ definitions:
     - Qtr12Value
     - Qtr13Status
     - Qtr13Value
-  dfrB_CWARNCCompliance: 
+  dfr046: 
     description: CWA RNC Compliance Object
     properties: 
       Header: 
@@ -4600,11 +4646,11 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrB_Sources.Status" 
+          "$ref": "#/definitions/dfr047_.Status" 
         xml: 
           name: Sources
           wrapped: true
-  dfrB_Sources.Status: 
+  dfr047_.Status: 
     description: CWA RNC Compliance Statuses Object
     xml: 
       name: Status
@@ -4617,7 +4663,7 @@ definitions:
         xml: 
           name: Status
           wrapped: true
-  dfrC_CWASECompliance: 
+  dfr049: 
     description: CWA SE Compliance Object
     properties: 
       Header: 
@@ -4626,11 +4672,11 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrC_Sources" 
+          "$ref": "#/definitions/dfr050" 
         xml: 
           name: Sources
           wrapped: true
-  dfrC_Sources: 
+  dfr050: 
     description: CWA SE Compliance Sources Object
     xml: 
       name: Sources
@@ -4639,13 +4685,13 @@ definitions:
         type: array
         title: Violations
         items: 
-          "$ref": "#/definitions/dfrC_Violations" 
+          "$ref": "#/definitions/dfr051" 
         xml: 
           name: Violations
           wrapped: true
     required: 
     - Violations
-  dfrC_Violations: 
+  dfr051: 
     description: CWA SE Compliance Violations Object
     xml: 
       name: Violations
@@ -4807,7 +4853,7 @@ definitions:
     - Qtr12Value
     - Qtr13Status
     - Qtr13Value
-  dfr720: 
+  dfr052: 
     description: Case Formal Actions
     xml: 
       name: CaseFormalActions
@@ -4816,18 +4862,18 @@ definitions:
         type: array
         title: Program Dates
         items: 
-          "$ref": "#/definitions/dfr4_ProgramDates" 
+          "$ref": "#/definitions/dfr018_ProgramDates" 
         xml: 
           name: ProgramDates
           wrapped: true
       Action: 
         type: array
         items: 
-          "$ref": "#/definitions/dfr722" 
+          "$ref": "#/definitions/dfr053" 
         xml: 
           name: Action
           wrapped: true
-  dfr722: 
+  dfr053: 
     description: Case Formal Action
     properties: 
       StatuteCode: 
@@ -4892,7 +4938,7 @@ definitions:
         title: Number of Settlements
         example: '1'
       Settlements: 
-        "$ref": "#/definitions/dfr724" 
+        "$ref": "#/definitions/dfr055" 
     required: 
     - StatuteCode
     - LawSectionCode
@@ -4906,7 +4952,7 @@ definitions:
     - IssueDate
     - NumberSettlements
     - Settlements
-  dfr723: 
+  dfr054: 
     type: object
     properties: 
       TotalCostRecovery: 
@@ -4942,7 +4988,7 @@ definitions:
     - StateLocalPenalty
     - SepCost
     - CompActionCost
-  dfr724: 
+  dfr055: 
     type: object
     xml: 
       name: Settlements
@@ -4951,20 +4997,20 @@ definitions:
         type: array
         title: Settlement
         items: 
-          "$ref": "#/definitions/dfr723" 
+          "$ref": "#/definitions/dfr054" 
         xml: 
           name: Settlements
           wrapped: true
     required: 
     - Settlement
-  dfrV_ComplianceHistory: 
+  dfr057: 
     description: Compliance History Object
     properties: 
       ProgramDates: 
         type: array
         title: Program Dates
         items: 
-          "$ref": "#/definitions/dfr4_ProgramDates" 
+          "$ref": "#/definitions/dfr018_ProgramDates" 
         xml: 
           name: ProgramDates
           wrapped: true
@@ -4972,11 +5018,11 @@ definitions:
         type: array
         title: Inspection
         items: 
-          "$ref": "#/definitions/dfrV_Inspection" 
+          "$ref": "#/definitions/dfr058" 
         xml: 
           name: Inspection
           wrapped: true
-  dfrV_Inspection: 
+  dfr058: 
     description: Inspection Object
     xml: 
       name: Inspection
@@ -5043,14 +5089,14 @@ definitions:
     - Date
     - CMSFlag
     - Finding
-  dfrD_ComplianceSummary: 
+  dfr059: 
     description: Compliance Summary Object
     properties: 
       ProgramDates: 
         type: array
         title: Program Dates
         items: 
-          "$ref": "#/definitions/dfr4_ProgramDates" 
+          "$ref": "#/definitions/dfr018_ProgramDates" 
         xml: 
           name: ProgramDates
           wrapped: true
@@ -5058,14 +5104,14 @@ definitions:
         type: array
         title: Source
         items: 
-          "$ref": "#/definitions/dfrD_Source" 
+          "$ref": "#/definitions/dfr060" 
         xml: 
           name: Source
           wrapped: true
     required: 
     - ProgramDates
     - Source
-  dfrD_Source: 
+  dfr060: 
     description: Source Object
     xml: 
       name: Source
@@ -5117,7 +5163,7 @@ definitions:
     - Description
     - CurrentAsOf
     - QtrsInNC
-  dfrE_Demographics: 
+  dfr061: 
     description: Demographics Object
     properties: 
       Radius: 
@@ -5311,14 +5357,14 @@ definitions:
     - Income25to50k
     - Income50to75k
     - Income75kPlus
-  dfrF_EnforcementComplianceSummaries: 
+  dfr062: 
     description: Enforcement Compliance Summaries Object
     properties: 
       ProgramDates: 
         type: array
         title: Program Dates
         items: 
-          "$ref": "#/definitions/dfrF_ProgramDates" 
+          "$ref": "#/definitions/dfr063_s" 
         xml: 
           name: ProgramDates
           wrapped: true
@@ -5326,14 +5372,14 @@ definitions:
         type: array
         title: Summaries
         items: 
-          "$ref": "#/definitions/dfr4_Summaries" 
+          "$ref": "#/definitions/dfr018_Summaries" 
         xml: 
           name: Summaries
           wrapped: true
     required: 
     - ProgramDates
     - Summaries
-  dfrF_ProgramDates: 
+  dfr063_s: 
     description: Program Date Object
     xml: 
       name: ProgramDates
@@ -5361,25 +5407,25 @@ definitions:
     - StartDate3Yr
     - StartDate5Yr
     - EndDate
-  dfrG_FormalActions: 
+  dfr064: 
     description: Formal Actions Object
     properties: 
       ProgramDates: 
         type: array
         title: Program Dates
         items: 
-          "$ref": "#/definitions/dfr4_ProgramDates" 
+          "$ref": "#/definitions/dfr018_ProgramDates" 
         xml: 
           name: ProgramDates
           wrapped: true
       Action: 
         type: array
         items: 
-          "$ref": "#/definitions/dfrG_Action" 
+          "$ref": "#/definitions/dfr065" 
         xml: 
           name: Action
           wrapped: true
-  dfrG_Action: 
+  dfr065: 
     description: Action Object
     xml: 
       name: Action
@@ -5431,25 +5477,25 @@ definitions:
     - ActionDate
     - PenaltyAmount
     - PenaltyDesc
-  dfrH_ICISFormalActions: 
+  dfr066: 
     description: ICIS Formal Actions Object
     properties: 
       ProgramDates: 
         type: array
         title: Program Dates
         items: 
-          "$ref": "#/definitions/dfr4_ProgramDates" 
+          "$ref": "#/definitions/dfr018_ProgramDates" 
         xml: 
           name: ProgramDates
           wrapped: true
       Action: 
         type: array
         items: 
-          "$ref": "#/definitions/dfrH_Action" 
+          "$ref": "#/definitions/dfr067" 
         xml: 
           name: Action
           wrapped: true
-  dfrH_Action: 
+  dfr067: 
     description: Action Object
     xml: 
       name: Action
@@ -5542,14 +5588,14 @@ definitions:
     - StateLocalPenalty
     - SepCost
     - CompActionCost
-  dfrI_InspectionEnforcementSummary: 
+  dfr068: 
     description: Inspection Enforcement Summary Object
     properties: 
       ProgramDates: 
         type: array
         title: Program Dates
         items: 
-          "$ref": "#/definitions/dfr4_ProgramDates" 
+          "$ref": "#/definitions/dfr018_ProgramDates" 
         xml: 
           name: ProgramDates
           wrapped: true
@@ -5557,11 +5603,11 @@ definitions:
         type: array
         title: Source
         items: 
-          "$ref": "#/definitions/dfrI_Source" 
+          "$ref": "#/definitions/dfr069" 
         xml: 
           name: Source
           wrapped: true
-  dfrI_Source: 
+  dfr069: 
     description: Source Object
     xml: 
       name: Source
@@ -5623,7 +5669,7 @@ definitions:
     - DateLastInspection
     - FormalEnfActCount
     - TotalPenalties
-  dfrG_LeadAndCopperRule5Yr: 
+  dfr070: 
     description: Lead and Copper Rule Object
     properties: 
       SourceID: 
@@ -5639,7 +5685,7 @@ definitions:
         type: array
         title: Lead Samples
         items: 
-          "$ref": "#/definitions/dfrG_LeadSamples" 
+          "$ref": "#/definitions/dfr072" 
         xml: 
           name: LeadSamples
           wrapped: true
@@ -5649,7 +5695,7 @@ definitions:
         type: array
         title: Copper Samples
         items: 
-          "$ref": "#/definitions/dfrG_CopperSamples" 
+          "$ref": "#/definitions/dfr071" 
         xml: 
           name: CopperSamples
           wrapped: true
@@ -5677,7 +5723,7 @@ definitions:
         type: string
       LeadAndCopperViol: 
         type: string
-  dfrG_CopperSamples: 
+  dfr071: 
     description: Copper Samples
     xml: 
       name: CopperSample
@@ -5695,7 +5741,7 @@ definitions:
     - CU90Value
     - CU90Units
     - CU90Dates
-  dfrG_LeadSamples: 
+  dfr072: 
     description: Lead Samples
     xml: 
       name: LeadSample
@@ -5713,7 +5759,7 @@ definitions:
     - PB90Value
     - PB90Units
     - PB90Dates
-  dfr4_MapData: 
+  dfr018_MapData: 
     description: Map Data Object
     xml: 
       name: Object
@@ -5755,7 +5801,7 @@ definitions:
     - TYPE
     - NAME
     - PUV
-  dfrJ_MapOutput: 
+  dfr073: 
     description: Map Output Object
     properties: 
       IconBaseURL: 
@@ -5780,7 +5826,7 @@ definitions:
         type: array
         title: Map Data
         items: 
-          "$ref": "#/definitions/dfr4_MapData" 
+          "$ref": "#/definitions/dfr018_MapData" 
         xml: 
           name: MapData
           wrapped: true
@@ -5790,31 +5836,31 @@ definitions:
     - CenterLatitude
     - CenterLongitude
     - MapData
-  dfr4_MultipleFRSFacilities: 
+  dfr018_MultipleFRSFacilities: 
     description: Multiple FRS Facilities Object
     properties: 
       RegistryIDs: 
         type: array
         title: Registry IDs
         items: 
-          "$ref": "#/definitions/dfr4_RegistryIDs" 
+          "$ref": "#/definitions/dfr018_RegistryIDs" 
         xml: 
           name: RegistryIDs
           wrapped: true
-  dfr4_NAICS: 
+  dfr018_NAICS: 
     description: NAICS Object
     properties: 
       Sources: 
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrz_NAICS" 
+          "$ref": "#/definitions/dfr074" 
         xml: 
           name: Sources
           wrapped: true
     required: 
     - Sources
-  dfrz_NAICS: 
+  dfr074: 
     description: NAICS Sources Object
     xml: 
       name: Sources
@@ -5823,13 +5869,13 @@ definitions:
         type: array
         title: NAICS Codes
         items: 
-          "$ref": "#/definitions/dfrz_NAICSCodes" 
+          "$ref": "#/definitions/dfr075" 
         xml: 
           name: NAICSCodes
           wrapped: true
     required: 
     - NAICSCodes
-  dfrz_NAICSCodes: 
+  dfr075: 
     description: NAICS Codes Object
     xml: 
       name: NAICSCodes
@@ -5867,14 +5913,14 @@ definitions:
     - EPASystem
     - NAICSCode
     - NAICSDesc
-  dfrK_Notices: 
+  dfr076: 
     description: Notices Object
     properties: 
       ProgramDates: 
         type: array
         title: Program Dates
         items: 
-          "$ref": "#/definitions/dfr4_ProgramDates" 
+          "$ref": "#/definitions/dfr018_ProgramDates" 
         xml: 
           name: ProgramDates
           wrapped: true
@@ -5882,14 +5928,14 @@ definitions:
         type: array
         title: Notice
         items: 
-          "$ref": "#/definitions/dfrK_Notice" 
+          "$ref": "#/definitions/dfr077" 
         xml: 
           name: Notice
           wrapped: true
     required: 
     - ProgramDates
     - Notice
-  dfrK_Notice: 
+  dfr077: 
     description: Notice Object
     xml: 
       name: Notice
@@ -5957,7 +6003,7 @@ definitions:
     - LeadAgency
     - NoticeDate
     - EnfIdentifier
-  dfr4_Permits: 
+  dfr018_Permits: 
     description: Permits Object
     xml: 
       name: Permits
@@ -6140,7 +6186,7 @@ definitions:
     - HasIcisSsoRpt
     - HasBioRpt
     - FacilityStatus
-  dfr4_ProgramDates: 
+  dfr018_ProgramDates: 
     description: Program Dates Object
     xml: 
       name: ProgramDates
@@ -6164,7 +6210,7 @@ definitions:
     - Program
     - StartDate
     - EndDate
-  dfrL_RCRACompliance: 
+  dfr078: 
     description: Resource Conservation and Recovery Act Compliance Object
     properties: 
       Qtr1Start: 
@@ -6435,11 +6481,11 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrL_Sources" 
+          "$ref": "#/definitions/dfr079_s" 
         xml: 
           name: Sources
           wrapped: true
-  dfrL_Sources: 
+  dfr079_s: 
     description: Source Object
     xml: 
       name: Sources
@@ -6450,11 +6496,11 @@ definitions:
         type: array
         title: Violations
         items: 
-          "$ref": "#/definitions/dfrL_Sources.Violations" 
+          "$ref": "#/definitions/dfr079_s.Violations" 
         xml: 
           name: Violations
           wrapped: true
-  dfrL_Sources.Violations: 
+  dfr079_s.Violations: 
     description: Violations Object
     xml: 
       name: Violations
@@ -6554,7 +6600,7 @@ definitions:
     - Qtr10Status
     - Qtr11Status
     - Qtr12Status
-  dfr4_RegistryIDs: 
+  dfr018_RegistryIDs: 
     description: Registry IDs Object
     xml: 
       name: RegistryIDs
@@ -6605,7 +6651,7 @@ definitions:
         title: Facility Zipcode
         example: '35609'
         description: The zip code of the area in which the facility is located
-  dfr4_Reports: 
+  dfr018_Reports: 
     description: Reports Object
     properties: 
       HasPollRpt: 
@@ -6614,7 +6660,7 @@ definitions:
         description: "???"
     required: 
     - HasPollRpt
-  dfr4_Results: 
+  dfr018_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -6623,84 +6669,84 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       MultipleFRSFacilities: 
-        "$ref": "#/definitions/dfr4_MultipleFRSFacilities" 
+        "$ref": "#/definitions/dfr018_MultipleFRSFacilities" 
       Reports: 
-        "$ref": "#/definitions/dfr4_Reports" 
+        "$ref": "#/definitions/dfr018_Reports" 
       Permits: 
         type: array
         title: Permits
         items: 
-          "$ref": "#/definitions/dfr4_Permits" 
+          "$ref": "#/definitions/dfr018_Permits" 
         xml: 
           name: Permits
           wrapped: true
       SystemExtractDates: 
-        "$ref": "#/definitions/dfr730" 
+        "$ref": "#/definitions/dfr095" 
       EnforcementComplianceSummaries: 
-        "$ref": "#/definitions/dfrF_EnforcementComplianceSummaries" 
+        "$ref": "#/definitions/dfr062" 
       NAICS: 
-        "$ref": "#/definitions/dfr4_NAICS" 
+        "$ref": "#/definitions/dfr018_NAICS" 
       SIC: 
-        "$ref": "#/definitions/dfr4_SIC" 
+        "$ref": "#/definitions/dfr084" 
       InspectionEnforcementSummary: 
-        "$ref": "#/definitions/dfrI_InspectionEnforcementSummary" 
+        "$ref": "#/definitions/dfr068" 
       ComplianceHistory: 
-        "$ref": "#/definitions/dfrV_ComplianceHistory" 
+        "$ref": "#/definitions/dfr057" 
       ComplianceSummary: 
-        "$ref": "#/definitions/dfrD_ComplianceSummary" 
+        "$ref": "#/definitions/dfr059" 
       CWA3YrCompliance: 
-        "$ref": "#/definitions/dfr7_CWA3YrCompliance" 
+        "$ref": "#/definitions/dfr025" 
       CWARNCCompliance: 
-        "$ref": "#/definitions/dfrB_CWARNCCompliance" 
+        "$ref": "#/definitions/dfr046" 
       CWA3YrD80D90Counts: 
-        "$ref": "#/definitions/dfr712" 
+        "$ref": "#/definitions/dfr027" 
       CWAEffluentCompliance: 
-        "$ref": "#/definitions/dfr9_CWAEffluentCompliance" 
+        "$ref": "#/definitions/dfr038" 
       CWAPSCompliance: 
-        "$ref": "#/definitions/dfrA_CWAPSCompliance" 
+        "$ref": "#/definitions/dfr042" 
       CWASECompliance: 
-        "$ref": "#/definitions/dfrC_CWASECompliance" 
+        "$ref": "#/definitions/dfr049" 
       CWACSCompliance: 
-        "$ref": "#/definitions/dfr10_CWACSCompliance" 
+        "$ref": "#/definitions/dfr031" 
       CWAEffluentALRExceedences: 
-        "$ref": "#/definitions/dfr8_CWAEffluentALRExceedences" 
+        "$ref": "#/definitions/dfr035" 
       AirCompliance: 
-        "$ref": "#/definitions/dfr5_AirCompliance" 
+        "$ref": "#/definitions/dfr019" 
       RCRACompliance: 
-        "$ref": "#/definitions/dfrL_RCRACompliance" 
+        "$ref": "#/definitions/dfr078" 
       SDWISCompliance: 
-        "$ref": "#/definitions/dfrM_SDWISCompliance" 
+        "$ref": "#/definitions/dfr081" 
       WaterQuality: 
-        "$ref": "#/definitions/dfrU_WaterQuality" 
+        "$ref": "#/definitions/dfr111" 
       WaterQualityDetails: 
-        "$ref": "#/definitions/dfrU_WaterQualityDetails" 
+        "$ref": "#/definitions/dfr111_Details" 
       Notices: 
-        "$ref": "#/definitions/dfrK_Notices" 
+        "$ref": "#/definitions/dfr076" 
       FormalActions: 
-        "$ref": "#/definitions/dfrG_FormalActions" 
+        "$ref": "#/definitions/dfr064" 
       ICISFormalActions: 
-        "$ref": "#/definitions/dfrH_ICISFormalActions" 
+        "$ref": "#/definitions/dfr066" 
       CaseFormalActions: 
-        "$ref": "#/definitions/dfr720" 
+        "$ref": "#/definitions/dfr052" 
       TRIHistory: 
-        "$ref": "#/definitions/dfrQ_TRIHistory" 
+        "$ref": "#/definitions/dfr098" 
       TRIReleases: 
-        "$ref": "#/definitions/dfrR_TRIReleases" 
+        "$ref": "#/definitions/dfr102" 
       AirQuality: 
-        "$ref": "#/definitions/dfr6_AirQuality" 
+        "$ref": "#/definitions/dfr024" 
       SiteVisits: 
-        "$ref": "#/definitions/dfrO_SiteVisits" 
+        "$ref": "#/definitions/dfr090" 
       SanitarySurveys: 
-        "$ref": "#/definitions/dfrN_SanitarySurveys" 
+        "$ref": "#/definitions/dfr086" 
       ViolationsEnforcementActions: 
-        "$ref": "#/definitions/dfrT_ViolationsEnforcementActions" 
+        "$ref": "#/definitions/dfr106" 
       LeadAndCopperRule5Yr: 
-        "$ref": "#/definitions/dfrG_LeadAndCopperRule5Yr" 
+        "$ref": "#/definitions/dfr070" 
       Tribes: 
         type: array
         title: Tribes
         items: 
-          "$ref": "#/definitions/dfrS_Tribes" 
+          "$ref": "#/definitions/dfr105" 
         xml: 
           name: Tribes
           wrapped: true
@@ -6708,7 +6754,7 @@ definitions:
         type: array
         title: Web Fire Documents
         items: 
-          "$ref": "#/definitions/dfr4_WebFireDocuments" 
+          "$ref": "#/definitions/dfr018_WebFireDocuments" 
         xml: 
           name: WebFireDocuments
           wrapped: true
@@ -6716,19 +6762,19 @@ definitions:
         type: array
         title: Web Fire Documents
         items: 
-          "$ref": "#/definitions/dfr4_CAEDDocuments" 
+          "$ref": "#/definitions/dfr018_CAEDDocuments" 
         xml: 
           name: CAEDDocuments
           wrapped: true
       SpatialMetadata: 
-        "$ref": "#/definitions/dfrP_SpatialMetadata" 
+        "$ref": "#/definitions/dfr094" 
       Demographics: 
-        "$ref": "#/definitions/dfrE_Demographics" 
+        "$ref": "#/definitions/dfr061" 
       MapOutput: 
-        "$ref": "#/definitions/dfrJ_MapOutput" 
+        "$ref": "#/definitions/dfr073" 
     required: 
     - Message
-  dfrM_SDWISCompliance: 
+  dfr081: 
     description: SDWIS Compliance Object
     properties: 
       Qtr1Start: 
@@ -7021,11 +7067,11 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrM_Sources" 
+          "$ref": "#/definitions/dfr083_s" 
         xml: 
           name: Sources
           wrapped: true
-  dfrM_Sources: 
+  dfr083_s: 
     description: Sources Object
     xml: 
       name: Sources
@@ -7035,14 +7081,14 @@ definitions:
       RulesViolated: 
         type: array
         items: 
-          "$ref": "#/definitions/dfrM_Sources.RulesViolated" 
+          "$ref": "#/definitions/dfr083_s.RulesViolated" 
         xml: 
           name: RulesViolated
           wrapped: true
     required: 
     - Status
     - RulesViolated
-  dfrM_Sources.RulesViolated: 
+  dfr083_s.RulesViolated: 
     description: Rules Violated Object
     xml: 
       name: RulesViolated
@@ -7136,20 +7182,20 @@ definitions:
     - Qtr11Status
     - Qtr12Status
     - Qtr13Status
-  dfr4_SIC: 
+  dfr084: 
     description: SIC Object
     properties: 
       Sources: 
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfr4_Sources" 
+          "$ref": "#/definitions/dfr085" 
         xml: 
           name: Sources
           wrapped: true
     required: 
     - Sources
-  dfr4_Sources: 
+  dfr085: 
     description: Sources Object
     xml: 
       name: Sources
@@ -7157,13 +7203,13 @@ definitions:
       SICCodes: 
         type: array
         items: 
-          "$ref": "#/definitions/dfr4_SICCodes" 
+          "$ref": "#/definitions/dfr084_Codes" 
         xml: 
           name: SICCodes
           wrapped: true
     required: 
     - SICCodes
-  dfr4_SICCodes: 
+  dfr084_Codes: 
     description: SIC Codes Object
     xml: 
       name: SICCodes
@@ -7201,18 +7247,18 @@ definitions:
     - EPASystem
     - SICCode
     - SICDesc
-  dfrN_SanitarySurveys: 
+  dfr086: 
     description: Sanitary Surveys Object
     properties: 
       Sources: 
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrN_Sources" 
+          "$ref": "#/definitions/dfr088" 
         xml: 
           name: Sources
           wrapped: true
-  dfrN_Sources: 
+  dfr088: 
     description: Sources Object
     xml: 
       name: Sources
@@ -7221,13 +7267,13 @@ definitions:
         type: array
         title: Sanitary Survey
         items: 
-          "$ref": "#/definitions/dfrN_SanitarySurvey" 
+          "$ref": "#/definitions/dfr089" 
         xml: 
           name: SanitarySurvey
           wrapped: true
     required: 
     - SanitarySurvey
-  dfrN_SanitarySurvey: 
+  dfr089: 
     description: Sanitary Survey Object
     xml: 
       name: SanitarySurvey
@@ -7300,18 +7346,18 @@ definitions:
     - Source
     - Financial
     - Treatment
-  dfrO_SiteVisits: 
+  dfr090: 
     description: Site Visits Object
     properties: 
       Sources: 
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrO_Sources" 
+          "$ref": "#/definitions/dfr092" 
         xml: 
           name: Sources
           wrapped: true
-  dfrO_Sources: 
+  dfr092: 
     description: Sources Object
     xml: 
       name: Sources
@@ -7320,13 +7366,13 @@ definitions:
         type: array
         title: Site Visit
         items: 
-          "$ref": "#/definitions/dfrO_SiteVisit" 
+          "$ref": "#/definitions/dfr093" 
         xml: 
           name: SiteVisit
           wrapped: true
     required: 
     - SiteVisit
-  dfrO_SiteVisit: 
+  dfr093: 
     description: Site Visit Object
     xml: 
       name: SiteVisit
@@ -7400,7 +7446,7 @@ definitions:
     - Source
     - Financial
     - Treatment
-  dfrP_SpatialMetadata: 
+  dfr094: 
     description: Spatial Metadata Object
     properties: 
       RegistryID: 
@@ -7454,7 +7500,7 @@ definitions:
     - CalculatedAccuracy
     - CoordinateSourceSystem
     - CoordinateSourceSystemId
-  dfr4_Summaries: 
+  dfr018_Summaries: 
     description: Summaries Object
     xml: 
       name: Summaries
@@ -7531,20 +7577,20 @@ definitions:
     - Cases
     - TotalPenalties
     - TotalCasePenalties
-  dfr730: 
+  dfr095: 
     description: System Extract Dates Object
     properties: 
       Dates: 
         type: array
         title: System Extract Dates Dates
         items: 
-          "$ref": "#/definitions/dfr732" 
+          "$ref": "#/definitions/dfr096" 
         xml: 
           name: Dates
           wrapped: true
     required: 
     - Dates
-  dfr732: 
+  dfr096: 
     description: System Extract Dates Dates Object
     properties: 
       EPASystem: 
@@ -7565,18 +7611,18 @@ definitions:
     required: 
     - EPASystem
     - SystemExtractDate
-  dfrQ_TRIHistory: 
+  dfr098: 
     description: TRI History Object
     properties: 
       Sources: 
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfre_Sources" 
+          "$ref": "#/definitions/dfr100" 
         xml: 
           name: Sources
           wrapped: true
-  dfre_Sources: 
+  dfr100: 
     description: Sources Object
     xml: 
       name: Sources
@@ -7585,11 +7631,11 @@ definitions:
         type: array
         title: Release Year
         items: 
-          "$ref": "#/definitions/dfre_ReleaseYear" 
+          "$ref": "#/definitions/dfr101" 
         xml: 
           name: ReleaseYear
           wrapped: true
-  dfre_ReleaseYear: 
+  dfr101: 
     description: Release Year Object
     xml: 
       name: ReleaseYear
@@ -7648,14 +7694,14 @@ definitions:
     - TotalOnSiteReleases
     - TotalOffSiteReleases
     - TotalReleasesTransfers
-  dfrR_TRIReleases: 
+  dfr102: 
     description: TRI Releases Object
     properties: 
       Header: 
         type: array
         title: Header
         items: 
-          "$ref": "#/definitions/dfrR_Header" 
+          "$ref": "#/definitions/dfr104" 
         xml: 
           name: Header
           wrapped: true
@@ -7663,11 +7709,11 @@ definitions:
         type: array
         title: Chemicals
         items: 
-          "$ref": "#/definitions/dfrR_Chemicals" 
+          "$ref": "#/definitions/dfr103" 
         xml: 
           name: Chemicals
           wrapped: true
-  dfrR_Chemicals: 
+  dfr103: 
     description: Chemicals Object
     xml: 
       name: Chemical
@@ -7732,7 +7778,7 @@ definitions:
     - Year3Pounds
     - Year2Pounds
     - Year1Pounds
-  dfrR_Header: 
+  dfr104: 
     description: Header Object
     xml: 
       name: Header
@@ -7765,7 +7811,7 @@ definitions:
     - Year3
     - Year2
     - Year1
-  dfrS_Tribes: 
+  dfr105: 
     description: Tribes Object
     xml: 
       name: Tribes
@@ -7792,18 +7838,18 @@ definitions:
     - EPAId
     - TribeName
     - DistanceToArea
-  dfrT_ViolationsEnforcementActions: 
+  dfr106: 
     description: Violations Enforcement Actions Object
     properties: 
       Sources: 
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrd_Sources" 
+          "$ref": "#/definitions/dfr108" 
         xml: 
           name: Sources
           wrapped: true
-  dfrd_Sources: 
+  dfr108: 
     description: Sources Object
     xml: 
       name: Sources
@@ -7812,13 +7858,13 @@ definitions:
         type: array
         title: Violations
         items: 
-          "$ref": "#/definitions/dfrd_Violations" 
+          "$ref": "#/definitions/dfr110" 
         xml: 
           name: Violations
           wrapped: true
     required: 
     - Violations
-  dfrd_EnforcementActions: 
+  dfr109: 
     description: Enforcement Actions Object
     xml: 
       name: EnforcementActions
@@ -7853,7 +7899,7 @@ definitions:
     - EnforcementActionTypeDesc
     - EnforcementId
     - Agency
-  dfrd_Violations: 
+  dfr110: 
     description: Violations Object
     xml: 
       name: Violations
@@ -7917,7 +7963,7 @@ definitions:
         type: array
         title: Enforcement Actions
         items: 
-          "$ref": "#/definitions/dfrd_EnforcementActions" 
+          "$ref": "#/definitions/dfr109" 
         xml: 
           name: EnforcementActions
           wrapped: true
@@ -7936,18 +7982,18 @@ definitions:
     - Status
     - ResolvedDate
     - EnforcementActions
-  dfrU_WaterQuality: 
+  dfr111: 
     description: Water Quality Object
     properties: 
       Sources: 
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrU_Sources" 
+          "$ref": "#/definitions/dfr112_s" 
         xml: 
           name: Sources
           wrapped: true
-  dfrU_Sources: 
+  dfr112_s: 
     description: Sources Object
     xml: 
       name: Sources
@@ -8073,18 +8119,18 @@ definitions:
     - BeachCloseLastYearFlg
     - BeachCloseLast2yrsFlg
     - EsaAquaticSpeciesFlg
-  dfrU_WaterQualityDetails: 
+  dfr111_Details: 
     description: Water Quality Details
     properties: 
       Sources: 
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfrU_WaterQualityDetails.Sources" 
+          "$ref": "#/definitions/dfr111_Details.Sources" 
         xml: 
           name: Sources
           wrapped: true
-  dfrU_WaterQualityDetails.Sources: 
+  dfr111_Details.Sources: 
     description: Sources Object
     xml: 
       name: Sources
@@ -8158,7 +8204,7 @@ definitions:
     - AttainsStateCauses
     - AttainsCauseGroups
     - AttainsPossiblePollutants
-  dfr4_WebFireDocuments: 
+  dfr018_WebFireDocuments: 
     description: Web Fire Documents
     xml: 
       name: WebFireDocuments
@@ -8203,7 +8249,7 @@ definitions:
     - ReportDocType
     - DocumentType
     - DocumentLink
-  dfrW1_Results: 
+  dfr114_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8212,10 +8258,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       EnforcementComplianceSummaries: 
-        "$ref": "#/definitions/dfrF_EnforcementComplianceSummaries" 
+        "$ref": "#/definitions/dfr062" 
     required: 
     - Message
-  dfr300: 
+  dfr115: 
     description: Results Object
     properties: 
       Message: 
@@ -8224,10 +8270,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       SystemExtractDates: 
-        "$ref": "#/definitions/dfr730" 
+        "$ref": "#/definitions/dfr095" 
     required: 
     - Message
-  dfrW2_Results: 
+  dfr116_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8236,10 +8282,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       FormalActions: 
-        "$ref": "#/definitions/dfrG_FormalActions" 
+        "$ref": "#/definitions/dfr064" 
     required: 
     - Message
-  dfra_Results: 
+  dfr117_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8248,10 +8294,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       ICISFormalActions: 
-        "$ref": "#/definitions/dfrH_ICISFormalActions" 
+        "$ref": "#/definitions/dfr066" 
     required: 
     - Message
-  dfra1_Results: 
+  dfr118_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8260,10 +8306,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       InspectionEnforcementSummary: 
-        "$ref": "#/definitions/dfrI_InspectionEnforcementSummary" 
+        "$ref": "#/definitions/dfr068" 
     required: 
     - Message
-  dfrZ_Results: 
+  dfr119_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8272,10 +8318,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       MapOutput: 
-        "$ref": "#/definitions/dfrJ_MapOutput" 
+        "$ref": "#/definitions/dfr073" 
     required: 
     - Message
-  dfra2_Results: 
+  dfr120_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8284,10 +8330,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       NAICS: 
-        "$ref": "#/definitions/dfr4_NAICS" 
+        "$ref": "#/definitions/dfr018_NAICS" 
     required: 
     - Message
-  dfrg_Results: 
+  dfr122_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8296,10 +8342,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       Notices: 
-        "$ref": "#/definitions/dfrK_Notices" 
+        "$ref": "#/definitions/dfr076" 
     required: 
     - Message
-  dfrg1_Results: 
+  dfr123_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8308,18 +8354,18 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       Reports: 
-        "$ref": "#/definitions/dfr4_Reports" 
+        "$ref": "#/definitions/dfr018_Reports" 
       Permits: 
         type: array
         title: Permits
         items: 
-          "$ref": "#/definitions/dfr4_Permits" 
+          "$ref": "#/definitions/dfr018_Permits" 
         xml: 
           name: Permits
           wrapped: true
     required: 
     - Message
-  dfrh_Results: 
+  dfr124_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8328,10 +8374,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       RCRACompliance: 
-        "$ref": "#/definitions/dfrL_RCRACompliance" 
+        "$ref": "#/definitions/dfr078" 
     required: 
     - Message
-  dfrk_Results: 
+  dfr125_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8340,11 +8386,11 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       LeadAndCopperRule5Yr: 
-        "$ref": "#/definitions/dfrG_LeadAndCopperRule5Yr" 
+        "$ref": "#/definitions/dfr070" 
     required: 
     - Message
     - LeadAndCopperRule5Yr
-  dfrj_Results: 
+  dfr126_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8353,10 +8399,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       SanitarySurveys: 
-        "$ref": "#/definitions/dfrN_SanitarySurveys" 
+        "$ref": "#/definitions/dfr086" 
     required: 
     - Message
-  dfri_Results: 
+  dfr127_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8365,10 +8411,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       SiteVisits: 
-        "$ref": "#/definitions/dfrO_SiteVisits" 
+        "$ref": "#/definitions/dfr090" 
     required: 
     - Message
-  dfrf_Results: 
+  dfr128_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8377,10 +8423,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       ViolationsEnforcementActions: 
-        "$ref": "#/definitions/dfrT_ViolationsEnforcementActions" 
+        "$ref": "#/definitions/dfr106" 
     required: 
     - Message
-  dfrl_Results: 
+  dfr129_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8389,10 +8435,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       SDWISCompliance: 
-        "$ref": "#/definitions/dfrM_SDWISCompliance" 
+        "$ref": "#/definitions/dfr081" 
     required: 
     - Message
-  dfrg2_Results: 
+  dfr130_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8401,10 +8447,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       SIC: 
-        "$ref": "#/definitions/dfr4_SIC" 
+        "$ref": "#/definitions/dfr084" 
     required: 
     - Message
-  dfrg3_Results: 
+  dfr131_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8413,10 +8459,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       SpatialMetadata: 
-        "$ref": "#/definitions/dfrP_SpatialMetadata" 
+        "$ref": "#/definitions/dfr094" 
     required: 
     - Message
-  dfrm_Results: 
+  dfr132_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8425,10 +8471,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       TRIHistory: 
-        "$ref": "#/definitions/dfrQ_TRIHistory" 
+        "$ref": "#/definitions/dfr098" 
     required: 
     - Message
-  dfrn_Results: 
+  dfr133_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8437,10 +8483,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       TRIReleases: 
-        "$ref": "#/definitions/dfrR_TRIReleases" 
+        "$ref": "#/definitions/dfr102" 
     required: 
     - Message
-  dfro_Results: 
+  dfr134_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8452,13 +8498,13 @@ definitions:
         type: array
         title: Tribes
         items: 
-          "$ref": "#/definitions/dfrS_Tribes" 
+          "$ref": "#/definitions/dfr105" 
         xml: 
           name: Tribes
           wrapped: true
     required: 
     - Message
-  dfrp_Results: 
+  dfr135_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8467,10 +8513,10 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       WaterQuality: 
-        "$ref": "#/definitions/dfrU_WaterQuality" 
+        "$ref": "#/definitions/dfr111" 
     required: 
     - Message
-  dfrp1_Results: 
+  dfr136_Results: 
     description: Results Object
     properties: 
       Message: 
@@ -8479,6 +8525,6 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       WaterQualityDetails: 
-        "$ref": "#/definitions/dfrU_WaterQualityDetails" 
+        "$ref": "#/definitions/dfr111_Details" 
     required: 
     - Message

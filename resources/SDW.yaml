@@ -31,55 +31,96 @@ basePath: /echo
 schemes: 
 - https
 consumes: 
-- application/json
-- application/xml
+- application/x-www-form-urlencoded
 produces: 
 - application/json
 - application/xml
 parameters: 
-  p_fn: 
+  g.p_fn: 
     name: p_fn
     in: query
     description: Facility Name Filter. Enter one or more case-insensitive facility names to filter results.  Provide multiple values as a comma-delimited list.  See p_fntype for additional modifiers.
     type: string
     required: false
-  callback: 
+  f.p_fn: 
+    name: p_fn
+    in: formData
+    description: Facility Name Filter. Enter one or more case-insensitive facility names to filter results.  Provide multiple values as a comma-delimited list.  See p_fntype for additional modifiers.
+    type: string
+    required: false
+  g.callback: 
     name: callback
     in: query
     description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
     type: string
     required: false
-  p_ct: 
+  f.callback: 
+    name: callback
+    in: formData
+    description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+    type: string
+    required: false
+  g.p_ct: 
     name: p_ct
     in: query
     description: Facility City Filter. Enter a single case-insensitive city name to filter results.
     type: string
     required: false
-  p_co: 
+  f.p_ct: 
+    name: p_ct
+    in: formData
+    description: Facility City Filter. Enter a single case-insensitive city name to filter results.
+    type: string
+    required: false
+  g.p_co: 
     name: p_co
     in: query
     description: Facility County Filter. Provide a single county name in combination with a state value provided via p_st.
     type: string
     required: false
-  p_fips: 
+  f.p_co: 
+    name: p_co
+    in: formData
+    description: Facility County Filter. Provide a single county name in combination with a state value provided via p_st.
+    type: string
+    required: false
+  g.p_fips: 
     name: p_fips
     in: query
     description: FIPS Code Filter.  Enter a single 5-character Federal Information Processing Standards (FIPS) state + county value to restrict results.  E.g. to limit results to Kenosha County, Wisconsin, use 55059.
     type: string
     required: false
-  p_st: 
+  f.p_fips: 
+    name: p_fips
+    in: formData
+    description: FIPS Code Filter.  Enter a single 5-character Federal Information Processing Standards (FIPS) state + county value to restrict results.  E.g. to limit results to Kenosha County, Wisconsin, use 55059.
+    type: string
+    required: false
+  g.p_st: 
     name: p_st
     in: query
     description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
     type: string
     required: false
-  p_zip: 
+  f.p_st: 
+    name: p_st
+    in: formData
+    description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
+    type: string
+    required: false
+  g.p_zip: 
     name: p_zip
     in: query
     description: 5-Digit ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values.
     type: string
     required: false
-  p_reg: 
+  f.p_zip: 
+    name: p_zip
+    in: formData
+    description: 5-Digit ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values.
+    type: string
+    required: false
+  g.p_reg: 
     name: p_reg
     in: query
     description: EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region.
@@ -96,7 +137,24 @@ parameters:
     - '10'
     type: string
     required: false
-  p_owop: 
+  f.p_reg: 
+    name: p_reg
+    in: formData
+    description: EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region.
+    enum: 
+    - '01'
+    - '02'
+    - '03'
+    - '04'
+    - '05'
+    - '06'
+    - '07'
+    - '08'
+    - '09'
+    - '10'
+    type: string
+    required: false
+  g.p_owop: 
     name: p_owop
     in: query
     description: |-
@@ -116,7 +174,27 @@ parameters:
     - P
     type: string
     required: false
-  p_systyp: 
+  f.p_owop: 
+    name: p_owop
+    in: formData
+    description: |-
+      Owner/Operator code filter.  Enter one of the following codes to filter results:
+      - F = Federal Government
+      - S = State Government
+      - L = Local Government
+      - M = Public/Private
+      - N = Native American
+      - P = Private
+    enum: 
+    - F
+    - S
+    - L
+    - M
+    - N
+    - P
+    type: string
+    required: false
+  g.p_systyp: 
     name: p_systyp
     in: query
     description: |-
@@ -132,7 +210,23 @@ parameters:
     - TNCWS
     type: string
     required: false
-  p_swtyp: 
+  f.p_systyp: 
+    name: p_systyp
+    in: formData
+    description: |-
+      Type of public water system:
+      - CWS=Community water system
+      - NCWS=Non-community water system
+      - NTCWS=Non-transient non-community water system
+      - TNCWS=Transient non-community water system
+    enum: 
+    - CWS
+    - NCWS
+    - NTCWS
+    - TNCWS
+    type: string
+    required: false
+  g.p_swtyp: 
     name: p_swtyp
     in: query
     description: |-
@@ -152,7 +246,27 @@ parameters:
     - GUP
     type: string
     required: false
-  p_popsv: 
+  f.p_swtyp: 
+    name: p_swtyp
+    in: formData
+    description: |-
+      Source Water Type:
+      - SW = Surface water 
+      - GW= Ground water
+      - GU = Ground water under direct influence of (UDI) surface water
+      - SWP = Purchased Surface water
+      - GWP = Purchased Ground water
+      - GUP = Purchased Ground water UDI surface water
+    enum: 
+    - SW
+    - GW
+    - GU
+    - SWP
+    - GWP
+    - GUP
+    type: string
+    required: false
+  g.p_popsv: 
     name: p_popsv
     in: query
     description: |-
@@ -166,13 +280,33 @@ parameters:
       May contain multiple comma-separated values.
     type: string
     required: false
-  p_trb: 
+  f.p_popsv: 
+    name: p_popsv
+    in: formData
+    description: |-
+      Estimated average daily population served by a system:
+      - LE500 = 500 or less
+      - IN501_3K = 501-3,300
+      - IN3K_10K = 3,301-10,000
+      - IN10K_100K = 10,001-100,000
+      - IN100K_1M = 100,001-1,000,000
+      - GT1M = More than 1,000,000
+      May contain multiple comma-separated values.
+    type: string
+    required: false
+  g.p_trb: 
     name: p_trb
     in: query
     description: Tribe name
     type: string
     required: false
-  p_cs: 
+  f.p_trb: 
+    name: p_trb
+    in: formData
+    description: Tribe name
+    type: string
+    required: false
+  g.p_cs: 
     name: p_cs
     in: query
     description: |-
@@ -186,7 +320,21 @@ parameters:
       May contain multiple comma-separated values.
     type: string
     required: false
-  p_mr: 
+  f.p_cs: 
+    name: p_cs
+    in: formData
+    description: |-
+      Current violations:
+      - M = Monitoring and Reporting Violations
+      - H = Health-based Violations
+      - O = Other Violations
+      - P = Public Notice Violations
+      - S = Serious Violator
+      - N = No Violations
+      May contain multiple comma-separated values.
+    type: string
+    required: false
+  g.p_mr: 
     name: p_mr
     in: query
     description: Monitoring and Reporting Violations (failure to conduct regular monitoring of drinking water quality or submit monitoring results in a timely fashion).
@@ -195,7 +343,16 @@ parameters:
     - N
     type: string
     required: false
-  p_health: 
+  f.p_mr: 
+    name: p_mr
+    in: formData
+    description: Monitoring and Reporting Violations (failure to conduct regular monitoring of drinking water quality or submit monitoring results in a timely fashion).
+    enum: 
+    - Y
+    - N
+    type: string
+    required: false
+  g.p_health: 
     name: p_health
     in: query
     description: Violations of health-based drinking water standards (maximum contaminant levels, maximum residual disinfectant levels, or treatment technique rules).
@@ -204,7 +361,16 @@ parameters:
     - N
     type: string
     required: false
-  p_other: 
+  f.p_health: 
+    name: p_health
+    in: formData
+    description: Violations of health-based drinking water standards (maximum contaminant levels, maximum residual disinfectant levels, or treatment technique rules).
+    enum: 
+    - Y
+    - N
+    type: string
+    required: false
+  g.p_other: 
     name: p_other
     in: query
     description: Other violations, such as failing to issue annual consumer confidence reports or maintain required records.
@@ -213,7 +379,16 @@ parameters:
     - N
     type: string
     required: false
-  p_act: 
+  f.p_other: 
+    name: p_other
+    in: formData
+    description: Other violations, such as failing to issue annual consumer confidence reports or maintain required records.
+    enum: 
+    - Y
+    - N
+    type: string
+    required: false
+  g.p_act: 
     name: p_act
     in: query
     description: Active Permits/Facilities Flag.  Provide Y or N to filter results to facilities with active permits.
@@ -223,7 +398,17 @@ parameters:
     - A
     type: string
     required: false
-  p_pn: 
+  f.p_act: 
+    name: p_act
+    in: formData
+    description: Active Permits/Facilities Flag.  Provide Y or N to filter results to facilities with active permits.
+    enum: 
+    - Y
+    - N
+    - A
+    type: string
+    required: false
+  g.p_pn: 
     name: p_pn
     in: query
     description: Public Notice Violations (failure to immediately alert consumers of serious problem with drinking water).
@@ -232,7 +417,16 @@ parameters:
     - N
     type: string
     required: false
-  p_sv: 
+  f.p_pn: 
+    name: p_pn
+    in: formData
+    description: Public Notice Violations (failure to immediately alert consumers of serious problem with drinking water).
+    enum: 
+    - Y
+    - N
+    type: string
+    required: false
+  g.p_sv: 
     name: p_sv
     in: query
     description: Serious Violator (unresolved serious, multiple, and/or continuing violations). A value of Y will return only SDWIS systems that are Serious Violators, while a value of N will only return SDWIS Systems that are not Serious Violators.
@@ -241,19 +435,40 @@ parameters:
     - N
     type: string
     required: false
-  p_qs: 
+  f.p_sv: 
+    name: p_sv
+    in: formData
+    description: Serious Violator (unresolved serious, multiple, and/or continuing violations). A value of Y will return only SDWIS systems that are Serious Violators, while a value of N will only return SDWIS Systems that are not Serious Violators.
+    enum: 
+    - Y
+    - N
+    type: string
+    required: false
+  g.p_qs: 
     name: p_qs
     in: query
     description: Quick Search. Allows entry for city, state, and/or zip code.
     type: string
     required: false
-  p_sfs: 
+  f.p_qs: 
+    name: p_qs
+    in: formData
+    description: Quick Search. Allows entry for city, state, and/or zip code.
+    type: string
+    required: false
+  g.p_sfs: 
     name: p_sfs
     in: query
     description: Single Facility Search Filter.  Provide a facility name or program system identifier to limit results.  For the all data search, the FRS registry identifier is also searched.
     type: string
     required: false
-  p_fea: 
+  f.p_sfs: 
+    name: p_sfs
+    in: formData
+    description: Single Facility Search Filter.  Provide a facility name or program system identifier to limit results.  For the all data search, the FRS registry identifier is also searched.
+    type: string
+    required: false
+  g.p_fea: 
     name: p_fea
     in: query
     description: |-
@@ -265,13 +480,31 @@ parameters:
     - N
     type: string
     required: false
-  p_pswpol: 
+  f.p_pswpol: 
+    name: p_pswpol
+    in: formData
+    description: For CWA, pollutant names for surface water discharges. for Drinking Water, SDWIS Violation contaminant codes for unaddressed violations that have occurred in the last 3 years. May contain multiple comma-separated values.
+    type: string
+    required: false
+  g.p_pswpol: 
     name: p_pswpol
     in: query
     description: For CWA, pollutant names for surface water discharges. for Drinking Water, SDWIS Violation contaminant codes for unaddressed violations that have occurred in the last 3 years. May contain multiple comma-separated values.
     type: string
     required: false
-  p_feay: 
+  f.p_fea: 
+    name: p_fea
+    in: formData
+    description: |-
+      Formal Enforcement Actions [within / not within] specified date range indicator. The date range is determined by parameters p_fead1 and p_fead2 or by parameter p_feay.
+      - W = within date range
+      - N = not within date range
+    enum: 
+    - W
+    - N
+    type: string
+    required: false
+  g.p_feay: 
     name: p_feay
     in: query
     description: Years (1 to 5) Range.  This value is used to create a date range for Formal Enforcement Actions (FEA). Used along with p_fea (which indicates whether to look within or outside of the date range) to find FEAs within (or not within) the number of years specified.
@@ -283,13 +516,31 @@ parameters:
     - 5
     type: number
     required: false
-  queryset: 
+  f.queryset: 
+    name: queryset
+    in: formData
+    description: Query Limiter.  Enter a value to limit the number of records returned for each query. Value cannot exceed 70,000.
+    type: number
+    required: false
+  g.queryset: 
     name: queryset
     in: query
     description: Query Limiter.  Enter a value to limit the number of records returned for each query. Value cannot exceed 70,000.
     type: number
     required: false
-  p_feaa: 
+  f.p_feay: 
+    name: p_feay
+    in: formData
+    description: Years (1 to 5) Range.  This value is used to create a date range for Formal Enforcement Actions (FEA). Used along with p_fea (which indicates whether to look within or outside of the date range) to find FEAs within (or not within) the number of years specified.
+    enum: 
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    type: number
+    required: false
+  g.p_feaa: 
     name: p_feaa
     in: query
     description: |-
@@ -303,13 +554,33 @@ parameters:
     - S
     type: string
     required: false
-  responseset: 
+  f.responseset: 
+    name: responseset
+    in: formData
+    description: Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000.
+    type: number
+    required: false
+  g.responseset: 
     name: responseset
     in: query
     description: Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000.
     type: number
     required: false
-  p_iea: 
+  f.p_feaa: 
+    name: p_feaa
+    in: formData
+    description: |-
+      Agency associated with Formal Enforcement Actions:
+      - E = EPA
+      - S = State
+      - A = All
+    enum: 
+    - A
+    - E
+    - S
+    type: string
+    required: false
+  g.p_iea: 
     name: p_iea
     in: query
     description: |-
@@ -321,7 +592,19 @@ parameters:
     - N
     type: string
     required: false
-  p_ieay: 
+  f.p_iea: 
+    name: p_iea
+    in: formData
+    description: |-
+      Informal Enforcement Actions [within / not within] specified date range.  The date range is determined by parameters p_iead1 and p_iead2 or by parameter p_ieay.
+      - W = within date range
+      - N = not within date range
+    enum: 
+    - W
+    - N
+    type: string
+    required: false
+  g.p_ieay: 
     name: p_ieay
     in: query
     description: Years (1 to 5) Range.  This value is used to create a date range for Informal Enforcement Actions (IEA). Used along with p_iea (which indicates whether to look within or outside of the date range) to find IEAs within (or not within) the number of years specified.
@@ -333,7 +616,19 @@ parameters:
     - 5
     type: number
     required: false
-  p_ieaa: 
+  f.p_ieay: 
+    name: p_ieay
+    in: formData
+    description: Years (1 to 5) Range.  This value is used to create a date range for Informal Enforcement Actions (IEA). Used along with p_iea (which indicates whether to look within or outside of the date range) to find IEAs within (or not within) the number of years specified.
+    enum: 
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    type: number
+    required: false
+  g.p_ieaa: 
     name: p_ieaa
     in: query
     description: |-
@@ -345,7 +640,19 @@ parameters:
     - S
     type: string
     required: false
-  p_qiv: 
+  f.p_ieaa: 
+    name: p_ieaa
+    in: formData
+    description: |-
+      Agency associated with Informal Enforcement Actions. If left blank, both agencies are included.
+      - E = EPA
+      - S = State
+    enum: 
+    - E
+    - S
+    type: string
+    required: false
+  g.p_qiv: 
     name: p_qiv
     in: query
     description: |-
@@ -362,7 +669,24 @@ parameters:
     - '12'
     type: string
     required: false
-  p_ico: 
+  f.p_qiv: 
+    name: p_qiv
+    in: formData
+    description: |-
+      Quarters in Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of noncompliance.
+      - Z = Zero quarters in noncompliance.
+      - GEXX = Replacing XX with a numeric value, that number of quarterd or more in noncompliance.
+      - GTXX = Replacing XX with a numeric value, more than that number of quarters in noncompliance.
+    enum: 
+    - '0'
+    - GT1
+    - GT2
+    - GT4
+    - GT8
+    - '12'
+    type: string
+    required: false
+  g.p_ico: 
     name: p_ico
     in: query
     description: "Indian Country Flag.  Enter a \"Y\" or \"N\" to restrict searches to facilities inside or outside Indian Country."
@@ -371,31 +695,204 @@ parameters:
     - N
     type: string
     required: false
-  p_pid: 
+  f.p_ico: 
+    name: p_ico
+    in: formData
+    description: "Indian Country Flag.  Enter a \"Y\" or \"N\" to restrict searches to facilities inside or outside Indian Country."
+    enum: 
+    - Y
+    - N
+    type: string
+    required: false
+  g.p_pid: 
     name: p_pid
     in: query
     description: Nine-digit permit IDs. May contain up to 2000 comma-separated values.
     type: string
     required: false
-  p_pfead1: 
+  f.p_pid: 
+    name: p_pid
+    in: formData
+    description: Nine-digit permit IDs. May contain up to 2000 comma-separated values.
+    type: string
+    required: false
+  g.p_ysl: 
+    name: p_ysl
+    in: query
+    description: |-
+      Last Facility Inspection [within / not within] Specified Date Range Indicator. The date range is determined by parameters p_idt1 and p_idt2 or by parameter p_ysly.
+      - W = within date range
+      - N = not within date range
+    enum: 
+    - W
+    - N
+    - NV
+    type: string
+    required: false
+  f.p_ysl: 
+    name: p_ysl
+    in: formData
+    description: |-
+      Last Facility Inspection [within / not within] Specified Date Range Indicator. The date range is determined by parameters p_idt1 and p_idt2 or by parameter p_ysly.
+      - W = within date range
+      - N = not within date range
+    enum: 
+    - W
+    - N
+    - NV
+    type: string
+    required: false
+  g.p_ysly: 
+    name: p_ysly
+    in: query
+    description: Number of years (1 to 5) since last facility inspection.  A value of 1 means that it has been inspected within the year.
+    enum: 
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    type: number
+    required: false
+  f.p_ysly: 
+    name: p_ysly
+    in: formData
+    description: Number of years (1 to 5) since last facility inspection.  A value of 1 means that it has been inspected within the year.
+    enum: 
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    type: number
+    required: false
+  g.p_ysla: 
+    name: p_ysla
+    in: query
+    description: |-
+      Facility Last Inspection Code Filter.  If left blank, both agencies are included.  Enter a value to limit results:
+      - E = EPA
+      - S = State
+    enum: 
+    - E
+    - S
+    - A
+    type: string
+    required: false
+  f.p_ysla: 
+    name: p_ysla
+    in: formData
+    description: |-
+      Facility Last Inspection Code Filter.  If left blank, both agencies are included.  Enter a value to limit results:
+      - E = EPA
+      - S = State
+    enum: 
+    - E
+    - S
+    - A
+    type: string
+    required: false
+  g.p_idt1: 
+    name: p_idt1
+    in: query
+    description: Beginning of date range of most recent facility inspection.
+    type: string
+    required: false
+  f.p_idt1: 
+    name: p_idt1
+    in: formData
+    description: Beginning of date range of most recent facility inspection.
+    type: string
+    required: false
+  g.p_idt2: 
+    name: p_idt2
+    in: query
+    description: End of date range of most recent facility inspection.
+    type: string
+    required: false
+  f.p_idt2: 
+    name: p_idt2
+    in: formData
+    description: End of date range of most recent facility inspection.
+    type: string
+    required: false
+  g.p_pityp: 
+    name: p_pityp
+    in: query
+    description: |-
+      Inspection Type:
+      - CAC = Corrective Action Inspection
+      - CAV = Compliance Assistance Visit
+      - CDI = Case Development Inspection
+      - CEI = Inspection Inspection
+      - CSE = Compliance Schedule Evaluation
+      - FCI = Focused Compliance
+      - FRR = Financial Record Review
+      - FSD = Facility Self Disclosure
+      - FUI = Follow-Up Inspection
+      - GME = Groundwater Monitoring Evaluation
+      - NRR = Non-Financial Record Review
+      - OAM = Operation and Maintenance Inspection
+      May contain multiple comma-separated values.
+    type: string
+    required: false
+  f.p_pityp: 
+    name: p_pityp
+    in: formData
+    description: |-
+      Inspection Type:
+      - CAC = Corrective Action Inspection
+      - CAV = Compliance Assistance Visit
+      - CDI = Case Development Inspection
+      - CEI = Inspection Inspection
+      - CSE = Compliance Schedule Evaluation
+      - FCI = Focused Compliance
+      - FRR = Financial Record Review
+      - FSD = Facility Self Disclosure
+      - FUI = Follow-Up Inspection
+      - GME = Groundwater Monitoring Evaluation
+      - NRR = Non-Financial Record Review
+      - OAM = Operation and Maintenance Inspection
+      May contain multiple comma-separated values.
+    type: string
+    required: false
+  g.p_pfead1: 
     name: p_pfead1
     in: query
     description: Formal Enforcement Action Date Range Start.  Enter a date in MM/DD/YYYY format to set the start of the range for filtering by recent Formal Enforcement Action (FEA) taken against the facility within the last five years.
     type: string
     required: false
-  p_pfead2: 
+  f.p_pfead1: 
+    name: p_pfead1
+    in: formData
+    description: Formal Enforcement Action Date Range Start.  Enter a date in MM/DD/YYYY format to set the start of the range for filtering by recent Formal Enforcement Action (FEA) taken against the facility within the last five years.
+    type: string
+    required: false
+  g.p_pfead2: 
     name: p_pfead2
     in: query
     description: Formal Enforcement Action Date Range End.  Enter a date in MM/DD/YYYY format to set the end of the date range for filtering by recent Formal Enforcement Action (FEA) taken against the facility within the last five years.
     type: string
     required: false
-  p_pfeat: 
+  f.p_pfead2: 
+    name: p_pfead2
+    in: formData
+    description: Formal Enforcement Action Date Range End.  Enter a date in MM/DD/YYYY format to set the end of the date range for filtering by recent Formal Enforcement Action (FEA) taken against the facility within the last five years.
+    type: string
+    required: false
+  g.p_pfeat: 
     name: p_pfeat
     in: query
     description: Formal Enforcement Action (FEA) Code Filter.  Enter one or more three-letter FEA codes to restrict results to facilities with these attributes.  Use p_fead1 and p_fead2 parameters to further restrict this filter by entering a date range.  Provide multiple codes as a comma-delimited list.
     type: string
     required: false
-  p_pswvio: 
+  f.p_pfeat: 
+    name: p_pfeat
+    in: formData
+    description: Formal Enforcement Action (FEA) Code Filter.  Enter one or more three-letter FEA codes to restrict results to facilities with these attributes.  Use p_fead1 and p_fead2 parameters to further restrict this filter by entering a date range.  Provide multiple codes as a comma-delimited list.
+    type: string
+    required: false
+  g.p_pswvio: 
     name: p_pswvio
     in: query
     description: Used in conjuction with parameters p_pswpol and p_pswparam, indicates whether search should only include pollutants with violations.
@@ -404,26 +901,54 @@ parameters:
     - N
     type: string
     required: false
-  qid: 
+  f.p_pswvio: 
+    name: p_pswvio
+    in: formData
+    description: Used in conjuction with parameters p_pswpol and p_pswparam, indicates whether search should only include pollutants with violations.
+    enum: 
+    - Y
+    - N
+    type: string
+    required: false
+  g.qid: 
     name: qid
     in: query
     description: Query ID Selector.  Enter the QueryID number from a previously run query.
     type: string
     required: true
-  pageno: 
+  f.qid: 
+    name: qid
+    in: formData
+    description: Query ID Selector.  Enter the QueryID number from a previously run query.
+    type: string
+    required: true
+  g.pageno: 
     name: pageno
     in: query
     description: Indicates the number of the page to display. It is used only when the results are paginated.
     default: 1
     type: number
     required: false
-  newsort: 
+  f.pageno: 
+    name: pageno
+    in: formData
+    description: Indicates the number of the page to display. It is used only when the results are paginated.
+    default: 1
+    type: number
+    required: false
+  g.newsort: 
     name: newsort
     in: query
     description: Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column.
     type: number
     required: false
-  descending: 
+  f.newsort: 
+    name: newsort
+    in: formData
+    description: Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column.
+    type: number
+    required: false
+  g.descending: 
     name: descending
     in: query
     description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
@@ -432,7 +957,49 @@ parameters:
     - N
     type: string
     required: false
-  p_qis: 
+  f.descending: 
+    name: descending
+    in: formData
+    description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
+    enum: 
+    - Y
+    - N
+    type: string
+    required: false
+  f.p_qis: 
+    name: p_qis
+    in: formData
+    description: |-
+      Significant Quarters in Noncompliance Limiter.  Enter one of the following codes to limit results to facilities having given quarters of noncompliance.
+      - Z = Zero quarters in noncompliance.
+      - GE1 = One or more quarters in noncompliance.
+      - GT1 = More than one quarters in noncompliance.
+      - GE2 = Two or more quarters in noncompliance.
+      - GT2 = More than two quarters in noncompliance.
+      - GE4 = Four or more quarters in noncompliance.
+      - GT4 = More than four quarters in noncompliance.
+      - GE8 = Eight or more quarters in noncompliance.
+      - GT8 = More than eight quarters in noncompliance.
+      - GE12 = Twelve or more quarters in noncompliance.
+      - GT12 = Twelve or more quarters in noncompliance.
+      - 12 = Exactly twelve quarters in noncompliance.
+      Note the seemingly incongruous of GT12 is deliberate.
+    enum: 
+    - Z
+    - GE1
+    - GT1
+    - GE2
+    - GT2
+    - GE4
+    - GT4
+    - GE8
+    - GT8
+    - GE12
+    - GT12
+    - '12'
+    type: string
+    required: false
+  g.p_qis: 
     name: p_qis
     in: query
     description: |-
@@ -465,49 +1032,91 @@ parameters:
     - '12'
     type: string
     required: false
-  qcolumns: 
+  g.qcolumns: 
     name: qcolumns
     in: query
     description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
     type: string
     required: false
-  p_cuv: 
+  f.qcolumns: 
+    name: qcolumns
+    in: formData
+    description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+    type: string
+    required: false
+  g.p_cuv: 
     name: p_cuv
     in: query
     description: "Copper Violation.  A \"Y\" value will select water systems with at least 1 Copper Violation."
     type: string
     required: false
-  p_rc350v: 
+  f.p_rc350v: 
+    name: p_rc350v
+    in: formData
+    description: "Rule code 350 violation. A \"Y\" value will select water systems with at least one rule code 350 violation."
+    type: string
+    required: false
+  g.p_rc350v: 
     name: p_rc350v
     in: query
     description: "Rule code 350 violation. A \"Y\" value will select water systems with at least one rule code 350 violation."
     type: string
     required: false
-  p_pbale: 
+  f.p_pbale: 
+    name: p_pbale
+    in: formData
+    description: "Lead Action Level Exceedance.  A \"Y\" value will select water systems with at least 1 Lead Action Level Exceedance."
+    type: string
+    required: false
+  g.p_pbale: 
     name: p_pbale
     in: query
     description: "Lead Action Level Exceedance.  A \"Y\" value will select water systems with at least 1 Lead Action Level Exceedance."
     type: string
     required: false
-  p_cuale: 
+  f.p_cuale: 
+    name: p_cuale
+    in: formData
+    description: "Copper Action Level Exceedance.  A \"Y\" value will select water systems with at least 1 Copper Action Level Exceedance."
+    type: string
+    required: false
+  g.p_cuale: 
     name: p_cuale
     in: query
     description: "Copper Action Level Exceedance.  A \"Y\" value will select water systems with at least 1 Copper Action Level Exceedance."
     type: string
     required: false
-  p_lcrv: 
+  f.p_lcrv: 
+    name: p_lcrv
+    in: formData
+    description: "Lead or Copper rule violations.  A \"Y\" value will select water systems with at least 1 Lead or Copper Rule Violation."
+    type: string
+    required: false
+  g.p_lcrv: 
     name: p_lcrv
     in: query
     description: "Lead or Copper rule violations.  A \"Y\" value will select water systems with at least 1 Lead or Copper Rule Violation."
     type: string
     required: false
-  p_pbv: 
+  f.p_cuv: 
+    name: p_cuv
+    in: formData
+    description: "Copper Violation.  A \"Y\" value will select water systems with at least 1 Copper Violation."
+    type: string
+    required: false
+  g.p_pbv: 
     name: p_pbv
     in: query
     description: "Lead Violations.  A \"Y\" value will select water systems with at least 1 Lead Violation."
     type: string
     required: false
-  p_ss5yr: 
+  f.p_pbv: 
+    name: p_pbv
+    in: formData
+    description: "Lead Violations.  A \"Y\" value will select water systems with at least 1 Lead Violation."
+    type: string
+    required: false
+  g.p_ss5yr: 
     name: p_ss5yr
     in: query
     description: |-
@@ -518,9 +1127,30 @@ parameters:
 
     type: string
     required: false
-  p_sdc: 
+  f.p_ss5yr: 
+    name: p_ss5yr
+    in: formData
+    description: |-
+      Sanitary Surveys (in past 5 years) flag.  Values of visit_reason_code are either "SNSV" or "SNSP" in the past 5 years indicate a Sanitary Survey.  
+      Enter "Y" to select facilities with Sanitary Surveys within the past 5 years.  
+      Enter "N" to select facilities without Sanitary Surveys in the past 5 years.
+      Enter a number to search for greater for facilities with a quantity than or equal to that value.
+
+    type: string
+    required: false
+  g.p_sdc: 
     name: p_sdc
     in: query
+    description: |-
+      Significant Deficiency Count (in past 5 years) flag.  
+      Enter "Y" to select facilities with Sanitary Surveys within the past 5 years.  
+      Enter "N" to select facilities without Sanitary Surveys in the past 5 years.
+      Enter a number to search for facilities with a quantity greater than or equal to that value.
+    type: string
+    required: false
+  f.p_sdc: 
+    name: p_sdc
+    in: formData
     description: |-
       Significant Deficiency Count (in past 5 years) flag.  
       Enter "Y" to select facilities with Sanitary Surveys within the past 5 years.  
@@ -547,54 +1177,60 @@ paths:
         - XML
         type: string
         required: false
-      - "$ref": "#/parameters/p_fn"
-      - "$ref": "#/parameters/p_ct"
-      - "$ref": "#/parameters/p_co"
-      - "$ref": "#/parameters/p_fips"
-      - "$ref": "#/parameters/p_st"
-      - "$ref": "#/parameters/p_zip"
-      - "$ref": "#/parameters/p_reg"
-      - "$ref": "#/parameters/p_trb"
-      - "$ref": "#/parameters/p_act"
-      - "$ref": "#/parameters/p_qiv"
-      - "$ref": "#/parameters/p_ico"
-      - "$ref": "#/parameters/p_pid"
-      - "$ref": "#/parameters/p_owop"
-      - "$ref": "#/parameters/p_systyp"
-      - "$ref": "#/parameters/p_swtyp"
-      - "$ref": "#/parameters/p_popsv"
-      - "$ref": "#/parameters/p_cs"
-      - "$ref": "#/parameters/p_mr"
-      - "$ref": "#/parameters/p_health"
-      - "$ref": "#/parameters/p_other"
-      - "$ref": "#/parameters/p_pn"
-      - "$ref": "#/parameters/p_sv"
-      - "$ref": "#/parameters/p_qs"
-      - "$ref": "#/parameters/p_sfs"
-      - "$ref": "#/parameters/p_pswpol"
-      - "$ref": "#/parameters/p_pswvio"
-      - "$ref": "#/parameters/p_pbale"
-      - "$ref": "#/parameters/p_cuale"
-      - "$ref": "#/parameters/p_rc350v"
-      - "$ref": "#/parameters/p_pbv"
-      - "$ref": "#/parameters/p_cuv"
-      - "$ref": "#/parameters/p_lcrv"
-      - "$ref": "#/parameters/p_fea"
-      - "$ref": "#/parameters/p_feay"
-      - "$ref": "#/parameters/p_feaa"
-      - "$ref": "#/parameters/p_iea"
-      - "$ref": "#/parameters/p_ieay"
-      - "$ref": "#/parameters/p_ieaa"
-      - "$ref": "#/parameters/p_qis"
-      - "$ref": "#/parameters/p_pfead1"
-      - "$ref": "#/parameters/p_pfead2"
-      - "$ref": "#/parameters/p_pfeat"
-      - "$ref": "#/parameters/p_ss5yr"
-      - "$ref": "#/parameters/p_sdc"
-      - "$ref": "#/parameters/queryset"
-      - "$ref": "#/parameters/responseset"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/qcolumns"
+      - "$ref": "#/parameters/g.p_fn"
+      - "$ref": "#/parameters/g.p_ct"
+      - "$ref": "#/parameters/g.p_co"
+      - "$ref": "#/parameters/g.p_fips"
+      - "$ref": "#/parameters/g.p_st"
+      - "$ref": "#/parameters/g.p_zip"
+      - "$ref": "#/parameters/g.p_reg"
+      - "$ref": "#/parameters/g.p_trb"
+      - "$ref": "#/parameters/g.p_act"
+      - "$ref": "#/parameters/g.p_qiv"
+      - "$ref": "#/parameters/g.p_ico"
+      - "$ref": "#/parameters/g.p_pid"
+      - "$ref": "#/parameters/g.p_owop"
+      - "$ref": "#/parameters/g.p_systyp"
+      - "$ref": "#/parameters/g.p_swtyp"
+      - "$ref": "#/parameters/g.p_popsv"
+      - "$ref": "#/parameters/g.p_cs"
+      - "$ref": "#/parameters/g.p_mr"
+      - "$ref": "#/parameters/g.p_health"
+      - "$ref": "#/parameters/g.p_other"
+      - "$ref": "#/parameters/g.p_pn"
+      - "$ref": "#/parameters/g.p_sv"
+      - "$ref": "#/parameters/g.p_qs"
+      - "$ref": "#/parameters/g.p_sfs"
+      - "$ref": "#/parameters/g.p_pswpol"
+      - "$ref": "#/parameters/g.p_pswvio"
+      - "$ref": "#/parameters/g.p_pbale"
+      - "$ref": "#/parameters/g.p_cuale"
+      - "$ref": "#/parameters/g.p_rc350v"
+      - "$ref": "#/parameters/g.p_pbv"
+      - "$ref": "#/parameters/g.p_cuv"
+      - "$ref": "#/parameters/g.p_lcrv"
+      - "$ref": "#/parameters/g.p_fea"
+      - "$ref": "#/parameters/g.p_feay"
+      - "$ref": "#/parameters/g.p_feaa"
+      - "$ref": "#/parameters/g.p_iea"
+      - "$ref": "#/parameters/g.p_ieay"
+      - "$ref": "#/parameters/g.p_ieaa"
+      - "$ref": "#/parameters/g.p_qis"
+      - "$ref": "#/parameters/g.p_pfead1"
+      - "$ref": "#/parameters/g.p_pfead2"
+      - "$ref": "#/parameters/g.p_pfeat"
+      - "$ref": "#/parameters/g.p_ss5yr"
+      - "$ref": "#/parameters/g.p_sdc"
+      - "$ref": "#/parameters/g.p_ysl"
+      - "$ref": "#/parameters/g.p_ysly"
+      - "$ref": "#/parameters/g.p_ysla"
+      - "$ref": "#/parameters/g.p_idt1"
+      - "$ref": "#/parameters/g.p_idt2"
+      - "$ref": "#/parameters/g.p_pityp"
+      - "$ref": "#/parameters/g.queryset"
+      - "$ref": "#/parameters/g.responseset"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.qcolumns"
       tags: 
       - Safe Drinking Water
       responses: 
@@ -614,7 +1250,7 @@ paths:
       description: Returns an array of public water systems that meet the specified search criteria.
       parameters: 
       - name: output
-        in: query
+        in: formData
         description: |-
           Output Format Flag.  Enter one of the following keywords:
           - JSON = Data model formatted as Javascript Object Notation (default).
@@ -626,54 +1262,60 @@ paths:
         - XML
         type: string
         required: false
-      - "$ref": "#/parameters/p_fn"
-      - "$ref": "#/parameters/p_ct"
-      - "$ref": "#/parameters/p_co"
-      - "$ref": "#/parameters/p_fips"
-      - "$ref": "#/parameters/p_st"
-      - "$ref": "#/parameters/p_zip"
-      - "$ref": "#/parameters/p_reg"
-      - "$ref": "#/parameters/p_trb"
-      - "$ref": "#/parameters/p_act"
-      - "$ref": "#/parameters/p_qiv"
-      - "$ref": "#/parameters/p_ico"
-      - "$ref": "#/parameters/p_pid"
-      - "$ref": "#/parameters/p_owop"
-      - "$ref": "#/parameters/p_systyp"
-      - "$ref": "#/parameters/p_swtyp"
-      - "$ref": "#/parameters/p_popsv"
-      - "$ref": "#/parameters/p_cs"
-      - "$ref": "#/parameters/p_mr"
-      - "$ref": "#/parameters/p_health"
-      - "$ref": "#/parameters/p_other"
-      - "$ref": "#/parameters/p_pn"
-      - "$ref": "#/parameters/p_sv"
-      - "$ref": "#/parameters/p_qs"
-      - "$ref": "#/parameters/p_sfs"
-      - "$ref": "#/parameters/p_pswpol"
-      - "$ref": "#/parameters/p_pswvio"
-      - "$ref": "#/parameters/p_pbale"
-      - "$ref": "#/parameters/p_cuale"
-      - "$ref": "#/parameters/p_rc350v"
-      - "$ref": "#/parameters/p_pbv"
-      - "$ref": "#/parameters/p_cuv"
-      - "$ref": "#/parameters/p_lcrv"
-      - "$ref": "#/parameters/p_fea"
-      - "$ref": "#/parameters/p_feay"
-      - "$ref": "#/parameters/p_feaa"
-      - "$ref": "#/parameters/p_iea"
-      - "$ref": "#/parameters/p_ieay"
-      - "$ref": "#/parameters/p_ieaa"
-      - "$ref": "#/parameters/p_qis"
-      - "$ref": "#/parameters/p_pfead1"
-      - "$ref": "#/parameters/p_pfead2"
-      - "$ref": "#/parameters/p_pfeat"
-      - "$ref": "#/parameters/p_ss5yr"
-      - "$ref": "#/parameters/p_sdc"
-      - "$ref": "#/parameters/queryset"
-      - "$ref": "#/parameters/responseset"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/qcolumns"
+      - "$ref": "#/parameters/f.p_fn"
+      - "$ref": "#/parameters/f.p_ct"
+      - "$ref": "#/parameters/f.p_co"
+      - "$ref": "#/parameters/f.p_fips"
+      - "$ref": "#/parameters/f.p_st"
+      - "$ref": "#/parameters/f.p_zip"
+      - "$ref": "#/parameters/f.p_reg"
+      - "$ref": "#/parameters/f.p_trb"
+      - "$ref": "#/parameters/f.p_act"
+      - "$ref": "#/parameters/f.p_qiv"
+      - "$ref": "#/parameters/f.p_ico"
+      - "$ref": "#/parameters/f.p_pid"
+      - "$ref": "#/parameters/f.p_owop"
+      - "$ref": "#/parameters/f.p_systyp"
+      - "$ref": "#/parameters/f.p_swtyp"
+      - "$ref": "#/parameters/f.p_popsv"
+      - "$ref": "#/parameters/f.p_cs"
+      - "$ref": "#/parameters/f.p_mr"
+      - "$ref": "#/parameters/f.p_health"
+      - "$ref": "#/parameters/f.p_other"
+      - "$ref": "#/parameters/f.p_pn"
+      - "$ref": "#/parameters/f.p_sv"
+      - "$ref": "#/parameters/f.p_qs"
+      - "$ref": "#/parameters/f.p_sfs"
+      - "$ref": "#/parameters/f.p_pswpol"
+      - "$ref": "#/parameters/f.p_pswvio"
+      - "$ref": "#/parameters/f.p_pbale"
+      - "$ref": "#/parameters/f.p_cuale"
+      - "$ref": "#/parameters/f.p_rc350v"
+      - "$ref": "#/parameters/f.p_pbv"
+      - "$ref": "#/parameters/f.p_cuv"
+      - "$ref": "#/parameters/f.p_lcrv"
+      - "$ref": "#/parameters/f.p_fea"
+      - "$ref": "#/parameters/f.p_feay"
+      - "$ref": "#/parameters/f.p_feaa"
+      - "$ref": "#/parameters/f.p_iea"
+      - "$ref": "#/parameters/f.p_ieay"
+      - "$ref": "#/parameters/f.p_ieaa"
+      - "$ref": "#/parameters/f.p_qis"
+      - "$ref": "#/parameters/f.p_pfead1"
+      - "$ref": "#/parameters/f.p_pfead2"
+      - "$ref": "#/parameters/f.p_pfeat"
+      - "$ref": "#/parameters/f.p_ss5yr"
+      - "$ref": "#/parameters/f.p_sdc"
+      - "$ref": "#/parameters/f.p_ysl"
+      - "$ref": "#/parameters/f.p_ysly"
+      - "$ref": "#/parameters/f.p_ysla"
+      - "$ref": "#/parameters/f.p_idt1"
+      - "$ref": "#/parameters/f.p_idt2"
+      - "$ref": "#/parameters/f.p_pityp"
+      - "$ref": "#/parameters/f.queryset"
+      - "$ref": "#/parameters/f.responseset"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.qcolumns"
       tags: 
       - Safe Drinking Water
       responses: 
@@ -706,12 +1348,12 @@ paths:
         - XML
         type: string
         required: false
-      - "$ref": "#/parameters/qid"
-      - "$ref": "#/parameters/pageno"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/newsort"
-      - "$ref": "#/parameters/descending"
-      - "$ref": "#/parameters/qcolumns"
+      - "$ref": "#/parameters/g.qid"
+      - "$ref": "#/parameters/g.pageno"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.newsort"
+      - "$ref": "#/parameters/g.descending"
+      - "$ref": "#/parameters/g.qcolumns"
       tags: 
       - Safe Drinking Water
       responses: 
@@ -731,7 +1373,7 @@ paths:
       description: GET_QID is passed with a query ID corresponding to a previously run get_systems query. It then returns a Systems object containing all matching water systems. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. 
       parameters: 
       - name: output
-        in: query
+        in: formData
         description: |-
           Output Format Flag.  Enter one of the following keywords:
           - JSON = Data model formatted as Javascript Object Notation (default).
@@ -743,12 +1385,12 @@ paths:
         - XML
         type: string
         required: false
-      - "$ref": "#/parameters/qid"
-      - "$ref": "#/parameters/pageno"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/newsort"
-      - "$ref": "#/parameters/descending"
-      - "$ref": "#/parameters/qcolumns"
+      - "$ref": "#/parameters/f.qid"
+      - "$ref": "#/parameters/f.pageno"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.newsort"
+      - "$ref": "#/parameters/f.descending"
+      - "$ref": "#/parameters/f.qcolumns"
       tags: 
       - Safe Drinking Water
       responses: 
@@ -775,8 +1417,8 @@ paths:
           - CSV = Facility results formatted as comma delimited file download (default).
         type: string
         required: false
-      - "$ref": "#/parameters/qid"
-      - "$ref": "#/parameters/qcolumns"
+      - "$ref": "#/parameters/g.qid"
+      - "$ref": "#/parameters/g.qcolumns"
       tags: 
       - Safe Drinking Water
       responses: 
@@ -789,14 +1431,14 @@ paths:
       description: Based on the QID obtained from a get_systems query, return a comma separated value (CSV) file of the water systems found.
       parameters: 
       - name: output
-        in: query
+        in: formData
         description: |-
           Output Format Flag.  Enter one of the following keywords:
           - CSV = Facility results formatted as comma delimited file download (default).
         type: string
         required: false
-      - "$ref": "#/parameters/qid"
-      - "$ref": "#/parameters/qcolumns"
+      - "$ref": "#/parameters/f.qid"
+      - "$ref": "#/parameters/f.qcolumns"
       tags: 
       - Safe Drinking Water
       responses: 
@@ -822,7 +1464,7 @@ paths:
         - XML
         type: string
         required: false
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Metadata
       responses: 
@@ -834,7 +1476,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/met_Results" 
+                "$ref": "#/definitions/met1" 
             required: 
             - Results
     post: 
@@ -842,7 +1484,7 @@ paths:
       description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_systems endpoint.
       parameters: 
       - name: output
-        in: query
+        in: formData
         description: |-
           Output Format Flag.  Enter one of the following keywords:
           - JSON = Data model formatted as Javascript Object Notation (default).
@@ -854,7 +1496,7 @@ paths:
         - XML
         type: string
         required: false
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Metadata
       responses: 
@@ -866,11 +1508,11 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/met_Results" 
+                "$ref": "#/definitions/met1" 
             required: 
             - Results
 definitions: 
-  met_ResultsColumns: 
+  met2: 
     description: Results Column Object
     xml: 
       name: ResultColumn
@@ -905,7 +1547,7 @@ definitions:
     - ColumnID
     - ObjectName
     - Description
-  met_Results: 
+  met1: 
     description: Results Object
     properties: 
       Message: 
@@ -917,7 +1559,7 @@ definitions:
         type: array
         title: Result Columns
         items: 
-          "$ref": "#/definitions/met_ResultsColumns" 
+          "$ref": "#/definitions/met2" 
         xml: 
           name: ResultColumns
           wrapped: true
@@ -1264,6 +1906,14 @@ definitions:
         type: string
       SignificantDeficiencyCount: 
         type: string
+      SDWDateLastVisit: 
+        type: string
+      SDWDateLastVisitEPA: 
+        type: string
+      SDWDateLastVisitState: 
+        type: string
+      SDWDateLastVisitLocal: 
+        type: string
       MaxScore: 
         type: string
         title: Max Score
@@ -1333,4 +1983,8 @@ definitions:
     - Insp5yrFlag
     - Sansurvey5yr
     - SignificantDeficiencyCount
+    - SDWDateLastVisit
+    - SDWDateLastVisitEPA
+    - SDWDateLastVisitState
+    - SDWDateLastVisitLocal
     - MaxScore

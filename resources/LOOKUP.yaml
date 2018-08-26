@@ -14,13 +14,12 @@ basePath: /echo
 schemes: 
 - https
 consumes: 
-- application/json
-- application/xml
+- application/x-www-form-urlencoded
 produces: 
 - application/json
 - application/xml
 parameters: 
-  output: 
+  g.output: 
     name: output
     in: query
     description: |-
@@ -34,93 +33,196 @@ parameters:
     - XML
     type: string
     required: false
-  callback: 
+  f.output: 
+    name: output
+    in: formData
+    description: |-
+      Output Format Flag.  Enter one of the following keywords:
+      - JSON = Data model formatted as Javascript Object Notation (default).
+      - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+      - XML = Data model formatted as Extensible Markup Language.
+    enum: 
+    - JSONP
+    - JSON
+    - XML
+    type: string
+    required: false
+  g.callback: 
     name: callback
     in: query
     description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
     type: string
     required: false
-  search_term: 
+  f.callback: 
+    name: callback
+    in: formData
+    description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+    type: string
+    required: false
+  g.search_term: 
     name: search_term
     in: query
     description: Enter a partial or complete search phrase or word.
     type: string
     required: false
-  search_code: 
+  f.search_term: 
+    name: search_term
+    in: formData
+    description: Enter a partial or complete search phrase or word.
+    type: string
+    required: false
+  g.search_code: 
     name: search_code
     in: query
     description: Enter a partial or complete code value.
     type: string
     required: false
-  search_subcode: 
+  f.search_subcode: 
+    name: search_subcode
+    in: formData
+    description: Enter a partial or complete code value.
+    type: string
+    required: false
+  g.search_subcode: 
     name: search_subcode
     in: query
     description: Enter a partial or complete code value.
     type: string
     required: false
-  state_code: 
+  f.search_code: 
+    name: search_code
+    in: formData
+    description: Enter a partial or complete code value.
+    type: string
+    required: false
+  g.state_code: 
     name: state_code
     in: query
     description: Two-letter state code
     type: string
     required: true
-  wbd_code: 
+  f.state_code: 
+    name: state_code
+    in: formData
+    description: Two-letter state code
+    type: string
+    required: true
+  g.wbd_code: 
     name: wbd_code
     in: query
     description: "Two-digit watershed code [Hydrologic Unit Code (HUC)]."
     type: string
     required: false
-  wbd_level: 
+  f.wbd_code: 
+    name: wbd_code
+    in: formData
+    description: "Two-digit watershed code [Hydrologic Unit Code (HUC)]."
+    type: string
+    required: false
+  g.wbd_level: 
     name: wbd_level
     in: query
     description: "The number of digits of the watershed code [Hydrologic Unit Code (HUC)] returned in the ValueCode. Must be an even number between 4 and 12."
     type: string
     required: false
-  wbd_name: 
+  f.wbd_level: 
+    name: wbd_level
+    in: formData
+    description: "The number of digits of the watershed code [Hydrologic Unit Code (HUC)] returned in the ValueCode. Must be an even number between 4 and 12."
+    type: string
+    required: false
+  g.wbd_name: 
     name: wbd_name
     in: query
     description: Watershed Name Filter.
     type: string
     required: true
-  descending: 
+  f.wbd_name: 
+    name: wbd_name
+    in: formData
+    description: Watershed Name Filter.
+    type: string
+    required: true
+  g.descending: 
     name: descending
     in: query
     description: Output Sort Column Descending Flag.  Enter Y to sort results in descending order.
     type: string
     required: false
-  scc_level: 
+  f.descending: 
+    name: descending
+    in: formData
+    description: Output Sort Column Descending Flag.  Enter Y to sort results in descending order.
+    type: string
+    required: false
+  g.scc_level: 
     name: scc_level
     in: query
     type: string
     required: false
-  sort_order: 
+  f.scc_level: 
+    name: scc_level
+    in: formData
+    type: string
+    required: false
+  g.sort_order: 
     name: sort_order
     in: query
     type: number
     required: false
-  exact_match: 
+  f.sort_order: 
+    name: sort_order
+    in: formData
+    type: number
+    required: false
+  g.exact_match: 
     name: exact_match
     in: query
     type: string
     required: false
-  registry_id: 
+  f.exact_match: 
+    name: exact_match
+    in: formData
+    type: string
+    required: false
+  g.registry_id: 
     name: registry_id
     in: query
     type: string
     required: false
-  status_flag: 
+  f.registry_id: 
+    name: registry_id
+    in: formData
+    type: string
+    required: false
+  g.status_flag: 
     name: status_flag
     in: query
     type: string
     required: false
-  statute_code: 
+  f.status_flag: 
+    name: status_flag
+    in: formData
+    type: string
+    required: false
+  g.statute_code: 
     name: statute_code
     in: query
     type: string
     required: false
-  category_code: 
+  f.statute_code: 
+    name: statute_code
+    in: formData
+    type: string
+    required: false
+  g.category_code: 
     name: category_code
     in: query
+    type: string
+    required: false
+  f.category_code: 
+    name: category_code
+    in: formData
     type: string
     required: false
 paths: 
@@ -129,10 +231,10 @@ paths:
       summary: ECHO Air Pollutants Lookup Service
       description: "???"
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -151,10 +253,10 @@ paths:
       summary: ECHO Air Pollutants Lookup Service
       description: "???"
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -171,11 +273,12 @@ paths:
             - Results
   "/rest_lookups.bio_analy_method_category": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -191,11 +294,12 @@ paths:
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -212,11 +316,12 @@ paths:
             - Results
   "/rest_lookups.bio_analytical_method": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -232,11 +337,12 @@ paths:
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -253,11 +359,12 @@ paths:
             - Results
   "/rest_lookups.bio_container_type": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -273,11 +380,12 @@ paths:
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -294,11 +402,12 @@ paths:
             - Results
   "/rest_lookups.bio_mgmt_practice_handler": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -314,11 +423,12 @@ paths:
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -335,12 +445,13 @@ paths:
             - Results
   "/rest_lookups.bio_mgmt_practice_subtype": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      - "$ref": "#/parameters/search_subcode"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
+      - "$ref": "#/parameters/g.search_subcode"
       tags: 
       - Lookups
       responses: 
@@ -356,12 +467,13 @@ paths:
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      - "$ref": "#/parameters/search_subcode"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
+      - "$ref": "#/parameters/f.search_subcode"
       tags: 
       - Lookups
       responses: 
@@ -378,11 +490,12 @@ paths:
             - Results
   "/rest_lookups.bio_mgmt_practice_type": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -398,11 +511,12 @@ paths:
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -419,11 +533,12 @@ paths:
             - Results
   "/rest_lookups.bio_mgmt_practice_typesubtype": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -439,11 +554,12 @@ paths:
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -460,11 +576,12 @@ paths:
             - Results
   "/rest_lookups.bio_pathogen_class": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -480,11 +597,12 @@ paths:
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -501,12 +619,13 @@ paths:
             - Results
   "/rest_lookups.bio_pathogen_reduction": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      - "$ref": "#/parameters/search_subcode"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
+      - "$ref": "#/parameters/g.search_subcode"
       tags: 
       - Lookups
       responses: 
@@ -522,12 +641,13 @@ paths:
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      - "$ref": "#/parameters/search_subcode"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
+      - "$ref": "#/parameters/f.search_subcode"
       tags: 
       - Lookups
       responses: 
@@ -544,11 +664,12 @@ paths:
             - Results
   "/rest_lookups.bio_treatment_process": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -564,11 +685,12 @@ paths:
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -585,11 +707,12 @@ paths:
             - Results
   "/rest_lookups.bio_vector_reduction": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -605,11 +728,12 @@ paths:
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -626,10 +750,11 @@ paths:
             - Results
   "/rest_lookups.biosolids_by_registry_id": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/registry_id"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.registry_id"
       tags: 
       - Lookups
       responses: 
@@ -645,10 +770,11 @@ paths:
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/registry_id"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.registry_id"
       tags: 
       - Lookups
       responses: 
@@ -665,11 +791,12 @@ paths:
             - Results
   "/rest_lookups.bio_vio_code": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -685,11 +812,12 @@ paths:
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -709,10 +837,10 @@ paths:
       summary: ECHO BP Tribes Lookup Service
       description: Returns the EPA Standard Indian Tribes and Native Alaskan Villages tribal_id and tribe_name.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -731,10 +859,10 @@ paths:
       summary: ECHO BP Tribes Lookup Service
       description: Returns the EPA Standard Indian Tribes and Native Alaskan Villages tribal_id and tribe_name.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -753,10 +881,10 @@ paths:
     get: 
       summary: ECHO Counties Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -774,10 +902,10 @@ paths:
     post: 
       summary: ECHO Counties Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -796,9 +924,9 @@ paths:
     get: 
       summary: ECHO CP Citations Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
       tags: 
       - Lookups
       responses: 
@@ -816,9 +944,9 @@ paths:
     post: 
       summary: ECHO CP Citations Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
       tags: 
       - Lookups
       responses: 
@@ -838,10 +966,10 @@ paths:
       summary: ECHO CWA Parameter Lookup Service
       description: Look up Clean Water Act parameter codes and descriptions in the Integrated Compliance Information System - National Pollutant Discharge Elimination System (ICIS-NPDES) by code or term.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -862,10 +990,10 @@ paths:
       summary: ECHO CWA Parameter Lookup Service
       description: Look up Clean Water Act parameter codes and descriptions in the Integrated Compliance Information System - National Pollutant Discharge Elimination System (ICIS-NPDES) by code or term.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -886,10 +1014,10 @@ paths:
     get: 
       summary: ECHO CWA Pollutants Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -907,10 +1035,10 @@ paths:
     post: 
       summary: ECHO CWA Pollutants Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -929,10 +1057,10 @@ paths:
     get: 
       summary: ECHO Clean Air Targeting Tool AMS Cases Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -950,10 +1078,10 @@ paths:
     post: 
       summary: ECHO Clean Air Targeting Tool AMS Cases Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -972,10 +1100,10 @@ paths:
     get: 
       summary: ECHO Clean Air Targeting Tool AMS Pollutants Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -993,10 +1121,10 @@ paths:
     post: 
       summary: ECHO Clean Air Targeting Tool AMS Pollutants Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1015,10 +1143,10 @@ paths:
     get: 
       summary: ECHO Clean Air Targeting Tool AMS Systems Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1036,10 +1164,10 @@ paths:
     post: 
       summary: ECHO Clean Air Targeting Tool AMS Systems Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1056,9 +1184,10 @@ paths:
             - Results
   "/rest_lookups.ecatt_ams_years": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
       tags: 
       - Lookups
       responses: 
@@ -1074,9 +1203,10 @@ paths:
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
       tags: 
       - Lookups
       responses: 
@@ -1095,10 +1225,10 @@ paths:
     get: 
       summary: ECHO Clean Air Targeting Tool EIS Types Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1116,10 +1246,10 @@ paths:
     post: 
       summary: ECHO Clean Air Targeting Tool EIS Types Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1138,9 +1268,9 @@ paths:
     get: 
       summary: ECHO Clean Air Targeting Tool Most Recent Common Year Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
       tags: 
       - Lookups
       responses: 
@@ -1158,9 +1288,9 @@ paths:
     post: 
       summary: ECHO Clean Air Targeting Tool Most Recent Common Year Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
       tags: 
       - Lookups
       responses: 
@@ -1179,9 +1309,9 @@ paths:
     get: 
       summary: ECHO Clean Air Targeting Tool Most Recent Year Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
       tags: 
       - Lookups
       responses: 
@@ -1199,9 +1329,9 @@ paths:
     post: 
       summary: ECHO Clean Air Targeting Tool Most Recent Year Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
       tags: 
       - Lookups
       responses: 
@@ -1220,10 +1350,10 @@ paths:
     get: 
       summary: ECHO Clean Air Targeting Tool NATA Pollutants Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1241,10 +1371,10 @@ paths:
     post: 
       summary: ECHO Clean Air Targeting Tool NATA Pollutants Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1263,10 +1393,10 @@ paths:
     get: 
       summary: ECHO Clean Air Targeting Tool NATA Sources Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1284,10 +1414,10 @@ paths:
     post: 
       summary: ECHO Clean Air Targeting Tool NATA Sources Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1306,10 +1436,10 @@ paths:
     get: 
       summary: ECHO Clean Air Targeting Tool NATA Systems Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1327,10 +1457,10 @@ paths:
     post: 
       summary: ECHO Clean Air Targeting Tool NATA Systems Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1349,11 +1479,11 @@ paths:
     get: 
       summary: ECHO Clean Air Targeting Tool NEI SCC Code Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      - "$ref": "#/parameters/scc_level"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
+      - "$ref": "#/parameters/g.scc_level"
       tags: 
       - Lookups
       responses: 
@@ -1371,11 +1501,11 @@ paths:
     post: 
       summary: ECHO Clean Air Targeting Tool NEI SCC Code Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      - "$ref": "#/parameters/scc_level"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
+      - "$ref": "#/parameters/f.scc_level"
       tags: 
       - Lookups
       responses: 
@@ -1394,10 +1524,10 @@ paths:
     get: 
       summary: ECHO Clean Air Targeting Tool Pollutant Category Programs Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1415,10 +1545,10 @@ paths:
     post: 
       summary: ECHO Clean Air Targeting Tool Pollutant Category Programs Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1437,10 +1567,10 @@ paths:
     get: 
       summary: ECHO Clean Air Targeting Tool Pollutant Categories Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1458,10 +1588,10 @@ paths:
     post: 
       summary: ECHO Clean Air Targeting Tool Pollutant Categories Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1480,10 +1610,10 @@ paths:
     get: 
       summary: ECHO Clean Air Targeting Tool Pollutant Programs Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1501,10 +1631,10 @@ paths:
     post: 
       summary: ECHO Clean Air Targeting Tool Pollutant Programs Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1523,10 +1653,10 @@ paths:
     get: 
       summary: ECHO Clean Air Targeting Tool Pollutants Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1544,10 +1674,10 @@ paths:
     post: 
       summary: ECHO Clean Air Targeting Tool Pollutants Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1566,10 +1696,10 @@ paths:
     get: 
       summary: ECHO Clean Air Targeting Tool Systems Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1587,10 +1717,10 @@ paths:
     post: 
       summary: ECHO Clean Air Targeting Tool Systems Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1610,10 +1740,10 @@ paths:
       summary: ECHO Federal Agency Lookup Service
       description: Look up Federal Agency Code
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1632,10 +1762,10 @@ paths:
       summary: ECHO Federal Agency Lookup Service
       description: Look up Federal Agency Code
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1654,10 +1784,10 @@ paths:
     get: 
       summary: ECHO GHG Facility Types Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1675,10 +1805,10 @@ paths:
     post: 
       summary: ECHO GHG Facility Types Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1697,10 +1827,10 @@ paths:
     get: 
       summary: ECHO GHG Subparts Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1718,10 +1848,10 @@ paths:
     post: 
       summary: ECHO GHG Subparts Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1740,9 +1870,9 @@ paths:
     get: 
       summary: ECHO GHG Years Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/descending"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.descending"
       tags: 
       - Lookups
       responses: 
@@ -1760,9 +1890,9 @@ paths:
     post: 
       summary: ECHO GHG Years Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/descending"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.descending"
       tags: 
       - Lookups
       responses: 
@@ -1782,10 +1912,10 @@ paths:
       summary: ECHO ICIS NPDES Inspection Types Lookup Service
       description: Returns the ICIS NPDES Compliance Monitoring Type Code and Description.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1804,10 +1934,10 @@ paths:
       summary: ECHO ICIS NPDES Inspection Types Lookup Service
       description: Returns the ICIS NPDES Compliance Monitoring Type Code and Description.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1827,13 +1957,13 @@ paths:
       summary: ECHO ICIS Law Sections Lookup Service
       description: Returns the ICIS Law Section Descriptions.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/statute_code"
-      - "$ref": "#/parameters/status_flag"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      - "$ref": "#/parameters/sort_order"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.statute_code"
+      - "$ref": "#/parameters/g.status_flag"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
+      - "$ref": "#/parameters/g.sort_order"
       tags: 
       - Lookups
       responses: 
@@ -1852,13 +1982,13 @@ paths:
       summary: ECHO ICIS Law Sections Lookup Service
       description: Returns the ICIS Law Section Descriptions.
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/statute_code"
-      - "$ref": "#/parameters/status_flag"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      - "$ref": "#/parameters/sort_order"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.statute_code"
+      - "$ref": "#/parameters/f.status_flag"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
+      - "$ref": "#/parameters/f.sort_order"
       tags: 
       - Lookups
       responses: 
@@ -1875,14 +2005,15 @@ paths:
             - Results
   "/rest_lookups.icis_ref_program": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/statute_code"
-      - "$ref": "#/parameters/status_flag"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      - "$ref": "#/parameters/sort_order"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.statute_code"
+      - "$ref": "#/parameters/g.status_flag"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
+      - "$ref": "#/parameters/g.sort_order"
       tags: 
       - Lookups
       responses: 
@@ -1898,14 +2029,15 @@ paths:
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/statute_code"
-      - "$ref": "#/parameters/status_flag"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      - "$ref": "#/parameters/sort_order"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.statute_code"
+      - "$ref": "#/parameters/f.status_flag"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
+      - "$ref": "#/parameters/f.sort_order"
       tags: 
       - Lookups
       responses: 
@@ -1924,10 +2056,10 @@ paths:
     get: 
       summary: ECHO NAICS Codes Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1945,10 +2077,10 @@ paths:
     post: 
       summary: ECHO NAICS Codes Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1967,11 +2099,11 @@ paths:
     get: 
       summary: ECHO National Priorities Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/category_code"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.category_code"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -1989,11 +2121,11 @@ paths:
     post: 
       summary: ECHO National Priorities Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/category_code"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.category_code"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -2012,10 +2144,10 @@ paths:
     get: 
       summary: ECHO NEI Pollutants Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -2033,10 +2165,10 @@ paths:
     post: 
       summary: ECHO NEI Pollutants Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -2055,9 +2187,9 @@ paths:
     get: 
       summary: ECHO NEI Years Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/descending"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.descending"
       tags: 
       - Lookups
       responses: 
@@ -2075,9 +2207,9 @@ paths:
     post: 
       summary: ECHO NEI Years Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/descending"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.descending"
       tags: 
       - Lookups
       responses: 
@@ -2097,9 +2229,9 @@ paths:
       summary: ECHO NPDES Parameters Lookup Service
       description: ICIS Limit Parameter Code and Name lookup based on the supply of a partial parameter name. (NPDES = National Pollutant Discharge Elimination System)
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
       tags: 
       - Lookups
       responses: 
@@ -2118,9 +2250,9 @@ paths:
       summary: ECHO NPDES Parameters Lookup Service
       description: ICIS Limit Parameter Code and Name lookup based on the supply of a partial parameter name. (NPDES = National Pollutant Discharge Elimination System)
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
       tags: 
       - Lookups
       responses: 
@@ -2137,11 +2269,12 @@ paths:
             - Results
   "/rest_lookups.prog_deficiency": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -2157,11 +2290,12 @@ paths:
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -2180,9 +2314,9 @@ paths:
     get: 
       summary: ECHO RCRA State Districts Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/state_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.state_code"
       tags: 
       - Lookups
       responses: 
@@ -2200,9 +2334,9 @@ paths:
     post: 
       summary: ECHO RCRA State Districts Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/state_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.state_code"
       tags: 
       - Lookups
       responses: 
@@ -2219,12 +2353,13 @@ paths:
             - Results
   "/rest_lookups.reporting_obligation": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      - "$ref": "#/parameters/descending"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
+      - "$ref": "#/parameters/g.descending"
       tags: 
       - Lookups
       responses: 
@@ -2240,12 +2375,13 @@ paths:
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
-      - "$ref": "#/parameters/descending"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
+      - "$ref": "#/parameters/f.descending"
       tags: 
       - Lookups
       responses: 
@@ -2264,10 +2400,10 @@ paths:
     get: 
       summary: ECHO RPO Regions Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -2285,10 +2421,10 @@ paths:
     post: 
       summary: ECHO RPO Regions Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -2307,10 +2443,10 @@ paths:
     get: 
       summary: ECHO SDWA Contaminants Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -2328,10 +2464,10 @@ paths:
     post: 
       summary: ECHO SDWA Contaminants Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -2351,10 +2487,10 @@ paths:
       summary: ECHO SDWIS Tribes Lookup Service
       description: Tribe Lookup (SDWIS = Safe Drinking Water Information System)
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -2373,10 +2509,10 @@ paths:
       summary: ECHO SDWIS Tribes Lookup Service
       description: Tribe Lookup (SDWIS = Safe Drinking Water Information System)
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -2395,10 +2531,10 @@ paths:
     get: 
       summary: ECHO States Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -2416,10 +2552,10 @@ paths:
     post: 
       summary: ECHO States Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -2438,10 +2574,10 @@ paths:
     get: 
       summary: ECHO Tri Pollutants Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.search_term"
+      - "$ref": "#/parameters/g.search_code"
       tags: 
       - Lookups
       responses: 
@@ -2459,10 +2595,10 @@ paths:
     post: 
       summary: ECHO Tri Pollutants Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/search_term"
-      - "$ref": "#/parameters/search_code"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.search_term"
+      - "$ref": "#/parameters/f.search_code"
       tags: 
       - Lookups
       responses: 
@@ -2481,9 +2617,9 @@ paths:
     get: 
       summary: ECHO Tri Years Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/descending"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.descending"
       tags: 
       - Lookups
       responses: 
@@ -2501,9 +2637,9 @@ paths:
     post: 
       summary: ECHO Tri Years Lookup Service
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/descending"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.descending"
       tags: 
       - Lookups
       responses: 
@@ -2523,10 +2659,10 @@ paths:
       summary: ECHO WBD Code Lookup Service
       description: USGS Watershed Boundary Dataset (WBD) Name lookup based on a supplied WBD Code and Watershed Level
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/wbd_code"
-      - "$ref": "#/parameters/wbd_level"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.wbd_code"
+      - "$ref": "#/parameters/g.wbd_level"
       tags: 
       - Lookups
       responses: 
@@ -2545,10 +2681,10 @@ paths:
       summary: ECHO WBD Code Lookup Service
       description: USGS Watershed Boundary Dataset (WBD) Name lookup based on a supplied WBD Code and Watershed Level
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/wbd_code"
-      - "$ref": "#/parameters/wbd_level"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.wbd_code"
+      - "$ref": "#/parameters/f.wbd_level"
       tags: 
       - Lookups
       responses: 
@@ -2565,13 +2701,14 @@ paths:
             - Results
   "/rest_lookups.wbd_lu": 
     get: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/wbd_code"
-      - "$ref": "#/parameters/wbd_name"
-      - "$ref": "#/parameters/wbd_level"
-      - "$ref": "#/parameters/exact_match"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.wbd_code"
+      - "$ref": "#/parameters/g.wbd_name"
+      - "$ref": "#/parameters/g.wbd_level"
+      - "$ref": "#/parameters/g.exact_match"
       tags: 
       - Lookups
       responses: 
@@ -2587,13 +2724,14 @@ paths:
             required: 
             - Results
     post: 
+      summary: 
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/wbd_code"
-      - "$ref": "#/parameters/wbd_name"
-      - "$ref": "#/parameters/wbd_level"
-      - "$ref": "#/parameters/exact_match"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.wbd_code"
+      - "$ref": "#/parameters/f.wbd_name"
+      - "$ref": "#/parameters/f.wbd_level"
+      - "$ref": "#/parameters/f.exact_match"
       tags: 
       - Lookups
       responses: 
@@ -2613,10 +2751,10 @@ paths:
       summary: ECHO WBD Name Lookup Service
       description: USGS Watershed Boundary Dataset (WBD) Code lookup based on a supplied WBD Name and Watershed Level
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/wbd_name"
-      - "$ref": "#/parameters/wbd_level"
+      - "$ref": "#/parameters/g.output"
+      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/g.wbd_name"
+      - "$ref": "#/parameters/g.wbd_level"
       tags: 
       - Lookups
       responses: 
@@ -2635,10 +2773,10 @@ paths:
       summary: ECHO WBD Name Lookup Service
       description: USGS Watershed Boundary Dataset (WBD) Code lookup based on a supplied WBD Name and Watershed Level
       parameters: 
-      - "$ref": "#/parameters/output"
-      - "$ref": "#/parameters/callback"
-      - "$ref": "#/parameters/wbd_name"
-      - "$ref": "#/parameters/wbd_level"
+      - "$ref": "#/parameters/f.output"
+      - "$ref": "#/parameters/f.callback"
+      - "$ref": "#/parameters/f.wbd_name"
+      - "$ref": "#/parameters/f.wbd_level"
       tags: 
       - Lookups
       responses: 
