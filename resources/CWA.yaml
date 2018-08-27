@@ -37,7 +37,7 @@ produces:
 - application/json
 - application/xml
 parameters: 
-  g.p_med: 
+  q.p_med: 
     name: p_med
     in: query
     description: |-
@@ -73,7 +73,7 @@ parameters:
     - ALL
     type: string
     required: false
-  g.p_id: 
+  q.p_id: 
     name: p_id
     in: query
     description: Nine-character code used to uniquely identify a permitted NPDES facility. The NPDES permit program regulates the direct discharge of pollutants into US waters.
@@ -85,7 +85,7 @@ parameters:
     description: Nine-character code used to uniquely identify a permitted NPDES facility. The NPDES permit program regulates the direct discharge of pollutants into US waters.
     type: string
     required: true
-  g.p_fn: 
+  q.p_fn: 
     name: p_fn
     in: query
     description: Facility Name Filter. Enter one or more case-insensitive facility names to filter results.  Provide multiple values as a comma-delimited list.  See p_fntype for additional modifiers.
@@ -97,7 +97,7 @@ parameters:
     description: Facility Name Filter. Enter one or more case-insensitive facility names to filter results.  Provide multiple values as a comma-delimited list.  See p_fntype for additional modifiers.
     type: string
     required: false
-  g.callback: 
+  q.callback: 
     name: callback
     in: query
     description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
@@ -109,7 +109,7 @@ parameters:
     description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
     type: string
     required: false
-  g.p_sa: 
+  q.p_sa: 
     name: p_sa
     in: query
     description: Facility street address. Enter a complete or partial street address.
@@ -121,7 +121,7 @@ parameters:
     description: Facility street address. Enter a complete or partial street address.
     type: string
     required: false
-  g.p_sa1: 
+  q.p_sa1: 
     name: p_sa1
     in: query
     description: Facility street address. Enter a complete or partial street address.   Note that p_sa1 is culmulative with p_sa.
@@ -133,7 +133,7 @@ parameters:
     description: Facility street address. Enter a complete or partial street address.   Note that p_sa1 is culmulative with p_sa.
     type: string
     required: false
-  g.p_ct: 
+  q.p_ct: 
     name: p_ct
     in: query
     description: Facility City Filter. Enter a single case-insensitive city name to filter results.
@@ -145,7 +145,7 @@ parameters:
     description: Facility City Filter. Enter a single case-insensitive city name to filter results.
     type: string
     required: false
-  g.p_co: 
+  q.p_co: 
     name: p_co
     in: query
     description: Facility County Filter. Provide a single county name in combination with a state value provided via p_st.
@@ -157,7 +157,7 @@ parameters:
     description: Facility County Filter. Provide a single county name in combination with a state value provided via p_st.
     type: string
     required: false
-  g.p_fips: 
+  q.p_fips: 
     name: p_fips
     in: query
     description: FIPS Code Filter.  Enter a single 5-character Federal Information Processing Standards (FIPS) state + county value to restrict results.  E.g. to limit results to Kenosha County, Wisconsin, use 55059.
@@ -169,7 +169,7 @@ parameters:
     description: FIPS Code Filter.  Enter a single 5-character Federal Information Processing Standards (FIPS) state + county value to restrict results.  E.g. to limit results to Kenosha County, Wisconsin, use 55059.
     type: string
     required: false
-  g.p_st: 
+  q.p_st: 
     name: p_st
     in: query
     description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
@@ -181,7 +181,7 @@ parameters:
     description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
     type: string
     required: false
-  g.p_zip: 
+  q.p_zip: 
     name: p_zip
     in: query
     description: 5-Digit ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values.
@@ -193,7 +193,7 @@ parameters:
     description: 5-Digit ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values.
     type: string
     required: false
-  g.p_frs: 
+  q.p_frs: 
     name: p_frs
     in: query
     description: Facility Registry Service ID Filter. Enter a single 12-digit FRS identifier to filter results.
@@ -205,7 +205,7 @@ parameters:
     description: Facility Registry Service ID Filter. Enter a single 12-digit FRS identifier to filter results.
     type: string
     required: false
-  g.p_reg: 
+  q.p_reg: 
     name: p_reg
     in: query
     description: EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region.
@@ -239,7 +239,7 @@ parameters:
     - '10'
     type: string
     required: false
-  g.p_sic: 
+  q.p_sic: 
     name: p_sic
     in: query
     description: Standard Industrial Classification (SIC) Code Filter.  Enter a single 4-digit SIC Code to filter results.  If more complex filtering is required, use p_sic2 and p_sic4.
@@ -251,7 +251,7 @@ parameters:
     description: Standard Industrial Classification (SIC) Code Filter.  Enter a single 4-digit SIC Code to filter results.  If more complex filtering is required, use p_sic2 and p_sic4.
     type: string
     required: false
-  g.p_ncs: 
+  q.p_ncs: 
     name: p_ncs
     in: query
     description: North American Industry Classification System Filter. Enter two to six digits to filter results to facilities having matching NAICS codes.  Digits less than six will match to all codes beginning with the provided values.
@@ -263,7 +263,7 @@ parameters:
     description: North American Industry Classification System Filter. Enter two to six digits to filter results to facilities having matching NAICS codes.  Digits less than six will match to all codes beginning with the provided values.
     type: string
     required: false
-  g.p_pen: 
+  q.p_pen: 
     name: p_pen
     in: query
     description: |-
@@ -285,7 +285,7 @@ parameters:
       - GTXX = Greater than XX months.  Provide a number in place of XX, eg. GT12, for a facility with the last penalty greater than 12 months ago.
     type: string
     required: false
-  g.xmin: 
+  q.xmin: 
     name: xmin
     in: query
     description: Minimum longitude value in decimal degrees.
@@ -305,7 +305,7 @@ parameters:
     - NON-POTW
     type: string
     required: false
-  g.p_owop: 
+  q.p_owop: 
     name: p_owop
     in: query
     description: |-
@@ -325,7 +325,7 @@ parameters:
     description: Minimum longitude value in decimal degrees.
     type: number
     required: false
-  g.ymin: 
+  q.ymin: 
     name: ymin
     in: query
     description: Minimum latitude value in decimal degrees.
@@ -337,7 +337,7 @@ parameters:
     description: Minimum latitude value in decimal degrees.
     type: number
     required: false
-  g.xmax: 
+  q.xmax: 
     name: xmax
     in: query
     description: Maximum longitude value in decimal degrees.
@@ -349,7 +349,7 @@ parameters:
     description: Maximum longitude value in decimal degrees.
     type: number
     required: false
-  g.ymax: 
+  q.ymax: 
     name: ymax
     in: query
     description: Maximum latitude value in decimal degrees.
@@ -364,7 +364,7 @@ parameters:
     - N
     type: string
     required: false
-  g.p_usmex: 
+  q.p_usmex: 
     name: p_usmex
     in: query
     description: US-Mexico Border Flag.  Enter Y/N to restrict searches to facilities located within 100KM of the border.
@@ -379,7 +379,7 @@ parameters:
     description: Maximum latitude value in decimal degrees.
     type: number
     required: false
-  g.p_sic2: 
+  q.p_sic2: 
     name: p_sic2
     in: query
     description: "Standard Industrial Classification (SIC) Code Filter Alternate 2. Enter a wild-card search against SIC codes.  A final wild-card is always present allowing \"22\" to match all SIC codes beginning with 22.  Use the \"%\" character within strings to match any SIC values with the pattern.  For example, \"2%21\" matches 2021, 2121, 2221, etc."
@@ -391,7 +391,7 @@ parameters:
     description: "Standard Industrial Classification (SIC) Code Filter Alternate 2. Enter a wild-card search against SIC codes.  A final wild-card is always present allowing \"22\" to match all SIC codes beginning with 22.  Use the \"%\" character within strings to match any SIC values with the pattern.  For example, \"2%21\" matches 2021, 2121, 2221, etc."
     type: string
     required: false
-  g.p_sic4: 
+  q.p_sic4: 
     name: p_sic4
     in: query
     description: Standard Industrial Classification (SIC) Code Filter Alternate 3.  Enter the first 2, 3 or 4 SIC code digits to filter results to facilities having those code prefixes.  As this alternative does not utilize an index, p_sic2 will generally be quicker.
@@ -403,7 +403,7 @@ parameters:
     description: Standard Industrial Classification (SIC) Code Filter Alternate 3.  Enter the first 2, 3 or 4 SIC code digits to filter results to facilities having those code prefixes.  As this alternative does not utilize an index, p_sic2 will generally be quicker.
     type: string
     required: false
-  g.p_fa: 
+  q.p_fa: 
     name: p_fa
     in: query
     description: Federal Agency. 1 character or 5-character values; may contain multiple comma-separated values. ALL will retrieve all facilities where the federal agency code is not null.  Use the Federal Agencies lookup service to obtain a list of values.
@@ -415,7 +415,7 @@ parameters:
     description: Federal Agency. 1 character or 5-character values; may contain multiple comma-separated values. ALL will retrieve all facilities where the federal agency code is not null.  Use the Federal Agencies lookup service to obtain a list of values.
     type: string
     required: false
-  g.p_act: 
+  q.p_act: 
     name: p_act
     in: query
     description: Active Permits/Facilities Flag.  Provide Y or N to filter results to facilities with active permits.  A Y will select ICIS NPDES permits with a status of effective, continued, or expired.
@@ -427,7 +427,7 @@ parameters:
     description: Active Permits/Facilities Flag.  Provide Y or N to filter results to facilities with active permits.  A Y will select ICIS NPDES permits with a status of effective, continued, or expired.
     type: string
     required: false
-  g.p_ff: 
+  q.p_ff: 
     name: p_ff
     in: query
     description: Federal Facility Indicator Flag. Enter Y to restrict searches to federal facilities.
@@ -443,7 +443,7 @@ parameters:
     - Y
     type: string
     required: false
-  g.p_qs: 
+  q.p_qs: 
     name: p_qs
     in: query
     description: Quick Search. Allows entry for city, state, and/or zip code.
@@ -458,7 +458,7 @@ parameters:
     - N
     type: string
     required: false
-  g.p_maj: 
+  q.p_maj: 
     name: p_maj
     in: query
     description: Major Facility Flag.  Enter Y to restrict results to Major facilities only.
@@ -473,7 +473,7 @@ parameters:
     description: Quick Search. Allows entry for city, state, and/or zip code.
     type: string
     required: false
-  g.p_sfs: 
+  q.p_sfs: 
     name: p_sfs
     in: query
     description: Single Facility Search Filter.  Provide a facility name or program system identifier to limit results.  For the all data search, the FRS registry identifier is also searched.
@@ -485,7 +485,7 @@ parameters:
     description: CAA Maximum Achievable Control Technology (MACT) Subpart codes (alpha ID between 1 and 7 characters) applicable to the facility.
     type: string
     required: false
-  g.p_mact: 
+  q.p_mact: 
     name: p_mact
     in: query
     description: CAA Maximum Achievable Control Technology (MACT) Subpart codes (alpha ID between 1 and 7 characters) applicable to the facility.
@@ -497,7 +497,7 @@ parameters:
     description: Single Facility Search Filter.  Provide a facility name or program system identifier to limit results.  For the all data search, the FRS registry identifier is also searched.
     type: string
     required: false
-  g.p_fea: 
+  q.p_fea: 
     name: p_fea
     in: query
     description: |-
@@ -515,7 +515,7 @@ parameters:
     description: For CWA, pollutant names for surface water discharges. for Drinking Water, SDWIS Violation contaminant codes for unaddressed violations that have occurred in the last 3 years. May contain multiple comma-separated values.
     type: string
     required: false
-  g.p_pswpol: 
+  q.p_pswpol: 
     name: p_pswpol
     in: query
     description: For CWA, pollutant names for surface water discharges. for Drinking Water, SDWIS Violation contaminant codes for unaddressed violations that have occurred in the last 3 years. May contain multiple comma-separated values.
@@ -533,7 +533,7 @@ parameters:
     - N
     type: string
     required: false
-  g.p_c1lat: 
+  q.p_c1lat: 
     name: p_c1lat
     in: query
     description: In decimal degrees.  Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
@@ -545,7 +545,7 @@ parameters:
     description: In decimal degrees.  Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
     type: number
     required: false
-  g.p_c1lon: 
+  q.p_c1lon: 
     name: p_c1lon
     in: query
     description: In decimal degrees.  Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
@@ -557,7 +557,7 @@ parameters:
     description: In decimal degrees.  Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
     type: number
     required: false
-  g.p_c2lat: 
+  q.p_c2lat: 
     name: p_c2lat
     in: query
     description: In decimal degrees.  Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
@@ -569,7 +569,7 @@ parameters:
     description: In decimal degrees.  Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
     type: number
     required: false
-  g.p_c2lon: 
+  q.p_c2lon: 
     name: p_c2lon
     in: query
     description: In decimal degrees.  Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
@@ -581,7 +581,7 @@ parameters:
     description: In decimal degrees.  Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
     type: number
     required: false
-  g.p_feay: 
+  q.p_feay: 
     name: p_feay
     in: query
     description: Years (1 to 5) Range.  This value is used to create a date range for Formal Enforcement Actions (FEA). Used along with p_fea (which indicates whether to look within or outside of the date range) to find FEAs within (or not within) the number of years specified.
@@ -599,7 +599,7 @@ parameters:
     description: Query Limiter.  Enter a value to limit the number of records returned for each query. Value cannot exceed 70,000.
     type: number
     required: false
-  g.queryset: 
+  q.queryset: 
     name: queryset
     in: query
     description: Query Limiter.  Enter a value to limit the number of records returned for each query. Value cannot exceed 70,000.
@@ -617,7 +617,7 @@ parameters:
     - 5
     type: number
     required: false
-  g.p_feaa: 
+  q.p_feaa: 
     name: p_feaa
     in: query
     description: |-
@@ -637,7 +637,7 @@ parameters:
     description: Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000.
     type: number
     required: false
-  g.responseset: 
+  q.responseset: 
     name: responseset
     in: query
     description: Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000.
@@ -657,7 +657,7 @@ parameters:
     - S
     type: string
     required: false
-  g.p_iea: 
+  q.p_iea: 
     name: p_iea
     in: query
     description: |-
@@ -681,7 +681,7 @@ parameters:
     - N
     type: string
     required: false
-  g.p_ieay: 
+  q.p_ieay: 
     name: p_ieay
     in: query
     description: Years (1 to 5) Range.  This value is used to create a date range for Informal Enforcement Actions (IEA). Used along with p_iea (which indicates whether to look within or outside of the date range) to find IEAs within (or not within) the number of years specified.
@@ -705,7 +705,7 @@ parameters:
     - 5
     type: number
     required: false
-  g.p_ieaa: 
+  q.p_ieaa: 
     name: p_ieaa
     in: query
     description: |-
@@ -729,7 +729,7 @@ parameters:
     - S
     type: string
     required: false
-  g.p_qiv: 
+  q.p_qiv: 
     name: p_qiv
     in: query
     description: |-
@@ -763,7 +763,7 @@ parameters:
     - '12'
     type: string
     required: false
-  g.p_impw: 
+  q.p_impw: 
     name: p_impw
     in: query
     description: Discharging into Impaired Waters Flag. Enter Y to limit results to facilities with discharge to waterbodies listed as impaired in the ATTAINS database.
@@ -781,7 +781,7 @@ parameters:
     - N
     type: string
     required: false
-  g.p_imp_pol: 
+  q.p_imp_pol: 
     name: p_imp_pol
     in: query
     description: Facility is discharging pollutants that are potentially contributing to the impairment of local waterbodies according to the ATTAINS database.
@@ -799,7 +799,7 @@ parameters:
     - N
     type: string
     required: false
-  g.p_imp_cau_grp: 
+  q.p_imp_cau_grp: 
     name: p_imp_cau_grp
     in: query
     description: Facility is discharging a pollutant group causing a waterbody to be impaired.  Enter 1 through 34 (the internal number of the pollutant group); or enter a partial name such as Dioxin,Temp,tUrBidity.
@@ -881,7 +881,7 @@ parameters:
     - TURBIDITY
     type: string
     required: false
-  g.p_trep: 
+  q.p_trep: 
     name: p_trep
     in: query
     description: |-
@@ -909,7 +909,7 @@ parameters:
     - NOTCURR
     type: string
     required: false
-  g.p_pm: 
+  q.p_pm: 
     name: p_pm
     in: query
     description: |-
@@ -949,7 +949,7 @@ parameters:
     - GT75
     type: string
     required: false
-  g.p_pd: 
+  q.p_pd: 
     name: p_pd
     in: query
     description: |-
@@ -993,7 +993,7 @@ parameters:
     - GT20000
     type: string
     required: false
-  g.p_ico: 
+  q.p_ico: 
     name: p_ico
     in: query
     description: "Indian Country Flag.  Enter a \"Y\" or \"N\" to restrict searches to facilities inside or outside Indian Country."
@@ -1011,7 +1011,7 @@ parameters:
     - N
     type: string
     required: false
-  g.p_huc: 
+  q.p_huc: 
     name: p_huc
     in: query
     description: 2-, 4-, 6-, or 8-character watershed. May contain multiple comma-separated values.
@@ -1023,7 +1023,7 @@ parameters:
     description: 2-, 4-, 6-, or 8-character watershed. May contain multiple comma-separated values.
     type: string
     required: false
-  g.p_pid: 
+  q.p_pid: 
     name: p_pid
     in: query
     description: Nine-digit permit IDs. May contain up to 2000 comma-separated values.
@@ -1035,7 +1035,7 @@ parameters:
     description: Nine-digit permit IDs. May contain up to 2000 comma-separated values.
     type: string
     required: false
-  g.p_ysl: 
+  q.p_ysl: 
     name: p_ysl
     in: query
     description: |-
@@ -1061,7 +1061,7 @@ parameters:
     - NV
     type: string
     required: false
-  g.p_ysly: 
+  q.p_ysly: 
     name: p_ysly
     in: query
     description: Number of years (1 to 5) since last facility inspection.  A value of 1 means that it has been inspected within the year.
@@ -1085,7 +1085,7 @@ parameters:
     - 5
     type: number
     required: false
-  g.p_ysla: 
+  q.p_ysla: 
     name: p_ysla
     in: query
     description: |-
@@ -1111,7 +1111,7 @@ parameters:
     - A
     type: string
     required: false
-  g.p_tribeid: 
+  q.p_tribeid: 
     name: p_tribeid
     in: query
     description: Numeric code for tribe (or list of tribes).
@@ -1123,7 +1123,7 @@ parameters:
     description: Numeric code for tribe (or list of tribes).
     type: number
     required: false
-  g.p_tribename: 
+  q.p_tribename: 
     name: p_tribename
     in: query
     description: Tribe Name Filter.  Enter a single tribe name to filter results.
@@ -1135,7 +1135,7 @@ parameters:
     description: Tribe Name Filter.  Enter a single tribe name to filter results.
     type: string
     required: false
-  g.p_tribedist: 
+  q.p_tribedist: 
     name: p_tribedist
     in: query
     description: Proximity to tribal land limiter. Enter an amount of mile between 0 and 25 to filter results.  This parameter is only evaluated if p_tribeid is populated.
@@ -1147,7 +1147,7 @@ parameters:
     description: Proximity to tribal land limiter. Enter an amount of mile between 0 and 25 to filter results.  This parameter is only evaluated if p_tribeid is populated.
     type: number
     required: false
-  g.p_wbd: 
+  q.p_wbd: 
     name: p_wbd
     in: query
     description: 2-, 4-, 6-, 8-, 10-, or 12-character watershed (WBD from the USGS Watershed Boundary Dataset). May contain multiple comma-separated values.  Uses the FRS Best Pick Coordinate to obtain the WBD12 Huc value.
@@ -1159,7 +1159,7 @@ parameters:
     description: 2-, 4-, 6-, 8-, 10-, or 12-character watershed (WBD from the USGS Watershed Boundary Dataset). May contain multiple comma-separated values.  Uses the FRS Best Pick Coordinate to obtain the WBD12 Huc value.
     type: string
     required: false
-  g.p_fntype: 
+  q.p_fntype: 
     name: p_fntype
     in: query
     description: |-
@@ -1191,7 +1191,7 @@ parameters:
     - BEGINS
     type: string
     required: false
-  g.p_pstat: 
+  q.p_pstat: 
     name: p_pstat
     in: query
     description: |-
@@ -1219,7 +1219,7 @@ parameters:
       - ADC = Admin Continued
     type: string
     required: false
-  g.p_ptype: 
+  q.p_ptype: 
     name: p_ptype
     in: query
     description: |-
@@ -1249,7 +1249,7 @@ parameters:
       - UFT = Unpermitted Facility
     type: string
     required: false
-  g.p_pcomp: 
+  q.p_pcomp: 
     name: p_pcomp
     in: query
     description: |-
@@ -1281,7 +1281,7 @@ parameters:
       - SWC = Storm Water Construction
     type: string
     required: false
-  g.p_plimits: 
+  q.p_plimits: 
     name: p_plimits
     in: query
     description: Permit Limits Present Flag.  Enter Y to limit results to facilities have present permit limits.
@@ -1299,7 +1299,7 @@ parameters:
     - N
     type: string
     required: false
-  g.p_pcss: 
+  q.p_pcss: 
     name: p_pcss
     in: query
     description: |-
@@ -1331,7 +1331,7 @@ parameters:
     - GE50
     type: string
     required: false
-  g.p_pexp: 
+  q.p_pexp: 
     name: p_pexp
     in: query
     description: |-
@@ -1359,7 +1359,7 @@ parameters:
     - EXPGT1YR
     type: string
     required: false
-  g.p_agoo: 
+  q.p_agoo: 
     name: p_agoo
     in: query
     description: Indicates whether to AND or OR the Owner/Operator parameter (p_owop) and the federal agency code (p_fa) parameters.
@@ -1377,7 +1377,7 @@ parameters:
     - OR
     type: string
     required: false
-  g.p_idt1: 
+  q.p_idt1: 
     name: p_idt1
     in: query
     description: Beginning of date range of most recent facility inspection.
@@ -1389,7 +1389,7 @@ parameters:
     description: Beginning of date range of most recent facility inspection.
     type: string
     required: false
-  g.p_idt2: 
+  q.p_idt2: 
     name: p_idt2
     in: query
     description: End of date range of most recent facility inspection.
@@ -1401,7 +1401,7 @@ parameters:
     description: End of date range of most recent facility inspection.
     type: string
     required: false
-  g.p_pityp: 
+  q.p_pityp: 
     name: p_pityp
     in: query
     description: Inspection Type Code.  See ICIS Compliance Monitor Types lookup serivce for a list of available codes and descriptions.
@@ -1413,7 +1413,7 @@ parameters:
     description: Inspection Type Code.  See ICIS Compliance Monitor Types lookup serivce for a list of available codes and descriptions.
     type: string
     required: false
-  g.p_pfead1: 
+  q.p_pfead1: 
     name: p_pfead1
     in: query
     description: Formal Enforcement Action Date Range Start.  Enter a date in MM/DD/YYYY format to set the start of the range for filtering by recent Formal Enforcement Action (FEA) taken against the facility within the last five years.
@@ -1425,7 +1425,7 @@ parameters:
     description: Formal Enforcement Action Date Range Start.  Enter a date in MM/DD/YYYY format to set the start of the range for filtering by recent Formal Enforcement Action (FEA) taken against the facility within the last five years.
     type: string
     required: false
-  g.p_pfead2: 
+  q.p_pfead2: 
     name: p_pfead2
     in: query
     description: Formal Enforcement Action Date Range End.  Enter a date in MM/DD/YYYY format to set the end of the date range for filtering by recent Formal Enforcement Action (FEA) taken against the facility within the last five years.
@@ -1437,7 +1437,7 @@ parameters:
     description: Formal Enforcement Action Date Range End.  Enter a date in MM/DD/YYYY format to set the end of the date range for filtering by recent Formal Enforcement Action (FEA) taken against the facility within the last five years.
     type: string
     required: false
-  g.p_pfeat: 
+  q.p_pfeat: 
     name: p_pfeat
     in: query
     description: Formal Enforcement Action (FEA) Code Filter.  Enter one or more three-letter FEA codes to restrict results to facilities with these attributes.  Use p_fead1 and p_fead2 parameters to further restrict this filter by entering a date range.  Provide multiple codes as a comma-delimited list.
@@ -1449,7 +1449,7 @@ parameters:
     description: Formal Enforcement Action (FEA) Code Filter.  Enter one or more three-letter FEA codes to restrict results to facilities with these attributes.  Use p_fead1 and p_fead2 parameters to further restrict this filter by entering a date range.  Provide multiple codes as a comma-delimited list.
     type: string
     required: false
-  g.p_pccs: 
+  q.p_pccs: 
     name: p_pccs
     in: query
     description: |-
@@ -1525,7 +1525,7 @@ parameters:
       May contain multiple comma-separated values.
     type: string
     required: false
-  g.p_pexcd: 
+  q.p_pexcd: 
     name: p_pexcd
     in: query
     description: |-
@@ -1561,7 +1561,7 @@ parameters:
     - GE100
     type: string
     required: false
-  g.p_psncq: 
+  q.p_psncq: 
     name: p_psncq
     in: query
     description: |-
@@ -1603,7 +1603,7 @@ parameters:
     - GE12
     type: string
     required: false
-  g.p_pctrack: 
+  q.p_pctrack: 
     name: p_pctrack
     in: query
     description: |-
@@ -1631,7 +1631,7 @@ parameters:
     - On
     type: string
     required: false
-  g.p_dwd: 
+  q.p_dwd: 
     name: p_dwd
     in: query
     description: Direct Water Discharges. Pounds of toxic chemicals released directly to surface water as reported to the Toxics Release Inventory.
@@ -1659,7 +1659,7 @@ parameters:
     - GT50000
     type: string
     required: false
-  g.p_pt: 
+  q.p_pt: 
     name: p_pt
     in: query
     description: POTW Transfers. Pounds of toxic chemicals transferred to a Publicly Operated Treatment Works (POTW) as reported to the Toxics Release Inventory.
@@ -1687,7 +1687,7 @@ parameters:
     - GT50000
     type: string
     required: false
-  g.p_pdwdist: 
+  q.p_pdwdist: 
     name: p_pdwdist
     in: query
     description: Distance (in miles) to downstream drinking water intake.
@@ -1713,7 +1713,7 @@ parameters:
     - LT15
     type: string
     required: false
-  g.p_pswdpc: 
+  q.p_pswdpc: 
     name: p_pswdpc
     in: query
     description: "Pollutant Category Code:  Values: WTR for Water, AIR for Air"
@@ -1725,7 +1725,7 @@ parameters:
     description: "Pollutant Category Code:  Values: WTR for Water, AIR for Air"
     type: string
     required: false
-  g.p_pswdmp: 
+  q.p_pswdmp: 
     name: p_pswdmp
     in: query
     description: Used to determine limit begin and end dates for surface water discharges. Number represents years from current date.
@@ -1749,7 +1749,7 @@ parameters:
     - '5'
     type: string
     required: false
-  g.p_pswcas: 
+  q.p_pswcas: 
     name: p_pswcas
     in: query
     description: CAS numbers for surface water discharges. May contain multiple comma-separated values.
@@ -1761,7 +1761,7 @@ parameters:
     description: CAS numbers for surface water discharges. May contain multiple comma-separated values.
     type: string
     required: false
-  g.p_pswparam: 
+  q.p_pswparam: 
     name: p_pswparam
     in: query
     description: Parameter codes for surface water discharges. May contain multiple comma-separated values.
@@ -1773,7 +1773,7 @@ parameters:
     description: Parameter codes for surface water discharges. May contain multiple comma-separated values.
     type: string
     required: false
-  g.p_pswvio: 
+  q.p_pswvio: 
     name: p_pswvio
     in: query
     description: Used in conjuction with parameters p_pswpol and p_pswparam, indicates whether search should only include pollutants with violations.
@@ -1791,7 +1791,7 @@ parameters:
     - N
     type: string
     required: false
-  g.p_pidall: 
+  q.p_pidall: 
     name: p_pidall
     in: query
     description: Controls whether search is restricted to existing system. Y means the search will match the p_pid parameter against all associated permits (AIR, RCRA, SDWIS, etc).
@@ -1809,7 +1809,7 @@ parameters:
     - N
     type: string
     required: false
-  g.p_months_last_dmr: 
+  q.p_months_last_dmr: 
     name: p_months_last_dmr
     in: query
     description: The number of months since the last Discharge Monitoring Report has been submitted.
@@ -1821,7 +1821,7 @@ parameters:
     description: The number of months since the last Discharge Monitoring Report has been submitted.
     type: number
     required: false
-  g.p_last_dmr_within: 
+  q.p_last_dmr_within: 
     name: p_last_dmr_within
     in: query
     description: W value returns facilities that have submitted DMRs within the number of months specified by p_months_last_dmr. An N value returns facilities that have not submitted a DMR within the specified number of months.
@@ -1839,7 +1839,7 @@ parameters:
     - N
     type: string
     required: false
-  g.tablelist: 
+  q.tablelist: 
     name: tablelist
     in: query
     description: Table List Flag. Enter a Y to display the first page of facility results.
@@ -1857,7 +1857,7 @@ parameters:
     - N
     type: string
     required: false
-  g.maplist: 
+  q.maplist: 
     name: maplist
     in: query
     description: Map List Flag.  Provide a Y to return mappable coordinates representing the full geographic extent of the queryset (all facilities that met the selection criteria).
@@ -1875,7 +1875,7 @@ parameters:
     - N
     type: string
     required: false
-  g.summarylist: 
+  q.summarylist: 
     name: summarylist
     in: query
     description: Summary List Flag.  Enter a Y to return a list of summary statistics based on the parameters submitted to the query service.
@@ -1893,7 +1893,7 @@ parameters:
     - N
     type: string
     required: false
-  g.qid: 
+  q.qid: 
     name: qid
     in: query
     description: Query ID Selector.  Enter the QueryID number from a previously run query.
@@ -1905,7 +1905,7 @@ parameters:
     description: Query ID Selector.  Enter the QueryID number from a previously run query.
     type: string
     required: true
-  g.p_qid: 
+  q.p_qid: 
     name: p_qid
     in: query
     description: Query ID Selector.  Enter the QueryID number from a previously run query.
@@ -1917,7 +1917,7 @@ parameters:
     description: Query ID Selector.  Enter the QueryID number from a previously run query.
     type: string
     required: true
-  g.pageno: 
+  q.pageno: 
     name: pageno
     in: query
     description: Indicates the number of the page to display. It is used only when the results are paginated.
@@ -1931,7 +1931,7 @@ parameters:
     default: 1
     type: number
     required: false
-  g.newsort: 
+  q.newsort: 
     name: newsort
     in: query
     description: Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column.
@@ -1943,7 +1943,7 @@ parameters:
     description: Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column.
     type: number
     required: false
-  g.descending: 
+  q.descending: 
     name: descending
     in: query
     description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
@@ -1961,7 +1961,7 @@ parameters:
     - N
     type: string
     required: false
-  g.c1_lat: 
+  q.c1_lat: 
     name: c1_lat
     in: query
     description: Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
@@ -1973,7 +1973,7 @@ parameters:
     description: Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
     type: number
     required: false
-  g.c1_long: 
+  q.c1_long: 
     name: c1_long
     in: query
     description: Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
@@ -1985,7 +1985,7 @@ parameters:
     description: Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
     type: number
     required: false
-  g.c2_lat: 
+  q.c2_lat: 
     name: c2_lat
     in: query
     description: Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
@@ -1997,7 +1997,7 @@ parameters:
     description: Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
     type: number
     required: false
-  g.c2_long: 
+  q.c2_long: 
     name: c2_long
     in: query
     description: Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
@@ -2018,7 +2018,7 @@ parameters:
       - OFF = Off-Site Third-Party Handler or Preparer
     type: string
     required: false
-  g.p_bio_mgmt_prctce_handler: 
+  q.p_bio_mgmt_prctce_handler: 
     name: p_bio_mgmt_prctce_handler
     in: query
     description: |-
@@ -2038,7 +2038,7 @@ parameters:
       - OTH = Other Analytes
     type: string
     required: false
-  g.p_bio_analy_method_catgry: 
+  q.p_bio_analy_method_catgry: 
     name: p_bio_analy_method_catgry
     in: query
     description: |-
@@ -2071,7 +2071,7 @@ parameters:
       - USE = Use as Daily Cover for Municipal Landfill (under 40 CFR 258)
     type: string
     required: false
-  g.p_bio_mgmt_prctce_stype: 
+  q.p_bio_mgmt_prctce_stype: 
     name: p_bio_mgmt_prctce_stype
     in: query
     description: |-
@@ -2099,7 +2099,7 @@ parameters:
     description: The number of times noncompliance was reported by the facility in the last 3 years. The results returned will include facilities whose number of reported noncompliance events is greater than or equal to the number entered.
     type: number
     required: false
-  g.p_bio_mgmt_deficiencies: 
+  q.p_bio_mgmt_deficiencies: 
     name: p_bio_mgmt_deficiencies
     in: query
     description: The number of times noncompliance was reported by the facility in the last 3 years. The results returned will include facilities whose number of reported noncompliance events is greater than or equal to the number entered.
@@ -2117,7 +2117,7 @@ parameters:
       - SFD = Biosolids Surface Disposal
     type: string
     required: false
-  g.p_bio_mgmt_def_category: 
+  q.p_bio_mgmt_def_category: 
     name: p_bio_mgmt_def_category
     in: query
     description: |-
@@ -2134,7 +2134,7 @@ parameters:
     in: formData
     type: number
     required: false
-  g.p_bio_insp_deficiencies: 
+  q.p_bio_insp_deficiencies: 
     name: p_bio_insp_deficiencies
     in: query
     type: number
@@ -2152,7 +2152,7 @@ parameters:
       - GE15000  =  GE 15,000
     type: string
     required: false
-  g.p_bio_total_volume_amt: 
+  q.p_bio_total_volume_amt: 
     name: p_bio_total_volume_amt
     in: query
     description: |-
@@ -2176,7 +2176,7 @@ parameters:
       - BSD = Surface Disposal
     type: string
     required: false
-  g.p_bio_mgmt_prctce_type: 
+  q.p_bio_mgmt_prctce_type: 
     name: p_bio_mgmt_prctce_type
     in: query
     description: |-
@@ -2196,7 +2196,7 @@ parameters:
       - BAG = Bag or Container
     type: string
     required: false
-  g.p_bio_mgmt_container: 
+  q.p_bio_mgmt_container: 
     name: p_bio_mgmt_container
     in: query
     description: |-
@@ -2210,7 +2210,7 @@ parameters:
     in: formData
     type: number
     required: false
-  g.p_insp_deficiencies: 
+  q.p_insp_deficiencies: 
     name: p_insp_deficiencies
     in: query
     type: number
@@ -2220,7 +2220,7 @@ parameters:
     in: formData
     type: string
     required: false
-  g.p_bio_vio_last_year: 
+  q.p_bio_vio_last_year: 
     name: p_bio_vio_last_year
     in: query
     type: string
@@ -2236,7 +2236,7 @@ parameters:
       - NAP = Not Applicable (Incineration)
     type: string
     required: false
-  g.p_bio_mgmt_pathogen: 
+  q.p_bio_mgmt_pathogen: 
     name: p_bio_mgmt_pathogen
     in: query
     description: |-
@@ -2273,7 +2273,7 @@ parameters:
       - UND = Long-Term Sludge Storage (Sewage Sludge Stored on Land 2 Years or More, not in Sewage Sludge Unit)"
     type: string
     required: false
-  g.p_bio_trtmnt_procs: 
+  q.p_bio_trtmnt_procs: 
     name: p_bio_trtmnt_procs
     in: query
     description: |-
@@ -2326,7 +2326,7 @@ parameters:
       - PH = pH Adjustment (Domestic Septage)
     type: string
     required: false
-  g.p_bio_mgmt_pathred: 
+  q.p_bio_mgmt_pathred: 
     name: p_bio_mgmt_pathred
     in: query
     description: |-
@@ -2359,7 +2359,7 @@ parameters:
     description: The number of quarters, in the last three years, where the facility was in violation for a biosolids violation type.  The results returned will include facilities whose number of quarters with violations is greater than or equal to the number entered.
     type: number
     required: false
-  g.p_bio_qtrs_in_vio: 
+  q.p_bio_qtrs_in_vio: 
     name: p_bio_qtrs_in_vio
     in: query
     description: The number of quarters, in the last three years, where the facility was in violation for a biosolids violation type.  The results returned will include facilities whose number of quarters with violations is greater than or equal to the number entered.
@@ -2383,7 +2383,7 @@ parameters:
       - V11 = Option 11 - Sewage Sludge Covered at the End of Each Operating Day
     type: string
     required: false
-  g.p_bio_mgmt_vector: 
+  q.p_bio_mgmt_vector: 
     name: p_bio_mgmt_vector
     in: query
     description: |-
@@ -2413,7 +2413,7 @@ parameters:
     - N
     type: string
     required: false
-  g.p_bio_current_vio: 
+  q.p_bio_current_vio: 
     name: p_bio_current_vio
     in: query
     description: |-
@@ -2430,7 +2430,7 @@ parameters:
     in: formData
     type: string
     required: false
-  g.p_vio_last_year: 
+  q.p_vio_last_year: 
     name: p_vio_last_year
     in: query
     type: string
@@ -2441,7 +2441,7 @@ parameters:
     description: "The last year that a MSGP report was submitted for the permit.  Valid values are \"NONE\" and any year Greater or Eqal to 2015."
     type: string
     required: false
-  g.p_msgp_rpt_year: 
+  q.p_msgp_rpt_year: 
     name: p_msgp_rpt_year
     in: query
     description: "The last year that a MSGP report was submitted for the permit.  Valid values are \"NONE\" and any year Greater or Eqal to 2015."
@@ -2453,7 +2453,7 @@ parameters:
     description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
     type: number
     required: false
-  g.p_pretty_print: 
+  q.p_pretty_print: 
     name: p_pretty_print
     in: query
     description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
@@ -2465,7 +2465,7 @@ parameters:
     description: The Biosolids Single Event Violation Code.  Enter one or mode codes.
     type: string
     required: false
-  g.p_bio_vio_code: 
+  q.p_bio_vio_code: 
     name: p_bio_vio_code
     in: query
     description: The Biosolids Single Event Violation Code.  Enter one or mode codes.
@@ -2477,7 +2477,7 @@ parameters:
     description: The last year that the permittee submitted an annual Biosolids report.  Valid values are NONE and any year greater or equal to 2016.
     type: string
     required: false
-  g.p_bio_rpt_year: 
+  q.p_bio_rpt_year: 
     name: p_bio_rpt_year
     in: query
     description: The last year that the permittee submitted an annual Biosolids report.  Valid values are NONE and any year greater or equal to 2016.
@@ -2495,7 +2495,7 @@ parameters:
       - NOA = None of the above
     type: string
     required: false
-  g.p_bio_fac_type: 
+  q.p_bio_fac_type: 
     name: p_bio_fac_type
     in: query
     description: |-
@@ -2513,7 +2513,7 @@ parameters:
     description: Alert Limits Exceedences Limiter.  Enter a numeric value to restrict results to facilities having the given amount or more of alert limits exceedances.
     type: number
     required: false
-  g.p_alrexceed: 
+  q.p_alrexceed: 
     name: p_alrexceed
     in: query
     description: Alert Limits Exceedences Limiter.  Enter a numeric value to restrict results to facilities having the given amount or more of alert limits exceedances.
@@ -2524,7 +2524,7 @@ parameters:
     in: formData
     type: string
     required: false
-  g.p_mon_type: 
+  q.p_mon_type: 
     name: p_mon_type
     in: query
     type: string
@@ -2535,7 +2535,7 @@ parameters:
     description: A Y value will select all biosolid-related permits.
     type: string
     required: false
-  g.p_bio_flag: 
+  q.p_bio_flag: 
     name: p_bio_flag
     in: query
     description: A Y value will select all biosolid-related permits.
@@ -2547,7 +2547,7 @@ parameters:
     description: "2-, 4-, 6-, 8-, 10-, or 12 character watershed (WBD from the USGS Watershed Boundary Dataset). May contain multiple comma-separated values.  Will search against WBD values otained by \"reach indexing\" NPDES permits against the medium resolution National Hydrography Dataset. "
     type: string
     required: false
-  g.p_radwbd: 
+  q.p_radwbd: 
     name: p_radwbd
     in: query
     description: "2-, 4-, 6-, 8-, 10-, or 12 character watershed (WBD from the USGS Watershed Boundary Dataset). May contain multiple comma-separated values.  Will search against WBD values otained by \"reach indexing\" NPDES permits against the medium resolution National Hydrography Dataset. "
@@ -2559,13 +2559,13 @@ parameters:
     description: Works exactly the same as the p_wbd parameter.  2-, 4-, 6-, 8-, 10-, or 12-character watershed (WBD from the USGS Watershed Boundary Dataset). May contain multiple comma-separated values.  Uses the FRS Best Pick Coordinate to obtain the WBD12 Huc value.
     type: string
     required: false
-  g.p_frswbd: 
+  q.p_frswbd: 
     name: p_frswbd
     in: query
     description: Works exactly the same as the p_wbd parameter.  2-, 4-, 6-, 8-, 10-, or 12-character watershed (WBD from the USGS Watershed Boundary Dataset). May contain multiple comma-separated values.  Uses the FRS Best Pick Coordinate to obtain the WBD12 Huc value.
     type: string
     required: false
-  g.p_iv: 
+  q.p_iv: 
     name: p_iv
     in: query
     description: |-
@@ -2626,7 +2626,7 @@ parameters:
     in: formData
     type: string
     required: false
-  g.p_ejscreen_over80cnt: 
+  q.p_ejscreen_over80cnt: 
     name: p_ejscreen_over80cnt
     in: query
     type: string
@@ -2637,7 +2637,7 @@ parameters:
     description: "FRS tribal land spatial flag.  Enter \"Y\" or \"N\" to include or exclude facilities based on FRS tribal land spatial flag."
     type: string
     required: false
-  g.p_fac_icos: 
+  q.p_fac_icos: 
     name: p_fac_icos
     in: query
     description: "FRS tribal land spatial flag.  Enter \"Y\" or \"N\" to include or exclude facilities based on FRS tribal land spatial flag."
@@ -2649,7 +2649,7 @@ parameters:
     description: "Enter \"Y\" to limit facilities to Census block groups where one of more Environmental Justice indexes above 80th percentile."
     type: string
     required: false
-  g.p_ejscreen: 
+  q.p_ejscreen: 
     name: p_ejscreen
     in: query
     description: "Enter \"Y\" to limit facilities to Census block groups where one of more Environmental Justice indexes above 80th percentile."
@@ -2664,7 +2664,7 @@ parameters:
     - N
     type: string
     required: false
-  g.p_fac_ico: 
+  q.p_fac_ico: 
     name: p_fac_ico
     in: query
     description: "FRS tribal land code flag.  Enter \"Y\" or \"N\" to include or exclude facilities based on FRS tribal land code."
@@ -2679,7 +2679,7 @@ parameters:
     description: "Indian country search and/or flag.  Enter \"Y\" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_ico, p_fac_ico or p_fac_icoo conditions will be returned."
     type: string
     required: false
-  g.p_icoo: 
+  q.p_icoo: 
     name: p_icoo
     in: query
     description: "Indian country search and/or flag.  Enter \"Y\" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_ico, p_fac_ico or p_fac_icoo conditions will be returned."
@@ -2694,7 +2694,7 @@ parameters:
     - N
     type: string
     required: false
-  g.p_decouple: 
+  q.p_decouple: 
     name: p_decouple
     in: query
     description: "Decouple Inspection Code Search Flag.  Enter \"Y\" to search for inspection code types with p_pityp without respect to the date range search provided with p_ysl* parameters."
@@ -2703,7 +2703,7 @@ parameters:
     - N
     type: string
     required: false
-  g.p_MS4: 
+  q.p_MS4: 
     name: p_MS4
     in: query
     description: Municipal Separate Storm Water Sewer (MS4) Permit Flag.  Enter a Y or N to filter results by this type of permit.
@@ -2724,7 +2724,7 @@ parameters:
     - NOE
     type: string
     required: false
-  g.p_msgp_ptype: 
+  q.p_msgp_ptype: 
     name: p_msgp_ptype
     in: query
     description: |-
@@ -2745,7 +2745,7 @@ parameters:
     - N
     type: string
     required: false
-  g.p_limit_addr: 
+  q.p_limit_addr: 
     name: p_limit_addr
     in: query
     description: Limit Address Search Flag.  Enter Y to restrict facility searches to native data source only.  
@@ -2765,7 +2765,7 @@ parameters:
     - CONTAINS
     type: string
     required: false
-  g.p_ooFNtype: 
+  q.p_ooFNtype: 
     name: p_ooFNtype
     in: query
     description: Owner/Operator Name Multiple Selection Evaluator.  
@@ -2782,7 +2782,7 @@ parameters:
     description: Multi-Sector General Purpose Permit Sector Code.  Enter a value to filter results.
     type: string
     required: false
-  g.p_iswssID: 
+  q.p_iswssID: 
     name: p_iswssID
     in: query
     description: Multi-Sector General Purpose Permit Sector Code.  Enter a value to filter results.
@@ -2794,7 +2794,7 @@ parameters:
     description: "Issuing Agency Limiter.  Enter a single value to filter results by the issuing agency, e.g. \"State\" or \"EPA\"."
     type: string
     required: false
-  g.p_iagency: 
+  q.p_iagency: 
     name: p_iagency
     in: query
     description: "Issuing Agency Limiter.  Enter a single value to filter results by the issuing agency, e.g. \"State\" or \"EPA\"."
@@ -2809,7 +2809,7 @@ parameters:
     - N
     type: string
     required: false
-  g.p_da1: 
+  q.p_da1: 
     name: p_da1
     in: query
     description: Active Date Filter Start.  To filter by the active date, enter a start date here and an end date in the p_da2 parameter.  Both dates are required for filtering.
@@ -2821,7 +2821,7 @@ parameters:
     description: Active Date Filter Start.  To filter by the active date, enter a start date here and an end date in the p_da2 parameter.  Both dates are required for filtering.
     type: string
     required: false
-  g.p_da2: 
+  q.p_da2: 
     name: p_da2
     in: query
     description: Active Date Filter End.  To filter by the active date, enter an end date here and a start date in the p_da1 parameter.  Both dates are required for filtering.
@@ -2833,7 +2833,7 @@ parameters:
     description: Active Date Filter End.  To filter by the active date, enter an end date here and a start date in the p_da1 parameter.  Both dates are required for filtering.
     type: string
     required: false
-  g.p_ds1: 
+  q.p_ds1: 
     name: p_ds1
     in: query
     description: Submitted Date Filter Start.  To filter by the date of submission, enter a start date here and an end date in the p_ds2 parameter.  Both dates are required for filtering.
@@ -2845,7 +2845,7 @@ parameters:
     description: Submitted Date Filter Start.  To filter by the date of submission, enter a start date here and an end date in the p_ds2 parameter.  Both dates are required for filtering.
     type: string
     required: false
-  g.p_ds2: 
+  q.p_ds2: 
     name: p_ds2
     in: query
     description: Submitted Date Filter End.  To filter by the date of submission, enter an end date here and a start date in the p_ds1 parameter.  Both dates are required for filtering.
@@ -2857,7 +2857,7 @@ parameters:
     description: Submitted Date Filter End.  To filter by the date of submission, enter an end date here and a start date in the p_ds1 parameter.  Both dates are required for filtering.
     type: string
     required: false
-  g.p_lat: 
+  q.p_lat: 
     name: p_lat
     in: query
     description: Latitude location in decimal degrees.
@@ -2869,7 +2869,7 @@ parameters:
     description: Latitude location in decimal degrees.
     type: number
     required: false
-  g.p_isws: 
+  q.p_isws: 
     name: p_isws
     in: query
     description: Multi-Sector General Purpose Permit Subsector Individual Identifier.  Enter a value to filter results.
@@ -2881,7 +2881,7 @@ parameters:
     description: Multi-Sector General Purpose Permit Subsector Individual Identifier.  Enter a value to filter results.
     type: string
     required: false
-  g.p_long: 
+  q.p_long: 
     name: p_long
     in: query
     description: Longitude location in decimal degrees.
@@ -2893,7 +2893,7 @@ parameters:
     description: Longitude location in decimal degrees.
     type: number
     required: false
-  g.p_ooCt: 
+  q.p_ooCt: 
     name: p_ooCt
     in: query
     description: Owner/Operator City. Enter the city where the owner/operator of the facility is located.
@@ -2905,7 +2905,7 @@ parameters:
     description: Owner/Operator City. Enter the city where the owner/operator of the facility is located.
     type: string
     required: false
-  g.p_ooFN: 
+  q.p_ooFN: 
     name: p_ooFN
     in: query
     description: Owner/Operator Name. Enter the owner/operator name of the facility.
@@ -2917,7 +2917,7 @@ parameters:
     description: Owner/Operator Name. Enter the owner/operator name of the facility.
     type: string
     required: false
-  g.p_ooSA: 
+  q.p_ooSA: 
     name: p_ooSA
     in: query
     description: Owner/Operator Address.  Enter the address of the owner/operator of the facility.
@@ -2929,7 +2929,7 @@ parameters:
     description: Owner/Operator Address.  Enter the address of the owner/operator of the facility.
     type: string
     required: false
-  g.p_ooSt: 
+  q.p_ooSt: 
     name: p_ooSt
     in: query
     description: Owner/Operator State.  Enter the standardized postal state code where the owner/operator of the facility is located.
@@ -2941,7 +2941,7 @@ parameters:
     description: Owner/Operator State.  Enter the standardized postal state code where the owner/operator of the facility is located.
     type: string
     required: false
-  g.p_indsw: 
+  q.p_indsw: 
     name: p_indsw
     in: query
     description: Industrial Stormwater Permit Flag.  Enter a Y or N to filter results by this type of permit.
@@ -2959,7 +2959,7 @@ parameters:
     - N
     type: string
     required: false
-  g.p_iswss: 
+  q.p_iswss: 
     name: p_iswss
     in: query
     description: Multi-Sector General Purpose Permit Subsector Group Code.  Enter a value to filter results.
@@ -2971,7 +2971,7 @@ parameters:
     description: Multi-Sector General Purpose Permit Subsector Group Code.  Enter a value to filter results.
     type: string
     required: false
-  g.p_ooSA1: 
+  q.p_ooSA1: 
     name: p_ooSA1
     in: query
     description: Owner/Operator Address Line 2.  Enter the line 2 address of the owner/operator of the facility.
@@ -2983,7 +2983,7 @@ parameters:
     description: Owner/Operator Address Line 2.  Enter the line 2 address of the owner/operator of the facility.
     type: string
     required: false
-  g.p_ooZip: 
+  q.p_ooZip: 
     name: p_ooZip
     in: query
     description: Owner/Operator Zip Code.  Enter the postal zip code where the owner/operator of the facility is located.
@@ -2995,7 +2995,7 @@ parameters:
     description: Owner/Operator Zip Code.  Enter the postal zip code where the owner/operator of the facility is located.
     type: string
     required: false
-  g.p_radius: 
+  q.p_radius: 
     name: p_radius
     in: query
     description: Spatial Search Radius.  Enter a radius up to 100 miles in which to spatially search for facilities.
@@ -3026,150 +3026,150 @@ paths:
         - XML
         type: string
         required: false
-      - "$ref": "#/parameters/g.p_fn"
-      - "$ref": "#/parameters/g.p_sa"
-      - "$ref": "#/parameters/g.p_sa1"
-      - "$ref": "#/parameters/g.p_ct"
-      - "$ref": "#/parameters/g.p_co"
-      - "$ref": "#/parameters/g.p_fips"
-      - "$ref": "#/parameters/g.p_st"
-      - "$ref": "#/parameters/g.p_zip"
-      - "$ref": "#/parameters/g.p_frs"
-      - "$ref": "#/parameters/g.p_reg"
-      - "$ref": "#/parameters/g.p_sic"
-      - "$ref": "#/parameters/g.p_ncs"
-      - "$ref": "#/parameters/g.p_pen"
-      - "$ref": "#/parameters/g.p_c1lat"
-      - "$ref": "#/parameters/g.p_c1lon"
-      - "$ref": "#/parameters/g.p_c2lat"
-      - "$ref": "#/parameters/g.p_c2lon"
-      - "$ref": "#/parameters/g.p_usmex"
-      - "$ref": "#/parameters/g.p_sic2"
-      - "$ref": "#/parameters/g.p_sic4"
-      - "$ref": "#/parameters/g.p_fa"
-      - "$ref": "#/parameters/g.p_ff"
-      - "$ref": "#/parameters/g.p_act"
-      - "$ref": "#/parameters/g.p_maj"
-      - "$ref": "#/parameters/g.p_mact"
-      - "$ref": "#/parameters/g.p_fea"
-      - "$ref": "#/parameters/g.p_feay"
-      - "$ref": "#/parameters/g.p_feaa"
-      - "$ref": "#/parameters/g.p_iea"
-      - "$ref": "#/parameters/g.p_ieay"
-      - "$ref": "#/parameters/g.p_ieaa"
-      - "$ref": "#/parameters/g.p_qiv"
-      - "$ref": "#/parameters/g.p_iv"
-      - "$ref": "#/parameters/g.p_impw"
-      - "$ref": "#/parameters/g.p_imp_cau_grp"
-      - "$ref": "#/parameters/g.p_imp_pol"
-      - "$ref": "#/parameters/g.p_trep"
-      - "$ref": "#/parameters/g.p_pm"
-      - "$ref": "#/parameters/g.p_pd"
-      - "$ref": "#/parameters/g.p_ico"
-      - "$ref": "#/parameters/g.p_huc"
-      - "$ref": "#/parameters/g.p_pid"
-      - "$ref": "#/parameters/g.p_med"
-      - "$ref": "#/parameters/g.p_ysl"
-      - "$ref": "#/parameters/g.p_ysly"
-      - "$ref": "#/parameters/g.p_ysla"
-      - "$ref": "#/parameters/g.p_qs"
-      - "$ref": "#/parameters/g.p_sfs"
-      - "$ref": "#/parameters/g.p_tribeid"
-      - "$ref": "#/parameters/g.p_tribename"
-      - "$ref": "#/parameters/g.p_tribedist"
-      - "$ref": "#/parameters/g.p_pstat"
-      - "$ref": "#/parameters/g.p_ptype"
-      - "$ref": "#/parameters/g.p_pcomp"
-      - "$ref": "#/parameters/g.p_plimits"
-      - "$ref": "#/parameters/g.p_pcss"
-      - "$ref": "#/parameters/g.p_pexp"
-      - "$ref": "#/parameters/g.p_owop"
-      - "$ref": "#/parameters/g.p_agoo"
-      - "$ref": "#/parameters/g.p_idt1"
-      - "$ref": "#/parameters/g.p_idt2"
-      - "$ref": "#/parameters/g.p_pityp"
-      - "$ref": "#/parameters/g.p_pfead1"
-      - "$ref": "#/parameters/g.p_pfead2"
-      - "$ref": "#/parameters/g.p_pfeat"
-      - "$ref": "#/parameters/g.p_pccs"
-      - "$ref": "#/parameters/g.p_pexcd"
-      - "$ref": "#/parameters/g.p_psncq"
-      - "$ref": "#/parameters/g.p_pctrack"
-      - "$ref": "#/parameters/g.p_dwd"
-      - "$ref": "#/parameters/g.p_pt"
-      - "$ref": "#/parameters/g.p_pdwdist"
-      - "$ref": "#/parameters/g.p_pswdpc"
-      - "$ref": "#/parameters/g.p_pswdmp"
-      - "$ref": "#/parameters/g.p_pswpol"
-      - "$ref": "#/parameters/g.p_pswcas"
-      - "$ref": "#/parameters/g.p_pswparam"
-      - "$ref": "#/parameters/g.p_pswvio"
-      - "$ref": "#/parameters/g.p_wbd"
-      - "$ref": "#/parameters/g.p_radwbd"
-      - "$ref": "#/parameters/g.p_frswbd"
-      - "$ref": "#/parameters/g.p_fntype"
-      - "$ref": "#/parameters/g.p_pidall"
-      - "$ref": "#/parameters/g.p_months_last_dmr"
-      - "$ref": "#/parameters/g.p_last_dmr_within"
-      - "$ref": "#/parameters/g.p_indsw"
-      - "$ref": "#/parameters/g.p_msgp_ptype"
-      - "$ref": "#/parameters/g.p_mon_type"
-      - "$ref": "#/parameters/g.p_iagency"
-      - "$ref": "#/parameters/g.p_isws"
-      - "$ref": "#/parameters/g.p_iswss"
-      - "$ref": "#/parameters/g.p_iswssID"
-      - "$ref": "#/parameters/g.p_ds1"
-      - "$ref": "#/parameters/g.p_ds2"
-      - "$ref": "#/parameters/g.p_da1"
-      - "$ref": "#/parameters/g.p_da2"
-      - "$ref": "#/parameters/g.p_MS4"
-      - "$ref": "#/parameters/g.p_ooFN"
-      - "$ref": "#/parameters/g.p_ooFNtype"
-      - "$ref": "#/parameters/g.p_ooSA"
-      - "$ref": "#/parameters/g.p_ooSA1"
-      - "$ref": "#/parameters/g.p_ooCt"
-      - "$ref": "#/parameters/g.p_ooSt"
-      - "$ref": "#/parameters/g.p_ooZip"
-      - "$ref": "#/parameters/g.p_fac_ico"
-      - "$ref": "#/parameters/g.p_icoo"
-      - "$ref": "#/parameters/g.p_fac_icos"
-      - "$ref": "#/parameters/g.p_ejscreen"
-      - "$ref": "#/parameters/g.p_alrexceed"
-      - "$ref": "#/parameters/g.p_limit_addr"
-      - "$ref": "#/parameters/g.p_lat"
-      - "$ref": "#/parameters/g.p_long"
-      - "$ref": "#/parameters/g.p_radius"
-      - "$ref": "#/parameters/g.p_decouple"
-      - "$ref": "#/parameters/g.p_ejscreen_over80cnt"
-      - "$ref": "#/parameters/g.p_bio_flag"
-      - "$ref": "#/parameters/g.p_bio_fac_type"
-      - "$ref": "#/parameters/g.p_bio_trtmnt_procs"
-      - "$ref": "#/parameters/g.p_bio_analy_method_catgry"
-      - "$ref": "#/parameters/g.p_bio_total_volume_amt"
-      - "$ref": "#/parameters/g.p_bio_mgmt_prctce_type"
-      - "$ref": "#/parameters/g.p_bio_mgmt_prctce_stype"
-      - "$ref": "#/parameters/g.p_bio_mgmt_prctce_handler"
-      - "$ref": "#/parameters/g.p_bio_mgmt_container"
-      - "$ref": "#/parameters/g.p_bio_mgmt_pathogen"
-      - "$ref": "#/parameters/g.p_bio_mgmt_pathred"
-      - "$ref": "#/parameters/g.p_bio_mgmt_vector"
-      - "$ref": "#/parameters/g.p_insp_deficiencies"
-      - "$ref": "#/parameters/g.p_bio_mgmt_def_category"
-      - "$ref": "#/parameters/g.p_bio_mgmt_deficiencies"
-      - "$ref": "#/parameters/g.p_bio_vio_code"
-      - "$ref": "#/parameters/g.p_bio_current_vio"
-      - "$ref": "#/parameters/g.p_bio_qtrs_in_vio"
-      - "$ref": "#/parameters/g.p_bio_rpt_year"
-      - "$ref": "#/parameters/g.p_bio_insp_deficiencies"
-      - "$ref": "#/parameters/g.p_bio_vio_last_year"
-      - "$ref": "#/parameters/g.p_msgp_rpt_year"
-      - "$ref": "#/parameters/g.p_vio_last_year"
-      - "$ref": "#/parameters/g.queryset"
-      - "$ref": "#/parameters/g.responseset"
-      - "$ref": "#/parameters/g.tablelist"
-      - "$ref": "#/parameters/g.maplist"
-      - "$ref": "#/parameters/g.summarylist"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.p_fn"
+      - "$ref": "#/parameters/q.p_sa"
+      - "$ref": "#/parameters/q.p_sa1"
+      - "$ref": "#/parameters/q.p_ct"
+      - "$ref": "#/parameters/q.p_co"
+      - "$ref": "#/parameters/q.p_fips"
+      - "$ref": "#/parameters/q.p_st"
+      - "$ref": "#/parameters/q.p_zip"
+      - "$ref": "#/parameters/q.p_frs"
+      - "$ref": "#/parameters/q.p_reg"
+      - "$ref": "#/parameters/q.p_sic"
+      - "$ref": "#/parameters/q.p_ncs"
+      - "$ref": "#/parameters/q.p_pen"
+      - "$ref": "#/parameters/q.p_c1lat"
+      - "$ref": "#/parameters/q.p_c1lon"
+      - "$ref": "#/parameters/q.p_c2lat"
+      - "$ref": "#/parameters/q.p_c2lon"
+      - "$ref": "#/parameters/q.p_usmex"
+      - "$ref": "#/parameters/q.p_sic2"
+      - "$ref": "#/parameters/q.p_sic4"
+      - "$ref": "#/parameters/q.p_fa"
+      - "$ref": "#/parameters/q.p_ff"
+      - "$ref": "#/parameters/q.p_act"
+      - "$ref": "#/parameters/q.p_maj"
+      - "$ref": "#/parameters/q.p_mact"
+      - "$ref": "#/parameters/q.p_fea"
+      - "$ref": "#/parameters/q.p_feay"
+      - "$ref": "#/parameters/q.p_feaa"
+      - "$ref": "#/parameters/q.p_iea"
+      - "$ref": "#/parameters/q.p_ieay"
+      - "$ref": "#/parameters/q.p_ieaa"
+      - "$ref": "#/parameters/q.p_qiv"
+      - "$ref": "#/parameters/q.p_iv"
+      - "$ref": "#/parameters/q.p_impw"
+      - "$ref": "#/parameters/q.p_imp_cau_grp"
+      - "$ref": "#/parameters/q.p_imp_pol"
+      - "$ref": "#/parameters/q.p_trep"
+      - "$ref": "#/parameters/q.p_pm"
+      - "$ref": "#/parameters/q.p_pd"
+      - "$ref": "#/parameters/q.p_ico"
+      - "$ref": "#/parameters/q.p_huc"
+      - "$ref": "#/parameters/q.p_pid"
+      - "$ref": "#/parameters/q.p_med"
+      - "$ref": "#/parameters/q.p_ysl"
+      - "$ref": "#/parameters/q.p_ysly"
+      - "$ref": "#/parameters/q.p_ysla"
+      - "$ref": "#/parameters/q.p_qs"
+      - "$ref": "#/parameters/q.p_sfs"
+      - "$ref": "#/parameters/q.p_tribeid"
+      - "$ref": "#/parameters/q.p_tribename"
+      - "$ref": "#/parameters/q.p_tribedist"
+      - "$ref": "#/parameters/q.p_pstat"
+      - "$ref": "#/parameters/q.p_ptype"
+      - "$ref": "#/parameters/q.p_pcomp"
+      - "$ref": "#/parameters/q.p_plimits"
+      - "$ref": "#/parameters/q.p_pcss"
+      - "$ref": "#/parameters/q.p_pexp"
+      - "$ref": "#/parameters/q.p_owop"
+      - "$ref": "#/parameters/q.p_agoo"
+      - "$ref": "#/parameters/q.p_idt1"
+      - "$ref": "#/parameters/q.p_idt2"
+      - "$ref": "#/parameters/q.p_pityp"
+      - "$ref": "#/parameters/q.p_pfead1"
+      - "$ref": "#/parameters/q.p_pfead2"
+      - "$ref": "#/parameters/q.p_pfeat"
+      - "$ref": "#/parameters/q.p_pccs"
+      - "$ref": "#/parameters/q.p_pexcd"
+      - "$ref": "#/parameters/q.p_psncq"
+      - "$ref": "#/parameters/q.p_pctrack"
+      - "$ref": "#/parameters/q.p_dwd"
+      - "$ref": "#/parameters/q.p_pt"
+      - "$ref": "#/parameters/q.p_pdwdist"
+      - "$ref": "#/parameters/q.p_pswdpc"
+      - "$ref": "#/parameters/q.p_pswdmp"
+      - "$ref": "#/parameters/q.p_pswpol"
+      - "$ref": "#/parameters/q.p_pswcas"
+      - "$ref": "#/parameters/q.p_pswparam"
+      - "$ref": "#/parameters/q.p_pswvio"
+      - "$ref": "#/parameters/q.p_wbd"
+      - "$ref": "#/parameters/q.p_radwbd"
+      - "$ref": "#/parameters/q.p_frswbd"
+      - "$ref": "#/parameters/q.p_fntype"
+      - "$ref": "#/parameters/q.p_pidall"
+      - "$ref": "#/parameters/q.p_months_last_dmr"
+      - "$ref": "#/parameters/q.p_last_dmr_within"
+      - "$ref": "#/parameters/q.p_indsw"
+      - "$ref": "#/parameters/q.p_msgp_ptype"
+      - "$ref": "#/parameters/q.p_mon_type"
+      - "$ref": "#/parameters/q.p_iagency"
+      - "$ref": "#/parameters/q.p_isws"
+      - "$ref": "#/parameters/q.p_iswss"
+      - "$ref": "#/parameters/q.p_iswssID"
+      - "$ref": "#/parameters/q.p_ds1"
+      - "$ref": "#/parameters/q.p_ds2"
+      - "$ref": "#/parameters/q.p_da1"
+      - "$ref": "#/parameters/q.p_da2"
+      - "$ref": "#/parameters/q.p_MS4"
+      - "$ref": "#/parameters/q.p_ooFN"
+      - "$ref": "#/parameters/q.p_ooFNtype"
+      - "$ref": "#/parameters/q.p_ooSA"
+      - "$ref": "#/parameters/q.p_ooSA1"
+      - "$ref": "#/parameters/q.p_ooCt"
+      - "$ref": "#/parameters/q.p_ooSt"
+      - "$ref": "#/parameters/q.p_ooZip"
+      - "$ref": "#/parameters/q.p_fac_ico"
+      - "$ref": "#/parameters/q.p_icoo"
+      - "$ref": "#/parameters/q.p_fac_icos"
+      - "$ref": "#/parameters/q.p_ejscreen"
+      - "$ref": "#/parameters/q.p_alrexceed"
+      - "$ref": "#/parameters/q.p_limit_addr"
+      - "$ref": "#/parameters/q.p_lat"
+      - "$ref": "#/parameters/q.p_long"
+      - "$ref": "#/parameters/q.p_radius"
+      - "$ref": "#/parameters/q.p_decouple"
+      - "$ref": "#/parameters/q.p_ejscreen_over80cnt"
+      - "$ref": "#/parameters/q.p_bio_flag"
+      - "$ref": "#/parameters/q.p_bio_fac_type"
+      - "$ref": "#/parameters/q.p_bio_trtmnt_procs"
+      - "$ref": "#/parameters/q.p_bio_analy_method_catgry"
+      - "$ref": "#/parameters/q.p_bio_total_volume_amt"
+      - "$ref": "#/parameters/q.p_bio_mgmt_prctce_type"
+      - "$ref": "#/parameters/q.p_bio_mgmt_prctce_stype"
+      - "$ref": "#/parameters/q.p_bio_mgmt_prctce_handler"
+      - "$ref": "#/parameters/q.p_bio_mgmt_container"
+      - "$ref": "#/parameters/q.p_bio_mgmt_pathogen"
+      - "$ref": "#/parameters/q.p_bio_mgmt_pathred"
+      - "$ref": "#/parameters/q.p_bio_mgmt_vector"
+      - "$ref": "#/parameters/q.p_insp_deficiencies"
+      - "$ref": "#/parameters/q.p_bio_mgmt_def_category"
+      - "$ref": "#/parameters/q.p_bio_mgmt_deficiencies"
+      - "$ref": "#/parameters/q.p_bio_vio_code"
+      - "$ref": "#/parameters/q.p_bio_current_vio"
+      - "$ref": "#/parameters/q.p_bio_qtrs_in_vio"
+      - "$ref": "#/parameters/q.p_bio_rpt_year"
+      - "$ref": "#/parameters/q.p_bio_insp_deficiencies"
+      - "$ref": "#/parameters/q.p_bio_vio_last_year"
+      - "$ref": "#/parameters/q.p_msgp_rpt_year"
+      - "$ref": "#/parameters/q.p_vio_last_year"
+      - "$ref": "#/parameters/q.queryset"
+      - "$ref": "#/parameters/q.responseset"
+      - "$ref": "#/parameters/q.tablelist"
+      - "$ref": "#/parameters/q.maplist"
+      - "$ref": "#/parameters/q.summarylist"
+      - "$ref": "#/parameters/q.callback"
       - name: qcolumns
         in: query
         description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
@@ -3387,152 +3387,152 @@ paths:
           - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
         type: string
         required: false
-      - "$ref": "#/parameters/g.p_fn"
-      - "$ref": "#/parameters/g.p_sa"
-      - "$ref": "#/parameters/g.p_sa1"
-      - "$ref": "#/parameters/g.p_ct"
-      - "$ref": "#/parameters/g.p_co"
-      - "$ref": "#/parameters/g.p_fips"
-      - "$ref": "#/parameters/g.p_st"
-      - "$ref": "#/parameters/g.p_zip"
-      - "$ref": "#/parameters/g.p_frs"
-      - "$ref": "#/parameters/g.p_reg"
-      - "$ref": "#/parameters/g.p_sic"
-      - "$ref": "#/parameters/g.p_ncs"
-      - "$ref": "#/parameters/g.p_pen"
-      - "$ref": "#/parameters/g.xmin"
-      - "$ref": "#/parameters/g.ymin"
-      - "$ref": "#/parameters/g.xmax"
-      - "$ref": "#/parameters/g.ymax"
-      - "$ref": "#/parameters/g.p_usmex"
-      - "$ref": "#/parameters/g.p_sic2"
-      - "$ref": "#/parameters/g.p_sic4"
-      - "$ref": "#/parameters/g.p_fa"
-      - "$ref": "#/parameters/g.p_ff"
-      - "$ref": "#/parameters/g.p_act"
-      - "$ref": "#/parameters/g.p_maj"
-      - "$ref": "#/parameters/g.p_mact"
-      - "$ref": "#/parameters/g.p_fea"
-      - "$ref": "#/parameters/g.p_feay"
-      - "$ref": "#/parameters/g.p_feaa"
-      - "$ref": "#/parameters/g.p_iea"
-      - "$ref": "#/parameters/g.p_ieay"
-      - "$ref": "#/parameters/g.p_ieaa"
-      - "$ref": "#/parameters/g.p_qiv"
-      - "$ref": "#/parameters/g.p_iv"
-      - "$ref": "#/parameters/g.p_impw"
-      - "$ref": "#/parameters/g.p_imp_pol"
-      - "$ref": "#/parameters/g.p_imp_cau_grp"
-      - "$ref": "#/parameters/g.p_trep"
-      - "$ref": "#/parameters/g.p_pm"
-      - "$ref": "#/parameters/g.p_pd"
-      - "$ref": "#/parameters/g.p_ico"
-      - "$ref": "#/parameters/g.p_huc"
-      - "$ref": "#/parameters/g.p_pid"
-      - "$ref": "#/parameters/g.p_med"
-      - "$ref": "#/parameters/g.p_ysl"
-      - "$ref": "#/parameters/g.p_ysly"
-      - "$ref": "#/parameters/g.p_ysla"
-      - "$ref": "#/parameters/g.p_qs"
-      - "$ref": "#/parameters/g.p_sfs"
-      - "$ref": "#/parameters/g.p_tribeid"
-      - "$ref": "#/parameters/g.p_tribename"
-      - "$ref": "#/parameters/g.p_tribedist"
-      - "$ref": "#/parameters/g.p_pstat"
-      - "$ref": "#/parameters/g.p_ptype"
-      - "$ref": "#/parameters/g.p_pcomp"
-      - "$ref": "#/parameters/g.p_plimits"
-      - "$ref": "#/parameters/g.p_pcss"
-      - "$ref": "#/parameters/g.p_pexp"
-      - "$ref": "#/parameters/g.p_owop"
-      - "$ref": "#/parameters/g.p_agoo"
-      - "$ref": "#/parameters/g.p_idt1"
-      - "$ref": "#/parameters/g.p_idt2"
-      - "$ref": "#/parameters/g.p_pityp"
-      - "$ref": "#/parameters/g.p_pfead1"
-      - "$ref": "#/parameters/g.p_pfead2"
-      - "$ref": "#/parameters/g.p_pfeat"
-      - "$ref": "#/parameters/g.p_pccs"
-      - "$ref": "#/parameters/g.p_pexcd"
-      - "$ref": "#/parameters/g.p_psncq"
-      - "$ref": "#/parameters/g.p_pctrack"
-      - "$ref": "#/parameters/g.p_dwd"
-      - "$ref": "#/parameters/g.p_pt"
-      - "$ref": "#/parameters/g.p_pdwdist"
-      - "$ref": "#/parameters/g.p_pswdpc"
-      - "$ref": "#/parameters/g.p_pswdmp"
-      - "$ref": "#/parameters/g.p_pswpol"
-      - "$ref": "#/parameters/g.p_pswcas"
-      - "$ref": "#/parameters/g.p_pswparam"
-      - "$ref": "#/parameters/g.p_pswvio"
-      - "$ref": "#/parameters/g.p_wbd"
-      - "$ref": "#/parameters/g.p_radwbd"
-      - "$ref": "#/parameters/g.p_frswbd"
-      - "$ref": "#/parameters/g.p_fntype"
-      - "$ref": "#/parameters/g.p_pidall"
-      - "$ref": "#/parameters/g.p_months_last_dmr"
-      - "$ref": "#/parameters/g.p_last_dmr_within"
-      - "$ref": "#/parameters/g.p_indsw"
-      - "$ref": "#/parameters/g.p_msgp_ptype"
-      - "$ref": "#/parameters/g.p_mon_type"
-      - "$ref": "#/parameters/g.p_iagency"
-      - "$ref": "#/parameters/g.p_isws"
-      - "$ref": "#/parameters/g.p_iswss"
-      - "$ref": "#/parameters/g.p_iswssID"
-      - "$ref": "#/parameters/g.p_ds1"
-      - "$ref": "#/parameters/g.p_ds2"
-      - "$ref": "#/parameters/g.p_da1"
-      - "$ref": "#/parameters/g.p_da2"
-      - "$ref": "#/parameters/g.p_MS4"
-      - "$ref": "#/parameters/g.p_ooFN"
-      - "$ref": "#/parameters/g.p_ooFNtype"
-      - "$ref": "#/parameters/g.p_ooSA"
-      - "$ref": "#/parameters/g.p_ooSA1"
-      - "$ref": "#/parameters/g.p_ooCt"
-      - "$ref": "#/parameters/g.p_ooSt"
-      - "$ref": "#/parameters/g.p_ooZip"
-      - "$ref": "#/parameters/g.p_fac_ico"
-      - "$ref": "#/parameters/g.p_icoo"
-      - "$ref": "#/parameters/g.p_fac_icos"
-      - "$ref": "#/parameters/g.p_ejscreen"
-      - "$ref": "#/parameters/g.p_alrexceed"
-      - "$ref": "#/parameters/g.p_limit_addr"
-      - "$ref": "#/parameters/g.p_lat"
-      - "$ref": "#/parameters/g.p_long"
-      - "$ref": "#/parameters/g.p_radius"
-      - "$ref": "#/parameters/g.p_decouple"
-      - "$ref": "#/parameters/g.p_ejscreen_over80cnt"
-      - "$ref": "#/parameters/g.p_bio_flag"
-      - "$ref": "#/parameters/g.p_bio_fac_type"
-      - "$ref": "#/parameters/g.p_bio_trtmnt_procs"
-      - "$ref": "#/parameters/g.p_bio_analy_method_catgry"
-      - "$ref": "#/parameters/g.p_bio_total_volume_amt"
-      - "$ref": "#/parameters/g.p_bio_mgmt_prctce_type"
-      - "$ref": "#/parameters/g.p_bio_mgmt_prctce_stype"
-      - "$ref": "#/parameters/g.p_bio_mgmt_prctce_handler"
-      - "$ref": "#/parameters/g.p_bio_mgmt_container"
-      - "$ref": "#/parameters/g.p_bio_mgmt_pathogen"
-      - "$ref": "#/parameters/g.p_bio_mgmt_pathred"
-      - "$ref": "#/parameters/g.p_bio_mgmt_vector"
-      - "$ref": "#/parameters/g.p_insp_deficiencies"
-      - "$ref": "#/parameters/g.p_bio_mgmt_def_category"
-      - "$ref": "#/parameters/g.p_bio_mgmt_deficiencies"
-      - "$ref": "#/parameters/g.p_bio_vio_code"
-      - "$ref": "#/parameters/g.p_bio_current_vio"
-      - "$ref": "#/parameters/g.p_bio_qtrs_in_vio"
-      - "$ref": "#/parameters/g.p_bio_rpt_year"
-      - "$ref": "#/parameters/g.p_bio_insp_deficiencies"
-      - "$ref": "#/parameters/g.p_bio_vio_last_year"
-      - "$ref": "#/parameters/g.p_msgp_rpt_year"
-      - "$ref": "#/parameters/g.p_vio_last_year"
-      - "$ref": "#/parameters/g.responseset"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.p_fn"
+      - "$ref": "#/parameters/q.p_sa"
+      - "$ref": "#/parameters/q.p_sa1"
+      - "$ref": "#/parameters/q.p_ct"
+      - "$ref": "#/parameters/q.p_co"
+      - "$ref": "#/parameters/q.p_fips"
+      - "$ref": "#/parameters/q.p_st"
+      - "$ref": "#/parameters/q.p_zip"
+      - "$ref": "#/parameters/q.p_frs"
+      - "$ref": "#/parameters/q.p_reg"
+      - "$ref": "#/parameters/q.p_sic"
+      - "$ref": "#/parameters/q.p_ncs"
+      - "$ref": "#/parameters/q.p_pen"
+      - "$ref": "#/parameters/q.xmin"
+      - "$ref": "#/parameters/q.ymin"
+      - "$ref": "#/parameters/q.xmax"
+      - "$ref": "#/parameters/q.ymax"
+      - "$ref": "#/parameters/q.p_usmex"
+      - "$ref": "#/parameters/q.p_sic2"
+      - "$ref": "#/parameters/q.p_sic4"
+      - "$ref": "#/parameters/q.p_fa"
+      - "$ref": "#/parameters/q.p_ff"
+      - "$ref": "#/parameters/q.p_act"
+      - "$ref": "#/parameters/q.p_maj"
+      - "$ref": "#/parameters/q.p_mact"
+      - "$ref": "#/parameters/q.p_fea"
+      - "$ref": "#/parameters/q.p_feay"
+      - "$ref": "#/parameters/q.p_feaa"
+      - "$ref": "#/parameters/q.p_iea"
+      - "$ref": "#/parameters/q.p_ieay"
+      - "$ref": "#/parameters/q.p_ieaa"
+      - "$ref": "#/parameters/q.p_qiv"
+      - "$ref": "#/parameters/q.p_iv"
+      - "$ref": "#/parameters/q.p_impw"
+      - "$ref": "#/parameters/q.p_imp_pol"
+      - "$ref": "#/parameters/q.p_imp_cau_grp"
+      - "$ref": "#/parameters/q.p_trep"
+      - "$ref": "#/parameters/q.p_pm"
+      - "$ref": "#/parameters/q.p_pd"
+      - "$ref": "#/parameters/q.p_ico"
+      - "$ref": "#/parameters/q.p_huc"
+      - "$ref": "#/parameters/q.p_pid"
+      - "$ref": "#/parameters/q.p_med"
+      - "$ref": "#/parameters/q.p_ysl"
+      - "$ref": "#/parameters/q.p_ysly"
+      - "$ref": "#/parameters/q.p_ysla"
+      - "$ref": "#/parameters/q.p_qs"
+      - "$ref": "#/parameters/q.p_sfs"
+      - "$ref": "#/parameters/q.p_tribeid"
+      - "$ref": "#/parameters/q.p_tribename"
+      - "$ref": "#/parameters/q.p_tribedist"
+      - "$ref": "#/parameters/q.p_pstat"
+      - "$ref": "#/parameters/q.p_ptype"
+      - "$ref": "#/parameters/q.p_pcomp"
+      - "$ref": "#/parameters/q.p_plimits"
+      - "$ref": "#/parameters/q.p_pcss"
+      - "$ref": "#/parameters/q.p_pexp"
+      - "$ref": "#/parameters/q.p_owop"
+      - "$ref": "#/parameters/q.p_agoo"
+      - "$ref": "#/parameters/q.p_idt1"
+      - "$ref": "#/parameters/q.p_idt2"
+      - "$ref": "#/parameters/q.p_pityp"
+      - "$ref": "#/parameters/q.p_pfead1"
+      - "$ref": "#/parameters/q.p_pfead2"
+      - "$ref": "#/parameters/q.p_pfeat"
+      - "$ref": "#/parameters/q.p_pccs"
+      - "$ref": "#/parameters/q.p_pexcd"
+      - "$ref": "#/parameters/q.p_psncq"
+      - "$ref": "#/parameters/q.p_pctrack"
+      - "$ref": "#/parameters/q.p_dwd"
+      - "$ref": "#/parameters/q.p_pt"
+      - "$ref": "#/parameters/q.p_pdwdist"
+      - "$ref": "#/parameters/q.p_pswdpc"
+      - "$ref": "#/parameters/q.p_pswdmp"
+      - "$ref": "#/parameters/q.p_pswpol"
+      - "$ref": "#/parameters/q.p_pswcas"
+      - "$ref": "#/parameters/q.p_pswparam"
+      - "$ref": "#/parameters/q.p_pswvio"
+      - "$ref": "#/parameters/q.p_wbd"
+      - "$ref": "#/parameters/q.p_radwbd"
+      - "$ref": "#/parameters/q.p_frswbd"
+      - "$ref": "#/parameters/q.p_fntype"
+      - "$ref": "#/parameters/q.p_pidall"
+      - "$ref": "#/parameters/q.p_months_last_dmr"
+      - "$ref": "#/parameters/q.p_last_dmr_within"
+      - "$ref": "#/parameters/q.p_indsw"
+      - "$ref": "#/parameters/q.p_msgp_ptype"
+      - "$ref": "#/parameters/q.p_mon_type"
+      - "$ref": "#/parameters/q.p_iagency"
+      - "$ref": "#/parameters/q.p_isws"
+      - "$ref": "#/parameters/q.p_iswss"
+      - "$ref": "#/parameters/q.p_iswssID"
+      - "$ref": "#/parameters/q.p_ds1"
+      - "$ref": "#/parameters/q.p_ds2"
+      - "$ref": "#/parameters/q.p_da1"
+      - "$ref": "#/parameters/q.p_da2"
+      - "$ref": "#/parameters/q.p_MS4"
+      - "$ref": "#/parameters/q.p_ooFN"
+      - "$ref": "#/parameters/q.p_ooFNtype"
+      - "$ref": "#/parameters/q.p_ooSA"
+      - "$ref": "#/parameters/q.p_ooSA1"
+      - "$ref": "#/parameters/q.p_ooCt"
+      - "$ref": "#/parameters/q.p_ooSt"
+      - "$ref": "#/parameters/q.p_ooZip"
+      - "$ref": "#/parameters/q.p_fac_ico"
+      - "$ref": "#/parameters/q.p_icoo"
+      - "$ref": "#/parameters/q.p_fac_icos"
+      - "$ref": "#/parameters/q.p_ejscreen"
+      - "$ref": "#/parameters/q.p_alrexceed"
+      - "$ref": "#/parameters/q.p_limit_addr"
+      - "$ref": "#/parameters/q.p_lat"
+      - "$ref": "#/parameters/q.p_long"
+      - "$ref": "#/parameters/q.p_radius"
+      - "$ref": "#/parameters/q.p_decouple"
+      - "$ref": "#/parameters/q.p_ejscreen_over80cnt"
+      - "$ref": "#/parameters/q.p_bio_flag"
+      - "$ref": "#/parameters/q.p_bio_fac_type"
+      - "$ref": "#/parameters/q.p_bio_trtmnt_procs"
+      - "$ref": "#/parameters/q.p_bio_analy_method_catgry"
+      - "$ref": "#/parameters/q.p_bio_total_volume_amt"
+      - "$ref": "#/parameters/q.p_bio_mgmt_prctce_type"
+      - "$ref": "#/parameters/q.p_bio_mgmt_prctce_stype"
+      - "$ref": "#/parameters/q.p_bio_mgmt_prctce_handler"
+      - "$ref": "#/parameters/q.p_bio_mgmt_container"
+      - "$ref": "#/parameters/q.p_bio_mgmt_pathogen"
+      - "$ref": "#/parameters/q.p_bio_mgmt_pathred"
+      - "$ref": "#/parameters/q.p_bio_mgmt_vector"
+      - "$ref": "#/parameters/q.p_insp_deficiencies"
+      - "$ref": "#/parameters/q.p_bio_mgmt_def_category"
+      - "$ref": "#/parameters/q.p_bio_mgmt_deficiencies"
+      - "$ref": "#/parameters/q.p_bio_vio_code"
+      - "$ref": "#/parameters/q.p_bio_current_vio"
+      - "$ref": "#/parameters/q.p_bio_qtrs_in_vio"
+      - "$ref": "#/parameters/q.p_bio_rpt_year"
+      - "$ref": "#/parameters/q.p_bio_insp_deficiencies"
+      - "$ref": "#/parameters/q.p_bio_vio_last_year"
+      - "$ref": "#/parameters/q.p_msgp_rpt_year"
+      - "$ref": "#/parameters/q.p_vio_last_year"
+      - "$ref": "#/parameters/q.responseset"
+      - "$ref": "#/parameters/q.callback"
       - name: qcolumns
         in: query
         description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
         type: string
         required: false
-      - "$ref": "#/parameters/g.p_pretty_print"
+      - "$ref": "#/parameters/q.p_pretty_print"
       tags: 
       - Facility Information
       responses: 
@@ -3742,11 +3742,11 @@ paths:
         - XML
         type: string
         required: false
-      - "$ref": "#/parameters/g.qid"
-      - "$ref": "#/parameters/g.pageno"
-      - "$ref": "#/parameters/g.callback"
-      - "$ref": "#/parameters/g.newsort"
-      - "$ref": "#/parameters/g.descending"
+      - "$ref": "#/parameters/q.qid"
+      - "$ref": "#/parameters/q.pageno"
+      - "$ref": "#/parameters/q.callback"
+      - "$ref": "#/parameters/q.newsort"
+      - "$ref": "#/parameters/q.descending"
       - name: qcolumns
         in: query
         description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
@@ -3825,14 +3825,14 @@ paths:
         - XML
         type: string
         required: false
-      - "$ref": "#/parameters/g.qid"
-      - "$ref": "#/parameters/g.callback"
-      - "$ref": "#/parameters/g.tablelist"
-      - "$ref": "#/parameters/g.c1_lat"
-      - "$ref": "#/parameters/g.c1_long"
-      - "$ref": "#/parameters/g.c2_lat"
-      - "$ref": "#/parameters/g.c2_long"
-      - "$ref": "#/parameters/g.p_id"
+      - "$ref": "#/parameters/q.qid"
+      - "$ref": "#/parameters/q.callback"
+      - "$ref": "#/parameters/q.tablelist"
+      - "$ref": "#/parameters/q.c1_lat"
+      - "$ref": "#/parameters/q.c1_long"
+      - "$ref": "#/parameters/q.c2_lat"
+      - "$ref": "#/parameters/q.c2_long"
+      - "$ref": "#/parameters/q.p_id"
       tags: 
       - Facility Information
       responses: 
@@ -3898,13 +3898,13 @@ paths:
           - CSV = Facility results formatted as comma delimited file download (default).
         type: string
         required: false
-      - "$ref": "#/parameters/g.qid"
+      - "$ref": "#/parameters/q.qid"
       - name: qcolumns
         in: query
         description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
         type: string
         required: false
-      - "$ref": "#/parameters/g.p_pretty_print"
+      - "$ref": "#/parameters/q.p_pretty_print"
       tags: 
       - Facility Information
       responses: 
@@ -3950,8 +3950,8 @@ paths:
           - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
         type: string
         required: false
-      - "$ref": "#/parameters/g.p_qid"
-      - "$ref": "#/parameters/g.p_pretty_print"
+      - "$ref": "#/parameters/q.p_qid"
+      - "$ref": "#/parameters/q.p_pretty_print"
       tags: 
       - Facility Information
       responses: 
@@ -3994,16 +3994,16 @@ paths:
           - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
         type: string
         required: false
-      - "$ref": "#/parameters/g.qid"
-      - "$ref": "#/parameters/g.callback"
-      - "$ref": "#/parameters/g.newsort"
-      - "$ref": "#/parameters/g.descending"
+      - "$ref": "#/parameters/q.qid"
+      - "$ref": "#/parameters/q.callback"
+      - "$ref": "#/parameters/q.newsort"
+      - "$ref": "#/parameters/q.descending"
       - name: qcolumns
         in: query
         description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
         type: string
         required: false
-      - "$ref": "#/parameters/g.p_pretty_print"
+      - "$ref": "#/parameters/q.p_pretty_print"
       tags: 
       - Facility Information
       responses: 
@@ -4089,7 +4089,7 @@ paths:
         - XML
         type: string
         required: false
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Metadata
       responses: 
