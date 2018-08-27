@@ -33,7 +33,7 @@ produces:
 - application/json
 - application/xml
 parameters: 
-  g.output: 
+  q.output: 
     name: output
     in: query
     description: |-
@@ -61,7 +61,7 @@ parameters:
     - XML
     type: string
     required: false
-  g.p_id: 
+  q.p_id: 
     name: p_id
     in: query
     description: Identifier for the service.
@@ -73,7 +73,7 @@ parameters:
     description: Identifier for the service.
     type: string
     required: true
-  g.callback: 
+  q.callback: 
     name: callback
     in: query
     description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
@@ -85,7 +85,7 @@ parameters:
     description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
     type: string
     required: false
-  g.outfall: 
+  q.outfall: 
     name: outfall
     in: query
     description: Three-character code that identifies the point of discharge (e.g., pipe or outfall) for a facility. A single NPDES ID may have multiple points of discharge.
@@ -97,7 +97,7 @@ parameters:
     description: Three-character code that identifies the point of discharge (e.g., pipe or outfall) for a facility. A single NPDES ID may have multiple points of discharge.
     type: string
     required: false
-  g.search_term: 
+  q.search_term: 
     name: search_term
     in: query
     description: Enter a partial or complete search phrase or word.
@@ -109,7 +109,7 @@ parameters:
     description: Five-digit numeric code identifying the parameter. See Parameter Lookup documentation for a complete list of codes.
     type: string
     required: false
-  g.parameter_code: 
+  q.parameter_code: 
     name: parameter_code
     in: query
     description: Five-digit numeric code identifying the parameter. See Parameter Lookup documentation for a complete list of codes.
@@ -121,7 +121,7 @@ parameters:
     description: Enter a partial or complete search phrase or word.
     type: string
     required: false
-  g.start_date: 
+  q.start_date: 
     name: start_date
     in: query
     description: The start date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with end_date. If start_date and end_date are not specified, the service will return the last three years of data.
@@ -133,7 +133,7 @@ parameters:
     description: Enter a partial or complete code value.
     type: string
     required: false
-  g.search_code: 
+  q.search_code: 
     name: search_code
     in: query
     description: Enter a partial or complete code value.
@@ -145,7 +145,7 @@ parameters:
     description: The start date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with end_date. If start_date and end_date are not specified, the service will return the last three years of data.
     type: string
     required: false
-  g.end_date: 
+  q.end_date: 
     name: end_date
     in: query
     description: The end date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with start_date. If start_date and end_date are not specified, the service will return the last three years of data.
@@ -165,13 +165,13 @@ paths:
         Discharge Monitoring Report (DMR) data supporting each effluent chart for one NPDES permit. Includes Discharge Monitoring Reports and NPDES Violations. 
 
       parameters: 
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.outfall"
-      - "$ref": "#/parameters/g.parameter_code"
-      - "$ref": "#/parameters/g.start_date"
-      - "$ref": "#/parameters/g.end_date"
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.outfall"
+      - "$ref": "#/parameters/q.parameter_code"
+      - "$ref": "#/parameters/q.start_date"
+      - "$ref": "#/parameters/q.end_date"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Effluent Charts
       responses: 
@@ -218,11 +218,11 @@ paths:
       summary: Summary Effluent Chart Service
       description: Summary of compliance status each outfall and parameter for one NPDES permit. Provides the current compliance status and overall compliance status for the date range of interest. This service supports the Summary Matrix on the Effluent Charts.
       parameters: 
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.callback"
-      - "$ref": "#/parameters/g.start_date"
-      - "$ref": "#/parameters/g.end_date"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.callback"
+      - "$ref": "#/parameters/q.start_date"
+      - "$ref": "#/parameters/q.end_date"
       tags: 
       - Effluent Charts
       responses: 
@@ -265,11 +265,11 @@ paths:
       summary: Effluent Charts Download Service
       description: Downloads tabular Discharge Monitoring Report (DMR) and compliance data for one NPDES permit as a CSV.
       parameters: 
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.outfall"
-      - "$ref": "#/parameters/g.parameter_code"
-      - "$ref": "#/parameters/g.start_date"
-      - "$ref": "#/parameters/g.end_date"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.outfall"
+      - "$ref": "#/parameters/q.parameter_code"
+      - "$ref": "#/parameters/q.start_date"
+      - "$ref": "#/parameters/q.end_date"
       tags: 
       - Effluent Charts
       responses: 
@@ -298,10 +298,10 @@ paths:
       summary: ECHO CWA Parameter Lookup Service
       description: Look up Clean Water Act parameter codes and descriptions in the Integrated Compliance Information System - National Pollutant Discharge Elimination System (ICIS-NPDES) by code or term.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.callback"
-      - "$ref": "#/parameters/g.search_term"
-      - "$ref": "#/parameters/g.search_code"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.callback"
+      - "$ref": "#/parameters/q.search_term"
+      - "$ref": "#/parameters/q.search_code"
       tags: 
       - Lookups
       responses: 
