@@ -25,7 +25,7 @@
       ,"application\/xml"
    ]
    ,"parameters": {
-       "g.callback": {
+       "q.callback": {
           "name": "callback"
          ,"in": "query"
          ,"description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
@@ -39,7 +39,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_sic": {
+      ,"q.p_sic": {
           "name": "p_sic"
          ,"in": "query"
          ,"description": "Standard Industrial Classification (SIC) Code Filter.  Enter a single 4-digit SIC Code to filter results."
@@ -53,7 +53,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_usmex": {
+      ,"q.p_usmex": {
           "name": "p_usmex"
          ,"in": "query"
          ,"description": "US-Mexico Border Flag.  Enter Y\/N to restrict searches to facilities located within 100KM of the border."
@@ -75,7 +75,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_c1lat": {
+      ,"q.p_c1lat": {
           "name": "p_c1lat"
          ,"in": "query"
          ,"description": "In decimal degrees.  Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
@@ -89,7 +89,7 @@
          ,"type": "number"
          ,"required": false
       }
-      ,"g.p_c1lon": {
+      ,"q.p_c1lon": {
           "name": "p_c1lon"
          ,"in": "query"
          ,"description": "In decimal degrees.  Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
@@ -103,7 +103,7 @@
          ,"type": "number"
          ,"required": false
       }
-      ,"g.p_c2lat": {
+      ,"q.p_c2lat": {
           "name": "p_c2lat"
          ,"in": "query"
          ,"description": "In decimal degrees.  Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
@@ -117,7 +117,7 @@
          ,"type": "number"
          ,"required": false
       }
-      ,"g.p_c2lon": {
+      ,"q.p_c2lon": {
           "name": "p_c2lon"
          ,"in": "query"
          ,"description": "In decimal degrees.  Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
@@ -131,7 +131,7 @@
          ,"type": "number"
          ,"required": false
       }
-      ,"g.queryset": {
+      ,"q.queryset": {
           "name": "queryset"
          ,"in": "query"
          ,"description": "Query Limiter.  Enter a value to limit the number of records returned for each query. Value cannot exceed 70,000."
@@ -145,7 +145,7 @@
          ,"type": "number"
          ,"required": false
       }
-      ,"g.responseset": {
+      ,"q.responseset": {
           "name": "responseset"
          ,"in": "query"
          ,"description": "Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000."
@@ -159,7 +159,7 @@
          ,"type": "number"
          ,"required": false
       }
-      ,"g.p_fntype": {
+      ,"q.p_fntype": {
           "name": "p_fntype"
          ,"in": "query"
          ,"description": "Controls type of text search performed on facility name with parameter p_fn.\n- EXACT = Find facilities having the exact provided name(s).\n- BEGINS = Find facilities with names starting with the provided term(s).\n- ALL = Find facilities using Oracle text search terms.\n- CONTAINS = "
@@ -185,7 +185,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.tablelist": {
+      ,"q.tablelist": {
           "name": "tablelist"
          ,"in": "query"
          ,"description": "Table List Flag. Enter a Y to display the first page of facility results."
@@ -207,7 +207,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.maplist": {
+      ,"q.maplist": {
           "name": "maplist"
          ,"in": "query"
          ,"description": "Map List Flag.  Provide a Y to return mappable coordinates representing the full geographic extent of the queryset (all facilities that met the selection criteria)."
@@ -229,7 +229,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.qid": {
+      ,"q.qid": {
           "name": "qid"
          ,"in": "query"
          ,"description": "Query ID Selector.  Enter the QueryID number from a previously run query."
@@ -243,7 +243,7 @@
          ,"type": "string"
          ,"required": true
       }
-      ,"g.pageno": {
+      ,"q.pageno": {
           "name": "pageno"
          ,"in": "query"
          ,"description": "Indicates the number of the page to display. It is used only when the results are paginated."
@@ -259,7 +259,7 @@
          ,"type": "number"
          ,"required": false
       }
-      ,"g.newsort": {
+      ,"q.newsort": {
           "name": "newsort"
          ,"in": "query"
          ,"description": "Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column."
@@ -273,7 +273,7 @@
          ,"type": "number"
          ,"required": false
       }
-      ,"g.descending": {
+      ,"q.descending": {
           "name": "descending"
          ,"in": "query"
          ,"description": "Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated."
@@ -295,7 +295,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.c1_lat": {
+      ,"q.c1_lat": {
           "name": "c1_lat"
          ,"in": "query"
          ,"description": "Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
@@ -309,7 +309,7 @@
          ,"type": "number"
          ,"required": false
       }
-      ,"g.c1_long": {
+      ,"q.c1_long": {
           "name": "c1_long"
          ,"in": "query"
          ,"description": "Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
@@ -323,7 +323,7 @@
          ,"type": "number"
          ,"required": false
       }
-      ,"g.c2_lat": {
+      ,"q.c2_lat": {
           "name": "c2_lat"
          ,"in": "query"
          ,"description": "Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
@@ -337,7 +337,7 @@
          ,"type": "number"
          ,"required": false
       }
-      ,"g.c2_long": {
+      ,"q.c2_long": {
           "name": "c2_long"
          ,"in": "query"
          ,"description": "Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
@@ -351,7 +351,7 @@
          ,"type": "number"
          ,"required": false
       }
-      ,"g.p_priority_area": {
+      ,"q.p_priority_area": {
           "name": "p_priority_area"
          ,"in": "query"
          ,"description": "Case Priority Area Filter.  Enter one or more case priority areas to limit results.  Provide multiple values as a comma-delimited list."
@@ -365,7 +365,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_priority_area_desc": {
+      ,"q.p_priority_area_desc": {
           "name": "p_priority_area_desc"
          ,"in": "query"
          ,"description": "Case Priority Area Description Filter.  Enter a single case priority area description or partial case priority area description to limit results.  Use \"%\" as a wild-card match for more complex searches."
@@ -379,7 +379,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_tribal": {
+      ,"q.p_tribal": {
           "name": "p_tribal"
          ,"in": "query"
          ,"description": "Case Location Tribal Land Flag.  Enter Y or N to include or disallow cases on tribal land."
@@ -401,7 +401,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_oeca_core": {
+      ,"q.p_oeca_core": {
           "name": "p_oeca_core"
          ,"in": "query"
          ,"description": "OECA Core Program Flag.  Enter Y or N to include or exclude core program cases."
@@ -423,7 +423,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_multimedia": {
+      ,"q.p_multimedia": {
           "name": "p_multimedia"
          ,"in": "query"
          ,"description": "Enforcement Multimedia Case Flag.  Enter Y or N to include or exclude multimedia cases."
@@ -445,7 +445,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_fed_case": {
+      ,"q.p_fed_case": {
           "name": "p_fed_case"
          ,"in": "query"
          ,"description": "Federal Facility Involvement Flag.  Enter a Y or N to include or exclude cases involving federal facilities."
@@ -474,7 +474,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_activity_contact": {
+      ,"q.p_activity_contact": {
           "name": "p_activity_contact"
          ,"in": "query"
          ,"description": "Activity Contact Last Name Filter.  Enter a single last name or partial last name to filter results.  Use \"%\" as a wild-card for advanced searching."
@@ -487,13 +487,13 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_open_case": {
+      ,"q.p_open_case": {
           "name": "p_open_case"
          ,"in": "query"
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_role": {
+      ,"q.p_role": {
           "name": "p_role"
          ,"in": "query"
          ,"description": "Activity Contact Role Code Filter.  Enter a single role code to restrict results."
@@ -507,7 +507,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.qcolumns": {
+      ,"q.qcolumns": {
           "name": "qcolumns"
          ,"in": "query"
          ,"description": "Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
@@ -538,7 +538,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_fed_penalty": {
+      ,"q.p_fed_penalty": {
           "name": "p_fed_penalty"
          ,"in": "query"
          ,"description": "Federal Penalty Assessed Amount Filter.  Provide one of the following keywords to restrict results.\n- ANY = cases with any penalty amount.\n- LE5000 = cases with penalty amount less than or equal to $5,000.\n- GT5000 = cases with penalty amount more than $5,000.\n- GT50000 = cases with penalty amount more than $50,000.\n- GT100000 = cases with penalty amount more than $100,000.\n- GT500000 = cases with penalty amount more than $500,000.\n- GT1000000 = cases with penalty amount more than $1,000,000.\n- GT2500000 = cases with penalty amount more than $2,500,000."
@@ -555,7 +555,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_case_category": {
+      ,"q.p_case_category": {
           "name": "p_case_category"
          ,"in": "query"
          ,"description": "Case Category Filter.  Enter one or more case category codes to filter results.   Provide multiple values as a comma-delimited list.\n- AFR = Administrative - Formal\n- AIF = Administrative - Informal\n- JDC = Judicial"
@@ -569,7 +569,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_total_fed_penalty": {
+      ,"q.p_total_fed_penalty": {
           "name": "p_total_fed_penalty"
          ,"in": "query"
          ,"description": "Total Federal Penalty Limiter.  Enter a keyword value to limit results to cases with given total federal penalties.\n- ANY = Cases with any federal penalty greater than zero.\n- LEXX = Replacing XX with a dollar value, return cases with federal penalty less than or equal to the given amount.\n- GTXX = Replacing XX with a dollar value, return cases with federal penalty greater than the given amount."
@@ -583,7 +583,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_case_status": {
+      ,"q.p_case_status": {
           "name": "p_case_status"
          ,"in": "query"
          ,"description": "Case Status Code Filter.  Enter one or more case status codes to limit results.  Provide multiple values as a comma-delimited list."
@@ -597,7 +597,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_cost_recovery": {
+      ,"q.p_cost_recovery": {
           "name": "p_cost_recovery"
          ,"in": "query"
          ,"description": "Cost Recovery Awarded Amount Limiter.  Enter a keyword value to limit results to cases with given cost recovery amounts.\n- ANY = Cases with any cost recovery amount greater than zero.\n- LEXX = Replacing XX with a dollar value, return cases with cost recovery amount less than or equal to the given amount.\n- GTXX = Replacing XX with a dollar value, return cases with cost recovery amount greater than the given amount."
@@ -611,7 +611,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_milestone": {
+      ,"q.p_milestone": {
           "name": "p_milestone"
          ,"in": "query"
          ,"description": "Administrative or Judicial Milestone Filter.  Enter one or milestone values to restrict results.  Provide multiple values as a comma-delimited list."
@@ -625,7 +625,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_total_cost_recovery": {
+      ,"q.p_total_cost_recovery": {
           "name": "p_total_cost_recovery"
          ,"in": "query"
          ,"description": "Total Cost Recovery Amount Limiter.  Enter a keyword value to limit results to cases with given cost recovery amounts.\n- ANY = Cases with any cost recovery amount greater than zero.\n- LEXX = Replacing XX with a dollar value, return cases with cost recovery amount less than or equal to the given amount.\n- GTXX = Replacing XX with a dollar value, return cases with cost recovery amount greater than the given amount."
@@ -639,7 +639,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_from_date": {
+      ,"q.p_from_date": {
           "name": "p_from_date"
          ,"in": "query"
          ,"description": "Administrative or Judicial Milestone Date Range Start Limiter.  Enter a date value in MM\/DD\/YYYY format to limit milestone results.  Parameter p_to_date must also be populated when using this parameter option."
@@ -653,7 +653,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_complying_actions": {
+      ,"q.p_complying_actions": {
           "name": "p_complying_actions"
          ,"in": "query"
          ,"description": "Complying Actions Type Code Limiter.  Enter one or more complying action codes to restrict results.  Provide multiple values as a comma-delimited list."
@@ -667,7 +667,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_to_date": {
+      ,"q.p_to_date": {
           "name": "p_to_date"
          ,"in": "query"
          ,"description": "Administrative or Judicial Milestone Date Range End Limiter.  Enter a date value in MM\/DD\/YYYY format to limit milestone results.  Parameter p_from_date must also be populated when using this parameter option."
@@ -689,7 +689,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_comp_act_val": {
+      ,"q.p_comp_act_val": {
           "name": "p_comp_act_val"
          ,"in": "query"
          ,"description": "Compliance Action Cost Limiter. Enter a keyword value to limit results to cases with given compliance cost amounts.\n- ANY = Cases with any compliance cost amount greater than zero.\n- LEXX = Replacing XX with a dollar value, return cases with compliance cost amount less than or equal to the given amount.\n- GTXX = Replacing XX with a dollar value, return cases with compliance cost amount greater than the given amount."
@@ -711,7 +711,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_milestone_fy": {
+      ,"q.p_milestone_fy": {
           "name": "p_milestone_fy"
          ,"in": "query"
          ,"description": "Administrative or Judicial Milestone Fiscal Year Limiter.  Enter a single fiscal year value to limit milestone searches to a given fiscal year."
@@ -725,7 +725,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_total_comp_act_val": {
+      ,"q.p_total_comp_act_val": {
           "name": "p_total_comp_act_val"
          ,"in": "query"
          ,"description": "Total Compliance Action Amount Limiter.  Enter a keyword value to limit results to cases with given total compliance action amounts.\n- ANY = Cases with any total compliance action amount greater than zero.\n- LEXX = Replacing XX with a dollar value, return cases with total compliance action amount less than or equal to the given amount.\n- GTXX = Replacing XX with a dollar value, return cases with total compliance action amount greater than the given amount."
@@ -739,7 +739,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_name": {
+      ,"q.p_name": {
           "name": "p_name"
          ,"in": "query"
          ,"description": "Case Name Filter.  Enter one or more case names to restrict results.  Provide multiple values as a comma-delimited list.  When using this parameter the p_name_type parameter is required."
@@ -753,7 +753,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_sep_cats": {
+      ,"q.p_sep_cats": {
           "name": "p_sep_cats"
          ,"in": "query"
          ,"description": "Supplemental Environmental Projects Activity Category Code Limiter.  Provide one or more SEP activity category codes to limit results.  Provide multiple values as a comma-delimited list."
@@ -767,7 +767,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_sep_val": {
+      ,"q.p_sep_val": {
           "name": "p_sep_val"
          ,"in": "query"
          ,"description": "Supplemental Environmental Projects Activity Value Limiter.  Provide a keyword to limit results.\n- ANY = return cases with any SEP activity amount.\n- LE10000 = return cases with SEP activity amount less than or equal to $10,000.\n- GT10000 = return cases with SEP activity amount greater than $10,000.\n- GT50000 = return cases with SEP activity amount greater than $50,000.\n- GT100000 = return cases with SEP activity amount greater than $100,000.\n- GT500000 = return cases with SEP activity amount greater than $500,000.\n- GT1000000 = return cases with SEP activity amount greater than $1,000,000."
@@ -790,7 +790,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_name_type": {
+      ,"q.p_name_type": {
           "name": "p_name_type"
          ,"in": "query"
          ,"description": "Case Name Filter Modifier."
@@ -813,7 +813,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_case_number": {
+      ,"q.p_case_number": {
           "name": "p_case_number"
          ,"in": "query"
          ,"description": "Case Number Filter.  Enter one or more case numbers to restrict results.  Provide multiple values as a comma-delimited list."
@@ -827,7 +827,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_total_sep_val": {
+      ,"q.p_total_sep_val": {
           "name": "p_total_sep_val"
          ,"in": "query"
          ,"description": "Supplemental Environmental Projects Total Value Limiter.  Provide a keyword to limit results.\n- ANY = return cases with any SEP total amount.\n- LE10000 = return cases with SEP total amount less than or equal to $10,000.\n- GT10000 = return cases with SEP total amount greater than $10,000.\n- GT50000 = return cases with SEP total amount greater than $50,000.\n- GT100000 = return cases with SEP total amount greater than $100,000.\n- GT500000 = return cases with SEP total amount greater than $500,000.\n- GT1000000 = return cases with SEP total amount greater than $1,000,000."
@@ -841,7 +841,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_lodged_date": {
+      ,"q.p_lodged_date": {
           "name": "p_lodged_date"
          ,"in": "query"
          ,"description": "Settlement Lodged Date Limiter.  Enter a single settlement lodged date in MM\/DD\/YYYY format to limit results."
@@ -855,7 +855,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_docket_number": {
+      ,"q.p_docket_number": {
           "name": "p_docket_number"
          ,"in": "query"
          ,"description": "DOJ Docket Number Filter.  Enter a single docket number or partial docket number to restrict results.  Use \"%\" as a wildcard for more complex filtering."
@@ -869,7 +869,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_entered_date": {
+      ,"q.p_entered_date": {
           "name": "p_entered_date"
          ,"in": "query"
          ,"description": "Settlement Entered Date Limiter.  Enter a single settlement entered date in MM\/DD\/YYYY format to limit results."
@@ -883,7 +883,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_activity_number": {
+      ,"q.p_activity_number": {
           "name": "p_activity_number"
          ,"in": "query"
          ,"description": "Case Activity Number Filter.  Enter a single case activity number to filter results."
@@ -897,7 +897,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_case_lead": {
+      ,"q.p_case_lead": {
           "name": "p_case_lead"
          ,"in": "query"
          ,"description": "Case Lead Limiter.  Enter E or S to limit results.\n- E = EPA is the case lead.\n- S = The state is the case lead."
@@ -915,7 +915,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_facility_id": {
+      ,"q.p_facility_id": {
           "name": "p_facility_id"
          ,"in": "query"
          ,"description": "Case Facility Registration Identifier Limiter.  Enter a single complete facility identifier to limit results."
@@ -940,7 +940,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_case_sens_flg": {
+      ,"q.p_case_sens_flg": {
           "name": "p_case_sens_flg"
          ,"in": "query"
          ,"description": "Case Sensitive Data Flag.  Enter a Y or N to include or exclude cases with sensitive data."
@@ -954,14 +954,14 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_fac_city": {
+      ,"q.p_fac_city": {
           "name": "p_fac_city"
          ,"in": "query"
          ,"description": "Case Facility City Limiter.  Enter a single complete city name to filter cases by facility location city."
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_region": {
+      ,"q.p_region": {
           "name": "p_region"
          ,"in": "query"
          ,"description": "EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region."
@@ -987,7 +987,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_fac_zip": {
+      ,"q.p_fac_zip": {
           "name": "p_fac_zip"
          ,"in": "query"
          ,"description": "Case Facility ZIP Code Limiter.  Enter a single 5-digit zip code to filter cases by facility location zip code."
@@ -1013,7 +1013,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_state": {
+      ,"q.p_state": {
           "name": "p_state"
          ,"in": "query"
          ,"description": "Case Location State Filter.  Enter one or more state USPS postal codes to filter results.  Provide multiple values as a comma-delimited list."
@@ -1027,7 +1027,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_fac_county": {
+      ,"q.p_fac_county": {
           "name": "p_fac_county"
          ,"in": "query"
          ,"description": "Case Facility County Limiter.  Enter a single complete county name to filter cases by facility location county name."
@@ -1041,7 +1041,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_district": {
+      ,"q.p_district": {
           "name": "p_district"
          ,"in": "query"
          ,"description": "Case Location Court District Limiter.  Enter a single state court district code to limit results."
@@ -1054,7 +1054,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_case_summary_type": {
+      ,"q.p_case_summary_type": {
           "name": "p_case_summary_type"
          ,"in": "query"
          ,"type": "string"
@@ -1067,7 +1067,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_case_summary": {
+      ,"q.p_case_summary": {
           "name": "p_case_summary"
          ,"in": "query"
          ,"description": "Case Summary Search Limiter.  Enter a single case summary to limit results.  This parameter accepts partial codes and allows for advanced search modifiers."
@@ -1081,7 +1081,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_voluntary": {
+      ,"q.p_voluntary": {
           "name": "p_voluntary"
          ,"in": "query"
          ,"description": "Voluntary Self Disclosure Flag.  Enter Y or N to include or exclude cases results having voluntary disclosure."
@@ -1099,7 +1099,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_sic_ao_naics": {
+      ,"q.p_sic_ao_naics": {
           "name": "p_sic_ao_naics"
          ,"in": "query"
          ,"description": "Case Location SIC\/NAICS And\/Or Modifier.  Enter either AND or OR to govern the search logic of SIC and NAICS codes.\n- AND = Search will return results having both the provided SIC code(s) and provided NAICS code(s).\n- OR = Search will return results having either the provided SIC code(s) or the provided NAICS code(s)."
@@ -1117,7 +1117,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_fed_indicator": {
+      ,"q.p_fed_indicator": {
           "name": "p_fed_indicator"
          ,"in": "query"
          ,"description": "Federal Facility\/Cross Media Flag.  Enter Y or N to limit results to cases with federal facility cross media."
@@ -1135,7 +1135,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_sic_primary_flg": {
+      ,"q.p_sic_primary_flg": {
           "name": "p_sic_primary_flg"
          ,"in": "query"
          ,"description": "Case Location Primary SIC Flag.  Enter Y to limit SIC search results to primary SIC codes only."
@@ -1153,7 +1153,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_sic_frs_flg": {
+      ,"q.p_sic_frs_flg": {
           "name": "p_sic_frs_flg"
          ,"in": "query"
          ,"description": "Case Location Extended FRS SIC Search Flag.  Enter Y to expand SIC search to include Federal Registry Service datasets."
@@ -1176,7 +1176,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_civil_criminal_indicator": {
+      ,"q.p_civil_criminal_indicator": {
           "name": "p_civil_criminal_indicator"
          ,"in": "query"
          ,"description": "Civil\/Criminal Case Limiter.  Provide a keyword to limit results.\n- ANY = return both civil and criminal cases.\n- CI = return only civil cases.\n- CR = return only criminal cases."
@@ -1199,7 +1199,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_naics": {
+      ,"q.p_naics": {
           "name": "p_naics"
          ,"in": "query"
          ,"description": "North American Industry Classification System Filter. Enter two to six digits to filter results to facilities having matching NAICS codes.  Digits less than six will match to all codes beginning with the provided values."
@@ -1213,7 +1213,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_naics_primary_flg": {
+      ,"q.p_naics_primary_flg": {
           "name": "p_naics_primary_flg"
          ,"in": "query"
          ,"description": "Case Location Primary NAICS Flag.  Enter Y to limit NAICS search results to primary NAICS codes only."
@@ -1235,7 +1235,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_naics_frs_flg": {
+      ,"q.p_naics_frs_flg": {
           "name": "p_naics_frs_flg"
          ,"in": "query"
          ,"description": "Case Location Extended FRS NAICS Search Flag.  Enter Y to expand NAICS search to include Federal Registry Service datasets."
@@ -1257,7 +1257,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_enf_type": {
+      ,"q.p_enf_type": {
           "name": "p_enf_type"
          ,"in": "query"
          ,"description": "Case Enforcement Type Filter. Enter one or more case enforcement type codes to limit results.  Provide multiple values as a comma-delimited list."
@@ -1271,7 +1271,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_law": {
+      ,"q.p_law": {
           "name": "p_law"
          ,"in": "query"
          ,"description": "Law Statute Code Filter.  Enter a single statute code to limit results."
@@ -1285,7 +1285,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_section": {
+      ,"q.p_section": {
           "name": "p_section"
          ,"in": "query"
          ,"description": "Law Section Code Filter. Enter one or more law section codes to limit results.  Provide multiple values as a comma-delimited list."
@@ -1299,7 +1299,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_cp_citation": {
+      ,"q.p_cp_citation": {
           "name": "p_cp_citation"
          ,"in": "query"
          ,"description": "Law Section Code Filter Alternative. Enter a single law section code to limit results.  This parameter accepts partial codes and allows for advanced search modifiers."
@@ -1313,7 +1313,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_rank_order": {
+      ,"q.p_rank_order": {
           "name": "p_rank_order"
          ,"in": "query"
          ,"description": "Law Status Rank Order Limiter.  Enter a single integer rank order to limit results."
@@ -1335,7 +1335,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_enf_program": {
+      ,"q.p_enf_program": {
           "name": "p_enf_program"
          ,"in": "query"
          ,"description": "Enforcement Program Code Limiter.  Enter one or more enforcement program codes to limit results.  Provide multiple values as a comma-delimited list.  "
@@ -1349,7 +1349,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_violation": {
+      ,"q.p_violation": {
           "name": "p_violation"
          ,"in": "query"
          ,"description": "Violation Type Code Filter.  Enter one or more violation type codes to limit results.  Provide multiple values as a comma-delimited list."
@@ -1390,7 +1390,7 @@
                   ,"required": false
                }
                ,{
-                   "$ref": "#\/parameters\/g.callback"
+                   "$ref": "#\/parameters\/q.callback"
                }
             ]
             ,"tags": [
@@ -1494,7 +1494,7 @@
                   ,"required": false
                }
                ,{
-                   "$ref": "#\/parameters\/g.callback"
+                   "$ref": "#\/parameters\/q.callback"
                }
             ]
             ,"tags": [
@@ -1591,220 +1591,220 @@
                   ,"required": false
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_case_category"
+                   "$ref": "#\/parameters\/q.p_case_category"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_case_status"
+                   "$ref": "#\/parameters\/q.p_case_status"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_open_case"
+                   "$ref": "#\/parameters\/q.p_open_case"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_milestone"
+                   "$ref": "#\/parameters\/q.p_milestone"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_from_date"
+                   "$ref": "#\/parameters\/q.p_from_date"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_to_date"
+                   "$ref": "#\/parameters\/q.p_to_date"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_milestone_fy"
+                   "$ref": "#\/parameters\/q.p_milestone_fy"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_name"
+                   "$ref": "#\/parameters\/q.p_name"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_name_type"
+                   "$ref": "#\/parameters\/q.p_name_type"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_case_number"
+                   "$ref": "#\/parameters\/q.p_case_number"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_docket_number"
+                   "$ref": "#\/parameters\/q.p_docket_number"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_activity_number"
+                   "$ref": "#\/parameters\/q.p_activity_number"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_case_lead"
+                   "$ref": "#\/parameters\/q.p_case_lead"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_case_sens_flg"
+                   "$ref": "#\/parameters\/q.p_case_sens_flg"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_region"
+                   "$ref": "#\/parameters\/q.p_region"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_state"
+                   "$ref": "#\/parameters\/q.p_state"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_district"
+                   "$ref": "#\/parameters\/q.p_district"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_sic"
+                   "$ref": "#\/parameters\/q.p_sic"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_sic_ao_naics"
+                   "$ref": "#\/parameters\/q.p_sic_ao_naics"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_sic_primary_flg"
+                   "$ref": "#\/parameters\/q.p_sic_primary_flg"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_sic_frs_flg"
+                   "$ref": "#\/parameters\/q.p_sic_frs_flg"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_naics"
+                   "$ref": "#\/parameters\/q.p_naics"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_naics_primary_flg"
+                   "$ref": "#\/parameters\/q.p_naics_primary_flg"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_naics_frs_flg"
+                   "$ref": "#\/parameters\/q.p_naics_frs_flg"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_enf_type"
+                   "$ref": "#\/parameters\/q.p_enf_type"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_law"
+                   "$ref": "#\/parameters\/q.p_law"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_section"
+                   "$ref": "#\/parameters\/q.p_section"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_cp_citation"
+                   "$ref": "#\/parameters\/q.p_cp_citation"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_rank_order"
+                   "$ref": "#\/parameters\/q.p_rank_order"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_enf_program"
+                   "$ref": "#\/parameters\/q.p_enf_program"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_violation"
+                   "$ref": "#\/parameters\/q.p_violation"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_priority_area"
+                   "$ref": "#\/parameters\/q.p_priority_area"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_priority_area_desc"
+                   "$ref": "#\/parameters\/q.p_priority_area_desc"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_tribal"
+                   "$ref": "#\/parameters\/q.p_tribal"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_oeca_core"
+                   "$ref": "#\/parameters\/q.p_oeca_core"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_multimedia"
+                   "$ref": "#\/parameters\/q.p_multimedia"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_fed_case"
+                   "$ref": "#\/parameters\/q.p_fed_case"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_activity_contact"
+                   "$ref": "#\/parameters\/q.p_activity_contact"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_role"
+                   "$ref": "#\/parameters\/q.p_role"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_fed_penalty"
+                   "$ref": "#\/parameters\/q.p_fed_penalty"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_total_fed_penalty"
+                   "$ref": "#\/parameters\/q.p_total_fed_penalty"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_cost_recovery"
+                   "$ref": "#\/parameters\/q.p_cost_recovery"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_total_cost_recovery"
+                   "$ref": "#\/parameters\/q.p_total_cost_recovery"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_complying_actions"
+                   "$ref": "#\/parameters\/q.p_complying_actions"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_comp_act_val"
+                   "$ref": "#\/parameters\/q.p_comp_act_val"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_total_comp_act_val"
+                   "$ref": "#\/parameters\/q.p_total_comp_act_val"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_sep_cats"
+                   "$ref": "#\/parameters\/q.p_sep_cats"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_sep_val"
+                   "$ref": "#\/parameters\/q.p_sep_val"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_total_sep_val"
+                   "$ref": "#\/parameters\/q.p_total_sep_val"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_lodged_date"
+                   "$ref": "#\/parameters\/q.p_lodged_date"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_entered_date"
+                   "$ref": "#\/parameters\/q.p_entered_date"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_facility_id"
+                   "$ref": "#\/parameters\/q.p_facility_id"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_fac_city"
+                   "$ref": "#\/parameters\/q.p_fac_city"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_fac_zip"
+                   "$ref": "#\/parameters\/q.p_fac_zip"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_fac_county"
+                   "$ref": "#\/parameters\/q.p_fac_county"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_case_summary"
+                   "$ref": "#\/parameters\/q.p_case_summary"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_case_summary_type"
+                   "$ref": "#\/parameters\/q.p_case_summary_type"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_usmex"
+                   "$ref": "#\/parameters\/q.p_usmex"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_c1lat"
+                   "$ref": "#\/parameters\/q.p_c1lat"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_c1lon"
+                   "$ref": "#\/parameters\/q.p_c1lon"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_c2lat"
+                   "$ref": "#\/parameters\/q.p_c2lat"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_c2lon"
+                   "$ref": "#\/parameters\/q.p_c2lon"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_voluntary"
+                   "$ref": "#\/parameters\/q.p_voluntary"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_fed_indicator"
+                   "$ref": "#\/parameters\/q.p_fed_indicator"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_fntype"
+                   "$ref": "#\/parameters\/q.p_fntype"
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_civil_criminal_indicator"
+                   "$ref": "#\/parameters\/q.p_civil_criminal_indicator"
                }
                ,{
-                   "$ref": "#\/parameters\/g.queryset"
+                   "$ref": "#\/parameters\/q.queryset"
                }
                ,{
-                   "$ref": "#\/parameters\/g.responseset"
+                   "$ref": "#\/parameters\/q.responseset"
                }
                ,{
-                   "$ref": "#\/parameters\/g.maplist"
+                   "$ref": "#\/parameters\/q.maplist"
                }
                ,{
-                   "$ref": "#\/parameters\/g.tablelist"
+                   "$ref": "#\/parameters\/q.tablelist"
                }
                ,{
-                   "$ref": "#\/parameters\/g.callback"
+                   "$ref": "#\/parameters\/q.callback"
                }
                ,{
-                   "$ref": "#\/parameters\/g.qcolumns"
+                   "$ref": "#\/parameters\/q.qcolumns"
                }
             ]
             ,"tags": [
@@ -2107,22 +2107,22 @@
                   ,"required": false
                }
                ,{
-                   "$ref": "#\/parameters\/g.qid"
+                   "$ref": "#\/parameters\/q.qid"
                }
                ,{
-                   "$ref": "#\/parameters\/g.pageno"
+                   "$ref": "#\/parameters\/q.pageno"
                }
                ,{
-                   "$ref": "#\/parameters\/g.callback"
+                   "$ref": "#\/parameters\/q.callback"
                }
                ,{
-                   "$ref": "#\/parameters\/g.newsort"
+                   "$ref": "#\/parameters\/q.newsort"
                }
                ,{
-                   "$ref": "#\/parameters\/g.descending"
+                   "$ref": "#\/parameters\/q.descending"
                }
                ,{
-                   "$ref": "#\/parameters\/g.qcolumns"
+                   "$ref": "#\/parameters\/q.qcolumns"
                }
             ]
             ,"tags": [
@@ -2227,25 +2227,25 @@
                   ,"required": false
                }
                ,{
-                   "$ref": "#\/parameters\/g.qid"
+                   "$ref": "#\/parameters\/q.qid"
                }
                ,{
-                   "$ref": "#\/parameters\/g.callback"
+                   "$ref": "#\/parameters\/q.callback"
                }
                ,{
-                   "$ref": "#\/parameters\/g.tablelist"
+                   "$ref": "#\/parameters\/q.tablelist"
                }
                ,{
-                   "$ref": "#\/parameters\/g.c1_lat"
+                   "$ref": "#\/parameters\/q.c1_lat"
                }
                ,{
-                   "$ref": "#\/parameters\/g.c1_long"
+                   "$ref": "#\/parameters\/q.c1_long"
                }
                ,{
-                   "$ref": "#\/parameters\/g.c2_lat"
+                   "$ref": "#\/parameters\/q.c2_lat"
                }
                ,{
-                   "$ref": "#\/parameters\/g.c2_long"
+                   "$ref": "#\/parameters\/q.c2_long"
                }
             ]
             ,"tags": [
@@ -2348,10 +2348,10 @@
                   ,"required": false
                }
                ,{
-                   "$ref": "#\/parameters\/g.qid"
+                   "$ref": "#\/parameters\/q.qid"
                }
                ,{
-                   "$ref": "#\/parameters\/g.qcolumns"
+                   "$ref": "#\/parameters\/q.qcolumns"
                }
             ]
             ,"tags": [
@@ -2415,7 +2415,7 @@
                   ,"required": false
                }
                ,{
-                   "$ref": "#\/parameters\/g.callback"
+                   "$ref": "#\/parameters\/q.callback"
                }
             ]
             ,"tags": [
