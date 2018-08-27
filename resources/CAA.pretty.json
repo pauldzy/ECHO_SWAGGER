@@ -25,7 +25,7 @@
       ,"application\/xml"
    ]
    ,"parameters": {
-       "g.output": {
+       "q.output": {
           "name": "output"
          ,"in": "query"
          ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
@@ -49,7 +49,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.callback": {
+      ,"q.callback": {
           "name": "callback"
          ,"in": "query"
          ,"description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
@@ -63,7 +63,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.p_units": {
+      ,"q.p_units": {
           "name": "p_units"
          ,"in": "query"
          ,"description": "Units of Measurement.  For the Air Pollutant Report, the default value is 'lbs'.  Enter \"TWPE\" for Toxic Weighted Pounds Equivalents (TWPE). "
@@ -77,7 +77,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.nn2": {
+      ,"q.nn2": {
           "name": "nn2"
          ,"in": "query"
          ,"description": "Secondary statute filter, provide a single statute code to filter permit results (e.g., \"EP313\")"
@@ -91,7 +91,7 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"g.nnn": {
+      ,"q.nnn": {
           "name": "nnn"
          ,"in": "query"
          ,"description": "Statute filter, provide a single statute code to filter permit results (e.g., \"CAA\")"
@@ -113,7 +113,7 @@
             ,"description": "This procedure is the overall service for the Air Polltuant Report. It returns all of the data displayed in the Air Pollutant web report by invoking individual procedures that each return a targeted portion of the report."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/g.output"
+                   "$ref": "#\/parameters\/q.output"
                }
                ,{
                    "name": "p_id"
@@ -123,10 +123,10 @@
                   ,"required": true
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_units"
+                   "$ref": "#\/parameters\/q.p_units"
                }
                ,{
-                   "$ref": "#\/parameters\/g.callback"
+                   "$ref": "#\/parameters\/q.callback"
                }
             ]
             ,"tags": [
@@ -204,13 +204,13 @@
              "summary": "Air Pollutant Report Permits Service"
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/g.output"
+                   "$ref": "#\/parameters\/q.output"
                }
                ,{
-                   "$ref": "#\/parameters\/g.nnn"
+                   "$ref": "#\/parameters\/q.nnn"
                }
                ,{
-                   "$ref": "#\/parameters\/g.nn2"
+                   "$ref": "#\/parameters\/q.nn2"
                }
                ,{
                    "name": "p_id"
@@ -220,7 +220,7 @@
                   ,"required": true
                }
                ,{
-                   "$ref": "#\/parameters\/g.callback"
+                   "$ref": "#\/parameters\/q.callback"
                }
             ]
             ,"tags": [
@@ -301,7 +301,7 @@
             ,"description": "This procedure obtains data for Total Aggregate Emissions in the Emissions section of the Air Pollutant Report."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/g.output"
+                   "$ref": "#\/parameters\/q.output"
                }
                ,{
                    "name": "p_id"
@@ -311,10 +311,10 @@
                   ,"required": true
                }
                ,{
-                   "$ref": "#\/parameters\/g.p_units"
+                   "$ref": "#\/parameters\/q.p_units"
                }
                ,{
-                   "$ref": "#\/parameters\/g.callback"
+                   "$ref": "#\/parameters\/q.callback"
                }
             ]
             ,"tags": [
@@ -393,7 +393,7 @@
             ,"description": "This procedure obtains data for Air Quality in the Environmental Conditions Section of the Air Pollutant Report."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/g.output"
+                   "$ref": "#\/parameters\/q.output"
                }
                ,{
                    "name": "p_id"
@@ -403,7 +403,7 @@
                   ,"required": true
                }
                ,{
-                   "$ref": "#\/parameters\/g.callback"
+                   "$ref": "#\/parameters\/q.callback"
                }
             ]
             ,"tags": [
@@ -479,7 +479,7 @@
             ,"description": "Returns an object with the facility's latitude and longitude coordinates."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/g.output"
+                   "$ref": "#\/parameters\/q.output"
                }
                ,{
                    "name": "p_id"
@@ -489,7 +489,7 @@
                   ,"required": true
                }
                ,{
-                   "$ref": "#\/parameters\/g.callback"
+                   "$ref": "#\/parameters\/q.callback"
                }
             ]
             ,"tags": [
@@ -565,7 +565,7 @@
             ,"description": "Returns an object with the facility coordinate spatial metadata."
             ,"parameters": [
                 {
-                   "$ref": "#\/parameters\/g.output"
+                   "$ref": "#\/parameters\/q.output"
                }
                ,{
                    "name": "p_id"
@@ -575,7 +575,7 @@
                   ,"required": true
                }
                ,{
-                   "$ref": "#\/parameters\/g.callback"
+                   "$ref": "#\/parameters\/q.callback"
                }
             ]
             ,"tags": [
