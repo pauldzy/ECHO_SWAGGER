@@ -25,7 +25,7 @@ produces:
 - application/json
 - application/xml
 parameters: 
-  g.output: 
+  q.output: 
     name: output
     in: query
     description: |-
@@ -53,7 +53,7 @@ parameters:
     - XML
     type: string
     required: false
-  g.p_id: 
+  q.p_id: 
     name: p_id
     in: query
     description: "Either the EPA Facility Registry System's REGISTRY_ID for a facility or the facility identifier from the following EPA Systems: RCRAINFO (HANDLER_ID), AFS (SCSC), ICIS NPDES (NPDES_ID), or SDWIS (PWS_ID)."
@@ -65,7 +65,7 @@ parameters:
     description: "Either the EPA Facility Registry System's REGISTRY_ID for a facility or the facility identifier from the following EPA Systems: RCRAINFO (HANDLER_ID), AFS (SCSC), ICIS NPDES (NPDES_ID), or SDWIS (PWS_ID)."
     type: string
     required: true
-  g.callback: 
+  q.callback: 
     name: callback
     in: query
     description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
@@ -83,13 +83,13 @@ parameters:
     description: System Acronym Filter.  Enter a single system acronym to filter results.
     type: string
     required: false
-  g.p_system: 
+  q.p_system: 
     name: p_system
     in: query
     description: System Acronym Filter.  Enter a single system acronym to filter results.
     type: string
     required: false
-  g.p_radius: 
+  q.p_radius: 
     name: p_radius
     in: query
     type: string
@@ -105,10 +105,10 @@ paths:
       summary: Detailed Facility Report Service
       description: This procedure is the overall service for the Detailed Facility Report. It returns all of the data displayed in the DFR web report by invoking individual procedures that each return a targeted portion of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.p_system"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.p_system"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -150,9 +150,9 @@ paths:
       summary: Detailed Facility Report Air Compliance Report Service
       description: This procedure obtains data for Air Compliance in the Environmental Conditions Section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -193,9 +193,9 @@ paths:
       summary: Detailed Facility Report Air Quality Report Service
       description: This procedure obtains data for Air Quality in the Environmental Conditions Section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -233,11 +233,11 @@ paths:
             - Results
   "/dfr_rest_services.get_case_formal_actions": 
     get: 
-      summary: 
+      summary: Placeholder
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -253,7 +253,7 @@ paths:
             required: 
             - Results
     post: 
-      summary: 
+      summary: Placeholder
       parameters: 
       - "$ref": "#/parameters/f.output"
       - "$ref": "#/parameters/f.p_id"
@@ -277,9 +277,9 @@ paths:
       summary: Detailed Facility Report 5 Year Compliance Monitoring History Service
       description: This procedure obtains data for the Compliance Monitoring History (5 years) in the Enforcement and Compliance Section of the Detailed Facility report.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -320,9 +320,9 @@ paths:
       summary: Detailed Facility Report Compliance Summary Service
       description: This procedure obtains data for Compliance Summary Data in the Enforcement and Compliance Section of the Detailed Facility report.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -368,9 +368,9 @@ paths:
         > "Unk" = Unknown status
         > "SNC/Cat 1" = SNC/Category I violation found
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -413,11 +413,11 @@ paths:
             - Results
   "/dfr_rest_services.get_cwa_3yr_d80d90_counts": 
     get: 
-      summary: 
+      summary: Placeholder
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -433,7 +433,7 @@ paths:
             required: 
             - Results
     post: 
-      summary: 
+      summary: Placeholder
       parameters: 
       - "$ref": "#/parameters/f.output"
       - "$ref": "#/parameters/f.p_id"
@@ -457,9 +457,9 @@ paths:
       summary: Detailed Facility Report CWA CSV Compliance Service
       description: This procedure obtains data for the CWA Compliance Schedule Violations section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -500,9 +500,9 @@ paths:
       summary: Detailed Facility Report CWA Effluent ALR Service
       description: This procedure obtains data for the CWA Pollutant Discharge section located in the Three Year Compliance Status by Quarter portion of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -543,9 +543,9 @@ paths:
       summary: Detailed Facility Report CWA Effluent Compliance Service
       description: This procedure obtains data for the CWA Effluent Compliance section on the DFR.  
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -586,9 +586,9 @@ paths:
       summary: Detailed Facility Report CWA PSV Compliance Service
       description: This procedure obtains data for the CWA Permit Schedule Violations section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -641,9 +641,9 @@ paths:
         > Blank = Not considered in RNC/SNC
         > N/A = EPA's data system is not able to determine the facility-level compliance status based upon the information available. This information may be available from a state database.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -696,9 +696,9 @@ paths:
       summary: Detailed Facility Report CWA SEV Compliance Service
       description: This procedure obtains data for the CWA Single Event Violations section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -736,12 +736,12 @@ paths:
             - Results
   "/dfr_rest_services.get_demographics_by_id": 
     get: 
-      summary: 
+      summary: Placeholder
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.p_radius"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.p_radius"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -757,7 +757,7 @@ paths:
             required: 
             - Results
     post: 
-      summary: 
+      summary: Placeholder
       parameters: 
       - "$ref": "#/parameters/f.output"
       - "$ref": "#/parameters/f.p_id"
@@ -782,9 +782,9 @@ paths:
       summary: Detailed Facility Report Enforcement Summary Service
       description: This procedure obtains data for the Enforcement and Compliance Summary in the Facility Summary section of the Detailed Facility Report.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -822,11 +822,11 @@ paths:
             - Results
   "/dfr_rest_services.get_extract_dates": 
     get: 
-      summary: 
+      summary: Placeholder
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -842,7 +842,7 @@ paths:
             required: 
             - Results
     post: 
-      summary: 
+      summary: Placeholder
       parameters: 
       - "$ref": "#/parameters/f.output"
       - "$ref": "#/parameters/f.p_id"
@@ -866,9 +866,9 @@ paths:
       summary: Detailed Facility Report Formal Actions Service
       description: This procedure obtains data for the Formal Enforcement Actions section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -909,9 +909,9 @@ paths:
       summary: Detailed Facility Report ICIS Formal Actions Service
       description: This procedure obtains data for the Integrated Compliance Information System, Formal Enforcement Actions section of the DFR. 
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -952,9 +952,9 @@ paths:
       summary: Detailed Facility Report Inspections Summary Service
       description: This procedure obtains data for Enforcement and Compliance Summary Section of the Detailed Facility report.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -995,9 +995,9 @@ paths:
       summary: Detailed Facility Report NAICS Code Service
       description: This procedure obtains data for the Facility NAICS Codes section in Facility/System Characteristics of the Detailed Facility Report.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1038,9 +1038,9 @@ paths:
       summary: Detailed Facility Report Notices Service
       description: This procedure obtains data for the Notices/Informal Actions section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1089,9 +1089,9 @@ paths:
         > Facility SIC Codes in Facility/System Characteristics section.
         > Facility NAICS Codes in Facility/System Characteristics section.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1140,9 +1140,9 @@ paths:
       summary: Detailed Facility Report RCRA Compliance Service
       description: This procedure obtains data for the RCRA Compliance section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1183,9 +1183,9 @@ paths:
       summary: Detailed Facility Report SDWA Lead and Copper Service
       description: This procedure obtains data for the SDWA, Lead and Copper Rule section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1226,9 +1226,9 @@ paths:
       summary: Detailed Facility Report SDWA Sanitary Surveys Service
       description: This procedure obtains data for the SDWA, Sanitary Surveys section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1269,9 +1269,9 @@ paths:
       summary: Detailed Facility Report SDWA Sanitary Site Visits Service
       description: This procedure obtains data for the SDWA, Sanitary Site Visits section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1312,9 +1312,9 @@ paths:
       summary: Detailed Facility Report SDWA Violations Service
       description: This procedure obtains data for the SDWA Violations section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1355,9 +1355,9 @@ paths:
       summary: Detailed Facility Report SDWIS Compliance Service
       description: This procedure obtains data for the SDWA Compliance section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1398,9 +1398,9 @@ paths:
       summary: Detailed Facility Report SIC Code Service
       description: This procedure obtains data for the Facility SIC Codes section in Facility/System Characteristics of the Detailed Facility Report.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1441,9 +1441,9 @@ paths:
       summary: Detailed Facility Report Spatial Metadata Service
       description: Returns an object with the facility coordinate spatial metadata.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1484,9 +1484,9 @@ paths:
       summary: Detailed Facility Report TRI History Service
       description: This procedure obtains data for the TRI History section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1527,9 +1527,9 @@ paths:
       summary: Detailed Facility Report TRI Releases Service
       description: This procedrue obtains data for the TRI Releases section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1570,9 +1570,9 @@ paths:
       summary: Detailed Facility Report Tribes Service
       description: This procedure obtains data for the Tribes and Reservations section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1613,10 +1613,10 @@ paths:
       summary: Detailed Facility Report Water Quality Service
       description: This procedure obtains data for the Water Quality section of the DFR.
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.p_radius"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.p_radius"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1655,12 +1655,12 @@ paths:
             - Results
   "/dfr_rest_services.get_water_quality_details": 
     get: 
-      summary: 
+      summary: Placeholder
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.p_radius"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.p_radius"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
@@ -1676,7 +1676,7 @@ paths:
             required: 
             - Results
     post: 
-      summary: 
+      summary: Placeholder
       parameters: 
       - "$ref": "#/parameters/f.output"
       - "$ref": "#/parameters/f.p_id"
@@ -1701,9 +1701,9 @@ paths:
       summary: Detailed Facility Report Map Service
       description: "Returns an object with the facility's latitude and longitude coordinates."
       parameters: 
-      - "$ref": "#/parameters/g.output"
-      - "$ref": "#/parameters/g.p_id"
-      - "$ref": "#/parameters/g.callback"
+      - "$ref": "#/parameters/q.output"
+      - "$ref": "#/parameters/q.p_id"
+      - "$ref": "#/parameters/q.callback"
       tags: 
       - Detailed Facility Report
       responses: 
