@@ -3232,11 +3232,11 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfr020_s" 
+          "$ref": "#/definitions/dfr020" 
         xml: 
           name: Sources
           wrapped: true
-  dfr020_s: 
+  dfr020: 
     description: Source Object
     xml: 
       name: Sources
@@ -3248,7 +3248,7 @@ definitions:
       HPVProgramsPollutants: 
         type: array
         items: 
-          "$ref": "#/definitions/dfr020_s.HPVProgramsPollutants" 
+          "$ref": "#/definitions/dfr023" 
         xml: 
           name: HPVProgramsPollutants
           wrapped: true
@@ -3256,14 +3256,14 @@ definitions:
         type: array
         title: FRV Programs Pollutants
         items: 
-          "$ref": "#/definitions/dfr020_s.FRVProgramsPollutants" 
+          "$ref": "#/definitions/dfr022" 
         xml: 
           name: FRVProgramsPollutants
           wrapped: true
       AFSPrograms: 
         type: array
         items: 
-          "$ref": "#/definitions/dfr020_s.AFSPrograms" 
+          "$ref": "#/definitions/dfr021" 
         xml: 
           name: AFSPrograms
           wrapped: true
@@ -3273,7 +3273,7 @@ definitions:
     - HPVProgramsPollutants
     - FRVProgramsPollutants
     - AFSPrograms
-  dfr020_s.AFSPrograms: 
+  dfr021: 
     description: AFS Program Object
     xml: 
       name: AFSPrograms
@@ -3361,7 +3361,7 @@ definitions:
     - Qtr10Status
     - Qtr11Status
     - Qtr12Status
-  dfr020_s.FRVProgramsPollutants: 
+  dfr022: 
     description: FRV Programs Pollutant Object
     xml: 
       name: FRVProgramsPollutants
@@ -3467,7 +3467,7 @@ definitions:
     - Qtr11Status
     - Qtr12Status
     - Agency
-  dfr020_s.HPVProgramsPollutants: 
+  dfr023: 
     description: HPV Programs Pollutant Object
     xml: 
       name: HPVProgramsPollutants
@@ -7989,11 +7989,11 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfr112_s" 
+          "$ref": "#/definitions/dfr112" 
         xml: 
           name: Sources
           wrapped: true
-  dfr112_s: 
+  dfr112: 
     description: Sources Object
     xml: 
       name: Sources
