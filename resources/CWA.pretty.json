@@ -2319,6 +2319,30 @@
          ,"type": "string"
          ,"required": false
       }
+      ,"f.p_e90_years": {
+          "name": "p_e90_years"
+         ,"in": "formData"
+         ,"type": "number"
+         ,"required": false
+      }
+      ,"q.p_e90_years": {
+          "name": "p_e90_years"
+         ,"in": "query"
+         ,"type": "number"
+         ,"required": false
+      }
+      ,"f.p_e90_count": {
+          "name": "p_e90_count"
+         ,"in": "formData"
+         ,"type": "number"
+         ,"required": false
+      }
+      ,"q.p_e90_count": {
+          "name": "p_e90_count"
+         ,"in": "query"
+         ,"type": "number"
+         ,"required": false
+      }
       ,"f.p_alrexceed": {
           "name": "p_alrexceed"
          ,"in": "formData"
@@ -3309,6 +3333,12 @@
                   ,"type": "string"
                   ,"required": false
                }
+               ,{
+                   "$ref": "#\/parameters\/q.p_e90_count"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_e90_years"
+               }
             ]
             ,"tags": [
                 "Facility Information"
@@ -3789,6 +3819,12 @@
                   ,"type": "string"
                   ,"required": false
                }
+               ,{
+                   "$ref": "#\/parameters\/f.p_e90_count"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_e90_years"
+               }
             ]
             ,"tags": [
                 "Facility Information"
@@ -4257,6 +4293,12 @@
                ,{
                    "$ref": "#\/parameters\/q.p_pretty_print"
                }
+               ,{
+                   "$ref": "#\/parameters\/q.p_e90_count"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_e90_years"
+               }
             ]
             ,"tags": [
                 "Facility Information"
@@ -4722,6 +4764,12 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.p_pretty_print"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_e90_count"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_e90_years"
                }
             ]
             ,"tags": [
@@ -6686,6 +6734,36 @@
                ,"example": "C6"
                ,"description": "Contains flags that identify what web accessible documents are available for the facility."
             }
+            ,"E90Exceeds5yr": {
+                "type": "string"
+            }
+            ,"E90Exceeds4yr": {
+                "type": "string"
+            }
+            ,"E90Exceeds3yr": {
+                "type": "string"
+            }
+            ,"E90Exceeds2yr": {
+                "type": "string"
+            }
+            ,"E90Exceeds1yr": {
+                "type": "string"
+            }
+            ,"E90Pollutants5yr": {
+                "type": "string"
+            }
+            ,"E90Pollutants4yr": {
+                "type": "string"
+            }
+            ,"E90Pollutants3yr": {
+                "type": "string"
+            }
+            ,"E90Pollutants2yr": {
+                "type": "string"
+            }
+            ,"E90Pollutants1yr": {
+                "type": "string"
+            }
             ,"Score": {
                 "type": "string"
                ,"title": "Score"
@@ -6985,6 +7063,16 @@
             ,"ElectrSubmissionTypeCode"
             ,"ElectrSubmissionTypeDesc"
             ,"WebDocs"
+            ,"E90Exceeds5yr"
+            ,"E90Exceeds4yr"
+            ,"E90Exceeds3yr"
+            ,"E90Exceeds2yr"
+            ,"E90Exceeds1yr"
+            ,"E90Pollutants5yr"
+            ,"E90Pollutants4yr"
+            ,"E90Pollutants3yr"
+            ,"E90Pollutants2yr"
+            ,"E90Pollutants1yr"
             ,"Score"
          ]
       }
@@ -7185,6 +7273,9 @@
                ,"example": "$963,531"
                ,"description": "The total dollar amount of either assessed or final penalties within the five year time period"
             }
+            ,"BadSystemIDs": {
+                "type": "string"
+            }
             ,"QueryID": {
                 "type": "string"
                ,"title": "Query Identifier"
@@ -7227,6 +7318,7 @@
             ,"BioV3Rows"
             ,"VioLast4QRows"
             ,"TotalPenalties"
+            ,"BadSystemIDs"
             ,"QueryID"
             ,"PageNo"
          ]
@@ -8665,6 +8757,36 @@
                ,"example": "C6"
                ,"description": "Contains flags that identify what web accessible documents are available for the facility."
             }
+            ,"E90Exceeds5yr": {
+                "type": "string"
+            }
+            ,"E90Exceeds4yr": {
+                "type": "string"
+            }
+            ,"E90Exceeds3yr": {
+                "type": "string"
+            }
+            ,"E90Exceeds2yr": {
+                "type": "string"
+            }
+            ,"E90Exceeds1yr": {
+                "type": "string"
+            }
+            ,"E90Pollutants5yr": {
+                "type": "string"
+            }
+            ,"E90Pollutants4yr": {
+                "type": "string"
+            }
+            ,"E90Pollutants3yr": {
+                "type": "string"
+            }
+            ,"E90Pollutants2yr": {
+                "type": "string"
+            }
+            ,"E90Pollutants1yr": {
+                "type": "string"
+            }
             ,"Score": {
                 "type": "string"
                ,"title": "Score"
@@ -8965,6 +9087,16 @@
             ,"ElectrSubmissionTypeCode"
             ,"ElectrSubmissionTypeDesc"
             ,"WebDocs"
+            ,"E90Exceeds5yr"
+            ,"E90Exceeds4yr"
+            ,"E90Exceeds3yr"
+            ,"E90Exceeds2yr"
+            ,"E90Exceeds1yr"
+            ,"E90Pollutants5yr"
+            ,"E90Pollutants4yr"
+            ,"E90Pollutants3yr"
+            ,"E90Pollutants2yr"
+            ,"E90Pollutants1yr"
             ,"Score"
             ,"MaxScore"
          ]
@@ -9045,6 +9177,9 @@
                ,"example": "$963,531"
                ,"description": "The total dollar amount of either assessed or final penalties within the five year time period"
             }
+            ,"BadSystemIDs": {
+                "type": "string"
+            }
             ,"IconBaseURL": {
                 "type": "string"
                ,"title": "Icon Base URL"
@@ -9110,6 +9245,7 @@
             ,"BioV3Rows"
             ,"VioLast4QRows"
             ,"TotalPenalties"
+            ,"BadSystemIDs"
             ,"IconBaseURL"
             ,"PopUpBaseURL"
             ,"ServiceBaseURL"
@@ -10413,6 +10549,36 @@
                ,"example": "C6"
                ,"description": "Contains flags that identify what web accessible documents are available for the facility."
             }
+            ,"E90Exceeds5yr": {
+                "type": "string"
+            }
+            ,"E90Exceeds4yr": {
+                "type": "string"
+            }
+            ,"E90Exceeds3yr": {
+                "type": "string"
+            }
+            ,"E90Exceeds2yr": {
+                "type": "string"
+            }
+            ,"E90Exceeds1yr": {
+                "type": "string"
+            }
+            ,"E90Pollutants5yr": {
+                "type": "string"
+            }
+            ,"E90Pollutants4yr": {
+                "type": "string"
+            }
+            ,"E90Pollutants3yr": {
+                "type": "string"
+            }
+            ,"E90Pollutants2yr": {
+                "type": "string"
+            }
+            ,"E90Pollutants1yr": {
+                "type": "string"
+            }
             ,"Score": {
                 "type": "number"
                ,"title": "Score"
@@ -10710,6 +10876,16 @@
             ,"ElectrSubmissionTypeCode"
             ,"ElectrSubmissionTypeDesc"
             ,"WebDocs"
+            ,"E90Exceeds5yr"
+            ,"E90Exceeds4yr"
+            ,"E90Exceeds3yr"
+            ,"E90Exceeds2yr"
+            ,"E90Exceeds1yr"
+            ,"E90Pollutants5yr"
+            ,"E90Pollutants4yr"
+            ,"E90Pollutants3yr"
+            ,"E90Pollutants2yr"
+            ,"E90Pollutants1yr"
             ,"Score"
             ,"MaxScore"
          ]

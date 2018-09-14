@@ -2507,6 +2507,26 @@ parameters:
       - NOA = None of the above
     type: string
     required: false
+  f.p_e90_years: 
+    name: p_e90_years
+    in: formData
+    type: number
+    required: false
+  q.p_e90_years: 
+    name: p_e90_years
+    in: query
+    type: number
+    required: false
+  f.p_e90_count: 
+    name: p_e90_count
+    in: formData
+    type: number
+    required: false
+  q.p_e90_count: 
+    name: p_e90_count
+    in: query
+    type: number
+    required: false
   f.p_alrexceed: 
     name: p_alrexceed
     in: formData
@@ -3175,6 +3195,8 @@ paths:
         description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
         type: string
         required: false
+      - "$ref": "#/parameters/q.p_e90_count"
+      - "$ref": "#/parameters/q.p_e90_years"
       tags: 
       - Facility Information
       responses: 
@@ -3355,6 +3377,8 @@ paths:
         description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
         type: string
         required: false
+      - "$ref": "#/parameters/f.p_e90_count"
+      - "$ref": "#/parameters/f.p_e90_years"
       tags: 
       - Facility Information
       responses: 
@@ -3533,6 +3557,8 @@ paths:
         type: string
         required: false
       - "$ref": "#/parameters/q.p_pretty_print"
+      - "$ref": "#/parameters/q.p_e90_count"
+      - "$ref": "#/parameters/q.p_e90_years"
       tags: 
       - Facility Information
       responses: 
@@ -3710,6 +3736,8 @@ paths:
         type: string
         required: false
       - "$ref": "#/parameters/f.p_pretty_print"
+      - "$ref": "#/parameters/f.p_e90_count"
+      - "$ref": "#/parameters/f.p_e90_years"
       tags: 
       - Facility Information
       responses: 
@@ -5205,6 +5233,26 @@ definitions:
         title: Web Documents
         example: C6
         description: Contains flags that identify what web accessible documents are available for the facility.
+      E90Exceeds5yr: 
+        type: string
+      E90Exceeds4yr: 
+        type: string
+      E90Exceeds3yr: 
+        type: string
+      E90Exceeds2yr: 
+        type: string
+      E90Exceeds1yr: 
+        type: string
+      E90Pollutants5yr: 
+        type: string
+      E90Pollutants4yr: 
+        type: string
+      E90Pollutants3yr: 
+        type: string
+      E90Pollutants2yr: 
+        type: string
+      E90Pollutants1yr: 
+        type: string
       Score: 
         type: string
         title: Score
@@ -5501,6 +5549,16 @@ definitions:
     - ElectrSubmissionTypeCode
     - ElectrSubmissionTypeDesc
     - WebDocs
+    - E90Exceeds5yr
+    - E90Exceeds4yr
+    - E90Exceeds3yr
+    - E90Exceeds2yr
+    - E90Exceeds1yr
+    - E90Pollutants5yr
+    - E90Pollutants4yr
+    - E90Pollutants3yr
+    - E90Pollutants2yr
+    - E90Pollutants1yr
     - Score
   cwa1_MapData: 
     description: Map Data Object
@@ -5659,6 +5717,8 @@ definitions:
         title: Total Penalties
         example: "$963,531"
         description: The total dollar amount of either assessed or final penalties within the five year time period
+      BadSystemIDs: 
+        type: string
       QueryID: 
         type: string
         title: Query Identifier
@@ -5694,6 +5754,7 @@ definitions:
     - BioV3Rows
     - VioLast4QRows
     - TotalPenalties
+    - BadSystemIDs
     - QueryID
     - PageNo
   cwa2_ClusterData: 
@@ -6863,6 +6924,26 @@ definitions:
         title: Web Documents
         example: C6
         description: Contains flags that identify what web accessible documents are available for the facility.
+      E90Exceeds5yr: 
+        type: string
+      E90Exceeds4yr: 
+        type: string
+      E90Exceeds3yr: 
+        type: string
+      E90Exceeds2yr: 
+        type: string
+      E90Exceeds1yr: 
+        type: string
+      E90Pollutants5yr: 
+        type: string
+      E90Pollutants4yr: 
+        type: string
+      E90Pollutants3yr: 
+        type: string
+      E90Pollutants2yr: 
+        type: string
+      E90Pollutants1yr: 
+        type: string
       Score: 
         type: string
         title: Score
@@ -7160,6 +7241,16 @@ definitions:
     - ElectrSubmissionTypeCode
     - ElectrSubmissionTypeDesc
     - WebDocs
+    - E90Exceeds5yr
+    - E90Exceeds4yr
+    - E90Exceeds3yr
+    - E90Exceeds2yr
+    - E90Exceeds1yr
+    - E90Pollutants5yr
+    - E90Pollutants4yr
+    - E90Pollutants3yr
+    - E90Pollutants2yr
+    - E90Pollutants1yr
     - Score
     - MaxScore
   cwa2_Results: 
@@ -7223,6 +7314,8 @@ definitions:
         title: Total Penalties
         example: "$963,531"
         description: The total dollar amount of either assessed or final penalties within the five year time period
+      BadSystemIDs: 
+        type: string
       IconBaseURL: 
         type: string
         title: Icon Base URL
@@ -7276,6 +7369,7 @@ definitions:
     - BioV3Rows
     - VioLast4QRows
     - TotalPenalties
+    - BadSystemIDs
     - IconBaseURL
     - PopUpBaseURL
     - ServiceBaseURL
@@ -8337,6 +8431,26 @@ definitions:
         title: Web Documents
         example: C6
         description: Contains flags that identify what web accessible documents are available for the facility.
+      E90Exceeds5yr: 
+        type: string
+      E90Exceeds4yr: 
+        type: string
+      E90Exceeds3yr: 
+        type: string
+      E90Exceeds2yr: 
+        type: string
+      E90Exceeds1yr: 
+        type: string
+      E90Pollutants5yr: 
+        type: string
+      E90Pollutants4yr: 
+        type: string
+      E90Pollutants3yr: 
+        type: string
+      E90Pollutants2yr: 
+        type: string
+      E90Pollutants1yr: 
+        type: string
       Score: 
         type: number
         title: Score
@@ -8631,6 +8745,16 @@ definitions:
     - ElectrSubmissionTypeCode
     - ElectrSubmissionTypeDesc
     - WebDocs
+    - E90Exceeds5yr
+    - E90Exceeds4yr
+    - E90Exceeds3yr
+    - E90Exceeds2yr
+    - E90Exceeds1yr
+    - E90Pollutants5yr
+    - E90Pollutants4yr
+    - E90Pollutants3yr
+    - E90Pollutants2yr
+    - E90Pollutants1yr
     - Score
     - MaxScore
   cwa3_MapData: 
