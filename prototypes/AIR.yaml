@@ -1,0 +1,432 @@
+---
+openapi: '3.0.0'
+info: 
+  title: U.S. EPA Enforcement and Compliance History Online (ECHO) - Clean Air Act
+  description: |-
+    Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.
+    <BR><BR>Air Rest Services provides multiple service endpoints, each with specific capabilities, to search and retrieve data on facilities regulated under the Clean Air Act (CAA). The returned results reflect data drawn from EPA's ICIS-Air database.
+    <BR><BR>
+    The get_facilities, get_map, get_qid, and get_download end points are meant to be used together, while the enhanced get_facility_info end point is self contained.
+      The get_facility_info end point returns either an array of state, county or zip clusters with summary statistics per cluster or an array of facilities.
+    <BR><BR>
+    The recommended use scenario for get_facilities, get_qid, get_map, and get_downoad is:
+    <br>
+    <br><b>1)</b>  Use get_facilities to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.
+    <br><b>2)</b>  Use get_qid, with the returned QID, to paginate through arrays of facility results.
+    <br><b>3)</b>  Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates that meet the QID query criteria.
+    <br><b>4)</b>  Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.
+    <br>
+    <br>
+    Use the qcolumns parameter to customize your search results.  Use the Metdata service endpoint for a list of available output objects, their Column Ids, and their definitions to help you build your customized output. 
+    <br><br>
+    Additional ECHO Resources:   <a href="https://echo.epa.gov/tools/web-services">Web Services</a>, <a href="https://echo.epa.gov/resources/echo-data/about-the-data">About ECHO's Data</a>, <a href="https://echo.epa.gov/tools/data-downloads">Data Downloads</a>
+    <br>
+  contact: 
+    name: US EPA, OECA Integration, Targeting and Access Branch
+    url: "https://echo.epa.gov/resources/general-info/contact-us"
+  license: 
+    name: Creative Commons Zero Public Domain Dedication
+    url: "https://creativecommons.org/publicdomain/zero/1.0/"
+  version: '0.0.0'
+paths: 
+  "/air_rest_services.get_facilities": 
+    summary: Clean Air Act Facility Search
+    description: Validates query search parameters and returns query identifier.  Use the responseset parameter to set the page size
+    get: 
+      tags: 
+        - Facilities
+      parameters: 
+        - $ref: '#/components/parameters/output'
+        - $ref: '#/components/parameters/p_fn'
+        - $ref: '#/components/parameters/p_sa'
+        - $ref: '#/components/parameters/p_sa1'
+        - $ref: '#/components/parameters/p_ct'
+        - $ref: '#/components/parameters/p_co'
+        - $ref: '#/components/parameters/p_fips'
+        - $ref: '#/components/parameters/p_st'
+        - $ref: '#/components/parameters/p_zip'
+        - $ref: '#/components/parameters/p_lcon'
+        - $ref: '#/components/parameters/p_frs'
+        - $ref: '#/components/parameters/p_reg'
+        - $ref: '#/components/parameters/p_sic'
+        - $ref: '#/components/parameters/p_ncs'
+        - $ref: '#/components/parameters/p_qnc'
+        - $ref: '#/components/parameters/p_pen'
+        - $ref: '#/components/parameters/p_opst'
+        - $ref: '#/components/parameters/p_c1lat'
+        - $ref: '#/components/parameters/p_c1lon'
+        - $ref: '#/components/parameters/p_c2lat'
+        - $ref: '#/components/parameters/p_c2lon'
+        - $ref: '#/components/parameters/p_usmex'
+        - $ref: '#/components/parameters/p_sic2'
+        - $ref: '#/components/parameters/p_sic4'
+        - $ref: '#/components/parameters/p_fa'
+        - $ref: '#/components/parameters/p_act'
+        - $ref: '#/components/parameters/p_maj'
+        - $ref: '#/components/parameters/p_mact'
+        - $ref: '#/components/parameters/p_prog'
+        - $ref: '#/components/parameters/p_fea'
+        - $ref: '#/components/parameters/p_feay'
+        - $ref: '#/components/parameters/p_feaa'
+        - $ref: '#/components/parameters/p_iea'
+        - $ref: '#/components/parameters/p_ieay'
+        - $ref: '#/components/parameters/p_ieaa'
+        - $ref: '#/components/parameters/p_qiv'
+        - $ref: '#/components/parameters/p_naa'
+        - $ref: '#/components/parameters/p_impw'
+        - $ref: '#/components/parameters/p_trep'
+        - $ref: '#/components/parameters/p_tri_cat'
+        - $ref: '#/components/parameters/p_tri_amt'
+        - $ref: '#/components/parameters/p_tri_any_amt'
+        - $ref: '#/components/parameters/p_tri_pol'
+        - $ref: '#/components/parameters/p_ghg_cat'
+        - $ref: '#/components/parameters/p_ghg_amt'
+        - $ref: '#/components/parameters/p_ghg_any_amt'
+        - $ref: '#/components/parameters/p_ghg_yr'
+        - $ref: '#/components/parameters/p_nei_pol'
+        - $ref: '#/components/parameters/p_nei_amt'
+        - $ref: '#/components/parameters/p_nei_any_amt'
+        - $ref: '#/components/parameters/p_nei_yr'
+        - $ref: '#/components/parameters/p_nei_cat'
+        - $ref: '#/components/parameters/p_pm'
+        - $ref: '#/components/parameters/p_pd'
+        - $ref: '#/components/parameters/p_ico'
+        - $ref: '#/components/parameters/p_huc'
+        - $ref: '#/components/parameters/p_wbd'
+        - $ref: '#/components/parameters/p_pid'
+        - $ref: '#/components/parameters/p_med.AIR'
+        - $ref: '#/components/parameters/p_ysl'
+        - $ref: '#/components/parameters/p_ysly'
+        - $ref: '#/components/parameters/p_ysla'
+        - $ref: '#/components/parameters/p_stsl'
+        - $ref: '#/components/parameters/p_stsly'
+        - $ref: '#/components/parameters/p_stsla'
+        - $ref: '#/components/parameters/p_stres'
+        - $ref: '#/components/parameters/p_sttyp'
+        - $ref: '#/components/parameters/p_qs'
+        - $ref: '#/components/parameters/p_sfs'
+        - $ref: '#/components/parameters/p_tribeid'
+        - $ref: '#/components/parameters/p_tribename'
+        - $ref: '#/components/parameters/p_tribedist'
+        - $ref: '#/components/parameters/p_owop.AIR'
+        - $ref: '#/components/parameters/p_agoo'
+        - $ref: '#/components/parameters/p_idt1'
+        - $ref: '#/components/parameters/p_idt2'
+        - $ref: '#/components/parameters/p_stdt1'
+        - $ref: '#/components/parameters/p_stdt2'
+        - $ref: '#/components/parameters/p_pityp'
+        - $ref: '#/components/parameters/p_cifdi'
+        - $ref: '#/components/parameters/p_pfead1'
+        - $ref: '#/components/parameters/p_pfead2'
+        - $ref: '#/components/parameters/p_pfeat'
+        - $ref: '#/components/parameters/p_psncq'
+        - $ref: '#/components/parameters/p_pctrack'
+        - $ref: '#/components/parameters/p_swpa'
+        - $ref: '#/components/parameters/p_des'
+        - $ref: '#/components/parameters/p_fntype'
+        - $ref: '#/components/parameters/p_hpvmth'
+        - $ref: '#/components/parameters/p_recvio'
+        - $ref: '#/components/parameters/p_pollvio'
+        - $ref: '#/components/parameters/p_ar'
+        - $ref: '#/components/parameters/p_tri_yr'
+        - $ref: '#/components/parameters/p_pidall'
+        - $ref: '#/components/parameters/p_fac_ico'
+        - $ref: '#/components/parameters/p_icoo'
+        - $ref: '#/components/parameters/p_fac_icos'
+        - $ref: '#/components/parameters/p_ejscreen'
+        - $ref: '#/components/parameters/p_limit_addr'
+        - $ref: '#/components/parameters/p_lat'
+        - $ref: '#/components/parameters/p_long'
+        - $ref: '#/components/parameters/p_radius'
+        - $ref: '#/components/parameters/p_decouple'
+        - $ref: '#/components/parameters/p_ejscreen_over80cnt'
+        - $ref: '#/components/parameters/queryset'
+        - $ref: '#/components/parameters/responseset'
+        - $ref: '#/components/parameters/tablelist'
+        - $ref: '#/components/parameters/maplist'
+        - $ref: '#/components/parameters/summarylist'
+        - $ref: '#/components/parameters/callback'
+        - $ref: '#/components/parameters/qcolumns'
+      responses: 
+        'default': 
+          $ref: '#/components/responses/air_rest_services.get_facilities.default'
+    post: 
+      tags: 
+        - Facilities
+      requestBody: 
+        $ref: '#/components/requestBodies/air_rest_services.get_facilities.post.requestBody'
+      responses: 
+        'default': 
+          $ref: '#/components/responses/air_rest_services.get_facilities.default'
+  "/air_rest_services.get_facility_info": 
+    summary: Clean Air Act Facility Enhanced Search
+    description: Returns either an array of Facilities or an array of Clusters that meet the specified search criteria.
+    get: 
+      tags: 
+        - Facilities
+      parameters: 
+        - $ref: '#/components/parameters/output.get_facility_info'
+        - $ref: '#/components/parameters/p_fn'
+        - $ref: '#/components/parameters/p_sa'
+        - $ref: '#/components/parameters/p_sa1'
+        - $ref: '#/components/parameters/p_ct'
+        - $ref: '#/components/parameters/p_co'
+        - $ref: '#/components/parameters/p_fips'
+        - $ref: '#/components/parameters/p_st'
+        - $ref: '#/components/parameters/p_zip'
+        - $ref: '#/components/parameters/p_lcon'
+        - $ref: '#/components/parameters/p_frs'
+        - $ref: '#/components/parameters/p_reg'
+        - $ref: '#/components/parameters/p_sic'
+        - $ref: '#/components/parameters/p_ncs'
+        - $ref: '#/components/parameters/p_qnc'
+        - $ref: '#/components/parameters/p_pen'
+        - $ref: '#/components/parameters/p_opst'
+        - $ref: '#/components/parameters/xmin'
+        - $ref: '#/components/parameters/ymin'
+        - $ref: '#/components/parameters/xmax'
+        - $ref: '#/components/parameters/ymax'
+        - $ref: '#/components/parameters/p_usmex'
+        - $ref: '#/components/parameters/p_sic2'
+        - $ref: '#/components/parameters/p_sic4'
+        - $ref: '#/components/parameters/p_fa'
+        - $ref: '#/components/parameters/p_act'
+        - $ref: '#/components/parameters/p_maj'
+        - $ref: '#/components/parameters/p_mact'
+        - $ref: '#/components/parameters/p_prog'
+        - $ref: '#/components/parameters/p_fea'
+        - $ref: '#/components/parameters/p_feay'
+        - $ref: '#/components/parameters/p_feaa'
+        - $ref: '#/components/parameters/p_iea'
+        - $ref: '#/components/parameters/p_ieay'
+        - $ref: '#/components/parameters/p_ieaa'
+        - $ref: '#/components/parameters/p_qiv'
+        - $ref: '#/components/parameters/p_naa'
+        - $ref: '#/components/parameters/p_impw'
+        - $ref: '#/components/parameters/p_trep'
+        - $ref: '#/components/parameters/p_tri_cat'
+        - $ref: '#/components/parameters/p_tri_amt'
+        - $ref: '#/components/parameters/p_tri_any_amt'
+        - $ref: '#/components/parameters/p_tri_pol'
+        - $ref: '#/components/parameters/p_ghg_cat'
+        - $ref: '#/components/parameters/p_ghg_amt'
+        - $ref: '#/components/parameters/p_ghg_any_amt'
+        - $ref: '#/components/parameters/p_ghg_yr'
+        - $ref: '#/components/parameters/p_nei_pol'
+        - $ref: '#/components/parameters/p_nei_amt'
+        - $ref: '#/components/parameters/p_nei_any_amt'
+        - $ref: '#/components/parameters/p_nei_yr'
+        - $ref: '#/components/parameters/p_nei_cat'
+        - $ref: '#/components/parameters/p_pm'
+        - $ref: '#/components/parameters/p_pd'
+        - $ref: '#/components/parameters/p_ico'
+        - $ref: '#/components/parameters/p_huc'
+        - $ref: '#/components/parameters/p_wbd'
+        - $ref: '#/components/parameters/p_pid'
+        - $ref: '#/components/parameters/p_med.AIR'
+        - $ref: '#/components/parameters/p_ysl'
+        - $ref: '#/components/parameters/p_ysly'
+        - $ref: '#/components/parameters/p_ysla'
+        - $ref: '#/components/parameters/p_stsl'
+        - $ref: '#/components/parameters/p_stsly'
+        - $ref: '#/components/parameters/p_stsla'
+        - $ref: '#/components/parameters/p_stres'
+        - $ref: '#/components/parameters/p_sttyp'
+        - $ref: '#/components/parameters/p_qs'
+        - $ref: '#/components/parameters/p_sfs'
+        - $ref: '#/components/parameters/p_tribeid'
+        - $ref: '#/components/parameters/p_tribename'
+        - $ref: '#/components/parameters/p_tribedist'
+        - $ref: '#/components/parameters/p_owop.AIR'
+        - $ref: '#/components/parameters/p_agoo'
+        - $ref: '#/components/parameters/p_idt1'
+        - $ref: '#/components/parameters/p_idt2'
+        - $ref: '#/components/parameters/p_stdt1'
+        - $ref: '#/components/parameters/p_stdt2'
+        - $ref: '#/components/parameters/p_pityp'
+        - $ref: '#/components/parameters/p_cifdi'
+        - $ref: '#/components/parameters/p_pfead1'
+        - $ref: '#/components/parameters/p_pfead2'
+        - $ref: '#/components/parameters/p_pfeat'
+        - $ref: '#/components/parameters/p_psncq'
+        - $ref: '#/components/parameters/p_pctrack'
+        - $ref: '#/components/parameters/p_swpa'
+        - $ref: '#/components/parameters/p_des'
+        - $ref: '#/components/parameters/p_fntype'
+        - $ref: '#/components/parameters/p_hpvmth'
+        - $ref: '#/components/parameters/p_recvio'
+        - $ref: '#/components/parameters/p_pollvio'
+        - $ref: '#/components/parameters/p_ar'
+        - $ref: '#/components/parameters/p_tri_yr'
+        - $ref: '#/components/parameters/p_pidall'
+        - $ref: '#/components/parameters/p_fac_ico'
+        - $ref: '#/components/parameters/p_icoo'
+        - $ref: '#/components/parameters/p_fac_icos'
+        - $ref: '#/components/parameters/p_ejscreen'
+        - $ref: '#/components/parameters/p_limit_addr'
+        - $ref: '#/components/parameters/p_lat'
+        - $ref: '#/components/parameters/p_long'
+        - $ref: '#/components/parameters/p_radius'
+        - $ref: '#/components/parameters/p_decouple'
+        - $ref: '#/components/parameters/p_ejscreen_over80cnt'
+        - $ref: '#/components/parameters/queryset'
+        - $ref: '#/components/parameters/responseset'
+        - $ref: '#/components/parameters/summarylist'
+        - $ref: '#/components/parameters/callback'
+        - $ref: '#/components/parameters/qcolumns'
+        - $ref: '#/components/parameters/p_pretty_print'
+      responses: 
+        'default': 
+          $ref: '#/components/responses/air_rest_services.get_facility_info.default'
+    post: 
+      tags: 
+        - Facilities
+      requestBody: 
+        $ref: '#/components/requestBodies/air_rest_services.get_facility_info.post.requestBody'
+      responses: 
+        'default': 
+          $ref: '#/components/responses/air_rest_services.get_facility_info.default'
+  "/air_rest_services.get_qid": 
+    summary: Clean Air Act Search by Query ID
+    description: GET_QID is passed with a query ID corresponding to a previously run get_facilities query. It then returns a Facility object containing all matching facilities. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. 
+    get: 
+      tags: 
+        - Facilities
+      parameters: 
+        - $ref: '#/components/parameters/output'
+        - $ref: '#/components/parameters/qid'
+        - $ref: '#/components/parameters/pageno'
+        - $ref: '#/components/parameters/callback'
+        - $ref: '#/components/parameters/newsort'
+        - $ref: '#/components/parameters/descending'
+        - $ref: '#/components/parameters/qcolumns'
+      responses: 
+        'default': 
+          $ref: '#/components/responses/air_rest_services.get_qid.default'
+    post: 
+      tags: 
+        - Facilities
+      requestBody: 
+        $ref: '#/components/requestBodies/air_rest_services.get_qid.post.requestBody'
+      responses: 
+        'default': 
+          $ref: '#/components/responses/air_rest_services.get_qid.default'
+  "/air_rest_services.get_map": 
+    summary: Clean Air Act Map Service
+    description: The purpose of the GET_MAP service is to display facility coordinates and facility clusters related to a get_facilities facility query. Currently, the maximum number of coordinates returned is 500. GET_MAP performs automatic clustering at the state, county, and zip code levels to maximize the number of coordinates returned.
+    get: 
+      tags: 
+        - Facilities
+      parameters: 
+        - $ref: '#/components/parameters/output'
+        - $ref: '#/components/parameters/qid'
+        - $ref: '#/components/parameters/callback'
+        - $ref: '#/components/parameters/tablelist'
+        - $ref: '#/components/parameters/c1_lat'
+        - $ref: '#/components/parameters/c1_long'
+        - $ref: '#/components/parameters/c2_lat'
+        - $ref: '#/components/parameters/c2_long'
+        - $ref: '#/components/parameters/p_id'
+      responses: 
+        'default': 
+          $ref: '#/components/responses/air_rest_services.get_map.default'
+    post: 
+      tags: 
+        - Facilities
+      requestBody: 
+        $ref: '#/components/requestBodies/air_rest_services.get_map.post.requestBody'
+      responses: 
+        'default': 
+          $ref: '#/components/responses/air_rest_services.get_map.default'
+  "/air_rest_services.get_download": 
+    summary: Clean Air Act Download Data Service
+    description: Based on the QID obtained from a get_facilities or get_facility_info query, return a comma sepated vaule (CSV) file of the facilities found.
+    get: 
+      tags: 
+        - Facilities
+      parameters: 
+        - $ref: '#/components/parameters/output.get_download'
+        - $ref: '#/components/parameters/qid'
+        - $ref: '#/components/parameters/qcolumns'
+        - $ref: '#/components/parameters/p_pretty_print'
+      responses: 
+        'default': 
+          $ref: '#/components/responses/air_rest_services.get_download.default'
+    post: 
+      tags: 
+        - Facilities
+      requestBody: 
+        $ref: '#/components/requestBodies/air_rest_services.get_download.post.requestBody'
+      responses: 
+        'default': 
+          $ref: '#/components/responses/air_rest_services.get_download.default'
+  "/air_rest_services.get_info_clusters": 
+    summary: Clean Air Act Info Clusters Service
+    description: Based on the QID obtained from a clustered get_facility_info query, download cluster facility information as either a CSV or GEOJSON file.
+    get: 
+      tags: 
+        - Facilities
+      parameters: 
+        - $ref: '#/components/parameters/output.get_download'
+        - $ref: '#/components/parameters/p_qid'
+        - $ref: '#/components/parameters/p_pretty_print'
+      responses: 
+        'default': 
+          $ref: '#/components/responses/air_rest_services.get_info_clusters.default'
+    post: 
+      tags: 
+        - Facilities
+      requestBody: 
+        $ref: '#/components/requestBodies/air_rest_services.get_info_clusters.post.requestBody'
+      responses: 
+        'default': 
+          $ref: '#/components/responses/air_rest_services.get_info_clusters.default'
+  "/air_rest_services.get_geojson": 
+    summary: Clean Air Act GeoJSON Service
+    description: Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found.
+    get: 
+      tags: 
+        - Facilities
+      parameters: 
+        - $ref: '#/components/parameters/output.get_geojson'
+        - $ref: '#/components/parameters/qid'
+        - $ref: '#/components/parameters/callback'
+        - $ref: '#/components/parameters/newsort'
+        - $ref: '#/components/parameters/descending'
+        - $ref: '#/components/parameters/qcolumns'
+        - $ref: '#/components/parameters/p_pretty_print'
+      responses: 
+        'default': 
+          $ref: '#/components/responses/air_rest_services.get_geojson.default'
+    post: 
+      tags: 
+        - Facilities
+      requestBody: 
+        $ref: '#/components/requestBodies/air_rest_services.get_geojson.post.requestBody'
+      responses: 
+        'default': 
+          $ref: '#/components/responses/air_rest_services.get_geojson.default'
+  "/air_rest_services.metadata": 
+    summary: Clean Air Act Metadata Service
+    description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
+    get: 
+      tags: 
+        - Metadata
+      parameters: 
+        - $ref: '#/components/parameters/output'
+        - $ref: '#/components/parameters/callback'
+      responses: 
+        'default': 
+          $ref: '#/components/responses/air_rest_services.metadata.default'
+    post: 
+      tags: 
+        - Metadata
+      requestBody: 
+        $ref: '#/components/requestBodies/air_rest_services.metadata.post.requestBody'
+      responses: 
+        'default': 
+          $ref: '#/components/responses/air_rest_services.metadata.default'
+components: {}
+externalDocs: 
+  description: US EPA Enforcement and Compliance History Online 
+  url: "https://echo.epa.gov/"
