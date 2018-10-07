@@ -1377,6 +1377,8 @@ components:
           type: array
           items: 
             $ref: '#/components/schemas/air_rest_services.get_facilities.Facilities'
+          xml: 
+            wrapped: true
         'MapOutput': 
           $ref: '#/components/schemas/air_rest_services.get_facilities.MapOutput'
       required: 
@@ -2625,6 +2627,8 @@ components:
           type: array
           items: 
             $ref: '#/components/schemas/air_rest_services.get_facilities.Facilities'
+          xml: 
+            wrapped: true
       required: 
         - Message
         - QueryRows
