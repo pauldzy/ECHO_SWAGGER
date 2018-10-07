@@ -1506,6 +1506,9 @@
                   ,"items": {
                       "$ref": "#/components/schemas/air_rest_services.ClusterData"
                   }
+                  ,"xml": {
+                      "wrapped": true
+                  }
                }
             }
             ,"required": [
@@ -2224,6 +2227,9 @@
                    "type": "array"
                   ,"items": {
                       "$ref": "#/components/schemas/air_rest_services.MapData"
+                  }
+                  ,"xml": {
+                      "wrapped": true
                   }
                }
             }
@@ -3026,11 +3032,17 @@
                   ,"items": {
                       "$ref": "#/components/schemas/QueryParameters"
                   }
+                  ,"xml": {
+                      "wrapped": true
+                  }
                }
                ,"Facilities": {
                    "type": "array"
                   ,"items": {
                       "$ref": "#/components/schemas/air_rest_services.get_facility_info.Facilities"
+                  }
+                  ,"xml": {
+                      "wrapped": true
                   }
                }
             }
@@ -3110,6 +3122,9 @@
                    "type": "array"
                   ,"items": {
                       "$ref": "#/components/schemas/QueryParameters"
+                  }
+                  ,"xml": {
+                      "wrapped": true
                   }
                }
                ,"ClusterRecords": {
@@ -3192,6 +3207,9 @@
                    "type": "array"
                   ,"items": {
                       "$ref": "#/components/schemas/air_rest_services.get_geojson.Feature"
+                  }
+                  ,"xml": {
+                      "wrapped": true
                   }
                }
             }
@@ -3855,6 +3873,9 @@
                   ,"items": {
                       "$ref": "#/components/schemas/air_rest_services.MapData"
                   }
+                  ,"xml": {
+                      "wrapped": true
+                  }
                }
             }
             ,"required": [
@@ -3942,6 +3963,9 @@
                         ,"items": {
                             "type": "number"
                         }
+                        ,"xml": {
+                            "wrapped": true
+                        }
                      }
                      ,{
                          "type": "array"
@@ -3953,6 +3977,12 @@
                            ,"items": {
                                "type": "number"
                            }
+                           ,"xml": {
+                               "wrapped": true
+                           }
+                        }
+                        ,"xml": {
+                            "wrapped": true
                         }
                      }
                      ,{
@@ -3968,7 +3998,16 @@
                               ,"items": {
                                   "type": "number"
                               }
+                              ,"xml": {
+                                  "wrapped": true
+                              }
                            }
+                           ,"xml": {
+                               "wrapped": true
+                           }
+                        }
+                        ,"xml": {
+                            "wrapped": true
                         }
                      }
                   ]
@@ -4033,6 +4072,9 @@
                   ,"minItems": 2
                   ,"items": {
                       "$ref": "#/components/schemas/metadata.ResultColumns"
+                  }
+                  ,"xml": {
+                      "wrapped": true
                   }
                }
             }
