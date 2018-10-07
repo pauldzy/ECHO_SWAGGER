@@ -33,11 +33,11 @@ servers:
     description: US Environmental Protection Agency OFM Production Server
 paths: 
   "/air_rest_services.get_facilities": 
-    summary: Clean Air Act Facility Search
-    description: Validates query search parameters and returns query identifier.  Use the responseset parameter to set the page size
     get: 
       tags: 
         - Facilities
+      summary: Clean Air Act Facility Search
+      description: Validates query search parameters and returns query identifier.  Use the responseset parameter to set the page size.
       parameters: 
         - $ref: '#/components/parameters/output'
         - $ref: '#/components/parameters/p_fn'
@@ -156,6 +156,8 @@ paths:
     post: 
       tags: 
         - Facilities
+      summary: Clean Air Act Facility Search
+      description: Validates query search parameters and returns query identifier.  Use the responseset parameter to set the page size.
       requestBody: 
           content: 
             'application/x-www-form-urlencoded': 
@@ -402,11 +404,11 @@ paths:
         'default': 
           $ref: '#/components/responses/air_rest_services.get_facilities.default'
   "/air_rest_services.get_facility_info": 
-    summary: Clean Air Act Facility Enhanced Search
-    description: Returns either an array of Facilities or an array of Clusters that meet the specified search criteria.
     get: 
       tags: 
         - Facilities
+      summary: Clean Air Act Facility Enhanced Search
+      description: Returns either an array of Facilities or an array of Clusters that meet the specified search criteria.
       parameters: 
         - $ref: '#/components/parameters/output.get_facility_info'
         - $ref: '#/components/parameters/p_fn'
@@ -524,17 +526,19 @@ paths:
     post: 
       tags: 
         - Facilities
+      summary: Clean Air Act Facility Enhanced Search
+      description: Returns either an array of Facilities or an array of Clusters that meet the specified search criteria.
       requestBody: 
         $ref: '#/components/requestBodies/air_rest_services.get_facility_info.post.requestBody'
       responses: 
         'default': 
           $ref: '#/components/responses/air_rest_services.get_facility_info.default'
   "/air_rest_services.get_qid": 
-    summary: Clean Air Act Search by Query ID
-    description: GET_QID is passed with a query ID corresponding to a previously run get_facilities query. It then returns a Facility object containing all matching facilities. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. 
     get: 
       tags: 
         - Facilities
+      summary: Clean Air Act Search by Query ID
+      description: GET_QID is passed with a query ID corresponding to a previously run get_facilities query. It then returns a Facility object containing all matching facilities. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. 
       parameters: 
         - $ref: '#/components/parameters/output'
         - $ref: '#/components/parameters/qid'
@@ -549,17 +553,19 @@ paths:
     post: 
       tags: 
         - Facilities
+      summary: Clean Air Act Search by Query ID
+      description: GET_QID is passed with a query ID corresponding to a previously run get_facilities query. It then returns a Facility object containing all matching facilities. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. 
       requestBody: 
         $ref: '#/components/requestBodies/air_rest_services.get_qid.post.requestBody'
       responses: 
         'default': 
           $ref: '#/components/responses/air_rest_services.get_qid.default'
   "/air_rest_services.get_map": 
-    summary: Clean Air Act Map Service
-    description: The purpose of the GET_MAP service is to display facility coordinates and facility clusters related to a get_facilities facility query. Currently, the maximum number of coordinates returned is 500. GET_MAP performs automatic clustering at the state, county, and zip code levels to maximize the number of coordinates returned.
     get: 
       tags: 
         - Facilities
+      summary: Clean Air Act Map Service
+      description: The purpose of the GET_MAP service is to display facility coordinates and facility clusters related to a get_facilities facility query. Currently, the maximum number of coordinates returned is 500. GET_MAP performs automatic clustering at the state, county, and zip code levels to maximize the number of coordinates returned.
       parameters: 
         - $ref: '#/components/parameters/output'
         - $ref: '#/components/parameters/qid'
@@ -576,17 +582,19 @@ paths:
     post: 
       tags: 
         - Facilities
+      summary: Clean Air Act Map Service
+      description: The purpose of the GET_MAP service is to display facility coordinates and facility clusters related to a get_facilities facility query. Currently, the maximum number of coordinates returned is 500. GET_MAP performs automatic clustering at the state, county, and zip code levels to maximize the number of coordinates returned.
       requestBody: 
         $ref: '#/components/requestBodies/air_rest_services.get_map.post.requestBody'
       responses: 
         'default': 
           $ref: '#/components/responses/air_rest_services.get_map.default'
   "/air_rest_services.get_download": 
-    summary: Clean Air Act Download Data Service
-    description: Based on the QID obtained from a get_facilities or get_facility_info query, return a comma sepated vaule (CSV) file of the facilities found.
     get: 
       tags: 
         - Facilities
+      summary: Clean Air Act Download Data Service
+      description: Based on the QID obtained from a get_facilities or get_facility_info query, return a comma sepated vaule (CSV) file of the facilities found.
       parameters: 
         - $ref: '#/components/parameters/output.get_download'
         - $ref: '#/components/parameters/qid'
@@ -598,17 +606,19 @@ paths:
     post: 
       tags: 
         - Facilities
+      summary: Clean Air Act Download Data Service
+      description: Based on the QID obtained from a get_facilities or get_facility_info query, return a comma sepated vaule (CSV) file of the facilities found.
       requestBody: 
         $ref: '#/components/requestBodies/air_rest_services.get_download.post.requestBody'
       responses: 
         'default': 
           $ref: '#/components/responses/air_rest_services.get_download.default'
   "/air_rest_services.get_info_clusters": 
-    summary: Clean Air Act Info Clusters Service
-    description: Based on the QID obtained from a clustered get_facility_info query, download cluster facility information as either a CSV or GEOJSON file.
     get: 
       tags: 
         - Facilities
+      summary: Clean Air Act Info Clusters Service
+      description: Based on the QID obtained from a clustered get_facility_info query, download cluster facility information as either a CSV or GEOJSON file.
       parameters: 
         - $ref: '#/components/parameters/output.get_download'
         - $ref: '#/components/parameters/p_qid'
@@ -619,17 +629,19 @@ paths:
     post: 
       tags: 
         - Facilities
+      summary: Clean Air Act Info Clusters Service
+      description: Based on the QID obtained from a clustered get_facility_info query, download cluster facility information as either a CSV or GEOJSON file.
       requestBody: 
         $ref: '#/components/requestBodies/air_rest_services.get_info_clusters.post.requestBody'
       responses: 
         'default': 
           $ref: '#/components/responses/air_rest_services.get_info_clusters.default'
   "/air_rest_services.get_geojson": 
-    summary: Clean Air Act GeoJSON Service
-    description: Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found.
     get: 
       tags: 
         - Facilities
+      summary: Clean Air Act GeoJSON Service
+      description: Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found.
       parameters: 
         - $ref: '#/components/parameters/output.get_geojson'
         - $ref: '#/components/parameters/qid'
@@ -644,17 +656,19 @@ paths:
     post: 
       tags: 
         - Facilities
+      summary: Clean Air Act GeoJSON Service
+      description: Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found.
       requestBody: 
         $ref: '#/components/requestBodies/air_rest_services.get_geojson.post.requestBody'
       responses: 
         'default': 
           $ref: '#/components/responses/air_rest_services.get_geojson.default'
   "/air_rest_services.metadata": 
-    summary: Clean Air Act Metadata Service
-    description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
     get: 
       tags: 
         - Metadata
+      summary: Clean Air Act Metadata Service
+      description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
       parameters: 
         - $ref: '#/components/parameters/output'
         - $ref: '#/components/parameters/callback'
@@ -664,6 +678,8 @@ paths:
     post: 
       tags: 
         - Metadata
+      summary: Clean Air Act Metadata Service
+      description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
       requestBody: 
         $ref: '#/components/requestBodies/air_rest_services.metadata.post.requestBody'
       responses: 
