@@ -350,14 +350,8 @@ paths:
                     $ref: '#/components/schemas/parameter.p_ar'
                   'p_tri_yr': 
                     $ref: '#/components/schemas/parameter.p_tri_yr'
-                  'p_ejreview': 
-                    $ref: '#/components/schemas/parameter.p_ejreview'
-                  'p_cmscc': 
-                    $ref: '#/components/schemas/parameter.p_cmscc'
                   'p_pidall': 
                     $ref: '#/components/schemas/parameter.p_pidall'
-                  'p_ipaddr': 
-                    $ref: '#/components/schemas/parameter.p_ipaddr'
                   'p_fac_ico': 
                     $ref: '#/components/schemas/parameter.p_fac_ico'
                   'p_icoo': 
@@ -388,18 +382,10 @@ paths:
                     $ref: '#/components/schemas/parameter.maplist'
                   'summarylist': 
                     $ref: '#/components/schemas/parameter.summarylist'
-                  'passthrough': 
-                    $ref: '#/components/schemas/parameter.passthrough'
-                  'debug_sw': 
-                    $ref: '#/components/schemas/parameter.debug_sw'
                   'callback': 
                     $ref: '#/components/schemas/parameter.callback'
                   'qcolumns': 
                     $ref: '#/components/schemas/parameter.qcolumns'
-                  'p_echo': 
-                    type: string
-                  'f': 
-                    $ref: '#/components/schemas/parameter.f'
       responses: 
         'default': 
           $ref: '#/components/responses/air_rest_services.get_facilities.default'
@@ -689,7 +675,7 @@ components:
   schemas: 
     'QueryParameters': 
       type: object
-      description: Query Parameters Object
+      title: Query Parameters
       xml: 
         name: Parameter
       properties: 
@@ -702,7 +688,7 @@ components:
         - QV
     'air_rest_services.ClusterData': 
       type: object
-      description: Cluster Data Object
+      title: Cluster Data
       properties: 
         'ObjectId': 
           $ref: '#/components/schemas/property.ObjectId'
@@ -768,7 +754,7 @@ components:
         - TotalPenalties
     'air_rest_services.ClusterOutput': 
       type: object
-      description: Cluster Output Object
+      title: Cluster Output
       properties: 
         'ClusterData': 
           type: array
@@ -780,7 +766,7 @@ components:
         - ClusterData
     'air_rest_services.MapData': 
       type: object
-      description: Map Data Object
+      title: Map Data
       xml: 
         name: Object
       properties: 
@@ -817,9 +803,30 @@ components:
         - LastInsp
         - FormalCount
         - InformalCount
+    'air_rest_services.MapOutput': 
+      type: object
+      title: Map Output
+      properties: 
+        'QueryID': 
+          $ref: '#/components/schemas/property.QueryID'
+        'IconBaseURL': 
+          $ref: '#/components/schemas/property.IconBaseURL'
+        'PopUpBaseURL': 
+          $ref: '#/components/schemas/property.PopUpBaseURL'
+        'MapData': 
+          type: array
+          items: 
+            $ref: '#/components/schemas/air_rest_services.MapData'
+          xml: 
+            wrapped: true
+      required: 
+        - QueryID
+        - IconBaseURL
+        - PopUpBaseURL
+        - MapData
     'air_rest_services.get_facilities.Facilities': 
       type: object
-      description: Facilities Object
+      title: Facilities
       xml: 
         name: Facility
       properties: 
@@ -1325,30 +1332,9 @@ components:
         - FacStdCountyName
         - Score
         - MaxScore
-    'air_rest_services.get_facilities.MapOutput': 
-      type: object
-      description: Map Output Object
-      properties: 
-        'QueryID': 
-          $ref: '#/components/schemas/property.QueryID'
-        'IconBaseURL': 
-          $ref: '#/components/schemas/property.IconBaseURL'
-        'PopUpBaseURL': 
-          $ref: '#/components/schemas/property.PopUpBaseURL'
-        'MapData': 
-          type: array
-          items: 
-            $ref: '#/components/schemas/air_rest_services.MapData'
-          xml: 
-            wrapped: true
-      required: 
-        - QueryID
-        - IconBaseURL
-        - PopUpBaseURL
-        - MapData
     'air_rest_services.get_facilities.Results': 
       type: object
-      description: Results Object
+      title: Facilities Results
       properties: 
         'Message': 
           $ref: '#/components/schemas/property.Message'
@@ -1384,7 +1370,7 @@ components:
           xml: 
             wrapped: true
         'MapOutput': 
-          $ref: '#/components/schemas/air_rest_services.get_facilities.MapOutput'
+          $ref: '#/components/schemas/air_rest_services.MapOutput'
       required: 
         - Message
         - QueryRows
@@ -1403,6 +1389,7 @@ components:
         - MapOutput
     'air_rest_services.get_facilities.root': 
       type: object
+      title: Facilities Root
       xml: 
         name: Root
       properties: 
@@ -1412,7 +1399,7 @@ components:
         - Results
     'air_rest_services.get_facility_info.Facilities': 
       type: object
-      description: Facilities Object
+      title: Info Facilities
       xml: 
         name: Facility
       properties: 
@@ -1923,6 +1910,7 @@ components:
         - MaxScore
     'air_rest_services.get_facility_info.Results-1': 
       type: object
+      title: Info Results Facilities
       properties: 
         'Message': 
           $ref: '#/components/schemas/property.Message'
@@ -1990,6 +1978,7 @@ components:
         - Facilities
     'air_rest_services.get_facility_info.Results-2': 
       type: object
+      title: Info Results Clusters
       properties: 
         'Message': 
           $ref: '#/components/schemas/property.Message'
@@ -2056,6 +2045,7 @@ components:
         - ClusterOutput
     'air_rest_services.get_facility_info.root': 
       type: object
+      title: Info Root
       xml: 
         name: Root
       properties: 
@@ -2067,6 +2057,7 @@ components:
         - Results
     'air_rest_services.get_geojson.Feature': 
       type: object
+      title: GeoJSON Feature
       description: GeoJSON Feature Object
       properties: 
         'type': 
@@ -2081,6 +2072,7 @@ components:
         - properties
     'air_rest_services.get_geojson.FeatureCollection': 
       type: object
+      title: GeoJSON FeatureCollection
       description: GeoJSON Feature Collection Object
       properties: 
         'type': 
@@ -2096,6 +2088,7 @@ components:
         - features
     'air_rest_services.get_geojson.properties': 
       type: object
+      title: GeoJSON Properties
       description: GeoJSON Properties Object
       properties: 
         'AIRName': 
@@ -2588,6 +2581,7 @@ components:
         - MaxScore
     'air_rest_services.get_geojson.root': 
       type: object
+      title: GeoJSON Root
       xml: 
         name: Root
       properties: 
@@ -2595,38 +2589,19 @@ components:
           $ref: '#/components/schemas/air_rest_services.get_geojson.FeatureCollection'
       required: 
         - FeatureCollection
-    'air_rest_services.get_map.MapOutput': 
-      type: object
-      description: Map Output Object
-      properties: 
-        'QueryID': 
-          $ref: '#/components/schemas/property.QueryID'
-        'IconBaseURL': 
-          $ref: '#/components/schemas/property.IconBaseURL'
-        'PopUpBaseURL': 
-          $ref: '#/components/schemas/property.PopUpBaseURL'
-        'MapData': 
-          type: array
-          items: 
-            $ref: '#/components/schemas/air_rest_services.MapData'
-          xml: 
-            wrapped: true
-      required: 
-        - QueryID
-        - IconBaseURL
-        - PopUpBaseURL
-        - MapData
     'air_rest_services.get_map.root': 
       type: object
+      title: Map Root
       xml: 
         name: Root
       properties: 
         'Results': 
-          $ref: '#/components/schemas/air_rest_services.get_map.MapOutput'
+          $ref: '#/components/schemas/air_rest_services.MapOutput'
       required: 
         - Results
     'air_rest_services.get_qid.Results': 
       type: object
+      title: QID Results
       description: Results Object
       properties: 
         'Message': 
@@ -2651,6 +2626,7 @@ components:
         - Facilities
     'air_rest_services.get_qid.root': 
       type: object
+      title: QID Root
       xml: 
         name: Root
       properties: 
@@ -2660,7 +2636,7 @@ components:
         - Results
     'geojson.Geometry': 
       type: object
-      description: GeoJSON Geometry Object
+      title: GeoJSON Geometry
       properties: 
         'type': 
           type: string
@@ -2707,7 +2683,6 @@ components:
         - coordinates
     'metadata.ResultColumns': 
       type: object
-      description: Results Column Object
       xml: 
         name: ResultColumn
       properties: 
@@ -2738,7 +2713,7 @@ components:
         - Description
     'metadata.Results': 
       type: object
-      description: Results Object
+      title: Metadata Results
       properties: 
         'Message': 
           $ref: '#/components/schemas/property.Message'
@@ -2754,6 +2729,7 @@ components:
         - Message
     'metadata.root': 
       type: object
+      title: Metadata Root
       xml: 
         name: Root
       properties: 
@@ -2763,51 +2739,45 @@ components:
         - Results
     'parameter.c1_lat': 
       type: number
+      title: c1_lat
       description: Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
     'parameter.c1_long': 
       type: number
+      title: c1_long
       description: Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
     'parameter.c2_lat': 
       type: number
+      title: c2_lat
       description: Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
     'parameter.c2_long': 
       type: number
+      title: c2_long
       description: Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
     'parameter.callback': 
       type: string
+      title: callback
       description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
-    'parameter.debug_sw': 
-      type: string
-      description: DO NOT PUBLICIZE - HIDDEN PARAMETER
     'parameter.descending': 
       type: string
+      title: descending
       description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
       enum: 
         - Y
         - N
-    'parameter.embedded': 
-      type: string
-      description: DO NOT PUBLICIZE - HIDDEN PARAMETER
-      enum: 
-        - Y
-        - N
-    'parameter.f': 
-      type: string
-      description: dummy parameter to make esri-leaflet happy
     'parameter.maplist': 
       type: string
+      title: maplist
       description: Map List Flag.  Provide a Y to return mappable coordinates representing the full geographic extent of the queryset (all facilities that met the selection criteria).
       enum: 
         - Y
         - N
-    'parameter.new_query_type': 
-      type: string
-      description: DO NOT PUBLICIZE - HIDDEN PARAMETER
     'parameter.newsort': 
       type: number
+      title: newsort
       description: Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column.
     'parameter.output': 
       type: string
+      title: output
       description: |-
         Output Format Flag.  Enter one of the following keywords:
         - JSON = Data model formatted as Javascript Object Notation (default).
@@ -2819,12 +2789,14 @@ components:
         - XML
     'parameter.output.get_download': 
       type: string
+      title: output
       description: |-
         Output Format Flag.  Enter one of the following keywords:
         - CSV = Facility results formatted as comma delimited file download (default).
         - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
     'parameter.output.get_facility_info': 
       type: string
+      title: output
       description: |-
         Output Format Flag.  Enter one of the following keywords:
         - JSON = Data model formatted as Javascript Object Notation (default).
@@ -2836,6 +2808,7 @@ components:
         - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
     'parameter.output.get_geojson': 
       type: string
+      title: output
       description: |-
         Output Format Flag.  Enter one of the following keywords:
         - GEOJSON = Facility results formatted as GeoJSON feature collection (default).
@@ -2843,6 +2816,7 @@ components:
         - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
     'parameter.p_act': 
       type: string
+      title: p_act
       description: Active Permits/Facilities Flag.  Provide Y or N to filter results to facilities with active permits.
       enum: 
         - Y
@@ -2850,12 +2824,14 @@ components:
         - A
     'parameter.p_agoo': 
       type: string
+      title: p_agoo
       description: Indicates whether to AND or OR the Owner/Operator parameter (p_owop) and the federal agency code (p_fa) parameters.
       enum: 
         - AND
         - OR
     'parameter.p_ar': 
       type: string
+      title: p_ar
       description: |-
         Associated EPA Air Reports Program Filter.  Enter multiple values as a comma-delimited list.  Valid values are:
         - TRI = Toxic Release Inventory.
@@ -2882,9 +2858,6 @@ components:
         - Yes
         - No
         - Undetermined
-    'parameter.p_cmscc': 
-      type: string
-      description: DO NOT PUBLICIZE - HIDDEN PARAMETER
     'parameter.p_co': 
       type: string
       description: Facility County Filter. Provide a single county name in combination with a state value provided via p_st.
@@ -2902,11 +2875,6 @@ components:
       description: |-
         Universe Designation Limiter.  Enter one or more universe designation codes.  Provide multiple values as a comma-delimited list.  Use code "TSDF" to return the full enforcement TSDF universe and "Operating TSDF" to return the operating TSDF universe.
 
-    'parameter.p_ejreview': 
-      type: string
-      description: DO NOT PUBLICIZE - HIDDEN PARAMETER
-      enum: 
-        - Y
     'parameter.p_ejscreen': 
       type: string
       description: "Enter \"Y\" to limit facilities to Census block groups where one of more Environmental Justice indexes above 80th percentile."
@@ -3062,9 +3030,6 @@ components:
       enum: 
         - Y
         - N
-    'parameter.p_ipaddr': 
-      type: string
-      description: DO NOT PUBLICIZE - HIDDEN PARAMETER
     'parameter.p_lat': 
       type: number
       description: Latitude location in decimal degrees.
@@ -3491,12 +3456,6 @@ components:
     'parameter.pageno': 
       type: number
       description: Indicates the number of the page to display. It is used only when the results are paginated.
-    'parameter.passthrough': 
-      type: string
-      description: "Passthrough Flag.  Enter a value of \"Y\" to return both the first \"page\" of facilities in the Facilities array and map coordinates that meet the selection criteria in the MapObject array. Otherwise only summary statistics on facilities or systems that meet the criteria are returned."
-      enum: 
-        - Y
-        - N
     'parameter.qcolumns': 
       type: string
       description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
@@ -4222,6 +4181,7 @@ components:
       required: false
       schema: 
         type: number
+        title: c1_lat
     'c1_long': 
       name: c1_long
       in: query
@@ -4229,6 +4189,7 @@ components:
       required: false
       schema: 
         type: number
+        title: c1_long
     'c2_lat': 
       name: c2_lat
       in: query
@@ -4236,6 +4197,7 @@ components:
       required: false
       schema: 
         type: number
+        title: c2_lat
     'c2_long': 
       name: c2_long
       in: query
@@ -4243,6 +4205,7 @@ components:
       required: false
       schema: 
         type: number
+        title: c2_long
     'callback': 
       name: callback
       in: query
@@ -4250,13 +4213,7 @@ components:
       required: false
       schema: 
         type: string
-    'debug_sw': 
-      name: debug_sw
-      in: query
-      description: DO NOT PUBLICIZE - HIDDEN PARAMETER
-      required: false
-      schema: 
-        type: string
+        title: callback
     'descending': 
       name: descending
       in: query
@@ -4264,26 +4221,10 @@ components:
       required: false
       schema: 
         type: string
+        title: descending
         enum: 
           - Y
           - N
-    'embedded': 
-      name: embedded
-      in: query
-      description: DO NOT PUBLICIZE - HIDDEN PARAMETER
-      required: false
-      schema: 
-        type: string
-        enum: 
-          - Y
-          - N
-    'f': 
-      name: f
-      in: query
-      description: dummy parameter to make esri-leaflet happy
-      required: false
-      schema: 
-        type: string
     'maplist': 
       name: maplist
       in: query
@@ -4291,16 +4232,10 @@ components:
       required: false
       schema: 
         type: string
+        title: maplist
         enum: 
           - Y
           - N
-    'new_query_type': 
-      name: new_query_type
-      in: query
-      description: DO NOT PUBLICIZE - HIDDEN PARAMETER
-      required: false
-      schema: 
-        type: string
     'newsort': 
       name: newsort
       in: query
@@ -4308,6 +4243,7 @@ components:
       required: false
       schema: 
         type: number
+        title: newsort
     'output': 
       name: output
       in: query
@@ -4319,6 +4255,7 @@ components:
       required: false
       schema: 
         type: string
+        title: output
         enum: 
           - JSONP
           - JSON
@@ -4333,6 +4270,7 @@ components:
       required: false
       schema: 
         type: string
+        title: output
     'output.get_facility_info': 
       name: output
       in: query
@@ -4348,6 +4286,7 @@ components:
       required: false
       schema: 
         type: string
+        title: output
     'output.get_geojson': 
       name: output
       in: query
@@ -4359,6 +4298,7 @@ components:
       required: false
       schema: 
         type: string
+        title: output
     'p_act': 
       name: p_act
       in: query
@@ -4366,6 +4306,7 @@ components:
       required: false
       schema: 
         type: string
+        title: p_act
         enum: 
           - Y
           - N
@@ -4377,6 +4318,7 @@ components:
       required: false
       schema: 
         type: string
+        title: p_agoo
         enum: 
           - AND
           - OR
@@ -4392,6 +4334,7 @@ components:
       required: false
       schema: 
         type: string
+        title: p_ar
     'p_c1lat': 
       name: p_c1lat
       in: query
@@ -4432,13 +4375,6 @@ components:
           - Yes
           - No
           - Undetermined
-    'p_cmscc': 
-      name: p_cmscc
-      in: query
-      description: DO NOT PUBLICIZE - HIDDEN PARAMETER
-      required: false
-      schema: 
-        type: string
     'p_co': 
       name: p_co
       in: query
@@ -4472,21 +4408,6 @@ components:
       required: false
       schema: 
         type: string
-    'p_echo': 
-      name: p_echo
-      in: query
-      required: false
-      schema: 
-        type: string
-    'p_ejreview': 
-      name: p_ejreview
-      in: query
-      description: DO NOT PUBLICIZE - HIDDEN PARAMETER
-      required: false
-      schema: 
-        type: string
-        enum: 
-          - Y
     'p_ejscreen': 
       name: p_ejscreen
       in: query
@@ -4752,13 +4673,6 @@ components:
         enum: 
           - Y
           - N
-    'p_ipaddr': 
-      name: p_ipaddr
-      in: query
-      description: DO NOT PUBLICIZE - HIDDEN PARAMETER
-      required: false
-      schema: 
-        type: string
     'p_lat': 
       name: p_lat
       in: query
@@ -5457,16 +5371,6 @@ components:
       required: false
       schema: 
         type: number
-    'passthrough': 
-      name: passthrough
-      in: query
-      description: "Passthrough Flag.  Enter a value of \"Y\" to return both the first \"page\" of facilities in the Facilities array and map coordinates that meet the selection criteria in the MapObject array. Otherwise only summary statistics on facilities or systems that meet the criteria are returned."
-      required: false
-      schema: 
-        type: string
-        enum: 
-          - Y
-          - N
     'qcolumns': 
       name: qcolumns
       in: query
@@ -5556,14 +5460,8 @@ components:
                   $ref: '#/components/schemas/parameter.qid'
                 'qcolumns': 
                   $ref: '#/components/schemas/parameter.qcolumns'
-                'debug_sw': 
-                  $ref: '#/components/schemas/parameter.debug_sw'
                 'p_pretty_print': 
                   $ref: '#/components/schemas/parameter.p_pretty_print'
-                'p_echo': 
-                  type: string
-                'f': 
-                  $ref: '#/components/schemas/parameter.f'
               required: 
                 - qid
     'air_rest_services.get_facility_info.post.requestBody': 
@@ -5758,14 +5656,8 @@ components:
                   $ref: '#/components/schemas/parameter.p_ar'
                 'p_tri_yr': 
                   $ref: '#/components/schemas/parameter.p_tri_yr'
-                'p_ejreview': 
-                  $ref: '#/components/schemas/parameter.p_ejreview'
-                'p_cmscc': 
-                  $ref: '#/components/schemas/parameter.p_cmscc'
                 'p_pidall': 
                   $ref: '#/components/schemas/parameter.p_pidall'
-                'p_ipaddr': 
-                  $ref: '#/components/schemas/parameter.p_ipaddr'
                 'p_fac_ico': 
                   $ref: '#/components/schemas/parameter.p_fac_ico'
                 'p_icoo': 
@@ -5792,18 +5684,12 @@ components:
                   $ref: '#/components/schemas/parameter.responseset'
                 'summarylist': 
                   $ref: '#/components/schemas/parameter.summarylist'
-                'debug_sw': 
-                  $ref: '#/components/schemas/parameter.debug_sw'
                 'callback': 
                   $ref: '#/components/schemas/parameter.callback'
                 'qcolumns': 
                   $ref: '#/components/schemas/parameter.qcolumns'
                 'p_pretty_print': 
                   $ref: '#/components/schemas/parameter.p_pretty_print'
-                'p_echo': 
-                  type: string
-                'f': 
-                  $ref: '#/components/schemas/parameter.f'
     'air_rest_services.get_geojson.post.requestBody': 
         content: 
           'application/x-www-form-urlencoded': 
@@ -5820,18 +5706,10 @@ components:
                   $ref: '#/components/schemas/parameter.newsort'
                 'descending': 
                   $ref: '#/components/schemas/parameter.descending'
-                'debug_sw': 
-                  $ref: '#/components/schemas/parameter.debug_sw'
                 'qcolumns': 
                   $ref: '#/components/schemas/parameter.qcolumns'
-                'p_ipaddr': 
-                  $ref: '#/components/schemas/parameter.p_ipaddr'
                 'p_pretty_print': 
                   $ref: '#/components/schemas/parameter.p_pretty_print'
-                'p_echo': 
-                  type: string
-                'f': 
-                  $ref: '#/components/schemas/parameter.f'
               required: 
                 - qid
     'air_rest_services.get_info_clusters.post.requestBody': 
@@ -5844,12 +5722,8 @@ components:
                   $ref: '#/components/schemas/parameter.output.get_download'
                 'p_qid': 
                   $ref: '#/components/schemas/parameter.p_qid'
-                'debug_sw': 
-                  $ref: '#/components/schemas/parameter.debug_sw'
                 'p_pretty_print': 
                   $ref: '#/components/schemas/parameter.p_pretty_print'
-                'f': 
-                  $ref: '#/components/schemas/parameter.f'
               required: 
                 - p_qid
     'air_rest_services.get_map.post.requestBody': 
@@ -5864,8 +5738,6 @@ components:
                   $ref: '#/components/schemas/parameter.qid'
                 'callback': 
                   $ref: '#/components/schemas/parameter.callback'
-                'embedded': 
-                  $ref: '#/components/schemas/parameter.embedded'
                 'tablelist': 
                   $ref: '#/components/schemas/parameter.tablelist'
                 'c1_lat': 
@@ -5878,14 +5750,6 @@ components:
                   $ref: '#/components/schemas/parameter.c2_long'
                 'p_id': 
                   $ref: '#/components/schemas/parameter.p_id'
-                'debug_sw': 
-                  $ref: '#/components/schemas/parameter.debug_sw'
-                'p_ipaddr': 
-                  $ref: '#/components/schemas/parameter.p_ipaddr'
-                'p_echo': 
-                  type: string
-                'f': 
-                  $ref: '#/components/schemas/parameter.f'
               required: 
                 - qid
                 - p_id
@@ -5903,24 +5767,12 @@ components:
                   $ref: '#/components/schemas/parameter.pageno'
                 'callback': 
                   $ref: '#/components/schemas/parameter.callback'
-                'embedded': 
-                  $ref: '#/components/schemas/parameter.embedded'
                 'newsort': 
                   $ref: '#/components/schemas/parameter.newsort'
                 'descending': 
                   $ref: '#/components/schemas/parameter.descending'
-                'debug_sw': 
-                  $ref: '#/components/schemas/parameter.debug_sw'
                 'qcolumns': 
                   $ref: '#/components/schemas/parameter.qcolumns'
-                'p_ipaddr': 
-                  $ref: '#/components/schemas/parameter.p_ipaddr'
-                'new_query_type': 
-                  $ref: '#/components/schemas/parameter.new_query_type'
-                'p_echo': 
-                  type: string
-                'f': 
-                  $ref: '#/components/schemas/parameter.f'
               required: 
                 - qid
     'air_rest_services.metadata.post.requestBody': 
@@ -5933,10 +5785,6 @@ components:
                   $ref: '#/components/schemas/parameter.output'
                 'callback': 
                   $ref: '#/components/schemas/parameter.callback'
-                'debug_sw': 
-                  $ref: '#/components/schemas/parameter.debug_sw'
-                'f': 
-                  $ref: '#/components/schemas/parameter.f'
 externalDocs: 
   description: US EPA Enforcement and Compliance History Online 
   url: "https://echo.epa.gov/"
