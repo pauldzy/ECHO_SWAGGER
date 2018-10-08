@@ -2,7 +2,7 @@
     "openapi": "3.0.0"
    ,"info": {
        "title": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Air Pollutant Report Rest Services"
-      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.<br><br>The Air Pollutant Report presents ten years of EPA air emissions data from the National Emissions Inventory (NEI), Greenhouse Gas Reporting Program (GHGRP), Toxics Release Inventory (TRI), and Clean Air Markets Programs for a selected facility. Emissions are presented by pollutant for each program and each year that values are available.<br><br>Additional ECHO Resources: <a href=\"https://echo.epa.gov/tools/web-services\">Web Services</a>, <a href=\"https://echo.epa.gov/resources/echo-data/about-the-data\">About ECHO's Data</a>, <a href=\"https://echo.epa.gov/tools/data-downloads\">Data Downloads</a><br> "
+      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\\\n\\\nThe Air Pollutant Report presents ten years of EPA air emissions data from the National Emissions Inventory (NEI), Greenhouse Gas Reporting Program (GHGRP), Toxics Release Inventory (TRI), and Clean Air Markets Programs for a selected facility. Emissions are presented by pollutant for each program and each year that values are available.\\\n\\\nAdditional ECHO Resources: [Web Services](https://echo.epa.gov/tools/web-services), [About ECHO's Data](https://echo.epa.gov/resources/echo-data/about-the-data), [Data Downloads](https://echo.epa.gov/tools/data-downloads)."
       ,"contact": {
           "name": "US EPA, OECA Integration, Targeting and Access Branch"
          ,"url": "https://echo.epa.gov/resources/general-info/contact-us"
@@ -273,7 +273,7 @@
        "schemas": {
           "caa_poll_rpt_rest_services.AirQuality": {
              "type": "object"
-            ,"description": "Air Quality Object"
+            ,"title": "Air Quality"
             ,"properties": {
                 "Ozone8hr1997Area": {
                    "$ref": "#/components/schemas/property.Ozone8hr1997Area"
@@ -307,7 +307,7 @@
          }
          ,"caa_poll_rpt_rest_services.Emissions": {
              "type": "object"
-            ,"description": "Emissions Object"
+            ,"title": "Emissions"
             ,"xml": {
                 "name": "Emission"
             }
@@ -393,7 +393,7 @@
          }
          ,"caa_poll_rpt_rest_services.MapData": {
              "type": "object"
-            ,"description": "Map Data Object"
+            ,"title": "Map Data"
             ,"xml": {
                 "name": "Object"
             }
@@ -428,7 +428,7 @@
          }
          ,"caa_poll_rpt_rest_services.MapOutput": {
              "type": "object"
-            ,"description": "Map Output Object"
+            ,"title": "Map Output"
             ,"properties": {
                 "IconBaseURL": {
                    "$ref": "#/components/schemas/property.IconBaseURL"
@@ -462,7 +462,7 @@
          }
          ,"caa_poll_rpt_rest_services.Permits": {
              "type": "object"
-            ,"description": "Permits Object"
+            ,"title": "Permits"
             ,"xml": {
                 "name": "Permits"
             }
@@ -509,7 +509,7 @@
          }
          ,"caa_poll_rpt_rest_services.SpatialMetadata": {
              "type": "object"
-            ,"description": "Spatial Metadata Object"
+            ,"title": "Spatial Metadata"
             ,"properties": {
                 "RegistryID": {
                    "$ref": "#/components/schemas/property.RegistryID"
@@ -561,7 +561,7 @@
          }
          ,"caa_poll_rpt_rest_services.get_aggregate_emissions.Results": {
              "type": "object"
-            ,"description": "Results Object"
+            ,"title": "Agg Emissions Results"
             ,"properties": {
                 "Message": {
                    "$ref": "#/components/schemas/property.Message"
@@ -591,7 +591,7 @@
          }
          ,"caa_poll_rpt_rest_services.get_air_quality.Results": {
              "type": "object"
-            ,"description": "Results Object"
+            ,"title": "Air Qual Results"
             ,"properties": {
                 "Message": {
                    "$ref": "#/components/schemas/property.Message"
@@ -621,7 +621,7 @@
          }
          ,"caa_poll_rpt_rest_services.get_caapr.AggregateEmissions": {
              "type": "object"
-            ,"description": "Aggregate Emissions Object"
+            ,"title": "Aggregate Emissions"
             ,"properties": {
                 "Emissions": {
                    "type": "array"
@@ -639,7 +639,7 @@
          }
          ,"caa_poll_rpt_rest_services.get_caapr.CAAPollRpt": {
              "type": "object"
-            ,"description": "Results Object"
+            ,"title": "CAA Pollution Report"
             ,"properties": {
                 "RegistryIDs": {
                    "type": "array"
@@ -692,7 +692,7 @@
          }
          ,"caa_poll_rpt_rest_services.get_caapr.EnvironmentalConditions": {
              "type": "object"
-            ,"description": "Environmental Conditions Object"
+            ,"title": "Environmental Conditions"
             ,"properties": {
                 "AirQuality": {
                    "$ref": "#/components/schemas/caa_poll_rpt_rest_services.AirQuality"
@@ -704,7 +704,7 @@
          }
          ,"caa_poll_rpt_rest_services.get_caapr.Pollutants": {
              "type": "object"
-            ,"description": "Pollutants Object"
+            ,"title": "Pollutants"
             ,"xml": {
                 "name": "Pollutants"
             }
@@ -806,7 +806,7 @@
          }
          ,"caa_poll_rpt_rest_services.get_caapr.RegistryIDs": {
              "type": "object"
-            ,"description": "Registry IDs Object"
+            ,"title": "Registry IDs"
             ,"xml": {
                 "name": "RegistryIDs"
             }
@@ -867,7 +867,7 @@
          }
          ,"caa_poll_rpt_rest_services.get_caapr.Results": {
              "type": "object"
-            ,"description": "Results Object"
+            ,"title": "CAAPR Results"
             ,"properties": {
                 "Message": {
                    "$ref": "#/components/schemas/property.Message"
@@ -966,6 +966,7 @@
          }
          ,"caa_poll_rpt_rest_services.get_caapr.root": {
              "type": "object"
+            ,"title": "CAAPR Root"
             ,"xml": {
                 "name": "Root"
             }
@@ -980,7 +981,7 @@
          }
          ,"caa_poll_rpt_rest_services.get_map.Results": {
              "type": "object"
-            ,"description": "Results Object"
+            ,"title": "Map Results"
             ,"properties": {
                 "Message": {
                    "$ref": "#/components/schemas/property.Message"
@@ -996,6 +997,7 @@
          }
          ,"caa_poll_rpt_rest_services.get_map.root": {
              "type": "object"
+            ,"title": "Map Root"
             ,"xml": {
                 "name": "Root"
             }
@@ -1010,7 +1012,7 @@
          }
          ,"caa_poll_rpt_rest_services.get_nnnPermits.Results": {
              "type": "object"
-            ,"description": "Results Object"
+            ,"title": "Permits Results"
             ,"properties": {
                 "Message": {
                    "$ref": "#/components/schemas/property.Message"
@@ -1032,6 +1034,7 @@
          }
          ,"caa_poll_rpt_rest_services.get_nnnPermits.root": {
              "type": "object"
+            ,"title": "Permits Root"
             ,"xml": {
                 "name": "Root"
             }
@@ -1046,7 +1049,7 @@
          }
          ,"caa_poll_rpt_rest_services.get_spatial_metadata.Results": {
              "type": "object"
-            ,"description": "Results Object"
+            ,"title": "Spatial Metadata Results"
             ,"properties": {
                 "Message": {
                    "$ref": "#/components/schemas/property.Message"
@@ -1062,6 +1065,7 @@
          }
          ,"caa_poll_rpt_rest_services.get_spatial_metadata.root": {
              "type": "object"
+            ,"title": "Spatial Metadata Root"
             ,"xml": {
                 "name": "Root"
             }
@@ -1092,7 +1096,7 @@
          ,"parameter.output": {
              "type": "string"
             ,"title": "output"
-            ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+            ,"description": "Output Format Flag.  Enter one of the following keywords:\n* JSON = Data model formatted as Javascript Object Notation (default).\n* JSONP = Data model formatted as Javascript Object Notation with Padding.  \n* XML = Data model formatted as Extensible Markup Language."
             ,"enum": [
                 "JSONP"
                ,"JSON"
@@ -1496,7 +1500,7 @@
          ,"output": {
              "name": "output"
             ,"in": "query"
-            ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+            ,"description": "Output Format Flag.  Enter one of the following keywords:\n* JSON = Data model formatted as Javascript Object Notation (default).\n* JSONP = Data model formatted as Javascript Object Notation with Padding.  \n* XML = Data model formatted as Extensible Markup Language."
             ,"required": false
             ,"schema": {
                 "type": "string"
