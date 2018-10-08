@@ -156,7 +156,7 @@ components:
   schemas: 
     caa_poll_rpt_rest_services.AirQuality: 
       type: object
-      description: Air Quality Object
+      title: Air Quality
       properties: 
         Ozone8hr1997Area: 
           $ref: '#/components/schemas/property.Ozone8hr1997Area'
@@ -181,7 +181,7 @@ components:
         - SulfurDioxide2010Area
     caa_poll_rpt_rest_services.Emissions: 
       type: object
-      description: Emissions Object
+      title: Emissions
       xml: 
         name: Emission
       properties: 
@@ -250,7 +250,7 @@ components:
         - Year10
     caa_poll_rpt_rest_services.MapData: 
       type: object
-      description: Map Data Object
+      title: Map Data
       xml: 
         name: Object
       properties: 
@@ -275,7 +275,7 @@ components:
         - PUV
     caa_poll_rpt_rest_services.MapOutput: 
       type: object
-      description: Map Output Object
+      title: Map Output
       properties: 
         IconBaseURL: 
           $ref: '#/components/schemas/property.IconBaseURL'
@@ -299,7 +299,7 @@ components:
         - MapData
     caa_poll_rpt_rest_services.Permits: 
       type: object
-      description: Permits Object
+      title: Permits
       xml: 
         name: Permits
       properties: 
@@ -334,7 +334,7 @@ components:
         - FacilityStatus
     caa_poll_rpt_rest_services.SpatialMetadata: 
       type: object
-      description: Spatial Metadata Object
+      title: Spatial Metadata
       properties: 
         RegistryID: 
           $ref: '#/components/schemas/property.RegistryID'
@@ -375,7 +375,7 @@ components:
         - CoordinateSourceSystemId
     caa_poll_rpt_rest_services.get_aggregate_emissions.Results: 
       type: object
-      description: Results Object
+      title: Agg Emissions Results
       properties: 
         Message: 
           $ref: '#/components/schemas/property.Message'
@@ -395,7 +395,7 @@ components:
         - Results
     caa_poll_rpt_rest_services.get_air_quality.Results: 
       type: object
-      description: Results Object
+      title: Air Qual Results
       properties: 
         Message: 
           $ref: '#/components/schemas/property.Message'
@@ -415,7 +415,7 @@ components:
         - Results
     caa_poll_rpt_rest_services.get_caapr.AggregateEmissions: 
       type: object
-      description: Aggregate Emissions Object
+      title: Aggregate Emissions
       properties: 
         Emissions: 
           type: array
@@ -427,7 +427,7 @@ components:
         - Emissions
     caa_poll_rpt_rest_services.get_caapr.CAAPollRpt: 
       type: object
-      description: Results Object
+      title: CAA Pollution Report
       properties: 
         RegistryIDs: 
           type: array
@@ -464,7 +464,7 @@ components:
         - MapOutput
     caa_poll_rpt_rest_services.get_caapr.EnvironmentalConditions: 
       type: object
-      description: Environmental Conditions Object
+      title: Environmental Conditions
       properties: 
         AirQuality: 
           $ref: '#/components/schemas/caa_poll_rpt_rest_services.AirQuality'
@@ -472,7 +472,7 @@ components:
         - AirQuality
     caa_poll_rpt_rest_services.get_caapr.Pollutants: 
       type: object
-      description: Pollutants Object
+      title: Pollutants
       xml: 
         name: Pollutants
       properties: 
@@ -554,7 +554,7 @@ components:
         - Year10
     caa_poll_rpt_rest_services.get_caapr.RegistryIDs: 
       type: object
-      description: Registry IDs Object
+      title: Registry IDs
       xml: 
         name: RegistryIDs
       properties: 
@@ -600,7 +600,7 @@ components:
         - Longitude
     caa_poll_rpt_rest_services.get_caapr.Results: 
       type: object
-      description: Results Object
+      title: CAAPR Results
       properties: 
         Message: 
           $ref: '#/components/schemas/property.Message'
@@ -680,6 +680,7 @@ components:
         - CAAPollRpt
     caa_poll_rpt_rest_services.get_caapr.root: 
       type: object
+      title: CAAPR Root
       xml: 
         name: Root
       properties: 
@@ -689,7 +690,7 @@ components:
         - Results
     caa_poll_rpt_rest_services.get_map.Results: 
       type: object
-      description: Results Object
+      title: Map Results
       properties: 
         Message: 
           $ref: '#/components/schemas/property.Message'
@@ -700,6 +701,7 @@ components:
         - MapOutput
     caa_poll_rpt_rest_services.get_map.root: 
       type: object
+      title: Map Root
       xml: 
         name: Root
       properties: 
@@ -709,7 +711,7 @@ components:
         - Results
     caa_poll_rpt_rest_services.get_nnnPermits.Results: 
       type: object
-      description: Results Object
+      title: Permits Results
       properties: 
         Message: 
           $ref: '#/components/schemas/property.Message'
@@ -724,6 +726,7 @@ components:
         - Permits
     caa_poll_rpt_rest_services.get_nnnPermits.root: 
       type: object
+      title: Permits Root
       xml: 
         name: Root
       properties: 
@@ -733,7 +736,7 @@ components:
         - Results
     caa_poll_rpt_rest_services.get_spatial_metadata.Results: 
       type: object
-      description: Results Object
+      title: Spatial Metadata Results
       properties: 
         Message: 
           $ref: '#/components/schemas/property.Message'
@@ -744,6 +747,7 @@ components:
         - SpatialMetadata
     caa_poll_rpt_rest_services.get_spatial_metadata.root: 
       type: object
+      title: Spatial Metadata Root
       xml: 
         name: Root
       properties: 
@@ -768,9 +772,9 @@ components:
       title: output
       description: |-
         Output Format Flag.  Enter one of the following keywords:
-        - JSON = Data model formatted as Javascript Object Notation (default).
-        - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-        - XML = Data model formatted as Extensible Markup Language.
+        * JSON = Data model formatted as Javascript Object Notation (default).
+        * JSONP = Data model formatted as Javascript Object Notation with Padding.  
+        * XML = Data model formatted as Extensible Markup Language.
       enum: 
         - JSONP
         - JSON
@@ -1112,9 +1116,9 @@ components:
       in: query
       description: |-
         Output Format Flag.  Enter one of the following keywords:
-        - JSON = Data model formatted as Javascript Object Notation (default).
-        - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-        - XML = Data model formatted as Extensible Markup Language.
+        * JSON = Data model formatted as Javascript Object Notation (default).
+        * JSONP = Data model formatted as Javascript Object Notation with Padding.  
+        * XML = Data model formatted as Extensible Markup Language.
       required: false
       schema: 
         type: string
