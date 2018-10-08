@@ -1,0 +1,1245 @@
+---
+openapi: '3.0.0'
+info: 
+  title: U.S. EPA Enforcement and Compliance History Online (ECHO) - Air Pollutant Report Rest Services
+  description: "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.<br><br>The Air Pollutant Report presents ten years of EPA air emissions data from the National Emissions Inventory (NEI), Greenhouse Gas Reporting Program (GHGRP), Toxics Release Inventory (TRI), and Clean Air Markets Programs for a selected facility. Emissions are presented by pollutant for each program and each year that values are available.<br><br>Additional ECHO Resources: <a href=\"https://echo.epa.gov/tools/web-services\">Web Services</a>, <a href=\"https://echo.epa.gov/resources/echo-data/about-the-data\">About ECHO's Data</a>, <a href=\"https://echo.epa.gov/tools/data-downloads\">Data Downloads</a><br> "
+  contact: 
+    name: US EPA, OECA Integration, Targeting and Access Branch
+    url: "https://echo.epa.gov/resources/general-info/contact-us"
+  license: 
+    name: Creative Commons Zero Public Domain Dedication
+    url: "https://creativecommons.org/publicdomain/zero/1.0/"
+  version: '0.0.0'
+servers: 
+  - url: "https://ofmpub.epa.gov/echo"
+    description: US Environmental Protection Agency OFM Production Server
+paths: 
+  /caa_poll_rpt_rest_services.get_caapr: 
+    get: 
+      tags: 
+        - Air Pollution Report
+      summary: Air Pollutant Report Service
+      description: This procedure obtains data for Air Quality in the Environmental Conditions Section of the Air Pollutant Report.
+      parameters: 
+        - $ref: '#/components/parameters/output'
+        - $ref: '#/components/parameters/p_id.CAA'
+        - $ref: '#/components/parameters/p_units'
+        - $ref: '#/components/parameters/callback'
+      responses: 
+        default: 
+          $ref: '#/components/responses/caa_poll_rpt_rest_services.get_caapr.default'
+    post: 
+      tags: 
+        - Air Pollution Report
+      summary: Air Pollutant Report Service
+      description: This procedure obtains data for Air Quality in the Environmental Conditions Section of the Air Pollutant Report.
+      requestBody: 
+        $ref: '#/components/requestBodies/caa_poll_rpt_rest_services.get_caapr.post.requestBody'
+      responses: 
+        default: 
+          $ref: '#/components/responses/caa_poll_rpt_rest_services.get_caapr.default'
+  /caa_poll_rpt_rest_services.get_nnnPermits: 
+    get: 
+      tags: 
+        - Air Pollution Report
+      summary: Air Pollutant Report Permits Service
+      parameters: 
+        - $ref: '#/components/parameters/output'
+        - $ref: '#/components/parameters/nnn'
+        - $ref: '#/components/parameters/nn2'
+        - $ref: '#/components/parameters/p_id.CAA'
+        - $ref: '#/components/parameters/callback'
+      responses: 
+        default: 
+          $ref: '#/components/responses/caa_poll_rpt_rest_services.get_nnnPermits.default'
+    post: 
+      tags: 
+        - Air Pollution Report
+      summary: Air Pollutant Report Permits Service
+      requestBody: 
+        $ref: '#/components/requestBodies/caa_poll_rpt_rest_services.get_nnnPermits.post.requestBody'
+      responses: 
+        default: 
+          $ref: '#/components/responses/caa_poll_rpt_rest_services.get_nnnPermits.default'
+  /caa_poll_rpt_rest_services.get_aggregate_emissions: 
+    get: 
+      tags: 
+        - Air Pollution Report
+      summary: Air Pollutant Report Aggregated Emissions Service
+      description: This procedure obtains data for Total Aggregate Emissions in the Emissions section of the Air Pollutant Report.
+      parameters: 
+        - $ref: '#/components/parameters/output'
+        - $ref: '#/components/parameters/p_id.CAA'
+        - $ref: '#/components/parameters/p_units'
+        - $ref: '#/components/parameters/callback'
+      responses: 
+        default: 
+          $ref: '#/components/responses/caa_poll_rpt_rest_services.get_aggregate_emissions.default'
+    post: 
+      tags: 
+        - Air Pollution Report
+      summary: Air Pollutant Report Aggregated Emissions Service
+      description: This procedure obtains data for Total Aggregate Emissions in the Emissions section of the Air Pollutant Report.
+      requestBody: 
+        $ref: '#/components/requestBodies/caa_poll_rpt_rest_services.get_aggregate_emissions.post.requestBody'
+      responses: 
+        default: 
+          $ref: '#/components/responses/caa_poll_rpt_rest_services.get_aggregate_emissions.default'
+  /caa_poll_rpt_rest_services.get_air_quality: 
+    get: 
+      tags: 
+        - Air Pollution Report
+      summary: Air Pollutant Report Air Quality Service
+      parameters: 
+        - $ref: '#/components/parameters/output'
+        - $ref: '#/components/parameters/p_id.CAA'
+        - $ref: '#/components/parameters/callback'
+      responses: 
+        default: 
+          $ref: '#/components/responses/caa_poll_rpt_rest_services.get_air_quality.default'
+    post: 
+      tags: 
+        - Air Pollution Report
+      summary: Air Pollutant Report Air Quality Service
+      requestBody: 
+        $ref: '#/components/requestBodies/caa_poll_rpt_rest_services.get_air_quality.post.requestBody'
+      responses: 
+        default: 
+          $ref: '#/components/responses/caa_poll_rpt_rest_services.get_air_quality.default'
+  /caa_poll_rpt_rest_services.get_map: 
+    get: 
+      tags: 
+        - Air Pollution Report
+      summary: Air Pollutant Report Map Service
+      description: "Returns an object with the facility's latitude and longitude coordinates."
+      parameters: 
+        - $ref: '#/components/parameters/output'
+        - $ref: '#/components/parameters/p_id.CAA'
+        - $ref: '#/components/parameters/callback'
+      responses: 
+        default: 
+          $ref: '#/components/responses/caa_poll_rpt_rest_services.get_map.default'
+    post: 
+      tags: 
+        - Air Pollution Report
+      summary: Air Pollutant Report Map Service
+      description: "Returns an object with the facility's latitude and longitude coordinates."
+      requestBody: 
+        $ref: '#/components/requestBodies/caa_poll_rpt_rest_services.get_map.post.requestBody'
+      responses: 
+        default: 
+          $ref: '#/components/responses/caa_poll_rpt_rest_services.get_map.default'
+  /caa_poll_rpt_rest_services.get_spatial_metadata: 
+    get: 
+      tags: 
+        - Metadata
+      summary: Air Pollutant Report Spatial Metadata Service
+      description: Returns an object with the facility coordinate spatial metadata.
+      parameters: 
+        - $ref: '#/components/parameters/output'
+        - $ref: '#/components/parameters/p_id'
+        - $ref: '#/components/parameters/callback'
+      responses: 
+        default: 
+          $ref: '#/components/responses/caa_poll_rpt_rest_services.get_spatial_metadata.default'
+    post: 
+      tags: 
+        - Metadata
+      summary: Air Pollutant Report Spatial Metadata Service
+      description: Returns an object with the facility coordinate spatial metadata.
+      requestBody: 
+        $ref: '#/components/requestBodies/caa_poll_rpt_rest_services.get_spatial_metadata.post.requestBody'
+      responses: 
+        default: 
+          $ref: '#/components/responses/caa_poll_rpt_rest_services.get_spatial_metadata.default'
+components: 
+  schemas: 
+    caa_poll_rpt_rest_services.AirQuality: 
+      type: object
+      description: Air Quality Object
+      properties: 
+        Ozone8hr1997Area: 
+          $ref: '#/components/schemas/property.Ozone8hr1997Area'
+        Ozone8hr2008Area: 
+          $ref: '#/components/schemas/property.Ozone8hr2008Area'
+        Lead2008Area: 
+          $ref: '#/components/schemas/property.Lead2008Area'
+        PaticulateMatter1997Area: 
+          type: string
+          title: PaticulateMatter1997Area
+          nullable: true
+        ParticulateMatter2006Area: 
+          $ref: '#/components/schemas/property.ParticulateMatter2006Area'
+        SulfurDioxide2010Area: 
+          $ref: '#/components/schemas/property.SulfurDioxide2010Area'
+      required: 
+        - Ozone8hr1997Area
+        - Ozone8hr2008Area
+        - Lead2008Area
+        - PaticulateMatter1997Area
+        - ParticulateMatter2006Area
+        - SulfurDioxide2010Area
+    caa_poll_rpt_rest_services.Emissions: 
+      type: object
+      description: Emissions Object
+      xml: 
+        name: Emission
+      properties: 
+        Program: 
+          $ref: '#/components/schemas/property.Program'
+        Pollutant: 
+          $ref: '#/components/schemas/property.Pollutant'
+        UnitsOfMeasure: 
+          type: string
+          title: UnitsOfMeasure
+          nullable: true
+          example: Pounds
+        Year1: 
+          type: string
+          title: Year1
+          nullable: true
+        Year2: 
+          type: string
+          title: Year2
+          nullable: true
+        Year3: 
+          type: string
+          title: Year3
+          nullable: true
+        Year4: 
+          type: string
+          title: Year4
+          nullable: true
+        Year5: 
+          type: string
+          title: Year5
+          nullable: true
+        Year6: 
+          type: string
+          title: Year6
+          nullable: true
+        Year7: 
+          type: string
+          title: Year7
+          nullable: true
+        Year8: 
+          type: string
+          title: Year8
+          nullable: true
+        Year9: 
+          type: string
+          title: Year9
+          nullable: true
+        Year10: 
+          type: string
+          title: Year10
+          nullable: true
+      required: 
+        - Program
+        - Pollutant
+        - UnitsOfMeasure
+        - Year1
+        - Year2
+        - Year3
+        - Year4
+        - Year5
+        - Year6
+        - Year7
+        - Year8
+        - Year9
+        - Year10
+    caa_poll_rpt_rest_services.MapData: 
+      type: object
+      description: Map Data Object
+      xml: 
+        name: Object
+      properties: 
+        LAT: 
+          $ref: '#/components/schemas/property.LAT'
+        LON: 
+          $ref: '#/components/schemas/property.LON'
+        ICON: 
+          $ref: '#/components/schemas/property.ICON'
+        TYPE: 
+          $ref: '#/components/schemas/property.TYPE'
+        NAME: 
+          $ref: '#/components/schemas/property.NAME'
+        PUV: 
+          $ref: '#/components/schemas/property.PUV'
+      required: 
+        - LAT
+        - LON
+        - ICON
+        - TYPE
+        - NAME
+        - PUV
+    caa_poll_rpt_rest_services.MapOutput: 
+      type: object
+      description: Map Output Object
+      properties: 
+        IconBaseURL: 
+          $ref: '#/components/schemas/property.IconBaseURL'
+        PopUpBaseURL: 
+          $ref: '#/components/schemas/property.PopUpBaseURL'
+        CenterLatitude: 
+          $ref: '#/components/schemas/property.CenterLatitude'
+        CenterLongitude: 
+          $ref: '#/components/schemas/property.CenterLongitude'
+        MapData: 
+          type: array
+          items: 
+            $ref: '#/components/schemas/caa_poll_rpt_rest_services.MapData'
+          xml: 
+            wrapped: true
+      required: 
+        - IconBaseURL
+        - PopUpBaseURL
+        - CenterLatitude
+        - CenterLongitude
+        - MapData
+    caa_poll_rpt_rest_services.Permits: 
+      type: object
+      description: Permits Object
+      xml: 
+        name: Permits
+      properties: 
+        Statute: 
+          $ref: '#/components/schemas/property.Statute'
+        EPASystem: 
+          $ref: '#/components/schemas/property.EPASystem'
+        SourceID: 
+          $ref: '#/components/schemas/property.SourceID'
+        Universe: 
+          $ref: '#/components/schemas/property.Universe'
+        NAICS: 
+          type: string
+          title: NAICS
+          nullable: true
+        NAICSDesc: 
+          $ref: '#/components/schemas/property.NAICSDesc'
+        SIC: 
+          type: string
+          title: SIC
+          nullable: true
+        FacilityStatus: 
+          $ref: '#/components/schemas/property.FacilityStatus'
+      required: 
+        - Statute
+        - EPASystem
+        - SourceID
+        - Universe
+        - NAICS
+        - NAICSDesc
+        - SIC
+        - FacilityStatus
+    caa_poll_rpt_rest_services.SpatialMetadata: 
+      type: object
+      description: Spatial Metadata Object
+      properties: 
+        RegistryID: 
+          $ref: '#/components/schemas/property.RegistryID'
+        Latitude83: 
+          $ref: '#/components/schemas/property.Latitude83'
+        Longitude83: 
+          $ref: '#/components/schemas/property.Longitude83'
+        CollectionMethod: 
+          type: string
+          title: CollectionMethod
+          nullable: true
+          example: ADDRESS MATCHING-HOUSE NUMBER
+        ReferencePoint: 
+          type: string
+          title: ReferencePoint
+          nullable: true
+          example: ENTRANCE POINT OF A FACILITY OR STATION
+        CalculatedAccuracy: 
+          $ref: '#/components/schemas/property.CalculatedAccuracy'
+        CoordinateSourceSystem: 
+          type: string
+          title: CoordinateSourceSystem
+          nullable: true
+          example: FRS
+        CoordinateSourceSystemId: 
+          type: string
+          title: CoordinateSourceSystemId
+          nullable: true
+          example: 110001891506
+      required: 
+        - RegistryID
+        - Latitude83
+        - Longitude83
+        - CollectionMethod
+        - ReferencePoint
+        - CalculatedAccuracy
+        - CoordinateSourceSystem
+        - CoordinateSourceSystemId
+    caa_poll_rpt_rest_services.get_aggregate_emissions.Results: 
+      type: object
+      description: Results Object
+      properties: 
+        Message: 
+          $ref: '#/components/schemas/property.Message'
+        AggregateEmissions: 
+          $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_caapr.AggregateEmissions'
+      required: 
+        - Message
+        - AggregateEmissions
+    caa_poll_rpt_rest_services.get_aggregate_emissions.root: 
+      type: object
+      xml: 
+        name: Root
+      properties: 
+        Results: 
+          $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_aggregate_emissions.Results'
+      required: 
+        - Results
+    caa_poll_rpt_rest_services.get_air_quality.Results: 
+      type: object
+      description: Results Object
+      properties: 
+        Message: 
+          $ref: '#/components/schemas/property.Message'
+        AirQuality: 
+          $ref: '#/components/schemas/caa_poll_rpt_rest_services.AirQuality'
+      required: 
+        - Message
+        - AirQuality
+    caa_poll_rpt_rest_services.get_air_quality.root: 
+      type: object
+      xml: 
+        name: Root
+      properties: 
+        Results: 
+          $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_air_quality.Results'
+      required: 
+        - Results
+    caa_poll_rpt_rest_services.get_caapr.AggregateEmissions: 
+      type: object
+      description: Aggregate Emissions Object
+      properties: 
+        Emissions: 
+          type: array
+          items: 
+            $ref: '#/components/schemas/caa_poll_rpt_rest_services.Emissions'
+          xml: 
+            wrapped: true
+      required: 
+        - Emissions
+    caa_poll_rpt_rest_services.get_caapr.CAAPollRpt: 
+      type: object
+      description: Results Object
+      properties: 
+        RegistryIDs: 
+          type: array
+          items: 
+            $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_caapr.RegistryIDs'
+          xml: 
+            wrapped: true
+        Pollutants: 
+          type: array
+          items: 
+            $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_caapr.Pollutants'
+          xml: 
+            wrapped: true
+        Permits: 
+          type: array
+          items: 
+            $ref: '#/components/schemas/caa_poll_rpt_rest_services.Permits'
+          xml: 
+            wrapped: true
+        AggregateEmissions: 
+          $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_caapr.AggregateEmissions'
+        EnvironmentalConditions: 
+          $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_caapr.EnvironmentalConditions'
+        SpatialMetadata: 
+          $ref: '#/components/schemas/caa_poll_rpt_rest_services.SpatialMetadata'
+        MapOutput: 
+          $ref: '#/components/schemas/caa_poll_rpt_rest_services.MapOutput'
+      required: 
+        - RegistryIDs
+        - Pollutants
+        - Permits
+        - AggregateEmissions
+        - EnvironmentalConditions
+        - MapOutput
+    caa_poll_rpt_rest_services.get_caapr.EnvironmentalConditions: 
+      type: object
+      description: Environmental Conditions Object
+      properties: 
+        AirQuality: 
+          $ref: '#/components/schemas/caa_poll_rpt_rest_services.AirQuality'
+      required: 
+        - AirQuality
+    caa_poll_rpt_rest_services.get_caapr.Pollutants: 
+      type: object
+      description: Pollutants Object
+      xml: 
+        name: Pollutants
+      properties: 
+        RegistryId: 
+          $ref: '#/components/schemas/property.RegistryId'
+        Program: 
+          $ref: '#/components/schemas/property.Program'
+        System: 
+          type: string
+          title: System
+          nullable: true
+        ProgramSysId: 
+          type: string
+          title: ProgramSysId
+          nullable: true
+        Pollutant: 
+          $ref: '#/components/schemas/property.Pollutant'
+        UnitsOfMeasure: 
+          type: string
+          title: UnitsOfMeasure
+          nullable: true
+          example: Pounds
+        Year1: 
+          type: string
+          title: Year1
+          nullable: true
+        Year2: 
+          type: string
+          title: Year2
+          nullable: true
+        Year3: 
+          type: string
+          title: Year3
+          nullable: true
+        Year4: 
+          type: string
+          title: Year4
+          nullable: true
+        Year5: 
+          type: string
+          title: Year5
+          nullable: true
+        Year6: 
+          type: string
+          title: Year6
+          nullable: true
+        Year7: 
+          type: string
+          title: Year7
+          nullable: true
+        Year8: 
+          type: string
+          title: Year8
+          nullable: true
+        Year9: 
+          type: string
+          title: Year9
+          nullable: true
+        Year10: 
+          type: string
+          title: Year10
+          nullable: true
+      required: 
+        - RegistryId
+        - Program
+        - System
+        - ProgramSysId
+        - Pollutant
+        - UnitsOfMeasure
+        - Year1
+        - Year2
+        - Year3
+        - Year4
+        - Year5
+        - Year6
+        - Year7
+        - Year8
+        - Year9
+        - Year10
+    caa_poll_rpt_rest_services.get_caapr.RegistryIDs: 
+      type: object
+      description: Registry IDs Object
+      xml: 
+        name: RegistryIDs
+      properties: 
+        RegistryId: 
+          $ref: '#/components/schemas/property.RegistryId'
+        SourceId: 
+          $ref: '#/components/schemas/property.SourceId'
+        FacilityName: 
+          $ref: '#/components/schemas/property.FacilityName'
+        Street: 
+          type: string
+          title: Street
+          nullable: true
+        City: 
+          $ref: '#/components/schemas/property.City'
+        State: 
+          $ref: '#/components/schemas/property.State'
+        Zip: 
+          $ref: '#/components/schemas/property.Zip'
+        County: 
+          type: string
+          title: County
+          nullable: true
+        Region: 
+          type: string
+          title: Region
+          nullable: true
+        Latitude: 
+          $ref: '#/components/schemas/property.Latitude'
+        Longitude: 
+          $ref: '#/components/schemas/property.Longitude'
+      required: 
+        - RegistryId
+        - SourceId
+        - FacilityName
+        - Street
+        - City
+        - State
+        - Zip
+        - County
+        - Region
+        - Latitude
+        - Longitude
+    caa_poll_rpt_rest_services.get_caapr.Results: 
+      type: object
+      description: Results Object
+      properties: 
+        Message: 
+          $ref: '#/components/schemas/property.Message'
+        REST_Status: 
+          type: string
+          title: REST_Status
+          nullable: true
+        REST_Note: 
+          type: string
+          title: REST_Note
+          nullable: true
+        REST_Version: 
+          type: string
+          title: REST_Version
+          nullable: true
+        REST_Versio2: 
+          type: string
+          title: REST_Versio2
+          nullable: true
+        TRI_year_01: 
+          type: string
+          title: TRI_year_01
+          nullable: true
+        TRI_year_02: 
+          type: string
+          title: TRI_year_02
+          nullable: true
+        TRI_year_03: 
+          type: string
+          title: TRI_year_03
+          nullable: true
+        TRI_year_04: 
+          type: string
+          title: TRI_year_04
+          nullable: true
+        TRI_year_05: 
+          type: string
+          title: TRI_year_05
+          nullable: true
+        TRI_year_06: 
+          type: string
+          title: TRI_year_06
+          nullable: true
+        TRI_year_07: 
+          type: string
+          title: TRI_year_07
+          nullable: true
+        TRI_year_08: 
+          type: string
+          title: TRI_year_08
+          nullable: true
+        TRI_year_09: 
+          type: string
+          title: TRI_year_09
+          nullable: true
+        TRI_year_10: 
+          type: string
+          title: TRI_year_10
+          nullable: true
+        CAAPollRpt: 
+          $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_caapr.CAAPollRpt'
+      required: 
+        - Message
+        - REST_Status
+        - REST_Note
+        - REST_Version
+        - TRI_year_01
+        - TRI_year_02
+        - TRI_year_03
+        - TRI_year_04
+        - TRI_year_05
+        - TRI_year_06
+        - TRI_year_07
+        - TRI_year_08
+        - TRI_year_09
+        - TRI_year_10
+        - CAAPollRpt
+    caa_poll_rpt_rest_services.get_caapr.root: 
+      type: object
+      xml: 
+        name: Root
+      properties: 
+        Results: 
+          $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_caapr.Results'
+      required: 
+        - Results
+    caa_poll_rpt_rest_services.get_map.Results: 
+      type: object
+      description: Results Object
+      properties: 
+        Message: 
+          $ref: '#/components/schemas/property.Message'
+        MapOutput: 
+          $ref: '#/components/schemas/caa_poll_rpt_rest_services.MapOutput'
+      required: 
+        - Message
+        - MapOutput
+    caa_poll_rpt_rest_services.get_map.root: 
+      type: object
+      xml: 
+        name: Root
+      properties: 
+        Results: 
+          $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_map.Results'
+      required: 
+        - Results
+    caa_poll_rpt_rest_services.get_nnnPermits.Results: 
+      type: object
+      description: Results Object
+      properties: 
+        Message: 
+          $ref: '#/components/schemas/property.Message'
+        Permits: 
+          type: array
+          items: 
+            $ref: '#/components/schemas/caa_poll_rpt_rest_services.Permits'
+          xml: 
+            wrapped: true
+      required: 
+        - Message
+        - Permits
+    caa_poll_rpt_rest_services.get_nnnPermits.root: 
+      type: object
+      xml: 
+        name: Root
+      properties: 
+        Results: 
+          $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_nnnPermits.Results'
+      required: 
+        - Results
+    caa_poll_rpt_rest_services.get_spatial_metadata.Results: 
+      type: object
+      description: Results Object
+      properties: 
+        Message: 
+          $ref: '#/components/schemas/property.Message'
+        SpatialMetadata: 
+          $ref: '#/components/schemas/caa_poll_rpt_rest_services.SpatialMetadata'
+      required: 
+        - Message
+        - SpatialMetadata
+    caa_poll_rpt_rest_services.get_spatial_metadata.root: 
+      type: object
+      xml: 
+        name: Root
+      properties: 
+        Results: 
+          $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_spatial_metadata.Results'
+      required: 
+        - Results
+    parameter.callback: 
+      type: string
+      title: callback
+      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+    parameter.nn2: 
+      type: string
+      title: nn2
+      description: "Secondary statute filter, provide a single statute code to filter permit results (e.g., \"EP313\")"
+    parameter.nnn: 
+      type: string
+      title: nnn
+      description: "Statute filter, provide a single statute code to filter permit results (e.g., \"CAA\")"
+    parameter.output: 
+      type: string
+      title: output
+      description: |-
+        Output Format Flag.  Enter one of the following keywords:
+        - JSON = Data model formatted as Javascript Object Notation (default).
+        - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+        - XML = Data model formatted as Extensible Markup Language.
+      enum: 
+        - JSONP
+        - JSON
+        - XML
+    parameter.p_id: 
+      type: string
+      title: p_id
+      description: Identifier for the service.
+    parameter.p_id.CAA: 
+      type: string
+      title: p_id
+      description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
+    parameter.p_units: 
+      type: string
+      title: p_units
+      description: "Units of Measurement.  For the Air Pollutant Report, the default value is 'lbs'.  Enter \"TWPE\" for Toxic Weighted Pounds Equivalents (TWPE). "
+    property.CalculatedAccuracy: 
+      type: string
+      title: CalculatedAccuracy
+      description: Calculated Accuracy
+      nullable: true
+      example: 50 Meters
+    property.CenterLatitude: 
+      type: string
+      title: CenterLatitude
+      description: The latitude of the facility in degrees, to four decimal places.
+      nullable: true
+      example: 38.798026
+    property.CenterLongitude: 
+      type: string
+      title: CenterLongitude
+      description: The longitude of the facility in degrees, to four decimal places.
+      nullable: true
+      example: -77.062981
+    property.City: 
+      type: string
+      title: City
+      description: The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery.
+      nullable: true
+    property.EPASystem: 
+      type: string
+      title: EPASystem
+      description: |-
+        The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: 
+        - AFS: Air Facility System for Clean Air Act stationary source programs.
+        - ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.
+        - RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.
+        - NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).
+        - TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.
+        - NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.
+        - TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.
+      nullable: true
+      example: ICP
+    property.FacilityName: 
+      type: string
+      title: FacilityName
+      description: The name of the facility.
+      nullable: true
+      example: 3M COMPANY
+    property.FacilityStatus: 
+      type: string
+      title: FacilityStatus
+      description: |-
+        The Air Program Status is given for each source ID (Operating; Planned; Under construction; Temporarily closed;  Permanently closed; and Seasonal)
+        For CWA, the Permit Compliance System (PCS) designates a permitted facility as being Active or Inactive. Under the CWA, all facilities discharging pollutants from a point source (e.g., a pipe) to surface waters must have a NPDES permit. For CWA, ICISNPDES designates a permit as Effective, Administratively Continued, Expired, Not Needed, Pending, Retired, or Terminated. RCRA facilities (sites) are designated as Active or Inactive. The following provides RCRA site activity status definitions and explains site activity status designation.
+      nullable: true
+      example: Effective
+    property.ICON: 
+      type: string
+      title: ICON
+      description: Name of each individual icon file within the URL base
+      nullable: true
+      example: CAA-IC-MN-N.png
+    property.IconBaseURL: 
+      type: string
+      title: IconBaseURL
+      description: URL where all the icons are located
+      nullable: true
+      example: https://echo.epa.gov/app/map/icons/
+    property.LAT: 
+      type: string
+      title: LAT
+      description: The latitude of the facility in degrees, to four decimal places
+      nullable: true
+      example: 38.798026
+    property.LON: 
+      type: string
+      title: LON
+      description: The longitude of the facility in degrees, to four decimal places
+      nullable: true
+      example: -77.062981
+    property.Latitude: 
+      type: string
+      title: Latitude
+      description: The latitude of the facility or permit holder as maintained in each data system.
+      format: double
+      nullable: true
+      example: 34.606651
+    property.Latitude83: 
+      type: string
+      title: Latitude83
+      description: The latitude of the facility or permit holder as maintained in each data system.
+      format: double
+      nullable: true
+      example: 38.798026
+    property.Lead2008Area: 
+      type: string
+      title: Lead2008Area
+      description: If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name
+      nullable: true
+      example: Washington, DC-MD-VA
+    property.Longitude: 
+      type: string
+      title: Longitude
+      description: The longitude of the facility or permit holder as maintained in each data system
+      format: double
+      nullable: true
+      example: -86.982419
+    property.Longitude83: 
+      type: string
+      title: Longitude83
+      description: The longitude of the facility or permit holder as maintained in each data system
+      format: double
+      nullable: true
+      example: -77.062981
+    property.Message: 
+      type: string
+      title: Message
+      description: Field to record messages (typically performance-related) about packet processing
+      nullable: true
+      example: Success
+    property.NAICSDesc: 
+      type: string
+      title: NAICS Description
+      description: The corresponding description of North American Industry Classification System (NAICS) code.
+      nullable: true
+      example: Ready-Mix Concrete Manufacturing
+    property.NAME: 
+      type: string
+      title: NAME
+      description: For DFR, this is the Facility name. The name corresponds to the TYPE value
+      nullable: true
+      example: VIRGINIA CONCRETE ALEXANDRIA PLANT
+    property.Ozone8hr1997Area: 
+      type: string
+      title: Ozone8hr1997Area
+      description: If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name
+      nullable: true
+      example: Milwaukee-Racine, WI
+    property.Ozone8hr2008Area: 
+      type: string
+      title: Ozone8hr2008Area
+      description: If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name
+      nullable: true
+      example: Chicago-Naperville, IL-IN-WI
+    property.PUV: 
+      type: string
+      title: PUV
+      description: Pop up value. Combine with PopUpBaseURL to give the popup for the facility
+      nullable: true
+      example: 110001891506
+    property.ParticulateMatter2006Area: 
+      type: string
+      title: ParticulateMatter2006Area
+      description: If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name
+      nullable: true
+      example: Washington, DC-MD-VA
+    property.Pollutant: 
+      type: string
+      title: Pollutant
+      description: The name that EPA has selected as its preferred name for a substance (also known as registry name). If the registry name is not available, use the systematic name instead.
+      nullable: true
+      example: Carbon monoxide
+    property.PopUpBaseURL: 
+      type: string
+      title: PopUpBaseURL
+      description: Combine this URL with the PUC to get popup info
+      nullable: true
+      example: https://ofmpub.epa.gov/echo/cwa_rest_services.pop_up?p_id=
+    property.Program: 
+      type: string
+      title: Program
+      description: The source database for the EPA programs information.
+      nullable: true
+      example: CWA
+    property.RegistryID: 
+      type: string
+      title: RegistryID
+      description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
+      nullable: true
+      example: 110020837601
+    property.RegistryId: 
+      type: string
+      title: RegistryId
+      description: 12-digit Facility Registry Service (FRS) identification number.  FRS uniquely identifies a facility by assigning an identification number (FRS ID), and uses this FRS ID to link together all EPA regulatory program database records
+      nullable: true
+      example: 110020837601
+    property.SourceID: 
+      type: string
+      title: SourceID
+      description: Unique Identifier assigned by EPA.
+      nullable: true
+      example: ALR040033
+    property.SourceId: 
+      type: string
+      title: SourceId
+      description: Unique Identifier assigned by EPA.
+      nullable: true
+      example: ALR040033
+    property.State: 
+      type: string
+      title: State
+      description: The two letter abbreviation that represents the state or state equivalent for the U.S.
+      nullable: true
+      example: FL
+    property.Statute: 
+      type: string
+      title: Statute
+      description: |-
+        The name of the statute associated with each of the permits and identifiers linked to the facility: 
+        - CAA = the Clean Air Act
+        - CWA = the Clean Water Act
+        - RCRA = the Resource Conservation and Recovery Act
+        - EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)
+        - TSCA = the Toxic Substances Control Act
+        - SDWA = the Safe Drinking Water Act
+      nullable: true
+      example: CWA
+    property.SulfurDioxide2010Area: 
+      type: string
+      title: SulfurDioxide2010Area
+      description: If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name
+      nullable: true
+      example: Washington, DC-MD-VA
+    property.TYPE: 
+      type: string
+      title: TYPE
+      description: For DFR, this is always facility
+      nullable: true
+      example: Facility
+    property.Universe: 
+      type: string
+      title: Universe
+      description: |-
+        This field provides further description on type of permit or record for each data system as follows:
+        - For CAA  = The program office defines each CAA Source ID and the associated permits as being Federally Reportable or Non-Federally Reportable. Under the CAA, federally reportable sources include majors, synthetic minors, NESHAP Part 61 minors, minors with an unresolved High Priority Violation (HPV), with recent enforcement actions, or included on a Compliance Monitoring Strategy plan. The Clean Air Act requires that delegated agencies and EPA track all federally reportable sources in Air Facility System (AFS).
+        - For CWA  = Each CWA Source ID or National Pollutant Discharge Elimination System (NPDES) permit is defined by the program office as a Major or Minor discharger.
+        - For RCRA = RCRA Source ID or permits for Treatment, Storage and Disposal facilities are identified by TSD, Large Quantity Generators are identified by LQG. Other values include Permit Workload (PMT), Closure Workload (CLO), Small Quantity Generator Universe (SQG), Conditionally-Exempt Small Quantity Generator (CESQG), Post-Closure Workload (POST CL), and Transporters.
+      nullable: true
+      example: Minor: General Permit Covered Facility
+    property.Zip: 
+      type: string
+      title: Zip
+      description: US postal ZIP code, as maintained by ICIS.
+      nullable: true
+      example: 53140
+  responses: 
+    caa_poll_rpt_rest_services.get_aggregate_emissions.default: 
+      description: Returns an object that includes aggregate emissions.
+      content: 
+        'application/json': 
+          schema: 
+            $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_aggregate_emissions.root'
+        'application/xml': 
+          schema: 
+            $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_aggregate_emissions.root'
+    caa_poll_rpt_rest_services.get_air_quality.default: 
+      description: Returns an object that includes information on air quality.
+      content: 
+        'application/json': 
+          schema: 
+            $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_air_quality.root'
+        'application/xml': 
+          schema: 
+            $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_air_quality.root'
+    caa_poll_rpt_rest_services.get_caapr.default: 
+      description: Returns a complex object (Air Pollutant Report) composed of objects from all of the other procedures.
+      content: 
+        'application/json': 
+          schema: 
+            $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_caapr.root'
+        'application/xml': 
+          schema: 
+            $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_caapr.root'
+    caa_poll_rpt_rest_services.get_map.default: 
+      description: Returns an object that includes information for displaying a map.
+      content: 
+        'application/json': 
+          schema: 
+            $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_map.root'
+        'application/xml': 
+          schema: 
+            $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_map.root'
+    caa_poll_rpt_rest_services.get_nnnPermits.default: 
+      description: Returns an object that includes an array of permits.
+      content: 
+        'application/json': 
+          schema: 
+            $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_nnnPermits.root'
+        'application/xml': 
+          schema: 
+            $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_nnnPermits.root'
+    caa_poll_rpt_rest_services.get_spatial_metadata.default: 
+      description: Returns an object that includes spatial metadata.
+      content: 
+        'application/json': 
+          schema: 
+            $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_spatial_metadata.root'
+        'application/xml': 
+          schema: 
+            $ref: '#/components/schemas/caa_poll_rpt_rest_services.get_spatial_metadata.root'
+  parameters: 
+    callback: 
+      name: callback
+      in: query
+      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+      required: false
+      schema: 
+        type: string
+        title: callback
+    nn2: 
+      name: nn2
+      in: query
+      description: "Secondary statute filter, provide a single statute code to filter permit results (e.g., \"EP313\")"
+      required: false
+      schema: 
+        type: string
+        title: nn2
+    nnn: 
+      name: nnn
+      in: query
+      description: "Statute filter, provide a single statute code to filter permit results (e.g., \"CAA\")"
+      required: false
+      schema: 
+        type: string
+        title: nnn
+    output: 
+      name: output
+      in: query
+      description: |-
+        Output Format Flag.  Enter one of the following keywords:
+        - JSON = Data model formatted as Javascript Object Notation (default).
+        - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+        - XML = Data model formatted as Extensible Markup Language.
+      required: false
+      schema: 
+        type: string
+        title: output
+        enum: 
+          - JSONP
+          - JSON
+          - XML
+    p_id: 
+      name: p_id
+      in: query
+      description: Identifier for the service.
+      required: true
+      schema: 
+        type: string
+        title: p_id
+    p_id.CAA: 
+      name: p_id
+      in: query
+      description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
+      required: true
+      schema: 
+        type: string
+        title: p_id
+    p_units: 
+      name: p_units
+      in: query
+      description: "Units of Measurement.  For the Air Pollutant Report, the default value is 'lbs'.  Enter \"TWPE\" for Toxic Weighted Pounds Equivalents (TWPE). "
+      required: false
+      schema: 
+        type: string
+        title: p_units
+  requestBodies: 
+    caa_poll_rpt_rest_services.get_aggregate_emissions.post.requestBody: 
+        content: 
+          application/x-www-form-urlencoded: 
+            schema: 
+              type: object
+              properties: 
+                output: 
+                  $ref: '#/components/schemas/parameter.output'
+                p_id: 
+                  $ref: '#/components/schemas/parameter.p_id.CAA'
+                p_units: 
+                  $ref: '#/components/schemas/parameter.p_units'
+                callback: 
+                  $ref: '#/components/schemas/parameter.callback'
+              required: 
+                - p_id
+    caa_poll_rpt_rest_services.get_air_quality.post.requestBody: 
+        content: 
+          application/x-www-form-urlencoded: 
+            schema: 
+              type: object
+              properties: 
+                output: 
+                  $ref: '#/components/schemas/parameter.output'
+                p_id: 
+                  $ref: '#/components/schemas/parameter.p_id.CAA'
+                callback: 
+                  $ref: '#/components/schemas/parameter.callback'
+              required: 
+                - p_id
+    caa_poll_rpt_rest_services.get_caapr.post.requestBody: 
+        content: 
+          application/x-www-form-urlencoded: 
+            schema: 
+              type: object
+              properties: 
+                output: 
+                  $ref: '#/components/schemas/parameter.output'
+                p_id: 
+                  $ref: '#/components/schemas/parameter.p_id.CAA'
+                p_units: 
+                  $ref: '#/components/schemas/parameter.p_units'
+                callback: 
+                  $ref: '#/components/schemas/parameter.callback'
+              required: 
+                - p_id
+    caa_poll_rpt_rest_services.get_map.post.requestBody: 
+        content: 
+          application/x-www-form-urlencoded: 
+            schema: 
+              type: object
+              properties: 
+                output: 
+                  $ref: '#/components/schemas/parameter.output'
+                p_id: 
+                  $ref: '#/components/schemas/parameter.p_id.CAA'
+                callback: 
+                  $ref: '#/components/schemas/parameter.callback'
+              required: 
+                - p_id
+    caa_poll_rpt_rest_services.get_nnnPermits.post.requestBody: 
+        content: 
+          application/x-www-form-urlencoded: 
+            schema: 
+              type: object
+              properties: 
+                output: 
+                  $ref: '#/components/schemas/parameter.output'
+                nnn: 
+                  $ref: '#/components/schemas/parameter.nnn'
+                nn2: 
+                  $ref: '#/components/schemas/parameter.nn2'
+                p_id: 
+                  $ref: '#/components/schemas/parameter.p_id.CAA'
+                callback: 
+                  $ref: '#/components/schemas/parameter.callback'
+              required: 
+                - p_id
+    caa_poll_rpt_rest_services.get_spatial_metadata.post.requestBody: 
+        content: 
+          application/x-www-form-urlencoded: 
+            schema: 
+              type: object
+              properties: 
+                output: 
+                  $ref: '#/components/schemas/parameter.output'
+                p_id: 
+                  $ref: '#/components/schemas/parameter.p_id'
+                callback: 
+                  $ref: '#/components/schemas/parameter.callback'
+              required: 
+                - p_id
+externalDocs: 
+  description: US EPA Enforcement and Compliance History Online 
+  url: "https://echo.epa.gov/"

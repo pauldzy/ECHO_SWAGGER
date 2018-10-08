@@ -151,7 +151,7 @@ paths:
         - $ref: '#/components/parameters/callback'
         - $ref: '#/components/parameters/qcolumns'
       responses: 
-        'default': 
+        default: 
           $ref: '#/components/responses/air_rest_services.get_facilities.default'
     post: 
       tags: 
@@ -388,7 +388,7 @@ paths:
                   qcolumns: 
                     $ref: '#/components/schemas/parameter.qcolumns'
       responses: 
-        'default': 
+        default: 
           $ref: '#/components/responses/air_rest_services.get_facilities.default'
   /air_rest_services.get_facility_info: 
     get: 
@@ -508,7 +508,7 @@ paths:
         - $ref: '#/components/parameters/qcolumns'
         - $ref: '#/components/parameters/p_pretty_print'
       responses: 
-        'default': 
+        default: 
           $ref: '#/components/responses/air_rest_services.get_facility_info.default'
     post: 
       tags: 
@@ -518,7 +518,7 @@ paths:
       requestBody: 
         $ref: '#/components/requestBodies/air_rest_services.get_facility_info.post.requestBody'
       responses: 
-        'default': 
+        default: 
           $ref: '#/components/responses/air_rest_services.get_facility_info.default'
   /air_rest_services.get_qid: 
     get: 
@@ -535,7 +535,7 @@ paths:
         - $ref: '#/components/parameters/descending'
         - $ref: '#/components/parameters/qcolumns'
       responses: 
-        'default': 
+        default: 
           $ref: '#/components/responses/air_rest_services.get_qid.default'
     post: 
       tags: 
@@ -545,7 +545,7 @@ paths:
       requestBody: 
         $ref: '#/components/requestBodies/air_rest_services.get_qid.post.requestBody'
       responses: 
-        'default': 
+        default: 
           $ref: '#/components/responses/air_rest_services.get_qid.default'
   /air_rest_services.get_map: 
     get: 
@@ -564,7 +564,7 @@ paths:
         - $ref: '#/components/parameters/c2_long'
         - $ref: '#/components/parameters/p_id'
       responses: 
-        'default': 
+        default: 
           $ref: '#/components/responses/air_rest_services.get_map.default'
     post: 
       tags: 
@@ -574,7 +574,7 @@ paths:
       requestBody: 
         $ref: '#/components/requestBodies/air_rest_services.get_map.post.requestBody'
       responses: 
-        'default': 
+        default: 
           $ref: '#/components/responses/air_rest_services.get_map.default'
   /air_rest_services.get_download: 
     get: 
@@ -588,7 +588,7 @@ paths:
         - $ref: '#/components/parameters/qcolumns'
         - $ref: '#/components/parameters/p_pretty_print'
       responses: 
-        'default': 
+        default: 
           $ref: '#/components/responses/air_rest_services.get_download.default'
     post: 
       tags: 
@@ -598,7 +598,7 @@ paths:
       requestBody: 
         $ref: '#/components/requestBodies/air_rest_services.get_download.post.requestBody'
       responses: 
-        'default': 
+        default: 
           $ref: '#/components/responses/air_rest_services.get_download.default'
   /air_rest_services.get_info_clusters: 
     get: 
@@ -611,7 +611,7 @@ paths:
         - $ref: '#/components/parameters/p_qid'
         - $ref: '#/components/parameters/p_pretty_print'
       responses: 
-        'default': 
+        default: 
           $ref: '#/components/responses/air_rest_services.get_info_clusters.default'
     post: 
       tags: 
@@ -621,7 +621,7 @@ paths:
       requestBody: 
         $ref: '#/components/requestBodies/air_rest_services.get_info_clusters.post.requestBody'
       responses: 
-        'default': 
+        default: 
           $ref: '#/components/responses/air_rest_services.get_info_clusters.default'
   /air_rest_services.get_geojson: 
     get: 
@@ -638,7 +638,7 @@ paths:
         - $ref: '#/components/parameters/qcolumns'
         - $ref: '#/components/parameters/p_pretty_print'
       responses: 
-        'default': 
+        default: 
           $ref: '#/components/responses/air_rest_services.get_geojson.default'
     post: 
       tags: 
@@ -648,7 +648,7 @@ paths:
       requestBody: 
         $ref: '#/components/requestBodies/air_rest_services.get_geojson.post.requestBody'
       responses: 
-        'default': 
+        default: 
           $ref: '#/components/responses/air_rest_services.get_geojson.default'
   /air_rest_services.metadata: 
     get: 
@@ -660,7 +660,7 @@ paths:
         - $ref: '#/components/parameters/output'
         - $ref: '#/components/parameters/callback'
       responses: 
-        'default': 
+        default: 
           $ref: '#/components/responses/air_rest_services.metadata.default'
     post: 
       tags: 
@@ -670,7 +670,7 @@ paths:
       requestBody: 
         $ref: '#/components/requestBodies/air_rest_services.metadata.post.requestBody'
       responses: 
-        'default': 
+        default: 
           $ref: '#/components/responses/air_rest_services.metadata.default'
 components: 
   schemas: 
@@ -925,6 +925,7 @@ components:
           $ref: '#/components/schemas/property.RCRAIDs'
         RmpIDs: 
           type: string
+          title: RmpIDs
           nullable: true
         SDWAIDs: 
           $ref: '#/components/schemas/property.SDWAIDs'
@@ -1203,7 +1204,7 @@ components:
           nullable: true
         TRIbalFlag: 
           type: string
-          title: Tribal Lands Flag
+          title: TRIbalFlag
           nullable: true
           example: 1
         CurrSvFlag: 
@@ -1247,12 +1248,15 @@ components:
           $ref: '#/components/schemas/property.WebDocs'
         NaaCategories: 
           type: string
+          title: NaaCategories
           nullable: true
         NaaPollutants: 
           type: string
+          title: NaaPollutants
           nullable: true
         FacCountyName: 
           type: string
+          title: FacCountyName
           nullable: true
         FacStdCountyName: 
           type: string
@@ -1563,6 +1567,7 @@ components:
           $ref: '#/components/schemas/property.RCRAIDs'
         RmpIDs: 
           type: string
+          title: RmpIDs
           nullable: true
         SDWAIDs: 
           $ref: '#/components/schemas/property.SDWAIDs'
@@ -1841,7 +1846,7 @@ components:
           nullable: true
         TRIbalFlag: 
           type: string
-          title: Tribal Lands Flag
+          title: TRIbalFlag
           nullable: true
           example: 1
         CurrSvFlag: 
@@ -1885,12 +1890,15 @@ components:
           $ref: '#/components/schemas/property.WebDocs'
         NaaCategories: 
           type: string
+          title: NaaCategories
           nullable: true
         NaaPollutants: 
           type: string
+          title: NaaPollutants
           nullable: true
         FacCountyName: 
           type: string
+          title: FacCountyName
           nullable: true
         FacStdCountyName: 
           type: string
@@ -2309,6 +2317,7 @@ components:
           $ref: '#/components/schemas/property.RCRAIDs'
         RmpIDs: 
           type: string
+          title: RmpIDs
           nullable: true
         SDWAIDs: 
           $ref: '#/components/schemas/property.SDWAIDs'
@@ -2582,7 +2591,7 @@ components:
           nullable: true
         TRIbalFlag: 
           type: number
-          title: Tribal Lands Flag
+          title: TRIbalFlag
           nullable: true
         CurrSvFlag: 
           $ref: '#/components/schemas/property.CurrSvFlag.NUMBER'
@@ -2624,12 +2633,15 @@ components:
           $ref: '#/components/schemas/property.WebDocs'
         NaaCategories: 
           type: string
+          title: NaaCategories
           nullable: true
         NaaPollutants: 
           type: string
+          title: NaaPollutants
           nullable: true
         FacCountyName: 
           type: string
+          title: FacCountyName
           nullable: true
         FacStdCountyName: 
           type: string
@@ -3943,13 +3955,13 @@ components:
       nullable: true
     property.EPARegionCode: 
       type: string
-      title: EPA Region Code
+      title: EPARegionCode
       description: The EPA region where the facility is located. EPA has 10 regional offices that execute programs within several states and territories
       nullable: true
       example: 03
     property.EPASystem: 
       type: string
-      title: EPA Data System
+      title: EPASystem
       description: |-
         The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: 
         - AFS: Air Facility System for Clean Air Act stationary source programs.
@@ -4381,7 +4393,7 @@ components:
       example: ALR040033
     property.Statute: 
       type: string
-      title: Regulatory Statute
+      title: Statute
       description: |-
         The name of the statute associated with each of the permits and identifiers linked to the facility: 
         - CAA = the Clean Air Act
@@ -4400,7 +4412,7 @@ components:
       example: 20011FRTTT5001F
     property.TYPE: 
       type: string
-      title: Type
+      title: TYPE
       description: For DFR, this is always facility
       nullable: true
       example: Facility
