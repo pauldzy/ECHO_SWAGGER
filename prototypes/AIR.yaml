@@ -3,24 +3,21 @@ openapi: '3.0.0'
 info: 
   title: U.S. EPA Enforcement and Compliance History Online (ECHO) - Clean Air Act
   description: |-
-    Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.
-    <BR><BR>Air Rest Services provides multiple service endpoints, each with specific capabilities, to search and retrieve data on facilities regulated under the Clean Air Act (CAA). The returned results reflect data drawn from EPA's ICIS-Air database.
-    <BR><BR>
-    The get_facilities, get_map, get_qid, and get_download end points are meant to be used together, while the enhanced get_facility_info end point is self contained.
-      The get_facility_info end point returns either an array of state, county or zip clusters with summary statistics per cluster or an array of facilities.
-    <BR><BR>
+    Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\
+    \
+    Air Rest Services provides multiple service endpoints, each with specific capabilities, to search and retrieve data on facilities regulated under the Clean Air Act (CAA). The returned results reflect data drawn from EPA's ICIS-Air database.\
+    \
+    The get_facilities, get_map, get_qid, and get_download end points are meant to be used together, while the enhanced get_facility_info end point is self contained.  The get_facility_info end point returns either an array of state, county or zip clusters with summary statistics per cluster or an array of facilities.\
+    \
     The recommended use scenario for get_facilities, get_qid, get_map, and get_downoad is:
-    <br>
-    <br><b>1)</b>  Use get_facilities to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.
-    <br><b>2)</b>  Use get_qid, with the returned QID, to paginate through arrays of facility results.
-    <br><b>3)</b>  Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates that meet the QID query criteria.
-    <br><b>4)</b>  Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.
-    <br>
-    <br>
-    Use the qcolumns parameter to customize your search results.  Use the Metdata service endpoint for a list of available output objects, their Column Ids, and their definitions to help you build your customized output. 
-    <br><br>
-    Additional ECHO Resources:   <a href="https://echo.epa.gov/tools/web-services">Web Services</a>, <a href="https://echo.epa.gov/resources/echo-data/about-the-data">About ECHO's Data</a>, <a href="https://echo.epa.gov/tools/data-downloads">Data Downloads</a>
-    <br>
+    # Use get_facilities to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.
+    # Use get_qid, with the returned QID, to paginate through arrays of facility results.
+    # Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates that meet the QID query criteria.
+    # Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.
+    \
+    Use the qcolumns parameter to customize your search results.  Use the Metdata service endpoint for a list of available output objects, their Column Ids, and their definitions to help you build your customized output.\
+    \
+    Additional ECHO Resources: [Web Services](https://echo.epa.gov/tools/web-services), [About ECHO's Data](https://echo.epa.gov/resources/echo-data/about-the-data), [Data Downloads](https://echo.epa.gov/tools/data-downloads).
   contact: 
     name: US EPA, OECA Integration, Targeting and Access Branch
     url: "https://echo.epa.gov/resources/general-info/contact-us"
@@ -886,7 +883,7 @@ components:
           type: string
           title: AIRNAICS
           nullable: true
-          example: 812320
+          example: '812320'
         FacLat: 
           $ref: '#/components/schemas/property.FacLat'
         FacLong: 
@@ -961,7 +958,7 @@ components:
           type: string
           title: AIRQtrsWithViol
           nullable: true
-          example: 2
+          example: '2'
         AIRPollRecentViol: 
           type: string
           title: AIRPollRecentViol
@@ -970,7 +967,7 @@ components:
           type: string
           title: AIRRecentViolCnt
           nullable: true
-          example: 1
+          example: '1'
         AIRLastViolDate: 
           type: string
           title: AIRLastViolDate
@@ -979,12 +976,12 @@ components:
           type: string
           title: AIREvalCnt
           nullable: true
-          example: 0
+          example: '0'
         AIRDaysLastEval: 
           type: string
           title: AIRDaysLastEval
           nullable: true
-          example: 2806
+          example: '2806'
         AIRLastEvalDate: 
           type: string
           title: AIRLastEvalDate
@@ -1030,17 +1027,17 @@ components:
           type: string
           title: FacTRIAIRReleases
           nullable: true
-          example: 36
+          example: '36'
         FacTRICarcAIRReleases: 
           type: string
           title: FacTRICarcAIRReleases
           nullable: true
-          example: 24
+          example: '24'
         FacTRIHapsReleases: 
           type: string
           title: FacTRIHapsReleases
           nullable: true
-          example: 35.5
+          example: '35.5'
         FacEisAIRReleases: 
           type: string
           title: FacEisAIRReleases
@@ -1057,7 +1054,7 @@ components:
           type: string
           title: AIRFeaCnt
           nullable: true
-          example: 2
+          example: '2'
         AIRLastIeaDate: 
           type: string
           title: AIRLastIeaDate
@@ -1089,7 +1086,7 @@ components:
           type: string
           title: AIRPenalties
           nullable: true
-          example: $435
+          example: "$435"
         AIRLastPenaltyDate: 
           type: string
           title: AIRLastPenaltyDate
@@ -1124,7 +1121,7 @@ components:
           type: string
           title: FacPopulationDensity
           nullable: true
-          example: 9611.17
+          example: '9611.17'
         FacPercentMinority: 
           $ref: '#/components/schemas/property.FacPercentMinority'
         EPASystem: 
@@ -1206,7 +1203,7 @@ components:
           type: string
           title: TRIbalFlag
           nullable: true
-          example: 1
+          example: '1'
         CurrSvFlag: 
           $ref: '#/components/schemas/property.CurrSvFlag'
         ViolFlag: 
@@ -1239,7 +1236,7 @@ components:
           type: string
           title: CalculatedAccuracyMeters
           nullable: true
-          example: 50
+          example: '50'
         Map: 
           type: string
           title: Map
@@ -1266,7 +1263,7 @@ components:
           type: string
           title: Score
           nullable: true
-          example: 1
+          example: '1'
         MaxScore: 
           $ref: '#/components/schemas/property.MaxScore'
       required: 
@@ -1528,7 +1525,7 @@ components:
           type: string
           title: AIRNAICS
           nullable: true
-          example: 812320
+          example: '812320'
         FacLat: 
           $ref: '#/components/schemas/property.FacLat'
         FacLong: 
@@ -1603,7 +1600,7 @@ components:
           type: string
           title: AIRQtrsWithViol
           nullable: true
-          example: 2
+          example: '2'
         AIRPollRecentViol: 
           type: string
           title: AIRPollRecentViol
@@ -1612,7 +1609,7 @@ components:
           type: string
           title: AIRRecentViolCnt
           nullable: true
-          example: 1
+          example: '1'
         AIRLastViolDate: 
           type: string
           title: AIRLastViolDate
@@ -1621,12 +1618,12 @@ components:
           type: string
           title: AIREvalCnt
           nullable: true
-          example: 0
+          example: '0'
         AIRDaysLastEval: 
           type: string
           title: AIRDaysLastEval
           nullable: true
-          example: 2806
+          example: '2806'
         AIRLastEvalDate: 
           type: string
           title: AIRLastEvalDate
@@ -1672,17 +1669,17 @@ components:
           type: string
           title: FacTRIAIRReleases
           nullable: true
-          example: 36
+          example: '36'
         FacTRICarcAIRReleases: 
           type: string
           title: FacTRICarcAIRReleases
           nullable: true
-          example: 24
+          example: '24'
         FacTRIHapsReleases: 
           type: string
           title: FacTRIHapsReleases
           nullable: true
-          example: 35.5
+          example: '35.5'
         FacEisAIRReleases: 
           type: string
           title: FacEisAIRReleases
@@ -1699,7 +1696,7 @@ components:
           type: string
           title: AIRFeaCnt
           nullable: true
-          example: 2
+          example: '2'
         AIRLastIeaDate: 
           type: string
           title: AIRLastIeaDate
@@ -1731,7 +1728,7 @@ components:
           type: string
           title: AIRPenalties
           nullable: true
-          example: $435
+          example: "$435"
         AIRLastPenaltyDate: 
           type: string
           title: AIRLastPenaltyDate
@@ -1766,7 +1763,7 @@ components:
           type: string
           title: FacPopulationDensity
           nullable: true
-          example: 9611.17
+          example: '9611.17'
         FacPercentMinority: 
           $ref: '#/components/schemas/property.FacPercentMinority'
         EPASystem: 
@@ -1848,7 +1845,7 @@ components:
           type: string
           title: TRIbalFlag
           nullable: true
-          example: 1
+          example: '1'
         CurrSvFlag: 
           $ref: '#/components/schemas/property.CurrSvFlag'
         ViolFlag: 
@@ -1881,7 +1878,7 @@ components:
           type: string
           title: CalculatedAccuracyMeters
           nullable: true
-          example: 50
+          example: '50'
         Map: 
           type: string
           title: Map
@@ -1908,7 +1905,7 @@ components:
           type: string
           title: Score
           nullable: true
-          example: 1
+          example: '1'
         MaxScore: 
           $ref: '#/components/schemas/property.MaxScore'
       required: 
@@ -2081,7 +2078,7 @@ components:
           type: string
           title: ServiceBaseURL
           nullable: true
-          example: https://ofmpub.epa.gov/echo/echo_rest_services.get_facility_info
+          example: "https://ofmpub.epa.gov/echo/echo_rest_services.get_facility_info"
         QueryParameters: 
           type: array
           items: 
@@ -2150,7 +2147,7 @@ components:
           type: string
           title: ServiceBaseURL
           nullable: true
-          example: https://ofmpub.epa.gov/echo/echo_rest_services.get_facility_info
+          example: "https://ofmpub.epa.gov/echo/echo_rest_services.get_facility_info"
         QueryParameters: 
           type: array
           items: 
@@ -2195,7 +2192,6 @@ components:
     air_rest_services.get_geojson.Feature: 
       type: object
       title: GeoJSON Feature
-      description: GeoJSON Feature Object
       properties: 
         type: 
           type: string
@@ -2210,7 +2206,6 @@ components:
     air_rest_services.get_geojson.FeatureCollection: 
       type: object
       title: GeoJSON FeatureCollection
-      description: GeoJSON Feature Collection Object
       properties: 
         type: 
           type: string
@@ -2226,7 +2221,6 @@ components:
     air_rest_services.get_geojson.properties: 
       type: object
       title: GeoJSON Properties
-      description: GeoJSON Properties Object
       properties: 
         AIRName: 
           $ref: '#/components/schemas/property.AIRName'
@@ -2282,7 +2276,7 @@ components:
           type: string
           title: AIRNAICS
           nullable: true
-          example: 812320
+          example: '812320'
         AIRPrograms: 
           $ref: '#/components/schemas/property.AIRPrograms'
         AIRMacts: 
@@ -2418,17 +2412,17 @@ components:
           type: string
           title: FacTRIAIRReleases
           nullable: true
-          example: 36
+          example: '36'
         FacTRICarcAIRReleases: 
           type: string
           title: FacTRICarcAIRReleases
           nullable: true
-          example: 24
+          example: '24'
         FacTRIHapsReleases: 
           type: string
           title: FacTRIHapsReleases
           nullable: true
-          example: 35.5
+          example: '35.5'
         FacEisAIRReleases: 
           type: string
           title: FacEisAIRReleases
@@ -2445,7 +2439,7 @@ components:
           type: string
           title: AIRFeaCnt
           nullable: true
-          example: 2
+          example: '2'
         AIRLastIeaDate: 
           type: string
           title: AIRLastIeaDate
@@ -2477,7 +2471,7 @@ components:
           type: string
           title: AIRPenalties
           nullable: true
-          example: $435
+          example: "$435"
         AIRLastPenaltyDate: 
           type: string
           title: AIRLastPenaltyDate
@@ -2805,7 +2799,6 @@ components:
     air_rest_services.get_qid.Results: 
       type: object
       title: QID Results
-      description: Results Object
       properties: 
         Message: 
           $ref: '#/components/schemas/property.Message'
@@ -2984,9 +2977,9 @@ components:
       title: output
       description: |-
         Output Format Flag.  Enter one of the following keywords:
-        - JSON = Data model formatted as Javascript Object Notation (default).
-        - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-        - XML = Data model formatted as Extensible Markup Language.
+        * JSON = Data model formatted as Javascript Object Notation (default).
+        * JSONP = Data model formatted as Javascript Object Notation with Padding.  
+        * XML = Data model formatted as Extensible Markup Language.
       enum: 
         - JSONP
         - JSON
@@ -2996,28 +2989,28 @@ components:
       title: output
       description: |-
         Output Format Flag.  Enter one of the following keywords:
-        - CSV = Facility results formatted as comma delimited file download (default).
-        - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+        * CSV = Facility results formatted as comma delimited file download (default).
+        * GEOJSOND = Facility results formatted as GeoJSON feature collection download.
     parameter.output.get_facility_info: 
       type: string
       title: output
       description: |-
         Output Format Flag.  Enter one of the following keywords:
-        - JSON = Data model formatted as Javascript Object Notation (default).
-        - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-        - XML = Data model formatted as Extensible Markup Language.
-        - CSV = Facility results formatted as comma delimited file download.
-        - GEOJSON = Facility results formatted as GeoJSON feature collection.
-        - GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
-        - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+        * JSON = Data model formatted as Javascript Object Notation (default).
+        * JSONP = Data model formatted as Javascript Object Notation with Padding.  
+        * XML = Data model formatted as Extensible Markup Language.
+        * CSV = Facility results formatted as comma delimited file download.
+        * GEOJSON = Facility results formatted as GeoJSON feature collection.
+        * GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
+        * GEOJSOND = Facility results formatted as GeoJSON feature collection download.
     parameter.output.get_geojson: 
       type: string
       title: output
       description: |-
         Output Format Flag.  Enter one of the following keywords:
-        - GEOJSON = Facility results formatted as GeoJSON feature collection (default).
-        - GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
-        - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+        * GEOJSON = Facility results formatted as GeoJSON feature collection (default).
+        * GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
+        * GEOJSOND = Facility results formatted as GeoJSON feature collection download.
     parameter.p_act: 
       type: string
       title: p_act
@@ -3038,10 +3031,10 @@ components:
       title: p_ar
       description: |-
         Associated EPA Air Reports Program Filter.  Enter multiple values as a comma-delimited list.  Valid values are:
-        - TRI = Toxic Release Inventory.
-        - GHG = Green House Gas Reporter.
-        - EIS = Emission Inventory System.
-        - CAMD = Clean Air Markets Program Reporter.
+        * TRI = Toxic Release Inventory.
+        * GHG = Green House Gas Reporter.
+        * EIS = Emission Inventory System.
+        * CAMD = Clean Air Markets Program Reporter.
     parameter.p_c1lat: 
       type: number
       title: p_c1lat
@@ -3120,9 +3113,9 @@ components:
       title: p_feaa
       description: |-
         Agency associated with Formal Enforcement Actions:
-        - E = EPA
-        - S = State
-        - A = All
+        * E = EPA
+        * S = State
+        * A = All
       enum: 
         - A
         - E
@@ -3150,11 +3143,10 @@ components:
       title: p_fntype
       description: |-
         Controls type of text search performed on facility name with parameter p_fn.
-        - EXACT = Find facilities having the exact provided name(s).
-        - BEGINS = Find facilities with names starting with the provided term(s).
-        - ALL = Find facilities using Oracle text search terms.
-        - CONTAINS = 
-
+        * EXACT = Find facilities having the exact provided name(s).
+        * BEGINS = Find facilities with names starting with the provided term(s).
+        * ALL = Find facilities using Oracle text search terms.
+        * CONTAINS = 
       enum: 
         - ALL
         - CONTAINS
@@ -3235,8 +3227,8 @@ components:
       title: p_iea
       description: |-
         Informal Enforcement Actions [within / not within] specified date range.  The date range is determined by parameters p_iead1 and p_iead2 or by parameter p_ieay.
-        - W = within date range
-        - N = not within date range
+        * W = within date range
+        * N = not within date range
       enum: 
         - W
         - N
@@ -3245,8 +3237,8 @@ components:
       title: p_ieaa
       description: |-
         Agency associated with Informal Enforcement Actions. If left blank, both agencies are included.
-        - E = EPA
-        - S = State
+        * E = EPA
+        * S = State
       enum: 
         - E
         - S
@@ -3302,11 +3294,11 @@ components:
       title: p_med
       description: |-
         Filter Results by Media.
-        - M = RMP (Risk Management Plan)
-        - R = RCRA (Hazardous Waste)
-        - S = SDWA (Public Drinking Water Systems)
-        - W = Water
-        - ALL = Water and RCRA and SDWA
+        * M = RMP (Risk Management Plan)
+        * R = RCRA (Hazardous Waste)
+        * S = SDWA (Public Drinking Water Systems)
+        * W = Water
+        * ALL = Water and RCRA and SDWA
       enum: 
         - M
         - R
@@ -3346,9 +3338,7 @@ components:
     parameter.p_nei_pol: 
       type: string
       title: p_nei_pol
-      description: |-
-        National Emissions Inventory (NEI) Pollutant Identifier.  When a pollutant identifer is entered a corresponding formatted amount or custom amount must be entered.
-
+      description: National Emissions Inventory (NEI) Pollutant Identifier.  When a pollutant identifer is entered a corresponding formatted amount or custom amount must be entered.
     parameter.p_nei_yr: 
       type: string
       title: p_nei_yr
@@ -3362,26 +3352,26 @@ components:
       title: p_owop
       description: |-
         Owner/Operator code filter.  Enter one or more codes to limit results.
-        - CNG
-        - COR
-        - CTG
-        - DIS
-        - FDF
-        - MWD
-        - MXO
-        - NON
-        - POF
-        - SDT
-        - STF
-        - TRB
+        * CNG
+        * COR
+        * CTG
+        * DIS
+        * FDF
+        * MWD
+        * MXO
+        * NON
+        * POF
+        * SDT
+        * STF
+        * TRB
     parameter.p_pctrack: 
       type: string
       title: p_pctrack
       description: |-
         Compliance Tracking Limiter. Provide a keyword to indicate the extent to which data is being entered and effluent exceedances are being identified.
-        - Off
-        - Partial
-        - On
+        * Off
+        * Partial
+        * On
       enum: 
         - Off
         - Partial
@@ -3391,13 +3381,13 @@ components:
       title: p_pd
       description: |-
         Population Density Limiter (per sq mile). Enter a value to limit results to facilities located in area of a given population density.
-        - NONE = 0 population density per square mile
-        - GT100 = More than 100 population density per square mile
-        - GT500 = More than 500 population density per square mile
-        - GT1000 = More than 1000 population density per square mile
-        - GT5000 = More than 5000 population density per square mile
-        - GT10000 = More than 10000 population density per square mile
-        - GT20000 = More than 20000 population density per square mile
+        * NONE = 0 population density per square mile
+        * GT100 = More than 100 population density per square mile
+        * GT500 = More than 500 population density per square mile
+        * GT1000 = More than 1000 population density per square mile
+        * GT5000 = More than 5000 population density per square mile
+        * GT10000 = More than 10000 population density per square mile
+        * GT20000 = More than 20000 population density per square mile
 
       enum: 
         - NONE
@@ -3412,10 +3402,10 @@ components:
       title: p_pen
       description: |-
         Last Penality Date Qualifier Filter.  Enter one of the following:   
-        - NEVER = No Penalties
-        - ANY = Any Penalty
-        - LEXX = Less than or equal to XX months.  Provide a number in place of XX, e.g. "LE5" for a facility with a penalty within previous 5 months.
-        - GTXX = Greater than XX months.  Provide a number in place of XX, eg. GT12, for a facility with the last penalty greater than 12 months ago.
+        * NEVER = No Penalties
+        * ANY = Any Penalty
+        * LEXX = Less than or equal to XX months.  Provide a number in place of XX, e.g. "LE5" for a facility with a penalty within previous 5 months.
+        * GTXX = Greater than XX months.  Provide a number in place of XX, eg. GT12, for a facility with the last penalty greater than 12 months ago.
     parameter.p_pfead1: 
       type: string
       title: p_pfead1
@@ -3444,30 +3434,30 @@ components:
       title: p_pityp
       description: |-
         Inspection Type:
-        - CAC = Corrective Action Inspection
-        - CAV = Compliance Assistance Visit
-        - CDI = Case Development Inspection
-        - CEI = Inspection Inspection
-        - CSE = Compliance Schedule Evaluation
-        - FCI = Focused Compliance
-        - FRR = Financial Record Review
-        - FSD = Facility Self Disclosure
-        - FUI = Follow-Up Inspection
-        - GME = Groundwater Monitoring Evaluation
-        - NRR = Non-Financial Record Review
-        - OAM = Operation and Maintenance Inspection
+        * CAC = Corrective Action Inspection
+        * CAV = Compliance Assistance Visit
+        * CDI = Case Development Inspection
+        * CEI = Inspection Inspection
+        * CSE = Compliance Schedule Evaluation
+        * FCI = Focused Compliance
+        * FRR = Financial Record Review
+        * FSD = Facility Self Disclosure
+        * FUI = Follow-Up Inspection
+        * GME = Groundwater Monitoring Evaluation
+        * NRR = Non-Financial Record Review
+        * OAM = Operation and Maintenance Inspection
         May contain multiple comma-separated values.
     parameter.p_pm: 
       type: string
       title: p_pm
       description: |-
         Percent Minority Population Limiter.  Enter a value to restrict results to facilities with a given percentage of minority population within 3-mile radius.
-        - NONE = 0%
-        - GT5 = greater than 5%
-        - GT10 = greater than 10%
-        - GT25 = greater than 25%
-        - GT50 = greater than 50%
-        - GT75 = greater than 75%
+        * NONE = 0%
+        * GT5 = greater than 5%
+        * GT10 = greater than 10%
+        * GT25 = greater than 25%
+        * GT50 = greater than 50%
+        * GT75 = greater than 75%
       enum: 
         - NONE
         - GT5
@@ -3492,9 +3482,9 @@ components:
       title: p_psncq
       description: |-
         Quarters in Significant Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of significant noncompliance.
-        - Z = Zero quarters in significant noncompliance.
-        - GEXX = Replacing XX with a numeric value, that number of quarterd or more in significant noncompliance.
-        - GTXX = Replacing XX with a numeric value, more than that number of quarters in significant noncompliance.
+        * Z = Zero quarters in significant noncompliance.
+        * GEXX = Replacing XX with a numeric value, that number of quarterd or more in significant noncompliance.
+        * GTXX = Replacing XX with a numeric value, more than that number of quarters in significant noncompliance.
       enum: 
         - GT1
         - GE1
@@ -3515,9 +3505,9 @@ components:
       title: p_qiv
       description: |-
         Quarters in Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of noncompliance.
-        - Z = Zero quarters in noncompliance.
-        - GEXX = Replacing XX with a numeric value, that number of quarterd or more in noncompliance.
-        - GTXX = Replacing XX with a numeric value, more than that number of quarters in noncompliance.
+        * Z = Zero quarters in noncompliance.
+        * GEXX = Replacing XX with a numeric value, that number of quarterd or more in noncompliance.
+        * GTXX = Replacing XX with a numeric value, more than that number of quarters in noncompliance.
       enum: 
         - 0
         - GT1
@@ -3542,15 +3532,15 @@ components:
       title: p_recvio
       description: |-
         Recent Violation Status Filter.  Enter one or more recent violation codes to limit results.  Provide multiple values as a comma-delimited list.
-        - NO VIOL = Selects facilities with no recent violations.
-        - ANY HPV = Selects facilities with either addressed or unaddressed high priority violations.
-        - ADDRS-EPA - Select facilities with recent EPA addressed violations.
-        - ADDRS-LOCAL - Select facilities with recent locally addressed violations.
-        - ADDRS-STATE - Select facilities with recent state addressed violations.
-        - UNADDR-EPA - Select facilities with recent EPA unaddressed violations.
-        - UNADDR-LOCAL - Select facilities with recent locally unaddressed violations.
-        - UNADDR-STATE - Select facilities with recent state unaddressed violations.
-        - FRV VIOL = Selects facilities with a recent federally reportable violation without a high priority violation.
+        * NO VIOL = Selects facilities with no recent violations.
+        * ANY HPV = Selects facilities with either addressed or unaddressed high priority violations.
+        * ADDRS-EPA - Select facilities with recent EPA addressed violations.
+        * ADDRS-LOCAL - Select facilities with recent locally addressed violations.
+        * ADDRS-STATE - Select facilities with recent state addressed violations.
+        * UNADDR-EPA - Select facilities with recent EPA unaddressed violations.
+        * UNADDR-LOCAL - Select facilities with recent locally unaddressed violations.
+        * UNADDR-STATE - Select facilities with recent state unaddressed violations.
+        * FRV VIOL = Selects facilities with a recent federally reportable violation without a high priority violation.
     parameter.p_reg: 
       type: string
       title: p_reg
@@ -3611,8 +3601,8 @@ components:
       title: p_stsl
       description: |-
         Last Stack Test [within / not within] Specified Date Range Indicator.
-        - W = within date range
-        - N = not within date range
+        * W = within date range
+        * N = not within date range
       enum: 
         - W
         - N
@@ -3621,9 +3611,9 @@ components:
       title: p_stsla
       description: |-
         Stack Last Test Code Filter.  Enter a value to limit results:
-        - A = All
-        - E = EPA
-        - S = State
+        * A = All
+        * E = EPA
+        * S = State
       enum: 
         - A
         - E
@@ -3656,9 +3646,9 @@ components:
       title: p_trep
       description: |-
         Current Toxics Release Inventory (TRI) Reporter Limiter.  Enter one of the following codes to limit results.
-        - NONE = Never has reported to TRI.
-        - CURR = Current TRI reporter.
-        - NONCURR = Has reported to TRI in the past but not for the current reporting year.
+        * NONE = Never has reported to TRI.
+        * CURR = Current TRI reporter.
+        * NONCURR = Has reported to TRI in the past but not for the current reporting year.
       enum: 
         - NONE
         - CURR
@@ -3683,9 +3673,9 @@ components:
       title: p_tri_cat
       description: |-
         Toxic Release Inventory Released To Air Chemical Identifier Category Filter.  Enter the chemical identifier category code to limit results. Note when filtering by TRI chemical identifier categories one may not also filter by specific chemical identifiers via p_tri_pol.  You must also specify a release amount using p_tri_amt or p_tri_any_amt.
-        - TOTAL = Total Released to Air
-        - CARC = Total Carcinogens Released to Air
-        - HAP = Total Hazardous Air Pollutants Released to Air
+        * TOTAL = Total Released to Air
+        * CARC = Total Carcinogens Released to Air
+        * HAP = Total Hazardous Air Pollutants Released to Air
       enum: 
         - TOTAL
         - CARC
@@ -3726,8 +3716,8 @@ components:
       title: p_ysl
       description: |-
         Last Facility Inspection [within / not within] Specified Date Range Indicator. The date range is determined by parameters p_idt1 and p_idt2 or by parameter p_ysly.
-        - W = within date range
-        - N = not within date range
+        * W = within date range
+        * N = not within date range
       enum: 
         - W
         - N
@@ -3737,8 +3727,8 @@ components:
       title: p_ysla
       description: |-
         Facility Last Inspection Code Filter.  If left blank, both agencies are included.  Enter a value to limit results:
-        - E = EPA
-        - S = State
+        * E = EPA
+        * S = State
       enum: 
         - E
         - S
@@ -3824,7 +3814,7 @@ components:
       title: AIREPARegion
       description: The EPA region where the AIR facility is located.
       nullable: true
-      example: 05
+      example: '05'
     property.AIRIDs: 
       type: string
       title: AIRIDs
@@ -3872,13 +3862,13 @@ components:
       title: AIRZip
       description: The five-digit zip code of the AIR facility.
       nullable: true
-      example: 20037
+      example: '20037'
     property.CVRows: 
       type: string
       title: CVRows
       description: Summary count of the number of CWA facilities or SDWA public drinking water systems with current violations.
       nullable: true
-      example: 0
+      example: '0'
     property.CamdIDs: 
       type: string
       title: CamdIDs
@@ -3889,7 +3879,7 @@ components:
       title: CensusBlockGroup
       description: A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.
       nullable: true
-      example: 110010096022
+      example: '110010096022'
     property.ChesapeakeBayFlag: 
       type: string
       title: ChesapeakeBayFlag
@@ -3901,25 +3891,25 @@ components:
       title: ClusterLatitude
       description: The latitude in decimal degrees expressed using the NAD83 horizontal datum.
       nullable: true
-      example: 38.904149
+      example: '38.904149'
     property.ClusterLongitude: 
       type: string
       title: ClusterLongitude
       description: The longitude in decimal degrees expressed using the NAD83 horizontal datum.
       nullable: true
-      example: -77.017094
+      example: '-77.017094'
     property.ClusterRecords: 
       type: string
       title: ClusterRecords
       description: Number of clusters returned.
       nullable: true
-      example: 199
+      example: '199'
     property.CurrSvFlag: 
       type: string
       title: CurrSvFlag
       description: Indicates if the facility has a current significant violation. 1 = Yes
       nullable: true
-      example: 0
+      example: '0'
     property.CurrSvFlag.NUMBER: 
       type: number
       title: CurrSvFlag
@@ -3930,7 +3920,7 @@ components:
       title: CurrVioFlag
       description: Indicates if the facility has a current violation. 1 = Yes
       nullable: true
-      example: 0
+      example: '0'
     property.CurrVioFlag.NUMBER: 
       type: number
       title: CurrVioFlag
@@ -3941,7 +3931,7 @@ components:
       title: DataLength
       description: Data length for EPA program database column.
       nullable: true
-      example: 10
+      example: '10'
     property.DataType: 
       type: string
       title: DataType
@@ -3958,7 +3948,7 @@ components:
       title: EPARegionCode
       description: The EPA region where the facility is located. EPA has 10 regional offices that execute programs within several states and territories
       nullable: true
-      example: 03
+      example: '03'
     property.EPASystem: 
       type: string
       title: EPASystem
@@ -3978,7 +3968,7 @@ components:
       title: Ea5yrFlag
       description: Indicates if the facility has a formal enforcement action within the last 5 years. 1 = Yes
       nullable: true
-      example: 0
+      example: '0'
     property.Ea5yrFlag.NUMBER: 
       type: number
       title: Ea5yrFlag
@@ -3989,19 +3979,19 @@ components:
       title: FEARows
       description: Summary count of the number of facilities with a formal enforcement action in the past five years
       nullable: true
-      example: 1
+      example: '1'
     property.FacDerivedHuc: 
       type: string
       title: FacDerivedHuc
       description: The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.
       nullable: true
-      example: 552968
+      example: '552968'
     property.FacFIPSCode: 
       type: string
       title: FacFIPSCode
       description: The 2-digit Federal Information Processing Standards (FIPS) code to identify the county that a facility is located in.
       nullable: true
-      example: 55001
+      example: '55001'
     property.FacFederalAgencyCode: 
       type: string
       title: FacFederalAgencyCode
@@ -4018,13 +4008,13 @@ components:
       title: FacLat
       description: The latitude of the facility in decimal degrees expressed using the NAD83 horizontal datum. The coordinate comes from the FRS EPA Locational Reference Tables (LRT) file which represents the most accurate value for the facility based on the available spatial metadata.
       nullable: true
-      example: 38.803076
+      example: '38.803076'
     property.FacLong: 
       type: string
       title: FacLong
       description: The longitude of the facility in decimal degrees expressed using the NAD83 horizontal datum. The coordinate comes from the FRS EPA Locational Reference Tables (LRT) file which represents the most accurate value for the facility based on the available spatial metadata.
       nullable: true
-      example: -77.085951
+      example: '-77.085951'
     property.FacMapFlg: 
       type: string
       title: FacMapFlg
@@ -4042,7 +4032,7 @@ components:
       title: FacPercentMinority
       description: Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.
       nullable: true
-      example: 45.379
+      example: '45.379'
     property.FacPercentMinority.NUMBER: 
       type: number
       title: FacPercentMinority
@@ -4065,7 +4055,7 @@ components:
       title: FormalCount
       description: The number of formal enforcement actions that have been taken against the facility
       nullable: true
-      example: 1
+      example: '1'
     property.ICON: 
       type: string
       title: ICON
@@ -4077,31 +4067,31 @@ components:
       title: INSPRows
       description: Number of facilities with insp_5yr_flag populated (CWP_DATE_LAST_INSPECTION)
       nullable: true
-      example: 1
+      example: '1'
     property.IconBaseURL: 
       type: string
       title: IconBaseURL
       description: URL where all the icons are located
       nullable: true
-      example: https://echo.epa.gov/app/map/icons/
+      example: "https://echo.epa.gov/app/map/icons/"
     property.IndianCountryRows: 
       type: string
       title: IndianCountryRows
       description: Number of facilities with tribal_flag populated
       nullable: true
-      example: 0
+      example: '0'
     property.InfFEARows: 
       type: string
       title: InfFEARows
       description: Number of facilities with infea_5yr_flag populated (INFORMAL_ENF_ACT_COUNT > 0)
       nullable: true
-      example: 0
+      example: '0'
     property.Infea5yrFlag: 
       type: string
       title: Infea5yrFlag
       description: Indicates if the facility has an informal enforcement action within the last 5 years. 1 = Yes.
       nullable: true
-      example: 0
+      example: '0'
     property.Infea5yrFlag.NUMBER: 
       type: number
       title: Infea5yrFlag
@@ -4112,13 +4102,13 @@ components:
       title: InformalCount
       description: The number of informal enforcement actions that have been taken against the facility
       nullable: true
-      example: 1
+      example: '1'
     property.Insp5yrFlag: 
       type: string
       title: Insp5yrFlag
       description: Indicates if the facility has an inspection within the last 5 years. 1 = Yes
       nullable: true
-      example: 1
+      example: '1'
     property.Insp5yrFlag.NUMBER: 
       type: number
       title: Insp5yrFlag
@@ -4129,19 +4119,19 @@ components:
       title: LAT
       description: The latitude of the facility in degrees, to four decimal places
       nullable: true
-      example: 38.798026
+      example: '38.798026'
     property.LON: 
       type: string
       title: LON
       description: The longitude of the facility in degrees, to four decimal places
       nullable: true
-      example: -77.062981
+      example: '-77.062981'
     property.LastInsp: 
       type: string
       title: LastInsp
       description: The unique identifier for the last inspection
       nullable: true
-      example: 901
+      example: '901'
     property.LocalControlRegionCode: 
       type: string
       title: LocalControlRegionCode
@@ -4163,7 +4153,7 @@ components:
       title: MaxPctileUs
       description: The maximum percentile from all individual EJSCREEN indicators.
       nullable: true
-      example: 98
+      example: '98'
     property.MaxPctileUs.NUMBER: 
       type: number
       title: MaxPctileUs
@@ -4174,7 +4164,7 @@ components:
       title: MaxScore
       description: "[Col. 121]"
       nullable: true
-      example: 1
+      example: '1'
     property.MaxScore.NUMBER: 
       type: number
       title: MaxScore
@@ -4197,25 +4187,25 @@ components:
       title: ObjectId
       description: Sequential number assigned to each facility returned
       nullable: true
-      example: 1
+      example: '1'
     property.PUV: 
       type: string
       title: PUV
       description: Pop up value. Combine with PopUpBaseURL to give the popup for the facility
       nullable: true
-      example: 110001891506
+      example: '110001891506'
     property.PageNo: 
       type: string
       title: PageNo
       description: The number of pages of results returned
       nullable: true
-      example: 1
+      example: '1'
     property.PctileCancerUs: 
       type: string
       title: PctileCancerUs
       description: The national percentile of the census block group for the EJSCREEN NATA air toxics cancer risk indicator.
       nullable: true
-      example: 99
+      example: '99'
     property.PctileCancerUs.NUMBER: 
       type: number
       title: PctileCancerUs
@@ -4226,7 +4216,7 @@ components:
       title: PctileDpmUs
       description: The national percentile of the census block group for the EJSCREEN diesel particulate matter indicator.
       nullable: true
-      example: 99
+      example: '99'
     property.PctileDpmUs.NUMBER: 
       type: number
       title: PctileDpmUs
@@ -4237,7 +4227,7 @@ components:
       title: PctileO3Us
       description: The national percentile of the census block group for the EJSCREEN ozone indicator.
       nullable: true
-      example: 94
+      example: '94'
     property.PctileO3Us.NUMBER: 
       type: number
       title: PctileO3Us
@@ -4248,7 +4238,7 @@ components:
       title: PctilePctpre1960Us
       description: The national percentile of the census block group for the EJSCREEN Lead paint indicator.
       nullable: true
-      example: 14.6
+      example: '14.6'
     property.PctilePctpre1960Us.NUMBER: 
       type: number
       title: PctilePctpre1960Us
@@ -4259,7 +4249,7 @@ components:
       title: PctilePmUs
       description: The national percentile of the census block group for the EJSCREEN particulate matter indicator.
       nullable: true
-      example: 93
+      example: '93'
     property.PctilePmUs.NUMBER: 
       type: number
       title: PctilePmUs
@@ -4270,7 +4260,7 @@ components:
       title: PctileProximityNPDESUs
       description: The national percentile of the census block group for the EJSCREEN proximity to major direct water dischargers indicator.
       nullable: true
-      example: 23.7
+      example: '23.7'
     property.PctileProximityNPDESUs.NUMBER: 
       type: number
       title: PctileProximityNPDESUs
@@ -4281,7 +4271,7 @@ components:
       title: PctileProximityNplUs
       description: The national percentile of the census block group for the EJSCREEN proximity to National Priorities List (NPL) sites indicator.
       nullable: true
-      example: 96
+      example: '96'
     property.PctileProximityNplUs.NUMBER: 
       type: number
       title: PctileProximityNplUs
@@ -4292,7 +4282,7 @@ components:
       title: PctileProximityRmpUs
       description: The national percentile of the census block group for the EJSCREEN proximity to Risk Management Plan (RMP) sites indicator.
       nullable: true
-      example: 91
+      example: '91'
     property.PctileProximityRmpUs.NUMBER: 
       type: number
       title: PctileProximityRmpUs
@@ -4303,7 +4293,7 @@ components:
       title: PctileProximityTsdfUs
       description: The national percentile of the census block group for the EJSCREEN proximity to Treatment Storage and Disposal Facilities (TSDFs) indicator.
       nullable: true
-      example: 82
+      example: '82'
     property.PctileProximityTsdfUs.NUMBER: 
       type: number
       title: PctileProximityTsdfUs
@@ -4314,7 +4304,7 @@ components:
       title: PctileRespUs
       description: The national percentile of the census block group for the EJSCREEN NATA respiratory hazard index indicator.
       nullable: true
-      example: 99
+      example: '99'
     property.PctileRespUs.NUMBER: 
       type: number
       title: PctileRespUs
@@ -4325,7 +4315,7 @@ components:
       title: PctileTrafficScoreUs
       description: The national percentile of the census block group for the EJSCREEN Traffic proximity and volume indicator.
       nullable: true
-      example: 92
+      example: '92'
     property.PctileTrafficScoreUs.NUMBER: 
       type: number
       title: PctileTrafficScoreUs
@@ -4336,7 +4326,7 @@ components:
       title: PopUpBaseURL
       description: Combine this URL with the PUC to get popup info
       nullable: true
-      example: https://ofmpub.epa.gov/echo/cwa_rest_services.pop_up?p_id=
+      example: "https://ofmpub.epa.gov/echo/cwa_rest_services.pop_up?p_id="
     property.QP: 
       type: string
       title: QP
@@ -4354,13 +4344,13 @@ components:
       title: QueryID
       description: Sequential number assigned to entire search result
       nullable: true
-      example: 245
+      example: '245'
     property.QueryRows: 
       type: string
       title: QueryRows
       description: Number of query results returned
       nullable: true
-      example: 5
+      example: '5'
     property.RCRAIDs: 
       type: string
       title: RCRAIDs
@@ -4372,7 +4362,7 @@ components:
       title: RegistryID
       description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
       nullable: true
-      example: 110020837601
+      example: '110020837601'
     property.SDWAIDs: 
       type: string
       title: SDWAIDs
@@ -4384,7 +4374,7 @@ components:
       title: SVRows
       description: "Number of facilities with curr_sv_flag populated (CWP_STATUS = \"Significant Violation\")"
       nullable: true
-      example: 0
+      example: '0'
     property.SourceID: 
       type: string
       title: SourceID
@@ -4421,19 +4411,19 @@ components:
       title: TotalPenalties
       description: The total dollar amount of either assessed or final penalties within the five year time period
       nullable: true
-      example: $963,531
+      example: "$963,531"
     property.V3Rows: 
       type: string
       title: V3Rows
       description: Number of facilities having one or more quarters in non-compliance (QNC) in the last three years
       nullable: true
-      example: 2
+      example: '2'
     property.ViolFlag: 
       type: string
       title: ViolFlag
       description: Indicates if the facility had a violation within the last 3 years. 1 = Yes
       nullable: true
-      example: 1
+      example: '1'
     property.ViolFlag.NUMBER: 
       type: number
       title: ViolFlag
@@ -4598,9 +4588,9 @@ components:
       in: query
       description: |-
         Output Format Flag.  Enter one of the following keywords:
-        - JSON = Data model formatted as Javascript Object Notation (default).
-        - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-        - XML = Data model formatted as Extensible Markup Language.
+        * JSON = Data model formatted as Javascript Object Notation (default).
+        * JSONP = Data model formatted as Javascript Object Notation with Padding.  
+        * XML = Data model formatted as Extensible Markup Language.
       required: false
       schema: 
         type: string
@@ -4614,8 +4604,8 @@ components:
       in: query
       description: |-
         Output Format Flag.  Enter one of the following keywords:
-        - CSV = Facility results formatted as comma delimited file download (default).
-        - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+        * CSV = Facility results formatted as comma delimited file download (default).
+        * GEOJSOND = Facility results formatted as GeoJSON feature collection download.
       required: false
       schema: 
         type: string
@@ -4625,13 +4615,13 @@ components:
       in: query
       description: |-
         Output Format Flag.  Enter one of the following keywords:
-        - JSON = Data model formatted as Javascript Object Notation (default).
-        - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-        - XML = Data model formatted as Extensible Markup Language.
-        - CSV = Facility results formatted as comma delimited file download.
-        - GEOJSON = Facility results formatted as GeoJSON feature collection.
-        - GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
-        - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+        * JSON = Data model formatted as Javascript Object Notation (default).
+        * JSONP = Data model formatted as Javascript Object Notation with Padding.  
+        * XML = Data model formatted as Extensible Markup Language.
+        * CSV = Facility results formatted as comma delimited file download.
+        * GEOJSON = Facility results formatted as GeoJSON feature collection.
+        * GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
+        * GEOJSOND = Facility results formatted as GeoJSON feature collection download.
       required: false
       schema: 
         type: string
@@ -4641,9 +4631,9 @@ components:
       in: query
       description: |-
         Output Format Flag.  Enter one of the following keywords:
-        - GEOJSON = Facility results formatted as GeoJSON feature collection (default).
-        - GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
-        - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+        * GEOJSON = Facility results formatted as GeoJSON feature collection (default).
+        * GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
+        * GEOJSOND = Facility results formatted as GeoJSON feature collection download.
       required: false
       schema: 
         type: string
@@ -4676,10 +4666,10 @@ components:
       in: query
       description: |-
         Associated EPA Air Reports Program Filter.  Enter multiple values as a comma-delimited list.  Valid values are:
-        - TRI = Toxic Release Inventory.
-        - GHG = Green House Gas Reporter.
-        - EIS = Emission Inventory System.
-        - CAMD = Clean Air Markets Program Reporter.
+        * TRI = Toxic Release Inventory.
+        * GHG = Green House Gas Reporter.
+        * EIS = Emission Inventory System.
+        * CAMD = Clean Air Markets Program Reporter.
       required: false
       schema: 
         type: string
@@ -4825,9 +4815,9 @@ components:
       in: query
       description: |-
         Agency associated with Formal Enforcement Actions:
-        - E = EPA
-        - S = State
-        - A = All
+        * E = EPA
+        * S = State
+        * A = All
       required: false
       schema: 
         type: string
@@ -4871,10 +4861,10 @@ components:
       in: query
       description: |-
         Controls type of text search performed on facility name with parameter p_fn.
-        - EXACT = Find facilities having the exact provided name(s).
-        - BEGINS = Find facilities with names starting with the provided term(s).
-        - ALL = Find facilities using Oracle text search terms.
-        - CONTAINS = 
+        * EXACT = Find facilities having the exact provided name(s).
+        * BEGINS = Find facilities with names starting with the provided term(s).
+        * ALL = Find facilities using Oracle text search terms.
+        * CONTAINS = 
       required: false
       schema: 
         type: string
@@ -5007,8 +4997,8 @@ components:
       in: query
       description: |-
         Informal Enforcement Actions [within / not within] specified date range.  The date range is determined by parameters p_iead1 and p_iead2 or by parameter p_ieay.
-        - W = within date range
-        - N = not within date range
+        * W = within date range
+        * N = not within date range
       required: false
       schema: 
         type: string
@@ -5021,8 +5011,8 @@ components:
       in: query
       description: |-
         Agency associated with Informal Enforcement Actions. If left blank, both agencies are included.
-        - E = EPA
-        - S = State
+        * E = EPA
+        * S = State
       required: false
       schema: 
         type: string
@@ -5114,11 +5104,11 @@ components:
       in: query
       description: |-
         Filter Results by Media.
-        - M = RMP (Risk Management Plan)
-        - R = RCRA (Hazardous Waste)
-        - S = SDWA (Public Drinking Water Systems)
-        - W = Water
-        - ALL = Water and RCRA and SDWA
+        * M = RMP (Risk Management Plan)
+        * R = RCRA (Hazardous Waste)
+        * S = SDWA (Public Drinking Water Systems)
+        * W = Water
+        * ALL = Water and RCRA and SDWA
       required: false
       schema: 
         type: string
@@ -5206,18 +5196,18 @@ components:
       in: query
       description: |-
         Owner/Operator code filter.  Enter one or more codes to limit results.
-        - CNG
-        - COR
-        - CTG
-        - DIS
-        - FDF
-        - MWD
-        - MXO
-        - NON
-        - POF
-        - SDT
-        - STF
-        - TRB
+        * CNG
+        * COR
+        * CTG
+        * DIS
+        * FDF
+        * MWD
+        * MXO
+        * NON
+        * POF
+        * SDT
+        * STF
+        * TRB
       required: false
       schema: 
         type: string
@@ -5227,9 +5217,9 @@ components:
       in: query
       description: |-
         Compliance Tracking Limiter. Provide a keyword to indicate the extent to which data is being entered and effluent exceedances are being identified.
-        - Off
-        - Partial
-        - On
+        * Off
+        * Partial
+        * On
       required: false
       schema: 
         type: string
@@ -5243,13 +5233,13 @@ components:
       in: query
       description: |-
         Population Density Limiter (per sq mile). Enter a value to limit results to facilities located in area of a given population density.
-        - NONE = 0 population density per square mile
-        - GT100 = More than 100 population density per square mile
-        - GT500 = More than 500 population density per square mile
-        - GT1000 = More than 1000 population density per square mile
-        - GT5000 = More than 5000 population density per square mile
-        - GT10000 = More than 10000 population density per square mile
-        - GT20000 = More than 20000 population density per square mile
+        * NONE = 0 population density per square mile
+        * GT100 = More than 100 population density per square mile
+        * GT500 = More than 500 population density per square mile
+        * GT1000 = More than 1000 population density per square mile
+        * GT5000 = More than 5000 population density per square mile
+        * GT10000 = More than 10000 population density per square mile
+        * GT20000 = More than 20000 population density per square mile
       required: false
       schema: 
         type: string
@@ -5267,10 +5257,10 @@ components:
       in: query
       description: |-
         Last Penality Date Qualifier Filter.  Enter one of the following:   
-        - NEVER = No Penalties
-        - ANY = Any Penalty
-        - LEXX = Less than or equal to XX months.  Provide a number in place of XX, e.g. "LE5" for a facility with a penalty within previous 5 months.
-        - GTXX = Greater than XX months.  Provide a number in place of XX, eg. GT12, for a facility with the last penalty greater than 12 months ago.
+        * NEVER = No Penalties
+        * ANY = Any Penalty
+        * LEXX = Less than or equal to XX months.  Provide a number in place of XX, e.g. "LE5" for a facility with a penalty within previous 5 months.
+        * GTXX = Greater than XX months.  Provide a number in place of XX, eg. GT12, for a facility with the last penalty greater than 12 months ago.
       required: false
       schema: 
         type: string
@@ -5323,18 +5313,18 @@ components:
       in: query
       description: |-
         Inspection Type:
-        - CAC = Corrective Action Inspection
-        - CAV = Compliance Assistance Visit
-        - CDI = Case Development Inspection
-        - CEI = Inspection Inspection
-        - CSE = Compliance Schedule Evaluation
-        - FCI = Focused Compliance
-        - FRR = Financial Record Review
-        - FSD = Facility Self Disclosure
-        - FUI = Follow-Up Inspection
-        - GME = Groundwater Monitoring Evaluation
-        - NRR = Non-Financial Record Review
-        - OAM = Operation and Maintenance Inspection
+        * CAC = Corrective Action Inspection
+        * CAV = Compliance Assistance Visit
+        * CDI = Case Development Inspection
+        * CEI = Inspection Inspection
+        * CSE = Compliance Schedule Evaluation
+        * FCI = Focused Compliance
+        * FRR = Financial Record Review
+        * FSD = Facility Self Disclosure
+        * FUI = Follow-Up Inspection
+        * GME = Groundwater Monitoring Evaluation
+        * NRR = Non-Financial Record Review
+        * OAM = Operation and Maintenance Inspection
         May contain multiple comma-separated values.
       required: false
       schema: 
@@ -5345,12 +5335,12 @@ components:
       in: query
       description: |-
         Percent Minority Population Limiter.  Enter a value to restrict results to facilities with a given percentage of minority population within 3-mile radius.
-        - NONE = 0%
-        - GT5 = greater than 5%
-        - GT10 = greater than 10%
-        - GT25 = greater than 25%
-        - GT50 = greater than 50%
-        - GT75 = greater than 75%
+        * NONE = 0%
+        * GT5 = greater than 5%
+        * GT10 = greater than 10%
+        * GT25 = greater than 25%
+        * GT50 = greater than 50%
+        * GT75 = greater than 75%
       required: false
       schema: 
         type: string
@@ -5391,9 +5381,9 @@ components:
       in: query
       description: |-
         Quarters in Significant Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of significant noncompliance.
-        - Z = Zero quarters in significant noncompliance.
-        - GEXX = Replacing XX with a numeric value, that number of quarterd or more in significant noncompliance.
-        - GTXX = Replacing XX with a numeric value, more than that number of quarters in significant noncompliance.
+        * Z = Zero quarters in significant noncompliance.
+        * GEXX = Replacing XX with a numeric value, that number of quarterd or more in significant noncompliance.
+        * GTXX = Replacing XX with a numeric value, more than that number of quarters in significant noncompliance.
       required: false
       schema: 
         type: string
@@ -5422,9 +5412,9 @@ components:
       in: query
       description: |-
         Quarters in Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of noncompliance.
-        - Z = Zero quarters in noncompliance.
-        - GEXX = Replacing XX with a numeric value, that number of quarterd or more in noncompliance.
-        - GTXX = Replacing XX with a numeric value, more than that number of quarters in noncompliance.
+        * Z = Zero quarters in noncompliance.
+        * GEXX = Replacing XX with a numeric value, that number of quarterd or more in noncompliance.
+        * GTXX = Replacing XX with a numeric value, more than that number of quarters in noncompliance.
       required: false
       schema: 
         type: string
@@ -5465,15 +5455,15 @@ components:
       in: query
       description: |-
         Recent Violation Status Filter.  Enter one or more recent violation codes to limit results.  Provide multiple values as a comma-delimited list.
-        - NO VIOL = Selects facilities with no recent violations.
-        - ANY HPV = Selects facilities with either addressed or unaddressed high priority violations.
-        - ADDRS-EPA - Select facilities with recent EPA addressed violations.
-        - ADDRS-LOCAL - Select facilities with recent locally addressed violations.
-        - ADDRS-STATE - Select facilities with recent state addressed violations.
-        - UNADDR-EPA - Select facilities with recent EPA unaddressed violations.
-        - UNADDR-LOCAL - Select facilities with recent locally unaddressed violations.
-        - UNADDR-STATE - Select facilities with recent state unaddressed violations.
-        - FRV VIOL = Selects facilities with a recent federally reportable violation without a high priority violation.
+        * NO VIOL = Selects facilities with no recent violations.
+        * ANY HPV = Selects facilities with either addressed or unaddressed high priority violations.
+        * ADDRS-EPA - Select facilities with recent EPA addressed violations.
+        * ADDRS-LOCAL - Select facilities with recent locally addressed violations.
+        * ADDRS-STATE - Select facilities with recent state addressed violations.
+        * UNADDR-EPA - Select facilities with recent EPA unaddressed violations.
+        * UNADDR-LOCAL - Select facilities with recent locally unaddressed violations.
+        * UNADDR-STATE - Select facilities with recent state unaddressed violations.
+        * FRV VIOL = Selects facilities with a recent federally reportable violation without a high priority violation.
       required: false
       schema: 
         type: string
@@ -5582,8 +5572,8 @@ components:
       in: query
       description: |-
         Last Stack Test [within / not within] Specified Date Range Indicator.
-        - W = within date range
-        - N = not within date range
+        * W = within date range
+        * N = not within date range
       required: false
       schema: 
         type: string
@@ -5596,9 +5586,9 @@ components:
       in: query
       description: |-
         Stack Last Test Code Filter.  Enter a value to limit results:
-        - A = All
-        - E = EPA
-        - S = State
+        * A = All
+        * E = EPA
+        * S = State
       required: false
       schema: 
         type: string
@@ -5647,9 +5637,9 @@ components:
       in: query
       description: |-
         Current Toxics Release Inventory (TRI) Reporter Limiter.  Enter one of the following codes to limit results.
-        - NONE = Never has reported to TRI.
-        - CURR = Current TRI reporter.
-        - NONCURR = Has reported to TRI in the past but not for the current reporting year.
+        * NONE = Never has reported to TRI.
+        * CURR = Current TRI reporter.
+        * NONCURR = Has reported to TRI in the past but not for the current reporting year.
       required: false
       schema: 
         type: string
@@ -5686,9 +5676,9 @@ components:
       in: query
       description: |-
         Toxic Release Inventory Released To Air Chemical Identifier Category Filter.  Enter the chemical identifier category code to limit results. Note when filtering by TRI chemical identifier categories one may not also filter by specific chemical identifiers via p_tri_pol.  You must also specify a release amount using p_tri_amt or p_tri_any_amt.
-        - TOTAL = Total Released to Air
-        - CARC = Total Carcinogens Released to Air
-        - HAP = Total Hazardous Air Pollutants Released to Air
+        * TOTAL = Total Released to Air
+        * CARC = Total Carcinogens Released to Air
+        * HAP = Total Hazardous Air Pollutants Released to Air
       required: false
       schema: 
         type: string
@@ -5761,8 +5751,8 @@ components:
       in: query
       description: |-
         Last Facility Inspection [within / not within] Specified Date Range Indicator. The date range is determined by parameters p_idt1 and p_idt2 or by parameter p_ysly.
-        - W = within date range
-        - N = not within date range
+        * W = within date range
+        * N = not within date range
       required: false
       schema: 
         type: string
@@ -5776,8 +5766,8 @@ components:
       in: query
       description: |-
         Facility Last Inspection Code Filter.  If left blank, both agencies are included.  Enter a value to limit results:
-        - E = EPA
-        - S = State
+        * E = EPA
+        * S = State
       required: false
       schema: 
         type: string

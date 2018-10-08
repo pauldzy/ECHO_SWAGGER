@@ -2,7 +2,7 @@
     "openapi": "3.0.0"
    ,"info": {
        "title": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Clean Air Act"
-      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\n<BR><BR>Air Rest Services provides multiple service endpoints, each with specific capabilities, to search and retrieve data on facilities regulated under the Clean Air Act (CAA). The returned results reflect data drawn from EPA's ICIS-Air database.\n<BR><BR>\nThe get_facilities, get_map, get_qid, and get_download end points are meant to be used together, while the enhanced get_facility_info end point is self contained.\n  The get_facility_info end point returns either an array of state, county or zip clusters with summary statistics per cluster or an array of facilities.\n<BR><BR>\nThe recommended use scenario for get_facilities, get_qid, get_map, and get_downoad is:\n<br>\n<br><b>1)</b>  Use get_facilities to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.\n<br><b>2)</b>  Use get_qid, with the returned QID, to paginate through arrays of facility results.\n<br><b>3)</b>  Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates that meet the QID query criteria.\n<br><b>4)</b>  Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.\n<br>\n<br>\nUse the qcolumns parameter to customize your search results.  Use the Metdata service endpoint for a list of available output objects, their Column Ids, and their definitions to help you build your customized output. \n<br><br>\nAdditional ECHO Resources:   <a href=\"https://echo.epa.gov/tools/web-services\">Web Services</a>, <a href=\"https://echo.epa.gov/resources/echo-data/about-the-data\">About ECHO's Data</a>, <a href=\"https://echo.epa.gov/tools/data-downloads\">Data Downloads</a>\n<br>"
+      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\\\n\\\nAir Rest Services provides multiple service endpoints, each with specific capabilities, to search and retrieve data on facilities regulated under the Clean Air Act (CAA). The returned results reflect data drawn from EPA's ICIS-Air database.\\\n\\\nThe get_facilities, get_map, get_qid, and get_download end points are meant to be used together, while the enhanced get_facility_info end point is self contained.  The get_facility_info end point returns either an array of state, county or zip clusters with summary statistics per cluster or an array of facilities.\\\n\\\nThe recommended use scenario for get_facilities, get_qid, get_map, and get_downoad is:\n# Use get_facilities to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.\n# Use get_qid, with the returned QID, to paginate through arrays of facility results.\n# Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates that meet the QID query criteria.\n# Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.\n\\\nUse the qcolumns parameter to customize your search results.  Use the Metdata service endpoint for a list of available output objects, their Column Ids, and their definitions to help you build your customized output.\\\n\\\nAdditional ECHO Resources: [Web Services](https://echo.epa.gov/tools/web-services), [About ECHO's Data](https://echo.epa.gov/resources/echo-data/about-the-data), [Data Downloads](https://echo.epa.gov/tools/data-downloads)."
       ,"contact": {
           "name": "US EPA, OECA Integration, Targeting and Access Branch"
          ,"url": "https://echo.epa.gov/resources/general-info/contact-us"
@@ -1712,6 +1712,7 @@
                }
                ,"RmpIDs": {
                    "type": "string"
+                  ,"title": "RmpIDs"
                   ,"nullable": true
                }
                ,"SDWAIDs": {
@@ -2067,7 +2068,7 @@
                }
                ,"TRIbalFlag": {
                    "type": "string"
-                  ,"title": "Tribal Lands Flag"
+                  ,"title": "TRIbalFlag"
                   ,"nullable": true
                   ,"example": "1"
                }
@@ -2125,14 +2126,17 @@
                }
                ,"NaaCategories": {
                    "type": "string"
+                  ,"title": "NaaCategories"
                   ,"nullable": true
                }
                ,"NaaPollutants": {
                    "type": "string"
+                  ,"title": "NaaPollutants"
                   ,"nullable": true
                }
                ,"FacCountyName": {
                    "type": "string"
+                  ,"title": "FacCountyName"
                   ,"nullable": true
                }
                ,"FacStdCountyName": {
@@ -2510,6 +2514,7 @@
                }
                ,"RmpIDs": {
                    "type": "string"
+                  ,"title": "RmpIDs"
                   ,"nullable": true
                }
                ,"SDWAIDs": {
@@ -2865,7 +2870,7 @@
                }
                ,"TRIbalFlag": {
                    "type": "string"
-                  ,"title": "Tribal Lands Flag"
+                  ,"title": "TRIbalFlag"
                   ,"nullable": true
                   ,"example": "1"
                }
@@ -2923,14 +2928,17 @@
                }
                ,"NaaCategories": {
                    "type": "string"
+                  ,"title": "NaaCategories"
                   ,"nullable": true
                }
                ,"NaaPollutants": {
                    "type": "string"
+                  ,"title": "NaaPollutants"
                   ,"nullable": true
                }
                ,"FacCountyName": {
                    "type": "string"
+                  ,"title": "FacCountyName"
                   ,"nullable": true
                }
                ,"FacStdCountyName": {
@@ -3291,7 +3299,6 @@
          ,"air_rest_services.get_geojson.Feature": {
              "type": "object"
             ,"title": "GeoJSON Feature"
-            ,"description": "GeoJSON Feature Object"
             ,"properties": {
                 "type": {
                    "type": "string"
@@ -3312,7 +3319,6 @@
          ,"air_rest_services.get_geojson.FeatureCollection": {
              "type": "object"
             ,"title": "GeoJSON FeatureCollection"
-            ,"description": "GeoJSON Feature Collection Object"
             ,"properties": {
                 "type": {
                    "type": "string"
@@ -3335,7 +3341,6 @@
          ,"air_rest_services.get_geojson.properties": {
              "type": "object"
             ,"title": "GeoJSON Properties"
-            ,"description": "GeoJSON Properties Object"
             ,"properties": {
                 "AIRName": {
                    "$ref": "#/components/schemas/property.AIRName"
@@ -3457,6 +3462,7 @@
                }
                ,"RmpIDs": {
                    "type": "string"
+                  ,"title": "RmpIDs"
                   ,"nullable": true
                }
                ,"SDWAIDs": {
@@ -3807,7 +3813,7 @@
                }
                ,"TRIbalFlag": {
                    "type": "number"
-                  ,"title": "Tribal Lands Flag"
+                  ,"title": "TRIbalFlag"
                   ,"nullable": true
                }
                ,"CurrSvFlag": {
@@ -3863,14 +3869,17 @@
                }
                ,"NaaCategories": {
                    "type": "string"
+                  ,"title": "NaaCategories"
                   ,"nullable": true
                }
                ,"NaaPollutants": {
                    "type": "string"
+                  ,"title": "NaaPollutants"
                   ,"nullable": true
                }
                ,"FacCountyName": {
                    "type": "string"
+                  ,"title": "FacCountyName"
                   ,"nullable": true
                }
                ,"FacStdCountyName": {
@@ -4051,7 +4060,6 @@
          ,"air_rest_services.get_qid.Results": {
              "type": "object"
             ,"title": "QID Results"
-            ,"description": "Results Object"
             ,"properties": {
                 "Message": {
                    "$ref": "#/components/schemas/property.Message"
@@ -4299,7 +4307,7 @@
          ,"parameter.output": {
              "type": "string"
             ,"title": "output"
-            ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+            ,"description": "Output Format Flag.  Enter one of the following keywords:\n* JSON = Data model formatted as Javascript Object Notation (default).\n* JSONP = Data model formatted as Javascript Object Notation with Padding.  \n* XML = Data model formatted as Extensible Markup Language."
             ,"enum": [
                 "JSONP"
                ,"JSON"
@@ -4309,17 +4317,17 @@
          ,"parameter.output.get_download": {
              "type": "string"
             ,"title": "output"
-            ,"description": "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default).\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+            ,"description": "Output Format Flag.  Enter one of the following keywords:\n* CSV = Facility results formatted as comma delimited file download (default).\n* GEOJSOND = Facility results formatted as GeoJSON feature collection download."
          }
          ,"parameter.output.get_facility_info": {
              "type": "string"
             ,"title": "output"
-            ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language.\n- CSV = Facility results formatted as comma delimited file download.\n- GEOJSON = Facility results formatted as GeoJSON feature collection.\n- GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+            ,"description": "Output Format Flag.  Enter one of the following keywords:\n* JSON = Data model formatted as Javascript Object Notation (default).\n* JSONP = Data model formatted as Javascript Object Notation with Padding.  \n* XML = Data model formatted as Extensible Markup Language.\n* CSV = Facility results formatted as comma delimited file download.\n* GEOJSON = Facility results formatted as GeoJSON feature collection.\n* GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n* GEOJSOND = Facility results formatted as GeoJSON feature collection download."
          }
          ,"parameter.output.get_geojson": {
              "type": "string"
             ,"title": "output"
-            ,"description": "Output Format Flag.  Enter one of the following keywords:\n- GEOJSON = Facility results formatted as GeoJSON feature collection (default).\n- GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+            ,"description": "Output Format Flag.  Enter one of the following keywords:\n* GEOJSON = Facility results formatted as GeoJSON feature collection (default).\n* GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n* GEOJSOND = Facility results formatted as GeoJSON feature collection download."
          }
          ,"parameter.p_act": {
              "type": "string"
@@ -4343,7 +4351,7 @@
          ,"parameter.p_ar": {
              "type": "string"
             ,"title": "p_ar"
-            ,"description": "Associated EPA Air Reports Program Filter.  Enter multiple values as a comma-delimited list.  Valid values are:\n- TRI = Toxic Release Inventory.\n- GHG = Green House Gas Reporter.\n- EIS = Emission Inventory System.\n- CAMD = Clean Air Markets Program Reporter."
+            ,"description": "Associated EPA Air Reports Program Filter.  Enter multiple values as a comma-delimited list.  Valid values are:\n* TRI = Toxic Release Inventory.\n* GHG = Green House Gas Reporter.\n* EIS = Emission Inventory System.\n* CAMD = Clean Air Markets Program Reporter."
          }
          ,"parameter.p_c1lat": {
              "type": "number"
@@ -4436,7 +4444,7 @@
          ,"parameter.p_feaa": {
              "type": "string"
             ,"title": "p_feaa"
-            ,"description": "Agency associated with Formal Enforcement Actions:\n- E = EPA\n- S = State\n- A = All"
+            ,"description": "Agency associated with Formal Enforcement Actions:\n* E = EPA\n* S = State\n* A = All"
             ,"enum": [
                 "A"
                ,"E"
@@ -4468,7 +4476,7 @@
          ,"parameter.p_fntype": {
              "type": "string"
             ,"title": "p_fntype"
-            ,"description": "Controls type of text search performed on facility name with parameter p_fn.\n- EXACT = Find facilities having the exact provided name(s).\n- BEGINS = Find facilities with names starting with the provided term(s).\n- ALL = Find facilities using Oracle text search terms.\n- CONTAINS = \n"
+            ,"description": "Controls type of text search performed on facility name with parameter p_fn.\n* EXACT = Find facilities having the exact provided name(s).\n* BEGINS = Find facilities with names starting with the provided term(s).\n* ALL = Find facilities using Oracle text search terms.\n* CONTAINS = "
             ,"enum": [
                 "ALL"
                ,"CONTAINS"
@@ -4564,7 +4572,7 @@
          ,"parameter.p_iea": {
              "type": "string"
             ,"title": "p_iea"
-            ,"description": "Informal Enforcement Actions [within / not within] specified date range.  The date range is determined by parameters p_iead1 and p_iead2 or by parameter p_ieay.\n- W = within date range\n- N = not within date range"
+            ,"description": "Informal Enforcement Actions [within / not within] specified date range.  The date range is determined by parameters p_iead1 and p_iead2 or by parameter p_ieay.\n* W = within date range\n* N = not within date range"
             ,"enum": [
                 "W"
                ,"N"
@@ -4573,7 +4581,7 @@
          ,"parameter.p_ieaa": {
              "type": "string"
             ,"title": "p_ieaa"
-            ,"description": "Agency associated with Informal Enforcement Actions. If left blank, both agencies are included.\n- E = EPA\n- S = State"
+            ,"description": "Agency associated with Informal Enforcement Actions. If left blank, both agencies are included.\n* E = EPA\n* S = State"
             ,"enum": [
                 "E"
                ,"S"
@@ -4641,7 +4649,7 @@
          ,"parameter.p_med.AIR": {
              "type": "string"
             ,"title": "p_med"
-            ,"description": "Filter Results by Media.\n- M = RMP (Risk Management Plan)\n- R = RCRA (Hazardous Waste)\n- S = SDWA (Public Drinking Water Systems)\n- W = Water\n- ALL = Water and RCRA and SDWA"
+            ,"description": "Filter Results by Media.\n* M = RMP (Risk Management Plan)\n* R = RCRA (Hazardous Waste)\n* S = SDWA (Public Drinking Water Systems)\n* W = Water\n* ALL = Water and RCRA and SDWA"
             ,"enum": [
                 "M"
                ,"R"
@@ -4687,7 +4695,7 @@
          ,"parameter.p_nei_pol": {
              "type": "string"
             ,"title": "p_nei_pol"
-            ,"description": "National Emissions Inventory (NEI) Pollutant Identifier.  When a pollutant identifer is entered a corresponding formatted amount or custom amount must be entered.\n"
+            ,"description": "National Emissions Inventory (NEI) Pollutant Identifier.  When a pollutant identifer is entered a corresponding formatted amount or custom amount must be entered."
          }
          ,"parameter.p_nei_yr": {
              "type": "string"
@@ -4702,12 +4710,12 @@
          ,"parameter.p_owop.AIR": {
              "type": "string"
             ,"title": "p_owop"
-            ,"description": "Owner/Operator code filter.  Enter one or more codes to limit results.\n- CNG\n- COR\n- CTG\n- DIS\n- FDF\n- MWD\n- MXO\n- NON\n- POF\n- SDT\n- STF\n- TRB"
+            ,"description": "Owner/Operator code filter.  Enter one or more codes to limit results.\n* CNG\n* COR\n* CTG\n* DIS\n* FDF\n* MWD\n* MXO\n* NON\n* POF\n* SDT\n* STF\n* TRB"
          }
          ,"parameter.p_pctrack": {
              "type": "string"
             ,"title": "p_pctrack"
-            ,"description": "Compliance Tracking Limiter. Provide a keyword to indicate the extent to which data is being entered and effluent exceedances are being identified.\n- Off\n- Partial\n- On"
+            ,"description": "Compliance Tracking Limiter. Provide a keyword to indicate the extent to which data is being entered and effluent exceedances are being identified.\n* Off\n* Partial\n* On"
             ,"enum": [
                 "Off"
                ,"Partial"
@@ -4717,7 +4725,7 @@
          ,"parameter.p_pd": {
              "type": "string"
             ,"title": "p_pd"
-            ,"description": "Population Density Limiter (per sq mile). Enter a value to limit results to facilities located in area of a given population density.\n- NONE = 0 population density per square mile\n- GT100 = More than 100 population density per square mile\n- GT500 = More than 500 population density per square mile\n- GT1000 = More than 1000 population density per square mile\n- GT5000 = More than 5000 population density per square mile\n- GT10000 = More than 10000 population density per square mile\n- GT20000 = More than 20000 population density per square mile\n"
+            ,"description": "Population Density Limiter (per sq mile). Enter a value to limit results to facilities located in area of a given population density.\n* NONE = 0 population density per square mile\n* GT100 = More than 100 population density per square mile\n* GT500 = More than 500 population density per square mile\n* GT1000 = More than 1000 population density per square mile\n* GT5000 = More than 5000 population density per square mile\n* GT10000 = More than 10000 population density per square mile\n* GT20000 = More than 20000 population density per square mile\n"
             ,"enum": [
                 "NONE"
                ,"GT100"
@@ -4731,7 +4739,7 @@
          ,"parameter.p_pen": {
              "type": "string"
             ,"title": "p_pen"
-            ,"description": "Last Penality Date Qualifier Filter.  Enter one of the following:   \n- NEVER = No Penalties\n- ANY = Any Penalty\n- LEXX = Less than or equal to XX months.  Provide a number in place of XX, e.g. \"LE5\" for a facility with a penalty within previous 5 months.\n- GTXX = Greater than XX months.  Provide a number in place of XX, eg. GT12, for a facility with the last penalty greater than 12 months ago."
+            ,"description": "Last Penality Date Qualifier Filter.  Enter one of the following:   \n* NEVER = No Penalties\n* ANY = Any Penalty\n* LEXX = Less than or equal to XX months.  Provide a number in place of XX, e.g. \"LE5\" for a facility with a penalty within previous 5 months.\n* GTXX = Greater than XX months.  Provide a number in place of XX, eg. GT12, for a facility with the last penalty greater than 12 months ago."
          }
          ,"parameter.p_pfead1": {
              "type": "string"
@@ -4765,12 +4773,12 @@
          ,"parameter.p_pityp": {
              "type": "string"
             ,"title": "p_pityp"
-            ,"description": "Inspection Type:\n- CAC = Corrective Action Inspection\n- CAV = Compliance Assistance Visit\n- CDI = Case Development Inspection\n- CEI = Inspection Inspection\n- CSE = Compliance Schedule Evaluation\n- FCI = Focused Compliance\n- FRR = Financial Record Review\n- FSD = Facility Self Disclosure\n- FUI = Follow-Up Inspection\n- GME = Groundwater Monitoring Evaluation\n- NRR = Non-Financial Record Review\n- OAM = Operation and Maintenance Inspection\nMay contain multiple comma-separated values."
+            ,"description": "Inspection Type:\n* CAC = Corrective Action Inspection\n* CAV = Compliance Assistance Visit\n* CDI = Case Development Inspection\n* CEI = Inspection Inspection\n* CSE = Compliance Schedule Evaluation\n* FCI = Focused Compliance\n* FRR = Financial Record Review\n* FSD = Facility Self Disclosure\n* FUI = Follow-Up Inspection\n* GME = Groundwater Monitoring Evaluation\n* NRR = Non-Financial Record Review\n* OAM = Operation and Maintenance Inspection\nMay contain multiple comma-separated values."
          }
          ,"parameter.p_pm": {
              "type": "string"
             ,"title": "p_pm"
-            ,"description": "Percent Minority Population Limiter.  Enter a value to restrict results to facilities with a given percentage of minority population within 3-mile radius.\n- NONE = 0%\n- GT5 = greater than 5%\n- GT10 = greater than 10%\n- GT25 = greater than 25%\n- GT50 = greater than 50%\n- GT75 = greater than 75%"
+            ,"description": "Percent Minority Population Limiter.  Enter a value to restrict results to facilities with a given percentage of minority population within 3-mile radius.\n* NONE = 0%\n* GT5 = greater than 5%\n* GT10 = greater than 10%\n* GT25 = greater than 25%\n* GT50 = greater than 50%\n* GT75 = greater than 75%"
             ,"enum": [
                 "NONE"
                ,"GT5"
@@ -4798,7 +4806,7 @@
          ,"parameter.p_psncq": {
              "type": "string"
             ,"title": "p_psncq"
-            ,"description": "Quarters in Significant Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of significant noncompliance.\n- Z = Zero quarters in significant noncompliance.\n- GEXX = Replacing XX with a numeric value, that number of quarterd or more in significant noncompliance.\n- GTXX = Replacing XX with a numeric value, more than that number of quarters in significant noncompliance."
+            ,"description": "Quarters in Significant Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of significant noncompliance.\n* Z = Zero quarters in significant noncompliance.\n* GEXX = Replacing XX with a numeric value, that number of quarterd or more in significant noncompliance.\n* GTXX = Replacing XX with a numeric value, more than that number of quarters in significant noncompliance."
             ,"enum": [
                 "GT1"
                ,"GE1"
@@ -4820,7 +4828,7 @@
          ,"parameter.p_qiv": {
              "type": "string"
             ,"title": "p_qiv"
-            ,"description": "Quarters in Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of noncompliance.\n- Z = Zero quarters in noncompliance.\n- GEXX = Replacing XX with a numeric value, that number of quarterd or more in noncompliance.\n- GTXX = Replacing XX with a numeric value, more than that number of quarters in noncompliance."
+            ,"description": "Quarters in Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of noncompliance.\n* Z = Zero quarters in noncompliance.\n* GEXX = Replacing XX with a numeric value, that number of quarterd or more in noncompliance.\n* GTXX = Replacing XX with a numeric value, more than that number of quarters in noncompliance."
             ,"enum": [
                 "0"
                ,"GT1"
@@ -4848,7 +4856,7 @@
          ,"parameter.p_recvio": {
              "type": "string"
             ,"title": "p_recvio"
-            ,"description": "Recent Violation Status Filter.  Enter one or more recent violation codes to limit results.  Provide multiple values as a comma-delimited list.\n- NO VIOL = Selects facilities with no recent violations.\n- ANY HPV = Selects facilities with either addressed or unaddressed high priority violations.\n- ADDRS-EPA - Select facilities with recent EPA addressed violations.\n- ADDRS-LOCAL - Select facilities with recent locally addressed violations.\n- ADDRS-STATE - Select facilities with recent state addressed violations.\n- UNADDR-EPA - Select facilities with recent EPA unaddressed violations.\n- UNADDR-LOCAL - Select facilities with recent locally unaddressed violations.\n- UNADDR-STATE - Select facilities with recent state unaddressed violations.\n- FRV VIOL = Selects facilities with a recent federally reportable violation without a high priority violation."
+            ,"description": "Recent Violation Status Filter.  Enter one or more recent violation codes to limit results.  Provide multiple values as a comma-delimited list.\n* NO VIOL = Selects facilities with no recent violations.\n* ANY HPV = Selects facilities with either addressed or unaddressed high priority violations.\n* ADDRS-EPA - Select facilities with recent EPA addressed violations.\n* ADDRS-LOCAL - Select facilities with recent locally addressed violations.\n* ADDRS-STATE - Select facilities with recent state addressed violations.\n* UNADDR-EPA - Select facilities with recent EPA unaddressed violations.\n* UNADDR-LOCAL - Select facilities with recent locally unaddressed violations.\n* UNADDR-STATE - Select facilities with recent state unaddressed violations.\n* FRV VIOL = Selects facilities with a recent federally reportable violation without a high priority violation."
          }
          ,"parameter.p_reg": {
              "type": "string"
@@ -4920,7 +4928,7 @@
          ,"parameter.p_stsl": {
              "type": "string"
             ,"title": "p_stsl"
-            ,"description": "Last Stack Test [within / not within] Specified Date Range Indicator.\n- W = within date range\n- N = not within date range"
+            ,"description": "Last Stack Test [within / not within] Specified Date Range Indicator.\n* W = within date range\n* N = not within date range"
             ,"enum": [
                 "W"
                ,"N"
@@ -4929,7 +4937,7 @@
          ,"parameter.p_stsla": {
              "type": "string"
             ,"title": "p_stsla"
-            ,"description": "Stack Last Test Code Filter.  Enter a value to limit results:\n- A = All\n- E = EPA\n- S = State"
+            ,"description": "Stack Last Test Code Filter.  Enter a value to limit results:\n* A = All\n* E = EPA\n* S = State"
             ,"enum": [
                 "A"
                ,"E"
@@ -4967,7 +4975,7 @@
          ,"parameter.p_trep": {
              "type": "string"
             ,"title": "p_trep"
-            ,"description": "Current Toxics Release Inventory (TRI) Reporter Limiter.  Enter one of the following codes to limit results.\n- NONE = Never has reported to TRI.\n- CURR = Current TRI reporter.\n- NONCURR = Has reported to TRI in the past but not for the current reporting year."
+            ,"description": "Current Toxics Release Inventory (TRI) Reporter Limiter.  Enter one of the following codes to limit results.\n* NONE = Never has reported to TRI.\n* CURR = Current TRI reporter.\n* NONCURR = Has reported to TRI in the past but not for the current reporting year."
             ,"enum": [
                 "NONE"
                ,"CURR"
@@ -4995,7 +5003,7 @@
          ,"parameter.p_tri_cat": {
              "type": "string"
             ,"title": "p_tri_cat"
-            ,"description": "Toxic Release Inventory Released To Air Chemical Identifier Category Filter.  Enter the chemical identifier category code to limit results. Note when filtering by TRI chemical identifier categories one may not also filter by specific chemical identifiers via p_tri_pol.  You must also specify a release amount using p_tri_amt or p_tri_any_amt.\n- TOTAL = Total Released to Air\n- CARC = Total Carcinogens Released to Air\n- HAP = Total Hazardous Air Pollutants Released to Air"
+            ,"description": "Toxic Release Inventory Released To Air Chemical Identifier Category Filter.  Enter the chemical identifier category code to limit results. Note when filtering by TRI chemical identifier categories one may not also filter by specific chemical identifiers via p_tri_pol.  You must also specify a release amount using p_tri_amt or p_tri_any_amt.\n* TOTAL = Total Released to Air\n* CARC = Total Carcinogens Released to Air\n* HAP = Total Hazardous Air Pollutants Released to Air"
             ,"enum": [
                 "TOTAL"
                ,"CARC"
@@ -5044,7 +5052,7 @@
          ,"parameter.p_ysl": {
              "type": "string"
             ,"title": "p_ysl"
-            ,"description": "Last Facility Inspection [within / not within] Specified Date Range Indicator. The date range is determined by parameters p_idt1 and p_idt2 or by parameter p_ysly.\n- W = within date range\n- N = not within date range"
+            ,"description": "Last Facility Inspection [within / not within] Specified Date Range Indicator. The date range is determined by parameters p_idt1 and p_idt2 or by parameter p_ysly.\n* W = within date range\n* N = not within date range"
             ,"enum": [
                 "W"
                ,"N"
@@ -5054,7 +5062,7 @@
          ,"parameter.p_ysla": {
              "type": "string"
             ,"title": "p_ysla"
-            ,"description": "Facility Last Inspection Code Filter.  If left blank, both agencies are included.  Enter a value to limit results:\n- E = EPA\n- S = State"
+            ,"description": "Facility Last Inspection Code Filter.  If left blank, both agencies are included.  Enter a value to limit results:\n* E = EPA\n* S = State"
             ,"enum": [
                 "E"
                ,"S"
@@ -5314,14 +5322,14 @@
          }
          ,"property.EPARegionCode": {
              "type": "string"
-            ,"title": "EPA Region Code"
+            ,"title": "EPARegionCode"
             ,"description": "The EPA region where the facility is located. EPA has 10 regional offices that execute programs within several states and territories"
             ,"nullable": true
             ,"example": "03"
          }
          ,"property.EPASystem": {
              "type": "string"
-            ,"title": "EPA Data System"
+            ,"title": "EPASystem"
             ,"description": "The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: \n\n- AFS: Air Facility System for Clean Air Act stationary source programs.\n- ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.\n- RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.\n- NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).\n- TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.\n- NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.\n- TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals."
             ,"nullable": true
             ,"example": "ICP"
@@ -5819,7 +5827,7 @@
          }
          ,"property.Statute": {
              "type": "string"
-            ,"title": "Regulatory Statute"
+            ,"title": "Statute"
             ,"description": "The name of the statute associated with each of the permits and identifiers linked to the facility: \n- CAA = the Clean Air Act\n- CWA = the Clean Water Act\n- RCRA = the Resource Conservation and Recovery Act\n- EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)\n- TSCA = the Toxic Substances Control Act\n- SDWA = the Safe Drinking Water Act"
             ,"nullable": true
             ,"example": "CWA"
@@ -5833,7 +5841,7 @@
          }
          ,"property.TYPE": {
              "type": "string"
-            ,"title": "Type"
+            ,"title": "TYPE"
             ,"description": "For DFR, this is always facility"
             ,"nullable": true
             ,"example": "Facility"
@@ -6091,7 +6099,7 @@
          ,"output": {
              "name": "output"
             ,"in": "query"
-            ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+            ,"description": "Output Format Flag.  Enter one of the following keywords:\n* JSON = Data model formatted as Javascript Object Notation (default).\n* JSONP = Data model formatted as Javascript Object Notation with Padding.  \n* XML = Data model formatted as Extensible Markup Language."
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -6106,7 +6114,7 @@
          ,"output.get_download": {
              "name": "output"
             ,"in": "query"
-            ,"description": "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default).\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+            ,"description": "Output Format Flag.  Enter one of the following keywords:\n* CSV = Facility results formatted as comma delimited file download (default).\n* GEOJSOND = Facility results formatted as GeoJSON feature collection download."
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -6116,7 +6124,7 @@
          ,"output.get_facility_info": {
              "name": "output"
             ,"in": "query"
-            ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language.\n- CSV = Facility results formatted as comma delimited file download.\n- GEOJSON = Facility results formatted as GeoJSON feature collection.\n- GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+            ,"description": "Output Format Flag.  Enter one of the following keywords:\n* JSON = Data model formatted as Javascript Object Notation (default).\n* JSONP = Data model formatted as Javascript Object Notation with Padding.  \n* XML = Data model formatted as Extensible Markup Language.\n* CSV = Facility results formatted as comma delimited file download.\n* GEOJSON = Facility results formatted as GeoJSON feature collection.\n* GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n* GEOJSOND = Facility results formatted as GeoJSON feature collection download."
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -6126,7 +6134,7 @@
          ,"output.get_geojson": {
              "name": "output"
             ,"in": "query"
-            ,"description": "Output Format Flag.  Enter one of the following keywords:\n- GEOJSON = Facility results formatted as GeoJSON feature collection (default).\n- GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+            ,"description": "Output Format Flag.  Enter one of the following keywords:\n* GEOJSON = Facility results formatted as GeoJSON feature collection (default).\n* GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n* GEOJSOND = Facility results formatted as GeoJSON feature collection download."
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -6165,7 +6173,7 @@
          ,"p_ar": {
              "name": "p_ar"
             ,"in": "query"
-            ,"description": "Associated EPA Air Reports Program Filter.  Enter multiple values as a comma-delimited list.  Valid values are:\n- TRI = Toxic Release Inventory.\n- GHG = Green House Gas Reporter.\n- EIS = Emission Inventory System.\n- CAMD = Clean Air Markets Program Reporter."
+            ,"description": "Associated EPA Air Reports Program Filter.  Enter multiple values as a comma-delimited list.  Valid values are:\n* TRI = Toxic Release Inventory.\n* GHG = Green House Gas Reporter.\n* EIS = Emission Inventory System.\n* CAMD = Clean Air Markets Program Reporter."
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -6342,7 +6350,7 @@
          ,"p_feaa": {
              "name": "p_feaa"
             ,"in": "query"
-            ,"description": "Agency associated with Formal Enforcement Actions:\n- E = EPA\n- S = State\n- A = All"
+            ,"description": "Agency associated with Formal Enforcement Actions:\n* E = EPA\n* S = State\n* A = All"
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -6394,7 +6402,7 @@
          ,"p_fntype": {
              "name": "p_fntype"
             ,"in": "query"
-            ,"description": "Controls type of text search performed on facility name with parameter p_fn.\n- EXACT = Find facilities having the exact provided name(s).\n- BEGINS = Find facilities with names starting with the provided term(s).\n- ALL = Find facilities using Oracle text search terms.\n- CONTAINS = \n"
+            ,"description": "Controls type of text search performed on facility name with parameter p_fn.\n* EXACT = Find facilities having the exact provided name(s).\n* BEGINS = Find facilities with names starting with the provided term(s).\n* ALL = Find facilities using Oracle text search terms.\n* CONTAINS = "
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -6555,7 +6563,7 @@
          ,"p_iea": {
              "name": "p_iea"
             ,"in": "query"
-            ,"description": "Informal Enforcement Actions [within / not within] specified date range.  The date range is determined by parameters p_iead1 and p_iead2 or by parameter p_ieay.\n- W = within date range\n- N = not within date range"
+            ,"description": "Informal Enforcement Actions [within / not within] specified date range.  The date range is determined by parameters p_iead1 and p_iead2 or by parameter p_ieay.\n* W = within date range\n* N = not within date range"
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -6569,7 +6577,7 @@
          ,"p_ieaa": {
              "name": "p_ieaa"
             ,"in": "query"
-            ,"description": "Agency associated with Informal Enforcement Actions. If left blank, both agencies are included.\n- E = EPA\n- S = State"
+            ,"description": "Agency associated with Informal Enforcement Actions. If left blank, both agencies are included.\n* E = EPA\n* S = State"
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -6682,7 +6690,7 @@
          ,"p_med.AIR": {
              "name": "p_med"
             ,"in": "query"
-            ,"description": "Filter Results by Media.\n- M = RMP (Risk Management Plan)\n- R = RCRA (Hazardous Waste)\n- S = SDWA (Public Drinking Water Systems)\n- W = Water\n- ALL = Water and RCRA and SDWA"
+            ,"description": "Filter Results by Media.\n* M = RMP (Risk Management Plan)\n* R = RCRA (Hazardous Waste)\n* S = SDWA (Public Drinking Water Systems)\n* W = Water\n* ALL = Water and RCRA and SDWA"
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -6758,7 +6766,7 @@
          ,"p_nei_pol": {
              "name": "p_nei_pol"
             ,"in": "query"
-            ,"description": "National Emissions Inventory (NEI) Pollutant Identifier.  When a pollutant identifer is entered a corresponding formatted amount or custom amount must be entered.\n"
+            ,"description": "National Emissions Inventory (NEI) Pollutant Identifier.  When a pollutant identifer is entered a corresponding formatted amount or custom amount must be entered."
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -6788,7 +6796,7 @@
          ,"p_owop.AIR": {
              "name": "p_owop"
             ,"in": "query"
-            ,"description": "Owner/Operator code filter.  Enter one or more codes to limit results.\n- CNG\n- COR\n- CTG\n- DIS\n- FDF\n- MWD\n- MXO\n- NON\n- POF\n- SDT\n- STF\n- TRB"
+            ,"description": "Owner/Operator code filter.  Enter one or more codes to limit results.\n* CNG\n* COR\n* CTG\n* DIS\n* FDF\n* MWD\n* MXO\n* NON\n* POF\n* SDT\n* STF\n* TRB"
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -6798,7 +6806,7 @@
          ,"p_pctrack": {
              "name": "p_pctrack"
             ,"in": "query"
-            ,"description": "Compliance Tracking Limiter. Provide a keyword to indicate the extent to which data is being entered and effluent exceedances are being identified.\n- Off\n- Partial\n- On"
+            ,"description": "Compliance Tracking Limiter. Provide a keyword to indicate the extent to which data is being entered and effluent exceedances are being identified.\n* Off\n* Partial\n* On"
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -6813,7 +6821,7 @@
          ,"p_pd": {
              "name": "p_pd"
             ,"in": "query"
-            ,"description": "Population Density Limiter (per sq mile). Enter a value to limit results to facilities located in area of a given population density.\n- NONE = 0 population density per square mile\n- GT100 = More than 100 population density per square mile\n- GT500 = More than 500 population density per square mile\n- GT1000 = More than 1000 population density per square mile\n- GT5000 = More than 5000 population density per square mile\n- GT10000 = More than 10000 population density per square mile\n- GT20000 = More than 20000 population density per square mile\n"
+            ,"description": "Population Density Limiter (per sq mile). Enter a value to limit results to facilities located in area of a given population density.\n* NONE = 0 population density per square mile\n* GT100 = More than 100 population density per square mile\n* GT500 = More than 500 population density per square mile\n* GT1000 = More than 1000 population density per square mile\n* GT5000 = More than 5000 population density per square mile\n* GT10000 = More than 10000 population density per square mile\n* GT20000 = More than 20000 population density per square mile\n"
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -6832,7 +6840,7 @@
          ,"p_pen": {
              "name": "p_pen"
             ,"in": "query"
-            ,"description": "Last Penality Date Qualifier Filter.  Enter one of the following:   \n- NEVER = No Penalties\n- ANY = Any Penalty\n- LEXX = Less than or equal to XX months.  Provide a number in place of XX, e.g. \"LE5\" for a facility with a penalty within previous 5 months.\n- GTXX = Greater than XX months.  Provide a number in place of XX, eg. GT12, for a facility with the last penalty greater than 12 months ago."
+            ,"description": "Last Penality Date Qualifier Filter.  Enter one of the following:   \n* NEVER = No Penalties\n* ANY = Any Penalty\n* LEXX = Less than or equal to XX months.  Provide a number in place of XX, e.g. \"LE5\" for a facility with a penalty within previous 5 months.\n* GTXX = Greater than XX months.  Provide a number in place of XX, eg. GT12, for a facility with the last penalty greater than 12 months ago."
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -6896,7 +6904,7 @@
          ,"p_pityp": {
              "name": "p_pityp"
             ,"in": "query"
-            ,"description": "Inspection Type:\n- CAC = Corrective Action Inspection\n- CAV = Compliance Assistance Visit\n- CDI = Case Development Inspection\n- CEI = Inspection Inspection\n- CSE = Compliance Schedule Evaluation\n- FCI = Focused Compliance\n- FRR = Financial Record Review\n- FSD = Facility Self Disclosure\n- FUI = Follow-Up Inspection\n- GME = Groundwater Monitoring Evaluation\n- NRR = Non-Financial Record Review\n- OAM = Operation and Maintenance Inspection\nMay contain multiple comma-separated values."
+            ,"description": "Inspection Type:\n* CAC = Corrective Action Inspection\n* CAV = Compliance Assistance Visit\n* CDI = Case Development Inspection\n* CEI = Inspection Inspection\n* CSE = Compliance Schedule Evaluation\n* FCI = Focused Compliance\n* FRR = Financial Record Review\n* FSD = Facility Self Disclosure\n* FUI = Follow-Up Inspection\n* GME = Groundwater Monitoring Evaluation\n* NRR = Non-Financial Record Review\n* OAM = Operation and Maintenance Inspection\nMay contain multiple comma-separated values."
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -6906,7 +6914,7 @@
          ,"p_pm": {
              "name": "p_pm"
             ,"in": "query"
-            ,"description": "Percent Minority Population Limiter.  Enter a value to restrict results to facilities with a given percentage of minority population within 3-mile radius.\n- NONE = 0%\n- GT5 = greater than 5%\n- GT10 = greater than 10%\n- GT25 = greater than 25%\n- GT50 = greater than 50%\n- GT75 = greater than 75%"
+            ,"description": "Percent Minority Population Limiter.  Enter a value to restrict results to facilities with a given percentage of minority population within 3-mile radius.\n* NONE = 0%\n* GT5 = greater than 5%\n* GT10 = greater than 10%\n* GT25 = greater than 25%\n* GT50 = greater than 50%\n* GT75 = greater than 75%"
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -6954,7 +6962,7 @@
          ,"p_psncq": {
              "name": "p_psncq"
             ,"in": "query"
-            ,"description": "Quarters in Significant Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of significant noncompliance.\n- Z = Zero quarters in significant noncompliance.\n- GEXX = Replacing XX with a numeric value, that number of quarterd or more in significant noncompliance.\n- GTXX = Replacing XX with a numeric value, more than that number of quarters in significant noncompliance."
+            ,"description": "Quarters in Significant Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of significant noncompliance.\n* Z = Zero quarters in significant noncompliance.\n* GEXX = Replacing XX with a numeric value, that number of quarterd or more in significant noncompliance.\n* GTXX = Replacing XX with a numeric value, more than that number of quarters in significant noncompliance."
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -6986,7 +6994,7 @@
          ,"p_qiv": {
              "name": "p_qiv"
             ,"in": "query"
-            ,"description": "Quarters in Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of noncompliance.\n- Z = Zero quarters in noncompliance.\n- GEXX = Replacing XX with a numeric value, that number of quarterd or more in noncompliance.\n- GTXX = Replacing XX with a numeric value, more than that number of quarters in noncompliance."
+            ,"description": "Quarters in Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of noncompliance.\n* Z = Zero quarters in noncompliance.\n* GEXX = Replacing XX with a numeric value, that number of quarterd or more in noncompliance.\n* GTXX = Replacing XX with a numeric value, more than that number of quarters in noncompliance."
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -7034,7 +7042,7 @@
          ,"p_recvio": {
              "name": "p_recvio"
             ,"in": "query"
-            ,"description": "Recent Violation Status Filter.  Enter one or more recent violation codes to limit results.  Provide multiple values as a comma-delimited list.\n- NO VIOL = Selects facilities with no recent violations.\n- ANY HPV = Selects facilities with either addressed or unaddressed high priority violations.\n- ADDRS-EPA - Select facilities with recent EPA addressed violations.\n- ADDRS-LOCAL - Select facilities with recent locally addressed violations.\n- ADDRS-STATE - Select facilities with recent state addressed violations.\n- UNADDR-EPA - Select facilities with recent EPA unaddressed violations.\n- UNADDR-LOCAL - Select facilities with recent locally unaddressed violations.\n- UNADDR-STATE - Select facilities with recent state unaddressed violations.\n- FRV VIOL = Selects facilities with a recent federally reportable violation without a high priority violation."
+            ,"description": "Recent Violation Status Filter.  Enter one or more recent violation codes to limit results.  Provide multiple values as a comma-delimited list.\n* NO VIOL = Selects facilities with no recent violations.\n* ANY HPV = Selects facilities with either addressed or unaddressed high priority violations.\n* ADDRS-EPA - Select facilities with recent EPA addressed violations.\n* ADDRS-LOCAL - Select facilities with recent locally addressed violations.\n* ADDRS-STATE - Select facilities with recent state addressed violations.\n* UNADDR-EPA - Select facilities with recent EPA unaddressed violations.\n* UNADDR-LOCAL - Select facilities with recent locally unaddressed violations.\n* UNADDR-STATE - Select facilities with recent state unaddressed violations.\n* FRV VIOL = Selects facilities with a recent federally reportable violation without a high priority violation."
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -7166,7 +7174,7 @@
          ,"p_stsl": {
              "name": "p_stsl"
             ,"in": "query"
-            ,"description": "Last Stack Test [within / not within] Specified Date Range Indicator.\n- W = within date range\n- N = not within date range"
+            ,"description": "Last Stack Test [within / not within] Specified Date Range Indicator.\n* W = within date range\n* N = not within date range"
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -7180,7 +7188,7 @@
          ,"p_stsla": {
              "name": "p_stsla"
             ,"in": "query"
-            ,"description": "Stack Last Test Code Filter.  Enter a value to limit results:\n- A = All\n- E = EPA\n- S = State"
+            ,"description": "Stack Last Test Code Filter.  Enter a value to limit results:\n* A = All\n* E = EPA\n* S = State"
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -7238,7 +7246,7 @@
          ,"p_trep": {
              "name": "p_trep"
             ,"in": "query"
-            ,"description": "Current Toxics Release Inventory (TRI) Reporter Limiter.  Enter one of the following codes to limit results.\n- NONE = Never has reported to TRI.\n- CURR = Current TRI reporter.\n- NONCURR = Has reported to TRI in the past but not for the current reporting year."
+            ,"description": "Current Toxics Release Inventory (TRI) Reporter Limiter.  Enter one of the following codes to limit results.\n* NONE = Never has reported to TRI.\n* CURR = Current TRI reporter.\n* NONCURR = Has reported to TRI in the past but not for the current reporting year."
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -7281,7 +7289,7 @@
          ,"p_tri_cat": {
              "name": "p_tri_cat"
             ,"in": "query"
-            ,"description": "Toxic Release Inventory Released To Air Chemical Identifier Category Filter.  Enter the chemical identifier category code to limit results. Note when filtering by TRI chemical identifier categories one may not also filter by specific chemical identifiers via p_tri_pol.  You must also specify a release amount using p_tri_amt or p_tri_any_amt.\n- TOTAL = Total Released to Air\n- CARC = Total Carcinogens Released to Air\n- HAP = Total Hazardous Air Pollutants Released to Air"
+            ,"description": "Toxic Release Inventory Released To Air Chemical Identifier Category Filter.  Enter the chemical identifier category code to limit results. Note when filtering by TRI chemical identifier categories one may not also filter by specific chemical identifiers via p_tri_pol.  You must also specify a release amount using p_tri_amt or p_tri_any_amt.\n* TOTAL = Total Released to Air\n* CARC = Total Carcinogens Released to Air\n* HAP = Total Hazardous Air Pollutants Released to Air"
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -7370,7 +7378,7 @@
          ,"p_ysl": {
              "name": "p_ysl"
             ,"in": "query"
-            ,"description": "Last Facility Inspection [within / not within] Specified Date Range Indicator. The date range is determined by parameters p_idt1 and p_idt2 or by parameter p_ysly.\n- W = within date range\n- N = not within date range"
+            ,"description": "Last Facility Inspection [within / not within] Specified Date Range Indicator. The date range is determined by parameters p_idt1 and p_idt2 or by parameter p_ysly.\n* W = within date range\n* N = not within date range"
             ,"required": false
             ,"schema": {
                 "type": "string"
@@ -7385,7 +7393,7 @@
          ,"p_ysla": {
              "name": "p_ysla"
             ,"in": "query"
-            ,"description": "Facility Last Inspection Code Filter.  If left blank, both agencies are included.  Enter a value to limit results:\n- E = EPA\n- S = State"
+            ,"description": "Facility Last Inspection Code Filter.  If left blank, both agencies are included.  Enter a value to limit results:\n* E = EPA\n* S = State"
             ,"required": false
             ,"schema": {
                 "type": "string"
