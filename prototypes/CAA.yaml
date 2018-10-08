@@ -363,7 +363,7 @@ components:
           type: string
           title: CoordinateSourceSystemId
           nullable: true
-          example: 110001891506
+          example: '110001891506'
       required: 
         - RegistryID
         - Latitude83
@@ -798,13 +798,13 @@ components:
       title: CenterLatitude
       description: The latitude of the facility in degrees, to four decimal places.
       nullable: true
-      example: 38.798026
+      example: '38.798026'
     property.CenterLongitude: 
       type: string
       title: CenterLongitude
       description: The longitude of the facility in degrees, to four decimal places.
       nullable: true
-      example: -77.062981
+      example: '-77.062981'
     property.City: 
       type: string
       title: City
@@ -849,33 +849,33 @@ components:
       title: IconBaseURL
       description: URL where all the icons are located
       nullable: true
-      example: https://echo.epa.gov/app/map/icons/
+      example: "https://echo.epa.gov/app/map/icons/"
     property.LAT: 
       type: string
       title: LAT
       description: The latitude of the facility in degrees, to four decimal places
       nullable: true
-      example: 38.798026
+      example: '38.798026'
     property.LON: 
       type: string
       title: LON
       description: The longitude of the facility in degrees, to four decimal places
       nullable: true
-      example: -77.062981
+      example: '-77.062981'
     property.Latitude: 
       type: string
       title: Latitude
       description: The latitude of the facility or permit holder as maintained in each data system.
       format: double
       nullable: true
-      example: 34.606651
+      example: '34.606651'
     property.Latitude83: 
       type: string
       title: Latitude83
       description: The latitude of the facility or permit holder as maintained in each data system.
       format: double
       nullable: true
-      example: 38.798026
+      example: '38.798026'
     property.Lead2008Area: 
       type: string
       title: Lead2008Area
@@ -888,14 +888,14 @@ components:
       description: The longitude of the facility or permit holder as maintained in each data system
       format: double
       nullable: true
-      example: -86.982419
+      example: '-86.982419'
     property.Longitude83: 
       type: string
       title: Longitude83
       description: The longitude of the facility or permit holder as maintained in each data system
       format: double
       nullable: true
-      example: -77.062981
+      example: '-77.062981'
     property.Message: 
       type: string
       title: Message
@@ -931,7 +931,7 @@ components:
       title: PUV
       description: Pop up value. Combine with PopUpBaseURL to give the popup for the facility
       nullable: true
-      example: 110001891506
+      example: '110001891506'
     property.ParticulateMatter2006Area: 
       type: string
       title: ParticulateMatter2006Area
@@ -949,7 +949,7 @@ components:
       title: PopUpBaseURL
       description: Combine this URL with the PUC to get popup info
       nullable: true
-      example: https://ofmpub.epa.gov/echo/cwa_rest_services.pop_up?p_id=
+      example: "https://ofmpub.epa.gov/echo/cwa_rest_services.pop_up?p_id="
     property.Program: 
       type: string
       title: Program
@@ -961,13 +961,13 @@ components:
       title: RegistryID
       description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
       nullable: true
-      example: 110020837601
+      example: '110020837601'
     property.RegistryId: 
       type: string
       title: RegistryId
       description: 12-digit Facility Registry Service (FRS) identification number.  FRS uniquely identifies a facility by assigning an identification number (FRS ID), and uses this FRS ID to link together all EPA regulatory program database records
       nullable: true
-      example: 110020837601
+      example: '110020837601'
     property.SourceID: 
       type: string
       title: SourceID
@@ -1020,13 +1020,13 @@ components:
         - For CWA  = Each CWA Source ID or National Pollutant Discharge Elimination System (NPDES) permit is defined by the program office as a Major or Minor discharger.
         - For RCRA = RCRA Source ID or permits for Treatment, Storage and Disposal facilities are identified by TSD, Large Quantity Generators are identified by LQG. Other values include Permit Workload (PMT), Closure Workload (CLO), Small Quantity Generator Universe (SQG), Conditionally-Exempt Small Quantity Generator (CESQG), Post-Closure Workload (POST CL), and Transporters.
       nullable: true
-      example: Minor: General Permit Covered Facility
+      example: "Minor: General Permit Covered Facility"
     property.Zip: 
       type: string
       title: Zip
       description: US postal ZIP code, as maintained by ICIS.
       nullable: true
-      example: 53140
+      example: '53140'
   responses: 
     caa_poll_rpt_rest_services.get_aggregate_emissions.default: 
       description: Returns an object that includes aggregate emissions.
