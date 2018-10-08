@@ -10,10 +10,10 @@ info:
     The get_facilities, get_map, get_qid, and get_download end points are meant to be used together, while the enhanced get_facility_info end point is self contained.  The get_facility_info end point returns either an array of state, county or zip clusters with summary statistics per cluster or an array of facilities.\
     \
     The recommended use scenario for get_facilities, get_qid, get_map, and get_downoad is:
-    # Use get_facilities to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.
-    # Use get_qid, with the returned QID, to paginate through arrays of facility results.
-    # Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates that meet the QID query criteria.
-    # Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.
+    1. Use get_facilities to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.
+    1. Use get_qid, with the returned QID, to paginate through arrays of facility results.
+    1. Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates that meet the QID query criteria.
+    1. Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.
     \
     Use the qcolumns parameter to customize your search results.  Use the Metdata service endpoint for a list of available output objects, their Column Ids, and their definitions to help you build your customized output.\
     \
