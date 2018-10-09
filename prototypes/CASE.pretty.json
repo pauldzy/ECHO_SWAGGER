@@ -2,7 +2,7 @@
     "openapi": "3.0.0"
    ,"info": {
        "title": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Enforcement Case Search"
-      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\\\n\\\nCASE Rest Services provide multiple service endpoints, each with specific capabilities, to search and retrieve data on civil cases entered into the Integrated Compliance Information System (ICIS) and criminal cases entered into the Summary of Criminal Prosecutions database.  See [Enforcement Case Search Help](https://echo.epa.gov/help/enforcement-case-search-help) for additional information on searching civil and criminal cases.\\\n\\\nThe get_cases, get_map, get_qid, and get_download end points are meant to be used together.\nThe recommended use scenario for get_cases, get_qid, get_map, and get_downoad is:\n1. Use get_cases to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.\n1. Use get_qid, with the returned QID, to paginate through arrays of case results.\n1. Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates, related to the returned cases, that meet the QID query criteria.\n1. Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.\n\nIn addition to the service endpoints listed above there are two detailed case report services, one for civil cases (get_case_report) and one for criminal cases (get_crcase_report).  See the [Civil Enforcement Case Report Help](https://echo.epa.gov/help/reports/enforcement-case-report-help) and the [Criminal Case Report Help](https://echo.epa.gov/help/reports/criminal-case-report-help) for additional information on the data returned from these two services.\\\n\\\nAdditional ECHO Resources: [Web Services](https://echo.epa.gov/tools/web-services), [About ECHO's Data](https://echo.epa.gov/resources/echo-data/about-the-data), [Data Downloads](https://echo.epa.gov/tools/data-downloads).\n"
+      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\n\n\nCASE Rest Services provide multiple service endpoints, each with specific capabilities, to search and retrieve data on civil cases entered into the Integrated Compliance Information System (ICIS) and criminal cases entered into the Summary of Criminal Prosecutions database.  See [Enforcement Case Search Help](https://echo.epa.gov/help/enforcement-case-search-help) for additional information on searching civil and criminal cases.\n\n\nThe get_cases, get_map, get_qid, and get_download end points are meant to be used together.\nThe recommended use scenario for get_cases, get_qid, get_map, and get_downoad is:\n1. Use get_cases to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.\n1. Use get_qid, with the returned QID, to paginate through arrays of case results.\n1. Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates, related to the returned cases, that meet the QID query criteria.\n1. Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.\n\nIn addition to the service endpoints listed above there are two detailed case report services, one for civil cases (get_case_report) and one for criminal cases (get_crcase_report).  See the [Civil Enforcement Case Report Help](https://echo.epa.gov/help/reports/enforcement-case-report-help) and the [Criminal Case Report Help](https://echo.epa.gov/help/reports/criminal-case-report-help) for additional information on the data returned from these two services.\n\n\nAdditional ECHO Resources: [Web Services](https://echo.epa.gov/tools/web-services), [About ECHO's Data](https://echo.epa.gov/resources/echo-data/about-the-data), [Data Downloads](https://echo.epa.gov/tools/data-downloads).\n"
       ,"contact": {
           "name": "US EPA, OECA Integration, Targeting and Access Branch"
          ,"url": "https://echo.epa.gov/resources/general-info/contact-us"
@@ -1539,21 +1539,6 @@
                ,"SEPAmount"
             ]
          }
-         ,"case_rest_services.get_case_report.root": {
-             "type": "object"
-            ,"title": "Case Report Root"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "Results": {
-                   "$ref": "#/components/schemas/case_rest_services.get_case_report.Results"
-               }
-            }
-            ,"required": [
-                "Results"
-            ]
-         }
          ,"case_rest_services.get_cases.Results": {
              "type": "object"
             ,"title": "Cases Results"
@@ -1609,21 +1594,6 @@
                ,"CriminalRows"
                ,"QueryID"
                ,"PageNo"
-            ]
-         }
-         ,"case_rest_services.get_cases.root": {
-             "type": "object"
-            ,"title": "Cases Root"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "Results": {
-                   "$ref": "#/components/schemas/case_rest_services.get_cases.Results"
-               }
-            }
-            ,"required": [
-                "Results"
             ]
          }
          ,"case_rest_services.get_crcase_report.CRDefendants": {
@@ -1805,36 +1775,6 @@
                ,"Locations"
             ]
          }
-         ,"case_rest_services.get_crcase_report.root": {
-             "type": "object"
-            ,"title": "CR Root"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "Results": {
-                   "$ref": "#/components/schemas/case_rest_services.get_crcase_report.Results"
-               }
-            }
-            ,"required": [
-                "Results"
-            ]
-         }
-         ,"case_rest_services.get_map.root": {
-             "type": "object"
-            ,"title": "Map Root"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "Results": {
-                   "$ref": "#/components/schemas/case_rest_services.MapOutput"
-               }
-            }
-            ,"required": [
-                "Results"
-            ]
-         }
          ,"case_rest_services.get_qid.Results": {
              "type": "object"
             ,"title": "QID Results"
@@ -1870,21 +1810,6 @@
                ,"Cases"
             ]
          }
-         ,"case_rest_services.get_qid.root": {
-             "type": "object"
-            ,"title": "QID Root"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "Results": {
-                   "$ref": "#/components/schemas/case_rest_services.get_qid.Results"
-               }
-            }
-            ,"required": [
-                "Results"
-            ]
-         }
          ,"metadata.ResultColumns": {
              "type": "object"
             ,"title": "Metadata Columns"
@@ -1895,7 +1820,8 @@
                 "ColumnName": {
                    "type": "string"
                   ,"title": "ColumnName"
-                  ,"nullable": true
+                  ,"nullable": false
+                  ,"example": "AIR_EVAL_CNT"
                }
                ,"DataType": {
                    "$ref": "#/components/schemas/property.DataType"
@@ -1906,7 +1832,8 @@
                ,"ColumnID": {
                    "type": "string"
                   ,"title": "ColumnID"
-                  ,"nullable": true
+                  ,"nullable": false
+                  ,"example": "49"
                }
                ,"ObjectName": {
                    "type": "string"
@@ -1947,21 +1874,6 @@
             }
             ,"required": [
                 "Message"
-            ]
-         }
-         ,"metadata.root": {
-             "type": "object"
-            ,"title": "Metadata Root"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "Results": {
-                   "$ref": "#/components/schemas/metadata.Results"
-               }
-            }
-            ,"required": [
-                "Results"
             ]
          }
          ,"parameter.c1_lat": {
@@ -2556,7 +2468,7 @@
          ,"property.CaseCategoryDesc": {
              "type": "string"
             ,"title": "CaseCategoryDesc"
-            ,"description": "Identifies the type of action based on the enforcement authority used.  \n\nAdministrative Formal Cases are non-judicial enforcement actions taken by EPA or a state under its own authority, without involving a judicial court process. An administrative action by EPA or a state agency may be in the form of:\n- A notice of violation or a Superfund notice letter.\n-> An administrative order or order (either with or without penalties) directing an individual, a business, or other entity to take action to come into compliance, or to clean up a site.\n\nJudicial Cases are formal lawsuits, filed in court, against persons or entities that have failed to comply with statutory or regulatory requirements, with an administrative order, or who owe EPA response costs for cleaning up a Superfund site. These cases are filed by the U.S. Department of Justice on behalf of EPA and, in regulatory cases, by the State's Attorneys General for the states as well.\n\nCriminal Cases occur when EPA or a state enforce against a company or person through a criminal action. Criminal actions are usually reserved for the most serious violations, those that are willful, or knowingly committed. A court conviction can result in fines or imprisonment."
+            ,"description": "Identifies the type of action based on the enforcement authority used.  \n\nAdministrative Formal Cases are non-judicial enforcement actions taken by EPA or a state under its own authority, without involving a judicial court process. An administrative action by EPA or a state agency may be in the form of:\n* A notice of violation or a Superfund notice letter.\n* An administrative order or order (either with or without penalties) directing an individual, a business, or other entity to take action to come into compliance, or to clean up a site.\n\nJudicial Cases are formal lawsuits, filed in court, against persons or entities that have failed to comply with statutory or regulatory requirements, with an administrative order, or who owe EPA response costs for cleaning up a Superfund site. These cases are filed by the U.S. Department of Justice on behalf of EPA and, in regulatory cases, by the State's Attorneys General for the states as well.\n\nCriminal Cases occur when EPA or a state enforce against a company or person through a criminal action. Criminal actions are usually reserved for the most serious violations, those that are willful, or knowingly committed. A court conviction can result in fines or imprisonment."
             ,"nullable": true
             ,"example": "Administrative - Informal"
          }
@@ -2732,7 +2644,7 @@
              "type": "string"
             ,"title": "DataType"
             ,"description": "Data type for EPA program database column."
-            ,"nullable": true
+            ,"nullable": false
             ,"example": "NUMBER"
          }
          ,"property.DateClosed": {
@@ -2979,14 +2891,14 @@
              "type": "string"
             ,"title": "ICON"
             ,"description": "Name of each individual icon file within the URL base"
-            ,"nullable": true
+            ,"nullable": false
             ,"example": "CAA-IC-MN-N.png"
          }
          ,"property.IconBaseURL": {
              "type": "string"
             ,"title": "IconBaseURL"
             ,"description": "URL where all the icons are located"
-            ,"nullable": true
+            ,"nullable": false
             ,"example": "https://echo.epa.gov/app/map/icons/"
          }
          ,"property.JDCRows": {
@@ -3000,14 +2912,14 @@
              "type": "string"
             ,"title": "LAT"
             ,"description": "The latitude of the facility in degrees, to four decimal places"
-            ,"nullable": true
+            ,"nullable": false
             ,"example": "38.798026"
          }
          ,"property.LON": {
              "type": "string"
             ,"title": "LON"
             ,"description": "The longitude of the facility in degrees, to four decimal places"
-            ,"nullable": true
+            ,"nullable": false
             ,"example": "-77.062981"
          }
          ,"property.Latitude": {
@@ -3044,7 +2956,7 @@
              "type": "string"
             ,"title": "MaxScore"
             ,"description": "[Col. 121]"
-            ,"nullable": true
+            ,"nullable": false
             ,"example": "1"
          }
          ,"property.Media": {
@@ -3057,8 +2969,8 @@
          ,"property.Message": {
              "type": "string"
             ,"title": "Message"
-            ,"description": "Field to record messages (typically performance-related) about packet processing"
-            ,"nullable": true
+            ,"description": "Field to record messages (typically performance-related) about packet processing."
+            ,"nullable": false
             ,"example": "Success"
          }
          ,"property.MultiMediaCase": {
@@ -3106,14 +3018,14 @@
              "type": "string"
             ,"title": "PUV"
             ,"description": "Pop up value. Combine with PopUpBaseURL to give the popup for the facility"
-            ,"nullable": true
+            ,"nullable": false
             ,"example": "110001891506"
          }
          ,"property.PageNo": {
              "type": "string"
             ,"title": "PageNo"
             ,"description": "The number of pages of results returned"
-            ,"nullable": true
+            ,"nullable": false
             ,"example": "1"
          }
          ,"property.Pollutant": {
@@ -3134,7 +3046,7 @@
              "type": "string"
             ,"title": "PopUpBaseURL"
             ,"description": "Combine this URL with the PUC to get popup info"
-            ,"nullable": true
+            ,"nullable": false
             ,"example": "https://ofmpub.epa.gov/echo/cwa_rest_services.pop_up?p_id="
          }
          ,"property.PrimaryLaw": {
@@ -3220,14 +3132,14 @@
              "type": "string"
             ,"title": "QueryID"
             ,"description": "Sequential number assigned to entire search result"
-            ,"nullable": true
+            ,"nullable": false
             ,"example": "245"
          }
          ,"property.QueryRows": {
              "type": "string"
             ,"title": "QueryRows"
             ,"description": "Number of query results returned"
-            ,"nullable": true
+            ,"nullable": false
             ,"example": "5"
          }
          ,"property.RegionalDocketNumber": {
@@ -3259,7 +3171,7 @@
          ,"property.SEPCategories": {
              "type": "string"
             ,"title": "SEPCategories"
-            ,"description": "For civil enforcement actions, as part of a settlement, a defendant may voluntarily agree to undertake an environmentally beneficial project (Supplement Environmental Project) related to the violation in exchange for mitigation of the penalty to be paid.  It may not include activities a defendant must take to return to compliance with the law. The EPA has set out eight categories that can be acceptable SEPs:\n- Public Health\n- Pollution Prevention\n- Pollution Reduction\n- Environmental Restoration and Protection\n- Emergency Planning and Preparedness\n- Assessments and Audits\n- Environmental Compliance Promotion\n- Other Types of Projects\nDescriptions of each SEP category can be found on the EPA Supplemental Environmental Projects page."
+            ,"description": "For civil enforcement actions, as part of a settlement, a defendant may voluntarily agree to undertake an environmentally beneficial project (Supplement Environmental Project) related to the violation in exchange for mitigation of the penalty to be paid.  It may not include activities a defendant must take to return to compliance with the law. The EPA has set out eight categories that can be acceptable SEPs:\n* Public Health\n* Pollution Prevention\n* Pollution Reduction\n* Environmental Restoration and Protection\n* Emergency Planning and Preparedness\n* Assessments and Audits\n* Environmental Compliance Promotion\n* Other Types of Projects\n\nDescriptions of each SEP category can be found on the EPA Supplemental Environmental Projects page."
             ,"nullable": true
             ,"example": "0"
          }
@@ -3379,7 +3291,7 @@
              "type": "string"
             ,"title": "TYPE"
             ,"description": "For DFR, this is always facility"
-            ,"nullable": true
+            ,"nullable": false
             ,"example": "Facility"
          }
          ,"property.Title": {
@@ -3503,21 +3415,6 @@
                 "Message"
             ]
          }
-         ,"rest_lookups.icis_law_sections.root": {
-             "type": "object"
-            ,"title": "ICIS Law Section Root"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "Results": {
-                   "$ref": "#/components/schemas/rest_lookups.icis_law_sections.Results"
-               }
-            }
-            ,"required": [
-                "Results"
-            ]
-         }
       }
       ,"responses": {
           "case_rest_services.get_case_report.default": {
@@ -3525,12 +3422,36 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/case_rest_services.get_case_report.root"
+                      "type": "object"
+                     ,"title": "Case Report Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/case_rest_services.get_case_report.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
                ,"application/xml": {
                    "schema": {
-                      "$ref": "#/components/schemas/case_rest_services.get_case_report.root"
+                      "type": "object"
+                     ,"title": "Case Report Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/case_rest_services.get_case_report.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
             }
@@ -3540,12 +3461,36 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/case_rest_services.get_cases.root"
+                      "type": "object"
+                     ,"title": "Cases Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/case_rest_services.get_cases.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
                ,"application/xml": {
                    "schema": {
-                      "$ref": "#/components/schemas/case_rest_services.get_cases.root"
+                      "type": "object"
+                     ,"title": "Cases Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/case_rest_services.get_cases.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
             }
@@ -3555,12 +3500,36 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/case_rest_services.get_crcase_report.root"
+                      "type": "object"
+                     ,"title": "CR Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/case_rest_services.get_crcase_report.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
                ,"application/xml": {
                    "schema": {
-                      "$ref": "#/components/schemas/case_rest_services.get_crcase_report.root"
+                      "type": "object"
+                     ,"title": "CR Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/case_rest_services.get_crcase_report.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
             }
@@ -3587,12 +3556,36 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/case_rest_services.get_map.root"
+                      "type": "object"
+                     ,"title": "Map Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "MapOutput": {
+                            "$ref": "#/components/schemas/case_rest_services.MapOutput"
+                        }
+                     }
+                     ,"required": [
+                         "MapOutput"
+                     ]
                   }
                }
                ,"application/xml": {
                    "schema": {
-                      "$ref": "#/components/schemas/case_rest_services.get_map.root"
+                      "type": "object"
+                     ,"title": "Map Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "MapOutput": {
+                            "$ref": "#/components/schemas/case_rest_services.MapOutput"
+                        }
+                     }
+                     ,"required": [
+                         "MapOutput"
+                     ]
                   }
                }
             }
@@ -3602,12 +3595,36 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/case_rest_services.get_qid.root"
+                      "type": "object"
+                     ,"title": "QID Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/case_rest_services.get_qid.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
                ,"application/xml": {
                    "schema": {
-                      "$ref": "#/components/schemas/case_rest_services.get_qid.root"
+                      "type": "object"
+                     ,"title": "QID Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/case_rest_services.get_qid.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
             }
@@ -3617,12 +3634,36 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/metadata.root"
+                      "type": "object"
+                     ,"title": "Metadata Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/metadata.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
                ,"application/xml": {
                    "schema": {
-                      "$ref": "#/components/schemas/metadata.root"
+                      "type": "object"
+                     ,"title": "Metadata Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/metadata.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
             }
@@ -3632,12 +3673,36 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/rest_lookups.icis_law_sections.root"
+                      "type": "object"
+                     ,"title": "ICIS Law Section Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/rest_lookups.icis_law_sections.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
                ,"application/xml": {
                    "schema": {
-                      "$ref": "#/components/schemas/rest_lookups.icis_law_sections.root"
+                      "type": "object"
+                     ,"title": "ICIS Law Section Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/rest_lookups.icis_law_sections.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
             }

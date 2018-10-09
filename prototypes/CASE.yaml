@@ -3,18 +3,19 @@ openapi: '3.0.0'
 info: 
   title: U.S. EPA Enforcement and Compliance History Online (ECHO) - Enforcement Case Search
   description: |-
-    Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\
-    \
-    CASE Rest Services provide multiple service endpoints, each with specific capabilities, to search and retrieve data on civil cases entered into the Integrated Compliance Information System (ICIS) and criminal cases entered into the Summary of Criminal Prosecutions database.  See [Enforcement Case Search Help](https://echo.epa.gov/help/enforcement-case-search-help) for additional information on searching civil and criminal cases.\
-    \
+    Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.
+     
+    CASE Rest Services provide multiple service endpoints, each with specific capabilities, to search and retrieve data on civil cases entered into the Integrated Compliance Information System (ICIS) and criminal cases entered into the Summary of Criminal Prosecutions database.  See [Enforcement Case Search Help](https://echo.epa.gov/help/enforcement-case-search-help) for additional information on searching civil and criminal cases.
+     
     The get_cases, get_map, get_qid, and get_download end points are meant to be used together.
     The recommended use scenario for get_cases, get_qid, get_map, and get_downoad is:
     1. Use get_cases to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.
     1. Use get_qid, with the returned QID, to paginate through arrays of case results.
     1. Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates, related to the returned cases, that meet the QID query criteria.
     1. Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.
-    In addition to the service endpoints listed above there are two detailed case report services, one for civil cases (get_case_report) and one for criminal cases (get_crcase_report).  See the [Civil Enforcement Case Report Help](https://echo.epa.gov/help/reports/enforcement-case-report-help) and the [Criminal Case Report Help](https://echo.epa.gov/help/reports/criminal-case-report-help) for additional information on the data returned from these two services.\
-    \
+     
+    In addition to the service endpoints listed above there are two detailed case report services, one for civil cases (get_case_report) and one for criminal cases (get_crcase_report).  See the [Civil Enforcement Case Report Help](https://echo.epa.gov/help/reports/enforcement-case-report-help) and the [Criminal Case Report Help](https://echo.epa.gov/help/reports/criminal-case-report-help) for additional information on the data returned from these two services.
+     
     Additional ECHO Resources: [Web Services](https://echo.epa.gov/tools/web-services), [About ECHO's Data](https://echo.epa.gov/resources/echo-data/about-the-data), [Data Downloads](https://echo.epa.gov/tools/data-downloads).
 
   contact: 
@@ -985,16 +986,6 @@ components:
         - SEPId
         - SEPText
         - SEPAmount
-    case_rest_services.get_case_report.root: 
-      type: object
-      title: Case Report Root
-      xml: 
-        name: Root
-      properties: 
-        Results: 
-          $ref: '#/components/schemas/case_rest_services.get_case_report.Results'
-      required: 
-        - Results
     case_rest_services.get_cases.Results: 
       type: object
       title: Cases Results
@@ -1036,16 +1027,6 @@ components:
         - CriminalRows
         - QueryID
         - PageNo
-    case_rest_services.get_cases.root: 
-      type: object
-      title: Cases Root
-      xml: 
-        name: Root
-      properties: 
-        Results: 
-          $ref: '#/components/schemas/case_rest_services.get_cases.Results'
-      required: 
-        - Results
     case_rest_services.get_crcase_report.CRDefendants: 
       type: object
       title: CR Defendants
@@ -1175,26 +1156,6 @@ components:
         - CRDefendants
         - CRDetails
         - Locations
-    case_rest_services.get_crcase_report.root: 
-      type: object
-      title: CR Root
-      xml: 
-        name: Root
-      properties: 
-        Results: 
-          $ref: '#/components/schemas/case_rest_services.get_crcase_report.Results'
-      required: 
-        - Results
-    case_rest_services.get_map.root: 
-      type: object
-      title: Map Root
-      xml: 
-        name: Root
-      properties: 
-        Results: 
-          $ref: '#/components/schemas/case_rest_services.MapOutput'
-      required: 
-        - Results
     case_rest_services.get_qid.Results: 
       type: object
       title: QID Results
@@ -1220,16 +1181,6 @@ components:
         - QueryID
         - PageNo
         - Cases
-    case_rest_services.get_qid.root: 
-      type: object
-      title: QID Root
-      xml: 
-        name: Root
-      properties: 
-        Results: 
-          $ref: '#/components/schemas/case_rest_services.get_qid.Results'
-      required: 
-        - Results
     metadata.ResultColumns: 
       type: object
       title: Metadata Columns
@@ -1239,7 +1190,8 @@ components:
         ColumnName: 
           type: string
           title: ColumnName
-          nullable: true
+          nullable: false
+          example: AIR_EVAL_CNT
         DataType: 
           $ref: '#/components/schemas/property.DataType'
         DataLength: 
@@ -1247,7 +1199,8 @@ components:
         ColumnID: 
           type: string
           title: ColumnID
-          nullable: true
+          nullable: false
+          example: '49'
         ObjectName: 
           type: string
           title: ObjectName
@@ -1277,16 +1230,6 @@ components:
             wrapped: true
       required: 
         - Message
-    metadata.root: 
-      type: object
-      title: Metadata Root
-      xml: 
-        name: Root
-      properties: 
-        Results: 
-          $ref: '#/components/schemas/metadata.Results'
-      required: 
-        - Results
     parameter.c1_lat: 
       type: number
       title: c1_lat
@@ -1837,10 +1780,13 @@ components:
       title: CaseCategoryDesc
       description: |-
         Identifies the type of action based on the enforcement authority used.  
+         
         Administrative Formal Cases are non-judicial enforcement actions taken by EPA or a state under its own authority, without involving a judicial court process. An administrative action by EPA or a state agency may be in the form of:
-        - A notice of violation or a Superfund notice letter.
-        -> An administrative order or order (either with or without penalties) directing an individual, a business, or other entity to take action to come into compliance, or to clean up a site.
+        * A notice of violation or a Superfund notice letter.
+        * An administrative order or order (either with or without penalties) directing an individual, a business, or other entity to take action to come into compliance, or to clean up a site.
+         
         Judicial Cases are formal lawsuits, filed in court, against persons or entities that have failed to comply with statutory or regulatory requirements, with an administrative order, or who owe EPA response costs for cleaning up a Superfund site. These cases are filed by the U.S. Department of Justice on behalf of EPA and, in regulatory cases, by the State's Attorneys General for the states as well.
+         
         Criminal Cases occur when EPA or a state enforce against a company or person through a criminal action. Criminal actions are usually reserved for the most serious violations, those that are willful, or knowingly committed. A court conviction can result in fines or imprisonment.
       nullable: true
       example: Administrative - Informal
@@ -1993,7 +1939,7 @@ components:
       type: string
       title: DataType
       description: Data type for EPA program database column.
-      nullable: true
+      nullable: false
       example: NUMBER
     property.DateClosed: 
       type: string
@@ -2204,13 +2150,13 @@ components:
       type: string
       title: ICON
       description: Name of each individual icon file within the URL base
-      nullable: true
+      nullable: false
       example: CAA-IC-MN-N.png
     property.IconBaseURL: 
       type: string
       title: IconBaseURL
       description: URL where all the icons are located
-      nullable: true
+      nullable: false
       example: "https://echo.epa.gov/app/map/icons/"
     property.JDCRows: 
       type: string
@@ -2222,13 +2168,13 @@ components:
       type: string
       title: LAT
       description: The latitude of the facility in degrees, to four decimal places
-      nullable: true
+      nullable: false
       example: '38.798026'
     property.LON: 
       type: string
       title: LON
       description: The longitude of the facility in degrees, to four decimal places
-      nullable: true
+      nullable: false
       example: '-77.062981'
     property.Latitude: 
       type: string
@@ -2260,7 +2206,7 @@ components:
       type: string
       title: MaxScore
       description: "[Col. 121]"
-      nullable: true
+      nullable: false
       example: '1'
     property.Media: 
       type: string
@@ -2271,8 +2217,8 @@ components:
     property.Message: 
       type: string
       title: Message
-      description: Field to record messages (typically performance-related) about packet processing
-      nullable: true
+      description: Field to record messages (typically performance-related) about packet processing.
+      nullable: false
       example: Success
     property.MultiMediaCase: 
       type: string
@@ -2313,13 +2259,13 @@ components:
       type: string
       title: PUV
       description: Pop up value. Combine with PopUpBaseURL to give the popup for the facility
-      nullable: true
+      nullable: false
       example: '110001891506'
     property.PageNo: 
       type: string
       title: PageNo
       description: The number of pages of results returned
-      nullable: true
+      nullable: false
       example: '1'
     property.Pollutant: 
       type: string
@@ -2337,7 +2283,7 @@ components:
       type: string
       title: PopUpBaseURL
       description: Combine this URL with the PUC to get popup info
-      nullable: true
+      nullable: false
       example: "https://ofmpub.epa.gov/echo/cwa_rest_services.pop_up?p_id="
     property.PrimaryLaw: 
       type: string
@@ -2410,13 +2356,13 @@ components:
       type: string
       title: QueryID
       description: Sequential number assigned to entire search result
-      nullable: true
+      nullable: false
       example: '245'
     property.QueryRows: 
       type: string
       title: QueryRows
       description: Number of query results returned
-      nullable: true
+      nullable: false
       example: '5'
     property.RegionalDocketNumber: 
       type: string
@@ -2445,14 +2391,15 @@ components:
       title: SEPCategories
       description: |-
         For civil enforcement actions, as part of a settlement, a defendant may voluntarily agree to undertake an environmentally beneficial project (Supplement Environmental Project) related to the violation in exchange for mitigation of the penalty to be paid.  It may not include activities a defendant must take to return to compliance with the law. The EPA has set out eight categories that can be acceptable SEPs:
-        - Public Health
-        - Pollution Prevention
-        - Pollution Reduction
-        - Environmental Restoration and Protection
-        - Emergency Planning and Preparedness
-        - Assessments and Audits
-        - Environmental Compliance Promotion
-        - Other Types of Projects
+        * Public Health
+        * Pollution Prevention
+        * Pollution Reduction
+        * Environmental Restoration and Protection
+        * Emergency Planning and Preparedness
+        * Assessments and Audits
+        * Environmental Compliance Promotion
+        * Other Types of Projects
+         
         Descriptions of each SEP category can be found on the EPA Supplemental Environmental Projects page.
       nullable: true
       example: '0'
@@ -2555,7 +2502,7 @@ components:
       type: string
       title: TYPE
       description: For DFR, this is always facility
-      nullable: true
+      nullable: false
       example: Facility
     property.Title: 
       type: string
@@ -2653,91 +2600,193 @@ components:
             wrapped: true
       required: 
         - Message
-    rest_lookups.icis_law_sections.root: 
-      type: object
-      title: ICIS Law Section Root
-      xml: 
-        name: Root
-      properties: 
-        Results: 
-          $ref: '#/components/schemas/rest_lookups.icis_law_sections.Results'
-      required: 
-        - Results
   responses: 
     case_rest_services.get_case_report.default: 
       description: Returns a complex object containing detailed case information for the provided Case Identifier.
       content: 
-        'application/json': 
+        application/json: 
           schema: 
-            $ref: '#/components/schemas/case_rest_services.get_case_report.root'
-        'application/xml': 
+            type: object
+            title: Case Report Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/case_rest_services.get_case_report.Results'
+            required: 
+              - Results
+        application/xml: 
           schema: 
-            $ref: '#/components/schemas/case_rest_services.get_case_report.root'
+            type: object
+            title: Case Report Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/case_rest_services.get_case_report.Results'
+            required: 
+              - Results
     case_rest_services.get_cases.default: 
       description: Returns an array of cases that meet the selection criteria.
       content: 
-        'application/json': 
+        application/json: 
           schema: 
-            $ref: '#/components/schemas/case_rest_services.get_cases.root'
-        'application/xml': 
+            type: object
+            title: Cases Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/case_rest_services.get_cases.Results'
+            required: 
+              - Results
+        application/xml: 
           schema: 
-            $ref: '#/components/schemas/case_rest_services.get_cases.root'
+            type: object
+            title: Cases Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/case_rest_services.get_cases.Results'
+            required: 
+              - Results
     case_rest_services.get_crcase_report.default: 
       description: Returns a complex object containing detailed criminal case information for the provided Case Identifier.
       content: 
-        'application/json': 
+        application/json: 
           schema: 
-            $ref: '#/components/schemas/case_rest_services.get_crcase_report.root'
-        'application/xml': 
+            type: object
+            title: CR Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/case_rest_services.get_crcase_report.Results'
+            required: 
+              - Results
+        application/xml: 
           schema: 
-            $ref: '#/components/schemas/case_rest_services.get_crcase_report.root'
+            type: object
+            title: CR Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/case_rest_services.get_crcase_report.Results'
+            required: 
+              - Results
     case_rest_services.get_download.default: 
       description: Results are a comma separated value (CSV) file or a file containing a GeoJSON feature collection.
       content: 
-        'application/vnd.geo+json': 
+        application/vnd.geo+json: 
           schema: 
             type: string
             format: binary
-        'text/csv': 
+        text/csv: 
           schema: 
             type: string
             format: binary
     case_rest_services.get_map.default: 
       description: Results are either an array of State, County, Zip Code facility cluster map coordinates or individual facility coordinates.  Coordinates provided are in WGS84.
       content: 
-        'application/json': 
+        application/json: 
           schema: 
-            $ref: '#/components/schemas/case_rest_services.get_map.root'
-        'application/xml': 
+            type: object
+            title: Map Root
+            xml: 
+              name: Root
+            properties: 
+              MapOutput: 
+                $ref: '#/components/schemas/case_rest_services.MapOutput'
+            required: 
+              - MapOutput
+        application/xml: 
           schema: 
-            $ref: '#/components/schemas/case_rest_services.get_map.root'
+            type: object
+            title: Map Root
+            xml: 
+              name: Root
+            properties: 
+              MapOutput: 
+                $ref: '#/components/schemas/case_rest_services.MapOutput'
+            required: 
+              - MapOutput
     case_rest_services.get_qid.default: 
       description: Results are an array (page)  of Cases from ICIS with the number of cases equal to the responseset (page size).
       content: 
-        'application/json': 
+        application/json: 
           schema: 
-            $ref: '#/components/schemas/case_rest_services.get_qid.root'
-        'application/xml': 
+            type: object
+            title: QID Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/case_rest_services.get_qid.Results'
+            required: 
+              - Results
+        application/xml: 
           schema: 
-            $ref: '#/components/schemas/case_rest_services.get_qid.root'
+            type: object
+            title: QID Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/case_rest_services.get_qid.Results'
+            required: 
+              - Results
     case_rest_services.metadata.default: 
       description: Results are an array of columns/objects.
       content: 
-        'application/json': 
+        application/json: 
           schema: 
-            $ref: '#/components/schemas/metadata.root'
-        'application/xml': 
+            type: object
+            title: Metadata Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/metadata.Results'
+            required: 
+              - Results
+        application/xml: 
           schema: 
-            $ref: '#/components/schemas/metadata.root'
+            type: object
+            title: Metadata Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/metadata.Results'
+            required: 
+              - Results
     rest_lookups.icis_law_sections.default: 
       description: Returns an array of icis_inspection_types codes and their description. If search term or search code is  not provided, all values are returned.
       content: 
-        'application/json': 
+        application/json: 
           schema: 
-            $ref: '#/components/schemas/rest_lookups.icis_law_sections.root'
-        'application/xml': 
+            type: object
+            title: ICIS Law Section Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/rest_lookups.icis_law_sections.Results'
+            required: 
+              - Results
+        application/xml: 
           schema: 
-            $ref: '#/components/schemas/rest_lookups.icis_law_sections.root'
+            type: object
+            title: ICIS Law Section Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/rest_lookups.icis_law_sections.Results'
+            required: 
+              - Results
   parameters: 
     c1_lat: 
       name: c1_lat
@@ -3611,276 +3660,276 @@ components:
           - N
   requestBodies: 
     case_rest_services.get_case_report.post.requestBody: 
-        content: 
-          application/x-www-form-urlencoded: 
-            schema: 
-              type: object
-              properties: 
-                p_id: 
-                  $ref: '#/components/schemas/parameter.p_id.case.get_case_report'
-                output: 
-                  $ref: '#/components/schemas/parameter.output'
-                callback: 
-                  $ref: '#/components/schemas/parameter.callback'
+      content: 
+        application/x-www-form-urlencoded: 
+          schema: 
+            type: object
+            properties: 
+              p_id: 
+                $ref: '#/components/schemas/parameter.p_id.case.get_case_report'
+              output: 
+                $ref: '#/components/schemas/parameter.output'
+              callback: 
+                $ref: '#/components/schemas/parameter.callback'
     case_rest_services.get_cases.post.requestBody: 
-        content: 
-          application/x-www-form-urlencoded: 
-            schema: 
-              type: object
-              properties: 
-                output: 
-                  $ref: '#/components/schemas/parameter.output'
-                p_case_category: 
-                  $ref: '#/components/schemas/parameter.p_case_category'
-                p_case_status: 
-                  $ref: '#/components/schemas/parameter.p_case_status'
-                p_open_case: 
-                  type: string
-                  title: p_open_case
-                p_milestone: 
-                  $ref: '#/components/schemas/parameter.p_milestone'
-                p_from_date: 
-                  $ref: '#/components/schemas/parameter.p_from_date'
-                p_to_date: 
-                  $ref: '#/components/schemas/parameter.p_to_date'
-                p_milestone_fy: 
-                  $ref: '#/components/schemas/parameter.p_milestone_fy'
-                p_name: 
-                  $ref: '#/components/schemas/parameter.p_name'
-                p_name_type: 
-                  $ref: '#/components/schemas/parameter.p_name_type'
-                p_case_number: 
-                  $ref: '#/components/schemas/parameter.p_case_number'
-                p_docket_number: 
-                  $ref: '#/components/schemas/parameter.p_docket_number'
-                p_activity_number: 
-                  $ref: '#/components/schemas/parameter.p_activity_number'
-                p_case_lead: 
-                  $ref: '#/components/schemas/parameter.p_case_lead'
-                p_case_sens_flg: 
-                  $ref: '#/components/schemas/parameter.p_case_sens_flg'
-                p_region: 
-                  $ref: '#/components/schemas/parameter.p_region'
-                p_state: 
-                  $ref: '#/components/schemas/parameter.p_state'
-                p_district: 
-                  $ref: '#/components/schemas/parameter.p_district'
-                p_sic: 
-                  $ref: '#/components/schemas/parameter.p_sic.CASE'
-                p_sic_ao_naics: 
-                  $ref: '#/components/schemas/parameter.p_sic_ao_naics'
-                p_sic_primary_flg: 
-                  $ref: '#/components/schemas/parameter.p_sic_primary_flg'
-                p_sic_frs_flg: 
-                  $ref: '#/components/schemas/parameter.p_sic_frs_flg'
-                p_naics: 
-                  $ref: '#/components/schemas/parameter.p_naics'
-                p_naics_primary_flg: 
-                  $ref: '#/components/schemas/parameter.p_naics_primary_flg'
-                p_naics_frs_flg: 
-                  $ref: '#/components/schemas/parameter.p_naics_frs_flg'
-                p_enf_type: 
-                  $ref: '#/components/schemas/parameter.p_enf_type'
-                p_law: 
-                  $ref: '#/components/schemas/parameter.p_law'
-                p_section: 
-                  $ref: '#/components/schemas/parameter.p_section'
-                p_cp_citation: 
-                  $ref: '#/components/schemas/parameter.p_cp_citation'
-                p_rank_order: 
-                  $ref: '#/components/schemas/parameter.p_rank_order'
-                p_enf_program: 
-                  $ref: '#/components/schemas/parameter.p_enf_program'
-                p_violation: 
-                  $ref: '#/components/schemas/parameter.p_violation'
-                p_priority_area: 
-                  $ref: '#/components/schemas/parameter.p_priority_area'
-                p_priority_area_desc: 
-                  $ref: '#/components/schemas/parameter.p_priority_area_desc'
-                p_tribal: 
-                  $ref: '#/components/schemas/parameter.p_tribal'
-                p_oeca_core: 
-                  $ref: '#/components/schemas/parameter.p_oeca_core'
-                p_multimedia: 
-                  $ref: '#/components/schemas/parameter.p_multimedia'
-                p_fed_case: 
-                  $ref: '#/components/schemas/parameter.p_fed_case'
-                p_activity_contact: 
-                  $ref: '#/components/schemas/parameter.p_activity_contact'
-                p_role: 
-                  $ref: '#/components/schemas/parameter.p_role'
-                p_fed_penalty: 
-                  $ref: '#/components/schemas/parameter.p_fed_penalty'
-                p_total_fed_penalty: 
-                  $ref: '#/components/schemas/parameter.p_total_fed_penalty'
-                p_cost_recovery: 
-                  $ref: '#/components/schemas/parameter.p_cost_recovery'
-                p_total_cost_recovery: 
-                  $ref: '#/components/schemas/parameter.p_total_cost_recovery'
-                p_complying_actions: 
-                  $ref: '#/components/schemas/parameter.p_complying_actions'
-                p_comp_act_val: 
-                  $ref: '#/components/schemas/parameter.p_comp_act_val'
-                p_total_comp_act_val: 
-                  $ref: '#/components/schemas/parameter.p_total_comp_act_val'
-                p_sep_cats: 
-                  $ref: '#/components/schemas/parameter.p_sep_cats'
-                p_sep_val: 
-                  $ref: '#/components/schemas/parameter.p_sep_val'
-                p_total_sep_val: 
-                  $ref: '#/components/schemas/parameter.p_total_sep_val'
-                p_lodged_date: 
-                  $ref: '#/components/schemas/parameter.p_lodged_date'
-                p_entered_date: 
-                  $ref: '#/components/schemas/parameter.p_entered_date'
-                p_facility_id: 
-                  $ref: '#/components/schemas/parameter.p_facility_id'
-                p_fac_city: 
-                  $ref: '#/components/schemas/parameter.p_fac_city'
-                p_fac_zip: 
-                  $ref: '#/components/schemas/parameter.p_fac_zip'
-                p_fac_county: 
-                  $ref: '#/components/schemas/parameter.p_fac_county'
-                p_case_summary: 
-                  $ref: '#/components/schemas/parameter.p_case_summary'
-                p_case_summary_type: 
-                  type: string
-                  title: p_case_summary_type
-                p_usmex: 
-                  $ref: '#/components/schemas/parameter.p_usmex'
-                p_c1lat: 
-                  $ref: '#/components/schemas/parameter.p_c1lat'
-                p_c1lon: 
-                  $ref: '#/components/schemas/parameter.p_c1lon'
-                p_c2lat: 
-                  $ref: '#/components/schemas/parameter.p_c2lat'
-                p_c2lon: 
-                  $ref: '#/components/schemas/parameter.p_c2lon'
-                p_voluntary: 
-                  $ref: '#/components/schemas/parameter.p_voluntary'
-                p_fed_indicator: 
-                  $ref: '#/components/schemas/parameter.p_fed_indicator'
-                p_fntype: 
-                  $ref: '#/components/schemas/parameter.p_fntype'
-                p_civil_criminal_indicator: 
-                  $ref: '#/components/schemas/parameter.p_civil_criminal_indicator'
-                queryset: 
-                  $ref: '#/components/schemas/parameter.queryset'
-                responseset: 
-                  $ref: '#/components/schemas/parameter.responseset'
-                maplist: 
-                  $ref: '#/components/schemas/parameter.maplist'
-                tablelist: 
-                  $ref: '#/components/schemas/parameter.tablelist'
-                callback: 
-                  $ref: '#/components/schemas/parameter.callback'
-                qcolumns: 
-                  $ref: '#/components/schemas/parameter.qcolumns'
+      content: 
+        application/x-www-form-urlencoded: 
+          schema: 
+            type: object
+            properties: 
+              output: 
+                $ref: '#/components/schemas/parameter.output'
+              p_case_category: 
+                $ref: '#/components/schemas/parameter.p_case_category'
+              p_case_status: 
+                $ref: '#/components/schemas/parameter.p_case_status'
+              p_open_case: 
+                type: string
+                title: p_open_case
+              p_milestone: 
+                $ref: '#/components/schemas/parameter.p_milestone'
+              p_from_date: 
+                $ref: '#/components/schemas/parameter.p_from_date'
+              p_to_date: 
+                $ref: '#/components/schemas/parameter.p_to_date'
+              p_milestone_fy: 
+                $ref: '#/components/schemas/parameter.p_milestone_fy'
+              p_name: 
+                $ref: '#/components/schemas/parameter.p_name'
+              p_name_type: 
+                $ref: '#/components/schemas/parameter.p_name_type'
+              p_case_number: 
+                $ref: '#/components/schemas/parameter.p_case_number'
+              p_docket_number: 
+                $ref: '#/components/schemas/parameter.p_docket_number'
+              p_activity_number: 
+                $ref: '#/components/schemas/parameter.p_activity_number'
+              p_case_lead: 
+                $ref: '#/components/schemas/parameter.p_case_lead'
+              p_case_sens_flg: 
+                $ref: '#/components/schemas/parameter.p_case_sens_flg'
+              p_region: 
+                $ref: '#/components/schemas/parameter.p_region'
+              p_state: 
+                $ref: '#/components/schemas/parameter.p_state'
+              p_district: 
+                $ref: '#/components/schemas/parameter.p_district'
+              p_sic: 
+                $ref: '#/components/schemas/parameter.p_sic.CASE'
+              p_sic_ao_naics: 
+                $ref: '#/components/schemas/parameter.p_sic_ao_naics'
+              p_sic_primary_flg: 
+                $ref: '#/components/schemas/parameter.p_sic_primary_flg'
+              p_sic_frs_flg: 
+                $ref: '#/components/schemas/parameter.p_sic_frs_flg'
+              p_naics: 
+                $ref: '#/components/schemas/parameter.p_naics'
+              p_naics_primary_flg: 
+                $ref: '#/components/schemas/parameter.p_naics_primary_flg'
+              p_naics_frs_flg: 
+                $ref: '#/components/schemas/parameter.p_naics_frs_flg'
+              p_enf_type: 
+                $ref: '#/components/schemas/parameter.p_enf_type'
+              p_law: 
+                $ref: '#/components/schemas/parameter.p_law'
+              p_section: 
+                $ref: '#/components/schemas/parameter.p_section'
+              p_cp_citation: 
+                $ref: '#/components/schemas/parameter.p_cp_citation'
+              p_rank_order: 
+                $ref: '#/components/schemas/parameter.p_rank_order'
+              p_enf_program: 
+                $ref: '#/components/schemas/parameter.p_enf_program'
+              p_violation: 
+                $ref: '#/components/schemas/parameter.p_violation'
+              p_priority_area: 
+                $ref: '#/components/schemas/parameter.p_priority_area'
+              p_priority_area_desc: 
+                $ref: '#/components/schemas/parameter.p_priority_area_desc'
+              p_tribal: 
+                $ref: '#/components/schemas/parameter.p_tribal'
+              p_oeca_core: 
+                $ref: '#/components/schemas/parameter.p_oeca_core'
+              p_multimedia: 
+                $ref: '#/components/schemas/parameter.p_multimedia'
+              p_fed_case: 
+                $ref: '#/components/schemas/parameter.p_fed_case'
+              p_activity_contact: 
+                $ref: '#/components/schemas/parameter.p_activity_contact'
+              p_role: 
+                $ref: '#/components/schemas/parameter.p_role'
+              p_fed_penalty: 
+                $ref: '#/components/schemas/parameter.p_fed_penalty'
+              p_total_fed_penalty: 
+                $ref: '#/components/schemas/parameter.p_total_fed_penalty'
+              p_cost_recovery: 
+                $ref: '#/components/schemas/parameter.p_cost_recovery'
+              p_total_cost_recovery: 
+                $ref: '#/components/schemas/parameter.p_total_cost_recovery'
+              p_complying_actions: 
+                $ref: '#/components/schemas/parameter.p_complying_actions'
+              p_comp_act_val: 
+                $ref: '#/components/schemas/parameter.p_comp_act_val'
+              p_total_comp_act_val: 
+                $ref: '#/components/schemas/parameter.p_total_comp_act_val'
+              p_sep_cats: 
+                $ref: '#/components/schemas/parameter.p_sep_cats'
+              p_sep_val: 
+                $ref: '#/components/schemas/parameter.p_sep_val'
+              p_total_sep_val: 
+                $ref: '#/components/schemas/parameter.p_total_sep_val'
+              p_lodged_date: 
+                $ref: '#/components/schemas/parameter.p_lodged_date'
+              p_entered_date: 
+                $ref: '#/components/schemas/parameter.p_entered_date'
+              p_facility_id: 
+                $ref: '#/components/schemas/parameter.p_facility_id'
+              p_fac_city: 
+                $ref: '#/components/schemas/parameter.p_fac_city'
+              p_fac_zip: 
+                $ref: '#/components/schemas/parameter.p_fac_zip'
+              p_fac_county: 
+                $ref: '#/components/schemas/parameter.p_fac_county'
+              p_case_summary: 
+                $ref: '#/components/schemas/parameter.p_case_summary'
+              p_case_summary_type: 
+                type: string
+                title: p_case_summary_type
+              p_usmex: 
+                $ref: '#/components/schemas/parameter.p_usmex'
+              p_c1lat: 
+                $ref: '#/components/schemas/parameter.p_c1lat'
+              p_c1lon: 
+                $ref: '#/components/schemas/parameter.p_c1lon'
+              p_c2lat: 
+                $ref: '#/components/schemas/parameter.p_c2lat'
+              p_c2lon: 
+                $ref: '#/components/schemas/parameter.p_c2lon'
+              p_voluntary: 
+                $ref: '#/components/schemas/parameter.p_voluntary'
+              p_fed_indicator: 
+                $ref: '#/components/schemas/parameter.p_fed_indicator'
+              p_fntype: 
+                $ref: '#/components/schemas/parameter.p_fntype'
+              p_civil_criminal_indicator: 
+                $ref: '#/components/schemas/parameter.p_civil_criminal_indicator'
+              queryset: 
+                $ref: '#/components/schemas/parameter.queryset'
+              responseset: 
+                $ref: '#/components/schemas/parameter.responseset'
+              maplist: 
+                $ref: '#/components/schemas/parameter.maplist'
+              tablelist: 
+                $ref: '#/components/schemas/parameter.tablelist'
+              callback: 
+                $ref: '#/components/schemas/parameter.callback'
+              qcolumns: 
+                $ref: '#/components/schemas/parameter.qcolumns'
     case_rest_services.get_crcase_report.post.requestBody: 
-        content: 
-          application/x-www-form-urlencoded: 
-            schema: 
-              type: object
-              properties: 
-                p_id: 
-                  $ref: '#/components/schemas/parameter.p_id.case.get_crcase_report'
-                output: 
-                  $ref: '#/components/schemas/parameter.output'
-                callback: 
-                  $ref: '#/components/schemas/parameter.callback'
+      content: 
+        application/x-www-form-urlencoded: 
+          schema: 
+            type: object
+            properties: 
+              p_id: 
+                $ref: '#/components/schemas/parameter.p_id.case.get_crcase_report'
+              output: 
+                $ref: '#/components/schemas/parameter.output'
+              callback: 
+                $ref: '#/components/schemas/parameter.callback'
     case_rest_services.get_download.post.requestBody: 
-        content: 
-          application/x-www-form-urlencoded: 
-            schema: 
-              type: object
-              properties: 
-                output: 
-                  $ref: '#/components/schemas/parameter.output.only_csv'
-                qid: 
-                  $ref: '#/components/schemas/parameter.qid'
-                qcolumns: 
-                  $ref: '#/components/schemas/parameter.qcolumns'
-              required: 
-                - qid
+      content: 
+        application/x-www-form-urlencoded: 
+          schema: 
+            type: object
+            properties: 
+              output: 
+                $ref: '#/components/schemas/parameter.output.only_csv'
+              qid: 
+                $ref: '#/components/schemas/parameter.qid'
+              qcolumns: 
+                $ref: '#/components/schemas/parameter.qcolumns'
+            required: 
+              - qid
     case_rest_services.get_map.post.requestBody: 
-        content: 
-          application/x-www-form-urlencoded: 
-            schema: 
-              type: object
-              properties: 
-                output: 
-                  $ref: '#/components/schemas/parameter.output'
-                qid: 
-                  $ref: '#/components/schemas/parameter.qid'
-                callback: 
-                  $ref: '#/components/schemas/parameter.callback'
-                tablelist: 
-                  $ref: '#/components/schemas/parameter.tablelist'
-                c1_lat: 
-                  $ref: '#/components/schemas/parameter.c1_lat'
-                c1_long: 
-                  $ref: '#/components/schemas/parameter.c1_long'
-                c2_lat: 
-                  $ref: '#/components/schemas/parameter.c2_lat'
-                c2_long: 
-                  $ref: '#/components/schemas/parameter.c2_long'
-              required: 
-                - qid
+      content: 
+        application/x-www-form-urlencoded: 
+          schema: 
+            type: object
+            properties: 
+              output: 
+                $ref: '#/components/schemas/parameter.output'
+              qid: 
+                $ref: '#/components/schemas/parameter.qid'
+              callback: 
+                $ref: '#/components/schemas/parameter.callback'
+              tablelist: 
+                $ref: '#/components/schemas/parameter.tablelist'
+              c1_lat: 
+                $ref: '#/components/schemas/parameter.c1_lat'
+              c1_long: 
+                $ref: '#/components/schemas/parameter.c1_long'
+              c2_lat: 
+                $ref: '#/components/schemas/parameter.c2_lat'
+              c2_long: 
+                $ref: '#/components/schemas/parameter.c2_long'
+            required: 
+              - qid
     case_rest_services.get_qid.post.requestBody: 
-        content: 
-          application/x-www-form-urlencoded: 
-            schema: 
-              type: object
-              properties: 
-                output: 
-                  $ref: '#/components/schemas/parameter.output'
-                qid: 
-                  $ref: '#/components/schemas/parameter.qid'
-                pageno: 
-                  $ref: '#/components/schemas/parameter.pageno'
-                callback: 
-                  $ref: '#/components/schemas/parameter.callback'
-                newsort: 
-                  $ref: '#/components/schemas/parameter.newsort'
-                descending: 
-                  $ref: '#/components/schemas/parameter.descending'
-                qcolumns: 
-                  $ref: '#/components/schemas/parameter.qcolumns'
-              required: 
-                - qid
+      content: 
+        application/x-www-form-urlencoded: 
+          schema: 
+            type: object
+            properties: 
+              output: 
+                $ref: '#/components/schemas/parameter.output'
+              qid: 
+                $ref: '#/components/schemas/parameter.qid'
+              pageno: 
+                $ref: '#/components/schemas/parameter.pageno'
+              callback: 
+                $ref: '#/components/schemas/parameter.callback'
+              newsort: 
+                $ref: '#/components/schemas/parameter.newsort'
+              descending: 
+                $ref: '#/components/schemas/parameter.descending'
+              qcolumns: 
+                $ref: '#/components/schemas/parameter.qcolumns'
+            required: 
+              - qid
     case_rest_services.metadata.post.requestBody: 
-        content: 
-          application/x-www-form-urlencoded: 
-            schema: 
-              type: object
-              properties: 
-                output: 
-                  $ref: '#/components/schemas/parameter.output'
-                callback: 
-                  $ref: '#/components/schemas/parameter.callback'
+      content: 
+        application/x-www-form-urlencoded: 
+          schema: 
+            type: object
+            properties: 
+              output: 
+                $ref: '#/components/schemas/parameter.output'
+              callback: 
+                $ref: '#/components/schemas/parameter.callback'
     rest_lookups.icis_law_sections.post.requestBody: 
-        content: 
-          application/x-www-form-urlencoded: 
-            schema: 
-              type: object
-              properties: 
-                output: 
-                  $ref: '#/components/schemas/parameter.output'
-                callback: 
-                  $ref: '#/components/schemas/parameter.callback'
-                statute_code: 
-                  type: string
-                  title: statute_code
-                status_flag: 
-                  type: string
-                  title: status_flag
-                search_term: 
-                  $ref: '#/components/schemas/parameter.search_term'
-                search_code: 
-                  $ref: '#/components/schemas/parameter.search_code'
-                sort_order: 
-                  type: number
-                  title: sort_order
+      content: 
+        application/x-www-form-urlencoded: 
+          schema: 
+            type: object
+            properties: 
+              output: 
+                $ref: '#/components/schemas/parameter.output'
+              callback: 
+                $ref: '#/components/schemas/parameter.callback'
+              statute_code: 
+                type: string
+                title: statute_code
+              status_flag: 
+                type: string
+                title: status_flag
+              search_term: 
+                $ref: '#/components/schemas/parameter.search_term'
+              search_code: 
+                $ref: '#/components/schemas/parameter.search_code'
+              sort_order: 
+                type: number
+                title: sort_order
 externalDocs: 
   description: US EPA Enforcement and Compliance History Online 
   url: "https://echo.epa.gov/"

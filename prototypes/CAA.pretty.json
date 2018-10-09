@@ -575,20 +575,6 @@
                ,"AggregateEmissions"
             ]
          }
-         ,"caa_poll_rpt_rest_services.get_aggregate_emissions.root": {
-             "type": "object"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "Results": {
-                   "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_aggregate_emissions.Results"
-               }
-            }
-            ,"required": [
-                "Results"
-            ]
-         }
          ,"caa_poll_rpt_rest_services.get_air_quality.Results": {
              "type": "object"
             ,"title": "Air Qual Results"
@@ -603,20 +589,6 @@
             ,"required": [
                 "Message"
                ,"AirQuality"
-            ]
-         }
-         ,"caa_poll_rpt_rest_services.get_air_quality.root": {
-             "type": "object"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "Results": {
-                   "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_air_quality.Results"
-               }
-            }
-            ,"required": [
-                "Results"
             ]
          }
          ,"caa_poll_rpt_rest_services.get_caapr.AggregateEmissions": {
@@ -964,21 +936,6 @@
                ,"CAAPollRpt"
             ]
          }
-         ,"caa_poll_rpt_rest_services.get_caapr.root": {
-             "type": "object"
-            ,"title": "CAAPR Root"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "Results": {
-                   "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_caapr.Results"
-               }
-            }
-            ,"required": [
-                "Results"
-            ]
-         }
          ,"caa_poll_rpt_rest_services.get_map.Results": {
              "type": "object"
             ,"title": "Map Results"
@@ -993,21 +950,6 @@
             ,"required": [
                 "Message"
                ,"MapOutput"
-            ]
-         }
-         ,"caa_poll_rpt_rest_services.get_map.root": {
-             "type": "object"
-            ,"title": "Map Root"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "Results": {
-                   "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_map.Results"
-               }
-            }
-            ,"required": [
-                "Results"
             ]
          }
          ,"caa_poll_rpt_rest_services.get_nnnPermits.Results": {
@@ -1032,21 +974,6 @@
                ,"Permits"
             ]
          }
-         ,"caa_poll_rpt_rest_services.get_nnnPermits.root": {
-             "type": "object"
-            ,"title": "Permits Root"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "Results": {
-                   "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_nnnPermits.Results"
-               }
-            }
-            ,"required": [
-                "Results"
-            ]
-         }
          ,"caa_poll_rpt_rest_services.get_spatial_metadata.Results": {
              "type": "object"
             ,"title": "Spatial Metadata Results"
@@ -1061,21 +988,6 @@
             ,"required": [
                 "Message"
                ,"SpatialMetadata"
-            ]
-         }
-         ,"caa_poll_rpt_rest_services.get_spatial_metadata.root": {
-             "type": "object"
-            ,"title": "Spatial Metadata Root"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "Results": {
-                   "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_spatial_metadata.Results"
-               }
-            }
-            ,"required": [
-                "Results"
             ]
          }
          ,"parameter.callback": {
@@ -1380,12 +1292,36 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_aggregate_emissions.root"
+                      "type": "object"
+                     ,"title": "Agg Emissions Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_aggregate_emissions.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
                ,"application/xml": {
                    "schema": {
-                      "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_aggregate_emissions.root"
+                      "type": "object"
+                     ,"title": "Agg Emissions Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_aggregate_emissions.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
             }
@@ -1395,12 +1331,36 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_air_quality.root"
+                      "type": "object"
+                     ,"title": "Air Qual Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_air_quality.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
                ,"application/xml": {
                    "schema": {
-                      "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_air_quality.root"
+                      "type": "object"
+                     ,"title": "Air Qual Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_air_quality.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
             }
@@ -1410,12 +1370,36 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_caapr.root"
+                      "type": "object"
+                     ,"title": "CAAPR Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_caapr.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
                ,"application/xml": {
                    "schema": {
-                      "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_caapr.root"
+                      "type": "object"
+                     ,"title": "CAAPR Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_caapr.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
             }
@@ -1425,12 +1409,36 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_map.root"
+                      "type": "object"
+                     ,"title": "Map Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_map.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
                ,"application/xml": {
                    "schema": {
-                      "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_map.root"
+                      "type": "object"
+                     ,"title": "Map Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_map.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
             }
@@ -1440,12 +1448,36 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_nnnPermits.root"
+                      "type": "object"
+                     ,"title": "Permits Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_nnnPermits.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
                ,"application/xml": {
                    "schema": {
-                      "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_nnnPermits.root"
+                      "type": "object"
+                     ,"title": "Permits Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_nnnPermits.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
             }
@@ -1455,12 +1487,36 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_spatial_metadata.root"
+                      "type": "object"
+                     ,"title": "Spatial Metadata Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_spatial_metadata.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
                ,"application/xml": {
                    "schema": {
-                      "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_spatial_metadata.root"
+                      "type": "object"
+                     ,"title": "Spatial Metadata Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_spatial_metadata.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
             }
