@@ -2384,21 +2384,6 @@
                ,"MapOutput"
             ]
          }
-         ,"air_rest_services.get_facilities.root": {
-             "type": "object"
-            ,"title": "Facilities Root"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "Results": {
-                   "$ref": "#/components/schemas/air_rest_services.get_facilities.Results"
-               }
-            }
-            ,"required": [
-                "Results"
-            ]
-         }
          ,"air_rest_services.get_facility_info.Facilities": {
              "type": "object"
             ,"title": "Info Facilities"
@@ -3312,28 +3297,6 @@
                ,"ClusterOutput"
             ]
          }
-         ,"air_rest_services.get_facility_info.root": {
-             "type": "object"
-            ,"title": "Info Root"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "Results": {
-                   "oneOf": [
-                      {
-                         "$ref": "#/components/schemas/air_rest_services.get_facility_info.Results-1"
-                     }
-                     ,{
-                         "$ref": "#/components/schemas/air_rest_services.get_facility_info.Results-2"
-                     }
-                  ]
-               }
-            }
-            ,"required": [
-                "Results"
-            ]
-         }
          ,"air_rest_services.get_geojson.Feature": {
              "type": "object"
             ,"title": "GeoJSON Feature"
@@ -4058,46 +4021,6 @@
                ,"MaxScore"
             ]
          }
-         ,"air_rest_services.get_geojson.root": {
-             "type": "object"
-            ,"title": "GeoJSON Root"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "type": {
-                   "type": "string"
-               }
-               ,"features": {
-                   "type": "array"
-                  ,"items": {
-                      "$ref": "#/components/schemas/air_rest_services.get_geojson.Feature"
-                  }
-                  ,"xml": {
-                      "wrapped": true
-                  }
-               }
-            }
-            ,"required": [
-                "type"
-               ,"features"
-            ]
-         }
-         ,"air_rest_services.get_map.root": {
-             "type": "object"
-            ,"title": "Map Root"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "MapOutput": {
-                   "$ref": "#/components/schemas/air_rest_services.MapOutput"
-               }
-            }
-            ,"required": [
-                "MapOutput"
-            ]
-         }
          ,"air_rest_services.get_qid.Results": {
              "type": "object"
             ,"title": "QID Results"
@@ -4130,21 +4053,6 @@
                ,"QueryID"
                ,"PageNo"
                ,"Facilities"
-            ]
-         }
-         ,"air_rest_services.get_qid.root": {
-             "type": "object"
-            ,"title": "QID Root"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "Results": {
-                   "$ref": "#/components/schemas/air_rest_services.get_qid.Results"
-               }
-            }
-            ,"required": [
-                "Results"
             ]
          }
          ,"geojson.Geometry": {
@@ -4270,8 +4178,7 @@
                }
                ,"ResultColumns": {
                    "type": "array"
-                  ,"maxItems": 2
-                  ,"minItems": 2
+                  ,"minItems": 1
                   ,"items": {
                       "$ref": "#/components/schemas/metadata.ResultColumns"
                   }
@@ -4282,21 +4189,6 @@
             }
             ,"required": [
                 "Message"
-            ]
-         }
-         ,"metadata.root": {
-             "type": "object"
-            ,"title": "Metadata Root"
-            ,"xml": {
-                "name": "Root"
-            }
-            ,"properties": {
-                "Results": {
-                   "$ref": "#/components/schemas/metadata.Results"
-               }
-            }
-            ,"required": [
-                "Results"
             ]
          }
          ,"parameter.c1_lat": {
@@ -5948,12 +5840,36 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/air_rest_services.get_facilities.root"
+                      "type": "object"
+                     ,"title": "Facilities Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/air_rest_services.get_facilities.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
                ,"application/xml": {
                    "schema": {
-                      "$ref": "#/components/schemas/air_rest_services.get_facilities.root"
+                      "type": "object"
+                     ,"title": "Facilities Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/air_rest_services.get_facilities.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
             }
@@ -5963,12 +5879,50 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/air_rest_services.get_facility_info.root"
+                      "type": "object"
+                     ,"title": "Info Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "oneOf": [
+                               {
+                                  "$ref": "#/components/schemas/air_rest_services.get_facility_info.Results-1"
+                              }
+                              ,{
+                                  "$ref": "#/components/schemas/air_rest_services.get_facility_info.Results-2"
+                              }
+                           ]
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
                ,"application/xml": {
                    "schema": {
-                      "$ref": "#/components/schemas/air_rest_services.get_facility_info.root"
+                      "type": "object"
+                     ,"title": "Info Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "oneOf": [
+                               {
+                                  "$ref": "#/components/schemas/air_rest_services.get_facility_info.Results-1"
+                              }
+                              ,{
+                                  "$ref": "#/components/schemas/air_rest_services.get_facility_info.Results-2"
+                              }
+                           ]
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
             }
@@ -5978,7 +5932,29 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/air_rest_services.get_geojson.root"
+                      "type": "object"
+                     ,"title": "GeoJSON Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "type": {
+                            "type": "string"
+                        }
+                        ,"features": {
+                            "type": "array"
+                           ,"items": {
+                               "$ref": "#/components/schemas/air_rest_services.get_geojson.Feature"
+                           }
+                           ,"xml": {
+                               "wrapped": true
+                           }
+                        }
+                     }
+                     ,"required": [
+                         "type"
+                        ,"features"
+                     ]
                   }
                }
             }
@@ -6005,12 +5981,36 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/air_rest_services.get_map.root"
+                      "type": "object"
+                     ,"title": "Map Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "MapOutput": {
+                            "$ref": "#/components/schemas/air_rest_services.MapOutput"
+                        }
+                     }
+                     ,"required": [
+                         "MapOutput"
+                     ]
                   }
                }
                ,"application/xml": {
                    "schema": {
-                      "$ref": "#/components/schemas/air_rest_services.get_map.root"
+                      "type": "object"
+                     ,"title": "Map Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "MapOutput": {
+                            "$ref": "#/components/schemas/air_rest_services.MapOutput"
+                        }
+                     }
+                     ,"required": [
+                         "MapOutput"
+                     ]
                   }
                }
             }
@@ -6020,12 +6020,36 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/air_rest_services.get_qid.root"
+                      "type": "object"
+                     ,"title": "QID Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/air_rest_services.get_qid.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
                ,"application/xml": {
                    "schema": {
-                      "$ref": "#/components/schemas/air_rest_services.get_qid.root"
+                      "type": "object"
+                     ,"title": "QID Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/air_rest_services.get_qid.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
             }
@@ -6035,12 +6059,36 @@
             ,"content": {
                 "application/json": {
                    "schema": {
-                      "$ref": "#/components/schemas/metadata.root"
+                      "type": "object"
+                     ,"title": "Metadata Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/metadata.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
                ,"application/xml": {
                    "schema": {
-                      "$ref": "#/components/schemas/metadata.root"
+                      "type": "object"
+                     ,"title": "Metadata Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/metadata.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
                   }
                }
             }

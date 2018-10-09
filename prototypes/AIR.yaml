@@ -1474,16 +1474,6 @@ components:
         - PageNo
         - Facilities
         - MapOutput
-    air_rest_services.get_facilities.root: 
-      type: object
-      title: Facilities Root
-      xml: 
-        name: Root
-      properties: 
-        Results: 
-          $ref: '#/components/schemas/air_rest_services.get_facilities.Results'
-      required: 
-        - Results
     air_rest_services.get_facility_info.Facilities: 
       type: object
       title: Info Facilities
@@ -2215,18 +2205,6 @@ components:
         - QueryParameters
         - ClusterRecords
         - ClusterOutput
-    air_rest_services.get_facility_info.root: 
-      type: object
-      title: Info Root
-      xml: 
-        name: Root
-      properties: 
-        Results: 
-          oneOf: 
-            - $ref: '#/components/schemas/air_rest_services.get_facility_info.Results-1'
-            - $ref: '#/components/schemas/air_rest_services.get_facility_info.Results-2'
-      required: 
-        - Results
     air_rest_services.get_geojson.Feature: 
       type: object
       title: GeoJSON Feature
@@ -2814,33 +2792,6 @@ components:
         - FacStdCountyName
         - Score
         - MaxScore
-    air_rest_services.get_geojson.root: 
-      type: object
-      title: GeoJSON Root
-      xml: 
-        name: Root
-      properties: 
-        type: 
-          type: string
-        features: 
-          type: array
-          items: 
-            $ref: '#/components/schemas/air_rest_services.get_geojson.Feature'
-          xml: 
-            wrapped: true
-      required: 
-        - type
-        - features
-    air_rest_services.get_map.root: 
-      type: object
-      title: Map Root
-      xml: 
-        name: Root
-      properties: 
-        MapOutput: 
-          $ref: '#/components/schemas/air_rest_services.MapOutput'
-      required: 
-        - MapOutput
     air_rest_services.get_qid.Results: 
       type: object
       title: QID Results
@@ -2865,16 +2816,6 @@ components:
         - QueryID
         - PageNo
         - Facilities
-    air_rest_services.get_qid.root: 
-      type: object
-      title: QID Root
-      xml: 
-        name: Root
-      properties: 
-        Results: 
-          $ref: '#/components/schemas/air_rest_services.get_qid.Results'
-      required: 
-        - Results
     geojson.Geometry: 
       type: object
       title: GeoJSON Geometry
@@ -2963,24 +2904,13 @@ components:
           $ref: '#/components/schemas/property.Message'
         ResultColumns: 
           type: array
-          minItems: 2
-          maxItems: 2
+          minItems: 1
           items: 
             $ref: '#/components/schemas/metadata.ResultColumns'
           xml: 
             wrapped: true
       required: 
         - Message
-    metadata.root: 
-      type: object
-      title: Metadata Root
-      xml: 
-        name: Root
-      properties: 
-        Results: 
-          $ref: '#/components/schemas/metadata.Results'
-      required: 
-        - Results
     parameter.c1_lat: 
       type: number
       title: c1_lat
@@ -4497,25 +4427,76 @@ components:
       content: 
         application/json: 
           schema: 
-            $ref: '#/components/schemas/air_rest_services.get_facilities.root'
+            type: object
+            title: Facilities Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/air_rest_services.get_facilities.Results'
+            required: 
+              - Results
         application/xml: 
           schema: 
-            $ref: '#/components/schemas/air_rest_services.get_facilities.root'
+            type: object
+            title: Facilities Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/air_rest_services.get_facilities.Results'
+            required: 
+              - Results
     air_rest_services.get_facility_info.default: 
       description: Results will either be an array of Facilities or an array of Clusters. The search will return clusters if the number of facilities returned is greater than the resposeset size, otherwise individual facility records will be returned.
       content: 
         application/json: 
           schema: 
-            $ref: '#/components/schemas/air_rest_services.get_facility_info.root'
+            type: object
+            title: Info Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                oneOf: 
+                  - $ref: '#/components/schemas/air_rest_services.get_facility_info.Results-1'
+                  - $ref: '#/components/schemas/air_rest_services.get_facility_info.Results-2'
+            required: 
+              - Results
         application/xml: 
           schema: 
-            $ref: '#/components/schemas/air_rest_services.get_facility_info.root'
+            type: object
+            title: Info Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                oneOf: 
+                  - $ref: '#/components/schemas/air_rest_services.get_facility_info.Results-1'
+                  - $ref: '#/components/schemas/air_rest_services.get_facility_info.Results-2'
+            required: 
+              - Results
     air_rest_services.get_geojson.default: 
       description: Results are formatted as a GeoJSON feature collection.
       content: 
         application/json: 
           schema: 
-            $ref: '#/components/schemas/air_rest_services.get_geojson.root'
+            type: object
+            title: GeoJSON Root
+            xml: 
+              name: Root
+            properties: 
+              type: 
+                type: string
+              features: 
+                type: array
+                items: 
+                  $ref: '#/components/schemas/air_rest_services.get_geojson.Feature'
+                xml: 
+                  wrapped: true
+            required: 
+              - type
+              - features
     air_rest_services.get_info_clusters.default: 
       description: Response Object
       content: 
@@ -4532,28 +4513,76 @@ components:
       content: 
         application/json: 
           schema: 
-            $ref: '#/components/schemas/air_rest_services.get_map.root'
+            type: object
+            title: Map Root
+            xml: 
+              name: Root
+            properties: 
+              MapOutput: 
+                $ref: '#/components/schemas/air_rest_services.MapOutput'
+            required: 
+              - MapOutput
         application/xml: 
           schema: 
-            $ref: '#/components/schemas/air_rest_services.get_map.root'
+            type: object
+            title: Map Root
+            xml: 
+              name: Root
+            properties: 
+              MapOutput: 
+                $ref: '#/components/schemas/air_rest_services.MapOutput'
+            required: 
+              - MapOutput
     air_rest_services.get_qid.default: 
       description: Results are an array (page)  of CAA (ICIS Air) Facilities with the number of facilities equal to the responseset (page size).
       content: 
         application/json: 
           schema: 
-            $ref: '#/components/schemas/air_rest_services.get_qid.root'
+            type: object
+            title: QID Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/air_rest_services.get_qid.Results'
+            required: 
+              - Results
         application/xml: 
           schema: 
-            $ref: '#/components/schemas/air_rest_services.get_qid.root'
+            type: object
+            title: QID Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/air_rest_services.get_qid.Results'
+            required: 
+              - Results
     air_rest_services.metadata.default: 
       description: Results are an array of columns/objects.
       content: 
         application/json: 
           schema: 
-            $ref: '#/components/schemas/metadata.root'
+            type: object
+            title: Metadata Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/metadata.Results'
+            required: 
+              - Results
         application/xml: 
           schema: 
-            $ref: '#/components/schemas/metadata.root'
+            type: object
+            title: Metadata Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/metadata.Results'
+            required: 
+              - Results
   parameters: 
     c1_lat: 
       name: c1_lat

@@ -1510,6 +1510,7 @@
          }
          ,"case_rest_services.get_case_report.SupplementalEnvironmentalProjects": {
              "type": "object"
+            ,"title": "Supplemental Environmental Projects"
             ,"description": "As part of a settlement, a defendant may voluntarily agree to undertake an environmentally beneficial project (Supplement Environmental Project) related to the violation in exchange for mitigation of the penalty to be paid. It does not include activities a defendant must take to return to compliance with the law. A single settlement may have multiple SEPs."
             ,"xml": {
                 "name": "SupplementalEnvironmentalProject"
@@ -1596,6 +1597,42 @@
                ,"PageNo"
             ]
          }
+         ,"case_rest_services.get_crcase_report.CRCaseInformation": {
+             "type": "object"
+            ,"title": "CR Case Information"
+            ,"description": "The basic information section contains information that identifies the action and some key descriptive variables, such as case status and case type."
+            ,"xml": {
+                "name": "CRCaseInformation"
+            }
+            ,"properties": {
+                "CaseIdentifier": {
+                   "$ref": "#/components/schemas/property.CaseIdentifier"
+               }
+               ,"FiscalYear": {
+                   "$ref": "#/components/schemas/property.FiscalYear"
+               }
+               ,"Statutes": {
+                   "type": "string"
+                  ,"title": "Statuetes"
+                  ,"description": "???"
+                  ,"nullable": true
+                  ,"example": "Title 18 U.S. Criminal Code"
+               }
+               ,"Citations": {
+                   "$ref": "#/components/schemas/property.Citations"
+               }
+               ,"CaseSummary": {
+                   "$ref": "#/components/schemas/property.CaseSummary"
+               }
+            }
+            ,"required": [
+                "CaseIdentifier"
+               ,"FiscalYear"
+               ,"Statutes"
+               ,"Citations"
+               ,"CaseSummary"
+            ]
+         }
          ,"case_rest_services.get_crcase_report.CRDefendants": {
              "type": "object"
             ,"title": "CR Defendants"
@@ -1652,42 +1689,6 @@
                ,"DetailCitations"
             ]
          }
-         ,"case_rest_services.get_crcase_report.CaseInformation": {
-             "type": "object"
-            ,"title": "Case Information"
-            ,"description": "The basic information section contains information that identifies the action and some key descriptive variables, such as case status and case type."
-            ,"xml": {
-                "name": "CRCaseInformation"
-            }
-            ,"properties": {
-                "CaseIdentifier": {
-                   "$ref": "#/components/schemas/property.CaseIdentifier"
-               }
-               ,"FiscalYear": {
-                   "$ref": "#/components/schemas/property.FiscalYear"
-               }
-               ,"Statutes": {
-                   "type": "string"
-                  ,"title": "Statuetes"
-                  ,"description": "???"
-                  ,"nullable": true
-                  ,"example": "Title 18 U.S. Criminal Code"
-               }
-               ,"Citations": {
-                   "$ref": "#/components/schemas/property.Citations"
-               }
-               ,"CaseSummary": {
-                   "$ref": "#/components/schemas/property.CaseSummary"
-               }
-            }
-            ,"required": [
-                "CaseIdentifier"
-               ,"FiscalYear"
-               ,"Statutes"
-               ,"Citations"
-               ,"CaseSummary"
-            ]
-         }
          ,"case_rest_services.get_crcase_report.Locations": {
              "type": "object"
             ,"title": "Locations"
@@ -1736,8 +1737,8 @@
                 "Message": {
                    "$ref": "#/components/schemas/property.Message"
                }
-               ,"CaseInformation": {
-                   "$ref": "#/components/schemas/case_rest_services.get_crcase_report.CaseInformation"
+               ,"CRCaseInformation": {
+                   "$ref": "#/components/schemas/case_rest_services.get_crcase_report.CRCaseInformation"
                }
                ,"CRDefendants": {
                    "type": "array"
@@ -1769,7 +1770,7 @@
             }
             ,"required": [
                 "Message"
-               ,"CaseInformation"
+               ,"CRCaseInformation"
                ,"CRDefendants"
                ,"CRDetails"
                ,"Locations"
@@ -1862,8 +1863,7 @@
                }
                ,"ResultColumns": {
                    "type": "array"
-                  ,"maxItems": 2
-                  ,"minItems": 2
+                  ,"minItems": 1
                   ,"items": {
                       "$ref": "#/components/schemas/metadata.ResultColumns"
                   }
