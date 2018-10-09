@@ -3,19 +3,20 @@ openapi: '3.0.0'
 info: 
   title: U.S. EPA Enforcement and Compliance History Online (ECHO) - Clean Air Act
   description: |-
-    Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\
-    \
-    Air Rest Services provides multiple service endpoints, each with specific capabilities, to search and retrieve data on facilities regulated under the Clean Air Act (CAA). The returned results reflect data drawn from EPA's ICIS-Air database.\
-    \
-    The get_facilities, get_map, get_qid, and get_download end points are meant to be used together, while the enhanced get_facility_info end point is self contained.  The get_facility_info end point returns either an array of state, county or zip clusters with summary statistics per cluster or an array of facilities.\
-    \
+    Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.
+     
+    Air Rest Services provides multiple service endpoints, each with specific capabilities, to search and retrieve data on facilities regulated under the Clean Air Act (CAA). The returned results reflect data drawn from EPA's ICIS-Air database.
+     
+    The get_facilities, get_map, get_qid, and get_download end points are meant to be used together, while the enhanced get_facility_info end point is self contained.  The get_facility_info end point returns either an array of state, county or zip clusters with summary statistics per cluster or an array of facilities.
+     
     The recommended use scenario for get_facilities, get_qid, get_map, and get_downoad is:
     1. Use get_facilities to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.
     1. Use get_qid, with the returned QID, to paginate through arrays of facility results.
     1. Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates that meet the QID query criteria.
-    1. Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.\
-    Use the qcolumns parameter to customize your search results.  Use the Metdata service endpoint for a list of available output objects, their Column Ids, and their definitions to help you build your customized output.\
-    \
+    1. Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.
+     
+    Use the qcolumns parameter to customize your search results.  Use the Metdata service endpoint for a list of available output objects, their Column Ids, and their definitions to help you build your customized output.
+     
     Additional ECHO Resources: [Web Services](https://echo.epa.gov/tools/web-services), [About ECHO's Data](https://echo.epa.gov/resources/echo-data/about-the-data), [Data Downloads](https://echo.epa.gov/tools/data-downloads).
   contact: 
     name: US EPA, OECA Integration, Targeting and Access Branch
@@ -3997,13 +3998,13 @@ components:
       title: EPASystem
       description: |-
         The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: 
-        - AFS: Air Facility System for Clean Air Act stationary source programs.
-        - ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.
-        - RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.
-        - NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).
-        - TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.
-        - NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.
-        - TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.
+        * AFS: Air Facility System for Clean Air Act stationary source programs.
+        * ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.
+        * RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.
+        * NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).
+        * TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.
+        * NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.
+        * TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.
       nullable: true
       example: ICP
     property.Ea5yrFlag: 
@@ -4217,7 +4218,7 @@ components:
     property.Message: 
       type: string
       title: Message
-      description: Field to record messages (typically performance-related) about packet processing
+      description: Field to record messages (typically performance-related) about packet processing.
       nullable: false
       example: Success
     property.NAME: 
@@ -4430,12 +4431,12 @@ components:
       title: Statute
       description: |-
         The name of the statute associated with each of the permits and identifiers linked to the facility: 
-        - CAA = the Clean Air Act
-        - CWA = the Clean Water Act
-        - RCRA = the Resource Conservation and Recovery Act
-        - EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)
-        - TSCA = the Toxic Substances Control Act
-        - SDWA = the Safe Drinking Water Act
+        * CAA = the Clean Air Act
+        * CWA = the Clean Water Act
+        * RCRA = the Resource Conservation and Recovery Act
+        * EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)
+        * TSCA = the Toxic Substances Control Act
+        * SDWA = the Safe Drinking Water Act
       nullable: true
       example: CWA
     property.TRIIDs: 
