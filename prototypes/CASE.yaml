@@ -54,7 +54,7 @@ paths:
               type: object
               properties: 
                 p_id: 
-                  $ref: '#/components/schemas/requestbody.p_id'
+                  $ref: '#/components/schemas/requestbody.p_id.case.get_case_report'
                 output: 
                   $ref: '#/components/schemas/requestbody.output'
                 callback: 
@@ -87,7 +87,7 @@ paths:
               type: object
               properties: 
                 p_id: 
-                  $ref: '#/components/schemas/requestbody.p_id'
+                  $ref: '#/components/schemas/requestbody.p_id.case.get_crcase_report'
                 output: 
                   $ref: '#/components/schemas/requestbody.output'
                 callback: 
@@ -227,7 +227,7 @@ paths:
                 p_district: 
                   $ref: '#/components/schemas/requestbody.p_district'
                 p_sic: 
-                  $ref: '#/components/schemas/requestbody.p_sic'
+                  $ref: '#/components/schemas/requestbody.p_sic.CASE'
                 p_sic_ao_naics: 
                   $ref: '#/components/schemas/requestbody.p_sic_ao_naics'
                 p_sic_primary_flg: 
@@ -462,7 +462,7 @@ paths:
               type: object
               properties: 
                 output: 
-                  $ref: '#/components/schemas/requestbody.output'
+                  $ref: '#/components/schemas/requestbody.output.only_csv'
                 qid: 
                   $ref: '#/components/schemas/requestbody.qid'
                 qcolumns: 
@@ -472,54 +472,6 @@ paths:
       responses: 
         default: 
           $ref: '#/components/responses/case_rest_services.get_download.default'
-  /rest_lookups.icis_law_sections: 
-    get: 
-      tags: 
-        - Lookups
-      summary: ECHO ICIS Law Sections Lookup Service
-      description: Returns the ICIS Law Section Descriptions.
-      parameters: 
-        - $ref: '#/components/parameters/output'
-        - $ref: '#/components/parameters/callback'
-        - $ref: '#/components/parameters/statute_code'
-        - $ref: '#/components/parameters/status_flag'
-        - $ref: '#/components/parameters/search_term'
-        - $ref: '#/components/parameters/search_code'
-        - $ref: '#/components/parameters/sort_order'
-      responses: 
-        default: 
-          $ref: '#/components/responses/rest_lookups.icis_law_sections.default'
-    post: 
-      tags: 
-        - Lookups
-      summary: ECHO ICIS Law Sections Lookup Service
-      description: Returns the ICIS Law Section Descriptions.
-      requestBody: 
-        content: 
-          application/x-www-form-urlencoded: 
-            schema: 
-              type: object
-              properties: 
-                output: 
-                  $ref: '#/components/schemas/requestbody.output'
-                callback: 
-                  $ref: '#/components/schemas/requestbody.callback'
-                statute_code: 
-                  type: string
-                  title: statute_code
-                status_flag: 
-                  type: string
-                  title: status_flag
-                search_term: 
-                  $ref: '#/components/schemas/requestbody.search_term'
-                search_code: 
-                  $ref: '#/components/schemas/requestbody.search_code'
-                sort_order: 
-                  type: number
-                  title: sort_order
-      responses: 
-        default: 
-          $ref: '#/components/responses/rest_lookups.icis_law_sections.default'
   /case_rest_services.metadata: 
     get: 
       tags: 
@@ -1283,6 +1235,8 @@ components:
         - CriminalRows
         - QueryID
         - PageNo
+        - Cases
+        - MapOutput
     case_rest_services.get_crcase_report.CRCaseInformation: 
       type: object
       title: CR Case Information
@@ -2311,18 +2265,6 @@ components:
       description: A code that uniquely identifies the pollutant unit of measurement.
       nullable: true
       example: PNDSYR
-    property.ValueCode: 
-      type: string
-      title: ValueCode
-      description: Value Code
-      nullable: true
-      example: '77034'
-    property.ValueDescription: 
-      type: string
-      title: ValueDescription
-      description: Value Description
-      nullable: true
-      example: 1-Butanol
     property.Zip: 
       type: string
       title: Zip
@@ -2379,6 +2321,12 @@ components:
         - JSONP
         - JSON
         - XML
+    requestbody.output.only_csv: 
+      type: string
+      title: output
+      description: |-
+        Output Format Flag.  Enter one of the following keywords:
+        * CSV = Facility results formatted as comma delimited file download (default).
     requestbody.p_activity_contact: 
       type: string
       title: p_activity_contact
@@ -2567,10 +2515,14 @@ components:
       type: string
       title: p_from_date
       description: Administrative or Judicial Milestone Date Range Start Limiter.  Enter a date value in MM/DD/YYYY format to limit milestone results.  Parameter p_to_date must also be populated when using this parameter option.
-    requestbody.p_id: 
+    requestbody.p_id.case.get_case_report: 
       type: string
       title: p_id
       description: Case Number. Enter the case number identifier to retrieve the case report.
+    requestbody.p_id.case.get_crcase_report: 
+      type: string
+      title: p_id
+      description: Prosecution Summary Identifier. Enter the numeric prosecution summary identifier to retrieve the criminal case report.
     requestbody.p_law: 
       type: string
       title: p_law
@@ -2689,7 +2641,7 @@ components:
         - GT100000
         - GT500000
         - GT1000000
-    requestbody.p_sic: 
+    requestbody.p_sic.CASE: 
       type: string
       title: p_sic
       description: Standard Industrial Classification (SIC) Code Filter.  Enter a single 4-digit SIC Code to filter results.
@@ -2803,14 +2755,6 @@ components:
       type: number
       title: responseset
       description: Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000.
-    requestbody.search_code: 
-      type: string
-      title: search_code
-      description: Enter a partial or complete code value.
-    requestbody.search_term: 
-      type: string
-      title: search_term
-      description: Enter a partial or complete search phrase or word.
     requestbody.tablelist: 
       type: string
       title: tablelist
@@ -2818,33 +2762,6 @@ components:
       enum: 
         - Y
         - N
-    rest_lookups.LuValues: 
-      type: object
-      title: Lookup Values
-      xml: 
-        name: LuValue
-      properties: 
-        ValueCode: 
-          $ref: '#/components/schemas/property.ValueCode'
-        ValueDescription: 
-          $ref: '#/components/schemas/property.ValueDescription'
-      required: 
-        - ValueCode
-        - ValueDescription
-    rest_lookups.icis_law_sections.Results: 
-      type: object
-      title: ICIS Law Section Results
-      properties: 
-        Message: 
-          $ref: '#/components/schemas/property.Message'
-        LuValues: 
-          type: array
-          items: 
-            $ref: '#/components/schemas/rest_lookups.LuValues'
-          xml: 
-            wrapped: true
-      required: 
-        - Message
   responses: 
     case_rest_services.get_case_report.default: 
       description: Returns a complex object containing detailed case information for the provided Case Identifier.
@@ -3005,31 +2922,6 @@ components:
             properties: 
               Results: 
                 $ref: '#/components/schemas/metadata.Results'
-            required: 
-              - Results
-    rest_lookups.icis_law_sections.default: 
-      description: Returns an array of icis_inspection_types codes and their description. If search term or search code is  not provided, all values are returned.
-      content: 
-        application/json: 
-          schema: 
-            type: object
-            title: ICIS Law Section Root
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                $ref: '#/components/schemas/rest_lookups.icis_law_sections.Results'
-            required: 
-              - Results
-        application/xml: 
-          schema: 
-            type: object
-            title: ICIS Law Section Root
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                $ref: '#/components/schemas/rest_lookups.icis_law_sections.Results'
             required: 
               - Results
   parameters: 
@@ -3855,43 +3747,6 @@ components:
       schema: 
         type: number
         title: responseset
-    search_code: 
-      name: search_code
-      in: query
-      description: Enter a partial or complete code value.
-      required: false
-      schema: 
-        type: string
-        title: search_code
-    search_term: 
-      name: search_term
-      in: query
-      description: Enter a partial or complete search phrase or word.
-      required: false
-      schema: 
-        type: string
-        title: search_term
-    sort_order: 
-      name: sort_order
-      in: query
-      required: false
-      schema: 
-        type: number
-        title: sort_order
-    status_flag: 
-      name: status_flag
-      in: query
-      required: false
-      schema: 
-        type: string
-        title: status_flag
-    statute_code: 
-      name: statute_code
-      in: query
-      required: false
-      schema: 
-        type: string
-        title: statute_code
     tablelist: 
       name: tablelist
       in: query
