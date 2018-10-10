@@ -39,7 +39,21 @@ paths:
       summary: Air Pollutant Report Service
       description: This procedure obtains data for Air Quality in the Environmental Conditions Section of the Air Pollutant Report.
       requestBody: 
-        $ref: '#/components/requestBodies/caa_poll_rpt_rest_services.get_caapr.post.requestBody'
+        content: 
+          application/x-www-form-urlencoded: 
+            schema: 
+              type: object
+              properties: 
+                output: 
+                  $ref: '#/components/schemas/requestbody.output'
+                p_id: 
+                  $ref: '#/components/schemas/requestbody.p_id'
+                p_units: 
+                  $ref: '#/components/schemas/requestbody.p_units'
+                callback: 
+                  $ref: '#/components/schemas/requestbody.callback'
+              required: 
+                - p_id
       responses: 
         default: 
           $ref: '#/components/responses/caa_poll_rpt_rest_services.get_caapr.default'
@@ -62,7 +76,23 @@ paths:
         - Air Pollution Report
       summary: Air Pollutant Report Permits Service
       requestBody: 
-        $ref: '#/components/requestBodies/caa_poll_rpt_rest_services.get_nnnPermits.post.requestBody'
+        content: 
+          application/x-www-form-urlencoded: 
+            schema: 
+              type: object
+              properties: 
+                output: 
+                  $ref: '#/components/schemas/requestbody.output'
+                nnn: 
+                  $ref: '#/components/schemas/requestbody.nnn'
+                nn2: 
+                  $ref: '#/components/schemas/requestbody.nn2'
+                p_id: 
+                  $ref: '#/components/schemas/requestbody.p_id'
+                callback: 
+                  $ref: '#/components/schemas/requestbody.callback'
+              required: 
+                - p_id
       responses: 
         default: 
           $ref: '#/components/responses/caa_poll_rpt_rest_services.get_nnnPermits.default'
@@ -86,7 +116,21 @@ paths:
       summary: Air Pollutant Report Aggregated Emissions Service
       description: This procedure obtains data for Total Aggregate Emissions in the Emissions section of the Air Pollutant Report.
       requestBody: 
-        $ref: '#/components/requestBodies/caa_poll_rpt_rest_services.get_aggregate_emissions.post.requestBody'
+        content: 
+          application/x-www-form-urlencoded: 
+            schema: 
+              type: object
+              properties: 
+                output: 
+                  $ref: '#/components/schemas/requestbody.output'
+                p_id: 
+                  $ref: '#/components/schemas/requestbody.p_id'
+                p_units: 
+                  $ref: '#/components/schemas/requestbody.p_units'
+                callback: 
+                  $ref: '#/components/schemas/requestbody.callback'
+              required: 
+                - p_id
       responses: 
         default: 
           $ref: '#/components/responses/caa_poll_rpt_rest_services.get_aggregate_emissions.default'
@@ -107,7 +151,19 @@ paths:
         - Air Pollution Report
       summary: Air Pollutant Report Air Quality Service
       requestBody: 
-        $ref: '#/components/requestBodies/caa_poll_rpt_rest_services.get_air_quality.post.requestBody'
+        content: 
+          application/x-www-form-urlencoded: 
+            schema: 
+              type: object
+              properties: 
+                output: 
+                  $ref: '#/components/schemas/requestbody.output'
+                p_id: 
+                  $ref: '#/components/schemas/requestbody.p_id'
+                callback: 
+                  $ref: '#/components/schemas/requestbody.callback'
+              required: 
+                - p_id
       responses: 
         default: 
           $ref: '#/components/responses/caa_poll_rpt_rest_services.get_air_quality.default'
@@ -130,7 +186,19 @@ paths:
       summary: Air Pollutant Report Map Service
       description: "Returns an object with the facility's latitude and longitude coordinates."
       requestBody: 
-        $ref: '#/components/requestBodies/caa_poll_rpt_rest_services.get_map.post.requestBody'
+        content: 
+          application/x-www-form-urlencoded: 
+            schema: 
+              type: object
+              properties: 
+                output: 
+                  $ref: '#/components/schemas/requestbody.output'
+                p_id: 
+                  $ref: '#/components/schemas/requestbody.p_id'
+                callback: 
+                  $ref: '#/components/schemas/requestbody.callback'
+              required: 
+                - p_id
       responses: 
         default: 
           $ref: '#/components/responses/caa_poll_rpt_rest_services.get_map.default'
@@ -153,7 +221,19 @@ paths:
       summary: Air Pollutant Report Spatial Metadata Service
       description: Returns an object with the facility coordinate spatial metadata.
       requestBody: 
-        $ref: '#/components/requestBodies/caa_poll_rpt_rest_services.get_spatial_metadata.post.requestBody'
+        content: 
+          application/x-www-form-urlencoded: 
+            schema: 
+              type: object
+              properties: 
+                output: 
+                  $ref: '#/components/schemas/requestbody.output'
+                p_id: 
+                  $ref: '#/components/schemas/requestbody.p_id'
+                callback: 
+                  $ref: '#/components/schemas/requestbody.callback'
+              required: 
+                - p_id
       responses: 
         default: 
           $ref: '#/components/responses/caa_poll_rpt_rest_services.get_spatial_metadata.default'
@@ -702,42 +782,6 @@ components:
       required: 
         - Message
         - SpatialMetadata
-    parameter.callback: 
-      type: string
-      title: callback
-      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
-    parameter.nn2: 
-      type: string
-      title: nn2
-      description: "Secondary statute filter, provide a single statute code to filter permit results (e.g., \"EP313\")"
-    parameter.nnn: 
-      type: string
-      title: nnn
-      description: "Statute filter, provide a single statute code to filter permit results (e.g., \"CAA\")"
-    parameter.output: 
-      type: string
-      title: output
-      description: |-
-        Output Format Flag.  Enter one of the following keywords:
-        * JSON = Data model formatted as Javascript Object Notation (default).
-        * JSONP = Data model formatted as Javascript Object Notation with Padding.  
-        * XML = Data model formatted as Extensible Markup Language.
-      enum: 
-        - JSONP
-        - JSON
-        - XML
-    parameter.p_id: 
-      type: string
-      title: p_id
-      description: Identifier for the service.
-    parameter.p_id.CAA: 
-      type: string
-      title: p_id
-      description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
-    parameter.p_units: 
-      type: string
-      title: p_units
-      description: "Units of Measurement.  For the Air Pollutant Report, the default value is 'lbs'.  Enter \"TWPE\" for Toxic Weighted Pounds Equivalents (TWPE). "
     property.CalculatedAccuracy: 
       type: string
       title: CalculatedAccuracy
@@ -979,6 +1023,38 @@ components:
       description: US postal ZIP code, as maintained by ICIS.
       nullable: true
       example: '53140'
+    requestbody.callback: 
+      type: string
+      title: callback
+      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+    requestbody.nn2: 
+      type: string
+      title: nn2
+      description: "Secondary statute filter, provide a single statute code to filter permit results (e.g., \"EP313\")"
+    requestbody.nnn: 
+      type: string
+      title: nnn
+      description: "Statute filter, provide a single statute code to filter permit results (e.g., \"CAA\")"
+    requestbody.output: 
+      type: string
+      title: output
+      description: |-
+        Output Format Flag.  Enter one of the following keywords:
+        * JSON = Data model formatted as Javascript Object Notation (default).
+        * JSONP = Data model formatted as Javascript Object Notation with Padding.  
+        * XML = Data model formatted as Extensible Markup Language.
+      enum: 
+        - JSONP
+        - JSON
+        - XML
+    requestbody.p_id: 
+      type: string
+      title: p_id
+      description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
+    requestbody.p_units: 
+      type: string
+      title: p_units
+      description: "Units of Measurement.  For the Air Pollutant Report, the default value is 'lbs'.  Enter \"TWPE\" for Toxic Weighted Pounds Equivalents (TWPE). "
   responses: 
     caa_poll_rpt_rest_services.get_aggregate_emissions.default: 
       description: Returns an object that includes aggregate emissions.
@@ -1195,99 +1271,6 @@ components:
       schema: 
         type: string
         title: p_units
-  requestBodies: 
-    caa_poll_rpt_rest_services.get_aggregate_emissions.post.requestBody: 
-      content: 
-        application/x-www-form-urlencoded: 
-          schema: 
-            type: object
-            properties: 
-              output: 
-                $ref: '#/components/schemas/parameter.output'
-              p_id: 
-                $ref: '#/components/schemas/parameter.p_id.CAA'
-              p_units: 
-                $ref: '#/components/schemas/parameter.p_units'
-              callback: 
-                $ref: '#/components/schemas/parameter.callback'
-            required: 
-              - p_id
-    caa_poll_rpt_rest_services.get_air_quality.post.requestBody: 
-      content: 
-        application/x-www-form-urlencoded: 
-          schema: 
-            type: object
-            properties: 
-              output: 
-                $ref: '#/components/schemas/parameter.output'
-              p_id: 
-                $ref: '#/components/schemas/parameter.p_id.CAA'
-              callback: 
-                $ref: '#/components/schemas/parameter.callback'
-            required: 
-              - p_id
-    caa_poll_rpt_rest_services.get_caapr.post.requestBody: 
-      content: 
-        application/x-www-form-urlencoded: 
-          schema: 
-            type: object
-            properties: 
-              output: 
-                $ref: '#/components/schemas/parameter.output'
-              p_id: 
-                $ref: '#/components/schemas/parameter.p_id.CAA'
-              p_units: 
-                $ref: '#/components/schemas/parameter.p_units'
-              callback: 
-                $ref: '#/components/schemas/parameter.callback'
-            required: 
-              - p_id
-    caa_poll_rpt_rest_services.get_map.post.requestBody: 
-      content: 
-        application/x-www-form-urlencoded: 
-          schema: 
-            type: object
-            properties: 
-              output: 
-                $ref: '#/components/schemas/parameter.output'
-              p_id: 
-                $ref: '#/components/schemas/parameter.p_id.CAA'
-              callback: 
-                $ref: '#/components/schemas/parameter.callback'
-            required: 
-              - p_id
-    caa_poll_rpt_rest_services.get_nnnPermits.post.requestBody: 
-      content: 
-        application/x-www-form-urlencoded: 
-          schema: 
-            type: object
-            properties: 
-              output: 
-                $ref: '#/components/schemas/parameter.output'
-              nnn: 
-                $ref: '#/components/schemas/parameter.nnn'
-              nn2: 
-                $ref: '#/components/schemas/parameter.nn2'
-              p_id: 
-                $ref: '#/components/schemas/parameter.p_id.CAA'
-              callback: 
-                $ref: '#/components/schemas/parameter.callback'
-            required: 
-              - p_id
-    caa_poll_rpt_rest_services.get_spatial_metadata.post.requestBody: 
-      content: 
-        application/x-www-form-urlencoded: 
-          schema: 
-            type: object
-            properties: 
-              output: 
-                $ref: '#/components/schemas/parameter.output'
-              p_id: 
-                $ref: '#/components/schemas/parameter.p_id'
-              callback: 
-                $ref: '#/components/schemas/parameter.callback'
-            required: 
-              - p_id
 externalDocs: 
   description: US EPA Enforcement and Compliance History Online 
   url: "https://echo.epa.gov/"
