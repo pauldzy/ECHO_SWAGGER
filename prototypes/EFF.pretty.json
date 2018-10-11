@@ -1,0 +1,1755 @@
+{
+    "openapi": "3.0.0"
+   ,"info": {
+       "title": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Effluent Charting and Reporting"
+      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use.  ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\n\n\nEFF Rest Services provides the data for ECHO's Effluent Charts, a set of dynamic charts and tables of permitted effluent limits, releases, and violations over time for Clean Water Act (CWA) wastewater discharge permits issued under the National Pollutant Discharge Elimination System (NPDES).  See [Effluent Charts Help](https://echo.epa.gov/help/reports/effluent-charts-help) for additional information.\n\n\nThe are 3 service end points for Efffluent Charts:  get_summary_chart, get_effluent_chart, and download_effluent_chart.\n1. Use get_summary_chart to retrieve a summary matrix of effluent parameters by effluent outfall and an overall violation status for a provided NPDES Permit and date range.\n1. Use get_effluent_chart to retrieve detailed Discharge Limit, DMR and NPDES Violation information for a provided NPDES Permit, date range, effluent paramater, or outfall.\n1. Use download_effluent_chart to generate a Comma Separated Value (CSV) file of the detailed data provided with get_effluent chart, for a provided NPDES Permit, date range, effluent paramater, or outfall.\n\nAdditional ECHO Resources: [Web Services](https://echo.epa.gov/tools/web-services), [About ECHO's Data](https://echo.epa.gov/resources/echo-data/about-the-data), [Data Downloads](https://echo.epa.gov/tools/data-downloads)."
+      ,"contact": {
+          "name": "US EPA, OECA Integration, Targeting and Access Branch"
+         ,"url": "https://echo.epa.gov/resources/general-info/contact-us"
+      }
+      ,"license": {
+          "name": "Creative Commons Zero Public Domain Dedication"
+         ,"url": "https://creativecommons.org/publicdomain/zero/1.0/"
+      }
+      ,"version": "0.0.0"
+   }
+   ,"servers": [
+       {
+          "url": "https://ofmpub.epa.gov/echo"
+         ,"description": "US Environmental Protection Agency OFM Production Server"
+      }
+   ]
+   ,"paths": {
+       "/eff_rest_services.get_effluent_chart": {
+          "get": {
+             "tags": [
+                "Effluent Charts"
+            ]
+            ,"summary": "Detailed Effluent Chart Service"
+            ,"description": "Discharge Monitoring Report (DMR) data supporting each effluent chart for one NPDES permit. Includes Discharge Monitoring Reports and NPDES Violations. "
+            ,"parameters": [
+                {
+                   "$ref": "#/components/parameters/p_id"
+               }
+               ,{
+                   "$ref": "#/components/parameters/outfall"
+               }
+               ,{
+                   "$ref": "#/components/parameters/parameter_code"
+               }
+               ,{
+                   "$ref": "#/components/parameters/start_date"
+               }
+               ,{
+                   "$ref": "#/components/parameters/end_date"
+               }
+               ,{
+                   "$ref": "#/components/parameters/output"
+               }
+               ,{
+                   "$ref": "#/components/parameters/callback"
+               }
+            ]
+            ,"responses": {
+                "default": {
+                   "$ref": "#/components/responses/eff_rest_services.get_effluent_chart.default"
+               }
+            }
+         }
+         ,"post": {
+             "tags": [
+                "Effluent Charts"
+            ]
+            ,"summary": "Detailed Effluent Chart Service"
+            ,"description": "Discharge Monitoring Report (DMR) data supporting each effluent chart for one NPDES permit. Includes Discharge Monitoring Reports and NPDES Violations. "
+            ,"requestBody": {
+                "content": {
+                   "application/x-www-form-urlencoded": {
+                      "schema": {
+                         "type": "object"
+                        ,"properties": {
+                            "p_id": {
+                               "$ref": "#/components/schemas/requestbody.p_id"
+                           }
+                           ,"outfall": {
+                               "$ref": "#/components/schemas/requestbody.outfall"
+                           }
+                           ,"parameter_code": {
+                               "$ref": "#/components/schemas/requestbody.parameter_code"
+                           }
+                           ,"start_date": {
+                               "$ref": "#/components/schemas/requestbody.start_date"
+                           }
+                           ,"end_date": {
+                               "$ref": "#/components/schemas/requestbody.end_date"
+                           }
+                           ,"output": {
+                               "$ref": "#/components/schemas/requestbody.output"
+                           }
+                           ,"callback": {
+                               "$ref": "#/components/schemas/requestbody.callback"
+                           }
+                        }
+                        ,"required": [
+                            "p_id"
+                        ]
+                     }
+                  }
+               }
+            }
+            ,"responses": {
+                "default": {
+                   "$ref": "#/components/responses/eff_rest_services.get_effluent_chart.default"
+               }
+            }
+         }
+      }
+      ,"/eff_rest_services.get_summary_chart": {
+          "get": {
+             "tags": [
+                "Effluent Charts"
+            ]
+            ,"summary": "Summary Effluent Chart Service"
+            ,"description": "Summary of compliance status each outfall and parameter for one NPDES permit. Provides the current compliance status and overall compliance status for the date range of interest. This service supports the Summary Matrix on the Effluent Charts."
+            ,"parameters": [
+                {
+                   "$ref": "#/components/parameters/p_id"
+               }
+               ,{
+                   "$ref": "#/components/parameters/output"
+               }
+               ,{
+                   "$ref": "#/components/parameters/callback"
+               }
+               ,{
+                   "$ref": "#/components/parameters/start_date"
+               }
+               ,{
+                   "$ref": "#/components/parameters/end_date"
+               }
+            ]
+            ,"responses": {
+                "default": {
+                   "$ref": "#/components/responses/eff_rest_services.get_summary_chart.default"
+               }
+            }
+         }
+         ,"post": {
+             "tags": [
+                "Effluent Charts"
+            ]
+            ,"summary": "Summary Effluent Chart Service"
+            ,"description": "Summary of compliance status each outfall and parameter for one NPDES permit. Provides the current compliance status and overall compliance status for the date range of interest. This service supports the Summary Matrix on the Effluent Charts."
+            ,"requestBody": {
+                "content": {
+                   "application/x-www-form-urlencoded": {
+                      "schema": {
+                         "type": "object"
+                        ,"properties": {
+                            "p_id": {
+                               "$ref": "#/components/schemas/requestbody.p_id"
+                           }
+                           ,"output": {
+                               "$ref": "#/components/schemas/requestbody.output"
+                           }
+                           ,"callback": {
+                               "$ref": "#/components/schemas/requestbody.callback"
+                           }
+                           ,"start_date": {
+                               "$ref": "#/components/schemas/requestbody.start_date"
+                           }
+                           ,"end_date": {
+                               "$ref": "#/components/schemas/requestbody.end_date"
+                           }
+                        }
+                        ,"required": [
+                            "p_id"
+                        ]
+                     }
+                  }
+               }
+            }
+            ,"responses": {
+                "default": {
+                   "$ref": "#/components/responses/eff_rest_services.get_summary_chart.default"
+               }
+            }
+         }
+      }
+      ,"/eff_rest_services.download_effluent_chart": {
+          "get": {
+             "tags": [
+                "Effluent Charts"
+            ]
+            ,"summary": "Effluent Charts Download Service"
+            ,"description": "Downloads tabular Discharge Monitoring Report (DMR) and compliance data for one NPDES permit as a CSV."
+            ,"parameters": [
+                {
+                   "$ref": "#/components/parameters/p_id"
+               }
+               ,{
+                   "$ref": "#/components/parameters/outfall"
+               }
+               ,{
+                   "$ref": "#/components/parameters/parameter_code"
+               }
+               ,{
+                   "$ref": "#/components/parameters/start_date"
+               }
+               ,{
+                   "$ref": "#/components/parameters/end_date"
+               }
+            ]
+            ,"responses": {
+                "default": {
+                   "$ref": "#/components/responses/eff_rest_services.download_effluent_chart.default"
+               }
+            }
+         }
+         ,"post": {
+             "tags": [
+                "Effluent Charts"
+            ]
+            ,"summary": "Effluent Charts Download Service"
+            ,"description": "Downloads tabular Discharge Monitoring Report (DMR) and compliance data for one NPDES permit as a CSV."
+            ,"requestBody": {
+                "content": {
+                   "application/x-www-form-urlencoded": {
+                      "schema": {
+                         "type": "object"
+                        ,"properties": {
+                            "p_id": {
+                               "$ref": "#/components/schemas/requestbody.p_id"
+                           }
+                           ,"outfall": {
+                               "$ref": "#/components/schemas/requestbody.outfall"
+                           }
+                           ,"parameter_code": {
+                               "$ref": "#/components/schemas/requestbody.parameter_code"
+                           }
+                           ,"start_date": {
+                               "$ref": "#/components/schemas/requestbody.start_date"
+                           }
+                           ,"end_date": {
+                               "$ref": "#/components/schemas/requestbody.end_date"
+                           }
+                        }
+                        ,"required": [
+                            "p_id"
+                        ]
+                     }
+                  }
+               }
+            }
+            ,"responses": {
+                "default": {
+                   "$ref": "#/components/responses/eff_rest_services.download_effluent_chart.default"
+               }
+            }
+         }
+      }
+      ,"/rest_lookups.cwa_parameters": {
+          "get": {
+             "tags": [
+                "Lookups"
+            ]
+            ,"summary": "ECHO CWA Parameter Lookup Service"
+            ,"description": "Look up Clean Water Act parameter codes and descriptions in the Integrated Compliance Information System - National Pollutant Discharge Elimination System (ICIS-NPDES) by code or term."
+            ,"parameters": [
+                {
+                   "$ref": "#/components/parameters/output"
+               }
+               ,{
+                   "$ref": "#/components/parameters/callback"
+               }
+               ,{
+                   "$ref": "#/components/parameters/search_term"
+               }
+               ,{
+                   "$ref": "#/components/parameters/search_code"
+               }
+            ]
+            ,"responses": {
+                "default": {
+                   "$ref": "#/components/responses/rest_lookups.cwa_parameters.default"
+               }
+            }
+         }
+         ,"post": {
+             "tags": [
+                "Lookups"
+            ]
+            ,"summary": "ECHO CWA Parameter Lookup Service"
+            ,"description": "Look up Clean Water Act parameter codes and descriptions in the Integrated Compliance Information System - National Pollutant Discharge Elimination System (ICIS-NPDES) by code or term."
+            ,"requestBody": {
+                "content": {
+                   "application/x-www-form-urlencoded": {
+                      "schema": {
+                         "type": "object"
+                        ,"properties": {
+                            "output": {
+                               "$ref": "#/components/schemas/requestbody.output"
+                           }
+                           ,"callback": {
+                               "$ref": "#/components/schemas/requestbody.callback"
+                           }
+                           ,"search_term": {
+                               "$ref": "#/components/schemas/requestbody.search_term"
+                           }
+                           ,"search_code": {
+                               "$ref": "#/components/schemas/requestbody.search_code"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+            ,"responses": {
+                "default": {
+                   "$ref": "#/components/responses/rest_lookups.cwa_parameters.default"
+               }
+            }
+         }
+      }
+   }
+   ,"components": {
+       "schemas": {
+          "eff_rest_services.get_effluent_chart.DischargeMonitoringReports": {
+             "type": "object"
+            ,"title": "Discharge Monitoring Report"
+            ,"xml": {
+                "name": "DischargeMonitoringReport"
+            }
+            ,"properties": {
+                "VersionNmbr": {
+                   "$ref": "#/components/schemas/property.VersionNmbr"
+               }
+               ,"PermFeatureId": {
+                   "$ref": "#/components/schemas/property.PermFeatureId"
+               }
+               ,"LimitSetId": {
+                   "$ref": "#/components/schemas/property.LimitSetId"
+               }
+               ,"LimitSetScheduleId": {
+                   "$ref": "#/components/schemas/property.LimitSetScheduleId"
+               }
+               ,"NmbrOfSubmission": {
+                   "$ref": "#/components/schemas/property.NmbrOfSubmission"
+               }
+               ,"LimitId": {
+                   "$ref": "#/components/schemas/property.LimitId"
+               }
+               ,"LimitTypeCode": {
+                   "type": "string"
+                  ,"title": "LimitTypeCode"
+                  ,"nullable": true
+                  ,"example": "C1"
+               }
+               ,"LimitBeginDate": {
+                   "$ref": "#/components/schemas/property.LimitBeginDate"
+               }
+               ,"LimitEndDate": {
+                   "$ref": "#/components/schemas/property.LimitEndDate"
+               }
+               ,"LimitValueId": {
+                   "$ref": "#/components/schemas/property.LimitValueId"
+               }
+               ,"LimitValueTypeCode": {
+                   "$ref": "#/components/schemas/property.LimitValueTypeCode"
+               }
+               ,"LimitValueTypeDesc": {
+                   "$ref": "#/components/schemas/property.LimitValueTypeDesc"
+               }
+               ,"LimitValueNmbr": {
+                   "$ref": "#/components/schemas/property.LimitValueNmbr"
+               }
+               ,"LimitUnitCode": {
+                   "$ref": "#/components/schemas/property.LimitUnitCode"
+               }
+               ,"LimitUnitDesc": {
+                   "$ref": "#/components/schemas/property.LimitUnitDesc"
+               }
+               ,"StdUnitCode": {
+                   "$ref": "#/components/schemas/property.StdUnitCode"
+               }
+               ,"StdUnitDesc": {
+                   "$ref": "#/components/schemas/property.StdUnitDesc"
+               }
+               ,"LimitValueStdUnits": {
+                   "$ref": "#/components/schemas/property.LimitValueStdUnits"
+               }
+               ,"StatisticalBaseCode": {
+                   "$ref": "#/components/schemas/property.StatisticalBaseCode"
+               }
+               ,"StatisticalBaseDesc": {
+                   "type": "string"
+                  ,"title": "StatisticalBaseDesc"
+                  ,"nullable": true
+               }
+               ,"StatisticalBaseTypeCode": {
+                   "$ref": "#/components/schemas/property.StatisticalBaseTypeCode"
+               }
+               ,"StatisticalBaseTypeDesc": {
+                   "$ref": "#/components/schemas/property.StatisticalBaseTypeDesc"
+               }
+               ,"LimitValueQualifierCode": {
+                   "$ref": "#/components/schemas/property.LimitValueQualifierCode"
+               }
+               ,"StayValueNmbr": {
+                   "$ref": "#/components/schemas/property.StayValueNmbr"
+               }
+               ,"DMREventId": {
+                   "$ref": "#/components/schemas/property.DMREventId"
+               }
+               ,"MonitoringPeriodEndDate": {
+                   "$ref": "#/components/schemas/property.MonitoringPeriodEndDate"
+               }
+               ,"DMRFormValueId": {
+                   "$ref": "#/components/schemas/property.DMRFormValueId"
+               }
+               ,"ValueTypeCode": {
+                   "$ref": "#/components/schemas/property.ValueTypeCode"
+               }
+               ,"ValueTypeDesc": {
+                   "$ref": "#/components/schemas/property.ValueTypeDesc"
+               }
+               ,"DMRValueId": {
+                   "$ref": "#/components/schemas/property.DMRValueId"
+               }
+               ,"DMRValueNmbr": {
+                   "$ref": "#/components/schemas/property.DMRValueNmbr"
+               }
+               ,"DMRUnitCode": {
+                   "$ref": "#/components/schemas/property.DMRUnitCode"
+               }
+               ,"DMRUnitDesc": {
+                   "$ref": "#/components/schemas/property.DMRUnitDesc"
+               }
+               ,"DMRValueStdUnits": {
+                   "$ref": "#/components/schemas/property.DMRValueStdUnits"
+               }
+               ,"DMRValueQualifierCode": {
+                   "$ref": "#/components/schemas/property.DMRValueQualifierCode"
+               }
+               ,"ValueReceivedDate": {
+                   "$ref": "#/components/schemas/property.ValueReceivedDate"
+               }
+               ,"DaysLate": {
+                   "$ref": "#/components/schemas/property.DaysLate"
+               }
+               ,"NODICode": {
+                   "$ref": "#/components/schemas/property.NODICode"
+               }
+               ,"NODEDesc": {
+                   "type": "string"
+                  ,"title": "NODEDesc"
+                  ,"nullable": true
+               }
+               ,"ExceedencePct": {
+                   "$ref": "#/components/schemas/property.ExceedencePct"
+               }
+               ,"NPDESViolations": {
+                   "type": "array"
+                  ,"items": {
+                      "$ref": "#/components/schemas/eff_rest_services.get_effluent_chart.NPDESViolations"
+                  }
+                  ,"xml": {
+                      "wrapped": true
+                  }
+               }
+            }
+            ,"required": [
+                "VersionNmbr"
+               ,"PermFeatureId"
+               ,"LimitSetId"
+               ,"LimitSetScheduleId"
+               ,"NmbrOfSubmission"
+               ,"LimitId"
+               ,"LimitTypeCode"
+               ,"LimitBeginDate"
+               ,"LimitEndDate"
+               ,"LimitValueId"
+               ,"LimitValueTypeCode"
+               ,"LimitValueTypeDesc"
+               ,"LimitValueNmbr"
+               ,"LimitUnitCode"
+               ,"LimitUnitDesc"
+               ,"StdUnitCode"
+               ,"StdUnitDesc"
+               ,"LimitValueStdUnits"
+               ,"StatisticalBaseCode"
+               ,"StatisticalBaseDesc"
+               ,"StatisticalBaseTypeCode"
+               ,"StatisticalBaseTypeDesc"
+               ,"LimitValueQualifierCode"
+               ,"StayValueNmbr"
+               ,"DMREventId"
+               ,"MonitoringPeriodEndDate"
+               ,"DMRFormValueId"
+               ,"ValueTypeCode"
+               ,"ValueTypeDesc"
+               ,"DMRValueId"
+               ,"DMRValueNmbr"
+               ,"DMRUnitCode"
+               ,"DMRUnitDesc"
+               ,"DMRValueStdUnits"
+               ,"DMRValueQualifierCode"
+               ,"ValueReceivedDate"
+               ,"DaysLate"
+               ,"NODICode"
+               ,"NODEDesc"
+               ,"ExceedencePct"
+            ]
+         }
+         ,"eff_rest_services.get_effluent_chart.NPDESViolations": {
+             "type": "object"
+            ,"title": "NPDES Violations"
+            ,"xml": {
+                "name": "NPDESViolation"
+            }
+            ,"properties": {
+                "NPDESViolationId": {
+                   "$ref": "#/components/schemas/property.NPDESViolationId"
+               }
+               ,"ViolationCode": {
+                   "$ref": "#/components/schemas/property.ViolationCode"
+               }
+               ,"ViolationDesc": {
+                   "$ref": "#/components/schemas/property.ViolationDesc"
+               }
+               ,"RNCDetectionCode": {
+                   "$ref": "#/components/schemas/property.RNCDetectionCode"
+               }
+               ,"RNCDetectionDesc": {
+                   "$ref": "#/components/schemas/property.RNCDetectionDesc"
+               }
+               ,"RNCDetectionDate": {
+                   "$ref": "#/components/schemas/property.RNCDetectionDate"
+               }
+               ,"RNCResolutionCode": {
+                   "$ref": "#/components/schemas/property.RNCResolutionCode"
+               }
+               ,"RNCResolutionDesc": {
+                   "$ref": "#/components/schemas/property.RNCResolutionDesc"
+               }
+               ,"RNCResolutionDate": {
+                   "$ref": "#/components/schemas/property.RNCResolutionDate"
+               }
+               ,"ViolationSeverity": {
+                   "$ref": "#/components/schemas/property.ViolationSeverity"
+               }
+            }
+         }
+         ,"eff_rest_services.get_effluent_chart.Parameters": {
+             "type": "object"
+            ,"title": "Chart Parameters"
+            ,"xml": {
+                "name": "Parameter"
+            }
+            ,"properties": {
+                "ParameterCode": {
+                   "$ref": "#/components/schemas/property.ParameterCode"
+               }
+               ,"ParameterDesc": {
+                   "$ref": "#/components/schemas/property.ParameterDesc"
+               }
+               ,"MonitoringLocationCode": {
+                   "$ref": "#/components/schemas/property.MonitoringLocationCode"
+               }
+               ,"MonitoringLocationDesc": {
+                   "$ref": "#/components/schemas/property.MonitoringLocationDesc"
+               }
+               ,"StayTypeCode": {
+                   "$ref": "#/components/schemas/property.StayTypeCode"
+               }
+               ,"StayTypeDesc": {
+                   "$ref": "#/components/schemas/property.StayTypeDesc"
+               }
+               ,"DischargeMonitoringReports": {
+                   "type": "array"
+                  ,"items": {
+                      "$ref": "#/components/schemas/eff_rest_services.get_effluent_chart.DischargeMonitoringReports"
+                  }
+                  ,"xml": {
+                      "wrapped": true
+                  }
+               }
+            }
+            ,"required": [
+                "ParameterCode"
+               ,"ParameterDesc"
+               ,"MonitoringLocationCode"
+               ,"MonitoringLocationDesc"
+               ,"StayTypeCode"
+               ,"StayTypeDesc"
+               ,"DischargeMonitoringReports"
+            ]
+         }
+         ,"eff_rest_services.get_effluent_chart.PermFeatures": {
+             "type": "object"
+            ,"title": "Chart Permit Features"
+            ,"xml": {
+                "name": "PermFeature"
+            }
+            ,"properties": {
+                "PermFeatureNmbr": {
+                   "$ref": "#/components/schemas/property.PermFeatureNmbr"
+               }
+               ,"PermFeatureTypeCode": {
+                   "$ref": "#/components/schemas/property.PermFeatureTypeCode"
+               }
+               ,"Parameters": {
+                   "type": "array"
+                  ,"items": {
+                      "$ref": "#/components/schemas/eff_rest_services.get_effluent_chart.Parameters"
+                  }
+                  ,"xml": {
+                      "wrapped": true
+                  }
+               }
+               ,"PermFeatureTypeDesc": {
+                   "$ref": "#/components/schemas/property.PermFeatureTypeDesc"
+               }
+            }
+            ,"required": [
+                "PermFeatureNmbr"
+               ,"PermFeatureTypeCode"
+               ,"Parameters"
+               ,"PermFeatureTypeDesc"
+            ]
+         }
+         ,"eff_rest_services.get_effluent_chart.Results": {
+             "type": "object"
+            ,"title": "Chart Results"
+            ,"properties": {
+                "Message": {
+                   "$ref": "#/components/schemas/property.Message"
+               }
+               ,"SourceId": {
+                   "$ref": "#/components/schemas/property.SourceId"
+               }
+               ,"EPASystem": {
+                   "$ref": "#/components/schemas/property.EPASystem"
+               }
+               ,"RegistryId": {
+                   "$ref": "#/components/schemas/property.RegistryId"
+               }
+               ,"Statute": {
+                   "$ref": "#/components/schemas/property.Statute"
+               }
+               ,"CWPName": {
+                   "$ref": "#/components/schemas/property.CWPName"
+               }
+               ,"CWPStreet": {
+                   "$ref": "#/components/schemas/property.CWPStreet"
+               }
+               ,"CWPCity": {
+                   "$ref": "#/components/schemas/property.CWPCity"
+               }
+               ,"CWPState": {
+                   "$ref": "#/components/schemas/property.CWPState"
+               }
+               ,"CWPZip": {
+                   "$ref": "#/components/schemas/property.CWPZip"
+               }
+               ,"CWPPermitStatusDesc": {
+                   "$ref": "#/components/schemas/property.CWPPermitStatusDesc"
+               }
+               ,"CWPMajorMinorStatusFlag": {
+                   "$ref": "#/components/schemas/property.CWPMajorMinorStatusFlag"
+               }
+               ,"CWPPermitTypeDesc": {
+                   "$ref": "#/components/schemas/property.CWPPermitTypeDesc"
+               }
+               ,"CWPCurrentSNCStatus": {
+                   "$ref": "#/components/schemas/property.CWPCurrentSNCStatus"
+               }
+               ,"StartDate": {
+                   "$ref": "#/components/schemas/property.StartDate"
+               }
+               ,"EndDate": {
+                   "$ref": "#/components/schemas/property.EndDate"
+               }
+               ,"PermFeatures": {
+                   "type": "array"
+                  ,"items": {
+                      "$ref": "#/components/schemas/eff_rest_services.get_effluent_chart.PermFeatures"
+                  }
+                  ,"xml": {
+                      "wrapped": true
+                  }
+               }
+            }
+            ,"required": [
+                "Message"
+               ,"SourceId"
+               ,"EPASystem"
+               ,"RegistryId"
+               ,"Statute"
+               ,"CWPName"
+               ,"CWPStreet"
+               ,"CWPCity"
+               ,"CWPState"
+               ,"CWPZip"
+               ,"CWPPermitStatusDesc"
+               ,"CWPMajorMinorStatusFlag"
+               ,"CWPPermitTypeDesc"
+               ,"CWPCurrentSNCStatus"
+               ,"StartDate"
+               ,"EndDate"
+            ]
+         }
+         ,"eff_rest_services.get_summary_chart.LinkedPermits": {
+             "type": "object"
+            ,"title": "Summary Linked Permits"
+            ,"xml": {
+                "name": "LinkedPermit"
+            }
+            ,"properties": {
+                "SourceId": {
+                   "$ref": "#/components/schemas/property.SourceId"
+               }
+               ,"CWPName": {
+                   "$ref": "#/components/schemas/property.CWPName"
+               }
+               ,"CWPStreet": {
+                   "$ref": "#/components/schemas/property.CWPStreet"
+               }
+               ,"CWPCity": {
+                   "$ref": "#/components/schemas/property.CWPCity"
+               }
+               ,"CWPState": {
+                   "$ref": "#/components/schemas/property.CWPState"
+               }
+               ,"CWPZip": {
+                   "$ref": "#/components/schemas/property.CWPZip"
+               }
+               ,"CWPPermitStatusDesc": {
+                   "$ref": "#/components/schemas/property.CWPPermitStatusDesc"
+               }
+               ,"CWPMajorMinorStatusFlag": {
+                   "$ref": "#/components/schemas/property.CWPMajorMinorStatusFlag"
+               }
+               ,"CWPPermitTypeDesc": {
+                   "$ref": "#/components/schemas/property.CWPPermitTypeDesc"
+               }
+               ,"CWPCurrentSNCStatus": {
+                   "$ref": "#/components/schemas/property.CWPCurrentSNCStatus"
+               }
+            }
+            ,"required": [
+                "SourceId"
+               ,"CWPName"
+               ,"CWPStreet"
+               ,"CWPCity"
+               ,"CWPState"
+               ,"CWPZip"
+               ,"CWPPermitStatusDesc"
+               ,"CWPMajorMinorStatusFlag"
+               ,"CWPPermitTypeDesc"
+               ,"CWPCurrentSNCStatus"
+            ]
+         }
+         ,"eff_rest_services.get_summary_chart.Parameters": {
+             "type": "object"
+            ,"title": "Summary Parameters"
+            ,"xml": {
+                "name": "Parameter"
+            }
+            ,"properties": {
+                "ParameterCode": {
+                   "$ref": "#/components/schemas/property.ParameterCode"
+               }
+               ,"ParameterDesc": {
+                   "$ref": "#/components/schemas/property.ParameterDesc"
+               }
+               ,"MaxVioStatus": {
+                   "$ref": "#/components/schemas/property.MaxVioStatus"
+               }
+               ,"CurrentVioStatus": {
+                   "$ref": "#/components/schemas/property.CurrentVioStatus"
+               }
+            }
+            ,"required": [
+                "ParameterCode"
+               ,"ParameterDesc"
+               ,"MaxVioStatus"
+               ,"CurrentVioStatus"
+            ]
+         }
+         ,"eff_rest_services.get_summary_chart.PermFeatures": {
+             "type": "object"
+            ,"title": "Summary Permit Features"
+            ,"xml": {
+                "name": "PermFeature"
+            }
+            ,"properties": {
+                "PermFeatureNmbr": {
+                   "$ref": "#/components/schemas/property.PermFeatureNmbr"
+               }
+               ,"PermFeatureTypeCode": {
+                   "$ref": "#/components/schemas/property.PermFeatureTypeCode"
+               }
+               ,"PermFeatureTypeDesc": {
+                   "$ref": "#/components/schemas/property.PermFeatureTypeDesc"
+               }
+               ,"Parameters": {
+                   "type": "array"
+                  ,"items": {
+                      "$ref": "#/components/schemas/eff_rest_services.get_summary_chart.Parameters"
+                  }
+                  ,"xml": {
+                      "wrapped": true
+                  }
+               }
+            }
+            ,"required": [
+                "PermFeatureNmbr"
+               ,"PermFeatureTypeCode"
+               ,"PermFeatureTypeDesc"
+               ,"Parameters"
+            ]
+         }
+         ,"eff_rest_services.get_summary_chart.Results": {
+             "type": "object"
+            ,"title": "Summary Results"
+            ,"properties": {
+                "Message": {
+                   "$ref": "#/components/schemas/property.Message"
+               }
+               ,"SourceId": {
+                   "$ref": "#/components/schemas/property.SourceId"
+               }
+               ,"EPASystem": {
+                   "$ref": "#/components/schemas/property.EPASystem"
+               }
+               ,"RegistryId": {
+                   "$ref": "#/components/schemas/property.RegistryId"
+               }
+               ,"Statute": {
+                   "$ref": "#/components/schemas/property.Statute"
+               }
+               ,"CWPName": {
+                   "$ref": "#/components/schemas/property.CWPName"
+               }
+               ,"CWPStreet": {
+                   "$ref": "#/components/schemas/property.CWPStreet"
+               }
+               ,"CWPCity": {
+                   "$ref": "#/components/schemas/property.CWPCity"
+               }
+               ,"CWPState": {
+                   "$ref": "#/components/schemas/property.CWPState"
+               }
+               ,"CWPZip": {
+                   "$ref": "#/components/schemas/property.CWPZip"
+               }
+               ,"CWPPermitStatusDesc": {
+                   "$ref": "#/components/schemas/property.CWPPermitStatusDesc"
+               }
+               ,"CWPMajorMinorStatusFlag": {
+                   "$ref": "#/components/schemas/property.CWPMajorMinorStatusFlag"
+               }
+               ,"CWPPermitTypeDesc": {
+                   "$ref": "#/components/schemas/property.CWPPermitTypeDesc"
+               }
+               ,"CWPCurrentSNCStatus": {
+                   "$ref": "#/components/schemas/property.CWPCurrentSNCStatus"
+               }
+               ,"StartDate": {
+                   "$ref": "#/components/schemas/property.StartDate"
+               }
+               ,"EndDate": {
+                   "$ref": "#/components/schemas/property.EndDate"
+               }
+               ,"LinkedPermits": {
+                   "type": "array"
+                  ,"items": {
+                      "$ref": "#/components/schemas/eff_rest_services.get_summary_chart.LinkedPermits"
+                  }
+                  ,"xml": {
+                      "wrapped": true
+                  }
+               }
+               ,"PermFeatures": {
+                   "type": "array"
+                  ,"items": {
+                      "$ref": "#/components/schemas/eff_rest_services.get_summary_chart.PermFeatures"
+                  }
+                  ,"xml": {
+                      "wrapped": true
+                  }
+               }
+            }
+            ,"required": [
+                "Message"
+               ,"SourceId"
+               ,"EPASystem"
+               ,"RegistryId"
+               ,"Statute"
+               ,"CWPName"
+               ,"CWPStreet"
+               ,"CWPCity"
+               ,"CWPState"
+               ,"CWPZip"
+               ,"CWPPermitStatusDesc"
+               ,"CWPMajorMinorStatusFlag"
+               ,"CWPPermitTypeDesc"
+               ,"CWPCurrentSNCStatus"
+               ,"StartDate"
+               ,"EndDate"
+            ]
+         }
+         ,"property.CWPCity": {
+             "type": "string"
+            ,"title": "CWPCity"
+            ,"description": "City in which the facility is located."
+            ,"nullable": true
+            ,"example": "HUNTSVILLE"
+         }
+         ,"property.CWPCurrentSNCStatus": {
+             "type": "string"
+            ,"title": "CWPCurrentSNCStatus"
+            ,"description": "The type of noncompliance when a major source is in significant violation or a minor source has a Category 1 violation."
+            ,"nullable": true
+            ,"example": "D (DMR NR)"
+         }
+         ,"property.CWPMajorMinorStatusFlag": {
+             "type": "string"
+            ,"title": "CWPMajorMinorStatusFlag"
+            ,"description": "Facilities marked \"M\" for major refers to CWA major permittees.\n* M = Major\n* N = Minor"
+            ,"nullable": true
+            ,"example": "N"
+         }
+         ,"property.CWPName": {
+             "type": "string"
+            ,"title": "CWPName"
+            ,"description": "Facility or permit holder name, as maintained in ICIS-NPDES."
+            ,"nullable": true
+            ,"example": "REDSTONE ARSENAL"
+         }
+         ,"property.CWPPermitStatusDesc": {
+             "type": "string"
+            ,"title": "CWPPermitStatusDesc"
+            ,"description": "The current stage/status in the NPDES permit life cycle."
+            ,"nullable": true
+            ,"example": "Effective"
+         }
+         ,"property.CWPPermitTypeDesc": {
+             "type": "string"
+            ,"title": "CWPPermitTypeDesc"
+            ,"description": "NPDES facility permit classification:\n* NPDES Individual Permit\n* General Permit Covered Facility\n* NPDES Master General Permit\n* Associated Permit Record\n* Individual Industrial User Permit\n* Individual State Issued Permit\n* State Issued Master General Permit\n* Unpermitted Facility"
+            ,"nullable": true
+            ,"example": "General Permit Covered Facility"
+         }
+         ,"property.CWPState": {
+             "type": "string"
+            ,"title": "CWPState"
+            ,"description": "Facility location - two-digit state abbreviation."
+            ,"nullable": true
+            ,"example": "AL"
+         }
+         ,"property.CWPStreet": {
+             "type": "string"
+            ,"title": "CWPStreet"
+            ,"description": "Facility street address"
+            ,"nullable": true
+            ,"example": "BUILDING 3240 AREA"
+         }
+         ,"property.CWPZip": {
+             "type": "string"
+            ,"title": "CWPZip"
+            ,"description": "Facility ZIP code"
+            ,"nullable": true
+            ,"example": "35898"
+         }
+         ,"property.CurrentVioStatus": {
+             "type": "string"
+            ,"title": "CurrentVioStatus"
+            ,"description": "The most severe compliance status for an outfall and parameter during the current monitoring period"
+            ,"nullable": true
+            ,"example": "In Violation"
+         }
+         ,"property.DMREventId": {
+             "type": "string"
+            ,"title": "DMREventId"
+            ,"description": "The sequence ID identifying the DMR Event."
+            ,"nullable": true
+            ,"example": "3403602486"
+         }
+         ,"property.DMRFormValueId": {
+             "type": "string"
+            ,"title": "DMRFormValueId"
+            ,"description": "The sequence ID identifying the DMR Form Value."
+            ,"nullable": true
+            ,"example": "3444464127"
+         }
+         ,"property.DMRUnitCode": {
+             "type": "string"
+            ,"title": "DMRUnitCode"
+            ,"description": "The code representing the unit of measure applicable to quantity or concentration limits and measurements as entered into ICIS-NPDES"
+            ,"nullable": true
+            ,"example": "19"
+         }
+         ,"property.DMRUnitDesc": {
+             "type": "string"
+            ,"title": "DMRUnitDesc"
+            ,"description": "The short description of the unit of measure applicable to limit or DMR values"
+            ,"nullable": true
+            ,"example": "mg/L"
+         }
+         ,"property.DMRValueId": {
+             "type": "string"
+            ,"title": "DMRValueId"
+            ,"description": "The unique identifier for the DMR value generated in ICIS-NPDES"
+            ,"nullable": true
+            ,"example": "3420340252"
+         }
+         ,"property.DMRValueNmbr": {
+             "type": "string"
+            ,"title": "DMRValueNmbr"
+            ,"description": "The DMR value number reported on the DMR Form"
+            ,"nullable": true
+            ,"example": "20"
+         }
+         ,"property.DMRValueQualifierCode": {
+             "type": "string"
+            ,"title": "DMRValueQualifierCode"
+            ,"description": "The unique code identifying the DMR value operator (i.e., <, <=, >, >=, T, E, =). E indicates an estimated value. T indicates too numerous to count"
+            ,"nullable": true
+            ,"example": "="
+         }
+         ,"property.DMRValueStdUnits": {
+             "type": "string"
+            ,"title": "DMRValueStdUnits"
+            ,"description": "The DMR value expressed in standard units, as calculated in ICIS-NPDES"
+            ,"nullable": true
+            ,"example": "20"
+         }
+         ,"property.DaysLate": {
+             "type": "string"
+            ,"title": "DaysLate"
+            ,"description": "The number of days the DMR value is late, as generated in ICIS-NPDES"
+            ,"nullable": true
+            ,"example": "5"
+         }
+         ,"property.EPASystem": {
+             "type": "string"
+            ,"title": "EPASystem"
+            ,"description": "The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: \n* AFS: Air Facility System for Clean Air Act stationary source programs.\n* ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.\n* RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.\n* NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).\n* TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.\n* NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.\n* TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals."
+            ,"nullable": true
+            ,"example": "ICP"
+         }
+         ,"property.EndDate": {
+             "type": "string"
+            ,"title": "End Date"
+            ,"description": "End date for the date range of interest. Formatted as mm/dd/yyyy"
+            ,"nullable": true
+            ,"example": "01/01/2016"
+         }
+         ,"property.ExceedencePct": {
+             "type": "string"
+            ,"title": "ExceedencePct"
+            ,"description": "The percent by which the DMR value (or adjusted value) exceeded its limit (or stay) value, as generated in ICIS-NPDES"
+            ,"nullable": true
+            ,"example": "0"
+         }
+         ,"property.LimitBeginDate": {
+             "type": "string"
+            ,"title": "LimitBeginDate"
+            ,"description": "The date on which a limit becomes in effect for a particular parameter in a limit set"
+            ,"nullable": true
+            ,"example": "01-APR-14"
+         }
+         ,"property.LimitEndDate": {
+             "type": "string"
+            ,"title": "LimitEndDate"
+            ,"description": "The date on which a limit stops being in effect for a particular parameter in a limit set"
+            ,"nullable": true
+            ,"example": "31-MAR-19"
+         }
+         ,"property.LimitId": {
+             "type": "string"
+            ,"title": "LimitId"
+            ,"description": "The unique identifier for a limit parameter record"
+            ,"nullable": true
+            ,"example": "3401161480"
+         }
+         ,"property.LimitSetId": {
+             "type": "string"
+            ,"title": "LimitSetId"
+            ,"description": "The unique identifier for a limit set, generated in ICIS-NPDES"
+            ,"nullable": true
+            ,"example": "3400122018"
+         }
+         ,"property.LimitSetScheduleId": {
+             "type": "string"
+            ,"title": "LimitSetScheduleId"
+            ,"description": "The unique identifier of the Limit Set Schedule, generated in ICIS-NPDES"
+            ,"nullable": true
+            ,"example": "3400204974"
+         }
+         ,"property.LimitUnitCode": {
+             "type": "string"
+            ,"title": "LimitUnitCode"
+            ,"description": "The code representing the unit of measure applicable to quantity or concentration limits and measurements as entered by the user"
+            ,"nullable": true
+            ,"example": "12"
+         }
+         ,"property.LimitUnitDesc": {
+             "type": "string"
+            ,"title": "LimitUnitDesc"
+            ,"description": "The short description of the unit of measure applicable to limit or DMR values"
+            ,"nullable": true
+            ,"example": "SU"
+         }
+         ,"property.LimitValueId": {
+             "type": "string"
+            ,"title": "LimitValueId"
+            ,"description": "The unique identifier in ICIS-NPDES for the Limit Value"
+            ,"nullable": true
+            ,"example": "3401799401"
+         }
+         ,"property.LimitValueNmbr": {
+             "type": "string"
+            ,"title": "LimitValueNmbr"
+            ,"description": "The numerical limit for a given parameter"
+            ,"nullable": true
+            ,"example": "20"
+         }
+         ,"property.LimitValueQualifierCode": {
+             "type": "string"
+            ,"title": "LimitValueQualifierCode"
+            ,"description": "The unique code identifying the limit value operator (i.e., <, <=, >, >=, T, E, =). E indicates an estimated value. T indicates too numerous to count"
+            ,"nullable": true
+            ,"example": "="
+         }
+         ,"property.LimitValueStdUnits": {
+             "type": "string"
+            ,"title": "LimitValueStdUnits"
+            ,"description": "The limit value expressed in standard units, as calculated in ICIS-NPDES"
+            ,"nullable": true
+            ,"example": "20"
+         }
+         ,"property.LimitValueTypeCode": {
+             "type": "string"
+            ,"title": "LimitValueTypeCode"
+            ,"description": "The code indicating the type of value the limit is given as (i.e., Q1, Q2, C1, C2, C3)"
+            ,"nullable": true
+            ,"example": "C1"
+         }
+         ,"property.LimitValueTypeDesc": {
+             "type": "string"
+            ,"title": "LimitValueTypeDesc"
+            ,"description": "The description indicating the type of value the limit is given as (e.g., Concentration, Quantity)"
+            ,"nullable": true
+            ,"example": "Concentration1"
+         }
+         ,"property.MaxVioStatus": {
+             "type": "string"
+            ,"title": "MaxVioStatus"
+            ,"description": "The most severe compliance status for an outfall and parameter during the entire selected date range"
+            ,"nullable": true
+            ,"example": "In Violation"
+         }
+         ,"property.Message": {
+             "type": "string"
+            ,"title": "Message"
+            ,"description": "Field to record messages (typically performance-related) about packet processing."
+            ,"nullable": false
+            ,"example": "Success"
+         }
+         ,"property.MonitoringLocationCode": {
+             "type": "string"
+            ,"title": "MonitoringLocationCode"
+            ,"description": "The code that the monitoring location at which the monitoring requirement (and effluent limit if limited) applies. One parameter may have several monitoring location codes pertaining to the same permitted feature"
+            ,"nullable": true
+            ,"example": "1"
+         }
+         ,"property.MonitoringLocationDesc": {
+             "type": "string"
+            ,"title": "MonitoringLocationDesc"
+            ,"description": "The name of the monitoring location at which the monitoring requirement (and effluent limit if limited) applies"
+            ,"nullable": true
+            ,"example": "Effluent Gross"
+         }
+         ,"property.MonitoringPeriodEndDate": {
+             "type": "string"
+            ,"title": "MonitoringPeriodEndDate"
+            ,"description": "The date that the monitoring period for the values covered by the DMR Form ends"
+            ,"nullable": true
+            ,"example": "30-APR-14"
+         }
+         ,"property.NODICode": {
+             "type": "string"
+            ,"title": "NODICode"
+            ,"description": "The unique code indicating why no DMR Value was submitted by the permittee for a Monitoring Period End Date"
+            ,"nullable": true
+            ,"example": "C"
+         }
+         ,"property.NPDESViolationId": {
+             "type": "string"
+            ,"title": "NPDESViolationId"
+            ,"description": "The unique identifier in ICIS-NPDES for the NPDES Violation"
+            ,"nullable": true
+            ,"example": "3401214483"
+         }
+         ,"property.NmbrOfSubmission": {
+             "type": "string"
+            ,"title": "NmbrOfSubmission"
+            ,"description": "The number of months of discharges represented on each DMR for the limit set (e.g., monthly = 1, bi-monthly = 2, quarterly = 3, triannual = 4, semi-annual = 6, annual = 12). This data element will be blank for Unscheduled Limit Sets"
+            ,"nullable": true
+            ,"example": "1"
+         }
+         ,"property.ParameterCode": {
+             "type": "string"
+            ,"title": "ParameterCode"
+            ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
+            ,"nullable": true
+            ,"example": "00400"
+         }
+         ,"property.ParameterDesc": {
+             "type": "string"
+            ,"title": "ParameterDesc"
+            ,"description": "The pollutant name and form (e.g., dissolved, suspended) associated with the parameter code"
+            ,"nullable": true
+            ,"example": "pH"
+         }
+         ,"property.PermFeatureId": {
+             "type": "string"
+            ,"title": "PermFeatureId"
+            ,"description": "The unique identifier in ICIS-NPDES of a permitted feature or outfall"
+            ,"nullable": true
+            ,"example": "3400087283"
+         }
+         ,"property.PermFeatureNmbr": {
+             "type": "string"
+            ,"title": "PermFeatureNmbr"
+            ,"description": "A three-character code in ICIS-NPDES that identifies the point of discharge (e.g., outfall) for a facility. A NPDES permit may have multiple points of discharge. If the code is less than three characters in the .CSV, append zeros to the beginning of the number (e.g., 1 is equivalent to 001)"
+            ,"nullable": true
+            ,"example": "001"
+         }
+         ,"property.PermFeatureTypeCode": {
+             "type": "string"
+            ,"title": "PermFeatureTypeCode"
+            ,"description": "The code indicating the type of permitted feature (e.g., EXO)"
+            ,"nullable": true
+            ,"example": "EXO"
+         }
+         ,"property.PermFeatureTypeDesc": {
+             "type": "string"
+            ,"title": "Permit Feature Type"
+            ,"description": "The description indicating the type of permitted feature (e.g., External Outfall, Internal Outfall, Sum)"
+            ,"nullable": true
+            ,"example": "External Outfall"
+         }
+         ,"property.RNCDetectionCode": {
+             "type": "string"
+            ,"title": "RNCDetectionCode"
+            ,"description": "The code indicating the reportable noncompliance (RNC) detected for a violation:\n* A = Enforcement Order\n* B = Manual 2A4 - Pass-Through\n* C = Chronic Violation\n* D = Manual Other\n* E = Manual 2F - Permit Narrative\n* F = Manual 2G - Violation of Concern\n* G = Manual 2A1 - Effluent Violation\n* H = Chronic Violation, Non-Monthly Average\n* I = Manual 2A2 - Unauthorized Bypass\n* J = Manual 2A3 - Unpermitted Discharge\n* K = Non-receipt Violation, Non-Monthly Average\n* N = Non-Receipt of DMR/Schedule Report\n* P = Enforcement Order, Non-Monthly Average\n* Q = Manual 2B - Pretreatment\n* R = TRC Limitations Exceeded, Non-Monthly Average\n* S = Schedule Violation\n* T = TRC Limitations Exceeded\n* U = Other Violation with TRC Non-Monthly Average\n* V = Other Violation with TRC\n* W = Manual 2E - Deficient Report\n* X = Manual Other Violation with TRC\n* Y = Manual TRC\n* Z = Manual Chronic"
+            ,"nullable": true
+            ,"example": "K"
+         }
+         ,"property.RNCDetectionDate": {
+             "type": "string"
+            ,"title": "RNCDetectionDate"
+            ,"description": "The date that the exceedance was detected"
+            ,"nullable": true
+            ,"example": "28-FEB-16"
+         }
+         ,"property.RNCDetectionDesc": {
+             "type": "string"
+            ,"title": "RNCDetectionDesc"
+            ,"description": "A description of the reportable noncompliance (RNC) detected"
+            ,"nullable": true
+            ,"example": "Non-receipt Violation, Non-Monthly Average"
+         }
+         ,"property.RNCResolutionCode": {
+             "type": "string"
+            ,"title": "RNCResolutionCode"
+            ,"description": "The code indicating the resolution of noncompliance (RNC) for a violation"
+            ,"nullable": true
+            ,"example": "2"
+         }
+         ,"property.RNCResolutionDate": {
+             "type": "string"
+            ,"title": "RNCResolutionDate"
+            ,"description": "The date RNC was marked to its current resolution status. It can be entered manually or automatically"
+            ,"nullable": true
+            ,"example": "01-FEB-16"
+         }
+         ,"property.RNCResolutionDesc": {
+             "type": "string"
+            ,"title": "RNCResolutionDesc"
+            ,"description": "* 1 = Unresolved RNC\n* 2 = Back into Compliance\n* 3 = Due to Formal Enforcement Action Final Order with Compliance Schedule\n* 4 = In Compliance with Formal Enforcement Action Final Order Requirement\n* 5 = Resolved RP by NPDES Closure of Enforcement Action Final Order with Compliance Schedule\n* 6 = Manual Resolution by Enforcement Action\n* 7 = Manual RP - In Compliance with Formal Enforcement Action Order Requirement\n* 8 = Manual Due to Formal Enforcement Action Formal Order\n* 9 = Manual by Back into Compliance\n* A = Manual Unresolved RNC\n* B = Manual by EPA/State/Tribal Action"
+            ,"nullable": true
+            ,"example": "RE - Back into Compliance"
+         }
+         ,"property.RegistryId": {
+             "type": "string"
+            ,"title": "RegistryId"
+            ,"description": "12-digit Facility Registry Service (FRS) identification number.  FRS uniquely identifies a facility by assigning an identification number (FRS ID), and uses this FRS ID to link together all EPA regulatory program database records"
+            ,"nullable": true
+            ,"example": "110020837601"
+         }
+         ,"property.SourceId": {
+             "type": "string"
+            ,"title": "SourceId"
+            ,"description": "Unique Identifier assigned by EPA."
+            ,"nullable": true
+            ,"example": "ALR040033"
+         }
+         ,"property.StartDate": {
+             "type": "string"
+            ,"title": "StartDate"
+            ,"description": "Starting date for the date range of interest. Formatted as mm/dd/yyyy"
+            ,"nullable": true
+            ,"example": "01/01/2016"
+         }
+         ,"property.StatisticalBaseCode": {
+             "type": "string"
+            ,"title": "StatisticalBaseCode"
+            ,"description": "The code representing the unit of measure applicable to the limit and DMR values entered by the user (e.g., 30-day average, daily maximum)"
+            ,"nullable": true
+            ,"example": "DC"
+         }
+         ,"property.StatisticalBaseTypeCode": {
+             "type": "string"
+            ,"title": "StatisticalBaseTypeCode"
+            ,"description": "The code indicating whether the statistical base code is a minimum, average, or maximum for purposes of calculating compliance against the limit value"
+            ,"nullable": true
+            ,"example": "MIN"
+         }
+         ,"property.StatisticalBaseTypeDesc": {
+             "type": "string"
+            ,"title": "StatisticalBaseTypeDesc"
+            ,"description": "A short description for indicating whether the statistical base code is a minimum, average, or maximum for purposes of calculating compliance against the limit value"
+            ,"nullable": true
+            ,"example": "Minimum"
+         }
+         ,"property.Statute": {
+             "type": "string"
+            ,"title": "Statute"
+            ,"description": "The name of the statute associated with each of the permits and identifiers linked to the facility: \n* CAA = the Clean Air Act\n* CWA = the Clean Water Act\n* RCRA = the Resource Conservation and Recovery Act\n* EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)\n* TSCA = the Toxic Substances Control Act\n* SDWA = the Safe Drinking Water Act"
+            ,"nullable": true
+            ,"example": "CWA"
+         }
+         ,"property.StayTypeCode": {
+             "type": "string"
+            ,"title": "StayTypeCode"
+            ,"description": "The unique identifier of the type of stay applied to a limit (e.g., X, Y, Z), which indicates whether the limits do not appear on the DMR at all, are treated as monitor only, or have a stay value in effect during the period of the stay"
+            ,"nullable": true
+            ,"example": "???"
+         }
+         ,"property.StayTypeDesc": {
+             "type": "string"
+            ,"title": "StayTypeDesc"
+            ,"description": "The name of the type of stay applied to a limit, which indicates whether the limits do not appear on the DMR at all (X), are treated as monitor only (Y), or have a stay value in effect during the period of the stay (Z)"
+            ,"nullable": true
+            ,"example": "???"
+         }
+         ,"property.StayValueNmbr": {
+             "type": "string"
+            ,"title": "StayValueNmbr"
+            ,"description": "The numeric limit value imposed during the period of the stay for the limit; if entered, during the stay period, ICIS-NPDES will use this limit value for calculating compliance rather than the actual limit value"
+            ,"nullable": true
+            ,"example": "???"
+         }
+         ,"property.StdUnitCode": {
+             "type": "string"
+            ,"title": "StdUnitCode"
+            ,"description": "The code representing the standard unit of measure applicable to quantity or concentration limits and measurements as entered by the user"
+            ,"nullable": true
+            ,"example": "19"
+         }
+         ,"property.StdUnitDesc": {
+             "type": "string"
+            ,"title": "StdUnitDesc"
+            ,"description": "The short description of the standard unit of measure applicable to limit or DMR values"
+            ,"nullable": true
+            ,"example": "mg/L"
+         }
+         ,"property.ValueCode": {
+             "type": "string"
+            ,"title": "ValueCode"
+            ,"description": "Value Code"
+            ,"nullable": true
+            ,"example": "77034"
+         }
+         ,"property.ValueDescription": {
+             "type": "string"
+            ,"title": "ValueDescription"
+            ,"description": "Value Description"
+            ,"nullable": true
+            ,"example": "1-Butanol"
+         }
+         ,"property.ValueReceivedDate": {
+             "type": "string"
+            ,"title": "ValueReceivedDate"
+            ,"description": "The date the DMR value was received by the regulatory authority"
+            ,"nullable": true
+            ,"example": "08-MAY-14"
+         }
+         ,"property.ValueTypeCode": {
+             "type": "string"
+            ,"title": "ValueTypeCode"
+            ,"description": "The indication of the limit value type (e.g., Quantity 1, Concentration 2)"
+            ,"nullable": true
+            ,"example": "C1"
+         }
+         ,"property.ValueTypeDesc": {
+             "type": "string"
+            ,"title": "ValueTypeDesc"
+            ,"description": "The type of value the measured number is given as (e.g., Concentration, Quantity)"
+            ,"nullable": true
+            ,"example": "Concentration1"
+         }
+         ,"property.VersionNmbr": {
+             "type": "string"
+            ,"title": "VersionNmbr"
+            ,"description": "The version of the permit when a modification or reissuance is applied to the permit. Version = 0 indicates the original permit issuance"
+            ,"nullable": true
+            ,"example": "0"
+         }
+         ,"property.ViolationCode": {
+             "type": "string"
+            ,"title": "ViolationCode"
+            ,"description": "The code identifying which type of Violation has occurred (e.g., D80 = Required Monitoring DMR Value Non-Receipt, E90 = Effluent Violation, C20 = Schedule Event Achieved Late)"
+            ,"nullable": true
+            ,"example": "E90"
+         }
+         ,"property.ViolationDesc": {
+             "type": "string"
+            ,"title": "ViolationDesc"
+            ,"description": "A description of which type of violation has occurred"
+            ,"nullable": true
+            ,"example": "Effluent Violation"
+         }
+         ,"property.ViolationSeverity": {
+             "type": "string"
+            ,"title": "ViolationSeverity"
+            ,"description": "* 0 = no violation.\n* 1 = monitoring or reporting violation\n* 2 = effluent violation, i.e., discharge in excess of permitted limit\n* 3 = reportable noncompliance\n* 5 = significant noncompliance"
+            ,"nullable": true
+            ,"example": "No Violation"
+         }
+         ,"requestbody.callback": {
+             "type": "string"
+            ,"title": "callback"
+            ,"description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+         }
+         ,"requestbody.end_date": {
+             "type": "string"
+            ,"title": "end_date"
+            ,"description": "The end date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with start_date. If start_date and end_date are not specified, the service will return the last three years of data."
+         }
+         ,"requestbody.outfall": {
+             "type": "string"
+            ,"title": "outfall"
+            ,"description": "Three-character code that identifies the point of discharge (e.g., pipe or outfall) for a facility. A single NPDES ID may have multiple points of discharge."
+         }
+         ,"requestbody.output": {
+             "type": "string"
+            ,"title": "output"
+            ,"description": "Output Format Flag.  Enter one of the following keywords:\n* JSON = Data model formatted as Javascript Object Notation (default).\n* JSONP = Data model formatted as Javascript Object Notation with Padding.  \n* XML = Data model formatted as Extensible Markup Language."
+            ,"enum": [
+                "JSONP"
+               ,"JSON"
+               ,"XML"
+            ]
+         }
+         ,"requestbody.p_id": {
+             "type": "string"
+            ,"title": "p_id"
+            ,"description": "Identifier for the service."
+         }
+         ,"requestbody.parameter_code": {
+             "type": "string"
+            ,"title": "parameter_code"
+            ,"description": "Five-digit numeric code identifying the parameter. See Parameter Lookup documentation for a complete list of codes."
+         }
+         ,"requestbody.search_code": {
+             "type": "string"
+            ,"title": "search_code"
+            ,"description": "Enter a partial or complete code value."
+         }
+         ,"requestbody.search_term": {
+             "type": "string"
+            ,"title": "search_term"
+            ,"description": "Enter a partial or complete search phrase or word."
+         }
+         ,"requestbody.start_date": {
+             "type": "string"
+            ,"title": "start_date"
+            ,"description": "The start date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with end_date. If start_date and end_date are not specified, the service will return the last three years of data."
+         }
+         ,"rest_lookups.LuValues": {
+             "type": "object"
+            ,"title": "Lookup Values"
+            ,"xml": {
+                "name": "LuValue"
+            }
+            ,"properties": {
+                "ValueCode": {
+                   "$ref": "#/components/schemas/property.ValueCode"
+               }
+               ,"ValueDescription": {
+                   "$ref": "#/components/schemas/property.ValueDescription"
+               }
+            }
+            ,"required": [
+                "ValueCode"
+               ,"ValueDescription"
+            ]
+         }
+         ,"rest_lookups.cwa_parameters.Results": {
+             "type": "object"
+            ,"properties": {
+                "Message": {
+                   "$ref": "#/components/schemas/property.Message"
+               }
+               ,"LuValues": {
+                   "type": "array"
+                  ,"items": {
+                      "$ref": "#/components/schemas/rest_lookups.LuValues"
+                  }
+                  ,"xml": {
+                      "wrapped": true
+                  }
+               }
+            }
+            ,"required": [
+                "Message"
+            ]
+         }
+      }
+      ,"responses": {
+          "eff_rest_services.download_effluent_chart.default": {
+             "description": "Returns an object with summary effluent information"
+            ,"content": {
+                "text/csv": {
+                   "schema": {
+                      "type": "string"
+                     ,"format": "binary"
+                  }
+               }
+            }
+         }
+         ,"eff_rest_services.get_effluent_chart.default": {
+             "description": "Returns an object with detailed effluent information."
+            ,"content": {
+                "application/json": {
+                   "schema": {
+                      "type": "object"
+                     ,"title": "Chart Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/eff_rest_services.get_effluent_chart.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
+                  }
+               }
+               ,"application/xml": {
+                   "schema": {
+                      "type": "object"
+                     ,"title": "Chart Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/eff_rest_services.get_effluent_chart.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
+                  }
+               }
+            }
+         }
+         ,"eff_rest_services.get_summary_chart.default": {
+             "description": "Returns an object with summary effluent information."
+            ,"content": {
+                "application/json": {
+                   "schema": {
+                      "type": "object"
+                     ,"title": "Summary Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/eff_rest_services.get_summary_chart.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
+                  }
+               }
+               ,"application/xml": {
+                   "schema": {
+                      "type": "object"
+                     ,"title": "Summary Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/eff_rest_services.get_summary_chart.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
+                  }
+               }
+            }
+         }
+         ,"rest_lookups.cwa_parameters.default": {
+             "description": "Returns an array of parameter codes and descriptions that contain the search_term or search_code entered. If search term or search code not provided, returns all values. ValueCode is the 5-digit parameter code."
+            ,"content": {
+                "application/json": {
+                   "schema": {
+                      "type": "object"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/rest_lookups.cwa_parameters.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
+                  }
+               }
+               ,"application/xml": {
+                   "schema": {
+                      "type": "object"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/rest_lookups.cwa_parameters.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
+                  }
+               }
+            }
+         }
+      }
+      ,"parameters": {
+          "callback": {
+             "name": "callback"
+            ,"in": "query"
+            ,"description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+            ,"required": false
+            ,"schema": {
+                "type": "string"
+               ,"title": "callback"
+            }
+         }
+         ,"end_date": {
+             "name": "end_date"
+            ,"in": "query"
+            ,"description": "The end date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with start_date. If start_date and end_date are not specified, the service will return the last three years of data."
+            ,"required": false
+            ,"schema": {
+                "type": "string"
+               ,"title": "end_date"
+            }
+         }
+         ,"outfall": {
+             "name": "outfall"
+            ,"in": "query"
+            ,"description": "Three-character code that identifies the point of discharge (e.g., pipe or outfall) for a facility. A single NPDES ID may have multiple points of discharge."
+            ,"required": false
+            ,"schema": {
+                "type": "string"
+               ,"title": "outfall"
+            }
+         }
+         ,"output": {
+             "name": "output"
+            ,"in": "query"
+            ,"description": "Output Format Flag.  Enter one of the following keywords:\n* JSON = Data model formatted as Javascript Object Notation (default).\n* JSONP = Data model formatted as Javascript Object Notation with Padding.  \n* XML = Data model formatted as Extensible Markup Language."
+            ,"required": false
+            ,"schema": {
+                "type": "string"
+               ,"title": "output"
+               ,"enum": [
+                   "JSONP"
+                  ,"JSON"
+                  ,"XML"
+               ]
+            }
+         }
+         ,"p_id": {
+             "name": "p_id"
+            ,"in": "query"
+            ,"description": "Identifier for the service."
+            ,"required": true
+            ,"schema": {
+                "type": "string"
+               ,"title": "p_id"
+            }
+         }
+         ,"parameter_code": {
+             "name": "parameter_code"
+            ,"in": "query"
+            ,"description": "Five-digit numeric code identifying the parameter. See Parameter Lookup documentation for a complete list of codes."
+            ,"required": false
+            ,"schema": {
+                "type": "string"
+               ,"title": "parameter_code"
+            }
+         }
+         ,"search_code": {
+             "name": "search_code"
+            ,"in": "query"
+            ,"description": "Enter a partial or complete code value."
+            ,"required": false
+            ,"schema": {
+                "type": "string"
+               ,"title": "search_code"
+            }
+         }
+         ,"search_term": {
+             "name": "search_term"
+            ,"in": "query"
+            ,"description": "Enter a partial or complete search phrase or word."
+            ,"required": false
+            ,"schema": {
+                "type": "string"
+               ,"title": "search_term"
+            }
+         }
+         ,"start_date": {
+             "name": "start_date"
+            ,"in": "query"
+            ,"description": "The start date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with end_date. If start_date and end_date are not specified, the service will return the last three years of data."
+            ,"required": false
+            ,"schema": {
+                "type": "string"
+               ,"title": "start_date"
+            }
+         }
+      }
+   }
+   ,"externalDocs": {
+       "description": "US EPA Enforcement and Compliance History Online "
+      ,"url": "https://echo.epa.gov/"
+   }
+}
