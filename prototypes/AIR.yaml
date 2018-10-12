@@ -278,7 +278,7 @@ paths:
                 p_pid: 
                   $ref: '#/components/schemas/requestbody.p_pid'
                 p_med: 
-                  $ref: '#/components/schemas/requestbody.p_med'
+                  $ref: '#/components/schemas/requestbody.p_med.AIR'
                 p_ysl: 
                   $ref: '#/components/schemas/requestbody.p_ysl'
                 p_ysly: 
@@ -306,7 +306,7 @@ paths:
                 p_tribedist: 
                   $ref: '#/components/schemas/requestbody.p_tribedist'
                 p_owop: 
-                  $ref: '#/components/schemas/requestbody.p_owop'
+                  $ref: '#/components/schemas/requestbody.p_owop.AIR'
                 p_agoo: 
                   $ref: '#/components/schemas/requestbody.p_agoo'
                 p_idt1: 
@@ -519,7 +519,7 @@ paths:
               type: object
               properties: 
                 output: 
-                  $ref: '#/components/schemas/requestbody.output'
+                  $ref: '#/components/schemas/requestbody.output.get_facility_info'
                 p_fn: 
                   $ref: '#/components/schemas/requestbody.p_fn'
                 p_sa: 
@@ -635,7 +635,7 @@ paths:
                 p_pid: 
                   $ref: '#/components/schemas/requestbody.p_pid'
                 p_med: 
-                  $ref: '#/components/schemas/requestbody.p_med'
+                  $ref: '#/components/schemas/requestbody.p_med.AIR'
                 p_ysl: 
                   $ref: '#/components/schemas/requestbody.p_ysl'
                 p_ysly: 
@@ -663,7 +663,7 @@ paths:
                 p_tribedist: 
                   $ref: '#/components/schemas/requestbody.p_tribedist'
                 p_owop: 
-                  $ref: '#/components/schemas/requestbody.p_owop'
+                  $ref: '#/components/schemas/requestbody.p_owop.AIR'
                 p_agoo: 
                   $ref: '#/components/schemas/requestbody.p_agoo'
                 p_idt1: 
@@ -869,7 +869,7 @@ paths:
               type: object
               properties: 
                 output: 
-                  $ref: '#/components/schemas/requestbody.output'
+                  $ref: '#/components/schemas/requestbody.output.get_download'
                 qid: 
                   $ref: '#/components/schemas/requestbody.qid'
                 qcolumns: 
@@ -906,7 +906,7 @@ paths:
               type: object
               properties: 
                 output: 
-                  $ref: '#/components/schemas/requestbody.output'
+                  $ref: '#/components/schemas/requestbody.output.get_download'
                 p_qid: 
                   $ref: '#/components/schemas/requestbody.p_qid'
                 p_pretty_print: 
@@ -945,7 +945,7 @@ paths:
               type: object
               properties: 
                 output: 
-                  $ref: '#/components/schemas/requestbody.output'
+                  $ref: '#/components/schemas/requestbody.output.get_geojson'
                 qid: 
                   $ref: '#/components/schemas/requestbody.qid'
                 callback: 
@@ -3924,6 +3924,33 @@ components:
         - JSONP
         - JSON
         - XML
+    requestbody.output.get_download: 
+      type: string
+      title: output
+      description: |-
+        Output Format Flag.  Enter one of the following keywords:
+        * CSV = Facility results formatted as comma delimited file download (default).
+        * GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+    requestbody.output.get_facility_info: 
+      type: string
+      title: output
+      description: |-
+        Output Format Flag.  Enter one of the following keywords:
+        * JSON = Data model formatted as Javascript Object Notation (default).
+        * JSONP = Data model formatted as Javascript Object Notation with Padding.  
+        * XML = Data model formatted as Extensible Markup Language.
+        * CSV = Facility results formatted as comma delimited file download.
+        * GEOJSON = Facility results formatted as GeoJSON feature collection.
+        * GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
+        * GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+    requestbody.output.get_geojson: 
+      type: string
+      title: output
+      description: |-
+        Output Format Flag.  Enter one of the following keywords:
+        * GEOJSON = Facility results formatted as GeoJSON feature collection (default).
+        * GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
+        * GEOJSOND = Facility results formatted as GeoJSON feature collection download.
     requestbody.p_act: 
       type: string
       title: p_act
@@ -4202,7 +4229,7 @@ components:
       enum: 
         - Y
         - N
-    requestbody.p_med: 
+    requestbody.p_med.AIR: 
       type: string
       title: p_med
       description: |-
@@ -4258,7 +4285,7 @@ components:
       type: string
       title: p_opst
       description: Operating status filter.  Enter one or more operating status codes to limit results.   Provide multiple codes as a comma-delimited list.
-    requestbody.p_owop: 
+    requestbody.p_owop.AIR: 
       type: string
       title: p_owop
       description: |-
