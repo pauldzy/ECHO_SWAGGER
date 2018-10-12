@@ -33,7 +33,7 @@
                    "$ref": "#/components/parameters/download"
                }
                ,{
-                   "$ref": "#/components/parameters/p_year"
+                   "$ref": "#/components/parameters/p_year.DMR"
                }
                ,{
                    "$ref": "#/components/parameters/p_zip"
@@ -155,7 +155,7 @@
                                "$ref": "#/components/schemas/requestbody.download"
                            }
                            ,"p_year": {
-                               "$ref": "#/components/schemas/requestbody.p_year"
+                               "$ref": "#/components/schemas/requestbody.p_year.DMR"
                            }
                            ,"p_zip": {
                                "$ref": "#/components/schemas/requestbody.p_zip"
@@ -4131,7 +4131,7 @@
                    "$ref": "#/components/parameters/download"
                }
                ,{
-                   "$ref": "#/components/parameters/p_year"
+                   "$ref": "#/components/parameters/p_year.DMR"
                }
                ,{
                    "$ref": "#/components/parameters/p_zip"
@@ -4253,7 +4253,7 @@
                                "$ref": "#/components/schemas/requestbody.download"
                            }
                            ,"p_year": {
-                               "$ref": "#/components/schemas/requestbody.p_year"
+                               "$ref": "#/components/schemas/requestbody.p_year.DMR"
                            }
                            ,"p_zip": {
                                "$ref": "#/components/schemas/requestbody.p_zip"
@@ -12839,7 +12839,7 @@
          ,"requestbody.p_year.DMR": {
              "type": "string"
             ,"title": "p_year"
-            ,"description": "The calendar year for the DMR annual pollutant loadings."
+            ,"description": "Required.  The calendar year for the DMR annual pollutant loadings."
             ,"enum": [
                 2018
                ,2017
@@ -14933,7 +14933,7 @@
          ,"p_year.DMR": {
              "name": "p_year"
             ,"in": "query"
-            ,"description": "The calendar year for the DMR annual pollutant loadings."
+            ,"description": "Required.  The calendar year for the DMR annual pollutant loadings."
             ,"required": false
             ,"schema": {
                 "type": "string"

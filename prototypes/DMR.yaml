@@ -24,7 +24,7 @@ paths:
       parameters: 
         - $ref: '#/components/parameters/output'
         - $ref: '#/components/parameters/download'
-        - $ref: '#/components/parameters/p_year'
+        - $ref: '#/components/parameters/p_year.DMR'
         - $ref: '#/components/parameters/p_zip'
         - $ref: '#/components/parameters/p_reg'
         - $ref: '#/components/parameters/p_st'
@@ -74,7 +74,7 @@ paths:
                 download: 
                   $ref: '#/components/schemas/requestbody.download'
                 p_year: 
-                  $ref: '#/components/schemas/requestbody.p_year'
+                  $ref: '#/components/schemas/requestbody.p_year.DMR'
                 p_zip: 
                   $ref: '#/components/schemas/requestbody.p_zip'
                 p_reg: 
@@ -2211,7 +2211,7 @@ paths:
       parameters: 
         - $ref: '#/components/parameters/output'
         - $ref: '#/components/parameters/download'
-        - $ref: '#/components/parameters/p_year'
+        - $ref: '#/components/parameters/p_year.DMR'
         - $ref: '#/components/parameters/p_zip'
         - $ref: '#/components/parameters/p_reg'
         - $ref: '#/components/parameters/p_st'
@@ -2261,7 +2261,7 @@ paths:
                 download: 
                   $ref: '#/components/schemas/requestbody.download'
                 p_year: 
-                  $ref: '#/components/schemas/requestbody.p_year'
+                  $ref: '#/components/schemas/requestbody.p_year.DMR'
                 p_zip: 
                   $ref: '#/components/schemas/requestbody.p_zip'
                 p_reg: 
@@ -9025,7 +9025,7 @@ components:
     requestbody.p_year.DMR: 
       type: string
       title: p_year
-      description: The calendar year for the DMR annual pollutant loadings.
+      description: Required.  The calendar year for the DMR annual pollutant loadings.
       enum: 
         - 2018
         - 2017
@@ -10538,7 +10538,7 @@ components:
     p_year.DMR: 
       name: p_year
       in: query
-      description: The calendar year for the DMR annual pollutant loadings.
+      description: Required.  The calendar year for the DMR annual pollutant loadings.
       required: false
       schema: 
         type: string
