@@ -555,7 +555,7 @@
                                "$ref": "#/components/schemas/requestbody.p_pid"
                            }
                            ,"p_med": {
-                               "$ref": "#/components/schemas/requestbody.p_med"
+                               "$ref": "#/components/schemas/requestbody.p_med.AIR"
                            }
                            ,"p_ysl": {
                                "$ref": "#/components/schemas/requestbody.p_ysl"
@@ -597,7 +597,7 @@
                                "$ref": "#/components/schemas/requestbody.p_tribedist"
                            }
                            ,"p_owop": {
-                               "$ref": "#/components/schemas/requestbody.p_owop"
+                               "$ref": "#/components/schemas/requestbody.p_owop.AIR"
                            }
                            ,"p_agoo": {
                                "$ref": "#/components/schemas/requestbody.p_agoo"
@@ -1084,7 +1084,7 @@
                          "type": "object"
                         ,"properties": {
                             "output": {
-                               "$ref": "#/components/schemas/requestbody.output"
+                               "$ref": "#/components/schemas/requestbody.output.get_facility_info"
                            }
                            ,"p_fn": {
                                "$ref": "#/components/schemas/requestbody.p_fn"
@@ -1258,7 +1258,7 @@
                                "$ref": "#/components/schemas/requestbody.p_pid"
                            }
                            ,"p_med": {
-                               "$ref": "#/components/schemas/requestbody.p_med"
+                               "$ref": "#/components/schemas/requestbody.p_med.AIR"
                            }
                            ,"p_ysl": {
                                "$ref": "#/components/schemas/requestbody.p_ysl"
@@ -1300,7 +1300,7 @@
                                "$ref": "#/components/schemas/requestbody.p_tribedist"
                            }
                            ,"p_owop": {
-                               "$ref": "#/components/schemas/requestbody.p_owop"
+                               "$ref": "#/components/schemas/requestbody.p_owop.AIR"
                            }
                            ,"p_agoo": {
                                "$ref": "#/components/schemas/requestbody.p_agoo"
@@ -1647,7 +1647,7 @@
                          "type": "object"
                         ,"properties": {
                             "output": {
-                               "$ref": "#/components/schemas/requestbody.output"
+                               "$ref": "#/components/schemas/requestbody.output.get_download"
                            }
                            ,"qid": {
                                "$ref": "#/components/schemas/requestbody.qid"
@@ -1710,7 +1710,7 @@
                          "type": "object"
                         ,"properties": {
                             "output": {
-                               "$ref": "#/components/schemas/requestbody.output"
+                               "$ref": "#/components/schemas/requestbody.output.get_download"
                            }
                            ,"p_qid": {
                                "$ref": "#/components/schemas/requestbody.p_qid"
@@ -1782,7 +1782,7 @@
                          "type": "object"
                         ,"properties": {
                             "output": {
-                               "$ref": "#/components/schemas/requestbody.output"
+                               "$ref": "#/components/schemas/requestbody.output.get_geojson"
                            }
                            ,"qid": {
                                "$ref": "#/components/schemas/requestbody.qid"
@@ -5480,6 +5480,21 @@
                ,"XML"
             ]
          }
+         ,"requestbody.output.get_download": {
+             "type": "string"
+            ,"title": "output"
+            ,"description": "Output Format Flag.  Enter one of the following keywords:\n* CSV = Facility results formatted as comma delimited file download (default).\n* GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+         }
+         ,"requestbody.output.get_facility_info": {
+             "type": "string"
+            ,"title": "output"
+            ,"description": "Output Format Flag.  Enter one of the following keywords:\n* JSON = Data model formatted as Javascript Object Notation (default).\n* JSONP = Data model formatted as Javascript Object Notation with Padding.  \n* XML = Data model formatted as Extensible Markup Language.\n* CSV = Facility results formatted as comma delimited file download.\n* GEOJSON = Facility results formatted as GeoJSON feature collection.\n* GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n* GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+         }
+         ,"requestbody.output.get_geojson": {
+             "type": "string"
+            ,"title": "output"
+            ,"description": "Output Format Flag.  Enter one of the following keywords:\n* GEOJSON = Facility results formatted as GeoJSON feature collection (default).\n* GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n* GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+         }
          ,"requestbody.p_act": {
              "type": "string"
             ,"title": "p_act"
@@ -5797,7 +5812,7 @@
                ,"N"
             ]
          }
-         ,"requestbody.p_med": {
+         ,"requestbody.p_med.AIR": {
              "type": "string"
             ,"title": "p_med"
             ,"description": "Filter Results by Media.\n* M = RMP (Risk Management Plan)\n* R = RCRA (Hazardous Waste)\n* S = SDWA (Public Drinking Water Systems)\n* W = Water\n* ALL = Water and RCRA and SDWA"
@@ -5858,7 +5873,7 @@
             ,"title": "p_opst"
             ,"description": "Operating status filter.  Enter one or more operating status codes to limit results.   Provide multiple codes as a comma-delimited list."
          }
-         ,"requestbody.p_owop": {
+         ,"requestbody.p_owop.AIR": {
              "type": "string"
             ,"title": "p_owop"
             ,"description": "Owner/Operator code filter.  Enter one or more codes to limit results.\n* CNG\n* COR\n* CTG\n* DIS\n* FDF\n* MWD\n* MXO\n* NON\n* POF\n* SDT\n* STF\n* TRB"

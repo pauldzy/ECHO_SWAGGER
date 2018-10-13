@@ -63,7 +63,7 @@
                                "$ref": "#/components/schemas/requestbody.output"
                            }
                            ,"p_id": {
-                               "$ref": "#/components/schemas/requestbody.p_id"
+                               "$ref": "#/components/schemas/requestbody.p_id.CAA"
                            }
                            ,"p_units": {
                                "$ref": "#/components/schemas/requestbody.p_units"
@@ -136,7 +136,7 @@
                                "$ref": "#/components/schemas/requestbody.nn2"
                            }
                            ,"p_id": {
-                               "$ref": "#/components/schemas/requestbody.p_id"
+                               "$ref": "#/components/schemas/requestbody.p_id.CAA"
                            }
                            ,"callback": {
                                "$ref": "#/components/schemas/requestbody.callback"
@@ -199,7 +199,7 @@
                                "$ref": "#/components/schemas/requestbody.output"
                            }
                            ,"p_id": {
-                               "$ref": "#/components/schemas/requestbody.p_id"
+                               "$ref": "#/components/schemas/requestbody.p_id.CAA"
                            }
                            ,"p_units": {
                                "$ref": "#/components/schemas/requestbody.p_units"
@@ -260,7 +260,7 @@
                                "$ref": "#/components/schemas/requestbody.output"
                            }
                            ,"p_id": {
-                               "$ref": "#/components/schemas/requestbody.p_id"
+                               "$ref": "#/components/schemas/requestbody.p_id.CAA"
                            }
                            ,"callback": {
                                "$ref": "#/components/schemas/requestbody.callback"
@@ -320,7 +320,7 @@
                                "$ref": "#/components/schemas/requestbody.output"
                            }
                            ,"p_id": {
-                               "$ref": "#/components/schemas/requestbody.p_id"
+                               "$ref": "#/components/schemas/requestbody.p_id.CAA"
                            }
                            ,"callback": {
                                "$ref": "#/components/schemas/requestbody.callback"
@@ -1403,6 +1403,11 @@
             ]
          }
          ,"requestbody.p_id": {
+             "type": "string"
+            ,"title": "p_id"
+            ,"description": "Identifier for the service."
+         }
+         ,"requestbody.p_id.CAA": {
              "type": "string"
             ,"title": "p_id"
             ,"description": "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
