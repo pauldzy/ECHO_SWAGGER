@@ -54,11 +54,11 @@ paths:
               type: object
               properties: 
                 p_id: 
-                  $ref: '#/components/schemas/requestbody.p_id.case.get_case_report'
+                  $ref: '#/components/schemas/rb.p_id.case.get_case_report'
                 output: 
-                  $ref: '#/components/schemas/requestbody.output'
+                  $ref: '#/components/schemas/rb.output'
                 callback: 
-                  $ref: '#/components/schemas/requestbody.callback'
+                  $ref: '#/components/schemas/rb.callback'
       responses: 
         default: 
           $ref: '#/components/responses/case_rest_services.get_case_report.default'
@@ -87,11 +87,11 @@ paths:
               type: object
               properties: 
                 p_id: 
-                  $ref: '#/components/schemas/requestbody.p_id.case.get_crcase_report'
+                  $ref: '#/components/schemas/rb.p_id.case.get_crcase_report'
                 output: 
-                  $ref: '#/components/schemas/requestbody.output'
+                  $ref: '#/components/schemas/rb.output'
                 callback: 
-                  $ref: '#/components/schemas/requestbody.callback'
+                  $ref: '#/components/schemas/rb.callback'
       responses: 
         default: 
           $ref: '#/components/responses/case_rest_services.get_crcase_report.default'
@@ -190,153 +190,153 @@ paths:
               type: object
               properties: 
                 output: 
-                  $ref: '#/components/schemas/requestbody.output'
+                  $ref: '#/components/schemas/rb.output'
                 p_case_category: 
-                  $ref: '#/components/schemas/requestbody.p_case_category'
+                  $ref: '#/components/schemas/rb.p_case_category'
                 p_case_status: 
-                  $ref: '#/components/schemas/requestbody.p_case_status'
+                  $ref: '#/components/schemas/rb.p_case_status'
                 p_open_case: 
                   type: string
                   title: p_open_case
                 p_milestone: 
-                  $ref: '#/components/schemas/requestbody.p_milestone'
+                  $ref: '#/components/schemas/rb.p_milestone'
                 p_from_date: 
-                  $ref: '#/components/schemas/requestbody.p_from_date'
+                  $ref: '#/components/schemas/rb.p_from_date'
                 p_to_date: 
-                  $ref: '#/components/schemas/requestbody.p_to_date'
+                  $ref: '#/components/schemas/rb.p_to_date'
                 p_milestone_fy: 
-                  $ref: '#/components/schemas/requestbody.p_milestone_fy'
+                  $ref: '#/components/schemas/rb.p_milestone_fy'
                 p_name: 
-                  $ref: '#/components/schemas/requestbody.p_name'
+                  $ref: '#/components/schemas/rb.p_name'
                 p_name_type: 
-                  $ref: '#/components/schemas/requestbody.p_name_type'
+                  $ref: '#/components/schemas/rb.p_name_type'
                 p_case_number: 
-                  $ref: '#/components/schemas/requestbody.p_case_number'
+                  $ref: '#/components/schemas/rb.p_case_number'
                 p_docket_number: 
-                  $ref: '#/components/schemas/requestbody.p_docket_number'
+                  $ref: '#/components/schemas/rb.p_docket_number'
                 p_activity_number: 
-                  $ref: '#/components/schemas/requestbody.p_activity_number'
+                  $ref: '#/components/schemas/rb.p_activity_number'
                 p_case_lead: 
-                  $ref: '#/components/schemas/requestbody.p_case_lead'
+                  $ref: '#/components/schemas/rb.p_case_lead'
                 p_case_sens_flg: 
-                  $ref: '#/components/schemas/requestbody.p_case_sens_flg'
+                  $ref: '#/components/schemas/rb.p_case_sens_flg'
                 p_region: 
-                  $ref: '#/components/schemas/requestbody.p_region'
+                  $ref: '#/components/schemas/rb.p_region'
                 p_state: 
-                  $ref: '#/components/schemas/requestbody.p_state'
+                  $ref: '#/components/schemas/rb.p_state'
                 p_district: 
-                  $ref: '#/components/schemas/requestbody.p_district'
+                  $ref: '#/components/schemas/rb.p_district'
                 p_sic: 
-                  $ref: '#/components/schemas/requestbody.p_sic.CASE'
+                  $ref: '#/components/schemas/rb.p_sic.CASE'
                 p_sic_ao_naics: 
-                  $ref: '#/components/schemas/requestbody.p_sic_ao_naics'
+                  $ref: '#/components/schemas/rb.p_sic_ao_naics'
                 p_sic_primary_flg: 
-                  $ref: '#/components/schemas/requestbody.p_sic_primary_flg'
+                  $ref: '#/components/schemas/rb.p_sic_primary_flg'
                 p_sic_frs_flg: 
-                  $ref: '#/components/schemas/requestbody.p_sic_frs_flg'
+                  $ref: '#/components/schemas/rb.p_sic_frs_flg'
                 p_naics: 
-                  $ref: '#/components/schemas/requestbody.p_naics'
+                  $ref: '#/components/schemas/rb.p_naics'
                 p_naics_primary_flg: 
-                  $ref: '#/components/schemas/requestbody.p_naics_primary_flg'
+                  $ref: '#/components/schemas/rb.p_naics_primary_flg'
                 p_naics_frs_flg: 
-                  $ref: '#/components/schemas/requestbody.p_naics_frs_flg'
+                  $ref: '#/components/schemas/rb.p_naics_frs_flg'
                 p_enf_type: 
-                  $ref: '#/components/schemas/requestbody.p_enf_type'
+                  $ref: '#/components/schemas/rb.p_enf_type'
                 p_law: 
-                  $ref: '#/components/schemas/requestbody.p_law'
+                  $ref: '#/components/schemas/rb.p_law'
                 p_section: 
-                  $ref: '#/components/schemas/requestbody.p_section'
+                  $ref: '#/components/schemas/rb.p_section'
                 p_cp_citation: 
-                  $ref: '#/components/schemas/requestbody.p_cp_citation'
+                  $ref: '#/components/schemas/rb.p_cp_citation'
                 p_rank_order: 
-                  $ref: '#/components/schemas/requestbody.p_rank_order'
+                  $ref: '#/components/schemas/rb.p_rank_order'
                 p_enf_program: 
-                  $ref: '#/components/schemas/requestbody.p_enf_program'
+                  $ref: '#/components/schemas/rb.p_enf_program'
                 p_violation: 
-                  $ref: '#/components/schemas/requestbody.p_violation'
+                  $ref: '#/components/schemas/rb.p_violation'
                 p_priority_area: 
-                  $ref: '#/components/schemas/requestbody.p_priority_area'
+                  $ref: '#/components/schemas/rb.p_priority_area'
                 p_priority_area_desc: 
-                  $ref: '#/components/schemas/requestbody.p_priority_area_desc'
+                  $ref: '#/components/schemas/rb.p_priority_area_desc'
                 p_tribal: 
-                  $ref: '#/components/schemas/requestbody.p_tribal'
+                  $ref: '#/components/schemas/rb.p_tribal'
                 p_oeca_core: 
-                  $ref: '#/components/schemas/requestbody.p_oeca_core'
+                  $ref: '#/components/schemas/rb.p_oeca_core'
                 p_multimedia: 
-                  $ref: '#/components/schemas/requestbody.p_multimedia'
+                  $ref: '#/components/schemas/rb.p_multimedia'
                 p_fed_case: 
-                  $ref: '#/components/schemas/requestbody.p_fed_case'
+                  $ref: '#/components/schemas/rb.p_fed_case'
                 p_activity_contact: 
-                  $ref: '#/components/schemas/requestbody.p_activity_contact'
+                  $ref: '#/components/schemas/rb.p_activity_contact'
                 p_role: 
-                  $ref: '#/components/schemas/requestbody.p_role'
+                  $ref: '#/components/schemas/rb.p_role'
                 p_fed_penalty: 
-                  $ref: '#/components/schemas/requestbody.p_fed_penalty'
+                  $ref: '#/components/schemas/rb.p_fed_penalty'
                 p_total_fed_penalty: 
-                  $ref: '#/components/schemas/requestbody.p_total_fed_penalty'
+                  $ref: '#/components/schemas/rb.p_total_fed_penalty'
                 p_cost_recovery: 
-                  $ref: '#/components/schemas/requestbody.p_cost_recovery'
+                  $ref: '#/components/schemas/rb.p_cost_recovery'
                 p_total_cost_recovery: 
-                  $ref: '#/components/schemas/requestbody.p_total_cost_recovery'
+                  $ref: '#/components/schemas/rb.p_total_cost_recovery'
                 p_complying_actions: 
-                  $ref: '#/components/schemas/requestbody.p_complying_actions'
+                  $ref: '#/components/schemas/rb.p_complying_actions'
                 p_comp_act_val: 
-                  $ref: '#/components/schemas/requestbody.p_comp_act_val'
+                  $ref: '#/components/schemas/rb.p_comp_act_val'
                 p_total_comp_act_val: 
-                  $ref: '#/components/schemas/requestbody.p_total_comp_act_val'
+                  $ref: '#/components/schemas/rb.p_total_comp_act_val'
                 p_sep_cats: 
-                  $ref: '#/components/schemas/requestbody.p_sep_cats'
+                  $ref: '#/components/schemas/rb.p_sep_cats'
                 p_sep_val: 
-                  $ref: '#/components/schemas/requestbody.p_sep_val'
+                  $ref: '#/components/schemas/rb.p_sep_val'
                 p_total_sep_val: 
-                  $ref: '#/components/schemas/requestbody.p_total_sep_val'
+                  $ref: '#/components/schemas/rb.p_total_sep_val'
                 p_lodged_date: 
-                  $ref: '#/components/schemas/requestbody.p_lodged_date'
+                  $ref: '#/components/schemas/rb.p_lodged_date'
                 p_entered_date: 
-                  $ref: '#/components/schemas/requestbody.p_entered_date'
+                  $ref: '#/components/schemas/rb.p_entered_date'
                 p_facility_id: 
-                  $ref: '#/components/schemas/requestbody.p_facility_id'
+                  $ref: '#/components/schemas/rb.p_facility_id'
                 p_fac_city: 
-                  $ref: '#/components/schemas/requestbody.p_fac_city'
+                  $ref: '#/components/schemas/rb.p_fac_city'
                 p_fac_zip: 
-                  $ref: '#/components/schemas/requestbody.p_fac_zip'
+                  $ref: '#/components/schemas/rb.p_fac_zip'
                 p_fac_county: 
-                  $ref: '#/components/schemas/requestbody.p_fac_county'
+                  $ref: '#/components/schemas/rb.p_fac_county'
                 p_case_summary: 
-                  $ref: '#/components/schemas/requestbody.p_case_summary'
+                  $ref: '#/components/schemas/rb.p_case_summary'
                 p_case_summary_type: 
                   type: string
                   title: p_case_summary_type
                 p_usmex: 
-                  $ref: '#/components/schemas/requestbody.p_usmex'
+                  $ref: '#/components/schemas/rb.p_usmex'
                 p_c1lat: 
-                  $ref: '#/components/schemas/requestbody.p_c1lat'
+                  $ref: '#/components/schemas/rb.p_c1lat'
                 p_c1lon: 
-                  $ref: '#/components/schemas/requestbody.p_c1lon'
+                  $ref: '#/components/schemas/rb.p_c1lon'
                 p_c2lat: 
-                  $ref: '#/components/schemas/requestbody.p_c2lat'
+                  $ref: '#/components/schemas/rb.p_c2lat'
                 p_c2lon: 
-                  $ref: '#/components/schemas/requestbody.p_c2lon'
+                  $ref: '#/components/schemas/rb.p_c2lon'
                 p_voluntary: 
-                  $ref: '#/components/schemas/requestbody.p_voluntary'
+                  $ref: '#/components/schemas/rb.p_voluntary'
                 p_fed_indicator: 
-                  $ref: '#/components/schemas/requestbody.p_fed_indicator'
+                  $ref: '#/components/schemas/rb.p_fed_indicator'
                 p_fntype: 
-                  $ref: '#/components/schemas/requestbody.p_fntype'
+                  $ref: '#/components/schemas/rb.p_fntype'
                 p_civil_criminal_indicator: 
-                  $ref: '#/components/schemas/requestbody.p_civil_criminal_indicator'
+                  $ref: '#/components/schemas/rb.p_civil_criminal_indicator'
                 queryset: 
-                  $ref: '#/components/schemas/requestbody.queryset'
+                  $ref: '#/components/schemas/rb.queryset'
                 responseset: 
-                  $ref: '#/components/schemas/requestbody.responseset'
+                  $ref: '#/components/schemas/rb.responseset'
                 maplist: 
-                  $ref: '#/components/schemas/requestbody.maplist'
+                  $ref: '#/components/schemas/rb.maplist'
                 tablelist: 
-                  $ref: '#/components/schemas/requestbody.tablelist'
+                  $ref: '#/components/schemas/rb.tablelist'
                 callback: 
-                  $ref: '#/components/schemas/requestbody.callback'
+                  $ref: '#/components/schemas/rb.callback'
                 qcolumns: 
-                  $ref: '#/components/schemas/requestbody.qcolumns'
+                  $ref: '#/components/schemas/rb.qcolumns'
       responses: 
         default: 
           $ref: '#/components/responses/case_rest_services.get_cases.default'
@@ -369,19 +369,19 @@ paths:
               type: object
               properties: 
                 output: 
-                  $ref: '#/components/schemas/requestbody.output'
+                  $ref: '#/components/schemas/rb.output'
                 qid: 
-                  $ref: '#/components/schemas/requestbody.qid'
+                  $ref: '#/components/schemas/rb.qid'
                 pageno: 
-                  $ref: '#/components/schemas/requestbody.pageno'
+                  $ref: '#/components/schemas/rb.pageno'
                 callback: 
-                  $ref: '#/components/schemas/requestbody.callback'
+                  $ref: '#/components/schemas/rb.callback'
                 newsort: 
-                  $ref: '#/components/schemas/requestbody.newsort'
+                  $ref: '#/components/schemas/rb.newsort'
                 descending: 
-                  $ref: '#/components/schemas/requestbody.descending'
+                  $ref: '#/components/schemas/rb.descending'
                 qcolumns: 
-                  $ref: '#/components/schemas/requestbody.qcolumns'
+                  $ref: '#/components/schemas/rb.qcolumns'
               required: 
                 - qid
       responses: 
@@ -417,21 +417,21 @@ paths:
               type: object
               properties: 
                 output: 
-                  $ref: '#/components/schemas/requestbody.output'
+                  $ref: '#/components/schemas/rb.output'
                 qid: 
-                  $ref: '#/components/schemas/requestbody.qid'
+                  $ref: '#/components/schemas/rb.qid'
                 callback: 
-                  $ref: '#/components/schemas/requestbody.callback'
+                  $ref: '#/components/schemas/rb.callback'
                 tablelist: 
-                  $ref: '#/components/schemas/requestbody.tablelist'
+                  $ref: '#/components/schemas/rb.tablelist'
                 c1_lat: 
-                  $ref: '#/components/schemas/requestbody.c1_lat'
+                  $ref: '#/components/schemas/rb.c1_lat'
                 c1_long: 
-                  $ref: '#/components/schemas/requestbody.c1_long'
+                  $ref: '#/components/schemas/rb.c1_long'
                 c2_lat: 
-                  $ref: '#/components/schemas/requestbody.c2_lat'
+                  $ref: '#/components/schemas/rb.c2_lat'
                 c2_long: 
-                  $ref: '#/components/schemas/requestbody.c2_long'
+                  $ref: '#/components/schemas/rb.c2_long'
               required: 
                 - qid
       responses: 
@@ -462,11 +462,11 @@ paths:
               type: object
               properties: 
                 output: 
-                  $ref: '#/components/schemas/requestbody.output.only_csv'
+                  $ref: '#/components/schemas/rb.output.only_csv'
                 qid: 
-                  $ref: '#/components/schemas/requestbody.qid'
+                  $ref: '#/components/schemas/rb.qid'
                 qcolumns: 
-                  $ref: '#/components/schemas/requestbody.qcolumns'
+                  $ref: '#/components/schemas/rb.qcolumns'
               required: 
                 - qid
       responses: 
@@ -501,9 +501,9 @@ paths:
               type: object
               properties: 
                 output: 
-                  $ref: '#/components/schemas/requestbody.output'
+                  $ref: '#/components/schemas/rb.output'
                 callback: 
-                  $ref: '#/components/schemas/requestbody.callback'
+                  $ref: '#/components/schemas/rb.callback'
                 statute_code: 
                   type: string
                   title: statute_code
@@ -511,9 +511,9 @@ paths:
                   type: string
                   title: status_flag
                 search_term: 
-                  $ref: '#/components/schemas/requestbody.search_term'
+                  $ref: '#/components/schemas/rb.search_term'
                 search_code: 
-                  $ref: '#/components/schemas/requestbody.search_code'
+                  $ref: '#/components/schemas/rb.search_code'
                 sort_order: 
                   type: number
                   title: sort_order
@@ -544,9 +544,9 @@ paths:
               type: object
               properties: 
                 output: 
-                  $ref: '#/components/schemas/requestbody.output'
+                  $ref: '#/components/schemas/rb.output'
                 callback: 
-                  $ref: '#/components/schemas/requestbody.callback'
+                  $ref: '#/components/schemas/rb.callback'
       responses: 
         default: 
           $ref: '#/components/responses/case_rest_services.metadata.default'
@@ -2331,45 +2331,45 @@ components:
       description: US postal ZIP code, as maintained by ICIS.
       nullable: true
       example: '53140'
-    requestbody.c1_lat: 
+    rb.c1_lat: 
       type: number
       title: c1_lat
       description: Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
-    requestbody.c1_long: 
+    rb.c1_long: 
       type: number
       title: c1_long
       description: Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
-    requestbody.c2_lat: 
+    rb.c2_lat: 
       type: number
       title: c2_lat
       description: Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
-    requestbody.c2_long: 
+    rb.c2_long: 
       type: number
       title: c2_long
       description: Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
-    requestbody.callback: 
+    rb.callback: 
       type: string
       title: callback
       description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
-    requestbody.descending: 
+    rb.descending: 
       type: string
       title: descending
       description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
       enum: 
         - Y
         - N
-    requestbody.maplist: 
+    rb.maplist: 
       type: string
       title: maplist
       description: Map List Flag.  Provide a Y to return mappable coordinates representing the full geographic extent of the queryset (all facilities that met the selection criteria).
       enum: 
         - Y
         - N
-    requestbody.newsort: 
+    rb.newsort: 
       type: number
       title: newsort
       description: Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column.
-    requestbody.output: 
+    rb.output: 
       type: string
       title: output
       description: |-
@@ -2381,37 +2381,37 @@ components:
         - JSONP
         - JSON
         - XML
-    requestbody.output.only_csv: 
+    rb.output.only_csv: 
       type: string
       title: output
       description: |-
         Output Format Flag.  Enter one of the following keywords:
         * CSV = Facility results formatted as comma delimited file download (default).
-    requestbody.p_activity_contact: 
+    rb.p_activity_contact: 
       type: string
       title: p_activity_contact
       description: "Activity Contact Last Name Filter.  Enter a single last name or partial last name to filter results.  Use \"%\" as a wild-card for advanced searching."
-    requestbody.p_activity_number: 
+    rb.p_activity_number: 
       type: string
       title: p_activity_number
       description: Case Activity Number Filter.  Enter a single case activity number to filter results.
-    requestbody.p_c1lat: 
+    rb.p_c1lat: 
       type: number
       title: p_c1lat
       description: In decimal degrees.  Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
-    requestbody.p_c1lon: 
+    rb.p_c1lon: 
       type: number
       title: p_c1lon
       description: In decimal degrees.  Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
-    requestbody.p_c2lat: 
+    rb.p_c2lat: 
       type: number
       title: p_c2lat
       description: In decimal degrees.  Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
-    requestbody.p_c2lon: 
+    rb.p_c2lon: 
       type: number
       title: p_c2lon
       description: In decimal degrees.  Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
-    requestbody.p_case_category: 
+    rb.p_case_category: 
       type: string
       title: p_case_category
       description: |-
@@ -2419,7 +2419,7 @@ components:
         * AFR = Administrative - Formal
         * AIF = Administrative - Informal
         * JDC = Judicial
-    requestbody.p_case_lead: 
+    rb.p_case_lead: 
       type: string
       title: p_case_lead
       description: |-
@@ -2429,23 +2429,23 @@ components:
       enum: 
         - E
         - S
-    requestbody.p_case_number: 
+    rb.p_case_number: 
       type: string
       title: p_case_number
       description: Case Number Filter.  Enter one or more case numbers to restrict results.  Provide multiple values as a comma-delimited list.
-    requestbody.p_case_sens_flg: 
+    rb.p_case_sens_flg: 
       type: string
       title: p_case_sens_flg
       description: Case Sensitive Data Flag.  Enter a Y or N to include or exclude cases with sensitive data.
-    requestbody.p_case_status: 
+    rb.p_case_status: 
       type: string
       title: p_case_status
       description: Case Status Code Filter.  Enter one or more case status codes to limit results.  Provide multiple values as a comma-delimited list.
-    requestbody.p_case_summary: 
+    rb.p_case_summary: 
       type: string
       title: p_case_summary
       description: Case Summary Search Limiter.  Enter a single case summary to limit results.  This parameter accepts partial codes and allows for advanced search modifiers.
-    requestbody.p_civil_criminal_indicator: 
+    rb.p_civil_criminal_indicator: 
       type: string
       title: p_civil_criminal_indicator
       description: |-
@@ -2457,7 +2457,7 @@ components:
         - CI
         - CR
         - ALL
-    requestbody.p_comp_act_val: 
+    rb.p_comp_act_val: 
       type: string
       title: p_comp_act_val
       description: |-
@@ -2472,11 +2472,11 @@ components:
         - GT100000
         - GT1000000
         - GT50000000
-    requestbody.p_complying_actions: 
+    rb.p_complying_actions: 
       type: string
       title: p_complying_actions
       description: Complying Actions Type Code Limiter.  Enter one or more complying action codes to restrict results.  Provide multiple values as a comma-delimited list.
-    requestbody.p_cost_recovery: 
+    rb.p_cost_recovery: 
       type: string
       title: p_cost_recovery
       description: |-
@@ -2484,58 +2484,58 @@ components:
         * ANY = Cases with any cost recovery amount greater than zero.
         * LEXX = Replacing XX with a dollar value, return cases with cost recovery amount less than or equal to the given amount.
         * GTXX = Replacing XX with a dollar value, return cases with cost recovery amount greater than the given amount.
-    requestbody.p_cp_citation: 
+    rb.p_cp_citation: 
       type: string
       title: p_cp_citation
       description: Law Section Code Filter Alternative. Enter a single law section code to limit results.  This parameter accepts partial codes and allows for advanced search modifiers.
-    requestbody.p_district: 
+    rb.p_district: 
       type: string
       title: p_district
       description: Case Location Court District Limiter.  Enter a single state court district code to limit results.
-    requestbody.p_docket_number: 
+    rb.p_docket_number: 
       type: string
       title: p_docket_number
       description: "DOJ Docket Number Filter.  Enter a single docket number or partial docket number to restrict results.  Use \"%\" as a wildcard for more complex filtering."
-    requestbody.p_enf_program: 
+    rb.p_enf_program: 
       type: string
       title: p_enf_program
       description: Enforcement Program Code Limiter.  Enter one or more enforcement program codes to limit results.  Provide multiple values as a comma-delimited list.  
-    requestbody.p_enf_type: 
+    rb.p_enf_type: 
       type: string
       title: p_enf_type
       description: Case Enforcement Type Filter. Enter one or more case enforcement type codes to limit results.  Provide multiple values as a comma-delimited list.
-    requestbody.p_entered_date: 
+    rb.p_entered_date: 
       type: string
       title: p_entered_date
       description: Settlement Entered Date Limiter.  Enter a single settlement entered date in MM/DD/YYYY format to limit results.
-    requestbody.p_fac_city: 
+    rb.p_fac_city: 
       type: string
       title: p_fac_city
       description: Case Facility City Limiter.  Enter a single complete city name to filter cases by facility location city.
-    requestbody.p_fac_county: 
+    rb.p_fac_county: 
       type: string
       title: p_fac_county
       description: Case Facility County Limiter.  Enter a single complete county name to filter cases by facility location county name.
-    requestbody.p_fac_zip: 
+    rb.p_fac_zip: 
       type: string
       title: p_fac_zip
       description: Case Facility ZIP Code Limiter.  Enter a single 5-digit zip code to filter cases by facility location zip code.
-    requestbody.p_facility_id: 
+    rb.p_facility_id: 
       type: string
       title: p_facility_id
       description: Case Facility Registration Identifier Limiter.  Enter a single complete facility identifier to limit results.
-    requestbody.p_fed_case: 
+    rb.p_fed_case: 
       type: string
       title: p_fed_case
       description: Federal Facility Involvement Flag.  Enter a Y or N to include or exclude cases involving federal facilities.
       enum: 
         - Y
         - N
-    requestbody.p_fed_indicator: 
+    rb.p_fed_indicator: 
       type: string
       title: p_fed_indicator
       description: Federal Facility/Cross Media Flag.  Enter Y or N to limit results to cases with federal facility cross media.
-    requestbody.p_fed_penalty: 
+    rb.p_fed_penalty: 
       type: string
       title: p_fed_penalty
       description: |-
@@ -2557,7 +2557,7 @@ components:
         - GT500000
         - GT1000000
         - GT2500000
-    requestbody.p_fntype: 
+    rb.p_fntype: 
       type: string
       title: p_fntype
       description: |-
@@ -2571,90 +2571,90 @@ components:
         - CONTAINS
         - EXACT
         - BEGINS
-    requestbody.p_from_date: 
+    rb.p_from_date: 
       type: string
       title: p_from_date
       description: Administrative or Judicial Milestone Date Range Start Limiter.  Enter a date value in MM/DD/YYYY format to limit milestone results.  Parameter p_to_date must also be populated when using this parameter option.
-    requestbody.p_id.case.get_case_report: 
+    rb.p_id.case.get_case_report: 
       type: string
       title: p_id
       description: Case Number. Enter the case number identifier to retrieve the case report.
-    requestbody.p_id.case.get_crcase_report: 
+    rb.p_id.case.get_crcase_report: 
       type: string
       title: p_id
       description: Prosecution Summary Identifier. Enter the numeric prosecution summary identifier to retrieve the criminal case report.
-    requestbody.p_law: 
+    rb.p_law: 
       type: string
       title: p_law
       description: Law Statute Code Filter.  Enter a single statute code to limit results.
-    requestbody.p_lodged_date: 
+    rb.p_lodged_date: 
       type: string
       title: p_lodged_date
       description: Settlement Lodged Date Limiter.  Enter a single settlement lodged date in MM/DD/YYYY format to limit results.
-    requestbody.p_milestone: 
+    rb.p_milestone: 
       type: string
       title: p_milestone
       description: Administrative or Judicial Milestone Filter.  Enter one or milestone values to restrict results.  Provide multiple values as a comma-delimited list.
-    requestbody.p_milestone_fy: 
+    rb.p_milestone_fy: 
       type: string
       title: p_milestone_fy
       description: Administrative or Judicial Milestone Fiscal Year Limiter.  Enter a single fiscal year value to limit milestone searches to a given fiscal year.
-    requestbody.p_multimedia: 
+    rb.p_multimedia: 
       type: string
       title: p_multimedia
       description: Enforcement Multimedia Case Flag.  Enter Y or N to include or exclude multimedia cases.
       enum: 
         - Y
         - N
-    requestbody.p_naics: 
+    rb.p_naics: 
       type: string
       title: p_naics
       description: North American Industry Classification System Filter. Enter two to six digits to filter results to facilities having matching NAICS codes.  Digits less than six will match to all codes beginning with the provided values.
-    requestbody.p_naics_frs_flg: 
+    rb.p_naics_frs_flg: 
       type: string
       title: p_naics_frs_flg
       description: Case Location Extended FRS NAICS Search Flag.  Enter Y to expand NAICS search to include Federal Registry Service datasets.
       enum: 
         - Y
         - N
-    requestbody.p_naics_primary_flg: 
+    rb.p_naics_primary_flg: 
       type: string
       title: p_naics_primary_flg
       description: Case Location Primary NAICS Flag.  Enter Y to limit NAICS search results to primary NAICS codes only.
       enum: 
         - Y
         - N
-    requestbody.p_name: 
+    rb.p_name: 
       type: string
       title: p_name
       description: Case Name Filter.  Enter one or more case names to restrict results.  Provide multiple values as a comma-delimited list.  When using this parameter the p_name_type parameter is required.
-    requestbody.p_name_type: 
+    rb.p_name_type: 
       type: string
       title: p_name_type
       description: Case Name Filter Modifier.
-    requestbody.p_oeca_core: 
+    rb.p_oeca_core: 
       type: string
       title: p_oeca_core
       description: OECA Core Program Flag.  Enter Y or N to include or exclude core program cases.
       enum: 
         - Y
         - N
-    requestbody.p_priority_area: 
+    rb.p_priority_area: 
       type: string
       title: p_priority_area
       description: Case Priority Area Filter.  Enter one or more case priority areas to limit results.  Provide multiple values as a comma-delimited list.
-    requestbody.p_priority_area_desc: 
+    rb.p_priority_area_desc: 
       type: string
       title: p_priority_area_desc
       description: "Case Priority Area Description Filter.  Enter a single case priority area description or partial case priority area description to limit results.  Use \"%\" as a wild-card match for more complex searches."
-    requestbody.p_rank_order: 
+    rb.p_rank_order: 
       type: string
       title: p_rank_order
       description: Law Status Rank Order Limiter.  Enter a single integer rank order to limit results.
       enum: 
         - 1
         - 0
-    requestbody.p_region: 
+    rb.p_region: 
       type: string
       title: p_region
       description: EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region.
@@ -2669,19 +2669,19 @@ components:
         - 08
         - 09
         - 10
-    requestbody.p_role: 
+    rb.p_role: 
       type: string
       title: p_role
       description: Activity Contact Role Code Filter.  Enter a single role code to restrict results.
-    requestbody.p_section: 
+    rb.p_section: 
       type: string
       title: p_section
       description: Law Section Code Filter. Enter one or more law section codes to limit results.  Provide multiple values as a comma-delimited list.
-    requestbody.p_sep_cats: 
+    rb.p_sep_cats: 
       type: string
       title: p_sep_cats
       description: Supplemental Environmental Projects Activity Category Code Limiter.  Provide one or more SEP activity category codes to limit results.  Provide multiple values as a comma-delimited list.
-    requestbody.p_sep_val: 
+    rb.p_sep_val: 
       type: string
       title: p_sep_val
       description: |-
@@ -2701,11 +2701,11 @@ components:
         - GT100000
         - GT500000
         - GT1000000
-    requestbody.p_sic.CASE: 
+    rb.p_sic.CASE: 
       type: string
       title: p_sic
       description: Standard Industrial Classification (SIC) Code Filter.  Enter a single 4-digit SIC Code to filter results.
-    requestbody.p_sic_ao_naics: 
+    rb.p_sic_ao_naics: 
       type: string
       title: p_sic_ao_naics
       description: |-
@@ -2715,29 +2715,29 @@ components:
       enum: 
         - AND
         - OR
-    requestbody.p_sic_frs_flg: 
+    rb.p_sic_frs_flg: 
       type: string
       title: p_sic_frs_flg
       description: Case Location Extended FRS SIC Search Flag.  Enter Y to expand SIC search to include Federal Registry Service datasets.
       enum: 
         - Y
         - N
-    requestbody.p_sic_primary_flg: 
+    rb.p_sic_primary_flg: 
       type: string
       title: p_sic_primary_flg
       description: Case Location Primary SIC Flag.  Enter Y to limit SIC search results to primary SIC codes only.
       enum: 
         - Y
         - N
-    requestbody.p_state: 
+    rb.p_state: 
       type: string
       title: p_state
       description: Case Location State Filter.  Enter one or more state USPS postal codes to filter results.  Provide multiple values as a comma-delimited list.
-    requestbody.p_to_date: 
+    rb.p_to_date: 
       type: string
       title: p_to_date
       description: Administrative or Judicial Milestone Date Range End Limiter.  Enter a date value in MM/DD/YYYY format to limit milestone results.  Parameter p_from_date must also be populated when using this parameter option.
-    requestbody.p_total_comp_act_val: 
+    rb.p_total_comp_act_val: 
       type: string
       title: p_total_comp_act_val
       description: |-
@@ -2745,7 +2745,7 @@ components:
         * ANY = Cases with any total compliance action amount greater than zero.
         * LEXX = Replacing XX with a dollar value, return cases with total compliance action amount less than or equal to the given amount.
         * GTXX = Replacing XX with a dollar value, return cases with total compliance action amount greater than the given amount.
-    requestbody.p_total_cost_recovery: 
+    rb.p_total_cost_recovery: 
       type: string
       title: p_total_cost_recovery
       description: |-
@@ -2753,7 +2753,7 @@ components:
         * ANY = Cases with any cost recovery amount greater than zero.
         * LEXX = Replacing XX with a dollar value, return cases with cost recovery amount less than or equal to the given amount.
         * GTXX = Replacing XX with a dollar value, return cases with cost recovery amount greater than the given amount.
-    requestbody.p_total_fed_penalty: 
+    rb.p_total_fed_penalty: 
       type: string
       title: p_total_fed_penalty
       description: |-
@@ -2761,7 +2761,7 @@ components:
         * ANY = Cases with any federal penalty greater than zero.
         * LEXX = Replacing XX with a dollar value, return cases with federal penalty less than or equal to the given amount.
         * GTXX = Replacing XX with a dollar value, return cases with federal penalty greater than the given amount.
-    requestbody.p_total_sep_val: 
+    rb.p_total_sep_val: 
       type: string
       title: p_total_sep_val
       description: |-
@@ -2773,57 +2773,57 @@ components:
         * GT100000 = return cases with SEP total amount greater than $100,000.
         * GT500000 = return cases with SEP total amount greater than $500,000.
         * GT1000000 = return cases with SEP total amount greater than $1,000,000.
-    requestbody.p_tribal: 
+    rb.p_tribal: 
       type: string
       title: p_tribal
       description: Case Location Tribal Land Flag.  Enter Y or N to include or disallow cases on tribal land.
       enum: 
         - Y
         - N
-    requestbody.p_usmex: 
+    rb.p_usmex: 
       type: string
       title: p_usmex
       description: US-Mexico Border Flag.  Enter Y/N to restrict searches to facilities located within 100KM of the border.
       enum: 
         - Y
         - N
-    requestbody.p_violation: 
+    rb.p_violation: 
       type: string
       title: p_violation
       description: Violation Type Code Filter.  Enter one or more violation type codes to limit results.  Provide multiple values as a comma-delimited list.
-    requestbody.p_voluntary: 
+    rb.p_voluntary: 
       type: string
       title: p_voluntary
       description: Voluntary Self Disclosure Flag.  Enter Y or N to include or exclude cases results having voluntary disclosure.
-    requestbody.pageno: 
+    rb.pageno: 
       type: number
       title: pageno
       description: Indicates the number of the page to display. It is used only when the results are paginated.
-    requestbody.qcolumns: 
+    rb.qcolumns: 
       type: string
       title: qcolumns
       description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
-    requestbody.qid: 
+    rb.qid: 
       type: string
       title: qid
       description: Query ID Selector.  Enter the QueryID number from a previously run query.
-    requestbody.queryset: 
+    rb.queryset: 
       type: number
       title: queryset
       description: Query Limiter.  Enter a value to limit the number of records returned for each query. Value cannot exceed 70,000.
-    requestbody.responseset: 
+    rb.responseset: 
       type: number
       title: responseset
       description: Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000.
-    requestbody.search_code: 
+    rb.search_code: 
       type: string
       title: search_code
       description: Enter a partial or complete code value.
-    requestbody.search_term: 
+    rb.search_term: 
       type: string
       title: search_term
       description: Enter a partial or complete search phrase or word.
-    requestbody.tablelist: 
+    rb.tablelist: 
       type: string
       title: tablelist
       description: Table List Flag. Enter a Y to display the first page of facility results.

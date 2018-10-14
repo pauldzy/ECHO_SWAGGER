@@ -60,16 +60,16 @@
                          "type": "object"
                         ,"properties": {
                             "output": {
-                               "$ref": "#/components/schemas/requestbody.output"
+                               "$ref": "#/components/schemas/rb.output"
                            }
                            ,"p_id": {
-                               "$ref": "#/components/schemas/requestbody.p_id.CAA"
+                               "$ref": "#/components/schemas/rb.p_id.CAA"
                            }
                            ,"p_units": {
-                               "$ref": "#/components/schemas/requestbody.p_units"
+                               "$ref": "#/components/schemas/rb.p_units"
                            }
                            ,"callback": {
-                               "$ref": "#/components/schemas/requestbody.callback"
+                               "$ref": "#/components/schemas/rb.callback"
                            }
                         }
                         ,"required": [
@@ -127,19 +127,19 @@
                          "type": "object"
                         ,"properties": {
                             "output": {
-                               "$ref": "#/components/schemas/requestbody.output"
+                               "$ref": "#/components/schemas/rb.output"
                            }
                            ,"nnn": {
-                               "$ref": "#/components/schemas/requestbody.nnn"
+                               "$ref": "#/components/schemas/rb.nnn"
                            }
                            ,"nn2": {
-                               "$ref": "#/components/schemas/requestbody.nn2"
+                               "$ref": "#/components/schemas/rb.nn2"
                            }
                            ,"p_id": {
-                               "$ref": "#/components/schemas/requestbody.p_id.CAA"
+                               "$ref": "#/components/schemas/rb.p_id.CAA"
                            }
                            ,"callback": {
-                               "$ref": "#/components/schemas/requestbody.callback"
+                               "$ref": "#/components/schemas/rb.callback"
                            }
                         }
                         ,"required": [
@@ -196,16 +196,16 @@
                          "type": "object"
                         ,"properties": {
                             "output": {
-                               "$ref": "#/components/schemas/requestbody.output"
+                               "$ref": "#/components/schemas/rb.output"
                            }
                            ,"p_id": {
-                               "$ref": "#/components/schemas/requestbody.p_id.CAA"
+                               "$ref": "#/components/schemas/rb.p_id.CAA"
                            }
                            ,"p_units": {
-                               "$ref": "#/components/schemas/requestbody.p_units"
+                               "$ref": "#/components/schemas/rb.p_units"
                            }
                            ,"callback": {
-                               "$ref": "#/components/schemas/requestbody.callback"
+                               "$ref": "#/components/schemas/rb.callback"
                            }
                         }
                         ,"required": [
@@ -257,13 +257,13 @@
                          "type": "object"
                         ,"properties": {
                             "output": {
-                               "$ref": "#/components/schemas/requestbody.output"
+                               "$ref": "#/components/schemas/rb.output"
                            }
                            ,"p_id": {
-                               "$ref": "#/components/schemas/requestbody.p_id.CAA"
+                               "$ref": "#/components/schemas/rb.p_id.CAA"
                            }
                            ,"callback": {
-                               "$ref": "#/components/schemas/requestbody.callback"
+                               "$ref": "#/components/schemas/rb.callback"
                            }
                         }
                         ,"required": [
@@ -317,13 +317,13 @@
                          "type": "object"
                         ,"properties": {
                             "output": {
-                               "$ref": "#/components/schemas/requestbody.output"
+                               "$ref": "#/components/schemas/rb.output"
                            }
                            ,"p_id": {
-                               "$ref": "#/components/schemas/requestbody.p_id.CAA"
+                               "$ref": "#/components/schemas/rb.p_id.CAA"
                            }
                            ,"callback": {
-                               "$ref": "#/components/schemas/requestbody.callback"
+                               "$ref": "#/components/schemas/rb.callback"
                            }
                         }
                         ,"required": [
@@ -377,13 +377,13 @@
                          "type": "object"
                         ,"properties": {
                             "output": {
-                               "$ref": "#/components/schemas/requestbody.output"
+                               "$ref": "#/components/schemas/rb.output"
                            }
                            ,"p_id": {
-                               "$ref": "#/components/schemas/requestbody.p_id"
+                               "$ref": "#/components/schemas/rb.p_id"
                            }
                            ,"callback": {
-                               "$ref": "#/components/schemas/requestbody.callback"
+                               "$ref": "#/components/schemas/rb.callback"
                            }
                         }
                         ,"required": [
@@ -1377,22 +1377,22 @@
             ,"nullable": true
             ,"example": "53140"
          }
-         ,"requestbody.callback": {
+         ,"rb.callback": {
              "type": "string"
             ,"title": "callback"
             ,"description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
          }
-         ,"requestbody.nn2": {
+         ,"rb.nn2": {
              "type": "string"
             ,"title": "nn2"
             ,"description": "Secondary statute filter, provide a single statute code to filter permit results (e.g., \"EP313\")"
          }
-         ,"requestbody.nnn": {
+         ,"rb.nnn": {
              "type": "string"
             ,"title": "nnn"
             ,"description": "Statute filter, provide a single statute code to filter permit results (e.g., \"CAA\")"
          }
-         ,"requestbody.output": {
+         ,"rb.output": {
              "type": "string"
             ,"title": "output"
             ,"description": "Output Format Flag.  Enter one of the following keywords:\n* JSON = Data model formatted as Javascript Object Notation (default).\n* JSONP = Data model formatted as Javascript Object Notation with Padding.  \n* XML = Data model formatted as Extensible Markup Language."
@@ -1402,17 +1402,17 @@
                ,"XML"
             ]
          }
-         ,"requestbody.p_id": {
+         ,"rb.p_id": {
              "type": "string"
             ,"title": "p_id"
             ,"description": "Identifier for the service."
          }
-         ,"requestbody.p_id.CAA": {
+         ,"rb.p_id.CAA": {
              "type": "string"
             ,"title": "p_id"
             ,"description": "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
          }
-         ,"requestbody.p_units": {
+         ,"rb.p_units": {
              "type": "string"
             ,"title": "p_units"
             ,"description": "Units of Measurement.  For the Air Pollutant Report, the default value is 'lbs'.  Enter \"TWPE\" for Toxic Weighted Pounds Equivalents (TWPE). "

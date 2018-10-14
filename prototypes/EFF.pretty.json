@@ -69,25 +69,25 @@
                          "type": "object"
                         ,"properties": {
                             "p_id": {
-                               "$ref": "#/components/schemas/requestbody.p_id"
+                               "$ref": "#/components/schemas/rb.p_id"
                            }
                            ,"outfall": {
-                               "$ref": "#/components/schemas/requestbody.outfall"
+                               "$ref": "#/components/schemas/rb.outfall"
                            }
                            ,"parameter_code": {
-                               "$ref": "#/components/schemas/requestbody.parameter_code"
+                               "$ref": "#/components/schemas/rb.parameter_code"
                            }
                            ,"start_date": {
-                               "$ref": "#/components/schemas/requestbody.start_date"
+                               "$ref": "#/components/schemas/rb.start_date"
                            }
                            ,"end_date": {
-                               "$ref": "#/components/schemas/requestbody.end_date"
+                               "$ref": "#/components/schemas/rb.end_date"
                            }
                            ,"output": {
-                               "$ref": "#/components/schemas/requestbody.output"
+                               "$ref": "#/components/schemas/rb.output"
                            }
                            ,"callback": {
-                               "$ref": "#/components/schemas/requestbody.callback"
+                               "$ref": "#/components/schemas/rb.callback"
                            }
                         }
                         ,"required": [
@@ -147,19 +147,19 @@
                          "type": "object"
                         ,"properties": {
                             "p_id": {
-                               "$ref": "#/components/schemas/requestbody.p_id"
+                               "$ref": "#/components/schemas/rb.p_id"
                            }
                            ,"output": {
-                               "$ref": "#/components/schemas/requestbody.output"
+                               "$ref": "#/components/schemas/rb.output"
                            }
                            ,"callback": {
-                               "$ref": "#/components/schemas/requestbody.callback"
+                               "$ref": "#/components/schemas/rb.callback"
                            }
                            ,"start_date": {
-                               "$ref": "#/components/schemas/requestbody.start_date"
+                               "$ref": "#/components/schemas/rb.start_date"
                            }
                            ,"end_date": {
-                               "$ref": "#/components/schemas/requestbody.end_date"
+                               "$ref": "#/components/schemas/rb.end_date"
                            }
                         }
                         ,"required": [
@@ -219,19 +219,19 @@
                          "type": "object"
                         ,"properties": {
                             "p_id": {
-                               "$ref": "#/components/schemas/requestbody.p_id"
+                               "$ref": "#/components/schemas/rb.p_id"
                            }
                            ,"outfall": {
-                               "$ref": "#/components/schemas/requestbody.outfall"
+                               "$ref": "#/components/schemas/rb.outfall"
                            }
                            ,"parameter_code": {
-                               "$ref": "#/components/schemas/requestbody.parameter_code"
+                               "$ref": "#/components/schemas/rb.parameter_code"
                            }
                            ,"start_date": {
-                               "$ref": "#/components/schemas/requestbody.start_date"
+                               "$ref": "#/components/schemas/rb.start_date"
                            }
                            ,"end_date": {
-                               "$ref": "#/components/schemas/requestbody.end_date"
+                               "$ref": "#/components/schemas/rb.end_date"
                            }
                         }
                         ,"required": [
@@ -288,16 +288,16 @@
                          "type": "object"
                         ,"properties": {
                             "output": {
-                               "$ref": "#/components/schemas/requestbody.output"
+                               "$ref": "#/components/schemas/rb.output"
                            }
                            ,"callback": {
-                               "$ref": "#/components/schemas/requestbody.callback"
+                               "$ref": "#/components/schemas/rb.callback"
                            }
                            ,"search_term": {
-                               "$ref": "#/components/schemas/requestbody.search_term"
+                               "$ref": "#/components/schemas/rb.search_term"
                            }
                            ,"search_code": {
-                               "$ref": "#/components/schemas/requestbody.search_code"
+                               "$ref": "#/components/schemas/rb.search_code"
                            }
                         }
                      }
@@ -1432,22 +1432,22 @@
             ,"nullable": true
             ,"example": "No Violation"
          }
-         ,"requestbody.callback": {
+         ,"rb.callback": {
              "type": "string"
             ,"title": "callback"
             ,"description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
          }
-         ,"requestbody.end_date": {
+         ,"rb.end_date": {
              "type": "string"
             ,"title": "end_date"
             ,"description": "The end date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with start_date. If start_date and end_date are not specified, the service will return the last three years of data."
          }
-         ,"requestbody.outfall": {
+         ,"rb.outfall": {
              "type": "string"
             ,"title": "outfall"
             ,"description": "Three-character code that identifies the point of discharge (e.g., pipe or outfall) for a facility. A single NPDES ID may have multiple points of discharge."
          }
-         ,"requestbody.output": {
+         ,"rb.output": {
              "type": "string"
             ,"title": "output"
             ,"description": "Output Format Flag.  Enter one of the following keywords:\n* JSON = Data model formatted as Javascript Object Notation (default).\n* JSONP = Data model formatted as Javascript Object Notation with Padding.  \n* XML = Data model formatted as Extensible Markup Language."
@@ -1457,27 +1457,27 @@
                ,"XML"
             ]
          }
-         ,"requestbody.p_id": {
+         ,"rb.p_id": {
              "type": "string"
             ,"title": "p_id"
             ,"description": "Identifier for the service."
          }
-         ,"requestbody.parameter_code": {
+         ,"rb.parameter_code": {
              "type": "string"
             ,"title": "parameter_code"
             ,"description": "Five-digit numeric code identifying the parameter. See Parameter Lookup documentation for a complete list of codes."
          }
-         ,"requestbody.search_code": {
+         ,"rb.search_code": {
              "type": "string"
             ,"title": "search_code"
             ,"description": "Enter a partial or complete code value."
          }
-         ,"requestbody.search_term": {
+         ,"rb.search_term": {
              "type": "string"
             ,"title": "search_term"
             ,"description": "Enter a partial or complete search phrase or word."
          }
-         ,"requestbody.start_date": {
+         ,"rb.start_date": {
              "type": "string"
             ,"title": "start_date"
             ,"description": "The start date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with end_date. If start_date and end_date are not specified, the service will return the last three years of data."
@@ -1503,6 +1503,7 @@
          }
          ,"rest_lookups.cwa_parameters.Results": {
              "type": "object"
+            ,"title": "CWA Parameters Results"
             ,"properties": {
                 "Message": {
                    "$ref": "#/components/schemas/property.Message"
@@ -1618,6 +1619,7 @@
                 "application/json": {
                    "schema": {
                       "type": "object"
+                     ,"title": "CWA Parameters Root"
                      ,"xml": {
                          "name": "Root"
                      }
@@ -1634,6 +1636,7 @@
                ,"application/xml": {
                    "schema": {
                       "type": "object"
+                     ,"title": "CWA Parameters Root"
                      ,"xml": {
                          "name": "Root"
                      }
