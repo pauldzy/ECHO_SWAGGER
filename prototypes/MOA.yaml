@@ -20236,14 +20236,49 @@ components:
           $ref: '#/components/schemas/x879'
         Ozone8hr2008Area: 
           $ref: '#/components/schemas/x880'
+        Ozone8hr2015Area: 
+          type: string
+          title: Ozone8hr2015Area
+          nullable: true
+          example: Milwaukee-Racine, WI
+        Lead1978Area: 
+          type: string
+          title: Lead1978Area
+          nullable: true
+          example: Washington, DC-MD-VA
         Lead2008Area: 
           $ref: '#/components/schemas/x878'
+        CarbonMonoxide1971Area: 
+          type: string
+          title: CarbonMonoxide1971Area
+          nullable: true
+          example: Washington, DC-MD-VA
+        NitrogenDioxide1971Area: 
+          type: string
+          title: NitrogenDioxide1971Area
+          nullable: true
+          example: Washington, DC-MD-VA
+        SulfurDioxide1971Area: 
+          type: string
+          title: SulfurDioxide1971Area
+          nullable: true
+          example: Washington, DC-MD-VA
         SulfurDioxide2010Area: 
           $ref: '#/components/schemas/x882'
+        ParticulateMatter1987Area: 
+          type: string
+          title: ParticulateMatter1987Area
+          nullable: true
+          example: Washington, DC-MD-VA
         ParticulateMatter1997Area: 
           $ref: '#/components/schemas/x928'
         ParticulateMatter2006Area: 
           $ref: '#/components/schemas/x881'
+        ParticulateMatter2012Area: 
+          type: string
+          title: ParticulateMatter2012Area
+          nullable: true
+          example: Washington, DC-MD-VA
     x1455: 
       type: object
       title: CAED Documents
@@ -25643,11 +25678,6 @@ components:
           type: string
           title: QcFlag
           nullable: true
-        MeasurementType: 
-          type: string
-          title: MeasurementType
-          nullable: true
-          example: NMth
       required: 
         - DmrYear
         - ExternalPermitNmbr
@@ -25692,7 +25722,6 @@ components:
         - HasPermitLimits
         - HasLoadingsData
         - QcFlag
-        - MeasurementType
     x2102: 
       type: object
       title: Custom Data Monitor PD Results
