@@ -506,6 +506,44 @@ paths:
       responses: 
         default: 
           $ref: '#/components/responses/dfr_rest_services.get_cwa_se_compliance.default'
+  /dfr_rest_services.get_d80d90s_details: 
+    get: 
+      parameters: 
+        - $ref: '#/components/parameters/output'
+        - $ref: '#/components/parameters/p_npdes_id'
+        - $ref: '#/components/parameters/p_missinglate'
+        - $ref: '#/components/parameters/p_qmtype'
+        - $ref: '#/components/parameters/p_qmvalue'
+        - $ref: '#/components/parameters/callback'
+      responses: 
+        default: 
+          $ref: '#/components/responses/dfr_rest_services.get_d80d90s_details.default'
+    post: 
+      requestBody: 
+        content: 
+          application/x-www-form-urlencoded: 
+            schema: 
+              type: object
+              properties: 
+                output: 
+                  $ref: '#/components/schemas/rb.output'
+                p_npdes_id: 
+                  type: string
+                  title: p_npdes_id
+                p_missinglate: 
+                  type: string
+                  title: p_missinglate
+                p_qmtype: 
+                  type: string
+                  title: p_qmtype
+                p_qmvalue: 
+                  type: string
+                  title: p_qmvalue
+                callback: 
+                  $ref: '#/components/schemas/rb.callback'
+      responses: 
+        default: 
+          $ref: '#/components/responses/dfr_rest_services.get_d80d90s_details.default'
   /dfr_rest_services.get_demographics_by_id: 
     get: 
       tags: 
@@ -2957,6 +2995,146 @@ components:
           $ref: '#/components/schemas/dfr_rest_services.get_dfr.CWASECompliance'
       required: 
         - Message
+    dfr_rest_services.get_d80d90s_details.D80D90sDetails: 
+      type: object
+      title: D80 D90 Details
+      properties: 
+        Sources: 
+          type: array
+          items: 
+            $ref: '#/components/schemas/dfr_rest_services.get_d80d90s_details.D80D90sDetails.Sources'
+          xml: 
+            wrapped: true
+      required: 
+        - Sources
+    dfr_rest_services.get_d80d90s_details.D80D90sDetails.Sources: 
+      type: object
+      title: D80 D90 Details Sources
+      properties: 
+        NPDESId: 
+          type: string
+          title: NPDESId
+          nullable: true
+        VersionNmbr: 
+          $ref: '#/components/schemas/property.VersionNmbr'
+        PermFeatureNmbr: 
+          $ref: '#/components/schemas/property.PermFeatureNmbr'
+        LimitId: 
+          $ref: '#/components/schemas/property.LimitId'
+        MonitoringLocationCode: 
+          $ref: '#/components/schemas/property.MonitoringLocationCode'
+        MonitoringLocationDesc: 
+          $ref: '#/components/schemas/property.MonitoringLocationDesc'
+        LimitBeginDate: 
+          $ref: '#/components/schemas/property.LimitBeginDate'
+        LimitEndDate: 
+          $ref: '#/components/schemas/property.LimitEndDate'
+        LimitSetName: 
+          type: string
+          title: LimitSetName
+          nullable: true
+        ParameterCode: 
+          $ref: '#/components/schemas/property.ParameterCode'
+        ParameterDesc: 
+          $ref: '#/components/schemas/property.ParameterDesc'
+        ValueTypeCode: 
+          $ref: '#/components/schemas/property.ValueTypeCode'
+        MonitoringPeriodEndDate: 
+          $ref: '#/components/schemas/property.MonitoringPeriodEndDate'
+        DmrDueDate: 
+          type: string
+          title: DmrDueDate
+          nullable: true
+        NpdesViolationId: 
+          type: string
+          title: NpdesViolationId
+          nullable: true
+        RncDetectionDate: 
+          type: string
+          title: RncDetectionDate
+          nullable: true
+        RncDetectionCode: 
+          type: string
+          title: RncDetectionCode
+          nullable: true
+        RncDetectionDesc: 
+          type: string
+          title: RncDetectionDesc
+          nullable: true
+        RncResolutionDate: 
+          type: string
+          title: RncResolutionDate
+          nullable: true
+        RncResolutionCode: 
+          type: string
+          title: RncResolutionCode
+          nullable: true
+        RncResolutionDesc: 
+          type: string
+          title: RncResolutionDesc
+          nullable: true
+        NodiCode: 
+          type: string
+          title: NodiCode
+          nullable: true
+        NodiDesc: 
+          type: string
+          title: NodiDesc
+          nullable: true
+        NodiValidationFlag: 
+          type: string
+          title: NodiValidationFlag
+          nullable: true
+        DaysLate: 
+          $ref: '#/components/schemas/property.DaysLate'
+        MissingLate: 
+          type: string
+          title: MissingLate
+          nullable: true
+        ValueReceivedDate: 
+          $ref: '#/components/schemas/property.ValueReceivedDate'
+        ViolationCode: 
+          $ref: '#/components/schemas/property.ViolationCode'
+      required: 
+        - NPDESId
+        - VersionNmbr
+        - PermFeatureNmbr
+        - LimitId
+        - MonitoringLocationCode
+        - MonitoringLocationDesc
+        - LimitBeginDate
+        - LimitEndDate
+        - LimitSetName
+        - ParameterCode
+        - ParameterDesc
+        - ValueTypeCode
+        - MonitoringPeriodEndDate
+        - DmrDueDate
+        - NpdesViolationId
+        - RncDetectionDate
+        - RncDetectionCode
+        - RncDetectionDesc
+        - RncResolutionDate
+        - RncResolutionCode
+        - RncResolutionDesc
+        - NodiCode
+        - NodiDesc
+        - NodiValidationFlag
+        - DaysLate
+        - MissingLate
+        - ValueReceivedDate
+        - ViolationCode
+    dfr_rest_services.get_d80d90s_details.Results: 
+      type: object
+      title: D80 D90 Details Results
+      properties: 
+        Message: 
+          $ref: '#/components/schemas/property.Message'
+        D80D90sDetails: 
+          $ref: '#/components/schemas/dfr_rest_services.get_d80d90s_details.D80D90sDetails'
+      required: 
+        - Message
+        - D80D90sDetails
     dfr_rest_services.get_demographics_by_id.Results: 
       type: object
       title: Demographics By ID Results
@@ -3375,6 +3553,162 @@ components:
           type: string
           title: Qtr13Count
           nullable: true
+        Mnth1Count: 
+          type: string
+          title: Mnth1Count
+          nullable: true
+        Mnth2Count: 
+          type: string
+          title: Mnth2Count
+          nullable: true
+        Mnth3Count: 
+          type: string
+          title: Mnth3Count
+          nullable: true
+        Mnth4Count: 
+          type: string
+          title: Mnth4Count
+          nullable: true
+        Mnth5Count: 
+          type: string
+          title: Mnth5Count
+          nullable: true
+        Mnth6Count: 
+          type: string
+          title: Mnth6Count
+          nullable: true
+        Mnth7Count: 
+          type: string
+          title: Mnth7Count
+          nullable: true
+        Mnth8Count: 
+          type: string
+          title: Mnth8Count
+          nullable: true
+        Mnth9Count: 
+          type: string
+          title: Mnth9Count
+          nullable: true
+        Mnth10Count: 
+          type: string
+          title: Mnth10Count
+          nullable: true
+        Mnth11Count: 
+          type: string
+          title: Mnth11Count
+          nullable: true
+        Mnth12Count: 
+          type: string
+          title: Mnth12Count
+          nullable: true
+        Mnth13Count: 
+          type: string
+          title: Mnth13Count
+          nullable: true
+        Mnth14Count: 
+          type: string
+          title: Mnth14Count
+          nullable: true
+        Mnth15Count: 
+          type: string
+          title: Mnth15Count
+          nullable: true
+        Mnth16Count: 
+          type: string
+          title: Mnth16Count
+          nullable: true
+        Mnth17Count: 
+          type: string
+          title: Mnth17Count
+          nullable: true
+        Mnth18Count: 
+          type: string
+          title: Mnth18Count
+          nullable: true
+        Mnth19Count: 
+          type: string
+          title: Mnth19Count
+          nullable: true
+        Mnth20Count: 
+          type: string
+          title: Mnth20Count
+          nullable: true
+        Mnth21Count: 
+          type: string
+          title: Mnth21Count
+          nullable: true
+        Mnth22Count: 
+          type: string
+          title: Mnth22Count
+          nullable: true
+        Mnth23Count: 
+          type: string
+          title: Mnth23Count
+          nullable: true
+        Mnth24Count: 
+          type: string
+          title: Mnth24Count
+          nullable: true
+        Mnth25Count: 
+          type: string
+          title: Mnth25Count
+          nullable: true
+        Mnth26Count: 
+          type: string
+          title: Mnth26Count
+          nullable: true
+        Mnth27Count: 
+          type: string
+          title: Mnth27Count
+          nullable: true
+        Mnth28Count: 
+          type: string
+          title: Mnth28Count
+          nullable: true
+        Mnth29Count: 
+          type: string
+          title: Mnth29Count
+          nullable: true
+        Mnth30Count: 
+          type: string
+          title: Mnth30Count
+          nullable: true
+        Mnth31Count: 
+          type: string
+          title: Mnth31Count
+          nullable: true
+        Mnth32Count: 
+          type: string
+          title: Mnth32Count
+          nullable: true
+        Mnth33Count: 
+          type: string
+          title: Mnth33Count
+          nullable: true
+        Mnth34Count: 
+          type: string
+          title: Mnth34Count
+          nullable: true
+        Mnth35Count: 
+          type: string
+          title: Mnth35Count
+          nullable: true
+        Mnth36Count: 
+          type: string
+          title: Mnth36Count
+          nullable: true
+        Mnth37Count: 
+          type: string
+          title: Mnth37Count
+          nullable: true
+        Mnth38Count: 
+          type: string
+          title: Mnth38Count
+          nullable: true
+        Mnth39Count: 
+          type: string
+          title: Mnth39Count
+          nullable: true
       required: 
         - SourceID
         - MissingLate
@@ -3391,6 +3725,45 @@ components:
         - Qtr11Count
         - Qtr12Count
         - Qtr13Count
+        - Mnth1Count
+        - Mnth2Count
+        - Mnth3Count
+        - Mnth4Count
+        - Mnth5Count
+        - Mnth6Count
+        - Mnth7Count
+        - Mnth8Count
+        - Mnth9Count
+        - Mnth10Count
+        - Mnth11Count
+        - Mnth12Count
+        - Mnth13Count
+        - Mnth14Count
+        - Mnth15Count
+        - Mnth16Count
+        - Mnth17Count
+        - Mnth18Count
+        - Mnth19Count
+        - Mnth20Count
+        - Mnth21Count
+        - Mnth22Count
+        - Mnth23Count
+        - Mnth24Count
+        - Mnth25Count
+        - Mnth26Count
+        - Mnth27Count
+        - Mnth28Count
+        - Mnth29Count
+        - Mnth30Count
+        - Mnth31Count
+        - Mnth32Count
+        - Mnth33Count
+        - Mnth34Count
+        - Mnth35Count
+        - Mnth36Count
+        - Mnth37Count
+        - Mnth38Count
+        - Mnth39Count
     dfr_rest_services.get_dfr.CWACSCompliance: 
       type: object
       title: CWA CS Compliance
@@ -3507,6 +3880,318 @@ components:
           type: string
           title: Qtr13Value
           nullable: true
+        Mnth1Status: 
+          type: string
+          title: Mnth1Status
+          nullable: true
+        Mnth1Value: 
+          type: string
+          title: Mnth1Value
+          nullable: true
+        Mnth2Status: 
+          type: string
+          title: Mnth2Status
+          nullable: true
+        Mnth2Value: 
+          type: string
+          title: Mnth2Value
+          nullable: true
+        Mnth3Status: 
+          type: string
+          title: Mnth3Status
+          nullable: true
+        Mnth3Value: 
+          type: string
+          title: Mnth3Value
+          nullable: true
+        Mnth4Status: 
+          type: string
+          title: Mnth4Status
+          nullable: true
+        Mnth4Value: 
+          type: string
+          title: Mnth4Value
+          nullable: true
+        Mnth5Status: 
+          type: string
+          title: Mnth5Status
+          nullable: true
+        Mnth5Value: 
+          type: string
+          title: Mnth5Value
+          nullable: true
+        Mnth6Status: 
+          type: string
+          title: Mnth6Status
+          nullable: true
+        Mnth6Value: 
+          type: string
+          title: Mnth6Value
+          nullable: true
+        Mnth7Status: 
+          type: string
+          title: Mnth7Status
+          nullable: true
+        Mnth7Value: 
+          type: string
+          title: Mnth7Value
+          nullable: true
+        Mnth8Status: 
+          type: string
+          title: Mnth8Status
+          nullable: true
+        Mnth8Value: 
+          type: string
+          title: Mnth8Value
+          nullable: true
+        Mnth9Status: 
+          type: string
+          title: Mnth9Status
+          nullable: true
+        Mnth9Value: 
+          type: string
+          title: Mnth9Value
+          nullable: true
+        Mnth10Status: 
+          type: string
+          title: Mnth10Status
+          nullable: true
+        Mnth10Value: 
+          type: string
+          title: Mnth10Value
+          nullable: true
+        Mnth11Status: 
+          type: string
+          title: Mnth11Status
+          nullable: true
+        Mnth11Value: 
+          type: string
+          title: Mnth11Value
+          nullable: true
+        Mnth12Status: 
+          type: string
+          title: Mnth12Status
+          nullable: true
+        Mnth12Value: 
+          type: string
+          title: Mnth12Value
+          nullable: true
+        Mnth13Status: 
+          type: string
+          title: Mnth13Status
+          nullable: true
+        Mnth13Value: 
+          type: string
+          title: Mnth13Value
+          nullable: true
+        Mnth14Status: 
+          type: string
+          title: Mnth14Status
+          nullable: true
+        Mnth14Value: 
+          type: string
+          title: Mnth14Value
+          nullable: true
+        Mnth15Status: 
+          type: string
+          title: Mnth15Status
+          nullable: true
+        Mnth15Value: 
+          type: string
+          title: Mnth15Value
+          nullable: true
+        Mnth16Status: 
+          type: string
+          title: Mnth16Status
+          nullable: true
+        Mnth16Value: 
+          type: string
+          title: Mnth16Value
+          nullable: true
+        Mnth17Status: 
+          type: string
+          title: Mnth17Status
+          nullable: true
+        Mnth17Value: 
+          type: string
+          title: Mnth17Value
+          nullable: true
+        Mnth18Status: 
+          type: string
+          title: Mnth18Status
+          nullable: true
+        Mnth18Value: 
+          type: string
+          title: Mnth18Value
+          nullable: true
+        Mnth19Status: 
+          type: string
+          title: Mnth19Status
+          nullable: true
+        Mnth19Value: 
+          type: string
+          title: Mnth19Value
+          nullable: true
+        Mnth20Status: 
+          type: string
+          title: Mnth20Status
+          nullable: true
+        Mnth20Value: 
+          type: string
+          title: Mnth20Value
+          nullable: true
+        Mnth21Status: 
+          type: string
+          title: Mnth21Status
+          nullable: true
+        Mnth21Value: 
+          type: string
+          title: Mnth21Value
+          nullable: true
+        Mnth22Status: 
+          type: string
+          title: Mnth22Status
+          nullable: true
+        Mnth22Value: 
+          type: string
+          title: Mnth22Value
+          nullable: true
+        Mnth23Status: 
+          type: string
+          title: Mnth23Status
+          nullable: true
+        Mnth23Value: 
+          type: string
+          title: Mnth23Value
+          nullable: true
+        Mnth24Status: 
+          type: string
+          title: Mnth24Status
+          nullable: true
+        Mnth24Value: 
+          type: string
+          title: Mnth24Value
+          nullable: true
+        Mnth25Status: 
+          type: string
+          title: Mnth25Status
+          nullable: true
+        Mnth25Value: 
+          type: string
+          title: Mnth25Value
+          nullable: true
+        Mnth26Status: 
+          type: string
+          title: Mnth26Status
+          nullable: true
+        Mnth26Value: 
+          type: string
+          title: Mnth26Value
+          nullable: true
+        Mnth27Status: 
+          type: string
+          title: Mnth27Status
+          nullable: true
+        Mnth27Value: 
+          type: string
+          title: Mnth27Value
+          nullable: true
+        Mnth28Status: 
+          type: string
+          title: Mnth28Status
+          nullable: true
+        Mnth28Value: 
+          type: string
+          title: Mnth28Value
+          nullable: true
+        Mnth29Status: 
+          type: string
+          title: Mnth29Status
+          nullable: true
+        Mnth29Value: 
+          type: string
+          title: Mnth29Value
+          nullable: true
+        Mnth30Status: 
+          type: string
+          title: Mnth30Status
+          nullable: true
+        Mnth30Value: 
+          type: string
+          title: Mnth30Value
+          nullable: true
+        Mnth31Status: 
+          type: string
+          title: Mnth31Status
+          nullable: true
+        Mnth31Value: 
+          type: string
+          title: Mnth31Value
+          nullable: true
+        Mnth32Status: 
+          type: string
+          title: Mnth32Status
+          nullable: true
+        Mnth32Value: 
+          type: string
+          title: Mnth32Value
+          nullable: true
+        Mnth33Status: 
+          type: string
+          title: Mnth33Status
+          nullable: true
+        Mnth33Value: 
+          type: string
+          title: Mnth33Value
+          nullable: true
+        Mnth34Status: 
+          type: string
+          title: Mnth34Status
+          nullable: true
+        Mnth34Value: 
+          type: string
+          title: Mnth34Value
+          nullable: true
+        Mnth35Status: 
+          type: string
+          title: Mnth35Status
+          nullable: true
+        Mnth35Value: 
+          type: string
+          title: Mnth35Value
+          nullable: true
+        Mnth36Status: 
+          type: string
+          title: Mnth36Status
+          nullable: true
+        Mnth36Value: 
+          type: string
+          title: Mnth36Value
+          nullable: true
+        Mnth37Status: 
+          type: string
+          title: Mnth37Status
+          nullable: true
+        Mnth37Value: 
+          type: string
+          title: Mnth37Value
+          nullable: true
+        Mnth38Status: 
+          type: string
+          title: Mnth38Status
+          nullable: true
+        Mnth38Value: 
+          type: string
+          title: Mnth38Value
+          nullable: true
+        Mnth39Status: 
+          type: string
+          title: Mnth39Status
+          nullable: true
+        Mnth39Value: 
+          type: string
+          title: Mnth39Value
+          nullable: true
       required: 
         - SourceID
         - ViolationDesc
@@ -3537,6 +4222,84 @@ components:
         - Qtr12Value
         - Qtr13Status
         - Qtr13Value
+        - Mnth1Status
+        - Mnth1Value
+        - Mnth2Status
+        - Mnth2Value
+        - Mnth3Status
+        - Mnth3Value
+        - Mnth4Status
+        - Mnth4Value
+        - Mnth5Status
+        - Mnth5Value
+        - Mnth6Status
+        - Mnth6Value
+        - Mnth7Status
+        - Mnth7Value
+        - Mnth8Status
+        - Mnth8Value
+        - Mnth9Status
+        - Mnth9Value
+        - Mnth10Status
+        - Mnth10Value
+        - Mnth11Status
+        - Mnth11Value
+        - Mnth12Status
+        - Mnth12Value
+        - Mnth13Status
+        - Mnth13Value
+        - Mnth14Status
+        - Mnth14Value
+        - Mnth15Status
+        - Mnth15Value
+        - Mnth16Status
+        - Mnth16Value
+        - Mnth17Status
+        - Mnth17Value
+        - Mnth18Status
+        - Mnth18Value
+        - Mnth19Status
+        - Mnth19Value
+        - Mnth20Status
+        - Mnth20Value
+        - Mnth21Status
+        - Mnth21Value
+        - Mnth22Status
+        - Mnth22Value
+        - Mnth23Status
+        - Mnth23Value
+        - Mnth24Status
+        - Mnth24Value
+        - Mnth25Status
+        - Mnth25Value
+        - Mnth26Status
+        - Mnth26Value
+        - Mnth27Status
+        - Mnth27Value
+        - Mnth28Status
+        - Mnth28Value
+        - Mnth29Status
+        - Mnth29Value
+        - Mnth30Status
+        - Mnth30Value
+        - Mnth31Status
+        - Mnth31Value
+        - Mnth32Status
+        - Mnth32Value
+        - Mnth33Status
+        - Mnth33Value
+        - Mnth34Status
+        - Mnth34Value
+        - Mnth35Status
+        - Mnth35Value
+        - Mnth36Status
+        - Mnth36Value
+        - Mnth37Status
+        - Mnth37Value
+        - Mnth38Status
+        - Mnth38Value
+        - Mnth39Status
+        - Mnth39Value
     dfr_rest_services.get_dfr.CWAEffluentALRExceedences: 
       type: object
       title: CWA Effluent ALR Exceedences
@@ -4318,6 +5081,318 @@ components:
           type: string
           title: Qtr13Value
           nullable: true
+        Mnth1Status: 
+          type: string
+          title: Mnth1Status
+          nullable: true
+        Mnth1Value: 
+          type: string
+          title: Mnth1Value
+          nullable: true
+        Mnth2Status: 
+          type: string
+          title: Mnth2Status
+          nullable: true
+        Mnth2Value: 
+          type: string
+          title: Mnth2Value
+          nullable: true
+        Mnth3Status: 
+          type: string
+          title: Mnth3Status
+          nullable: true
+        Mnth3Value: 
+          type: string
+          title: Mnth3Value
+          nullable: true
+        Mnth4Status: 
+          type: string
+          title: Mnth4Status
+          nullable: true
+        Mnth4Value: 
+          type: string
+          title: Mnth4Value
+          nullable: true
+        Mnth5Status: 
+          type: string
+          title: Mnth5Status
+          nullable: true
+        Mnth5Value: 
+          type: string
+          title: Mnth5Value
+          nullable: true
+        Mnth6Status: 
+          type: string
+          title: Mnth6Status
+          nullable: true
+        Mnth6Value: 
+          type: string
+          title: Mnth6Value
+          nullable: true
+        Mnth7Status: 
+          type: string
+          title: Mnth7Status
+          nullable: true
+        Mnth7Value: 
+          type: string
+          title: Mnth7Value
+          nullable: true
+        Mnth8Status: 
+          type: string
+          title: Mnth8Status
+          nullable: true
+        Mnth8Value: 
+          type: string
+          title: Mnth8Value
+          nullable: true
+        Mnth9Status: 
+          type: string
+          title: Mnth9Status
+          nullable: true
+        Mnth9Value: 
+          type: string
+          title: Mnth9Value
+          nullable: true
+        Mnth10Status: 
+          type: string
+          title: Mnth10Status
+          nullable: true
+        Mnth10Value: 
+          type: string
+          title: Mnth10Value
+          nullable: true
+        Mnth11Status: 
+          type: string
+          title: Mnth11Status
+          nullable: true
+        Mnth11Value: 
+          type: string
+          title: Mnth11Value
+          nullable: true
+        Mnth12Status: 
+          type: string
+          title: Mnth12Status
+          nullable: true
+        Mnth12Value: 
+          type: string
+          title: Mnth12Value
+          nullable: true
+        Mnth13Status: 
+          type: string
+          title: Mnth13Status
+          nullable: true
+        Mnth13Value: 
+          type: string
+          title: Mnth13Value
+          nullable: true
+        Mnth14Status: 
+          type: string
+          title: Mnth14Status
+          nullable: true
+        Mnth14Value: 
+          type: string
+          title: Mnth14Value
+          nullable: true
+        Mnth15Status: 
+          type: string
+          title: Mnth15Status
+          nullable: true
+        Mnth15Value: 
+          type: string
+          title: Mnth15Value
+          nullable: true
+        Mnth16Status: 
+          type: string
+          title: Mnth16Status
+          nullable: true
+        Mnth16Value: 
+          type: string
+          title: Mnth16Value
+          nullable: true
+        Mnth17Status: 
+          type: string
+          title: Mnth17Status
+          nullable: true
+        Mnth17Value: 
+          type: string
+          title: Mnth17Value
+          nullable: true
+        Mnth18Status: 
+          type: string
+          title: Mnth18Status
+          nullable: true
+        Mnth18Value: 
+          type: string
+          title: Mnth18Value
+          nullable: true
+        Mnth19Status: 
+          type: string
+          title: Mnth19Status
+          nullable: true
+        Mnth19Value: 
+          type: string
+          title: Mnth19Value
+          nullable: true
+        Mnth20Status: 
+          type: string
+          title: Mnth20Status
+          nullable: true
+        Mnth20Value: 
+          type: string
+          title: Mnth20Value
+          nullable: true
+        Mnth21Status: 
+          type: string
+          title: Mnth21Status
+          nullable: true
+        Mnth21Value: 
+          type: string
+          title: Mnth21Value
+          nullable: true
+        Mnth22Status: 
+          type: string
+          title: Mnth22Status
+          nullable: true
+        Mnth22Value: 
+          type: string
+          title: Mnth22Value
+          nullable: true
+        Mnth23Status: 
+          type: string
+          title: Mnth23Status
+          nullable: true
+        Mnth23Value: 
+          type: string
+          title: Mnth23Value
+          nullable: true
+        Mnth24Status: 
+          type: string
+          title: Mnth24Status
+          nullable: true
+        Mnth24Value: 
+          type: string
+          title: Mnth24Value
+          nullable: true
+        Mnth25Status: 
+          type: string
+          title: Mnth25Status
+          nullable: true
+        Mnth25Value: 
+          type: string
+          title: Mnth25Value
+          nullable: true
+        Mnth26Status: 
+          type: string
+          title: Mnth26Status
+          nullable: true
+        Mnth26Value: 
+          type: string
+          title: Mnth26Value
+          nullable: true
+        Mnth27Status: 
+          type: string
+          title: Mnth27Status
+          nullable: true
+        Mnth27Value: 
+          type: string
+          title: Mnth27Value
+          nullable: true
+        Mnth28Status: 
+          type: string
+          title: Mnth28Status
+          nullable: true
+        Mnth28Value: 
+          type: string
+          title: Mnth28Value
+          nullable: true
+        Mnth29Status: 
+          type: string
+          title: Mnth29Status
+          nullable: true
+        Mnth29Value: 
+          type: string
+          title: Mnth29Value
+          nullable: true
+        Mnth30Status: 
+          type: string
+          title: Mnth30Status
+          nullable: true
+        Mnth30Value: 
+          type: string
+          title: Mnth30Value
+          nullable: true
+        Mnth31Status: 
+          type: string
+          title: Mnth31Status
+          nullable: true
+        Mnth31Value: 
+          type: string
+          title: Mnth31Value
+          nullable: true
+        Mnth32Status: 
+          type: string
+          title: Mnth32Status
+          nullable: true
+        Mnth32Value: 
+          type: string
+          title: Mnth32Value
+          nullable: true
+        Mnth33Status: 
+          type: string
+          title: Mnth33Status
+          nullable: true
+        Mnth33Value: 
+          type: string
+          title: Mnth33Value
+          nullable: true
+        Mnth34Status: 
+          type: string
+          title: Mnth34Status
+          nullable: true
+        Mnth34Value: 
+          type: string
+          title: Mnth34Value
+          nullable: true
+        Mnth35Status: 
+          type: string
+          title: Mnth35Status
+          nullable: true
+        Mnth35Value: 
+          type: string
+          title: Mnth35Value
+          nullable: true
+        Mnth36Status: 
+          type: string
+          title: Mnth36Status
+          nullable: true
+        Mnth36Value: 
+          type: string
+          title: Mnth36Value
+          nullable: true
+        Mnth37Status: 
+          type: string
+          title: Mnth37Status
+          nullable: true
+        Mnth37Value: 
+          type: string
+          title: Mnth37Value
+          nullable: true
+        Mnth38Status: 
+          type: string
+          title: Mnth38Status
+          nullable: true
+        Mnth38Value: 
+          type: string
+          title: Mnth38Value
+          nullable: true
+        Mnth39Status: 
+          type: string
+          title: Mnth39Status
+          nullable: true
+        Mnth39Value: 
+          type: string
+          title: Mnth39Value
+          nullable: true
       required: 
         - SourceID
         - ViolationDesc
@@ -4490,6 +5565,318 @@ components:
           type: string
           title: Qtr13Value
           nullable: true
+        Mnth1Status: 
+          type: string
+          title: Mnth1Status
+          nullable: true
+        Mnth1Value: 
+          type: string
+          title: Mnth1Value
+          nullable: true
+        Mnth2Status: 
+          type: string
+          title: Mnth2Status
+          nullable: true
+        Mnth2Value: 
+          type: string
+          title: Mnth2Value
+          nullable: true
+        Mnth3Status: 
+          type: string
+          title: Mnth3Status
+          nullable: true
+        Mnth3Value: 
+          type: string
+          title: Mnth3Value
+          nullable: true
+        Mnth4Status: 
+          type: string
+          title: Mnth4Status
+          nullable: true
+        Mnth4Value: 
+          type: string
+          title: Mnth4Value
+          nullable: true
+        Mnth5Status: 
+          type: string
+          title: Mnth5Status
+          nullable: true
+        Mnth5Value: 
+          type: string
+          title: Mnth5Value
+          nullable: true
+        Mnth6Status: 
+          type: string
+          title: Mnth6Status
+          nullable: true
+        Mnth6Value: 
+          type: string
+          title: Mnth6Value
+          nullable: true
+        Mnth7Status: 
+          type: string
+          title: Mnth7Status
+          nullable: true
+        Mnth7Value: 
+          type: string
+          title: Mnth7Value
+          nullable: true
+        Mnth8Status: 
+          type: string
+          title: Mnth8Status
+          nullable: true
+        Mnth8Value: 
+          type: string
+          title: Mnth8Value
+          nullable: true
+        Mnth9Status: 
+          type: string
+          title: Mnth9Status
+          nullable: true
+        Mnth9Value: 
+          type: string
+          title: Mnth9Value
+          nullable: true
+        Mnth10Status: 
+          type: string
+          title: Mnth10Status
+          nullable: true
+        Mnth10Value: 
+          type: string
+          title: Mnth10Value
+          nullable: true
+        Mnth11Status: 
+          type: string
+          title: Mnth11Status
+          nullable: true
+        Mnth11Value: 
+          type: string
+          title: Mnth11Value
+          nullable: true
+        Mnth12Status: 
+          type: string
+          title: Mnth12Status
+          nullable: true
+        Mnth12Value: 
+          type: string
+          title: Mnth12Value
+          nullable: true
+        Mnth13Status: 
+          type: string
+          title: Mnth13Status
+          nullable: true
+        Mnth13Value: 
+          type: string
+          title: Mnth13Value
+          nullable: true
+        Mnth14Status: 
+          type: string
+          title: Mnth14Status
+          nullable: true
+        Mnth14Value: 
+          type: string
+          title: Mnth14Value
+          nullable: true
+        Mnth15Status: 
+          type: string
+          title: Mnth15Status
+          nullable: true
+        Mnth15Value: 
+          type: string
+          title: Mnth15Value
+          nullable: true
+        Mnth16Status: 
+          type: string
+          title: Mnth16Status
+          nullable: true
+        Mnth16Value: 
+          type: string
+          title: Mnth16Value
+          nullable: true
+        Mnth17Status: 
+          type: string
+          title: Mnth17Status
+          nullable: true
+        Mnth17Value: 
+          type: string
+          title: Mnth17Value
+          nullable: true
+        Mnth18Status: 
+          type: string
+          title: Mnth18Status
+          nullable: true
+        Mnth18Value: 
+          type: string
+          title: Mnth18Value
+          nullable: true
+        Mnth19Status: 
+          type: string
+          title: Mnth19Status
+          nullable: true
+        Mnth19Value: 
+          type: string
+          title: Mnth19Value
+          nullable: true
+        Mnth20Status: 
+          type: string
+          title: Mnth20Status
+          nullable: true
+        Mnth20Value: 
+          type: string
+          title: Mnth20Value
+          nullable: true
+        Mnth21Status: 
+          type: string
+          title: Mnth21Status
+          nullable: true
+        Mnth21Value: 
+          type: string
+          title: Mnth21Value
+          nullable: true
+        Mnth22Status: 
+          type: string
+          title: Mnth22Status
+          nullable: true
+        Mnth22Value: 
+          type: string
+          title: Mnth22Value
+          nullable: true
+        Mnth23Status: 
+          type: string
+          title: Mnth23Status
+          nullable: true
+        Mnth23Value: 
+          type: string
+          title: Mnth23Value
+          nullable: true
+        Mnth24Status: 
+          type: string
+          title: Mnth24Status
+          nullable: true
+        Mnth24Value: 
+          type: string
+          title: Mnth24Value
+          nullable: true
+        Mnth25Status: 
+          type: string
+          title: Mnth25Status
+          nullable: true
+        Mnth25Value: 
+          type: string
+          title: Mnth25Value
+          nullable: true
+        Mnth26Status: 
+          type: string
+          title: Mnth26Status
+          nullable: true
+        Mnth26Value: 
+          type: string
+          title: Mnth26Value
+          nullable: true
+        Mnth27Status: 
+          type: string
+          title: Mnth27Status
+          nullable: true
+        Mnth27Value: 
+          type: string
+          title: Mnth27Value
+          nullable: true
+        Mnth28Status: 
+          type: string
+          title: Mnth28Status
+          nullable: true
+        Mnth28Value: 
+          type: string
+          title: Mnth28Value
+          nullable: true
+        Mnth29Status: 
+          type: string
+          title: Mnth29Status
+          nullable: true
+        Mnth29Value: 
+          type: string
+          title: Mnth29Value
+          nullable: true
+        Mnth30Status: 
+          type: string
+          title: Mnth30Status
+          nullable: true
+        Mnth30Value: 
+          type: string
+          title: Mnth30Value
+          nullable: true
+        Mnth31Status: 
+          type: string
+          title: Mnth31Status
+          nullable: true
+        Mnth31Value: 
+          type: string
+          title: Mnth31Value
+          nullable: true
+        Mnth32Status: 
+          type: string
+          title: Mnth32Status
+          nullable: true
+        Mnth32Value: 
+          type: string
+          title: Mnth32Value
+          nullable: true
+        Mnth33Status: 
+          type: string
+          title: Mnth33Status
+          nullable: true
+        Mnth33Value: 
+          type: string
+          title: Mnth33Value
+          nullable: true
+        Mnth34Status: 
+          type: string
+          title: Mnth34Status
+          nullable: true
+        Mnth34Value: 
+          type: string
+          title: Mnth34Value
+          nullable: true
+        Mnth35Status: 
+          type: string
+          title: Mnth35Status
+          nullable: true
+        Mnth35Value: 
+          type: string
+          title: Mnth35Value
+          nullable: true
+        Mnth36Status: 
+          type: string
+          title: Mnth36Status
+          nullable: true
+        Mnth36Value: 
+          type: string
+          title: Mnth36Value
+          nullable: true
+        Mnth37Status: 
+          type: string
+          title: Mnth37Status
+          nullable: true
+        Mnth37Value: 
+          type: string
+          title: Mnth37Value
+          nullable: true
+        Mnth38Status: 
+          type: string
+          title: Mnth38Status
+          nullable: true
+        Mnth38Value: 
+          type: string
+          title: Mnth38Value
+          nullable: true
+        Mnth39Status: 
+          type: string
+          title: Mnth39Status
+          nullable: true
+        Mnth39Value: 
+          type: string
+          title: Mnth39Value
+          nullable: true
       required: 
         - SourceID
         - ViolationDesc
@@ -4521,6 +5908,84 @@ components:
         - Qtr12Value
         - Qtr13Status
         - Qtr13Value
+        - Mnth1Status
+        - Mnth1Value
+        - Mnth2Status
+        - Mnth2Value
+        - Mnth3Status
+        - Mnth3Value
+        - Mnth4Status
+        - Mnth4Value
+        - Mnth5Status
+        - Mnth5Value
+        - Mnth6Status
+        - Mnth6Value
+        - Mnth7Status
+        - Mnth7Value
+        - Mnth8Status
+        - Mnth8Value
+        - Mnth9Status
+        - Mnth9Value
+        - Mnth10Status
+        - Mnth10Value
+        - Mnth11Status
+        - Mnth11Value
+        - Mnth12Status
+        - Mnth12Value
+        - Mnth13Status
+        - Mnth13Value
+        - Mnth14Status
+        - Mnth14Value
+        - Mnth15Status
+        - Mnth15Value
+        - Mnth16Status
+        - Mnth16Value
+        - Mnth17Status
+        - Mnth17Value
+        - Mnth18Status
+        - Mnth18Value
+        - Mnth19Status
+        - Mnth19Value
+        - Mnth20Status
+        - Mnth20Value
+        - Mnth21Status
+        - Mnth21Value
+        - Mnth22Status
+        - Mnth22Value
+        - Mnth23Status
+        - Mnth23Value
+        - Mnth24Status
+        - Mnth24Value
+        - Mnth25Status
+        - Mnth25Value
+        - Mnth26Status
+        - Mnth26Value
+        - Mnth27Status
+        - Mnth27Value
+        - Mnth28Status
+        - Mnth28Value
+        - Mnth29Status
+        - Mnth29Value
+        - Mnth30Status
+        - Mnth30Value
+        - Mnth31Status
+        - Mnth31Value
+        - Mnth32Status
+        - Mnth32Value
+        - Mnth33Status
+        - Mnth33Value
+        - Mnth34Status
+        - Mnth34Value
+        - Mnth35Status
+        - Mnth35Value
+        - Mnth36Status
+        - Mnth36Value
+        - Mnth37Status
+        - Mnth37Value
+        - Mnth38Status
+        - Mnth38Value
+        - Mnth39Status
+        - Mnth39Value
     dfr_rest_services.get_dfr.CaseFormalActions: 
       type: object
       title: Case Formal Actions
@@ -7824,6 +9289,12 @@ components:
       description: The date on which the most recent inspection of the facility took place
       nullable: true
       example: 01/13/2007
+    property.DaysLate: 
+      type: string
+      title: DaysLate
+      description: The number of days the DMR value is late, as generated in ICIS-NPDES
+      nullable: true
+      example: '5'
     property.DistanceToArea: 
       type: string
       title: DistanceToArea
@@ -8147,6 +9618,24 @@ components:
       description: The number and percentage of persons living in the area who have less than a ninth grade education
       nullable: true
       example: "4,213 (4.7%)"
+    property.LimitBeginDate: 
+      type: string
+      title: LimitBeginDate
+      description: The date on which a limit becomes in effect for a particular parameter in a limit set
+      nullable: true
+      example: 01-APR-14
+    property.LimitEndDate: 
+      type: string
+      title: LimitEndDate
+      description: The date on which a limit stops being in effect for a particular parameter in a limit set
+      nullable: true
+      example: 31-MAR-19
+    property.LimitId: 
+      type: string
+      title: LimitId
+      description: The unique identifier for a limit parameter record
+      nullable: true
+      example: '3401161480'
     property.Longitude: 
       type: string
       title: Longitude
@@ -8171,6 +9660,24 @@ components:
       description: The number and percentage of persons living in the area that are seventeen years old or younger
       nullable: true
       example: "23,535 (18.68%)"
+    property.MonitoringLocationCode: 
+      type: string
+      title: MonitoringLocationCode
+      description: The code that the monitoring location at which the monitoring requirement (and effluent limit if limited) applies. One parameter may have several monitoring location codes pertaining to the same permitted feature
+      nullable: true
+      example: '1'
+    property.MonitoringLocationDesc: 
+      type: string
+      title: MonitoringLocationDesc
+      description: The name of the monitoring location at which the monitoring requirement (and effluent limit if limited) applies
+      nullable: true
+      example: Effluent Gross
+    property.MonitoringPeriodEndDate: 
+      type: string
+      title: MonitoringPeriodEndDate
+      description: The date that the monitoring period for the values covered by the DMR Form ends
+      nullable: true
+      example: 30-APR-14
     property.NAICS.field: 
       type: string
       title: NAICS
@@ -8246,6 +9753,12 @@ components:
       description: The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)
       nullable: true
       example: '00400'
+    property.ParameterDesc: 
+      type: string
+      title: ParameterDesc
+      description: The pollutant name and form (e.g., dissolved, suspended) associated with the parameter code
+      nullable: true
+      example: pH
     property.ParameterName: 
       type: string
       title: ParameterName
@@ -8270,6 +9783,12 @@ components:
       description: The percentage of the population of the given area that is minority. The field is calculated by subtracting the number of persons who are white (and not of Hispanic origin) from the total persons. This number is then divided by the total persons and multiplied by one hundred to determine the percentage.
       nullable: true
       example: "39%"
+    property.PermFeatureNmbr: 
+      type: string
+      title: PermFeatureNmbr
+      description: A three-character code in ICIS-NPDES that identifies the point of discharge (e.g., outfall) for a facility. A NPDES permit may have multiple points of discharge. If the code is less than three characters in the .CSV, append zeros to the beginning of the number (e.g., 1 is equivalent to 001)
+      nullable: true
+      example: '001'
     property.PersonsBelowPovertyLevel: 
       type: string
       title: PersonsBelowPovertyLevel
@@ -8756,11 +10275,35 @@ components:
         * For RCRA = RCRA Source ID or permits for Treatment, Storage and Disposal facilities are identified by TSD, Large Quantity Generators are identified by LQG. Other values include Permit Workload (PMT), Closure Workload (CLO), Small Quantity Generator Universe (SQG), Conditionally-Exempt Small Quantity Generator (CESQG), Post-Closure Workload (POST CL), and Transporters.
       nullable: true
       example: "Minor: General Permit Covered Facility"
+    property.ValueReceivedDate: 
+      type: string
+      title: ValueReceivedDate
+      description: The date the DMR value was received by the regulatory authority
+      nullable: true
+      example: 08-MAY-14
+    property.ValueTypeCode: 
+      type: string
+      title: ValueTypeCode
+      description: The indication of the limit value type (e.g., Quantity 1, Concentration 2)
+      nullable: true
+      example: C1
+    property.VersionNmbr: 
+      type: string
+      title: VersionNmbr
+      description: The version of the permit when a modification or reissuance is applied to the permit. Version = 0 indicates the original permit issuance
+      nullable: true
+      example: '0'
     property.Violation: 
       type: string
       title: Violation
       description: A designation of the type or nature of the violation. 
       nullable: true
+    property.ViolationCode: 
+      type: string
+      title: ViolationCode
+      description: The code identifying which type of Violation has occurred (e.g., D80 = Required Monitoring DMR Value Non-Receipt, E90 = Effluent Violation, C20 = Schedule Event Achieved Late)
+      nullable: true
+      example: E90
     property.ViolationDesc: 
       type: string
       title: ViolationDesc
@@ -9220,6 +10763,20 @@ components:
             properties: 
               Results: 
                 $ref: '#/components/schemas/dfr_rest_services.get_cwa_se_compliance.Results'
+            required: 
+              - Results
+    dfr_rest_services.get_d80d90s_details.default: 
+      description: Response Object
+      content: 
+        application/json: 
+          schema: 
+            type: object
+            title: D80 D90 Details Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/dfr_rest_services.get_d80d90s_details.Results'
             required: 
               - Results
     dfr_rest_services.get_demographics_by_id.default: 
@@ -9896,6 +11453,34 @@ components:
       schema: 
         type: string
         title: p_id
+    p_missinglate: 
+      name: p_missinglate
+      in: query
+      required: false
+      schema: 
+        type: string
+        title: p_missinglate
+    p_npdes_id: 
+      name: p_npdes_id
+      in: query
+      required: false
+      schema: 
+        type: string
+        title: p_npdes_id
+    p_qmtype: 
+      name: p_qmtype
+      in: query
+      required: false
+      schema: 
+        type: string
+        title: p_qmtype
+    p_qmvalue: 
+      name: p_qmvalue
+      in: query
+      required: false
+      schema: 
+        type: string
+        title: p_qmvalue
     p_radius.DFR: 
       name: p_radius
       in: query
