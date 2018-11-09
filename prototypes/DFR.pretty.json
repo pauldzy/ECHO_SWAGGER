@@ -860,7 +860,10 @@
       }
       ,"/dfr_rest_services.get_d80d90s_details": {
           "get": {
-             "parameters": [
+             "tags": [
+                "Detailed Facility Report"
+            ]
+            ,"parameters": [
                 {
                    "$ref": "#/components/parameters/output"
                }
@@ -887,7 +890,10 @@
             }
          }
          ,"post": {
-             "requestBody": {
+             "tags": [
+                "Detailed Facility Report"
+            ]
+            ,"requestBody": {
                 "content": {
                    "application/x-www-form-urlencoded": {
                       "schema": {
@@ -14434,6 +14440,23 @@
              "description": "Response Object"
             ,"content": {
                 "application/json": {
+                   "schema": {
+                      "type": "object"
+                     ,"title": "D80 D90 Details Root"
+                     ,"xml": {
+                         "name": "Root"
+                     }
+                     ,"properties": {
+                         "Results": {
+                            "$ref": "#/components/schemas/dfr_rest_services.get_d80d90s_details.Results"
+                        }
+                     }
+                     ,"required": [
+                         "Results"
+                     ]
+                  }
+               }
+               ,"application/xml": {
                    "schema": {
                       "type": "object"
                      ,"title": "D80 D90 Details Root"

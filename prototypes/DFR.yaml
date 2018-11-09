@@ -508,6 +508,8 @@ paths:
           $ref: '#/components/responses/dfr_rest_services.get_cwa_se_compliance.default'
   /dfr_rest_services.get_d80d90s_details: 
     get: 
+      tags: 
+        - Detailed Facility Report
       parameters: 
         - $ref: '#/components/parameters/output'
         - $ref: '#/components/parameters/p_npdes_id'
@@ -519,6 +521,8 @@ paths:
         default: 
           $ref: '#/components/responses/dfr_rest_services.get_d80d90s_details.default'
     post: 
+      tags: 
+        - Detailed Facility Report
       requestBody: 
         content: 
           application/x-www-form-urlencoded: 
@@ -10769,6 +10773,17 @@ components:
       description: Response Object
       content: 
         application/json: 
+          schema: 
+            type: object
+            title: D80 D90 Details Root
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                $ref: '#/components/schemas/dfr_rest_services.get_d80d90s_details.Results'
+            required: 
+              - Results
+        application/xml: 
           schema: 
             type: object
             title: D80 D90 Details Root

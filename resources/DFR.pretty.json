@@ -77,6 +77,30 @@
          ,"type": "string"
          ,"required": false
       }
+      ,"q.p_missinglate": {
+          "name": "p_missinglate"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"q.p_npdes_id": {
+          "name": "p_npdes_id"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"q.p_qmvalue": {
+          "name": "p_qmvalue"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"q.p_qmtype": {
+          "name": "p_qmtype"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
       ,"f.p_system": {
           "name": "p_system"
          ,"in": "formData"
@@ -732,6 +756,98 @@
          }
       }
       ,"\/dfr_rest_services.get_d80d90s_details": {
+          "get": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/q.output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_npdes_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_missinglate"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_qmtype"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_qmvalue"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.callback"
+               }
+            ]
+            ,"tags": [
+                "Detailed Facility Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dfr0_get_d80d90s_details.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/q.output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_npdes_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_missinglate"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_qmtype"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_qmvalue"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.callback"
+               }
+            ]
+            ,"tags": [
+                "Detailed Facility Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dfr0_get_d80d90s_details.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
       }
       ,"\/dfr_rest_services.get_cwa_cs_compliance": {
           "get": {
@@ -4907,6 +5023,207 @@
          }
          ,"required": [
              "Message"
+         ]
+      }
+      ,"dfr0_get_d80d90s_details.D80D90sDetails": {
+          "type": "object"
+         ,"description": "D80D90sDetails Object"
+         ,"properties": {
+             "Sources": {
+                "type": "array"
+               ,"title": "Sources"
+               ,"items": {
+                   "$ref": "#\/definitions\/dfr0_get_d80d90s_details.D80D90sDetails.Sources"
+               }
+               ,"xml": {
+                   "name": "Sources"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Sources"
+         ]
+      }
+      ,"dfr0_get_d80d90s_details.D80D90sDetails.Sources": {
+          "type": "object"
+         ,"description": "Sources Object"
+         ,"properties": {
+             "NPDESId": {
+                "type": "string"
+            }
+            ,"VersionNmbr": {
+                "type": "string"
+               ,"title": "Version Number"
+               ,"example": "0"
+               ,"description": "The version of the permit when a modification or reissuance is applied to the permit. Version = 0 indicates the original permit issuance"
+            }
+            ,"PermFeatureNmbr": {
+                "type": "string"
+               ,"title": "Discharge Point"
+               ,"example": "001"
+               ,"description": "A three-character code in ICIS-NPDES that identifies the point of discharge (e.g., outfall) for a facility. A NPDES permit may have multiple points of discharge. If the code is less than three characters in the .CSV, append zeros to the beginning of the number (e.g., 1 is equivalent to 001)"
+            }
+            ,"LimitId": {
+                "type": "string"
+               ,"title": "Limit ID"
+               ,"example": "3401161480"
+               ,"description": "The unique identifier for a limit parameter record"
+            }
+            ,"MonitoringLocationCode": {
+                "type": "string"
+               ,"title": "Monitoring Location Code"
+               ,"example": "1"
+               ,"description": "The code that the monitoring location at which the monitoring requirement (and effluent limit if limited) applies. One parameter may have several monitoring location codes pertaining to the same permitted feature"
+            }
+            ,"MonitoringLocationDesc": {
+                "type": "string"
+               ,"title": "Monitoring Location Description"
+               ,"example": "Effluent Gross"
+               ,"description": "The name of the monitoring location at which the monitoring requirement (and effluent limit if limited) applies"
+            }
+            ,"LimitBeginDate": {
+                "type": "string"
+               ,"title": "Limit Begin Date"
+               ,"example": "01-APR-14"
+               ,"description": "The date on which a limit becomes in effect for a particular parameter in a limit set"
+            }
+            ,"LimitEndDate": {
+                "type": "string"
+               ,"title": "Limit End Date"
+               ,"example": "31-MAR-19"
+               ,"description": "The date on which a limit stops being in effect for a particular parameter in a limit set"
+            }
+            ,"LimitSetName": {
+                "type": "string"
+            }
+            ,"ParameterCode": {
+                "type": "string"
+               ,"title": "Parameter Code"
+               ,"example": "00400"
+               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
+            }
+            ,"ParameterDesc": {
+                "type": "string"
+               ,"title": "Parameter Description"
+               ,"example": "pH"
+               ,"description": "The pollutant name and form (e.g., dissolved, suspended) associated with the parameter code"
+            }
+            ,"ValueTypeCode": {
+                "type": "string"
+               ,"title": "Measured Value Type Code"
+               ,"example": "C1"
+               ,"description": "The indication of the limit value type (e.g., Quantity 1, Concentration 2)"
+            }
+            ,"MonitoringPeriodEndDate": {
+                "type": "string"
+               ,"title": "Monitoring Period End Date"
+               ,"example": "30-APR-14"
+               ,"description": "The date that the monitoring period for the values covered by the DMR Form ends"
+            }
+            ,"DmrDueDate": {
+                "type": "string"
+            }
+            ,"NpdesViolationId": {
+                "type": "string"
+            }
+            ,"RncDetectionDate": {
+                "type": "string"
+            }
+            ,"RncDetectionCode": {
+                "type": "string"
+            }
+            ,"RncDetectionDesc": {
+                "type": "string"
+            }
+            ,"RncResolutionDate": {
+                "type": "string"
+            }
+            ,"RncResolutionCode": {
+                "type": "string"
+            }
+            ,"RncResolutionDesc": {
+                "type": "string"
+            }
+            ,"NodiCode": {
+                "type": "string"
+            }
+            ,"NodiDesc": {
+                "type": "string"
+            }
+            ,"NodiValidationFlag": {
+                "type": "string"
+            }
+            ,"DaysLate": {
+                "type": "string"
+               ,"title": "Days Received Late"
+               ,"example": "5"
+               ,"description": "The number of days the DMR value is late, as generated in ICIS-NPDES"
+            }
+            ,"MissingLate": {
+                "type": "string"
+            }
+            ,"ValueReceivedDate": {
+                "type": "string"
+               ,"title": "Date Received"
+               ,"example": "08-MAY-14"
+               ,"description": "The date the DMR value was received by the regulatory authority"
+            }
+            ,"ViolationCode": {
+                "type": "string"
+               ,"title": "Violation Code"
+               ,"example": "E90"
+               ,"description": "The code identifying which type of Violation has occurred (e.g., D80 = Required Monitoring DMR Value Non-Receipt, E90 = Effluent Violation, C20 = Schedule Event Achieved Late)"
+            }
+         }
+         ,"required": [
+             "NPDESId"
+            ,"VersionNmbr"
+            ,"PermFeatureNmbr"
+            ,"LimitId"
+            ,"MonitoringLocationCode"
+            ,"MonitoringLocationDesc"
+            ,"LimitBeginDate"
+            ,"LimitEndDate"
+            ,"LimitSetName"
+            ,"ParameterCode"
+            ,"ParameterDesc"
+            ,"ValueTypeCode"
+            ,"MonitoringPeriodEndDate"
+            ,"DmrDueDate"
+            ,"NpdesViolationId"
+            ,"RncDetectionDate"
+            ,"RncDetectionCode"
+            ,"RncDetectionDesc"
+            ,"RncResolutionDate"
+            ,"RncResolutionCode"
+            ,"RncResolutionDesc"
+            ,"NodiCode"
+            ,"NodiDesc"
+            ,"NodiValidationFlag"
+            ,"DaysLate"
+            ,"MissingLate"
+            ,"ValueReceivedDate"
+            ,"ViolationCode"
+         ]
+      }
+      ,"dfr0_get_d80d90s_details.Results": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"D80D90sDetails": {
+                "$ref": "#\/definitions\/dfr0_get_d80d90s_details.D80D90sDetails"
+            }
+         }
+         ,"required": [
+             "Message"
+            ,"D80D90sDetails"
          ]
       }
       ,"dfr017_Results": {
