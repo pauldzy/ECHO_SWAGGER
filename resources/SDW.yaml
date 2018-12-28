@@ -29,14 +29,14 @@ info:
 host: ofmpub.epa.gov
 basePath: /echo
 schemes: 
-- https
+  - https
 consumes: 
-- application/x-www-form-urlencoded
+  - application/x-www-form-urlencoded
 produces: 
-- application/json
-- application/xml
+  - application/json
+  - application/xml
 parameters: 
-  g.p_fn: 
+  q.p_fn: 
     name: p_fn
     in: query
     description: Facility Name Filter. Enter one or more case-insensitive facility names to filter results.  Provide multiple values as a comma-delimited list.  See p_fntype for additional modifiers.
@@ -48,7 +48,7 @@ parameters:
     description: Facility Name Filter. Enter one or more case-insensitive facility names to filter results.  Provide multiple values as a comma-delimited list.  See p_fntype for additional modifiers.
     type: string
     required: false
-  g.callback: 
+  q.callback: 
     name: callback
     in: query
     description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
@@ -60,7 +60,7 @@ parameters:
     description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
     type: string
     required: false
-  g.p_ct: 
+  q.p_ct: 
     name: p_ct
     in: query
     description: Facility City Filter. Enter a single case-insensitive city name to filter results.
@@ -72,7 +72,7 @@ parameters:
     description: Facility City Filter. Enter a single case-insensitive city name to filter results.
     type: string
     required: false
-  g.p_co: 
+  q.p_co: 
     name: p_co
     in: query
     description: Facility County Filter. Provide a single county name in combination with a state value provided via p_st.
@@ -84,7 +84,7 @@ parameters:
     description: Facility County Filter. Provide a single county name in combination with a state value provided via p_st.
     type: string
     required: false
-  g.p_fips: 
+  q.p_fips: 
     name: p_fips
     in: query
     description: FIPS Code Filter.  Enter a single 5-character Federal Information Processing Standards (FIPS) state + county value to restrict results.  E.g. to limit results to Kenosha County, Wisconsin, use 55059.
@@ -96,7 +96,7 @@ parameters:
     description: FIPS Code Filter.  Enter a single 5-character Federal Information Processing Standards (FIPS) state + county value to restrict results.  E.g. to limit results to Kenosha County, Wisconsin, use 55059.
     type: string
     required: false
-  g.p_st: 
+  q.p_st: 
     name: p_st
     in: query
     description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
@@ -108,7 +108,7 @@ parameters:
     description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
     type: string
     required: false
-  g.p_zip: 
+  q.p_zip: 
     name: p_zip
     in: query
     description: 5-Digit ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values.
@@ -120,21 +120,21 @@ parameters:
     description: 5-Digit ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values.
     type: string
     required: false
-  g.p_reg: 
+  q.p_reg: 
     name: p_reg
     in: query
     description: EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region.
     enum: 
-    - '01'
-    - '02'
-    - '03'
-    - '04'
-    - '05'
-    - '06'
-    - '07'
-    - '08'
-    - '09'
-    - '10'
+      - '01'
+      - '02'
+      - '03'
+      - '04'
+      - '05'
+      - '06'
+      - '07'
+      - '08'
+      - '09'
+      - '10'
     type: string
     required: false
   f.p_reg: 
@@ -142,19 +142,19 @@ parameters:
     in: formData
     description: EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region.
     enum: 
-    - '01'
-    - '02'
-    - '03'
-    - '04'
-    - '05'
-    - '06'
-    - '07'
-    - '08'
-    - '09'
-    - '10'
+      - '01'
+      - '02'
+      - '03'
+      - '04'
+      - '05'
+      - '06'
+      - '07'
+      - '08'
+      - '09'
+      - '10'
     type: string
     required: false
-  g.p_owop: 
+  q.p_owop: 
     name: p_owop
     in: query
     description: |-
@@ -166,12 +166,12 @@ parameters:
       - N = Native American
       - P = Private
     enum: 
-    - F
-    - S
-    - L
-    - M
-    - N
-    - P
+      - F
+      - S
+      - L
+      - M
+      - N
+      - P
     type: string
     required: false
   f.p_owop: 
@@ -186,15 +186,15 @@ parameters:
       - N = Native American
       - P = Private
     enum: 
-    - F
-    - S
-    - L
-    - M
-    - N
-    - P
+      - F
+      - S
+      - L
+      - M
+      - N
+      - P
     type: string
     required: false
-  g.p_systyp: 
+  q.p_systyp: 
     name: p_systyp
     in: query
     description: |-
@@ -204,10 +204,10 @@ parameters:
       - NTCWS=Non-transient non-community water system
       - TNCWS=Transient non-community water system
     enum: 
-    - CWS
-    - NCWS
-    - NTCWS
-    - TNCWS
+      - CWS
+      - NCWS
+      - NTCWS
+      - TNCWS
     type: string
     required: false
   f.p_systyp: 
@@ -220,13 +220,13 @@ parameters:
       - NTCWS=Non-transient non-community water system
       - TNCWS=Transient non-community water system
     enum: 
-    - CWS
-    - NCWS
-    - NTCWS
-    - TNCWS
+      - CWS
+      - NCWS
+      - NTCWS
+      - TNCWS
     type: string
     required: false
-  g.p_swtyp: 
+  q.p_swtyp: 
     name: p_swtyp
     in: query
     description: |-
@@ -238,12 +238,12 @@ parameters:
       - GWP = Purchased Ground water
       - GUP = Purchased Ground water UDI surface water
     enum: 
-    - SW
-    - GW
-    - GU
-    - SWP
-    - GWP
-    - GUP
+      - SW
+      - GW
+      - GU
+      - SWP
+      - GWP
+      - GUP
     type: string
     required: false
   f.p_swtyp: 
@@ -258,15 +258,15 @@ parameters:
       - GWP = Purchased Ground water
       - GUP = Purchased Ground water UDI surface water
     enum: 
-    - SW
-    - GW
-    - GU
-    - SWP
-    - GWP
-    - GUP
+      - SW
+      - GW
+      - GU
+      - SWP
+      - GWP
+      - GUP
     type: string
     required: false
-  g.p_popsv: 
+  q.p_popsv: 
     name: p_popsv
     in: query
     description: |-
@@ -294,7 +294,7 @@ parameters:
       May contain multiple comma-separated values.
     type: string
     required: false
-  g.p_trb: 
+  q.p_trb: 
     name: p_trb
     in: query
     description: Tribe name
@@ -306,7 +306,7 @@ parameters:
     description: Tribe name
     type: string
     required: false
-  g.p_cs: 
+  q.p_cs: 
     name: p_cs
     in: query
     description: |-
@@ -334,13 +334,13 @@ parameters:
       May contain multiple comma-separated values.
     type: string
     required: false
-  g.p_mr: 
+  q.p_mr: 
     name: p_mr
     in: query
     description: Monitoring and Reporting Violations (failure to conduct regular monitoring of drinking water quality or submit monitoring results in a timely fashion).
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_mr: 
@@ -348,17 +348,17 @@ parameters:
     in: formData
     description: Monitoring and Reporting Violations (failure to conduct regular monitoring of drinking water quality or submit monitoring results in a timely fashion).
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
-  g.p_health: 
+  q.p_health: 
     name: p_health
     in: query
     description: Violations of health-based drinking water standards (maximum contaminant levels, maximum residual disinfectant levels, or treatment technique rules).
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_health: 
@@ -366,17 +366,17 @@ parameters:
     in: formData
     description: Violations of health-based drinking water standards (maximum contaminant levels, maximum residual disinfectant levels, or treatment technique rules).
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
-  g.p_other: 
+  q.p_other: 
     name: p_other
     in: query
     description: Other violations, such as failing to issue annual consumer confidence reports or maintain required records.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_other: 
@@ -384,18 +384,18 @@ parameters:
     in: formData
     description: Other violations, such as failing to issue annual consumer confidence reports or maintain required records.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
-  g.p_act: 
+  q.p_act: 
     name: p_act
     in: query
     description: Active Permits/Facilities Flag.  Provide Y or N to filter results to facilities with active permits.
     enum: 
-    - Y
-    - N
-    - A
+      - Y
+      - N
+      - A
     type: string
     required: false
   f.p_act: 
@@ -403,18 +403,18 @@ parameters:
     in: formData
     description: Active Permits/Facilities Flag.  Provide Y or N to filter results to facilities with active permits.
     enum: 
-    - Y
-    - N
-    - A
+      - Y
+      - N
+      - A
     type: string
     required: false
-  g.p_pn: 
+  q.p_pn: 
     name: p_pn
     in: query
     description: Public Notice Violations (failure to immediately alert consumers of serious problem with drinking water).
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_pn: 
@@ -422,17 +422,17 @@ parameters:
     in: formData
     description: Public Notice Violations (failure to immediately alert consumers of serious problem with drinking water).
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
-  g.p_sv: 
+  q.p_sv: 
     name: p_sv
     in: query
     description: Serious Violator (unresolved serious, multiple, and/or continuing violations). A value of Y will return only SDWIS systems that are Serious Violators, while a value of N will only return SDWIS Systems that are not Serious Violators.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_sv: 
@@ -440,11 +440,11 @@ parameters:
     in: formData
     description: Serious Violator (unresolved serious, multiple, and/or continuing violations). A value of Y will return only SDWIS systems that are Serious Violators, while a value of N will only return SDWIS Systems that are not Serious Violators.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
-  g.p_qs: 
+  q.p_qs: 
     name: p_qs
     in: query
     description: Quick Search. Allows entry for city, state, and/or zip code.
@@ -456,7 +456,7 @@ parameters:
     description: Quick Search. Allows entry for city, state, and/or zip code.
     type: string
     required: false
-  g.p_sfs: 
+  q.p_sfs: 
     name: p_sfs
     in: query
     description: Single Facility Search Filter.  Provide a facility name or program system identifier to limit results.  For the all data search, the FRS registry identifier is also searched.
@@ -468,7 +468,7 @@ parameters:
     description: Single Facility Search Filter.  Provide a facility name or program system identifier to limit results.  For the all data search, the FRS registry identifier is also searched.
     type: string
     required: false
-  g.p_fea: 
+  q.p_fea: 
     name: p_fea
     in: query
     description: |-
@@ -476,8 +476,8 @@ parameters:
       - W = within date range
       - N = not within date range
     enum: 
-    - W
-    - N
+      - W
+      - N
     type: string
     required: false
   f.p_pswpol: 
@@ -486,7 +486,7 @@ parameters:
     description: For CWA, pollutant names for surface water discharges. for Drinking Water, SDWIS Violation contaminant codes for unaddressed violations that have occurred in the last 3 years. May contain multiple comma-separated values.
     type: string
     required: false
-  g.p_pswpol: 
+  q.p_pswpol: 
     name: p_pswpol
     in: query
     description: For CWA, pollutant names for surface water discharges. for Drinking Water, SDWIS Violation contaminant codes for unaddressed violations that have occurred in the last 3 years. May contain multiple comma-separated values.
@@ -500,11 +500,11 @@ parameters:
       - W = within date range
       - N = not within date range
     enum: 
-    - W
-    - N
+      - W
+      - N
     type: string
     required: false
-  g.p_feay: 
+  q.p_feay: 
     name: p_feay
     in: query
     description: Years (1 to 5) Range.  This value is used to create a date range for Formal Enforcement Actions (FEA). Used along with p_fea (which indicates whether to look within or outside of the date range) to find FEAs within (or not within) the number of years specified.
@@ -522,7 +522,7 @@ parameters:
     description: Query Limiter.  Enter a value to limit the number of records returned for each query. Value cannot exceed 70,000.
     type: number
     required: false
-  g.queryset: 
+  q.queryset: 
     name: queryset
     in: query
     description: Query Limiter.  Enter a value to limit the number of records returned for each query. Value cannot exceed 70,000.
@@ -540,7 +540,7 @@ parameters:
     - 5
     type: number
     required: false
-  g.p_feaa: 
+  q.p_feaa: 
     name: p_feaa
     in: query
     description: |-
@@ -549,9 +549,9 @@ parameters:
       - S = State
       - A = All
     enum: 
-    - A
-    - E
-    - S
+      - A
+      - E
+      - S
     type: string
     required: false
   f.responseset: 
@@ -560,7 +560,7 @@ parameters:
     description: Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000.
     type: number
     required: false
-  g.responseset: 
+  q.responseset: 
     name: responseset
     in: query
     description: Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000.
@@ -575,12 +575,12 @@ parameters:
       - S = State
       - A = All
     enum: 
-    - A
-    - E
-    - S
+      - A
+      - E
+      - S
     type: string
     required: false
-  g.p_iea: 
+  q.p_iea: 
     name: p_iea
     in: query
     description: |-
@@ -588,8 +588,8 @@ parameters:
       - W = within date range
       - N = not within date range
     enum: 
-    - W
-    - N
+      - W
+      - N
     type: string
     required: false
   f.p_iea: 
@@ -600,11 +600,11 @@ parameters:
       - W = within date range
       - N = not within date range
     enum: 
-    - W
-    - N
+      - W
+      - N
     type: string
     required: false
-  g.p_ieay: 
+  q.p_ieay: 
     name: p_ieay
     in: query
     description: Years (1 to 5) Range.  This value is used to create a date range for Informal Enforcement Actions (IEA). Used along with p_iea (which indicates whether to look within or outside of the date range) to find IEAs within (or not within) the number of years specified.
@@ -628,7 +628,7 @@ parameters:
     - 5
     type: number
     required: false
-  g.p_ieaa: 
+  q.p_ieaa: 
     name: p_ieaa
     in: query
     description: |-
@@ -636,8 +636,8 @@ parameters:
       - E = EPA
       - S = State
     enum: 
-    - E
-    - S
+      - E
+      - S
     type: string
     required: false
   f.p_ieaa: 
@@ -648,11 +648,11 @@ parameters:
       - E = EPA
       - S = State
     enum: 
-    - E
-    - S
+      - E
+      - S
     type: string
     required: false
-  g.p_qiv: 
+  q.p_qiv: 
     name: p_qiv
     in: query
     description: |-
@@ -661,12 +661,12 @@ parameters:
       - GEXX = Replacing XX with a numeric value, that number of quarterd or more in noncompliance.
       - GTXX = Replacing XX with a numeric value, more than that number of quarters in noncompliance.
     enum: 
-    - '0'
-    - GT1
-    - GT2
-    - GT4
-    - GT8
-    - '12'
+      - '0'
+      - GT1
+      - GT2
+      - GT4
+      - GT8
+      - '12'
     type: string
     required: false
   f.p_qiv: 
@@ -678,21 +678,21 @@ parameters:
       - GEXX = Replacing XX with a numeric value, that number of quarterd or more in noncompliance.
       - GTXX = Replacing XX with a numeric value, more than that number of quarters in noncompliance.
     enum: 
-    - '0'
-    - GT1
-    - GT2
-    - GT4
-    - GT8
-    - '12'
+      - '0'
+      - GT1
+      - GT2
+      - GT4
+      - GT8
+      - '12'
     type: string
     required: false
-  g.p_ico: 
+  q.p_ico: 
     name: p_ico
     in: query
     description: "Indian Country Flag.  Enter a \"Y\" or \"N\" to restrict searches to facilities inside or outside Indian Country."
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_ico: 
@@ -700,11 +700,11 @@ parameters:
     in: formData
     description: "Indian Country Flag.  Enter a \"Y\" or \"N\" to restrict searches to facilities inside or outside Indian Country."
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
-  g.p_pid: 
+  q.p_pid: 
     name: p_pid
     in: query
     description: Nine-digit permit IDs. May contain up to 2000 comma-separated values.
@@ -716,7 +716,7 @@ parameters:
     description: Nine-digit permit IDs. May contain up to 2000 comma-separated values.
     type: string
     required: false
-  g.p_ysl: 
+  q.p_ysl: 
     name: p_ysl
     in: query
     description: |-
@@ -724,9 +724,9 @@ parameters:
       - W = within date range
       - N = not within date range
     enum: 
-    - W
-    - N
-    - NV
+      - W
+      - N
+      - NV
     type: string
     required: false
   f.p_ysl: 
@@ -737,12 +737,12 @@ parameters:
       - W = within date range
       - N = not within date range
     enum: 
-    - W
-    - N
-    - NV
+      - W
+      - N
+      - NV
     type: string
     required: false
-  g.p_ysly: 
+  q.p_ysly: 
     name: p_ysly
     in: query
     description: Number of years (1 to 5) since last facility inspection.  A value of 1 means that it has been inspected within the year.
@@ -766,7 +766,7 @@ parameters:
     - 5
     type: number
     required: false
-  g.p_ysla: 
+  q.p_ysla: 
     name: p_ysla
     in: query
     description: |-
@@ -774,9 +774,9 @@ parameters:
       - E = EPA
       - S = State
     enum: 
-    - E
-    - S
-    - A
+      - E
+      - S
+      - A
     type: string
     required: false
   f.p_ysla: 
@@ -787,12 +787,12 @@ parameters:
       - E = EPA
       - S = State
     enum: 
-    - E
-    - S
-    - A
+      - E
+      - S
+      - A
     type: string
     required: false
-  g.p_idt1: 
+  q.p_idt1: 
     name: p_idt1
     in: query
     description: Beginning of date range of most recent facility inspection.
@@ -804,7 +804,7 @@ parameters:
     description: Beginning of date range of most recent facility inspection.
     type: string
     required: false
-  g.p_idt2: 
+  q.p_idt2: 
     name: p_idt2
     in: query
     description: End of date range of most recent facility inspection.
@@ -816,7 +816,7 @@ parameters:
     description: End of date range of most recent facility inspection.
     type: string
     required: false
-  g.p_pityp: 
+  q.p_pityp: 
     name: p_pityp
     in: query
     description: |-
@@ -856,7 +856,7 @@ parameters:
       May contain multiple comma-separated values.
     type: string
     required: false
-  g.p_pfead1: 
+  q.p_pfead1: 
     name: p_pfead1
     in: query
     description: Formal Enforcement Action Date Range Start.  Enter a date in MM/DD/YYYY format to set the start of the range for filtering by recent Formal Enforcement Action (FEA) taken against the facility within the last five years.
@@ -868,7 +868,7 @@ parameters:
     description: Formal Enforcement Action Date Range Start.  Enter a date in MM/DD/YYYY format to set the start of the range for filtering by recent Formal Enforcement Action (FEA) taken against the facility within the last five years.
     type: string
     required: false
-  g.p_pfead2: 
+  q.p_pfead2: 
     name: p_pfead2
     in: query
     description: Formal Enforcement Action Date Range End.  Enter a date in MM/DD/YYYY format to set the end of the date range for filtering by recent Formal Enforcement Action (FEA) taken against the facility within the last five years.
@@ -880,7 +880,7 @@ parameters:
     description: Formal Enforcement Action Date Range End.  Enter a date in MM/DD/YYYY format to set the end of the date range for filtering by recent Formal Enforcement Action (FEA) taken against the facility within the last five years.
     type: string
     required: false
-  g.p_pfeat: 
+  q.p_pfeat: 
     name: p_pfeat
     in: query
     description: Formal Enforcement Action (FEA) Code Filter.  Enter one or more three-letter FEA codes to restrict results to facilities with these attributes.  Use p_fead1 and p_fead2 parameters to further restrict this filter by entering a date range.  Provide multiple codes as a comma-delimited list.
@@ -892,13 +892,13 @@ parameters:
     description: Formal Enforcement Action (FEA) Code Filter.  Enter one or more three-letter FEA codes to restrict results to facilities with these attributes.  Use p_fead1 and p_fead2 parameters to further restrict this filter by entering a date range.  Provide multiple codes as a comma-delimited list.
     type: string
     required: false
-  g.p_pswvio: 
+  q.p_pswvio: 
     name: p_pswvio
     in: query
     description: Used in conjuction with parameters p_pswpol and p_pswparam, indicates whether search should only include pollutants with violations.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_pswvio: 
@@ -906,11 +906,11 @@ parameters:
     in: formData
     description: Used in conjuction with parameters p_pswpol and p_pswparam, indicates whether search should only include pollutants with violations.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
-  g.qid: 
+  q.qid: 
     name: qid
     in: query
     description: Query ID Selector.  Enter the QueryID number from a previously run query.
@@ -922,7 +922,7 @@ parameters:
     description: Query ID Selector.  Enter the QueryID number from a previously run query.
     type: string
     required: true
-  g.pageno: 
+  q.pageno: 
     name: pageno
     in: query
     description: Indicates the number of the page to display. It is used only when the results are paginated.
@@ -936,7 +936,7 @@ parameters:
     default: 1
     type: number
     required: false
-  g.newsort: 
+  q.newsort: 
     name: newsort
     in: query
     description: Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column.
@@ -948,13 +948,13 @@ parameters:
     description: Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column.
     type: number
     required: false
-  g.descending: 
+  q.descending: 
     name: descending
     in: query
     description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.descending: 
@@ -962,8 +962,8 @@ parameters:
     in: formData
     description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_qis: 
@@ -985,21 +985,21 @@ parameters:
       - 12 = Exactly twelve quarters in noncompliance.
       Note the seemingly incongruous of GT12 is deliberate.
     enum: 
-    - Z
-    - GE1
-    - GT1
-    - GE2
-    - GT2
-    - GE4
-    - GT4
-    - GE8
-    - GT8
-    - GE12
-    - GT12
-    - '12'
+      - Z
+      - GE1
+      - GT1
+      - GE2
+      - GT2
+      - GE4
+      - GT4
+      - GE8
+      - GT8
+      - GE12
+      - GT12
+      - '12'
     type: string
     required: false
-  g.p_qis: 
+  q.p_qis: 
     name: p_qis
     in: query
     description: |-
@@ -1018,21 +1018,21 @@ parameters:
       - 12 = Exactly twelve quarters in noncompliance.
       Note the seemingly incongruous of GT12 is deliberate.
     enum: 
-    - Z
-    - GE1
-    - GT1
-    - GE2
-    - GT2
-    - GE4
-    - GT4
-    - GE8
-    - GT8
-    - GE12
-    - GT12
-    - '12'
+      - Z
+      - GE1
+      - GT1
+      - GE2
+      - GT2
+      - GE4
+      - GT4
+      - GE8
+      - GT8
+      - GE12
+      - GT12
+      - '12'
     type: string
     required: false
-  g.qcolumns: 
+  q.qcolumns: 
     name: qcolumns
     in: query
     description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
@@ -1044,7 +1044,7 @@ parameters:
     description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
     type: string
     required: false
-  g.p_cuv: 
+  q.p_cuv: 
     name: p_cuv
     in: query
     description: "Copper Violation.  A \"Y\" value will select water systems with at least 1 Copper Violation."
@@ -1056,7 +1056,7 @@ parameters:
     description: "Rule code 350 violation. A \"Y\" value will select water systems with at least one rule code 350 violation."
     type: string
     required: false
-  g.p_rc350v: 
+  q.p_rc350v: 
     name: p_rc350v
     in: query
     description: "Rule code 350 violation. A \"Y\" value will select water systems with at least one rule code 350 violation."
@@ -1068,7 +1068,7 @@ parameters:
     description: "Lead Action Level Exceedance.  A \"Y\" value will select water systems with at least 1 Lead Action Level Exceedance."
     type: string
     required: false
-  g.p_pbale: 
+  q.p_pbale: 
     name: p_pbale
     in: query
     description: "Lead Action Level Exceedance.  A \"Y\" value will select water systems with at least 1 Lead Action Level Exceedance."
@@ -1080,7 +1080,7 @@ parameters:
     description: "Copper Action Level Exceedance.  A \"Y\" value will select water systems with at least 1 Copper Action Level Exceedance."
     type: string
     required: false
-  g.p_cuale: 
+  q.p_cuale: 
     name: p_cuale
     in: query
     description: "Copper Action Level Exceedance.  A \"Y\" value will select water systems with at least 1 Copper Action Level Exceedance."
@@ -1092,7 +1092,7 @@ parameters:
     description: "Lead or Copper rule violations.  A \"Y\" value will select water systems with at least 1 Lead or Copper Rule Violation."
     type: string
     required: false
-  g.p_lcrv: 
+  q.p_lcrv: 
     name: p_lcrv
     in: query
     description: "Lead or Copper rule violations.  A \"Y\" value will select water systems with at least 1 Lead or Copper Rule Violation."
@@ -1104,7 +1104,7 @@ parameters:
     description: "Copper Violation.  A \"Y\" value will select water systems with at least 1 Copper Violation."
     type: string
     required: false
-  g.p_pbv: 
+  q.p_pbv: 
     name: p_pbv
     in: query
     description: "Lead Violations.  A \"Y\" value will select water systems with at least 1 Lead Violation."
@@ -1116,7 +1116,7 @@ parameters:
     description: "Lead Violations.  A \"Y\" value will select water systems with at least 1 Lead Violation."
     type: string
     required: false
-  g.p_ss5yr: 
+  q.p_ss5yr: 
     name: p_ss5yr
     in: query
     description: |-
@@ -1138,7 +1138,7 @@ parameters:
 
     type: string
     required: false
-  g.p_sdc: 
+  q.p_sdc: 
     name: p_sdc
     in: query
     description: |-
@@ -1164,75 +1164,75 @@ paths:
       summary: Safe Drinking Water Act (SDWA) Systems Search Service
       description: Returns an array of public water systems that meet the specified search criteria.
       parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/g.p_fn"
-      - "$ref": "#/parameters/g.p_ct"
-      - "$ref": "#/parameters/g.p_co"
-      - "$ref": "#/parameters/g.p_fips"
-      - "$ref": "#/parameters/g.p_st"
-      - "$ref": "#/parameters/g.p_zip"
-      - "$ref": "#/parameters/g.p_reg"
-      - "$ref": "#/parameters/g.p_trb"
-      - "$ref": "#/parameters/g.p_act"
-      - "$ref": "#/parameters/g.p_qiv"
-      - "$ref": "#/parameters/g.p_ico"
-      - "$ref": "#/parameters/g.p_pid"
-      - "$ref": "#/parameters/g.p_owop"
-      - "$ref": "#/parameters/g.p_systyp"
-      - "$ref": "#/parameters/g.p_swtyp"
-      - "$ref": "#/parameters/g.p_popsv"
-      - "$ref": "#/parameters/g.p_cs"
-      - "$ref": "#/parameters/g.p_mr"
-      - "$ref": "#/parameters/g.p_health"
-      - "$ref": "#/parameters/g.p_other"
-      - "$ref": "#/parameters/g.p_pn"
-      - "$ref": "#/parameters/g.p_sv"
-      - "$ref": "#/parameters/g.p_qs"
-      - "$ref": "#/parameters/g.p_sfs"
-      - "$ref": "#/parameters/g.p_pswpol"
-      - "$ref": "#/parameters/g.p_pswvio"
-      - "$ref": "#/parameters/g.p_pbale"
-      - "$ref": "#/parameters/g.p_cuale"
-      - "$ref": "#/parameters/g.p_rc350v"
-      - "$ref": "#/parameters/g.p_pbv"
-      - "$ref": "#/parameters/g.p_cuv"
-      - "$ref": "#/parameters/g.p_lcrv"
-      - "$ref": "#/parameters/g.p_fea"
-      - "$ref": "#/parameters/g.p_feay"
-      - "$ref": "#/parameters/g.p_feaa"
-      - "$ref": "#/parameters/g.p_iea"
-      - "$ref": "#/parameters/g.p_ieay"
-      - "$ref": "#/parameters/g.p_ieaa"
-      - "$ref": "#/parameters/g.p_qis"
-      - "$ref": "#/parameters/g.p_pfead1"
-      - "$ref": "#/parameters/g.p_pfead2"
-      - "$ref": "#/parameters/g.p_pfeat"
-      - "$ref": "#/parameters/g.p_ss5yr"
-      - "$ref": "#/parameters/g.p_sdc"
-      - "$ref": "#/parameters/g.p_ysl"
-      - "$ref": "#/parameters/g.p_ysly"
-      - "$ref": "#/parameters/g.p_ysla"
-      - "$ref": "#/parameters/g.p_idt1"
-      - "$ref": "#/parameters/g.p_idt2"
-      - "$ref": "#/parameters/g.p_pityp"
-      - "$ref": "#/parameters/g.queryset"
-      - "$ref": "#/parameters/g.responseset"
-      - "$ref": "#/parameters/g.callback"
-      - "$ref": "#/parameters/g.qcolumns"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+          enum: 
+            - JSONP
+            - JSON
+            - XML
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.p_fn"
+        - "$ref": "#/parameters/q.p_ct"
+        - "$ref": "#/parameters/q.p_co"
+        - "$ref": "#/parameters/q.p_fips"
+        - "$ref": "#/parameters/q.p_st"
+        - "$ref": "#/parameters/q.p_zip"
+        - "$ref": "#/parameters/q.p_reg"
+        - "$ref": "#/parameters/q.p_trb"
+        - "$ref": "#/parameters/q.p_act"
+        - "$ref": "#/parameters/q.p_qiv"
+        - "$ref": "#/parameters/q.p_ico"
+        - "$ref": "#/parameters/q.p_pid"
+        - "$ref": "#/parameters/q.p_owop"
+        - "$ref": "#/parameters/q.p_systyp"
+        - "$ref": "#/parameters/q.p_swtyp"
+        - "$ref": "#/parameters/q.p_popsv"
+        - "$ref": "#/parameters/q.p_cs"
+        - "$ref": "#/parameters/q.p_mr"
+        - "$ref": "#/parameters/q.p_health"
+        - "$ref": "#/parameters/q.p_other"
+        - "$ref": "#/parameters/q.p_pn"
+        - "$ref": "#/parameters/q.p_sv"
+        - "$ref": "#/parameters/q.p_qs"
+        - "$ref": "#/parameters/q.p_sfs"
+        - "$ref": "#/parameters/q.p_pswpol"
+        - "$ref": "#/parameters/q.p_pswvio"
+        - "$ref": "#/parameters/q.p_pbale"
+        - "$ref": "#/parameters/q.p_cuale"
+        - "$ref": "#/parameters/q.p_rc350v"
+        - "$ref": "#/parameters/q.p_pbv"
+        - "$ref": "#/parameters/q.p_cuv"
+        - "$ref": "#/parameters/q.p_lcrv"
+        - "$ref": "#/parameters/q.p_fea"
+        - "$ref": "#/parameters/q.p_feay"
+        - "$ref": "#/parameters/q.p_feaa"
+        - "$ref": "#/parameters/q.p_iea"
+        - "$ref": "#/parameters/q.p_ieay"
+        - "$ref": "#/parameters/q.p_ieaa"
+        - "$ref": "#/parameters/q.p_qis"
+        - "$ref": "#/parameters/q.p_pfead1"
+        - "$ref": "#/parameters/q.p_pfead2"
+        - "$ref": "#/parameters/q.p_pfeat"
+        - "$ref": "#/parameters/q.p_ss5yr"
+        - "$ref": "#/parameters/q.p_sdc"
+        - "$ref": "#/parameters/q.p_ysl"
+        - "$ref": "#/parameters/q.p_ysly"
+        - "$ref": "#/parameters/q.p_ysla"
+        - "$ref": "#/parameters/q.p_idt1"
+        - "$ref": "#/parameters/q.p_idt2"
+        - "$ref": "#/parameters/q.p_pityp"
+        - "$ref": "#/parameters/q.queryset"
+        - "$ref": "#/parameters/q.responseset"
+        - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.qcolumns"
       tags: 
-      - Safe Drinking Water
+        - Safe Drinking Water
       responses: 
         '200': 
           description: Returns an array of public water systems that meet the specified search criteria.
@@ -1244,80 +1244,80 @@ paths:
               Results: 
                 "$ref": "#/definitions/sdw3_Results" 
             required: 
-            - Results
+              - Results
     post: 
       summary: Safe Drinking Water Act (SDWA) Systems Search Service
       description: Returns an array of public water systems that meet the specified search criteria.
       parameters: 
-      - name: output
-        in: formData
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/f.p_fn"
-      - "$ref": "#/parameters/f.p_ct"
-      - "$ref": "#/parameters/f.p_co"
-      - "$ref": "#/parameters/f.p_fips"
-      - "$ref": "#/parameters/f.p_st"
-      - "$ref": "#/parameters/f.p_zip"
-      - "$ref": "#/parameters/f.p_reg"
-      - "$ref": "#/parameters/f.p_trb"
-      - "$ref": "#/parameters/f.p_act"
-      - "$ref": "#/parameters/f.p_qiv"
-      - "$ref": "#/parameters/f.p_ico"
-      - "$ref": "#/parameters/f.p_pid"
-      - "$ref": "#/parameters/f.p_owop"
-      - "$ref": "#/parameters/f.p_systyp"
-      - "$ref": "#/parameters/f.p_swtyp"
-      - "$ref": "#/parameters/f.p_popsv"
-      - "$ref": "#/parameters/f.p_cs"
-      - "$ref": "#/parameters/f.p_mr"
-      - "$ref": "#/parameters/f.p_health"
-      - "$ref": "#/parameters/f.p_other"
-      - "$ref": "#/parameters/f.p_pn"
-      - "$ref": "#/parameters/f.p_sv"
-      - "$ref": "#/parameters/f.p_qs"
-      - "$ref": "#/parameters/f.p_sfs"
-      - "$ref": "#/parameters/f.p_pswpol"
-      - "$ref": "#/parameters/f.p_pswvio"
-      - "$ref": "#/parameters/f.p_pbale"
-      - "$ref": "#/parameters/f.p_cuale"
-      - "$ref": "#/parameters/f.p_rc350v"
-      - "$ref": "#/parameters/f.p_pbv"
-      - "$ref": "#/parameters/f.p_cuv"
-      - "$ref": "#/parameters/f.p_lcrv"
-      - "$ref": "#/parameters/f.p_fea"
-      - "$ref": "#/parameters/f.p_feay"
-      - "$ref": "#/parameters/f.p_feaa"
-      - "$ref": "#/parameters/f.p_iea"
-      - "$ref": "#/parameters/f.p_ieay"
-      - "$ref": "#/parameters/f.p_ieaa"
-      - "$ref": "#/parameters/f.p_qis"
-      - "$ref": "#/parameters/f.p_pfead1"
-      - "$ref": "#/parameters/f.p_pfead2"
-      - "$ref": "#/parameters/f.p_pfeat"
-      - "$ref": "#/parameters/f.p_ss5yr"
-      - "$ref": "#/parameters/f.p_sdc"
-      - "$ref": "#/parameters/f.p_ysl"
-      - "$ref": "#/parameters/f.p_ysly"
-      - "$ref": "#/parameters/f.p_ysla"
-      - "$ref": "#/parameters/f.p_idt1"
-      - "$ref": "#/parameters/f.p_idt2"
-      - "$ref": "#/parameters/f.p_pityp"
-      - "$ref": "#/parameters/f.queryset"
-      - "$ref": "#/parameters/f.responseset"
-      - "$ref": "#/parameters/f.callback"
-      - "$ref": "#/parameters/f.qcolumns"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+          enum: 
+            - JSONP
+            - JSON
+            - XML
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.p_fn"
+        - "$ref": "#/parameters/f.p_ct"
+        - "$ref": "#/parameters/f.p_co"
+        - "$ref": "#/parameters/f.p_fips"
+        - "$ref": "#/parameters/f.p_st"
+        - "$ref": "#/parameters/f.p_zip"
+        - "$ref": "#/parameters/f.p_reg"
+        - "$ref": "#/parameters/f.p_trb"
+        - "$ref": "#/parameters/f.p_act"
+        - "$ref": "#/parameters/f.p_qiv"
+        - "$ref": "#/parameters/f.p_ico"
+        - "$ref": "#/parameters/f.p_pid"
+        - "$ref": "#/parameters/f.p_owop"
+        - "$ref": "#/parameters/f.p_systyp"
+        - "$ref": "#/parameters/f.p_swtyp"
+        - "$ref": "#/parameters/f.p_popsv"
+        - "$ref": "#/parameters/f.p_cs"
+        - "$ref": "#/parameters/f.p_mr"
+        - "$ref": "#/parameters/f.p_health"
+        - "$ref": "#/parameters/f.p_other"
+        - "$ref": "#/parameters/f.p_pn"
+        - "$ref": "#/parameters/f.p_sv"
+        - "$ref": "#/parameters/f.p_qs"
+        - "$ref": "#/parameters/f.p_sfs"
+        - "$ref": "#/parameters/f.p_pswpol"
+        - "$ref": "#/parameters/f.p_pswvio"
+        - "$ref": "#/parameters/f.p_pbale"
+        - "$ref": "#/parameters/f.p_cuale"
+        - "$ref": "#/parameters/f.p_rc350v"
+        - "$ref": "#/parameters/f.p_pbv"
+        - "$ref": "#/parameters/f.p_cuv"
+        - "$ref": "#/parameters/f.p_lcrv"
+        - "$ref": "#/parameters/f.p_fea"
+        - "$ref": "#/parameters/f.p_feay"
+        - "$ref": "#/parameters/f.p_feaa"
+        - "$ref": "#/parameters/f.p_iea"
+        - "$ref": "#/parameters/f.p_ieay"
+        - "$ref": "#/parameters/f.p_ieaa"
+        - "$ref": "#/parameters/f.p_qis"
+        - "$ref": "#/parameters/f.p_pfead1"
+        - "$ref": "#/parameters/f.p_pfead2"
+        - "$ref": "#/parameters/f.p_pfeat"
+        - "$ref": "#/parameters/f.p_ss5yr"
+        - "$ref": "#/parameters/f.p_sdc"
+        - "$ref": "#/parameters/f.p_ysl"
+        - "$ref": "#/parameters/f.p_ysly"
+        - "$ref": "#/parameters/f.p_ysla"
+        - "$ref": "#/parameters/f.p_idt1"
+        - "$ref": "#/parameters/f.p_idt2"
+        - "$ref": "#/parameters/f.p_pityp"
+        - "$ref": "#/parameters/f.queryset"
+        - "$ref": "#/parameters/f.responseset"
+        - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.qcolumns"
       tags: 
-      - Safe Drinking Water
+        - Safe Drinking Water
       responses: 
         '200': 
           description: Returns an array of public water systems that meet the specified search criteria.
@@ -1329,33 +1329,33 @@ paths:
               Results: 
                 "$ref": "#/definitions/sdw3_Results" 
             required: 
-            - Results
+              - Results
   "/sdw_rest_services.get_qid": 
     get: 
       summary: Safe Drinking Water Act (SDWA) Paginated Results Service
       description: GET_QID is passed with a query ID corresponding to a previously run get_systems query. It then returns a Systems object containing all matching water systems. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. 
       parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/g.qid"
-      - "$ref": "#/parameters/g.pageno"
-      - "$ref": "#/parameters/g.callback"
-      - "$ref": "#/parameters/g.newsort"
-      - "$ref": "#/parameters/g.descending"
-      - "$ref": "#/parameters/g.qcolumns"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+          enum: 
+            - JSONP
+            - JSON
+            - XML
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.qid"
+        - "$ref": "#/parameters/q.pageno"
+        - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.newsort"
+        - "$ref": "#/parameters/q.descending"
+        - "$ref": "#/parameters/q.qcolumns"
       tags: 
-      - Safe Drinking Water
+        - Safe Drinking Water
       responses: 
         '200': 
           description: Results are an array (page)  of SDWA (SDWIS) Water Systems with the number of systems equal to the responseset (page size).
@@ -1367,32 +1367,32 @@ paths:
               Results: 
                 "$ref": "#/definitions/sdw2_Results" 
             required: 
-            - Results
+              - Results
     post: 
       summary: Safe Drinking Water Act (SDWA) Paginated Results Service
       description: GET_QID is passed with a query ID corresponding to a previously run get_systems query. It then returns a Systems object containing all matching water systems. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. 
       parameters: 
-      - name: output
-        in: formData
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/f.qid"
-      - "$ref": "#/parameters/f.pageno"
-      - "$ref": "#/parameters/f.callback"
-      - "$ref": "#/parameters/f.newsort"
-      - "$ref": "#/parameters/f.descending"
-      - "$ref": "#/parameters/f.qcolumns"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+          enum: 
+            - JSONP
+            - JSON
+            - XML
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.qid"
+        - "$ref": "#/parameters/f.pageno"
+        - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.newsort"
+        - "$ref": "#/parameters/f.descending"
+        - "$ref": "#/parameters/f.qcolumns"
       tags: 
-      - Safe Drinking Water
+        - Safe Drinking Water
       responses: 
         '200': 
           description: Results are an array (page)  of SDWA (SDWIS) Water Systems with the number of systems equal to the responseset (page size).
@@ -1404,23 +1404,23 @@ paths:
               Results: 
                 "$ref": "#/definitions/sdw2_Results" 
             required: 
-            - Results
+              - Results
   "/sdw_rest_services.get_download": 
     get: 
       summary: Safe Drinking Water Act (SDWA) Download Data Service
       description: Based on the QID obtained from a get_systems query, return a comma separated value (CSV) file of the water systems found.
       parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - CSV = Facility results formatted as comma delimited file download (default).
-        type: string
-        required: false
-      - "$ref": "#/parameters/g.qid"
-      - "$ref": "#/parameters/g.qcolumns"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - CSV = Facility results formatted as comma delimited file download (default).
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.qid"
+        - "$ref": "#/parameters/q.qcolumns"
       tags: 
-      - Safe Drinking Water
+        - Safe Drinking Water
       responses: 
         '200': 
           description: Results are a comma separated value (CSV) file.
@@ -1430,17 +1430,17 @@ paths:
       summary: Safe Drinking Water Act (SDWA) Download Data Service
       description: Based on the QID obtained from a get_systems query, return a comma separated value (CSV) file of the water systems found.
       parameters: 
-      - name: output
-        in: formData
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - CSV = Facility results formatted as comma delimited file download (default).
-        type: string
-        required: false
-      - "$ref": "#/parameters/f.qid"
-      - "$ref": "#/parameters/f.qcolumns"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - CSV = Facility results formatted as comma delimited file download (default).
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.qid"
+        - "$ref": "#/parameters/f.qcolumns"
       tags: 
-      - Safe Drinking Water
+        - Safe Drinking Water
       responses: 
         '200': 
           description: Results are a comma separated value (CSV) file.
@@ -1451,22 +1451,22 @@ paths:
       summary: Safe Drinking Water Act (SDWA) Metadata Service
       description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_systems endpoint.
       parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/g.callback"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+          enum: 
+            - JSONP
+            - JSON
+            - XML
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.callback"
       tags: 
-      - Metadata
+        - Metadata
       responses: 
         '200': 
           description: Results are an array of columns/objects.
@@ -1478,27 +1478,27 @@ paths:
               Results: 
                 "$ref": "#/definitions/met1" 
             required: 
-            - Results
+              - Results
     post: 
       summary: Safe Drinking Water Act (SDWA) Metadata Service
       description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_systems endpoint.
       parameters: 
-      - name: output
-        in: formData
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/f.callback"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+          enum: 
+            - JSONP
+            - JSON
+            - XML
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.callback"
       tags: 
-      - Metadata
+        - Metadata
       responses: 
         '200': 
           description: Results are an array of columns/objects.
@@ -1510,7 +1510,7 @@ paths:
               Results: 
                 "$ref": "#/definitions/met1" 
             required: 
-            - Results
+              - Results
 definitions: 
   met2: 
     description: Results Column Object
@@ -1541,12 +1541,12 @@ definitions:
         title: Description
         description: A description of the category of Supplemental Environment Project (SEP) for a settlement.
     required: 
-    - ColumnName
-    - DataType
-    - DataLength
-    - ColumnID
-    - ObjectName
-    - Description
+      - ColumnName
+      - DataType
+      - DataLength
+      - ColumnID
+      - ObjectName
+      - Description
   met1: 
     description: Results Object
     properties: 
@@ -1564,7 +1564,7 @@ definitions:
           name: ResultColumns
           wrapped: true
     required: 
-    - Message
+      - Message
   sdw2_Results: 
     description: Results Object
     properties: 
@@ -1597,10 +1597,10 @@ definitions:
           name: WaterSystems
           wrapped: true
     required: 
-    - Message
-    - QueryRows
-    - QueryID
-    - PageNo
+      - Message
+      - QueryRows
+      - QueryID
+      - PageNo
   sdw3_Results: 
     description: Results Object
     properties: 
@@ -1668,18 +1668,18 @@ definitions:
           name: WaterSystems
           wrapped: true
     required: 
-    - Message
-    - Version
-    - QueryRows
-    - IndianCountryRows
-    - SVRows
-    - CVRows
-    - V3Rows
-    - FEARows
-    - InfFEARows
-    - INSPRows
-    - QueryID
-    - PageNo
+      - Message
+      - Version
+      - QueryRows
+      - IndianCountryRows
+      - SVRows
+      - CVRows
+      - V3Rows
+      - FEARows
+      - InfFEARows
+      - INSPRows
+      - QueryID
+      - PageNo
   sdw3_WaterSystems: 
     description: Safe Drinking Water Search Results Object
     xml: 
@@ -1920,71 +1920,71 @@ definitions:
         example: '1'
         description: "[Col. 121]"
     required: 
-    - PWSName
-    - PWSId
-    - CitiesServed
-    - StateCode
-    - ZipCodesServed
-    - CountiesServed
-    - EPARegion
-    - IndianCountry
-    - PWSTypeCode
-    - PWSTypeDesc
-    - PrimarySourceCode
-    - PrimarySourceDesc
-    - PopulationServedCount
-    - PWSActivityCode
-    - PWSActivityDesc
-    - OwnerTypeCode
-    - OwnerDesc
-    - QtrsWithVio
-    - QtrsWithSNC
-    - SeriousViolator
-    - HealthFlag
-    - MrFlag
-    - PnFlag
-    - OtherFlag
-    - NewVioFlg
-    - RulesVio3yr
-    - RulesVio
-    - Viopaccr
-    - Vioremain
-    - Viofeanot
-    - Viortcfea
-    - Viortcnofea
-    - Ifea
-    - Feas
-    - SDWDateLastIea
-    - SDWDateLastIeaEPA
-    - SDWDateLastIeaSt
-    - SDWDateLastFea
-    - SDWDateLastFeaEPA
-    - SDWDateLastFeaSt
-    - SDWAContaminantsInViol3yr
-    - SDWAContaminantsInCurViol
-    - PbAle
-    - CuAle
-    - Rc350Viol
-    - DfrUrl
-    - FIPSCodes
-    - SNC
-    - GwSwCode
-    - SDWA3yrComplQtrsHistory
-    - SDWAContaminants
-    - PbViol
-    - CuViol
-    - LeadAndCopperViol
-    - TRIbalFlag
-    - FeaFlag
-    - IeaFlag
-    - SNCFlag
-    - CurrVioFlag
-    - VioFlag
-    - Insp5yrFlag
-    - Sansurvey5yr
-    - SignificantDeficiencyCount
-    - SDWDateLastVisit
-    - SDWDateLastVisitEPA
-    - SDWDateLastVisitState
-    - SDWDateLastVisitLocal
-    - MaxScore
+      - PWSName
+      - PWSId
+      - CitiesServed
+      - StateCode
+      - ZipCodesServed
+      - CountiesServed
+      - EPARegion
+      - IndianCountry
+      - PWSTypeCode
+      - PWSTypeDesc
+      - PrimarySourceCode
+      - PrimarySourceDesc
+      - PopulationServedCount
+      - PWSActivityCode
+      - PWSActivityDesc
+      - OwnerTypeCode
+      - OwnerDesc
+      - QtrsWithVio
+      - QtrsWithSNC
+      - SeriousViolator
+      - HealthFlag
+      - MrFlag
+      - PnFlag
+      - OtherFlag
+      - NewVioFlg
+      - RulesVio3yr
+      - RulesVio
+      - Viopaccr
+      - Vioremain
+      - Viofeanot
+      - Viortcfea
+      - Viortcnofea
+      - Ifea
+      - Feas
+      - SDWDateLastIea
+      - SDWDateLastIeaEPA
+      - SDWDateLastIeaSt
+      - SDWDateLastFea
+      - SDWDateLastFeaEPA
+      - SDWDateLastFeaSt
+      - SDWAContaminantsInViol3yr
+      - SDWAContaminantsInCurViol
+      - PbAle
+      - CuAle
+      - Rc350Viol
+      - DfrUrl
+      - FIPSCodes
+      - SNC
+      - GwSwCode
+      - SDWA3yrComplQtrsHistory
+      - SDWAContaminants
+      - PbViol
+      - CuViol
+      - LeadAndCopperViol
+      - TRIbalFlag
+      - FeaFlag
+      - IeaFlag
+      - SNCFlag
+      - CurrVioFlag
+      - VioFlag
+      - Insp5yrFlag
+      - Sansurvey5yr
+      - SignificantDeficiencyCount
+      - SDWDateLastVisit
+      - SDWDateLastVisitEPA
+      - SDWDateLastVisitState
+      - SDWDateLastVisitLocal
+      - MaxScore

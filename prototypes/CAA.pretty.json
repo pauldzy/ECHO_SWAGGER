@@ -403,7 +403,11 @@
    }
    ,"components": {
        "schemas": {
-          "caa_poll_rpt_rest_services.AirQuality": {
+          "EmptyObject": {
+             "type": "object"
+            ,"maxProperties": 0
+         }
+         ,"caa_poll_rpt_rest_services.AirQualityNonEmpty": {
              "type": "object"
             ,"title": "Air Quality"
             ,"properties": {
@@ -413,28 +417,75 @@
                ,"Ozone8hr2008Area": {
                    "$ref": "#/components/schemas/property.Ozone8hr2008Area"
                }
+               ,"Ozone8hr2015Area": {
+                   "type": "string"
+                  ,"title": "Ozone8hr2015Area"
+                  ,"nullable": true
+                  ,"example": "Milwaukee-Racine, WI"
+               }
+               ,"Lead1978Area": {
+                   "type": "string"
+                  ,"title": "Lead1978Area"
+                  ,"nullable": true
+                  ,"example": "Washington, DC-MD-VA"
+               }
                ,"Lead2008Area": {
                    "$ref": "#/components/schemas/property.Lead2008Area"
                }
-               ,"PaticulateMatter1997Area": {
+               ,"CarbonMonoxide1971Area": {
                    "type": "string"
-                  ,"title": "PaticulateMatter1997Area"
+                  ,"title": "CarbonMonoxide1971Area"
                   ,"nullable": true
+                  ,"example": "Washington, DC-MD-VA"
+               }
+               ,"NitrogenDioxide1971Area": {
+                   "type": "string"
+                  ,"title": "NitrogenDioxide1971Area"
+                  ,"nullable": true
+                  ,"example": "Washington, DC-MD-VA"
+               }
+               ,"SulfurDioxide1971Area": {
+                   "type": "string"
+                  ,"title": "SulfurDioxide1971Area"
+                  ,"nullable": true
+                  ,"example": "Washington, DC-MD-VA"
+               }
+               ,"SulfurDioxide2010Area": {
+                   "$ref": "#/components/schemas/property.SulfurDioxide2010Area"
+               }
+               ,"ParticulateMatter1987Area": {
+                   "type": "string"
+                  ,"title": "ParticulateMatter1987Area"
+                  ,"nullable": true
+                  ,"example": "Washington, DC-MD-VA"
+               }
+               ,"ParticulateMatter1997Area": {
+                   "$ref": "#/components/schemas/property.ParticulateMatter1997Area"
                }
                ,"ParticulateMatter2006Area": {
                    "$ref": "#/components/schemas/property.ParticulateMatter2006Area"
                }
-               ,"SulfurDioxide2010Area": {
-                   "$ref": "#/components/schemas/property.SulfurDioxide2010Area"
+               ,"ParticulateMatter2012Area": {
+                   "type": "string"
+                  ,"title": "ParticulateMatter2012Area"
+                  ,"nullable": true
+                  ,"example": "Washington, DC-MD-VA"
                }
             }
             ,"required": [
                 "Ozone8hr1997Area"
                ,"Ozone8hr2008Area"
+               ,"Ozone8hr2015Area"
+               ,"Lead1978Area"
                ,"Lead2008Area"
-               ,"PaticulateMatter1997Area"
-               ,"ParticulateMatter2006Area"
+               ,"CarbonMonoxide1971Area"
+               ,"NitrogenDioxide1971Area"
+               ,"SulfurDioxide1971Area"
                ,"SulfurDioxide2010Area"
+               ,"ParticulateMatter1987Area"
+               ,"ParticulateMatter1997Area"
+               ,"ParticulateMatter2006Area"
+               ,"ParticulateMatter2012Area"
             ]
          }
          ,"caa_poll_rpt_rest_services.Emissions": {
@@ -639,7 +690,7 @@
                ,"FacilityStatus"
             ]
          }
-         ,"caa_poll_rpt_rest_services.SpatialMetadata": {
+         ,"caa_poll_rpt_rest_services.SpatialMetadataNonEmpty": {
              "type": "object"
             ,"title": "Spatial Metadata"
             ,"properties": {
@@ -715,7 +766,14 @@
                    "$ref": "#/components/schemas/property.Message"
                }
                ,"AirQuality": {
-                   "$ref": "#/components/schemas/caa_poll_rpt_rest_services.AirQuality"
+                   "oneOf": [
+                      {
+                         "$ref": "#/components/schemas/caa_poll_rpt_rest_services.AirQualityNonEmpty"
+                     }
+                     ,{
+                         "$ref": "#/components/schemas/EmptyObject"
+                     }
+                  ]
                }
             }
             ,"required": [
@@ -779,7 +837,14 @@
                    "$ref": "#/components/schemas/caa_poll_rpt_rest_services.get_caapr.EnvironmentalConditions"
                }
                ,"SpatialMetadata": {
-                   "$ref": "#/components/schemas/caa_poll_rpt_rest_services.SpatialMetadata"
+                   "oneOf": [
+                      {
+                         "$ref": "#/components/schemas/caa_poll_rpt_rest_services.SpatialMetadataNonEmpty"
+                     }
+                     ,{
+                         "$ref": "#/components/schemas/EmptyObject"
+                     }
+                  ]
                }
                ,"MapOutput": {
                    "$ref": "#/components/schemas/caa_poll_rpt_rest_services.MapOutput"
@@ -799,7 +864,14 @@
             ,"title": "Environmental Conditions"
             ,"properties": {
                 "AirQuality": {
-                   "$ref": "#/components/schemas/caa_poll_rpt_rest_services.AirQuality"
+                   "oneOf": [
+                      {
+                         "$ref": "#/components/schemas/caa_poll_rpt_rest_services.AirQualityNonEmpty"
+                     }
+                     ,{
+                         "$ref": "#/components/schemas/EmptyObject"
+                     }
+                  ]
                }
             }
             ,"required": [
@@ -1114,7 +1186,14 @@
                    "$ref": "#/components/schemas/property.Message"
                }
                ,"SpatialMetadata": {
-                   "$ref": "#/components/schemas/caa_poll_rpt_rest_services.SpatialMetadata"
+                   "oneOf": [
+                      {
+                         "$ref": "#/components/schemas/caa_poll_rpt_rest_services.SpatialMetadataNonEmpty"
+                     }
+                     ,{
+                         "$ref": "#/components/schemas/EmptyObject"
+                     }
+                  ]
                }
             }
             ,"required": [
@@ -1274,6 +1353,13 @@
             ,"description": "Pop up value. Combine with PopUpBaseURL to give the popup for the facility"
             ,"nullable": false
             ,"example": "110001891506"
+         }
+         ,"property.ParticulateMatter1997Area": {
+             "type": "string"
+            ,"title": "ParticulateMatter1997Area"
+            ,"description": "If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name"
+            ,"nullable": true
+            ,"example": "Washington, DC-MD-VA"
          }
          ,"property.ParticulateMatter2006Area": {
              "type": "string"

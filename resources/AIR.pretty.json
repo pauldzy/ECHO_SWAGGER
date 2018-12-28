@@ -1963,6 +1963,30 @@
          ,"type": "string"
          ,"required": false
       }
+      ,"f.p_nspsm": {
+          "name": "p_nspsm"
+         ,"in": "formData"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"q.p_nspsm": {
+          "name": "p_nspsm"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"f.p_nsps": {
+          "name": "p_nsps"
+         ,"in": "formData"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"q.p_nsps": {
+          "name": "p_nsps"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
       ,"q.p_ar": {
           "name": "p_ar"
          ,"in": "query"
@@ -2372,6 +2396,12 @@
                    "$ref": "#\/parameters\/q.p_mact"
                }
                ,{
+                   "$ref": "#\/parameters\/q.p_nsps"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_nspsm"
+               }
+               ,{
                    "$ref": "#\/parameters\/q.p_prog"
                }
                ,{
@@ -2743,6 +2773,12 @@
                    "$ref": "#\/parameters\/f.p_mact"
                }
                ,{
+                   "$ref": "#\/parameters\/f.p_nsps"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_nspsm"
+               }
+               ,{
                    "$ref": "#\/parameters\/f.p_prog"
                }
                ,{
@@ -3111,6 +3147,12 @@
                    "$ref": "#\/parameters\/q.p_mact"
                }
                ,{
+                   "$ref": "#\/parameters\/q.p_nsps"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_nspsm"
+               }
+               ,{
                    "$ref": "#\/parameters\/q.p_prog"
                }
                ,{
@@ -3472,6 +3514,12 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.p_mact"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_nsps"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_nspsm"
                }
                ,{
                    "$ref": "#\/parameters\/f.p_prog"
@@ -5135,6 +5183,18 @@
             ,"NaaPollutants": {
                 "type": "string"
             }
+            ,"FacCountyName": {
+                "type": "string"
+            }
+            ,"FacStdCountyName": {
+                "type": "string"
+            }
+            ,"AIRNsps": {
+                "type": "string"
+            }
+            ,"AIRNspsm": {
+                "type": "string"
+            }
             ,"Score": {
                 "type": "string"
                ,"title": "Score"
@@ -5274,6 +5334,10 @@
             ,"WebDocs"
             ,"NaaCategories"
             ,"NaaPollutants"
+            ,"FacCountyName"
+            ,"FacStdCountyName"
+            ,"AIRNsps"
+            ,"AIRNspsm"
             ,"Score"
             ,"MaxScore"
          ]
@@ -5378,6 +5442,9 @@
                ,"example": "$963,531"
                ,"description": "The total dollar amount of either assessed or final penalties within the five year time period"
             }
+            ,"BadSystemIDs": {
+                "type": "string"
+            }
             ,"QueryID": {
                 "type": "string"
                ,"title": "Query Identifier"
@@ -5416,6 +5483,7 @@
             ,"InfFEARows"
             ,"INSPRows"
             ,"TotalPenalties"
+            ,"BadSystemIDs"
             ,"QueryID"
             ,"PageNo"
          ]
@@ -5985,6 +6053,18 @@
             ,"NaaPollutants": {
                 "type": "string"
             }
+            ,"FacCountyName": {
+                "type": "string"
+            }
+            ,"FacStdCountyName": {
+                "type": "string"
+            }
+            ,"AIRNsps": {
+                "type": "string"
+            }
+            ,"AIRNspsm": {
+                "type": "string"
+            }
             ,"Score": {
                 "type": "string"
                ,"title": "Score"
@@ -6125,6 +6205,10 @@
             ,"WebDocs"
             ,"NaaCategories"
             ,"NaaPollutants"
+            ,"FacCountyName"
+            ,"FacStdCountyName"
+            ,"AIRNsps"
+            ,"AIRNspsm"
             ,"Score"
             ,"MaxScore"
          ]
@@ -6194,6 +6278,9 @@
                ,"example": "$963,531"
                ,"description": "The total dollar amount of either assessed or final penalties within the five year time period"
             }
+            ,"BadSystemIDs": {
+                "type": "string"
+            }
             ,"IconBaseURL": {
                 "type": "string"
                ,"title": "Icon Base URL"
@@ -6256,6 +6343,7 @@
             ,"InfFEARows"
             ,"INSPRows"
             ,"TotalPenalties"
+            ,"BadSystemIDs"
             ,"IconBaseURL"
             ,"PopUpBaseURL"
             ,"ServiceBaseURL"
@@ -6829,6 +6917,18 @@
             ,"NaaPollutants": {
                 "type": "string"
             }
+            ,"FacCountyName": {
+                "type": "string"
+            }
+            ,"FacStdCountyName": {
+                "type": "string"
+            }
+            ,"AIRNsps": {
+                "type": "string"
+            }
+            ,"AIRNspsm": {
+                "type": "string"
+            }
             ,"Score": {
                 "type": "number"
                ,"title": "Score"
@@ -6966,6 +7066,10 @@
             ,"WebDocs"
             ,"NaaCategories"
             ,"NaaPollutants"
+            ,"FacCountyName"
+            ,"FacStdCountyName"
+            ,"AIRNsps"
+            ,"AIRNspsm"
             ,"Score"
             ,"MaxScore"
          ]

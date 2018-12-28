@@ -619,6 +619,40 @@ components:
           $ref: '#/components/schemas/property.SEPCategories'
         SEPTexts: 
           $ref: '#/components/schemas/property.SEPTexts'
+        RcraFlag: 
+          type: string
+          title: RcraFlag
+          nullable: true
+        CwaFlag: 
+          type: string
+          title: CwaFlag
+          nullable: true
+        CaaFlag: 
+          type: string
+          title: CaaFlag
+          nullable: true
+        EpcraFlag: 
+          type: string
+          title: EpcraFlag
+          nullable: true
+        SdwaFlag: 
+          type: string
+          title: SdwaFlag
+          nullable: true
+        FifraFlag: 
+          type: string
+          title: FifraFlag
+          nullable: true
+        CerclaFlag: 
+          type: string
+          title: CerclaFlag
+          nullable: true
+        TscaFlag: 
+          $ref: '#/components/schemas/property.TscaFlag'
+        FederalFlag: 
+          type: string
+          title: FederalFlag
+          nullable: true
         MaxScore: 
           $ref: '#/components/schemas/property.MaxScore'
       required: 
@@ -651,6 +685,15 @@ components:
         - StateLocPenaltyAmt
         - SEPCategories
         - SEPTexts
+        - RcraFlag
+        - CwaFlag
+        - CaaFlag
+        - EpcraFlag
+        - SdwaFlag
+        - FifraFlag
+        - CerclaFlag
+        - TscaFlag
+        - FederalFlag
         - MaxScore
     case_rest_services.MapData: 
       type: object
@@ -2304,6 +2347,11 @@ components:
       type: string
       title: TribalLandFlag
       description: Flag indicating if the case is located on tribal land.
+      nullable: true
+    property.TscaFlag: 
+      type: string
+      title: TscaFlag
+      description: Flag indicating whether or not a facility has a TSCA ID
       nullable: true
     property.Units: 
       type: string

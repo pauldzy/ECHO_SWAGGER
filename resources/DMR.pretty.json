@@ -1378,7 +1378,21 @@
                ,{
                    "name": "p_year"
                   ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"description": "Required.  The calendar year for the DMR annual pollutant loadings."
+                  ,"enum": [
+                      2018
+                     ,2017
+                     ,2016
+                     ,2015
+                     ,2014
+                     ,2013
+                     ,2012
+                     ,2011
+                     ,2010
+                     ,2009
+                     ,2008
+                     ,2007
+                  ]
                   ,"type": "string"
                   ,"required": false
                }
@@ -5665,7 +5679,7 @@
                ,{
                    "name": "p_year"
                   ,"in": "query"
-                  ,"description": "The calendar year for the DMR annual pollutant loadings."
+                  ,"description": "Required.  The calendar year for the DMR annual pollutant loadings."
                   ,"enum": [
                       2018
                      ,2017
@@ -5728,7 +5742,7 @@
                ,{
                    "name": "p_year"
                   ,"in": "formData"
-                  ,"description": "The calendar year for the DMR annual pollutant loadings."
+                  ,"description": "Required.  The calendar year for the DMR annual pollutant loadings."
                   ,"enum": [
                       2018
                      ,2017
@@ -6072,7 +6086,21 @@
                ,{
                    "name": "p_year"
                   ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"description": "Required.  The calendar year for the DMR annual pollutant loadings."
+                  ,"enum": [
+                      2018
+                     ,2017
+                     ,2016
+                     ,2015
+                     ,2014
+                     ,2013
+                     ,2012
+                     ,2011
+                     ,2010
+                     ,2009
+                     ,2008
+                     ,2007
+                  ]
                   ,"type": "string"
                   ,"required": false
                }
@@ -7645,11 +7673,6 @@
             ,"QcFlag": {
                 "type": "string"
             }
-            ,"MeasurementType": {
-                "type": "string"
-               ,"title": "Measurement Type"
-               ,"example": "NMth"
-            }
          }
          ,"required": [
              "DmrYear"
@@ -7695,7 +7718,6 @@
             ,"HasPermitLimits"
             ,"HasLoadingsData"
             ,"QcFlag"
-            ,"MeasurementType"
          ]
       }
       ,"dmr06_Results": {
@@ -12281,10 +12303,18 @@
                 "$ref": "#\/definitions\/dmr29_FacilityInfo"
             }
             ,"TopChemicalPounds": {
-                "$ref": "#\/definitions\/dmr29_TopChemicalPounds"
+                "type": "array"
+               ,"title": "Top Chemical Pounds"
+               ,"items": {
+                   "$ref": "#\/definitions\/dmr29_TopChemicalPounds"
+               }
             }
             ,"TopChemicalTWPE": {
-                "$ref": "#\/definitions\/dmr29_TopChemicalTWPE"
+                "type": "array"
+               ,"title": "Top Chemical TWPE"
+               ,"items": {
+                   "$ref": "#\/definitions\/dmr29_TopChemicalTWPE"
+               }
             }
             ,"ReceivingWater": {
                 "$ref": "#\/definitions\/dmr29_ReceivingWater"
@@ -12318,23 +12348,75 @@
       ,"dmr29_TopChemicalPounds": {
           "type": "object"
          ,"properties": {
-             "NoDataMsg": {
+             "ChemicalName": {
+                "type": "string"
+               ,"title": "Chemical Name"
+               ,"description": "The TRI chemical to which the data in this row applies."
+            }
+            ,"TotalDirectPounds": {
+                "type": "string"
+            }
+            ,"QcReviewDirectPounds": {
+                "type": "string"
+            }
+            ,"QcReviewDirectFlag": {
+                "type": "string"
+            }
+            ,"TotalIndirectPounds": {
+                "type": "string"
+            }
+            ,"QcReviewIndirectPounds": {
+                "type": "string"
+            }
+            ,"QcReviewIndirectFlag": {
                 "type": "string"
             }
          }
          ,"required": [
-             "NoDataMsg"
+             "ChemicalName"
+            ,"TotalDirectPounds"
+            ,"QcReviewDirectPounds"
+            ,"QcReviewDirectFlag"
+            ,"TotalIndirectPounds"
+            ,"QcReviewIndirectPounds"
+            ,"QcReviewIndirectFlag"
          ]
       }
       ,"dmr29_TopChemicalTWPE": {
           "type": "object"
          ,"properties": {
-             "NoDataMsg": {
+             "ChemicalName": {
+                "type": "string"
+               ,"title": "Chemical Name"
+               ,"description": "The TRI chemical to which the data in this row applies."
+            }
+            ,"TotalDirectTwpe": {
+                "type": "string"
+            }
+            ,"QcReviewDirectTwpe": {
+                "type": "string"
+            }
+            ,"QcReviewDirectFlag": {
+                "type": "string"
+            }
+            ,"TotalIndirectTwpe": {
+                "type": "string"
+            }
+            ,"QcReviewIndirectTwpe": {
+                "type": "string"
+            }
+            ,"QcReviewIndirectFlag": {
                 "type": "string"
             }
          }
          ,"required": [
-             "NoDataMsg"
+             "ChemicalName"
+            ,"TotalDirectTwpe"
+            ,"QcReviewDirectTwpe"
+            ,"QcReviewDirectFlag"
+            ,"TotalIndirectTwpe"
+            ,"QcReviewIndirectTwpe"
+            ,"QcReviewIndirectFlag"
          ]
       }
       ,"dmr29_TriWastewaterTreatment": {

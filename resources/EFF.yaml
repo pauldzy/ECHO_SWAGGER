@@ -26,12 +26,12 @@ info:
 host: ofmpub.epa.gov
 basePath: /echo
 schemes: 
-- https
+  - https
 consumes: 
-- application/x-www-form-urlencoded
+  - application/x-www-form-urlencoded
 produces: 
-- application/json
-- application/xml
+  - application/json
+  - application/xml
 parameters: 
   q.output: 
     name: output
@@ -42,9 +42,9 @@ parameters:
       - JSONP = Data model formatted as Javascript Object Notation with Padding.  
       - XML = Data model formatted as Extensible Markup Language.
     enum: 
-    - JSONP
-    - JSON
-    - XML
+      - JSONP
+      - JSON
+      - XML
     type: string
     required: false
   f.output: 
@@ -56,9 +56,9 @@ parameters:
       - JSONP = Data model formatted as Javascript Object Notation with Padding.  
       - XML = Data model formatted as Extensible Markup Language.
     enum: 
-    - JSONP
-    - JSON
-    - XML
+      - JSONP
+      - JSON
+      - XML
     type: string
     required: false
   q.p_id: 
@@ -165,15 +165,15 @@ paths:
         Discharge Monitoring Report (DMR) data supporting each effluent chart for one NPDES permit. Includes Discharge Monitoring Reports and NPDES Violations. 
 
       parameters: 
-      - "$ref": "#/parameters/q.p_id"
-      - "$ref": "#/parameters/q.outfall"
-      - "$ref": "#/parameters/q.parameter_code"
-      - "$ref": "#/parameters/q.start_date"
-      - "$ref": "#/parameters/q.end_date"
-      - "$ref": "#/parameters/q.output"
-      - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.p_id"
+        - "$ref": "#/parameters/q.outfall"
+        - "$ref": "#/parameters/q.parameter_code"
+        - "$ref": "#/parameters/q.start_date"
+        - "$ref": "#/parameters/q.end_date"
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.callback"
       tags: 
-      - Effluent Charts
+        - Effluent Charts
       responses: 
         '200': 
           description: Returns an object with detailed effluent information
@@ -185,22 +185,22 @@ paths:
               Results: 
                 "$ref": "#/definitions/eff1_Results" 
             required: 
-            - Results
+              - Results
     post: 
       summary: Detailed Effluent Chart Service
       description: |-
         Discharge Monitoring Report (DMR) data supporting each effluent chart for one NPDES permit. Includes Discharge Monitoring Reports and NPDES Violations. 
 
       parameters: 
-      - "$ref": "#/parameters/f.p_id"
-      - "$ref": "#/parameters/f.outfall"
-      - "$ref": "#/parameters/f.parameter_code"
-      - "$ref": "#/parameters/f.start_date"
-      - "$ref": "#/parameters/f.end_date"
-      - "$ref": "#/parameters/f.output"
-      - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.p_id"
+        - "$ref": "#/parameters/f.outfall"
+        - "$ref": "#/parameters/f.parameter_code"
+        - "$ref": "#/parameters/f.start_date"
+        - "$ref": "#/parameters/f.end_date"
+        - "$ref": "#/parameters/f.output"
+        - "$ref": "#/parameters/f.callback"
       tags: 
-      - Effluent Charts
+        - Effluent Charts
       responses: 
         '200': 
           description: Returns an object with detailed effluent information
@@ -212,19 +212,19 @@ paths:
               Results: 
                 "$ref": "#/definitions/eff1_Results" 
             required: 
-            - Results
+              - Results
   "/eff_rest_services.get_summary_chart": 
     get: 
       summary: Summary Effluent Chart Service
       description: Summary of compliance status each outfall and parameter for one NPDES permit. Provides the current compliance status and overall compliance status for the date range of interest. This service supports the Summary Matrix on the Effluent Charts.
       parameters: 
-      - "$ref": "#/parameters/q.p_id"
-      - "$ref": "#/parameters/q.output"
-      - "$ref": "#/parameters/q.callback"
-      - "$ref": "#/parameters/q.start_date"
-      - "$ref": "#/parameters/q.end_date"
+        - "$ref": "#/parameters/q.p_id"
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.start_date"
+        - "$ref": "#/parameters/q.end_date"
       tags: 
-      - Effluent Charts
+        - Effluent Charts
       responses: 
         '200': 
           description: Returns an object with summary effluent information
@@ -236,18 +236,18 @@ paths:
               Results: 
                 "$ref": "#/definitions/eff2_Results" 
             required: 
-            - Results
+              - Results
     post: 
       summary: Summary Effluent Chart Service
       description: Summary of compliance status each outfall and parameter for one NPDES permit. Provides the current compliance status and overall compliance status for the date range of interest. This service supports the Summary Matrix on the Effluent Charts.
       parameters: 
-      - "$ref": "#/parameters/f.p_id"
-      - "$ref": "#/parameters/f.output"
-      - "$ref": "#/parameters/f.callback"
-      - "$ref": "#/parameters/f.start_date"
-      - "$ref": "#/parameters/f.end_date"
+        - "$ref": "#/parameters/f.p_id"
+        - "$ref": "#/parameters/f.output"
+        - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.start_date"
+        - "$ref": "#/parameters/f.end_date"
       tags: 
-      - Effluent Charts
+        - Effluent Charts
       responses: 
         '200': 
           description: Returns an object with summary effluent information
@@ -259,19 +259,19 @@ paths:
               Results: 
                 "$ref": "#/definitions/eff2_Results" 
             required: 
-            - Results
+              - Results
   "/eff_rest_services.download_effluent_chart": 
     get: 
       summary: Effluent Charts Download Service
       description: Downloads tabular Discharge Monitoring Report (DMR) and compliance data for one NPDES permit as a CSV.
       parameters: 
-      - "$ref": "#/parameters/q.p_id"
-      - "$ref": "#/parameters/q.outfall"
-      - "$ref": "#/parameters/q.parameter_code"
-      - "$ref": "#/parameters/q.start_date"
-      - "$ref": "#/parameters/q.end_date"
+        - "$ref": "#/parameters/q.p_id"
+        - "$ref": "#/parameters/q.outfall"
+        - "$ref": "#/parameters/q.parameter_code"
+        - "$ref": "#/parameters/q.start_date"
+        - "$ref": "#/parameters/q.end_date"
       tags: 
-      - Effluent Charts
+        - Effluent Charts
       responses: 
         '200': 
           description: Returns an object with summary effluent information
@@ -281,13 +281,13 @@ paths:
       summary: Effluent Charts Download Service
       description: Downloads tabular Discharge Monitoring Report (DMR) and compliance data for one NPDES permit as a CSV.
       parameters: 
-      - "$ref": "#/parameters/f.p_id"
-      - "$ref": "#/parameters/f.outfall"
-      - "$ref": "#/parameters/f.parameter_code"
-      - "$ref": "#/parameters/f.start_date"
-      - "$ref": "#/parameters/f.end_date"
+        - "$ref": "#/parameters/f.p_id"
+        - "$ref": "#/parameters/f.outfall"
+        - "$ref": "#/parameters/f.parameter_code"
+        - "$ref": "#/parameters/f.start_date"
+        - "$ref": "#/parameters/f.end_date"
       tags: 
-      - Effluent Charts
+        - Effluent Charts
       responses: 
         '200': 
           description: Returns an object with summary effluent information
@@ -298,12 +298,12 @@ paths:
       summary: ECHO CWA Parameter Lookup Service
       description: Look up Clean Water Act parameter codes and descriptions in the Integrated Compliance Information System - National Pollutant Discharge Elimination System (ICIS-NPDES) by code or term.
       parameters: 
-      - "$ref": "#/parameters/q.output"
-      - "$ref": "#/parameters/q.callback"
-      - "$ref": "#/parameters/q.search_term"
-      - "$ref": "#/parameters/q.search_code"
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.search_term"
+        - "$ref": "#/parameters/q.search_code"
       tags: 
-      - Lookups
+        - Lookups
       responses: 
         '200': 
           description: |-
@@ -317,17 +317,17 @@ paths:
               Results: 
                 "$ref": "#/definitions/rlk16_Results" 
             required: 
-            - Results
+              - Results
     post: 
       summary: ECHO CWA Parameter Lookup Service
       description: Look up Clean Water Act parameter codes and descriptions in the Integrated Compliance Information System - National Pollutant Discharge Elimination System (ICIS-NPDES) by code or term.
       parameters: 
-      - "$ref": "#/parameters/f.output"
-      - "$ref": "#/parameters/f.callback"
-      - "$ref": "#/parameters/f.search_term"
-      - "$ref": "#/parameters/f.search_code"
+        - "$ref": "#/parameters/f.output"
+        - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.search_term"
+        - "$ref": "#/parameters/f.search_code"
       tags: 
-      - Lookups
+        - Lookups
       responses: 
         '200': 
           description: |-
@@ -341,7 +341,7 @@ paths:
               Results: 
                 "$ref": "#/definitions/rlk16_Results" 
             required: 
-            - Results
+              - Results
 definitions: 
   eff1_DischargeMonitoringReports: 
     description: Discharge Monitoring Reports Object
@@ -550,46 +550,46 @@ definitions:
           name: NPDESViolations
           wrapped: true
     required: 
-    - VersionNmbr
-    - PermFeatureId
-    - LimitSetId
-    - LimitSetScheduleId
-    - NmbrOfSubmission
-    - LimitId
-    - LimitTypeCode
-    - LimitBeginDate
-    - LimitEndDate
-    - LimitValueId
-    - LimitValueTypeCode
-    - LimitValueTypeDesc
-    - LimitValueNmbr
-    - LimitUnitCode
-    - LimitUnitDesc
-    - StdUnitCode
-    - StdUnitDesc
-    - LimitValueStdUnits
-    - StatisticalBaseCode
-    - StatisticalBaseDesc
-    - StatisticalBaseTypeCode
-    - StatisticalBaseTypeDesc
-    - LimitValueQualifierCode
-    - StayValueNmbr
-    - DMREventId
-    - MonitoringPeriodEndDate
-    - DMRFormValueId
-    - ValueTypeCode
-    - ValueTypeDesc
-    - DMRValueId
-    - DMRValueNmbr
-    - DMRUnitCode
-    - DMRUnitDesc
-    - DMRValueStdUnits
-    - DMRValueQualifierCode
-    - ValueReceivedDate
-    - DaysLate
-    - NODICode
-    - NODEDesc
-    - ExceedencePct
+      - VersionNmbr
+      - PermFeatureId
+      - LimitSetId
+      - LimitSetScheduleId
+      - NmbrOfSubmission
+      - LimitId
+      - LimitTypeCode
+      - LimitBeginDate
+      - LimitEndDate
+      - LimitValueId
+      - LimitValueTypeCode
+      - LimitValueTypeDesc
+      - LimitValueNmbr
+      - LimitUnitCode
+      - LimitUnitDesc
+      - StdUnitCode
+      - StdUnitDesc
+      - LimitValueStdUnits
+      - StatisticalBaseCode
+      - StatisticalBaseDesc
+      - StatisticalBaseTypeCode
+      - StatisticalBaseTypeDesc
+      - LimitValueQualifierCode
+      - StayValueNmbr
+      - DMREventId
+      - MonitoringPeriodEndDate
+      - DMRFormValueId
+      - ValueTypeCode
+      - ValueTypeDesc
+      - DMRValueId
+      - DMRValueNmbr
+      - DMRUnitCode
+      - DMRUnitDesc
+      - DMRValueStdUnits
+      - DMRValueQualifierCode
+      - ValueReceivedDate
+      - DaysLate
+      - NODICode
+      - NODEDesc
+      - ExceedencePct
   eff1_NPDESViolations: 
     description: NPDES Violations Object
     xml: 
@@ -730,13 +730,13 @@ definitions:
           name: DischargeMonitoringReports
           wrapped: true
     required: 
-    - ParameterCode
-    - ParameterDesc
-    - MonitoringLocationCode
-    - MonitoringLocationDesc
-    - StayTypeCode
-    - StayTypeDesc
-    - DischargeMonitoringReports
+      - ParameterCode
+      - ParameterDesc
+      - MonitoringLocationCode
+      - MonitoringLocationDesc
+      - StayTypeCode
+      - StayTypeDesc
+      - DischargeMonitoringReports
   eff1_PermFeatures: 
     description: Permit Features Object
     xml: 
@@ -767,10 +767,10 @@ definitions:
         example: External Outfall
         description: The description indicating the type of permitted feature (e.g., External Outfall, Internal Outfall, Sum)
     required: 
-    - PermFeatureNmbr
-    - PermFeatureTypeCode
-    - Parameters
-    - PermFeatureTypeDesc
+      - PermFeatureNmbr
+      - PermFeatureTypeCode
+      - Parameters
+      - PermFeatureTypeDesc
   eff1_Results: 
     description: Results Object
     properties: 
@@ -890,22 +890,22 @@ definitions:
           name: PermFeatures
           wrapped: true
     required: 
-    - Message
-    - SourceId
-    - EPASystem
-    - RegistryId
-    - Statute
-    - CWPName
-    - CWPStreet
-    - CWPCity
-    - CWPState
-    - CWPZip
-    - CWPPermitStatusDesc
-    - CWPMajorMinorStatusFlag
-    - CWPPermitTypeDesc
-    - CWPCurrentSNCStatus
-    - StartDate
-    - EndDate
+      - Message
+      - SourceId
+      - EPASystem
+      - RegistryId
+      - Statute
+      - CWPName
+      - CWPStreet
+      - CWPCity
+      - CWPState
+      - CWPZip
+      - CWPPermitStatusDesc
+      - CWPMajorMinorStatusFlag
+      - CWPPermitTypeDesc
+      - CWPCurrentSNCStatus
+      - StartDate
+      - EndDate
   eff2_LinkedPermits: 
     description: Linked Permits Object
     xml: 
@@ -973,16 +973,16 @@ definitions:
         example: D (DMR NR)
         description: The type of noncompliance when a major source is in significant violation or a minor source has a Category 1 violation.
     required: 
-    - SourceId
-    - CWPName
-    - CWPStreet
-    - CWPCity
-    - CWPState
-    - CWPZip
-    - CWPPermitStatusDesc
-    - CWPMajorMinorStatusFlag
-    - CWPPermitTypeDesc
-    - CWPCurrentSNCStatus
+      - SourceId
+      - CWPName
+      - CWPStreet
+      - CWPCity
+      - CWPState
+      - CWPZip
+      - CWPPermitStatusDesc
+      - CWPMajorMinorStatusFlag
+      - CWPPermitTypeDesc
+      - CWPCurrentSNCStatus
   eff2_Parameters: 
     description: Parameters Object
     xml: 
@@ -1009,10 +1009,10 @@ definitions:
         example: In Violation
         description: The most severe compliance status for an outfall and parameter during the current monitoring period
     required: 
-    - ParameterCode
-    - ParameterDesc
-    - MaxVioStatus
-    - CurrentVioStatus
+      - ParameterCode
+      - ParameterDesc
+      - MaxVioStatus
+      - CurrentVioStatus
   eff2_PermFeatures: 
     description: Permit Features Object
     xml: 
@@ -1042,10 +1042,10 @@ definitions:
           name: Parameters
           wrapped: true
     required: 
-    - PermFeatureNmbr
-    - PermFeatureTypeCode
-    - PermFeatureTypeDesc
-    - Parameters
+      - PermFeatureNmbr
+      - PermFeatureTypeCode
+      - PermFeatureTypeDesc
+      - Parameters
   eff2_Results: 
     description: Results Object
     properties: 
@@ -1172,22 +1172,22 @@ definitions:
           name: PermFeatures
           wrapped: true
     required: 
-    - Message
-    - SourceId
-    - EPASystem
-    - RegistryId
-    - Statute
-    - CWPName
-    - CWPStreet
-    - CWPCity
-    - CWPState
-    - CWPZip
-    - CWPPermitStatusDesc
-    - CWPMajorMinorStatusFlag
-    - CWPPermitTypeDesc
-    - CWPCurrentSNCStatus
-    - StartDate
-    - EndDate
+      - Message
+      - SourceId
+      - EPASystem
+      - RegistryId
+      - Statute
+      - CWPName
+      - CWPStreet
+      - CWPCity
+      - CWPState
+      - CWPZip
+      - CWPPermitStatusDesc
+      - CWPMajorMinorStatusFlag
+      - CWPPermitTypeDesc
+      - CWPCurrentSNCStatus
+      - StartDate
+      - EndDate
   rlk00_LuValues: 
     description: Lookup Values
     xml: 
@@ -1202,8 +1202,8 @@ definitions:
         title: Value Description
         example: 1-Butanol
     required: 
-    - ValueCode
-    - ValueDescription
+      - ValueCode
+      - ValueDescription
   rlk16_Results: 
     description: Results Object
     properties: 
@@ -1220,4 +1220,4 @@ definitions:
           name: LuValues
           wrapped: true
     required: 
-    - Message
+      - Message

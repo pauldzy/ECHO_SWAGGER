@@ -64,6 +64,8 @@ paths:
         - $ref: '#/components/parameters/p_act'
         - $ref: '#/components/parameters/p_maj'
         - $ref: '#/components/parameters/p_mact'
+        - $ref: '#/components/parameters/p_nsps'
+        - $ref: '#/components/parameters/p_nspsm'
         - $ref: '#/components/parameters/p_prog'
         - $ref: '#/components/parameters/p_fea'
         - $ref: '#/components/parameters/p_feay'
@@ -217,6 +219,12 @@ paths:
                   $ref: '#/components/schemas/rb.p_maj'
                 p_mact: 
                   $ref: '#/components/schemas/rb.p_mact'
+                p_nsps: 
+                  type: string
+                  title: p_nsps
+                p_nspsm: 
+                  type: string
+                  title: p_nspsm
                 p_prog: 
                   $ref: '#/components/schemas/rb.p_prog'
                 p_fea: 
@@ -422,6 +430,8 @@ paths:
         - $ref: '#/components/parameters/p_act'
         - $ref: '#/components/parameters/p_maj'
         - $ref: '#/components/parameters/p_mact'
+        - $ref: '#/components/parameters/p_nsps'
+        - $ref: '#/components/parameters/p_nspsm'
         - $ref: '#/components/parameters/p_prog'
         - $ref: '#/components/parameters/p_fea'
         - $ref: '#/components/parameters/p_feay'
@@ -574,6 +584,12 @@ paths:
                   $ref: '#/components/schemas/rb.p_maj'
                 p_mact: 
                   $ref: '#/components/schemas/rb.p_mact'
+                p_nsps: 
+                  type: string
+                  title: p_nsps
+                p_nspsm: 
+                  type: string
+                  title: p_nspsm
                 p_prog: 
                   $ref: '#/components/schemas/rb.p_prog'
                 p_fea: 
@@ -1604,6 +1620,14 @@ components:
           title: FacStdCountyName
           nullable: true
           example: ARLINGTON COUNTY
+        AIRNsps: 
+          type: string
+          title: AIRNsps
+          nullable: true
+        AIRNspsm: 
+          type: string
+          title: AIRNspsm
+          nullable: true
         Score: 
           type: string
           title: Score
@@ -1740,6 +1764,8 @@ components:
         - NaaPollutants
         - FacCountyName
         - FacStdCountyName
+        - AIRNsps
+        - AIRNspsm
         - Score
         - MaxScore
     air_rest_services.get_facilities.Results: 
@@ -2253,6 +2279,14 @@ components:
           title: FacStdCountyName
           nullable: true
           example: ARLINGTON COUNTY
+        AIRNsps: 
+          type: string
+          title: AIRNsps
+          nullable: true
+        AIRNspsm: 
+          type: string
+          title: AIRNspsm
+          nullable: true
         Score: 
           type: string
           title: Score
@@ -2390,6 +2424,8 @@ components:
         - NaaPollutants
         - FacCountyName
         - FacStdCountyName
+        - AIRNsps
+        - AIRNspsm
         - Score
         - MaxScore
     air_rest_services.get_facility_info.Results-1: 
@@ -2981,6 +3017,14 @@ components:
           title: FacStdCountyName
           nullable: true
           example: ARLINGTON COUNTY
+        AIRNsps: 
+          type: string
+          title: AIRNsps
+          nullable: true
+        AIRNspsm: 
+          type: string
+          title: AIRNspsm
+          nullable: true
         Score: 
           type: number
           title: Score
@@ -3114,6 +3158,8 @@ components:
         - NaaPollutants
         - FacCountyName
         - FacStdCountyName
+        - AIRNsps
+        - AIRNspsm
         - Score
         - MaxScore
     air_rest_services.get_qid.Results: 
@@ -5578,6 +5624,20 @@ components:
       schema: 
         type: string
         title: p_nei_yr
+    p_nsps: 
+      name: p_nsps
+      in: query
+      required: false
+      schema: 
+        type: string
+        title: p_nsps
+    p_nspsm: 
+      name: p_nspsm
+      in: query
+      required: false
+      schema: 
+        type: string
+        title: p_nspsm
     p_opst: 
       name: p_opst
       in: query

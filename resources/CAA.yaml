@@ -12,12 +12,12 @@ info:
 host: ofmpub.epa.gov
 basePath: /echo
 schemes: 
-- https
+  - https
 consumes: 
-- application/x-www-form-urlencoded
+  - application/x-www-form-urlencoded
 produces: 
-- application/json
-- application/xml
+  - application/json
+  - application/xml
 parameters: 
   q.output: 
     name: output
@@ -28,9 +28,9 @@ parameters:
       - JSONP = Data model formatted as Javascript Object Notation with Padding.  
       - XML = Data model formatted as Extensible Markup Language.
     enum: 
-    - JSONP
-    - JSON
-    - XML
+      - JSONP
+      - JSON
+      - XML
     type: string
     required: false
   f.output: 
@@ -42,9 +42,9 @@ parameters:
       - JSONP = Data model formatted as Javascript Object Notation with Padding.  
       - XML = Data model formatted as Extensible Markup Language.
     enum: 
-    - JSONP
-    - JSON
-    - XML
+      - JSONP
+      - JSON
+      - XML
     type: string
     required: false
   q.callback: 
@@ -101,16 +101,16 @@ paths:
       summary: Air Pollutant Report Service
       description: This procedure is the overall service for the Air Polltuant Report. It returns all of the data displayed in the Air Pollutant web report by invoking individual procedures that each return a targeted portion of the report.
       parameters: 
-      - "$ref": "#/parameters/q.output"
-      - name: p_id
-        in: query
-        description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
-        type: string
-        required: true
-      - "$ref": "#/parameters/q.p_units"
-      - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.output"
+        - name: p_id
+          in: query
+          description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
+          type: string
+          required: true
+        - "$ref": "#/parameters/q.p_units"
+        - "$ref": "#/parameters/q.callback"
       tags: 
-      - Air Pollution Report
+        - Air Pollution Report
       responses: 
         '200': 
           description: Returns a complex object (Air Pollutant Report) composed of objects from all of the other procedures.
@@ -122,21 +122,21 @@ paths:
               Results: 
                 "$ref": "#/definitions/caah_Results" 
             required: 
-            - Results
+              - Results
     post: 
       summary: Air Pollutant Report Service
       description: This procedure is the overall service for the Air Polltuant Report. It returns all of the data displayed in the Air Pollutant web report by invoking individual procedures that each return a targeted portion of the report.
       parameters: 
-      - "$ref": "#/parameters/f.output"
-      - name: p_id
-        in: formData
-        description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
-        type: string
-        required: true
-      - "$ref": "#/parameters/f.p_units"
-      - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.output"
+        - name: p_id
+          in: formData
+          description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
+          type: string
+          required: true
+        - "$ref": "#/parameters/f.p_units"
+        - "$ref": "#/parameters/f.callback"
       tags: 
-      - Air Pollution Report
+        - Air Pollution Report
       responses: 
         '200': 
           description: Returns a complex object (Air Pollutant Report) composed of objects from all of the other procedures.
@@ -148,22 +148,22 @@ paths:
               Results: 
                 "$ref": "#/definitions/caah_Results" 
             required: 
-            - Results
+              - Results
   "/caa_poll_rpt_rest_services.get_nnnPermits": 
     get: 
       summary: Air Pollutant Report Permits Service
       parameters: 
-      - "$ref": "#/parameters/q.output"
-      - "$ref": "#/parameters/q.nnn"
-      - "$ref": "#/parameters/q.nn2"
-      - name: p_id
-        in: query
-        description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
-        type: string
-        required: true
-      - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.nnn"
+        - "$ref": "#/parameters/q.nn2"
+        - name: p_id
+          in: query
+          description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
+          type: string
+          required: true
+        - "$ref": "#/parameters/q.callback"
       tags: 
-      - Air Pollution Report
+        - Air Pollution Report
       responses: 
         '200': 
           description: Returns an object that includes an array of permits.
@@ -175,21 +175,21 @@ paths:
               Results: 
                 "$ref": "#/definitions/caaf_Results" 
             required: 
-            - Results
+              - Results
     post: 
       summary: Air Pollutant Report Permits Service
       parameters: 
-      - "$ref": "#/parameters/f.output"
-      - "$ref": "#/parameters/f.nnn"
-      - "$ref": "#/parameters/f.nn2"
-      - name: p_id
-        in: formData
-        description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
-        type: string
-        required: true
-      - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.output"
+        - "$ref": "#/parameters/f.nnn"
+        - "$ref": "#/parameters/f.nn2"
+        - name: p_id
+          in: formData
+          description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
+          type: string
+          required: true
+        - "$ref": "#/parameters/f.callback"
       tags: 
-      - Air Pollution Report
+        - Air Pollution Report
       responses: 
         '200': 
           description: Returns an object that includes an array of permits.
@@ -201,22 +201,22 @@ paths:
               Results: 
                 "$ref": "#/definitions/caaf_Results" 
             required: 
-            - Results
+              - Results
   "/caa_poll_rpt_rest_services.get_aggregate_emissions": 
     get: 
       summary: Air Pollutant Report Aggregated Emissions Service
       description: This procedure obtains data for Total Aggregate Emissions in the Emissions section of the Air Pollutant Report.
       parameters: 
-      - "$ref": "#/parameters/q.output"
-      - name: p_id
-        in: query
-        description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
-        type: string
-        required: true
-      - "$ref": "#/parameters/q.p_units"
-      - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.output"
+        - name: p_id
+          in: query
+          description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
+          type: string
+          required: true
+        - "$ref": "#/parameters/q.p_units"
+        - "$ref": "#/parameters/q.callback"
       tags: 
-      - Air Pollution Report
+        - Air Pollution Report
       responses: 
         '200': 
           description: Returns an object that includes aggregate emissions.
@@ -228,21 +228,21 @@ paths:
               Results: 
                 "$ref": "#/definitions/caa7_Results" 
             required: 
-            - Results
+              - Results
     post: 
       summary: Air Pollutant Report Aggregated Emissions Service
       description: This procedure obtains data for Total Aggregate Emissions in the Emissions section of the Air Pollutant Report.
       parameters: 
-      - "$ref": "#/parameters/f.output"
-      - name: p_id
-        in: formData
-        description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
-        type: string
-        required: true
-      - "$ref": "#/parameters/f.p_units"
-      - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.output"
+        - name: p_id
+          in: formData
+          description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
+          type: string
+          required: true
+        - "$ref": "#/parameters/f.p_units"
+        - "$ref": "#/parameters/f.callback"
       tags: 
-      - Air Pollution Report
+        - Air Pollution Report
       responses: 
         '200': 
           description: Returns an object that includes aggregate emissions.
@@ -254,21 +254,21 @@ paths:
               Results: 
                 "$ref": "#/definitions/caa7_Results" 
             required: 
-            - Results
+              - Results
   "/caa_poll_rpt_rest_services.get_air_quality": 
     get: 
       summary: Air Pollutant Report Air Quality Service
       description: This procedure obtains data for Air Quality in the Environmental Conditions Section of the Air Pollutant Report.
       parameters: 
-      - "$ref": "#/parameters/q.output"
-      - name: p_id
-        in: query
-        description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
-        type: string
-        required: true
-      - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.output"
+        - name: p_id
+          in: query
+          description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
+          type: string
+          required: true
+        - "$ref": "#/parameters/q.callback"
       tags: 
-      - Air Pollution Report
+        - Air Pollution Report
       responses: 
         '200': 
           description: Returns an object that includes information on air quality.
@@ -280,20 +280,20 @@ paths:
               Results: 
                 "$ref": "#/definitions/caa8_Results" 
             required: 
-            - Results
+              - Results
     post: 
       summary: Air Pollutant Report Air Quality Service
       description: This procedure obtains data for Air Quality in the Environmental Conditions Section of the Air Pollutant Report.
       parameters: 
-      - "$ref": "#/parameters/f.output"
-      - name: p_id
-        in: formData
-        description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
-        type: string
-        required: true
-      - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.output"
+        - name: p_id
+          in: formData
+          description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
+          type: string
+          required: true
+        - "$ref": "#/parameters/f.callback"
       tags: 
-      - Air Pollution Report
+        - Air Pollution Report
       responses: 
         '200': 
           description: Returns an object that includes information on air quality.
@@ -305,21 +305,21 @@ paths:
               Results: 
                 "$ref": "#/definitions/caa8_Results" 
             required: 
-            - Results
+              - Results
   "/caa_poll_rpt_rest_services.get_map": 
     get: 
       summary: Air Pollutant Report Map Service
       description: "Returns an object with the facility's latitude and longitude coordinates."
       parameters: 
-      - "$ref": "#/parameters/q.output"
-      - name: p_id
-        in: query
-        description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
-        type: string
-        required: true
-      - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.output"
+        - name: p_id
+          in: query
+          description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
+          type: string
+          required: true
+        - "$ref": "#/parameters/q.callback"
       tags: 
-      - Air Pollution Report
+        - Air Pollution Report
       responses: 
         '200': 
           description: Returns an object that includes information for displaying a map.
@@ -331,20 +331,20 @@ paths:
               Results: 
                 "$ref": "#/definitions/caae_Results" 
             required: 
-            - Results
+              - Results
     post: 
       summary: Air Pollutant Report Map Service
       description: "Returns an object with the facility's latitude and longitude coordinates."
       parameters: 
-      - "$ref": "#/parameters/f.output"
-      - name: p_id
-        in: formData
-        description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
-        type: string
-        required: true
-      - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.output"
+        - name: p_id
+          in: formData
+          description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
+          type: string
+          required: true
+        - "$ref": "#/parameters/f.callback"
       tags: 
-      - Air Pollution Report
+        - Air Pollution Report
       responses: 
         '200': 
           description: Returns an object that includes information for displaying a map.
@@ -356,21 +356,21 @@ paths:
               Results: 
                 "$ref": "#/definitions/caae_Results" 
             required: 
-            - Results
+              - Results
   "/caa_poll_rpt_rest_services.get_spatial_metadata": 
     get: 
       summary: Air Pollutant Report Spatial Metadata Service
       description: Returns an object with the facility coordinate spatial metadata.
       parameters: 
-      - "$ref": "#/parameters/q.output"
-      - name: p_id
-        in: query
-        description: Identifier for the service.
-        type: string
-        required: true
-      - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.output"
+        - name: p_id
+          in: query
+          description: Identifier for the service.
+          type: string
+          required: true
+        - "$ref": "#/parameters/q.callback"
       tags: 
-      - Air Pollution Report
+        - Air Pollution Report
       responses: 
         '200': 
           description: Returns an object that includes spatial metadata.
@@ -382,20 +382,20 @@ paths:
               Results: 
                 "$ref": "#/definitions/caag_Results" 
             required: 
-            - Results
+              - Results
     post: 
       summary: Air Pollutant Report Spatial Metadata Service
       description: Returns an object with the facility coordinate spatial metadata.
       parameters: 
-      - "$ref": "#/parameters/f.output"
-      - name: p_id
-        in: formData
-        description: Identifier for the service.
-        type: string
-        required: true
-      - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.output"
+        - name: p_id
+          in: formData
+          description: Identifier for the service.
+          type: string
+          required: true
+        - "$ref": "#/parameters/f.callback"
       tags: 
-      - Air Pollution Report
+        - Air Pollution Report
       responses: 
         '200': 
           description: Returns an object that includes spatial metadata.
@@ -407,7 +407,7 @@ paths:
               Results: 
                 "$ref": "#/definitions/caag_Results" 
             required: 
-            - Results
+              - Results
 definitions: 
   caa1: 
     description: Air Quality Object
@@ -422,30 +422,54 @@ definitions:
         title: Eight Hour Ozone Area - 2008
         example: Chicago-Naperville, IL-IN-WI
         description: If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name
+      Ozone8hr2015Area: 
+        type: string
+      Lead1978Area: 
+        type: string
       Lead2008Area: 
         type: string
         title: Lead Area - 2008
         example: Washington, DC-MD-VA
         description: If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name
-      PaticulateMatter1997Area: 
+      CarbonMonoxide1971Area: 
         type: string
-      ParticulateMatter2006Area: 
+      NitrogenDioxide1971Area: 
         type: string
-        title: Particulate Matter Area - 2006
-        example: Washington, DC-MD-VA
-        description: If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name
+      SulfurDioxide1971Area: 
+        type: string
       SulfurDioxide2010Area: 
         type: string
         title: Sulfur Dioxide Area - 2010
         example: Washington, DC-MD-VA
         description: If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name
+      ParticulateMatter1987Area: 
+        type: string
+      ParticulateMatter1997Area: 
+        type: string
+        title: Particulate Matter Area - 1997
+        example: Washington, DC-MD-VA
+        description: If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name
+      ParticulateMatter2006Area: 
+        type: string
+        title: Particulate Matter Area - 2006
+        example: Washington, DC-MD-VA
+        description: If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name
+      ParticulateMatter2012Area: 
+        type: string
     required: 
-    - Ozone8hr1997Area
-    - Ozone8hr2008Area
-    - Lead2008Area
-    - PaticulateMatter1997Area
-    - ParticulateMatter2006Area
-    - SulfurDioxide2010Area
+      - Ozone8hr1997Area
+      - Ozone8hr2008Area
+      - Ozone8hr2015Area
+      - Lead1978Area
+      - Lead2008Area
+      - CarbonMonoxide1971Area
+      - NitrogenDioxide1971Area
+      - SulfurDioxide1971Area
+      - SulfurDioxide2010Area
+      - ParticulateMatter1987Area
+      - ParticulateMatter1997Area
+      - ParticulateMatter2006Area
+      - ParticulateMatter2012Area
   caa2: 
     description: Emissions Object
     xml: 
@@ -485,19 +509,19 @@ definitions:
       Year10: 
         type: string
     required: 
-    - Program
-    - Pollutant
-    - UnitsOfMeasure
-    - Year1
-    - Year2
-    - Year3
-    - Year4
-    - Year5
-    - Year6
-    - Year7
-    - Year8
-    - Year9
-    - Year10
+      - Program
+      - Pollutant
+      - UnitsOfMeasure
+      - Year1
+      - Year2
+      - Year3
+      - Year4
+      - Year5
+      - Year6
+      - Year7
+      - Year8
+      - Year9
+      - Year10
   caa3: 
     description: Map Data Object
     xml: 
@@ -534,12 +558,12 @@ definitions:
         example: '110001891506'
         description: Pop up value. Combine with PopUpBaseURL to give the popup for the facility
     required: 
-    - LAT
-    - LON
-    - ICON
-    - TYPE
-    - NAME
-    - PUV
+      - LAT
+      - LON
+      - ICON
+      - TYPE
+      - NAME
+      - PUV
   caa4: 
     description: Map Output Object
     properties: 
@@ -570,11 +594,11 @@ definitions:
           name: MapData
           wrapped: true
     required: 
-    - IconBaseURL
-    - PopUpBaseURL
-    - CenterLatitude
-    - CenterLongitude
-    - MapData
+      - IconBaseURL
+      - PopUpBaseURL
+      - CenterLatitude
+      - CenterLongitude
+      - MapData
   caa5: 
     description: Permits Object
     xml: 
@@ -636,14 +660,14 @@ definitions:
           The Air Program Status is given for each source ID (Operating; Planned; Under construction; Temporarily closed;  Permanently closed; and Seasonal)
           For CWA, the Permit Compliance System (PCS) designates a permitted facility as being Active or Inactive. Under the CWA, all facilities discharging pollutants from a point source (e.g., a pipe) to surface waters must have a NPDES permit. For CWA, ICISNPDES designates a permit as Effective, Administratively Continued, Expired, Not Needed, Pending, Retired, or Terminated. RCRA facilities (sites) are designated as Active or Inactive. The following provides RCRA site activity status definitions and explains site activity status designation.
     required: 
-    - Statute
-    - EPASystem
-    - SourceID
-    - Universe
-    - NAICS
-    - NAICSDesc
-    - SIC
-    - FacilityStatus
+      - Statute
+      - EPASystem
+      - SourceID
+      - Universe
+      - NAICS
+      - NAICSDesc
+      - SIC
+      - FacilityStatus
   caa6: 
     description: Spatial Metadata Object
     properties: 
@@ -700,8 +724,8 @@ definitions:
       AggregateEmissions: 
         "$ref": "#/definitions/caa9" 
     required: 
-    - Message
-    - AggregateEmissions
+      - Message
+      - AggregateEmissions
   caa8_Results: 
     description: Results Object
     properties: 
@@ -713,8 +737,8 @@ definitions:
       AirQuality: 
         "$ref": "#/definitions/caa1" 
     required: 
-    - Message
-    - AirQuality
+      - Message
+      - AirQuality
   caa9: 
     description: Aggregate Emissions Object
     properties: 
@@ -727,7 +751,7 @@ definitions:
           name: Emissions
           wrapped: true
     required: 
-    - Emissions
+      - Emissions
   caaa: 
     description: Results Object
     properties: 
@@ -764,19 +788,19 @@ definitions:
       MapOutput: 
         "$ref": "#/definitions/caa4" 
     required: 
-    - RegistryIDs
-    - Pollutants
-    - Permits
-    - AggregateEmissions
-    - EnvironmentalConditions
-    - MapOutput
+      - RegistryIDs
+      - Pollutants
+      - Permits
+      - AggregateEmissions
+      - EnvironmentalConditions
+      - MapOutput
   caab: 
     description: Environmental Conditions Object
     properties: 
       AirQuality: 
         "$ref": "#/definitions/caa1" 
     required: 
-    - AirQuality
+      - AirQuality
   caac: 
     description: Pollutants Object
     xml: 
@@ -825,22 +849,22 @@ definitions:
       Year10: 
         type: string
     required: 
-    - RegistryId
-    - Program
-    - System
-    - ProgramSysId
-    - Pollutant
-    - UnitsOfMeasure
-    - Year1
-    - Year2
-    - Year3
-    - Year4
-    - Year5
-    - Year6
-    - Year7
-    - Year8
-    - Year9
-    - Year10
+      - RegistryId
+      - Program
+      - System
+      - ProgramSysId
+      - Pollutant
+      - UnitsOfMeasure
+      - Year1
+      - Year2
+      - Year3
+      - Year4
+      - Year5
+      - Year6
+      - Year7
+      - Year8
+      - Year9
+      - Year10
   caad: 
     description: Registry IDs Object
     xml: 
@@ -894,17 +918,17 @@ definitions:
         example: '-86.982419'
         description: The longitude of the facility or permit holder as maintained in each data system
     required: 
-    - RegistryId
-    - SourceId
-    - FacilityName
-    - Street
-    - City
-    - State
-    - Zip
-    - County
-    - Region
-    - Latitude
-    - Longitude
+      - RegistryId
+      - SourceId
+      - FacilityName
+      - Street
+      - City
+      - State
+      - Zip
+      - County
+      - Region
+      - Latitude
+      - Longitude
   caah_Results: 
     description: Results Object
     properties: 
@@ -944,21 +968,21 @@ definitions:
       CAAPollRpt: 
         "$ref": "#/definitions/caaa" 
     required: 
-    - Message
-    - REST_Status
-    - REST_Note
-    - REST_Version
-    - TRI_year_01
-    - TRI_year_02
-    - TRI_year_03
-    - TRI_year_04
-    - TRI_year_05
-    - TRI_year_06
-    - TRI_year_07
-    - TRI_year_08
-    - TRI_year_09
-    - TRI_year_10
-    - CAAPollRpt
+      - Message
+      - REST_Status
+      - REST_Note
+      - REST_Version
+      - TRI_year_01
+      - TRI_year_02
+      - TRI_year_03
+      - TRI_year_04
+      - TRI_year_05
+      - TRI_year_06
+      - TRI_year_07
+      - TRI_year_08
+      - TRI_year_09
+      - TRI_year_10
+      - CAAPollRpt
   caae_Results: 
     description: Results Object
     properties: 
@@ -970,8 +994,8 @@ definitions:
       MapOutput: 
         "$ref": "#/definitions/caa4" 
     required: 
-    - Message
-    - MapOutput
+      - Message
+      - MapOutput
   caaf_Results: 
     description: Results Object
     properties: 
@@ -989,8 +1013,8 @@ definitions:
           name: Permits
           wrapped: true
     required: 
-    - Message
-    - Permits
+      - Message
+      - Permits
   caag_Results: 
     description: Results Object
     properties: 
@@ -1002,5 +1026,5 @@ definitions:
       SpatialMetadata: 
         "$ref": "#/definitions/caa6" 
     required: 
-    - Message
-    - SpatialMetadata
+      - Message
+      - SpatialMetadata

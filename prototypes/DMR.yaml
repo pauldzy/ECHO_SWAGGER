@@ -2430,6 +2430,16 @@ paths:
           $ref: '#/components/responses/dmr_rest_services.get_watershed_stats.default'
 components: 
   schemas: 
+    dmr_rest_services.NoDataMsgObject: 
+      type: object
+      title: No Data Message
+      properties: 
+        NoDataMsg: 
+          type: string
+          title: NoDataMsg
+          nullable: true
+      required: 
+        - NoDataMsg
     dmr_rest_services.get_all_dmr_facilities.Facilities: 
       type: object
       title: DMR Facilities
@@ -7821,9 +7831,19 @@ components:
         FacilityInfo: 
           $ref: '#/components/schemas/dmr_rest_services.get_tri_facility_report.FacilityInfo'
         TopChemicalPounds: 
-          $ref: '#/components/schemas/dmr_rest_services.get_tri_facility_report.TopChemicalPounds'
+          oneOf: 
+            - type: array
+              title: TRI Facility Report Top Chemical Pounds
+              items: 
+                $ref: '#/components/schemas/dmr_rest_services.get_tri_facility_report.TopChemicalPounds-1'
+            - $ref: '#/components/schemas/dmr_rest_services.NoDataMsgObject'
         TopChemicalTWPE: 
-          $ref: '#/components/schemas/dmr_rest_services.get_tri_facility_report.TopChemicalTWPE'
+          oneOf: 
+            - type: array
+              title: TRI Facility Report Top Chemical TWPE
+              items: 
+                $ref: '#/components/schemas/dmr_rest_services.get_tri_facility_report.TopChemicalTWPE-1'
+            - $ref: '#/components/schemas/dmr_rest_services.NoDataMsgObject'
         ReceivingWater: 
           $ref: '#/components/schemas/dmr_rest_services.get_tri_facility_report.ReceivingWater'
         PotwTransfers: 
@@ -7849,26 +7869,82 @@ components:
         - TriWastewaterTreatment
         - UpstreamStationUrl
         - DownstreamStationUrl
-    dmr_rest_services.get_tri_facility_report.TopChemicalPounds: 
+    dmr_rest_services.get_tri_facility_report.TopChemicalPounds-1: 
       type: object
       title: TRI Facility Report Top Chemical Pounds
       properties: 
-        NoDataMsg: 
+        ChemicalName: 
+          $ref: '#/components/schemas/property.ChemicalName'
+        TotalDirectPounds: 
           type: string
-          title: NoDataMsg
+          title: TotalDirectPounds
+          nullable: true
+        QcReviewDirectPounds: 
+          type: string
+          title: QcReviewDirectPounds
+          nullable: true
+        QcReviewDirectFlag: 
+          type: string
+          title: QcReviewDirectFlag
+          nullable: true
+        TotalIndirectPounds: 
+          type: string
+          title: TotalIndirectPounds
+          nullable: true
+        QcReviewIndirectPounds: 
+          type: string
+          title: QcReviewIndirectPounds
+          nullable: true
+        QcReviewIndirectFlag: 
+          type: string
+          title: QcReviewIndirectFlag
           nullable: true
       required: 
-        - NoDataMsg
-    dmr_rest_services.get_tri_facility_report.TopChemicalTWPE: 
+        - ChemicalName
+        - TotalDirectPounds
+        - QcReviewDirectPounds
+        - QcReviewDirectFlag
+        - TotalIndirectPounds
+        - QcReviewIndirectPounds
+        - QcReviewIndirectFlag
+    dmr_rest_services.get_tri_facility_report.TopChemicalTWPE-1: 
       type: object
       title: TRI Facility Report Top Chemical TWPE
       properties: 
-        NoDataMsg: 
+        ChemicalName: 
+          $ref: '#/components/schemas/property.ChemicalName'
+        TotalDirectTwpe: 
           type: string
-          title: NoDataMsg
+          title: TotalDirectTwpe
+          nullable: true
+        QcReviewDirectTwpe: 
+          type: string
+          title: QcReviewDirectTwpe
+          nullable: true
+        QcReviewDirectFlag: 
+          type: string
+          title: QcReviewDirectFlag
+          nullable: true
+        TotalIndirectTwpe: 
+          type: string
+          title: TotalIndirectTwpe
+          nullable: true
+        QcReviewIndirectTwpe: 
+          type: string
+          title: QcReviewIndirectTwpe
+          nullable: true
+        QcReviewIndirectFlag: 
+          type: string
+          title: QcReviewIndirectFlag
           nullable: true
       required: 
-        - NoDataMsg
+        - ChemicalName
+        - TotalDirectTwpe
+        - QcReviewDirectTwpe
+        - QcReviewDirectFlag
+        - TotalIndirectTwpe
+        - QcReviewIndirectTwpe
+        - QcReviewIndirectFlag
     dmr_rest_services.get_tri_facility_report.TriWastewaterTreatment: 
       type: object
       title: TRI Facility Report TRI Wastewater Treatment

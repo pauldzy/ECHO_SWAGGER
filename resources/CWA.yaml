@@ -30,12 +30,12 @@ info:
 host: ofmpub.epa.gov
 basePath: /echo
 schemes: 
-- https
+  - https
 consumes: 
-- application/x-www-form-urlencoded
+  - application/x-www-form-urlencoded
 produces: 
-- application/json
-- application/xml
+  - application/json
+  - application/xml
 parameters: 
   q.p_med: 
     name: p_med
@@ -48,11 +48,11 @@ parameters:
       - S = SDWA (Public Drinking Water Systems)
       - ALL = Air and RCRA and Water
     enum: 
-    - A
-    - M
-    - R
-    - S
-    - ALL
+      - A
+      - M
+      - R
+      - S
+      - ALL
     type: string
     required: false
   f.p_med: 
@@ -66,11 +66,11 @@ parameters:
       - S = SDWA (Public Drinking Water Systems)
       - ALL = Air and RCRA and Water
     enum: 
-    - A
-    - M
-    - R
-    - S
-    - ALL
+      - A
+      - M
+      - R
+      - S
+      - ALL
     type: string
     required: false
   q.p_id: 
@@ -210,16 +210,16 @@ parameters:
     in: query
     description: EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region.
     enum: 
-    - '01'
-    - '02'
-    - '03'
-    - '04'
-    - '05'
-    - '06'
-    - '07'
-    - '08'
-    - '09'
-    - '10'
+      - '01'
+      - '02'
+      - '03'
+      - '04'
+      - '05'
+      - '06'
+      - '07'
+      - '08'
+      - '09'
+      - '10'
     type: string
     required: false
   f.p_reg: 
@@ -227,16 +227,16 @@ parameters:
     in: formData
     description: EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region.
     enum: 
-    - '01'
-    - '02'
-    - '03'
-    - '04'
-    - '05'
-    - '06'
-    - '07'
-    - '08'
-    - '09'
-    - '10'
+      - '01'
+      - '02'
+      - '03'
+      - '04'
+      - '05'
+      - '06'
+      - '07'
+      - '08'
+      - '09'
+      - '10'
     type: string
     required: false
   q.p_sic: 
@@ -300,9 +300,9 @@ parameters:
       - POTW = Publicly owned treatment works. Treatment works that are owned by a State, Tribe, or municipality.
       - Non-POTW = Non-publicly owned treatment works. Often referred to as "non-municipals" or "industrials".
     enum: 
-    - FEDERAL
-    - POTW
-    - NON-POTW
+      - FEDERAL
+      - POTW
+      - NON-POTW
     type: string
     required: false
   q.p_owop: 
@@ -314,9 +314,9 @@ parameters:
       - POTW = Publicly owned treatment works. Treatment works that are owned by a State, Tribe, or municipality.
       - Non-POTW = Non-publicly owned treatment works. Often referred to as "non-municipals" or "industrials".
     enum: 
-    - FEDERAL
-    - POTW
-    - NON-POTW
+      - FEDERAL
+      - POTW
+      - NON-POTW
     type: string
     required: false
   f.xmin: 
@@ -360,8 +360,8 @@ parameters:
     in: formData
     description: US-Mexico Border Flag.  Enter Y/N to restrict searches to facilities located within 100KM of the border.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.p_usmex: 
@@ -369,8 +369,8 @@ parameters:
     in: query
     description: US-Mexico Border Flag.  Enter Y/N to restrict searches to facilities located within 100KM of the border.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.ymax: 
@@ -432,7 +432,7 @@ parameters:
     in: query
     description: Federal Facility Indicator Flag. Enter Y to restrict searches to federal facilities.
     enum: 
-    - Y
+      - Y
     type: string
     required: false
   f.p_ff: 
@@ -440,7 +440,7 @@ parameters:
     in: formData
     description: Federal Facility Indicator Flag. Enter Y to restrict searches to federal facilities.
     enum: 
-    - Y
+      - Y
     type: string
     required: false
   q.p_qs: 
@@ -454,8 +454,8 @@ parameters:
     in: formData
     description: Major Facility Flag.  Enter Y to restrict results to Major facilities only.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.p_maj: 
@@ -463,8 +463,8 @@ parameters:
     in: query
     description: Major Facility Flag.  Enter Y to restrict results to Major facilities only.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_qs: 
@@ -505,8 +505,8 @@ parameters:
       - W = within date range
       - N = not within date range
     enum: 
-    - W
-    - N
+      - W
+      - N
     type: string
     required: false
   f.p_pswpol: 
@@ -529,8 +529,8 @@ parameters:
       - W = within date range
       - N = not within date range
     enum: 
-    - W
-    - N
+      - W
+      - N
     type: string
     required: false
   q.p_c1lat: 
@@ -626,9 +626,9 @@ parameters:
       - S = State
       - A = All
     enum: 
-    - A
-    - E
-    - S
+      - A
+      - E
+      - S
     type: string
     required: false
   f.responseset: 
@@ -652,9 +652,9 @@ parameters:
       - S = State
       - A = All
     enum: 
-    - A
-    - E
-    - S
+      - A
+      - E
+      - S
     type: string
     required: false
   q.p_iea: 
@@ -665,8 +665,8 @@ parameters:
       - W = within date range
       - N = not within date range
     enum: 
-    - W
-    - N
+      - W
+      - N
     type: string
     required: false
   f.p_iea: 
@@ -677,8 +677,8 @@ parameters:
       - W = within date range
       - N = not within date range
     enum: 
-    - W
-    - N
+      - W
+      - N
     type: string
     required: false
   q.p_ieay: 
@@ -713,8 +713,8 @@ parameters:
       - E = EPA
       - S = State
     enum: 
-    - E
-    - S
+      - E
+      - S
     type: string
     required: false
   f.p_ieaa: 
@@ -725,8 +725,8 @@ parameters:
       - E = EPA
       - S = State
     enum: 
-    - E
-    - S
+      - E
+      - S
     type: string
     required: false
   q.p_qiv: 
@@ -738,12 +738,12 @@ parameters:
       - GEXX = Replacing XX with a numeric value, that number of quarterd or more in noncompliance.
       - GTXX = Replacing XX with a numeric value, more than that number of quarters in noncompliance.
     enum: 
-    - '0'
-    - GT1
-    - GT2
-    - GT4
-    - GT8
-    - '12'
+      - '0'
+      - GT1
+      - GT2
+      - GT4
+      - GT8
+      - '12'
     type: string
     required: false
   f.p_qiv: 
@@ -755,12 +755,12 @@ parameters:
       - GEXX = Replacing XX with a numeric value, that number of quarterd or more in noncompliance.
       - GTXX = Replacing XX with a numeric value, more than that number of quarters in noncompliance.
     enum: 
-    - '0'
-    - GT1
-    - GT2
-    - GT4
-    - GT8
-    - '12'
+      - '0'
+      - GT1
+      - GT2
+      - GT4
+      - GT8
+      - '12'
     type: string
     required: false
   q.p_impw: 
@@ -768,8 +768,8 @@ parameters:
     in: query
     description: Discharging into Impaired Waters Flag. Enter Y to limit results to facilities with discharge to waterbodies listed as impaired in the ATTAINS database.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_impw: 
@@ -777,8 +777,8 @@ parameters:
     in: formData
     description: Discharging into Impaired Waters Flag. Enter Y to limit results to facilities with discharge to waterbodies listed as impaired in the ATTAINS database.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.p_imp_pol: 
@@ -786,8 +786,8 @@ parameters:
     in: query
     description: Facility is discharging pollutants that are potentially contributing to the impairment of local waterbodies according to the ATTAINS database.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_imp_pol: 
@@ -795,8 +795,8 @@ parameters:
     in: formData
     description: Facility is discharging pollutants that are potentially contributing to the impairment of local waterbodies according to the ATTAINS database.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.p_imp_cau_grp: 
@@ -804,40 +804,40 @@ parameters:
     in: query
     description: Facility is discharging a pollutant group causing a waterbody to be impaired.  Enter 1 through 34 (the internal number of the pollutant group); or enter a partial name such as Dioxin,Temp,tUrBidity.
     enum: 
-    - ALGAL GROWTH
-    - AMMONIA
-    - BIOTOXINS
-    - CAUSE UNKNOWN
-    - CAUSE UNKNOWN - FISH KILLS
-    - CAUSE UNKNOWN - IMPAIRED BIOTA
-    - CHLORINE
-    - DIOXINS
-    - FISH CONSUMPTION ADVISORY
-    - FLOW ALTERATION(S)
-    - HABITAT ALTERATIONS
-    - MERCURY
-    - METALS (OTHER THAN MERCURY)
-    - NOXIOUS AQUATIC PLANTS
-    - NUISANCE EXOTIC SPECIES
-    - NUISANCE NATIVE SPECIES
-    - NUTRIENTS
-    - OIL AND GREASE
-    - ORGANIC ENRICHMENT/OXYGEN DEPLETION
-    - OTHER CAUSE
-    - PATHOGENS
-    - PESTICIDES
-    - PH/ACIDITY/CAUSTIC CONDITIONS
-    - POLYCHLORINATED BIPHENYLS (PCBS)
-    - RADIATION
-    - SALINITY/TOTAL DISSOLVED SOLIDS/CHLORIDES/SULFATES
-    - SEDIMENT
-    - TASTE, COLOR AND ODOR
-    - TEMPERATURE
-    - TOTAL TOXICS
-    - TOXIC INORGANICS
-    - TOXIC ORGANICS
-    - TRASH
-    - TURBIDITY
+      - ALGAL GROWTH
+      - AMMONIA
+      - BIOTOXINS
+      - CAUSE UNKNOWN
+      - CAUSE UNKNOWN - FISH KILLS
+      - CAUSE UNKNOWN - IMPAIRED BIOTA
+      - CHLORINE
+      - DIOXINS
+      - FISH CONSUMPTION ADVISORY
+      - FLOW ALTERATION(S)
+      - HABITAT ALTERATIONS
+      - MERCURY
+      - METALS (OTHER THAN MERCURY)
+      - NOXIOUS AQUATIC PLANTS
+      - NUISANCE EXOTIC SPECIES
+      - NUISANCE NATIVE SPECIES
+      - NUTRIENTS
+      - OIL AND GREASE
+      - ORGANIC ENRICHMENT/OXYGEN DEPLETION
+      - OTHER CAUSE
+      - PATHOGENS
+      - PESTICIDES
+      - PH/ACIDITY/CAUSTIC CONDITIONS
+      - POLYCHLORINATED BIPHENYLS (PCBS)
+      - RADIATION
+      - SALINITY/TOTAL DISSOLVED SOLIDS/CHLORIDES/SULFATES
+      - SEDIMENT
+      - TASTE, COLOR AND ODOR
+      - TEMPERATURE
+      - TOTAL TOXICS
+      - TOXIC INORGANICS
+      - TOXIC ORGANICS
+      - TRASH
+      - TURBIDITY
     type: string
     required: false
   f.p_imp_cau_grp: 
@@ -845,40 +845,40 @@ parameters:
     in: formData
     description: Facility is discharging a pollutant group causing a waterbody to be impaired.  Enter 1 through 34 (the internal number of the pollutant group); or enter a partial name such as Dioxin,Temp,tUrBidity.
     enum: 
-    - ALGAL GROWTH
-    - AMMONIA
-    - BIOTOXINS
-    - CAUSE UNKNOWN
-    - CAUSE UNKNOWN - FISH KILLS
-    - CAUSE UNKNOWN - IMPAIRED BIOTA
-    - CHLORINE
-    - DIOXINS
-    - FISH CONSUMPTION ADVISORY
-    - FLOW ALTERATION(S)
-    - HABITAT ALTERATIONS
-    - MERCURY
-    - METALS (OTHER THAN MERCURY)
-    - NOXIOUS AQUATIC PLANTS
-    - NUISANCE EXOTIC SPECIES
-    - NUISANCE NATIVE SPECIES
-    - NUTRIENTS
-    - OIL AND GREASE
-    - ORGANIC ENRICHMENT/OXYGEN DEPLETION
-    - OTHER CAUSE
-    - PATHOGENS
-    - PESTICIDES
-    - PH/ACIDITY/CAUSTIC CONDITIONS
-    - POLYCHLORINATED BIPHENYLS (PCBS)
-    - RADIATION
-    - SALINITY/TOTAL DISSOLVED SOLIDS/CHLORIDES/SULFATES
-    - SEDIMENT
-    - TASTE, COLOR AND ODOR
-    - TEMPERATURE
-    - TOTAL TOXICS
-    - TOXIC INORGANICS
-    - TOXIC ORGANICS
-    - TRASH
-    - TURBIDITY
+      - ALGAL GROWTH
+      - AMMONIA
+      - BIOTOXINS
+      - CAUSE UNKNOWN
+      - CAUSE UNKNOWN - FISH KILLS
+      - CAUSE UNKNOWN - IMPAIRED BIOTA
+      - CHLORINE
+      - DIOXINS
+      - FISH CONSUMPTION ADVISORY
+      - FLOW ALTERATION(S)
+      - HABITAT ALTERATIONS
+      - MERCURY
+      - METALS (OTHER THAN MERCURY)
+      - NOXIOUS AQUATIC PLANTS
+      - NUISANCE EXOTIC SPECIES
+      - NUISANCE NATIVE SPECIES
+      - NUTRIENTS
+      - OIL AND GREASE
+      - ORGANIC ENRICHMENT/OXYGEN DEPLETION
+      - OTHER CAUSE
+      - PATHOGENS
+      - PESTICIDES
+      - PH/ACIDITY/CAUSTIC CONDITIONS
+      - POLYCHLORINATED BIPHENYLS (PCBS)
+      - RADIATION
+      - SALINITY/TOTAL DISSOLVED SOLIDS/CHLORIDES/SULFATES
+      - SEDIMENT
+      - TASTE, COLOR AND ODOR
+      - TEMPERATURE
+      - TOTAL TOXICS
+      - TOXIC INORGANICS
+      - TOXIC ORGANICS
+      - TRASH
+      - TURBIDITY
     type: string
     required: false
   q.p_trep: 
@@ -890,9 +890,9 @@ parameters:
       - CURR = Current TRI reporter.
       - NONCURR = Has reported to TRI in the past but not for the current reporting year.
     enum: 
-    - NONE
-    - CURR
-    - NOTCURR
+      - NONE
+      - CURR
+      - NOTCURR
     type: string
     required: false
   f.p_trep: 
@@ -904,9 +904,9 @@ parameters:
       - CURR = Current TRI reporter.
       - NONCURR = Has reported to TRI in the past but not for the current reporting year.
     enum: 
-    - NONE
-    - CURR
-    - NOTCURR
+      - NONE
+      - CURR
+      - NOTCURR
     type: string
     required: false
   q.p_pm: 
@@ -921,12 +921,12 @@ parameters:
       - GT50 = greater than 50%
       - GT75 = greater than 75%
     enum: 
-    - NONE
-    - GT5
-    - GT10
-    - GT25
-    - GT50
-    - GT75
+      - NONE
+      - GT5
+      - GT10
+      - GT25
+      - GT50
+      - GT75
     type: string
     required: false
   f.p_pm: 
@@ -941,12 +941,12 @@ parameters:
       - GT50 = greater than 50%
       - GT75 = greater than 75%
     enum: 
-    - NONE
-    - GT5
-    - GT10
-    - GT25
-    - GT50
-    - GT75
+      - NONE
+      - GT5
+      - GT10
+      - GT25
+      - GT50
+      - GT75
     type: string
     required: false
   q.p_pd: 
@@ -962,13 +962,13 @@ parameters:
       - GT10000 = More than 10000 population density per square mile
       - GT20000 = More than 20000 population density per square mile
     enum: 
-    - NONE
-    - GT100
-    - GT500
-    - GT1000
-    - GT5000
-    - GT10000
-    - GT20000
+      - NONE
+      - GT100
+      - GT500
+      - GT1000
+      - GT5000
+      - GT10000
+      - GT20000
     type: string
     required: false
   f.p_pd: 
@@ -984,13 +984,13 @@ parameters:
       - GT10000 = More than 10000 population density per square mile
       - GT20000 = More than 20000 population density per square mile
     enum: 
-    - NONE
-    - GT100
-    - GT500
-    - GT1000
-    - GT5000
-    - GT10000
-    - GT20000
+      - NONE
+      - GT100
+      - GT500
+      - GT1000
+      - GT5000
+      - GT10000
+      - GT20000
     type: string
     required: false
   q.p_ico: 
@@ -998,8 +998,8 @@ parameters:
     in: query
     description: "Indian Country Flag.  Enter a \"Y\" or \"N\" to restrict searches to facilities inside or outside Indian Country."
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_ico: 
@@ -1007,8 +1007,8 @@ parameters:
     in: formData
     description: "Indian Country Flag.  Enter a \"Y\" or \"N\" to restrict searches to facilities inside or outside Indian Country."
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.p_huc: 
@@ -1043,9 +1043,9 @@ parameters:
       - W = within date range
       - N = not within date range
     enum: 
-    - W
-    - N
-    - NV
+      - W
+      - N
+      - NV
     type: string
     required: false
   f.p_ysl: 
@@ -1056,9 +1056,9 @@ parameters:
       - W = within date range
       - N = not within date range
     enum: 
-    - W
-    - N
-    - NV
+      - W
+      - N
+      - NV
     type: string
     required: false
   q.p_ysly: 
@@ -1093,9 +1093,9 @@ parameters:
       - E = EPA
       - S = State
     enum: 
-    - E
-    - S
-    - A
+      - E
+      - S
+      - A
     type: string
     required: false
   f.p_ysla: 
@@ -1106,9 +1106,9 @@ parameters:
       - E = EPA
       - S = State
     enum: 
-    - E
-    - S
-    - A
+      - E
+      - S
+      - A
     type: string
     required: false
   q.p_tribeid: 
@@ -1169,10 +1169,10 @@ parameters:
       - ALL = Find facilities using Oracle text search terms.
       - CONTAINS = 
     enum: 
-    - ALL
-    - CONTAINS
-    - EXACT
-    - BEGINS
+      - ALL
+      - CONTAINS
+      - EXACT
+      - BEGINS
     type: string
     required: false
   f.p_fntype: 
@@ -1185,10 +1185,10 @@ parameters:
       - ALL = Find facilities using Oracle text search terms.
       - CONTAINS = 
     enum: 
-    - ALL
-    - CONTAINS
-    - EXACT
-    - BEGINS
+      - ALL
+      - CONTAINS
+      - EXACT
+      - BEGINS
     type: string
     required: false
   q.p_pstat: 
@@ -1286,8 +1286,8 @@ parameters:
     in: query
     description: Permit Limits Present Flag.  Enter Y to limit results to facilities have present permit limits.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_plimits: 
@@ -1295,8 +1295,8 @@ parameters:
     in: formData
     description: Permit Limits Present Flag.  Enter Y to limit results to facilities have present permit limits.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.p_pcss: 
@@ -1309,10 +1309,10 @@ parameters:
       - GE10 = returns facilities with ten or more outflows.
       - GE50 = returns facilities with fifty or more outflows.
     enum: 
-    - ALL
-    - GE1
-    - GE10
-    - GE50
+      - ALL
+      - GE1
+      - GE10
+      - GE50
     type: string
     required: false
   f.p_pcss: 
@@ -1325,10 +1325,10 @@ parameters:
       - GE10 = returns facilities with ten or more outflows.
       - GE50 = returns facilities with fifty or more outflows.
     enum: 
-    - ALL
-    - GE1
-    - GE10
-    - GE50
+      - ALL
+      - GE1
+      - GE10
+      - GE50
     type: string
     required: false
   q.p_pexp: 
@@ -1340,9 +1340,9 @@ parameters:
       - EXPLE1YR = limit resuls to facilities with permits expired administratively continued within the past year.
       - EXPGT1YR = limit resuls to facilities with permits expired administratively continued more than a year ago.
     enum: 
-    - EXP
-    - EXPLE1YR
-    - EXPGT1YR
+      - EXP
+      - EXPLE1YR
+      - EXPGT1YR
     type: string
     required: false
   f.p_pexp: 
@@ -1354,9 +1354,9 @@ parameters:
       - EXPLE1YR = limit resuls to facilities with permits expired administratively continued within the past year.
       - EXPGT1YR = limit resuls to facilities with permits expired administratively continued more than a year ago.
     enum: 
-    - EXP
-    - EXPLE1YR
-    - EXPGT1YR
+      - EXP
+      - EXPLE1YR
+      - EXPGT1YR
     type: string
     required: false
   q.p_agoo: 
@@ -1364,8 +1364,8 @@ parameters:
     in: query
     description: Indicates whether to AND or OR the Owner/Operator parameter (p_owop) and the federal agency code (p_fa) parameters.
     enum: 
-    - AND
-    - OR
+      - AND
+      - OR
     type: string
     required: false
   f.p_agoo: 
@@ -1373,8 +1373,8 @@ parameters:
     in: formData
     description: Indicates whether to AND or OR the Owner/Operator parameter (p_owop) and the federal agency code (p_fa) parameters.
     enum: 
-    - AND
-    - OR
+      - AND
+      - OR
     type: string
     required: false
   q.p_idt1: 
@@ -1536,11 +1536,11 @@ parameters:
       - GE50 = facilities with fifty or more exceedances
       - GE100 = facilities with one hundred or more exceedances
     enum: 
-    - '0'
-    - GE0
-    - GE10
-    - GE50
-    - GE100
+      - '0'
+      - GE0
+      - GE10
+      - GE50
+      - GE100
     type: string
     required: false
   f.p_pexcd: 
@@ -1554,11 +1554,11 @@ parameters:
       - GE50 = facilities with fifty or more exceedances
       - GE100 = facilities with one hundred or more exceedances
     enum: 
-    - '0'
-    - GE0
-    - GE10
-    - GE50
-    - GE100
+      - '0'
+      - GE0
+      - GE10
+      - GE50
+      - GE100
     type: string
     required: false
   q.p_psncq: 
@@ -1570,16 +1570,16 @@ parameters:
       - GEXX = Replacing XX with a numeric value, that number of quarterd or more in significant noncompliance.
       - GTXX = Replacing XX with a numeric value, more than that number of quarters in significant noncompliance.
     enum: 
-    - GT1
-    - GE1
-    - GT2
-    - GE2
-    - GT4
-    - GE4
-    - GT8
-    - GE8
-    - GT12
-    - GE12
+      - GT1
+      - GE1
+      - GT2
+      - GE2
+      - GT4
+      - GE4
+      - GT8
+      - GE8
+      - GT12
+      - GE12
     type: string
     required: false
   f.p_psncq: 
@@ -1591,16 +1591,16 @@ parameters:
       - GEXX = Replacing XX with a numeric value, that number of quarterd or more in significant noncompliance.
       - GTXX = Replacing XX with a numeric value, more than that number of quarters in significant noncompliance.
     enum: 
-    - GT1
-    - GE1
-    - GT2
-    - GE2
-    - GT4
-    - GE4
-    - GT8
-    - GE8
-    - GT12
-    - GE12
+      - GT1
+      - GE1
+      - GT2
+      - GE2
+      - GT4
+      - GE4
+      - GT8
+      - GE8
+      - GT12
+      - GE12
     type: string
     required: false
   q.p_pctrack: 
@@ -1612,9 +1612,9 @@ parameters:
       - Partial
       - On
     enum: 
-    - Off
-    - Partial
-    - On
+      - Off
+      - Partial
+      - On
     type: string
     required: false
   f.p_pctrack: 
@@ -1626,9 +1626,9 @@ parameters:
       - Partial
       - On
     enum: 
-    - Off
-    - Partial
-    - On
+      - Off
+      - Partial
+      - On
     type: string
     required: false
   q.p_dwd: 
@@ -1636,13 +1636,13 @@ parameters:
     in: query
     description: Direct Water Discharges. Pounds of toxic chemicals released directly to surface water as reported to the Toxics Release Inventory.
     enum: 
-    - '0'
-    - GT0
-    - GT1000
-    - GT5000
-    - GT10000
-    - GT20000
-    - GT50000
+      - '0'
+      - GT0
+      - GT1000
+      - GT5000
+      - GT10000
+      - GT20000
+      - GT50000
     type: string
     required: false
   f.p_dwd: 
@@ -1650,13 +1650,13 @@ parameters:
     in: formData
     description: Direct Water Discharges. Pounds of toxic chemicals released directly to surface water as reported to the Toxics Release Inventory.
     enum: 
-    - '0'
-    - GT0
-    - GT1000
-    - GT5000
-    - GT10000
-    - GT20000
-    - GT50000
+      - '0'
+      - GT0
+      - GT1000
+      - GT5000
+      - GT10000
+      - GT20000
+      - GT50000
     type: string
     required: false
   q.p_pt: 
@@ -1664,13 +1664,13 @@ parameters:
     in: query
     description: POTW Transfers. Pounds of toxic chemicals transferred to a Publicly Operated Treatment Works (POTW) as reported to the Toxics Release Inventory.
     enum: 
-    - '0'
-    - GT0
-    - GT1000
-    - GT5000
-    - GT10000
-    - GT20000
-    - GT50000
+      - '0'
+      - GT0
+      - GT1000
+      - GT5000
+      - GT10000
+      - GT20000
+      - GT50000
     type: string
     required: false
   f.p_pt: 
@@ -1678,13 +1678,13 @@ parameters:
     in: formData
     description: POTW Transfers. Pounds of toxic chemicals transferred to a Publicly Operated Treatment Works (POTW) as reported to the Toxics Release Inventory.
     enum: 
-    - '0'
-    - GT0
-    - GT1000
-    - GT5000
-    - GT10000
-    - GT20000
-    - GT50000
+      - '0'
+      - GT0
+      - GT1000
+      - GT5000
+      - GT10000
+      - GT20000
+      - GT50000
     type: string
     required: false
   q.p_pdwdist: 
@@ -1692,12 +1692,12 @@ parameters:
     in: query
     description: Distance (in miles) to downstream drinking water intake.
     enum: 
-    - N
-    - LT1
-    - LT2
-    - LT5
-    - LT10
-    - LT15
+      - N
+      - LT1
+      - LT2
+      - LT5
+      - LT10
+      - LT15
     type: string
     required: false
   f.p_pdwdist: 
@@ -1705,12 +1705,12 @@ parameters:
     in: formData
     description: Distance (in miles) to downstream drinking water intake.
     enum: 
-    - N
-    - LT1
-    - LT2
-    - LT5
-    - LT10
-    - LT15
+      - N
+      - LT1
+      - LT2
+      - LT5
+      - LT10
+      - LT15
     type: string
     required: false
   q.p_pswdpc: 
@@ -1730,11 +1730,11 @@ parameters:
     in: query
     description: Used to determine limit begin and end dates for surface water discharges. Number represents years from current date.
     enum: 
-    - '1'
-    - '2'
-    - '3'
-    - '4'
-    - '5'
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
     type: string
     required: false
   f.p_pswdmp: 
@@ -1742,11 +1742,11 @@ parameters:
     in: formData
     description: Used to determine limit begin and end dates for surface water discharges. Number represents years from current date.
     enum: 
-    - '1'
-    - '2'
-    - '3'
-    - '4'
-    - '5'
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
     type: string
     required: false
   q.p_pswcas: 
@@ -1778,8 +1778,8 @@ parameters:
     in: query
     description: Used in conjuction with parameters p_pswpol and p_pswparam, indicates whether search should only include pollutants with violations.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_pswvio: 
@@ -1787,8 +1787,8 @@ parameters:
     in: formData
     description: Used in conjuction with parameters p_pswpol and p_pswparam, indicates whether search should only include pollutants with violations.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.p_pidall: 
@@ -1796,8 +1796,8 @@ parameters:
     in: query
     description: Controls whether search is restricted to existing system. Y means the search will match the p_pid parameter against all associated permits (AIR, RCRA, SDWIS, etc).
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_pidall: 
@@ -1805,8 +1805,8 @@ parameters:
     in: formData
     description: Controls whether search is restricted to existing system. Y means the search will match the p_pid parameter against all associated permits (AIR, RCRA, SDWIS, etc).
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.p_months_last_dmr: 
@@ -1826,8 +1826,8 @@ parameters:
     in: query
     description: W value returns facilities that have submitted DMRs within the number of months specified by p_months_last_dmr. An N value returns facilities that have not submitted a DMR within the specified number of months.
     enum: 
-    - W
-    - N
+      - W
+      - N
     type: string
     required: false
   f.p_last_dmr_within: 
@@ -1835,8 +1835,8 @@ parameters:
     in: formData
     description: W value returns facilities that have submitted DMRs within the number of months specified by p_months_last_dmr. An N value returns facilities that have not submitted a DMR within the specified number of months.
     enum: 
-    - W
-    - N
+      - W
+      - N
     type: string
     required: false
   q.tablelist: 
@@ -1844,8 +1844,8 @@ parameters:
     in: query
     description: Table List Flag. Enter a Y to display the first page of facility results.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.tablelist: 
@@ -1853,8 +1853,8 @@ parameters:
     in: formData
     description: Table List Flag. Enter a Y to display the first page of facility results.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.maplist: 
@@ -1862,8 +1862,8 @@ parameters:
     in: query
     description: Map List Flag.  Provide a Y to return mappable coordinates representing the full geographic extent of the queryset (all facilities that met the selection criteria).
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.maplist: 
@@ -1871,8 +1871,8 @@ parameters:
     in: formData
     description: Map List Flag.  Provide a Y to return mappable coordinates representing the full geographic extent of the queryset (all facilities that met the selection criteria).
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.summarylist: 
@@ -1880,8 +1880,8 @@ parameters:
     in: query
     description: Summary List Flag.  Enter a Y to return a list of summary statistics based on the parameters submitted to the query service.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.summarylist: 
@@ -1889,8 +1889,8 @@ parameters:
     in: formData
     description: Summary List Flag.  Enter a Y to return a list of summary statistics based on the parameters submitted to the query service.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.qid: 
@@ -1948,8 +1948,8 @@ parameters:
     in: query
     description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.descending: 
@@ -1957,8 +1957,8 @@ parameters:
     in: formData
     description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.c1_lat: 
@@ -2409,8 +2409,8 @@ parameters:
       - Y = Yes
       - N = No
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.p_bio_current_vio: 
@@ -2421,8 +2421,8 @@ parameters:
       - Y = Yes
       - N = No
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_vio_last_year: 
@@ -2590,27 +2590,27 @@ parameters:
     in: query
     description: |-
       Facility has a violation status of 'In Viol' during any of the selected quarters. 
-      Range: Fiscal Year 2018 Quarter 3 to Fiscal Year 2015 Quarter 3
+      Range: Fiscal Year 2019 Quarter 1 to Fiscal Year 2016 Quarter 1
       Multiple values are comma delimited.
       ||||||  Fiscal Years ||||||
+      - FY2019 or FY19 or 2019 or 19
       - FY2018 or FY18 or 2018 or 18
       - FY2017 or FY17 or 2017 or 17
       - FY2016 or FY16 or 2016 or 16
-      - FY2015 or FY15 or 2015 or 15
       ||||| Fiscal Quarters |||||
-      - FY2018Q3 or FY18Q3 or 20183 or 183 or 13
-      - FY2018Q2 or FY18Q2 or 20182 or 182 or 12
-      - FY2018Q1 or FY18Q1 or 20181 or 181 or 11
-      - FY2017Q4 or FY17Q4 or 20174 or 174 or 10
-      - FY2017Q3 or FY17Q3 or 20173 or 173 or 9
-      - FY2017Q2 or FY17Q2 or 20172 or 172 or 8
-      - FY2017Q1 or FY17Q1 or 20171 or 171 or 7
-      - FY2016Q4 or FY16Q4 or 20164 or 164 or 6
-      - FY2016Q3 or FY16Q3 or 20163 or 163 or 5
-      - FY2016Q2 or FY16Q2 or 20162 or 162 or 4
-      - FY2016Q1 or FY16Q1 or 20161 or 161 or 3
-      - FY2015Q4 or FY15Q4 or 20154 or 154 or 2
-      - FY2015Q3 or FY15Q3 or 20153 or 153 or 1
+      - FY2019Q1 or FY19Q1 or 20191 or 191 or 13
+      - FY2018Q4 or FY18Q4 or 20184 or 184 or 12
+      - FY2018Q3 or FY18Q3 or 20183 or 183 or 11
+      - FY2018Q2 or FY18Q2 or 20182 or 182 or 10
+      - FY2018Q1 or FY18Q1 or 20181 or 181 or 9
+      - FY2017Q4 or FY17Q4 or 20174 or 174 or 8
+      - FY2017Q3 or FY17Q3 or 20173 or 173 or 7
+      - FY2017Q2 or FY17Q2 or 20172 or 172 or 6
+      - FY2017Q1 or FY17Q1 or 20171 or 171 or 5
+      - FY2016Q4 or FY16Q4 or 20164 or 164 or 4
+      - FY2016Q3 or FY16Q3 or 20163 or 163 or 3
+      - FY2016Q2 or FY16Q2 or 20162 or 162 or 2
+      - FY2016Q1 or FY16Q1 or 20161 or 161 or 1
     type: string
     required: false
   f.p_iv: 
@@ -2618,27 +2618,27 @@ parameters:
     in: formData
     description: |-
       Facility has a violation status of 'In Viol' during any of the selected quarters. 
-      Range: Fiscal Year 2018 Quarter 3 to Fiscal Year 2015 Quarter 3
+      Range: Fiscal Year 2019 Quarter 1 to Fiscal Year 2016 Quarter 1
       Multiple values are comma delimited.
       ||||||  Fiscal Years ||||||
+      - FY2019 or FY19 or 2019 or 19
       - FY2018 or FY18 or 2018 or 18
       - FY2017 or FY17 or 2017 or 17
       - FY2016 or FY16 or 2016 or 16
-      - FY2015 or FY15 or 2015 or 15
       ||||| Fiscal Quarters |||||
-      - FY2018Q3 or FY18Q3 or 20183 or 183 or 13
-      - FY2018Q2 or FY18Q2 or 20182 or 182 or 12
-      - FY2018Q1 or FY18Q1 or 20181 or 181 or 11
-      - FY2017Q4 or FY17Q4 or 20174 or 174 or 10
-      - FY2017Q3 or FY17Q3 or 20173 or 173 or 9
-      - FY2017Q2 or FY17Q2 or 20172 or 172 or 8
-      - FY2017Q1 or FY17Q1 or 20171 or 171 or 7
-      - FY2016Q4 or FY16Q4 or 20164 or 164 or 6
-      - FY2016Q3 or FY16Q3 or 20163 or 163 or 5
-      - FY2016Q2 or FY16Q2 or 20162 or 162 or 4
-      - FY2016Q1 or FY16Q1 or 20161 or 161 or 3
-      - FY2015Q4 or FY15Q4 or 20154 or 154 or 2
-      - FY2015Q3 or FY15Q3 or 20153 or 153 or 1
+      - FY2019Q1 or FY19Q1 or 20191 or 191 or 13
+      - FY2018Q4 or FY18Q4 or 20184 or 184 or 12
+      - FY2018Q3 or FY18Q3 or 20183 or 183 or 11
+      - FY2018Q2 or FY18Q2 or 20182 or 182 or 10
+      - FY2018Q1 or FY18Q1 or 20181 or 181 or 9
+      - FY2017Q4 or FY17Q4 or 20174 or 174 or 8
+      - FY2017Q3 or FY17Q3 or 20173 or 173 or 7
+      - FY2017Q2 or FY17Q2 or 20172 or 172 or 6
+      - FY2017Q1 or FY17Q1 or 20171 or 171 or 5
+      - FY2016Q4 or FY16Q4 or 20164 or 164 or 4
+      - FY2016Q3 or FY16Q3 or 20163 or 163 or 3
+      - FY2016Q2 or FY16Q2 or 20162 or 162 or 2
+      - FY2016Q1 or FY16Q1 or 20161 or 161 or 1
     type: string
     required: false
   f.p_ejscreen_over80cnt: 
@@ -2680,8 +2680,8 @@ parameters:
     in: formData
     description: "FRS tribal land code flag.  Enter \"Y\" or \"N\" to include or exclude facilities based on FRS tribal land code."
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.p_fac_ico: 
@@ -2689,8 +2689,8 @@ parameters:
     in: query
     description: "FRS tribal land code flag.  Enter \"Y\" or \"N\" to include or exclude facilities based on FRS tribal land code."
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_icoo: 
@@ -2710,8 +2710,8 @@ parameters:
     in: formData
     description: "Decouple Inspection Code Search Flag.  Enter \"Y\" to search for inspection code types with p_pityp without respect to the date range search provided with p_ysl* parameters."
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.p_decouple: 
@@ -2719,8 +2719,8 @@ parameters:
     in: query
     description: "Decouple Inspection Code Search Flag.  Enter \"Y\" to search for inspection code types with p_pityp without respect to the date range search provided with p_ysl* parameters."
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.p_MS4: 
@@ -2728,8 +2728,8 @@ parameters:
     in: query
     description: Municipal Separate Storm Water Sewer (MS4) Permit Flag.  Enter a Y or N to filter results by this type of permit.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_msgp_ptype: 
@@ -2740,8 +2740,8 @@ parameters:
       - NOI = Notice of Intent
       - NOE = No Exposure Certification
     enum: 
-    - NOI
-    - NOE
+      - NOI
+      - NOE
     type: string
     required: false
   q.p_msgp_ptype: 
@@ -2752,8 +2752,8 @@ parameters:
       - NOI = Notice of Intent
       - NOE = No Exposure Certification
     enum: 
-    - NOI
-    - NOE
+      - NOI
+      - NOE
     type: string
     required: false
   f.p_limit_addr: 
@@ -2761,8 +2761,8 @@ parameters:
     in: formData
     description: Limit Address Search Flag.  Enter Y to restrict facility searches to native data source only.  
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.p_limit_addr: 
@@ -2770,8 +2770,8 @@ parameters:
     in: query
     description: Limit Address Search Flag.  Enter Y to restrict facility searches to native data source only.  
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_ooFNtype: 
@@ -2779,10 +2779,10 @@ parameters:
     in: formData
     description: Owner/Operator Name Multiple Selection Evaluator.  
     enum: 
-    - ALL
-    - EXACT
-    - BEGINS
-    - CONTAINS
+      - ALL
+      - EXACT
+      - BEGINS
+      - CONTAINS
     type: string
     required: false
   q.p_ooFNtype: 
@@ -2790,10 +2790,10 @@ parameters:
     in: query
     description: Owner/Operator Name Multiple Selection Evaluator.  
     enum: 
-    - ALL
-    - EXACT
-    - BEGINS
-    - CONTAINS
+      - ALL
+      - EXACT
+      - BEGINS
+      - CONTAINS
     type: string
     required: false
   f.p_iswssID: 
@@ -2825,8 +2825,8 @@ parameters:
     in: formData
     description: Municipal Separate Storm Water Sewer (MS4) Permit Flag.  Enter a Y or N to filter results by this type of permit.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.p_da1: 
@@ -2966,8 +2966,8 @@ parameters:
     in: query
     description: Industrial Stormwater Permit Flag.  Enter a Y or N to filter results by this type of permit.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   f.p_indsw: 
@@ -2975,8 +2975,8 @@ parameters:
     in: formData
     description: Industrial Stormwater Permit Flag.  Enter a Y or N to filter results by this type of permit.
     enum: 
-    - Y
-    - N
+      - Y
+      - N
     type: string
     required: false
   q.p_iswss: 
@@ -3033,172 +3033,172 @@ paths:
       summary: Clean Water Act (CWA) Facility Search Service
       description: Validates query search parameters and returns query identifier.  Use the responseset parameter to set the page size
       parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/q.p_fn"
-      - "$ref": "#/parameters/q.p_sa"
-      - "$ref": "#/parameters/q.p_sa1"
-      - "$ref": "#/parameters/q.p_ct"
-      - "$ref": "#/parameters/q.p_co"
-      - "$ref": "#/parameters/q.p_fips"
-      - "$ref": "#/parameters/q.p_st"
-      - "$ref": "#/parameters/q.p_zip"
-      - "$ref": "#/parameters/q.p_frs"
-      - "$ref": "#/parameters/q.p_reg"
-      - "$ref": "#/parameters/q.p_sic"
-      - "$ref": "#/parameters/q.p_ncs"
-      - "$ref": "#/parameters/q.p_pen"
-      - "$ref": "#/parameters/q.p_c1lat"
-      - "$ref": "#/parameters/q.p_c1lon"
-      - "$ref": "#/parameters/q.p_c2lat"
-      - "$ref": "#/parameters/q.p_c2lon"
-      - "$ref": "#/parameters/q.p_usmex"
-      - "$ref": "#/parameters/q.p_sic2"
-      - "$ref": "#/parameters/q.p_sic4"
-      - "$ref": "#/parameters/q.p_fa"
-      - "$ref": "#/parameters/q.p_ff"
-      - "$ref": "#/parameters/q.p_act"
-      - "$ref": "#/parameters/q.p_maj"
-      - "$ref": "#/parameters/q.p_mact"
-      - "$ref": "#/parameters/q.p_fea"
-      - "$ref": "#/parameters/q.p_feay"
-      - "$ref": "#/parameters/q.p_feaa"
-      - "$ref": "#/parameters/q.p_iea"
-      - "$ref": "#/parameters/q.p_ieay"
-      - "$ref": "#/parameters/q.p_ieaa"
-      - "$ref": "#/parameters/q.p_qiv"
-      - "$ref": "#/parameters/q.p_iv"
-      - "$ref": "#/parameters/q.p_impw"
-      - "$ref": "#/parameters/q.p_imp_cau_grp"
-      - "$ref": "#/parameters/q.p_imp_pol"
-      - "$ref": "#/parameters/q.p_trep"
-      - "$ref": "#/parameters/q.p_pm"
-      - "$ref": "#/parameters/q.p_pd"
-      - "$ref": "#/parameters/q.p_ico"
-      - "$ref": "#/parameters/q.p_huc"
-      - "$ref": "#/parameters/q.p_pid"
-      - "$ref": "#/parameters/q.p_med"
-      - "$ref": "#/parameters/q.p_ysl"
-      - "$ref": "#/parameters/q.p_ysly"
-      - "$ref": "#/parameters/q.p_ysla"
-      - "$ref": "#/parameters/q.p_qs"
-      - "$ref": "#/parameters/q.p_sfs"
-      - "$ref": "#/parameters/q.p_tribeid"
-      - "$ref": "#/parameters/q.p_tribename"
-      - "$ref": "#/parameters/q.p_tribedist"
-      - "$ref": "#/parameters/q.p_pstat"
-      - "$ref": "#/parameters/q.p_ptype"
-      - "$ref": "#/parameters/q.p_pcomp"
-      - "$ref": "#/parameters/q.p_plimits"
-      - "$ref": "#/parameters/q.p_pcss"
-      - "$ref": "#/parameters/q.p_pexp"
-      - "$ref": "#/parameters/q.p_owop"
-      - "$ref": "#/parameters/q.p_agoo"
-      - "$ref": "#/parameters/q.p_idt1"
-      - "$ref": "#/parameters/q.p_idt2"
-      - "$ref": "#/parameters/q.p_pityp"
-      - "$ref": "#/parameters/q.p_pfead1"
-      - "$ref": "#/parameters/q.p_pfead2"
-      - "$ref": "#/parameters/q.p_pfeat"
-      - "$ref": "#/parameters/q.p_pccs"
-      - "$ref": "#/parameters/q.p_pexcd"
-      - "$ref": "#/parameters/q.p_psncq"
-      - "$ref": "#/parameters/q.p_pctrack"
-      - "$ref": "#/parameters/q.p_dwd"
-      - "$ref": "#/parameters/q.p_pt"
-      - "$ref": "#/parameters/q.p_pdwdist"
-      - "$ref": "#/parameters/q.p_pswdpc"
-      - "$ref": "#/parameters/q.p_pswdmp"
-      - "$ref": "#/parameters/q.p_pswpol"
-      - "$ref": "#/parameters/q.p_pswcas"
-      - "$ref": "#/parameters/q.p_pswparam"
-      - "$ref": "#/parameters/q.p_pswvio"
-      - "$ref": "#/parameters/q.p_wbd"
-      - "$ref": "#/parameters/q.p_radwbd"
-      - "$ref": "#/parameters/q.p_frswbd"
-      - "$ref": "#/parameters/q.p_fntype"
-      - "$ref": "#/parameters/q.p_pidall"
-      - "$ref": "#/parameters/q.p_months_last_dmr"
-      - "$ref": "#/parameters/q.p_last_dmr_within"
-      - "$ref": "#/parameters/q.p_indsw"
-      - "$ref": "#/parameters/q.p_msgp_ptype"
-      - "$ref": "#/parameters/q.p_mon_type"
-      - "$ref": "#/parameters/q.p_iagency"
-      - "$ref": "#/parameters/q.p_isws"
-      - "$ref": "#/parameters/q.p_iswss"
-      - "$ref": "#/parameters/q.p_iswssID"
-      - "$ref": "#/parameters/q.p_ds1"
-      - "$ref": "#/parameters/q.p_ds2"
-      - "$ref": "#/parameters/q.p_da1"
-      - "$ref": "#/parameters/q.p_da2"
-      - "$ref": "#/parameters/q.p_MS4"
-      - "$ref": "#/parameters/q.p_ooFN"
-      - "$ref": "#/parameters/q.p_ooFNtype"
-      - "$ref": "#/parameters/q.p_ooSA"
-      - "$ref": "#/parameters/q.p_ooSA1"
-      - "$ref": "#/parameters/q.p_ooCt"
-      - "$ref": "#/parameters/q.p_ooSt"
-      - "$ref": "#/parameters/q.p_ooZip"
-      - "$ref": "#/parameters/q.p_fac_ico"
-      - "$ref": "#/parameters/q.p_icoo"
-      - "$ref": "#/parameters/q.p_fac_icos"
-      - "$ref": "#/parameters/q.p_ejscreen"
-      - "$ref": "#/parameters/q.p_alrexceed"
-      - "$ref": "#/parameters/q.p_limit_addr"
-      - "$ref": "#/parameters/q.p_lat"
-      - "$ref": "#/parameters/q.p_long"
-      - "$ref": "#/parameters/q.p_radius"
-      - "$ref": "#/parameters/q.p_decouple"
-      - "$ref": "#/parameters/q.p_ejscreen_over80cnt"
-      - "$ref": "#/parameters/q.p_bio_flag"
-      - "$ref": "#/parameters/q.p_bio_fac_type"
-      - "$ref": "#/parameters/q.p_bio_trtmnt_procs"
-      - "$ref": "#/parameters/q.p_bio_analy_method_catgry"
-      - "$ref": "#/parameters/q.p_bio_total_volume_amt"
-      - "$ref": "#/parameters/q.p_bio_mgmt_prctce_type"
-      - "$ref": "#/parameters/q.p_bio_mgmt_prctce_stype"
-      - "$ref": "#/parameters/q.p_bio_mgmt_prctce_handler"
-      - "$ref": "#/parameters/q.p_bio_mgmt_container"
-      - "$ref": "#/parameters/q.p_bio_mgmt_pathogen"
-      - "$ref": "#/parameters/q.p_bio_mgmt_pathred"
-      - "$ref": "#/parameters/q.p_bio_mgmt_vector"
-      - "$ref": "#/parameters/q.p_insp_deficiencies"
-      - "$ref": "#/parameters/q.p_bio_mgmt_def_category"
-      - "$ref": "#/parameters/q.p_bio_mgmt_deficiencies"
-      - "$ref": "#/parameters/q.p_bio_vio_code"
-      - "$ref": "#/parameters/q.p_bio_current_vio"
-      - "$ref": "#/parameters/q.p_bio_qtrs_in_vio"
-      - "$ref": "#/parameters/q.p_bio_rpt_year"
-      - "$ref": "#/parameters/q.p_bio_insp_deficiencies"
-      - "$ref": "#/parameters/q.p_bio_vio_last_year"
-      - "$ref": "#/parameters/q.p_msgp_rpt_year"
-      - "$ref": "#/parameters/q.p_vio_last_year"
-      - "$ref": "#/parameters/q.queryset"
-      - "$ref": "#/parameters/q.responseset"
-      - "$ref": "#/parameters/q.tablelist"
-      - "$ref": "#/parameters/q.maplist"
-      - "$ref": "#/parameters/q.summarylist"
-      - "$ref": "#/parameters/q.callback"
-      - name: qcolumns
-        in: query
-        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
-        type: string
-        required: false
-      - "$ref": "#/parameters/q.p_e90_count"
-      - "$ref": "#/parameters/q.p_e90_years"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+          enum: 
+            - JSONP
+            - JSON
+            - XML
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.p_fn"
+        - "$ref": "#/parameters/q.p_sa"
+        - "$ref": "#/parameters/q.p_sa1"
+        - "$ref": "#/parameters/q.p_ct"
+        - "$ref": "#/parameters/q.p_co"
+        - "$ref": "#/parameters/q.p_fips"
+        - "$ref": "#/parameters/q.p_st"
+        - "$ref": "#/parameters/q.p_zip"
+        - "$ref": "#/parameters/q.p_frs"
+        - "$ref": "#/parameters/q.p_reg"
+        - "$ref": "#/parameters/q.p_sic"
+        - "$ref": "#/parameters/q.p_ncs"
+        - "$ref": "#/parameters/q.p_pen"
+        - "$ref": "#/parameters/q.p_c1lat"
+        - "$ref": "#/parameters/q.p_c1lon"
+        - "$ref": "#/parameters/q.p_c2lat"
+        - "$ref": "#/parameters/q.p_c2lon"
+        - "$ref": "#/parameters/q.p_usmex"
+        - "$ref": "#/parameters/q.p_sic2"
+        - "$ref": "#/parameters/q.p_sic4"
+        - "$ref": "#/parameters/q.p_fa"
+        - "$ref": "#/parameters/q.p_ff"
+        - "$ref": "#/parameters/q.p_act"
+        - "$ref": "#/parameters/q.p_maj"
+        - "$ref": "#/parameters/q.p_mact"
+        - "$ref": "#/parameters/q.p_fea"
+        - "$ref": "#/parameters/q.p_feay"
+        - "$ref": "#/parameters/q.p_feaa"
+        - "$ref": "#/parameters/q.p_iea"
+        - "$ref": "#/parameters/q.p_ieay"
+        - "$ref": "#/parameters/q.p_ieaa"
+        - "$ref": "#/parameters/q.p_qiv"
+        - "$ref": "#/parameters/q.p_iv"
+        - "$ref": "#/parameters/q.p_impw"
+        - "$ref": "#/parameters/q.p_imp_cau_grp"
+        - "$ref": "#/parameters/q.p_imp_pol"
+        - "$ref": "#/parameters/q.p_trep"
+        - "$ref": "#/parameters/q.p_pm"
+        - "$ref": "#/parameters/q.p_pd"
+        - "$ref": "#/parameters/q.p_ico"
+        - "$ref": "#/parameters/q.p_huc"
+        - "$ref": "#/parameters/q.p_pid"
+        - "$ref": "#/parameters/q.p_med"
+        - "$ref": "#/parameters/q.p_ysl"
+        - "$ref": "#/parameters/q.p_ysly"
+        - "$ref": "#/parameters/q.p_ysla"
+        - "$ref": "#/parameters/q.p_qs"
+        - "$ref": "#/parameters/q.p_sfs"
+        - "$ref": "#/parameters/q.p_tribeid"
+        - "$ref": "#/parameters/q.p_tribename"
+        - "$ref": "#/parameters/q.p_tribedist"
+        - "$ref": "#/parameters/q.p_pstat"
+        - "$ref": "#/parameters/q.p_ptype"
+        - "$ref": "#/parameters/q.p_pcomp"
+        - "$ref": "#/parameters/q.p_plimits"
+        - "$ref": "#/parameters/q.p_pcss"
+        - "$ref": "#/parameters/q.p_pexp"
+        - "$ref": "#/parameters/q.p_owop"
+        - "$ref": "#/parameters/q.p_agoo"
+        - "$ref": "#/parameters/q.p_idt1"
+        - "$ref": "#/parameters/q.p_idt2"
+        - "$ref": "#/parameters/q.p_pityp"
+        - "$ref": "#/parameters/q.p_pfead1"
+        - "$ref": "#/parameters/q.p_pfead2"
+        - "$ref": "#/parameters/q.p_pfeat"
+        - "$ref": "#/parameters/q.p_pccs"
+        - "$ref": "#/parameters/q.p_pexcd"
+        - "$ref": "#/parameters/q.p_psncq"
+        - "$ref": "#/parameters/q.p_pctrack"
+        - "$ref": "#/parameters/q.p_dwd"
+        - "$ref": "#/parameters/q.p_pt"
+        - "$ref": "#/parameters/q.p_pdwdist"
+        - "$ref": "#/parameters/q.p_pswdpc"
+        - "$ref": "#/parameters/q.p_pswdmp"
+        - "$ref": "#/parameters/q.p_pswpol"
+        - "$ref": "#/parameters/q.p_pswcas"
+        - "$ref": "#/parameters/q.p_pswparam"
+        - "$ref": "#/parameters/q.p_pswvio"
+        - "$ref": "#/parameters/q.p_wbd"
+        - "$ref": "#/parameters/q.p_radwbd"
+        - "$ref": "#/parameters/q.p_frswbd"
+        - "$ref": "#/parameters/q.p_fntype"
+        - "$ref": "#/parameters/q.p_pidall"
+        - "$ref": "#/parameters/q.p_months_last_dmr"
+        - "$ref": "#/parameters/q.p_last_dmr_within"
+        - "$ref": "#/parameters/q.p_indsw"
+        - "$ref": "#/parameters/q.p_msgp_ptype"
+        - "$ref": "#/parameters/q.p_mon_type"
+        - "$ref": "#/parameters/q.p_iagency"
+        - "$ref": "#/parameters/q.p_isws"
+        - "$ref": "#/parameters/q.p_iswss"
+        - "$ref": "#/parameters/q.p_iswssID"
+        - "$ref": "#/parameters/q.p_ds1"
+        - "$ref": "#/parameters/q.p_ds2"
+        - "$ref": "#/parameters/q.p_da1"
+        - "$ref": "#/parameters/q.p_da2"
+        - "$ref": "#/parameters/q.p_MS4"
+        - "$ref": "#/parameters/q.p_ooFN"
+        - "$ref": "#/parameters/q.p_ooFNtype"
+        - "$ref": "#/parameters/q.p_ooSA"
+        - "$ref": "#/parameters/q.p_ooSA1"
+        - "$ref": "#/parameters/q.p_ooCt"
+        - "$ref": "#/parameters/q.p_ooSt"
+        - "$ref": "#/parameters/q.p_ooZip"
+        - "$ref": "#/parameters/q.p_fac_ico"
+        - "$ref": "#/parameters/q.p_icoo"
+        - "$ref": "#/parameters/q.p_fac_icos"
+        - "$ref": "#/parameters/q.p_ejscreen"
+        - "$ref": "#/parameters/q.p_alrexceed"
+        - "$ref": "#/parameters/q.p_limit_addr"
+        - "$ref": "#/parameters/q.p_lat"
+        - "$ref": "#/parameters/q.p_long"
+        - "$ref": "#/parameters/q.p_radius"
+        - "$ref": "#/parameters/q.p_decouple"
+        - "$ref": "#/parameters/q.p_ejscreen_over80cnt"
+        - "$ref": "#/parameters/q.p_bio_flag"
+        - "$ref": "#/parameters/q.p_bio_fac_type"
+        - "$ref": "#/parameters/q.p_bio_trtmnt_procs"
+        - "$ref": "#/parameters/q.p_bio_analy_method_catgry"
+        - "$ref": "#/parameters/q.p_bio_total_volume_amt"
+        - "$ref": "#/parameters/q.p_bio_mgmt_prctce_type"
+        - "$ref": "#/parameters/q.p_bio_mgmt_prctce_stype"
+        - "$ref": "#/parameters/q.p_bio_mgmt_prctce_handler"
+        - "$ref": "#/parameters/q.p_bio_mgmt_container"
+        - "$ref": "#/parameters/q.p_bio_mgmt_pathogen"
+        - "$ref": "#/parameters/q.p_bio_mgmt_pathred"
+        - "$ref": "#/parameters/q.p_bio_mgmt_vector"
+        - "$ref": "#/parameters/q.p_insp_deficiencies"
+        - "$ref": "#/parameters/q.p_bio_mgmt_def_category"
+        - "$ref": "#/parameters/q.p_bio_mgmt_deficiencies"
+        - "$ref": "#/parameters/q.p_bio_vio_code"
+        - "$ref": "#/parameters/q.p_bio_current_vio"
+        - "$ref": "#/parameters/q.p_bio_qtrs_in_vio"
+        - "$ref": "#/parameters/q.p_bio_rpt_year"
+        - "$ref": "#/parameters/q.p_bio_insp_deficiencies"
+        - "$ref": "#/parameters/q.p_bio_vio_last_year"
+        - "$ref": "#/parameters/q.p_msgp_rpt_year"
+        - "$ref": "#/parameters/q.p_vio_last_year"
+        - "$ref": "#/parameters/q.queryset"
+        - "$ref": "#/parameters/q.responseset"
+        - "$ref": "#/parameters/q.tablelist"
+        - "$ref": "#/parameters/q.maplist"
+        - "$ref": "#/parameters/q.summarylist"
+        - "$ref": "#/parameters/q.callback"
+        - name: qcolumns
+          in: query
+          description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.p_e90_count"
+        - "$ref": "#/parameters/q.p_e90_years"
       tags: 
-      - Facility Information
+        - Facility Information
       responses: 
         '200': 
           description: Results are summary statistics for the query and a query identifier (QID).
@@ -3210,177 +3210,177 @@ paths:
               Results: 
                 "$ref": "#/definitions/cwa1_Results" 
             required: 
-            - Results
+              - Results
     post: 
       summary: Clean Water Act (CWA) Facility Search Service
       description: Validates query search parameters and returns query identifier.  Use the responseset parameter to set the page size
       parameters: 
-      - name: output
-        in: formData
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/f.p_fn"
-      - "$ref": "#/parameters/f.p_sa"
-      - "$ref": "#/parameters/f.p_sa1"
-      - "$ref": "#/parameters/f.p_ct"
-      - "$ref": "#/parameters/f.p_co"
-      - "$ref": "#/parameters/f.p_fips"
-      - "$ref": "#/parameters/f.p_st"
-      - "$ref": "#/parameters/f.p_zip"
-      - "$ref": "#/parameters/f.p_frs"
-      - "$ref": "#/parameters/f.p_reg"
-      - "$ref": "#/parameters/f.p_sic"
-      - "$ref": "#/parameters/f.p_ncs"
-      - "$ref": "#/parameters/f.p_pen"
-      - "$ref": "#/parameters/f.p_c1lat"
-      - "$ref": "#/parameters/f.p_c1lon"
-      - "$ref": "#/parameters/f.p_c2lat"
-      - "$ref": "#/parameters/f.p_c2lon"
-      - "$ref": "#/parameters/f.p_usmex"
-      - "$ref": "#/parameters/f.p_sic2"
-      - "$ref": "#/parameters/f.p_sic4"
-      - "$ref": "#/parameters/f.p_fa"
-      - "$ref": "#/parameters/f.p_ff"
-      - "$ref": "#/parameters/f.p_act"
-      - "$ref": "#/parameters/f.p_maj"
-      - "$ref": "#/parameters/f.p_mact"
-      - "$ref": "#/parameters/f.p_fea"
-      - "$ref": "#/parameters/f.p_feay"
-      - "$ref": "#/parameters/f.p_feaa"
-      - "$ref": "#/parameters/f.p_iea"
-      - "$ref": "#/parameters/f.p_ieay"
-      - "$ref": "#/parameters/f.p_ieaa"
-      - "$ref": "#/parameters/f.p_qiv"
-      - "$ref": "#/parameters/f.p_iv"
-      - "$ref": "#/parameters/f.p_impw"
-      - "$ref": "#/parameters/f.p_imp_cau_grp"
-      - "$ref": "#/parameters/f.p_imp_pol"
-      - "$ref": "#/parameters/f.p_trep"
-      - "$ref": "#/parameters/f.p_pm"
-      - "$ref": "#/parameters/f.p_pd"
-      - "$ref": "#/parameters/f.p_ico"
-      - "$ref": "#/parameters/f.p_huc"
-      - "$ref": "#/parameters/f.p_pid"
-      - "$ref": "#/parameters/f.p_med"
-      - "$ref": "#/parameters/f.p_ysl"
-      - "$ref": "#/parameters/f.p_ysly"
-      - "$ref": "#/parameters/f.p_ysla"
-      - "$ref": "#/parameters/f.p_qs"
-      - "$ref": "#/parameters/f.p_sfs"
-      - "$ref": "#/parameters/f.p_tribeid"
-      - "$ref": "#/parameters/f.p_tribename"
-      - "$ref": "#/parameters/f.p_tribedist"
-      - "$ref": "#/parameters/f.p_pstat"
-      - "$ref": "#/parameters/f.p_ptype"
-      - "$ref": "#/parameters/f.p_pcomp"
-      - "$ref": "#/parameters/f.p_plimits"
-      - "$ref": "#/parameters/f.p_pcss"
-      - "$ref": "#/parameters/f.p_pexp"
-      - "$ref": "#/parameters/f.p_owop"
-      - "$ref": "#/parameters/f.p_agoo"
-      - "$ref": "#/parameters/f.p_idt1"
-      - "$ref": "#/parameters/f.p_idt2"
-      - "$ref": "#/parameters/f.p_pityp"
-      - "$ref": "#/parameters/f.p_pfead1"
-      - "$ref": "#/parameters/f.p_pfead2"
-      - "$ref": "#/parameters/f.p_pfeat"
-      - "$ref": "#/parameters/f.p_pccs"
-      - "$ref": "#/parameters/f.p_pexcd"
-      - "$ref": "#/parameters/f.p_psncq"
-      - "$ref": "#/parameters/f.p_pctrack"
-      - "$ref": "#/parameters/f.p_dwd"
-      - "$ref": "#/parameters/f.p_pt"
-      - "$ref": "#/parameters/f.p_pdwdist"
-      - "$ref": "#/parameters/f.p_pswdpc"
-      - "$ref": "#/parameters/f.p_pswdmp"
-      - "$ref": "#/parameters/f.p_pswpol"
-      - "$ref": "#/parameters/f.p_pswcas"
-      - "$ref": "#/parameters/f.p_pswparam"
-      - "$ref": "#/parameters/f.p_pswvio"
-      - "$ref": "#/parameters/f.p_wbd"
-      - "$ref": "#/parameters/f.p_radwbd"
-      - "$ref": "#/parameters/f.p_frswbd"
-      - "$ref": "#/parameters/f.p_fntype"
-      - "$ref": "#/parameters/f.p_pidall"
-      - "$ref": "#/parameters/f.p_months_last_dmr"
-      - "$ref": "#/parameters/f.p_last_dmr_within"
-      - "$ref": "#/parameters/f.p_indsw"
-      - "$ref": "#/parameters/f.p_msgp_ptype"
-      - "$ref": "#/parameters/f.p_mon_type"
-      - "$ref": "#/parameters/f.p_iagency"
-      - "$ref": "#/parameters/f.p_isws"
-      - "$ref": "#/parameters/f.p_iswss"
-      - "$ref": "#/parameters/f.p_iswssID"
-      - "$ref": "#/parameters/f.p_ds1"
-      - "$ref": "#/parameters/f.p_ds2"
-      - "$ref": "#/parameters/f.p_da1"
-      - "$ref": "#/parameters/f.p_da2"
-      - "$ref": "#/parameters/f.p_MS4"
-      - "$ref": "#/parameters/f.p_ooFN"
-      - "$ref": "#/parameters/f.p_ooFNtype"
-      - "$ref": "#/parameters/f.p_ooSA"
-      - "$ref": "#/parameters/f.p_ooSA1"
-      - "$ref": "#/parameters/f.p_ooCt"
-      - "$ref": "#/parameters/f.p_ooSt"
-      - "$ref": "#/parameters/f.p_ooZip"
-      - "$ref": "#/parameters/f.p_fac_ico"
-      - "$ref": "#/parameters/f.p_icoo"
-      - "$ref": "#/parameters/f.p_fac_icos"
-      - "$ref": "#/parameters/f.p_ejscreen"
-      - "$ref": "#/parameters/f.p_alrexceed"
-      - "$ref": "#/parameters/f.p_limit_addr"
-      - "$ref": "#/parameters/f.p_lat"
-      - "$ref": "#/parameters/f.p_long"
-      - "$ref": "#/parameters/f.p_radius"
-      - "$ref": "#/parameters/f.p_decouple"
-      - "$ref": "#/parameters/f.p_ejscreen_over80cnt"
-      - "$ref": "#/parameters/f.p_bio_flag"
-      - "$ref": "#/parameters/f.p_bio_fac_type"
-      - "$ref": "#/parameters/f.p_bio_trtmnt_procs"
-      - "$ref": "#/parameters/f.p_bio_analy_method_catgry"
-      - "$ref": "#/parameters/f.p_bio_total_volume_amt"
-      - "$ref": "#/parameters/f.p_bio_mgmt_prctce_type"
-      - "$ref": "#/parameters/f.p_bio_mgmt_prctce_stype"
-      - "$ref": "#/parameters/f.p_bio_mgmt_prctce_handler"
-      - "$ref": "#/parameters/f.p_bio_mgmt_container"
-      - "$ref": "#/parameters/f.p_bio_mgmt_pathogen"
-      - "$ref": "#/parameters/f.p_bio_mgmt_pathred"
-      - "$ref": "#/parameters/f.p_bio_mgmt_vector"
-      - "$ref": "#/parameters/f.p_insp_deficiencies"
-      - "$ref": "#/parameters/f.p_bio_mgmt_def_category"
-      - "$ref": "#/parameters/f.p_bio_mgmt_deficiencies"
-      - "$ref": "#/parameters/f.p_bio_vio_code"
-      - "$ref": "#/parameters/f.p_bio_current_vio"
-      - "$ref": "#/parameters/f.p_bio_qtrs_in_vio"
-      - "$ref": "#/parameters/f.p_bio_rpt_year"
-      - "$ref": "#/parameters/f.p_bio_insp_deficiencies"
-      - "$ref": "#/parameters/f.p_bio_vio_last_year"
-      - "$ref": "#/parameters/f.p_msgp_rpt_year"
-      - "$ref": "#/parameters/f.p_vio_last_year"
-      - "$ref": "#/parameters/f.queryset"
-      - "$ref": "#/parameters/f.responseset"
-      - "$ref": "#/parameters/f.tablelist"
-      - "$ref": "#/parameters/f.maplist"
-      - "$ref": "#/parameters/f.summarylist"
-      - "$ref": "#/parameters/f.callback"
-      - name: qcolumns
-        in: formData
-        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
-        type: string
-        required: false
-      - "$ref": "#/parameters/f.p_e90_count"
-      - "$ref": "#/parameters/f.p_e90_years"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+          enum: 
+            - JSONP
+            - JSON
+            - XML
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.p_fn"
+        - "$ref": "#/parameters/f.p_sa"
+        - "$ref": "#/parameters/f.p_sa1"
+        - "$ref": "#/parameters/f.p_ct"
+        - "$ref": "#/parameters/f.p_co"
+        - "$ref": "#/parameters/f.p_fips"
+        - "$ref": "#/parameters/f.p_st"
+        - "$ref": "#/parameters/f.p_zip"
+        - "$ref": "#/parameters/f.p_frs"
+        - "$ref": "#/parameters/f.p_reg"
+        - "$ref": "#/parameters/f.p_sic"
+        - "$ref": "#/parameters/f.p_ncs"
+        - "$ref": "#/parameters/f.p_pen"
+        - "$ref": "#/parameters/f.p_c1lat"
+        - "$ref": "#/parameters/f.p_c1lon"
+        - "$ref": "#/parameters/f.p_c2lat"
+        - "$ref": "#/parameters/f.p_c2lon"
+        - "$ref": "#/parameters/f.p_usmex"
+        - "$ref": "#/parameters/f.p_sic2"
+        - "$ref": "#/parameters/f.p_sic4"
+        - "$ref": "#/parameters/f.p_fa"
+        - "$ref": "#/parameters/f.p_ff"
+        - "$ref": "#/parameters/f.p_act"
+        - "$ref": "#/parameters/f.p_maj"
+        - "$ref": "#/parameters/f.p_mact"
+        - "$ref": "#/parameters/f.p_fea"
+        - "$ref": "#/parameters/f.p_feay"
+        - "$ref": "#/parameters/f.p_feaa"
+        - "$ref": "#/parameters/f.p_iea"
+        - "$ref": "#/parameters/f.p_ieay"
+        - "$ref": "#/parameters/f.p_ieaa"
+        - "$ref": "#/parameters/f.p_qiv"
+        - "$ref": "#/parameters/f.p_iv"
+        - "$ref": "#/parameters/f.p_impw"
+        - "$ref": "#/parameters/f.p_imp_cau_grp"
+        - "$ref": "#/parameters/f.p_imp_pol"
+        - "$ref": "#/parameters/f.p_trep"
+        - "$ref": "#/parameters/f.p_pm"
+        - "$ref": "#/parameters/f.p_pd"
+        - "$ref": "#/parameters/f.p_ico"
+        - "$ref": "#/parameters/f.p_huc"
+        - "$ref": "#/parameters/f.p_pid"
+        - "$ref": "#/parameters/f.p_med"
+        - "$ref": "#/parameters/f.p_ysl"
+        - "$ref": "#/parameters/f.p_ysly"
+        - "$ref": "#/parameters/f.p_ysla"
+        - "$ref": "#/parameters/f.p_qs"
+        - "$ref": "#/parameters/f.p_sfs"
+        - "$ref": "#/parameters/f.p_tribeid"
+        - "$ref": "#/parameters/f.p_tribename"
+        - "$ref": "#/parameters/f.p_tribedist"
+        - "$ref": "#/parameters/f.p_pstat"
+        - "$ref": "#/parameters/f.p_ptype"
+        - "$ref": "#/parameters/f.p_pcomp"
+        - "$ref": "#/parameters/f.p_plimits"
+        - "$ref": "#/parameters/f.p_pcss"
+        - "$ref": "#/parameters/f.p_pexp"
+        - "$ref": "#/parameters/f.p_owop"
+        - "$ref": "#/parameters/f.p_agoo"
+        - "$ref": "#/parameters/f.p_idt1"
+        - "$ref": "#/parameters/f.p_idt2"
+        - "$ref": "#/parameters/f.p_pityp"
+        - "$ref": "#/parameters/f.p_pfead1"
+        - "$ref": "#/parameters/f.p_pfead2"
+        - "$ref": "#/parameters/f.p_pfeat"
+        - "$ref": "#/parameters/f.p_pccs"
+        - "$ref": "#/parameters/f.p_pexcd"
+        - "$ref": "#/parameters/f.p_psncq"
+        - "$ref": "#/parameters/f.p_pctrack"
+        - "$ref": "#/parameters/f.p_dwd"
+        - "$ref": "#/parameters/f.p_pt"
+        - "$ref": "#/parameters/f.p_pdwdist"
+        - "$ref": "#/parameters/f.p_pswdpc"
+        - "$ref": "#/parameters/f.p_pswdmp"
+        - "$ref": "#/parameters/f.p_pswpol"
+        - "$ref": "#/parameters/f.p_pswcas"
+        - "$ref": "#/parameters/f.p_pswparam"
+        - "$ref": "#/parameters/f.p_pswvio"
+        - "$ref": "#/parameters/f.p_wbd"
+        - "$ref": "#/parameters/f.p_radwbd"
+        - "$ref": "#/parameters/f.p_frswbd"
+        - "$ref": "#/parameters/f.p_fntype"
+        - "$ref": "#/parameters/f.p_pidall"
+        - "$ref": "#/parameters/f.p_months_last_dmr"
+        - "$ref": "#/parameters/f.p_last_dmr_within"
+        - "$ref": "#/parameters/f.p_indsw"
+        - "$ref": "#/parameters/f.p_msgp_ptype"
+        - "$ref": "#/parameters/f.p_mon_type"
+        - "$ref": "#/parameters/f.p_iagency"
+        - "$ref": "#/parameters/f.p_isws"
+        - "$ref": "#/parameters/f.p_iswss"
+        - "$ref": "#/parameters/f.p_iswssID"
+        - "$ref": "#/parameters/f.p_ds1"
+        - "$ref": "#/parameters/f.p_ds2"
+        - "$ref": "#/parameters/f.p_da1"
+        - "$ref": "#/parameters/f.p_da2"
+        - "$ref": "#/parameters/f.p_MS4"
+        - "$ref": "#/parameters/f.p_ooFN"
+        - "$ref": "#/parameters/f.p_ooFNtype"
+        - "$ref": "#/parameters/f.p_ooSA"
+        - "$ref": "#/parameters/f.p_ooSA1"
+        - "$ref": "#/parameters/f.p_ooCt"
+        - "$ref": "#/parameters/f.p_ooSt"
+        - "$ref": "#/parameters/f.p_ooZip"
+        - "$ref": "#/parameters/f.p_fac_ico"
+        - "$ref": "#/parameters/f.p_icoo"
+        - "$ref": "#/parameters/f.p_fac_icos"
+        - "$ref": "#/parameters/f.p_ejscreen"
+        - "$ref": "#/parameters/f.p_alrexceed"
+        - "$ref": "#/parameters/f.p_limit_addr"
+        - "$ref": "#/parameters/f.p_lat"
+        - "$ref": "#/parameters/f.p_long"
+        - "$ref": "#/parameters/f.p_radius"
+        - "$ref": "#/parameters/f.p_decouple"
+        - "$ref": "#/parameters/f.p_ejscreen_over80cnt"
+        - "$ref": "#/parameters/f.p_bio_flag"
+        - "$ref": "#/parameters/f.p_bio_fac_type"
+        - "$ref": "#/parameters/f.p_bio_trtmnt_procs"
+        - "$ref": "#/parameters/f.p_bio_analy_method_catgry"
+        - "$ref": "#/parameters/f.p_bio_total_volume_amt"
+        - "$ref": "#/parameters/f.p_bio_mgmt_prctce_type"
+        - "$ref": "#/parameters/f.p_bio_mgmt_prctce_stype"
+        - "$ref": "#/parameters/f.p_bio_mgmt_prctce_handler"
+        - "$ref": "#/parameters/f.p_bio_mgmt_container"
+        - "$ref": "#/parameters/f.p_bio_mgmt_pathogen"
+        - "$ref": "#/parameters/f.p_bio_mgmt_pathred"
+        - "$ref": "#/parameters/f.p_bio_mgmt_vector"
+        - "$ref": "#/parameters/f.p_insp_deficiencies"
+        - "$ref": "#/parameters/f.p_bio_mgmt_def_category"
+        - "$ref": "#/parameters/f.p_bio_mgmt_deficiencies"
+        - "$ref": "#/parameters/f.p_bio_vio_code"
+        - "$ref": "#/parameters/f.p_bio_current_vio"
+        - "$ref": "#/parameters/f.p_bio_qtrs_in_vio"
+        - "$ref": "#/parameters/f.p_bio_rpt_year"
+        - "$ref": "#/parameters/f.p_bio_insp_deficiencies"
+        - "$ref": "#/parameters/f.p_bio_vio_last_year"
+        - "$ref": "#/parameters/f.p_msgp_rpt_year"
+        - "$ref": "#/parameters/f.p_vio_last_year"
+        - "$ref": "#/parameters/f.queryset"
+        - "$ref": "#/parameters/f.responseset"
+        - "$ref": "#/parameters/f.tablelist"
+        - "$ref": "#/parameters/f.maplist"
+        - "$ref": "#/parameters/f.summarylist"
+        - "$ref": "#/parameters/f.callback"
+        - name: qcolumns
+          in: formData
+          description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.p_e90_count"
+        - "$ref": "#/parameters/f.p_e90_years"
       tags: 
-      - Facility Information
+        - Facility Information
       responses: 
         '200': 
           description: Results are summary statistics for the query and a query identifier (QID).
@@ -3392,175 +3392,175 @@ paths:
               Results: 
                 "$ref": "#/definitions/cwa1_Results" 
             required: 
-            - Results
+              - Results
   "/cwa_rest_services.get_facility_info": 
     get: 
       summary: Clean Water Act (CWA) Facility Enhanced Search Service
       description: Returns either an array of Facilities or an array of Clusters that meet the specified search criteria.
       parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-          - CSV = Facility results formatted as comma delimited file download.
-          - GEOJSON = Facility results formatted as GeoJSON feature collection.
-          - GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
-          - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
-        type: string
-        required: false
-      - "$ref": "#/parameters/q.p_fn"
-      - "$ref": "#/parameters/q.p_sa"
-      - "$ref": "#/parameters/q.p_sa1"
-      - "$ref": "#/parameters/q.p_ct"
-      - "$ref": "#/parameters/q.p_co"
-      - "$ref": "#/parameters/q.p_fips"
-      - "$ref": "#/parameters/q.p_st"
-      - "$ref": "#/parameters/q.p_zip"
-      - "$ref": "#/parameters/q.p_frs"
-      - "$ref": "#/parameters/q.p_reg"
-      - "$ref": "#/parameters/q.p_sic"
-      - "$ref": "#/parameters/q.p_ncs"
-      - "$ref": "#/parameters/q.p_pen"
-      - "$ref": "#/parameters/q.xmin"
-      - "$ref": "#/parameters/q.ymin"
-      - "$ref": "#/parameters/q.xmax"
-      - "$ref": "#/parameters/q.ymax"
-      - "$ref": "#/parameters/q.p_usmex"
-      - "$ref": "#/parameters/q.p_sic2"
-      - "$ref": "#/parameters/q.p_sic4"
-      - "$ref": "#/parameters/q.p_fa"
-      - "$ref": "#/parameters/q.p_ff"
-      - "$ref": "#/parameters/q.p_act"
-      - "$ref": "#/parameters/q.p_maj"
-      - "$ref": "#/parameters/q.p_mact"
-      - "$ref": "#/parameters/q.p_fea"
-      - "$ref": "#/parameters/q.p_feay"
-      - "$ref": "#/parameters/q.p_feaa"
-      - "$ref": "#/parameters/q.p_iea"
-      - "$ref": "#/parameters/q.p_ieay"
-      - "$ref": "#/parameters/q.p_ieaa"
-      - "$ref": "#/parameters/q.p_qiv"
-      - "$ref": "#/parameters/q.p_iv"
-      - "$ref": "#/parameters/q.p_impw"
-      - "$ref": "#/parameters/q.p_imp_pol"
-      - "$ref": "#/parameters/q.p_imp_cau_grp"
-      - "$ref": "#/parameters/q.p_trep"
-      - "$ref": "#/parameters/q.p_pm"
-      - "$ref": "#/parameters/q.p_pd"
-      - "$ref": "#/parameters/q.p_ico"
-      - "$ref": "#/parameters/q.p_huc"
-      - "$ref": "#/parameters/q.p_pid"
-      - "$ref": "#/parameters/q.p_med"
-      - "$ref": "#/parameters/q.p_ysl"
-      - "$ref": "#/parameters/q.p_ysly"
-      - "$ref": "#/parameters/q.p_ysla"
-      - "$ref": "#/parameters/q.p_qs"
-      - "$ref": "#/parameters/q.p_sfs"
-      - "$ref": "#/parameters/q.p_tribeid"
-      - "$ref": "#/parameters/q.p_tribename"
-      - "$ref": "#/parameters/q.p_tribedist"
-      - "$ref": "#/parameters/q.p_pstat"
-      - "$ref": "#/parameters/q.p_ptype"
-      - "$ref": "#/parameters/q.p_pcomp"
-      - "$ref": "#/parameters/q.p_plimits"
-      - "$ref": "#/parameters/q.p_pcss"
-      - "$ref": "#/parameters/q.p_pexp"
-      - "$ref": "#/parameters/q.p_owop"
-      - "$ref": "#/parameters/q.p_agoo"
-      - "$ref": "#/parameters/q.p_idt1"
-      - "$ref": "#/parameters/q.p_idt2"
-      - "$ref": "#/parameters/q.p_pityp"
-      - "$ref": "#/parameters/q.p_pfead1"
-      - "$ref": "#/parameters/q.p_pfead2"
-      - "$ref": "#/parameters/q.p_pfeat"
-      - "$ref": "#/parameters/q.p_pccs"
-      - "$ref": "#/parameters/q.p_pexcd"
-      - "$ref": "#/parameters/q.p_psncq"
-      - "$ref": "#/parameters/q.p_pctrack"
-      - "$ref": "#/parameters/q.p_dwd"
-      - "$ref": "#/parameters/q.p_pt"
-      - "$ref": "#/parameters/q.p_pdwdist"
-      - "$ref": "#/parameters/q.p_pswdpc"
-      - "$ref": "#/parameters/q.p_pswdmp"
-      - "$ref": "#/parameters/q.p_pswpol"
-      - "$ref": "#/parameters/q.p_pswcas"
-      - "$ref": "#/parameters/q.p_pswparam"
-      - "$ref": "#/parameters/q.p_pswvio"
-      - "$ref": "#/parameters/q.p_wbd"
-      - "$ref": "#/parameters/q.p_radwbd"
-      - "$ref": "#/parameters/q.p_frswbd"
-      - "$ref": "#/parameters/q.p_fntype"
-      - "$ref": "#/parameters/q.p_pidall"
-      - "$ref": "#/parameters/q.p_months_last_dmr"
-      - "$ref": "#/parameters/q.p_last_dmr_within"
-      - "$ref": "#/parameters/q.p_indsw"
-      - "$ref": "#/parameters/q.p_msgp_ptype"
-      - "$ref": "#/parameters/q.p_mon_type"
-      - "$ref": "#/parameters/q.p_iagency"
-      - "$ref": "#/parameters/q.p_isws"
-      - "$ref": "#/parameters/q.p_iswss"
-      - "$ref": "#/parameters/q.p_iswssID"
-      - "$ref": "#/parameters/q.p_ds1"
-      - "$ref": "#/parameters/q.p_ds2"
-      - "$ref": "#/parameters/q.p_da1"
-      - "$ref": "#/parameters/q.p_da2"
-      - "$ref": "#/parameters/q.p_MS4"
-      - "$ref": "#/parameters/q.p_ooFN"
-      - "$ref": "#/parameters/q.p_ooFNtype"
-      - "$ref": "#/parameters/q.p_ooSA"
-      - "$ref": "#/parameters/q.p_ooSA1"
-      - "$ref": "#/parameters/q.p_ooCt"
-      - "$ref": "#/parameters/q.p_ooSt"
-      - "$ref": "#/parameters/q.p_ooZip"
-      - "$ref": "#/parameters/q.p_fac_ico"
-      - "$ref": "#/parameters/q.p_icoo"
-      - "$ref": "#/parameters/q.p_fac_icos"
-      - "$ref": "#/parameters/q.p_ejscreen"
-      - "$ref": "#/parameters/q.p_alrexceed"
-      - "$ref": "#/parameters/q.p_limit_addr"
-      - "$ref": "#/parameters/q.p_lat"
-      - "$ref": "#/parameters/q.p_long"
-      - "$ref": "#/parameters/q.p_radius"
-      - "$ref": "#/parameters/q.p_decouple"
-      - "$ref": "#/parameters/q.p_ejscreen_over80cnt"
-      - "$ref": "#/parameters/q.p_bio_flag"
-      - "$ref": "#/parameters/q.p_bio_fac_type"
-      - "$ref": "#/parameters/q.p_bio_trtmnt_procs"
-      - "$ref": "#/parameters/q.p_bio_analy_method_catgry"
-      - "$ref": "#/parameters/q.p_bio_total_volume_amt"
-      - "$ref": "#/parameters/q.p_bio_mgmt_prctce_type"
-      - "$ref": "#/parameters/q.p_bio_mgmt_prctce_stype"
-      - "$ref": "#/parameters/q.p_bio_mgmt_prctce_handler"
-      - "$ref": "#/parameters/q.p_bio_mgmt_container"
-      - "$ref": "#/parameters/q.p_bio_mgmt_pathogen"
-      - "$ref": "#/parameters/q.p_bio_mgmt_pathred"
-      - "$ref": "#/parameters/q.p_bio_mgmt_vector"
-      - "$ref": "#/parameters/q.p_insp_deficiencies"
-      - "$ref": "#/parameters/q.p_bio_mgmt_def_category"
-      - "$ref": "#/parameters/q.p_bio_mgmt_deficiencies"
-      - "$ref": "#/parameters/q.p_bio_vio_code"
-      - "$ref": "#/parameters/q.p_bio_current_vio"
-      - "$ref": "#/parameters/q.p_bio_qtrs_in_vio"
-      - "$ref": "#/parameters/q.p_bio_rpt_year"
-      - "$ref": "#/parameters/q.p_bio_insp_deficiencies"
-      - "$ref": "#/parameters/q.p_bio_vio_last_year"
-      - "$ref": "#/parameters/q.p_msgp_rpt_year"
-      - "$ref": "#/parameters/q.p_vio_last_year"
-      - "$ref": "#/parameters/q.responseset"
-      - "$ref": "#/parameters/q.callback"
-      - name: qcolumns
-        in: query
-        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
-        type: string
-        required: false
-      - "$ref": "#/parameters/q.p_pretty_print"
-      - "$ref": "#/parameters/q.p_e90_count"
-      - "$ref": "#/parameters/q.p_e90_years"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Facility results formatted as comma delimited file download.
+            - GEOJSON = Facility results formatted as GeoJSON feature collection.
+            - GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
+            - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.p_fn"
+        - "$ref": "#/parameters/q.p_sa"
+        - "$ref": "#/parameters/q.p_sa1"
+        - "$ref": "#/parameters/q.p_ct"
+        - "$ref": "#/parameters/q.p_co"
+        - "$ref": "#/parameters/q.p_fips"
+        - "$ref": "#/parameters/q.p_st"
+        - "$ref": "#/parameters/q.p_zip"
+        - "$ref": "#/parameters/q.p_frs"
+        - "$ref": "#/parameters/q.p_reg"
+        - "$ref": "#/parameters/q.p_sic"
+        - "$ref": "#/parameters/q.p_ncs"
+        - "$ref": "#/parameters/q.p_pen"
+        - "$ref": "#/parameters/q.xmin"
+        - "$ref": "#/parameters/q.ymin"
+        - "$ref": "#/parameters/q.xmax"
+        - "$ref": "#/parameters/q.ymax"
+        - "$ref": "#/parameters/q.p_usmex"
+        - "$ref": "#/parameters/q.p_sic2"
+        - "$ref": "#/parameters/q.p_sic4"
+        - "$ref": "#/parameters/q.p_fa"
+        - "$ref": "#/parameters/q.p_ff"
+        - "$ref": "#/parameters/q.p_act"
+        - "$ref": "#/parameters/q.p_maj"
+        - "$ref": "#/parameters/q.p_mact"
+        - "$ref": "#/parameters/q.p_fea"
+        - "$ref": "#/parameters/q.p_feay"
+        - "$ref": "#/parameters/q.p_feaa"
+        - "$ref": "#/parameters/q.p_iea"
+        - "$ref": "#/parameters/q.p_ieay"
+        - "$ref": "#/parameters/q.p_ieaa"
+        - "$ref": "#/parameters/q.p_qiv"
+        - "$ref": "#/parameters/q.p_iv"
+        - "$ref": "#/parameters/q.p_impw"
+        - "$ref": "#/parameters/q.p_imp_pol"
+        - "$ref": "#/parameters/q.p_imp_cau_grp"
+        - "$ref": "#/parameters/q.p_trep"
+        - "$ref": "#/parameters/q.p_pm"
+        - "$ref": "#/parameters/q.p_pd"
+        - "$ref": "#/parameters/q.p_ico"
+        - "$ref": "#/parameters/q.p_huc"
+        - "$ref": "#/parameters/q.p_pid"
+        - "$ref": "#/parameters/q.p_med"
+        - "$ref": "#/parameters/q.p_ysl"
+        - "$ref": "#/parameters/q.p_ysly"
+        - "$ref": "#/parameters/q.p_ysla"
+        - "$ref": "#/parameters/q.p_qs"
+        - "$ref": "#/parameters/q.p_sfs"
+        - "$ref": "#/parameters/q.p_tribeid"
+        - "$ref": "#/parameters/q.p_tribename"
+        - "$ref": "#/parameters/q.p_tribedist"
+        - "$ref": "#/parameters/q.p_pstat"
+        - "$ref": "#/parameters/q.p_ptype"
+        - "$ref": "#/parameters/q.p_pcomp"
+        - "$ref": "#/parameters/q.p_plimits"
+        - "$ref": "#/parameters/q.p_pcss"
+        - "$ref": "#/parameters/q.p_pexp"
+        - "$ref": "#/parameters/q.p_owop"
+        - "$ref": "#/parameters/q.p_agoo"
+        - "$ref": "#/parameters/q.p_idt1"
+        - "$ref": "#/parameters/q.p_idt2"
+        - "$ref": "#/parameters/q.p_pityp"
+        - "$ref": "#/parameters/q.p_pfead1"
+        - "$ref": "#/parameters/q.p_pfead2"
+        - "$ref": "#/parameters/q.p_pfeat"
+        - "$ref": "#/parameters/q.p_pccs"
+        - "$ref": "#/parameters/q.p_pexcd"
+        - "$ref": "#/parameters/q.p_psncq"
+        - "$ref": "#/parameters/q.p_pctrack"
+        - "$ref": "#/parameters/q.p_dwd"
+        - "$ref": "#/parameters/q.p_pt"
+        - "$ref": "#/parameters/q.p_pdwdist"
+        - "$ref": "#/parameters/q.p_pswdpc"
+        - "$ref": "#/parameters/q.p_pswdmp"
+        - "$ref": "#/parameters/q.p_pswpol"
+        - "$ref": "#/parameters/q.p_pswcas"
+        - "$ref": "#/parameters/q.p_pswparam"
+        - "$ref": "#/parameters/q.p_pswvio"
+        - "$ref": "#/parameters/q.p_wbd"
+        - "$ref": "#/parameters/q.p_radwbd"
+        - "$ref": "#/parameters/q.p_frswbd"
+        - "$ref": "#/parameters/q.p_fntype"
+        - "$ref": "#/parameters/q.p_pidall"
+        - "$ref": "#/parameters/q.p_months_last_dmr"
+        - "$ref": "#/parameters/q.p_last_dmr_within"
+        - "$ref": "#/parameters/q.p_indsw"
+        - "$ref": "#/parameters/q.p_msgp_ptype"
+        - "$ref": "#/parameters/q.p_mon_type"
+        - "$ref": "#/parameters/q.p_iagency"
+        - "$ref": "#/parameters/q.p_isws"
+        - "$ref": "#/parameters/q.p_iswss"
+        - "$ref": "#/parameters/q.p_iswssID"
+        - "$ref": "#/parameters/q.p_ds1"
+        - "$ref": "#/parameters/q.p_ds2"
+        - "$ref": "#/parameters/q.p_da1"
+        - "$ref": "#/parameters/q.p_da2"
+        - "$ref": "#/parameters/q.p_MS4"
+        - "$ref": "#/parameters/q.p_ooFN"
+        - "$ref": "#/parameters/q.p_ooFNtype"
+        - "$ref": "#/parameters/q.p_ooSA"
+        - "$ref": "#/parameters/q.p_ooSA1"
+        - "$ref": "#/parameters/q.p_ooCt"
+        - "$ref": "#/parameters/q.p_ooSt"
+        - "$ref": "#/parameters/q.p_ooZip"
+        - "$ref": "#/parameters/q.p_fac_ico"
+        - "$ref": "#/parameters/q.p_icoo"
+        - "$ref": "#/parameters/q.p_fac_icos"
+        - "$ref": "#/parameters/q.p_ejscreen"
+        - "$ref": "#/parameters/q.p_alrexceed"
+        - "$ref": "#/parameters/q.p_limit_addr"
+        - "$ref": "#/parameters/q.p_lat"
+        - "$ref": "#/parameters/q.p_long"
+        - "$ref": "#/parameters/q.p_radius"
+        - "$ref": "#/parameters/q.p_decouple"
+        - "$ref": "#/parameters/q.p_ejscreen_over80cnt"
+        - "$ref": "#/parameters/q.p_bio_flag"
+        - "$ref": "#/parameters/q.p_bio_fac_type"
+        - "$ref": "#/parameters/q.p_bio_trtmnt_procs"
+        - "$ref": "#/parameters/q.p_bio_analy_method_catgry"
+        - "$ref": "#/parameters/q.p_bio_total_volume_amt"
+        - "$ref": "#/parameters/q.p_bio_mgmt_prctce_type"
+        - "$ref": "#/parameters/q.p_bio_mgmt_prctce_stype"
+        - "$ref": "#/parameters/q.p_bio_mgmt_prctce_handler"
+        - "$ref": "#/parameters/q.p_bio_mgmt_container"
+        - "$ref": "#/parameters/q.p_bio_mgmt_pathogen"
+        - "$ref": "#/parameters/q.p_bio_mgmt_pathred"
+        - "$ref": "#/parameters/q.p_bio_mgmt_vector"
+        - "$ref": "#/parameters/q.p_insp_deficiencies"
+        - "$ref": "#/parameters/q.p_bio_mgmt_def_category"
+        - "$ref": "#/parameters/q.p_bio_mgmt_deficiencies"
+        - "$ref": "#/parameters/q.p_bio_vio_code"
+        - "$ref": "#/parameters/q.p_bio_current_vio"
+        - "$ref": "#/parameters/q.p_bio_qtrs_in_vio"
+        - "$ref": "#/parameters/q.p_bio_rpt_year"
+        - "$ref": "#/parameters/q.p_bio_insp_deficiencies"
+        - "$ref": "#/parameters/q.p_bio_vio_last_year"
+        - "$ref": "#/parameters/q.p_msgp_rpt_year"
+        - "$ref": "#/parameters/q.p_vio_last_year"
+        - "$ref": "#/parameters/q.responseset"
+        - "$ref": "#/parameters/q.callback"
+        - name: qcolumns
+          in: query
+          description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.p_pretty_print"
+        - "$ref": "#/parameters/q.p_e90_count"
+        - "$ref": "#/parameters/q.p_e90_years"
       tags: 
-      - Facility Information
+        - Facility Information
       responses: 
         '200': 
           description: Results will either be an array of Facilities or an array of Clusters. The search will return clusters if the number of facilities returned is greater than the resposeset size, otherwise individual facility records will be returned.
@@ -3572,174 +3572,174 @@ paths:
               Results: 
                 "$ref": "#/definitions/cwa2_Results" 
             required: 
-            - Results
+              - Results
     post: 
       summary: Clean Water Act (CWA) Facility Enhanced Search Service
       description: Returns either an array of Facilities or an array of Clusters that meet the specified search criteria.
       parameters: 
-      - name: output
-        in: formData
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-          - CSV = Facility results formatted as comma delimited file download.
-          - GEOJSON = Facility results formatted as GeoJSON feature collection.
-          - GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
-          - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
-        type: string
-        required: false
-      - "$ref": "#/parameters/f.p_fn"
-      - "$ref": "#/parameters/f.p_sa"
-      - "$ref": "#/parameters/f.p_sa1"
-      - "$ref": "#/parameters/f.p_ct"
-      - "$ref": "#/parameters/f.p_co"
-      - "$ref": "#/parameters/f.p_fips"
-      - "$ref": "#/parameters/f.p_st"
-      - "$ref": "#/parameters/f.p_zip"
-      - "$ref": "#/parameters/f.p_frs"
-      - "$ref": "#/parameters/f.p_reg"
-      - "$ref": "#/parameters/f.p_sic"
-      - "$ref": "#/parameters/f.p_ncs"
-      - "$ref": "#/parameters/f.p_pen"
-      - "$ref": "#/parameters/f.xmin"
-      - "$ref": "#/parameters/f.ymin"
-      - "$ref": "#/parameters/f.xmax"
-      - "$ref": "#/parameters/f.ymax"
-      - "$ref": "#/parameters/f.p_usmex"
-      - "$ref": "#/parameters/f.p_sic2"
-      - "$ref": "#/parameters/f.p_sic4"
-      - "$ref": "#/parameters/f.p_fa"
-      - "$ref": "#/parameters/f.p_ff"
-      - "$ref": "#/parameters/f.p_act"
-      - "$ref": "#/parameters/f.p_maj"
-      - "$ref": "#/parameters/f.p_mact"
-      - "$ref": "#/parameters/f.p_fea"
-      - "$ref": "#/parameters/f.p_feay"
-      - "$ref": "#/parameters/f.p_feaa"
-      - "$ref": "#/parameters/f.p_iea"
-      - "$ref": "#/parameters/f.p_ieay"
-      - "$ref": "#/parameters/f.p_ieaa"
-      - "$ref": "#/parameters/f.p_qiv"
-      - "$ref": "#/parameters/f.p_iv"
-      - "$ref": "#/parameters/f.p_impw"
-      - "$ref": "#/parameters/f.p_imp_pol"
-      - "$ref": "#/parameters/f.p_imp_cau_grp"
-      - "$ref": "#/parameters/f.p_trep"
-      - "$ref": "#/parameters/f.p_pm"
-      - "$ref": "#/parameters/f.p_pd"
-      - "$ref": "#/parameters/f.p_ico"
-      - "$ref": "#/parameters/f.p_huc"
-      - "$ref": "#/parameters/f.p_pid"
-      - "$ref": "#/parameters/f.p_med"
-      - "$ref": "#/parameters/f.p_ysl"
-      - "$ref": "#/parameters/f.p_ysly"
-      - "$ref": "#/parameters/f.p_ysla"
-      - "$ref": "#/parameters/f.p_qs"
-      - "$ref": "#/parameters/f.p_sfs"
-      - "$ref": "#/parameters/f.p_tribeid"
-      - "$ref": "#/parameters/f.p_tribename"
-      - "$ref": "#/parameters/f.p_tribedist"
-      - "$ref": "#/parameters/f.p_pstat"
-      - "$ref": "#/parameters/f.p_ptype"
-      - "$ref": "#/parameters/f.p_pcomp"
-      - "$ref": "#/parameters/f.p_plimits"
-      - "$ref": "#/parameters/f.p_pcss"
-      - "$ref": "#/parameters/f.p_pexp"
-      - "$ref": "#/parameters/f.p_owop"
-      - "$ref": "#/parameters/f.p_agoo"
-      - "$ref": "#/parameters/f.p_idt1"
-      - "$ref": "#/parameters/f.p_idt2"
-      - "$ref": "#/parameters/f.p_pityp"
-      - "$ref": "#/parameters/f.p_pfead1"
-      - "$ref": "#/parameters/f.p_pfead2"
-      - "$ref": "#/parameters/f.p_pfeat"
-      - "$ref": "#/parameters/f.p_pccs"
-      - "$ref": "#/parameters/f.p_pexcd"
-      - "$ref": "#/parameters/f.p_psncq"
-      - "$ref": "#/parameters/f.p_pctrack"
-      - "$ref": "#/parameters/f.p_dwd"
-      - "$ref": "#/parameters/f.p_pt"
-      - "$ref": "#/parameters/f.p_pdwdist"
-      - "$ref": "#/parameters/f.p_pswdpc"
-      - "$ref": "#/parameters/f.p_pswdmp"
-      - "$ref": "#/parameters/f.p_pswpol"
-      - "$ref": "#/parameters/f.p_pswcas"
-      - "$ref": "#/parameters/f.p_pswparam"
-      - "$ref": "#/parameters/f.p_pswvio"
-      - "$ref": "#/parameters/f.p_wbd"
-      - "$ref": "#/parameters/f.p_radwbd"
-      - "$ref": "#/parameters/f.p_frswbd"
-      - "$ref": "#/parameters/f.p_fntype"
-      - "$ref": "#/parameters/f.p_pidall"
-      - "$ref": "#/parameters/f.p_months_last_dmr"
-      - "$ref": "#/parameters/f.p_last_dmr_within"
-      - "$ref": "#/parameters/f.p_indsw"
-      - "$ref": "#/parameters/f.p_msgp_ptype"
-      - "$ref": "#/parameters/f.p_mon_type"
-      - "$ref": "#/parameters/f.p_iagency"
-      - "$ref": "#/parameters/f.p_isws"
-      - "$ref": "#/parameters/f.p_iswss"
-      - "$ref": "#/parameters/f.p_iswssID"
-      - "$ref": "#/parameters/f.p_ds1"
-      - "$ref": "#/parameters/f.p_ds2"
-      - "$ref": "#/parameters/f.p_da1"
-      - "$ref": "#/parameters/f.p_da2"
-      - "$ref": "#/parameters/f.p_MS4"
-      - "$ref": "#/parameters/f.p_ooFN"
-      - "$ref": "#/parameters/f.p_ooFNtype"
-      - "$ref": "#/parameters/f.p_ooSA"
-      - "$ref": "#/parameters/f.p_ooSA1"
-      - "$ref": "#/parameters/f.p_ooCt"
-      - "$ref": "#/parameters/f.p_ooSt"
-      - "$ref": "#/parameters/f.p_ooZip"
-      - "$ref": "#/parameters/f.p_fac_ico"
-      - "$ref": "#/parameters/f.p_icoo"
-      - "$ref": "#/parameters/f.p_fac_icos"
-      - "$ref": "#/parameters/f.p_ejscreen"
-      - "$ref": "#/parameters/f.p_alrexceed"
-      - "$ref": "#/parameters/f.p_limit_addr"
-      - "$ref": "#/parameters/f.p_lat"
-      - "$ref": "#/parameters/f.p_long"
-      - "$ref": "#/parameters/f.p_radius"
-      - "$ref": "#/parameters/f.p_decouple"
-      - "$ref": "#/parameters/f.p_ejscreen_over80cnt"
-      - "$ref": "#/parameters/f.p_bio_flag"
-      - "$ref": "#/parameters/f.p_bio_fac_type"
-      - "$ref": "#/parameters/f.p_bio_trtmnt_procs"
-      - "$ref": "#/parameters/f.p_bio_analy_method_catgry"
-      - "$ref": "#/parameters/f.p_bio_total_volume_amt"
-      - "$ref": "#/parameters/f.p_bio_mgmt_prctce_type"
-      - "$ref": "#/parameters/f.p_bio_mgmt_prctce_stype"
-      - "$ref": "#/parameters/f.p_bio_mgmt_prctce_handler"
-      - "$ref": "#/parameters/f.p_bio_mgmt_container"
-      - "$ref": "#/parameters/f.p_bio_mgmt_pathogen"
-      - "$ref": "#/parameters/f.p_bio_mgmt_pathred"
-      - "$ref": "#/parameters/f.p_bio_mgmt_vector"
-      - "$ref": "#/parameters/f.p_insp_deficiencies"
-      - "$ref": "#/parameters/f.p_bio_mgmt_def_category"
-      - "$ref": "#/parameters/f.p_bio_mgmt_deficiencies"
-      - "$ref": "#/parameters/f.p_bio_vio_code"
-      - "$ref": "#/parameters/f.p_bio_current_vio"
-      - "$ref": "#/parameters/f.p_bio_qtrs_in_vio"
-      - "$ref": "#/parameters/f.p_bio_rpt_year"
-      - "$ref": "#/parameters/f.p_bio_insp_deficiencies"
-      - "$ref": "#/parameters/f.p_bio_vio_last_year"
-      - "$ref": "#/parameters/f.p_msgp_rpt_year"
-      - "$ref": "#/parameters/f.p_vio_last_year"
-      - "$ref": "#/parameters/f.responseset"
-      - "$ref": "#/parameters/f.callback"
-      - name: qcolumns
-        in: formData
-        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
-        type: string
-        required: false
-      - "$ref": "#/parameters/f.p_pretty_print"
-      - "$ref": "#/parameters/f.p_e90_count"
-      - "$ref": "#/parameters/f.p_e90_years"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Facility results formatted as comma delimited file download.
+            - GEOJSON = Facility results formatted as GeoJSON feature collection.
+            - GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
+            - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.p_fn"
+        - "$ref": "#/parameters/f.p_sa"
+        - "$ref": "#/parameters/f.p_sa1"
+        - "$ref": "#/parameters/f.p_ct"
+        - "$ref": "#/parameters/f.p_co"
+        - "$ref": "#/parameters/f.p_fips"
+        - "$ref": "#/parameters/f.p_st"
+        - "$ref": "#/parameters/f.p_zip"
+        - "$ref": "#/parameters/f.p_frs"
+        - "$ref": "#/parameters/f.p_reg"
+        - "$ref": "#/parameters/f.p_sic"
+        - "$ref": "#/parameters/f.p_ncs"
+        - "$ref": "#/parameters/f.p_pen"
+        - "$ref": "#/parameters/f.xmin"
+        - "$ref": "#/parameters/f.ymin"
+        - "$ref": "#/parameters/f.xmax"
+        - "$ref": "#/parameters/f.ymax"
+        - "$ref": "#/parameters/f.p_usmex"
+        - "$ref": "#/parameters/f.p_sic2"
+        - "$ref": "#/parameters/f.p_sic4"
+        - "$ref": "#/parameters/f.p_fa"
+        - "$ref": "#/parameters/f.p_ff"
+        - "$ref": "#/parameters/f.p_act"
+        - "$ref": "#/parameters/f.p_maj"
+        - "$ref": "#/parameters/f.p_mact"
+        - "$ref": "#/parameters/f.p_fea"
+        - "$ref": "#/parameters/f.p_feay"
+        - "$ref": "#/parameters/f.p_feaa"
+        - "$ref": "#/parameters/f.p_iea"
+        - "$ref": "#/parameters/f.p_ieay"
+        - "$ref": "#/parameters/f.p_ieaa"
+        - "$ref": "#/parameters/f.p_qiv"
+        - "$ref": "#/parameters/f.p_iv"
+        - "$ref": "#/parameters/f.p_impw"
+        - "$ref": "#/parameters/f.p_imp_pol"
+        - "$ref": "#/parameters/f.p_imp_cau_grp"
+        - "$ref": "#/parameters/f.p_trep"
+        - "$ref": "#/parameters/f.p_pm"
+        - "$ref": "#/parameters/f.p_pd"
+        - "$ref": "#/parameters/f.p_ico"
+        - "$ref": "#/parameters/f.p_huc"
+        - "$ref": "#/parameters/f.p_pid"
+        - "$ref": "#/parameters/f.p_med"
+        - "$ref": "#/parameters/f.p_ysl"
+        - "$ref": "#/parameters/f.p_ysly"
+        - "$ref": "#/parameters/f.p_ysla"
+        - "$ref": "#/parameters/f.p_qs"
+        - "$ref": "#/parameters/f.p_sfs"
+        - "$ref": "#/parameters/f.p_tribeid"
+        - "$ref": "#/parameters/f.p_tribename"
+        - "$ref": "#/parameters/f.p_tribedist"
+        - "$ref": "#/parameters/f.p_pstat"
+        - "$ref": "#/parameters/f.p_ptype"
+        - "$ref": "#/parameters/f.p_pcomp"
+        - "$ref": "#/parameters/f.p_plimits"
+        - "$ref": "#/parameters/f.p_pcss"
+        - "$ref": "#/parameters/f.p_pexp"
+        - "$ref": "#/parameters/f.p_owop"
+        - "$ref": "#/parameters/f.p_agoo"
+        - "$ref": "#/parameters/f.p_idt1"
+        - "$ref": "#/parameters/f.p_idt2"
+        - "$ref": "#/parameters/f.p_pityp"
+        - "$ref": "#/parameters/f.p_pfead1"
+        - "$ref": "#/parameters/f.p_pfead2"
+        - "$ref": "#/parameters/f.p_pfeat"
+        - "$ref": "#/parameters/f.p_pccs"
+        - "$ref": "#/parameters/f.p_pexcd"
+        - "$ref": "#/parameters/f.p_psncq"
+        - "$ref": "#/parameters/f.p_pctrack"
+        - "$ref": "#/parameters/f.p_dwd"
+        - "$ref": "#/parameters/f.p_pt"
+        - "$ref": "#/parameters/f.p_pdwdist"
+        - "$ref": "#/parameters/f.p_pswdpc"
+        - "$ref": "#/parameters/f.p_pswdmp"
+        - "$ref": "#/parameters/f.p_pswpol"
+        - "$ref": "#/parameters/f.p_pswcas"
+        - "$ref": "#/parameters/f.p_pswparam"
+        - "$ref": "#/parameters/f.p_pswvio"
+        - "$ref": "#/parameters/f.p_wbd"
+        - "$ref": "#/parameters/f.p_radwbd"
+        - "$ref": "#/parameters/f.p_frswbd"
+        - "$ref": "#/parameters/f.p_fntype"
+        - "$ref": "#/parameters/f.p_pidall"
+        - "$ref": "#/parameters/f.p_months_last_dmr"
+        - "$ref": "#/parameters/f.p_last_dmr_within"
+        - "$ref": "#/parameters/f.p_indsw"
+        - "$ref": "#/parameters/f.p_msgp_ptype"
+        - "$ref": "#/parameters/f.p_mon_type"
+        - "$ref": "#/parameters/f.p_iagency"
+        - "$ref": "#/parameters/f.p_isws"
+        - "$ref": "#/parameters/f.p_iswss"
+        - "$ref": "#/parameters/f.p_iswssID"
+        - "$ref": "#/parameters/f.p_ds1"
+        - "$ref": "#/parameters/f.p_ds2"
+        - "$ref": "#/parameters/f.p_da1"
+        - "$ref": "#/parameters/f.p_da2"
+        - "$ref": "#/parameters/f.p_MS4"
+        - "$ref": "#/parameters/f.p_ooFN"
+        - "$ref": "#/parameters/f.p_ooFNtype"
+        - "$ref": "#/parameters/f.p_ooSA"
+        - "$ref": "#/parameters/f.p_ooSA1"
+        - "$ref": "#/parameters/f.p_ooCt"
+        - "$ref": "#/parameters/f.p_ooSt"
+        - "$ref": "#/parameters/f.p_ooZip"
+        - "$ref": "#/parameters/f.p_fac_ico"
+        - "$ref": "#/parameters/f.p_icoo"
+        - "$ref": "#/parameters/f.p_fac_icos"
+        - "$ref": "#/parameters/f.p_ejscreen"
+        - "$ref": "#/parameters/f.p_alrexceed"
+        - "$ref": "#/parameters/f.p_limit_addr"
+        - "$ref": "#/parameters/f.p_lat"
+        - "$ref": "#/parameters/f.p_long"
+        - "$ref": "#/parameters/f.p_radius"
+        - "$ref": "#/parameters/f.p_decouple"
+        - "$ref": "#/parameters/f.p_ejscreen_over80cnt"
+        - "$ref": "#/parameters/f.p_bio_flag"
+        - "$ref": "#/parameters/f.p_bio_fac_type"
+        - "$ref": "#/parameters/f.p_bio_trtmnt_procs"
+        - "$ref": "#/parameters/f.p_bio_analy_method_catgry"
+        - "$ref": "#/parameters/f.p_bio_total_volume_amt"
+        - "$ref": "#/parameters/f.p_bio_mgmt_prctce_type"
+        - "$ref": "#/parameters/f.p_bio_mgmt_prctce_stype"
+        - "$ref": "#/parameters/f.p_bio_mgmt_prctce_handler"
+        - "$ref": "#/parameters/f.p_bio_mgmt_container"
+        - "$ref": "#/parameters/f.p_bio_mgmt_pathogen"
+        - "$ref": "#/parameters/f.p_bio_mgmt_pathred"
+        - "$ref": "#/parameters/f.p_bio_mgmt_vector"
+        - "$ref": "#/parameters/f.p_insp_deficiencies"
+        - "$ref": "#/parameters/f.p_bio_mgmt_def_category"
+        - "$ref": "#/parameters/f.p_bio_mgmt_deficiencies"
+        - "$ref": "#/parameters/f.p_bio_vio_code"
+        - "$ref": "#/parameters/f.p_bio_current_vio"
+        - "$ref": "#/parameters/f.p_bio_qtrs_in_vio"
+        - "$ref": "#/parameters/f.p_bio_rpt_year"
+        - "$ref": "#/parameters/f.p_bio_insp_deficiencies"
+        - "$ref": "#/parameters/f.p_bio_vio_last_year"
+        - "$ref": "#/parameters/f.p_msgp_rpt_year"
+        - "$ref": "#/parameters/f.p_vio_last_year"
+        - "$ref": "#/parameters/f.responseset"
+        - "$ref": "#/parameters/f.callback"
+        - name: qcolumns
+          in: formData
+          description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.p_pretty_print"
+        - "$ref": "#/parameters/f.p_e90_count"
+        - "$ref": "#/parameters/f.p_e90_years"
       tags: 
-      - Facility Information
+        - Facility Information
       responses: 
         '200': 
           description: Results will either be an array of Facilities or an array of Clusters. The search will return clusters if the number of facilities returned is greater than the resposeset size, otherwise individual facility records will be returned.
@@ -3751,37 +3751,37 @@ paths:
               Results: 
                 "$ref": "#/definitions/cwa2_Results" 
             required: 
-            - Results
+              - Results
   "/cwa_rest_services.get_qid": 
     get: 
       summary: Clean Water Act (CWA) Paginated Results Service
       description: GET_QID is passed with a query ID corresponding to a previously run get_facilities query. It then returns a Facility object containing all matching facilities. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. 
       parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/q.qid"
-      - "$ref": "#/parameters/q.pageno"
-      - "$ref": "#/parameters/q.callback"
-      - "$ref": "#/parameters/q.newsort"
-      - "$ref": "#/parameters/q.descending"
-      - name: qcolumns
-        in: query
-        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
-        type: string
-        required: false
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+          enum: 
+            - JSONP
+            - JSON
+            - XML
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.qid"
+        - "$ref": "#/parameters/q.pageno"
+        - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.newsort"
+        - "$ref": "#/parameters/q.descending"
+        - name: qcolumns
+          in: query
+          description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+          type: string
+          required: false
       tags: 
-      - Facility Information
+        - Facility Information
       responses: 
         '200': 
           description: Results are an array (page)  of CWA (ICIS NPDES) Facilities with the number of facilities equal to the responseset (page size).
@@ -3793,36 +3793,36 @@ paths:
               Results: 
                 "$ref": "#/definitions/cwa4_Results" 
             required: 
-            - Results
+              - Results
     post: 
       summary: Clean Water Act (CWA) Paginated Results Service
       description: GET_QID is passed with a query ID corresponding to a previously run get_facilities query. It then returns a Facility object containing all matching facilities. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. 
       parameters: 
-      - name: output
-        in: formData
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/f.qid"
-      - "$ref": "#/parameters/f.pageno"
-      - "$ref": "#/parameters/f.callback"
-      - "$ref": "#/parameters/f.newsort"
-      - "$ref": "#/parameters/f.descending"
-      - name: qcolumns
-        in: formData
-        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
-        type: string
-        required: false
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+          enum: 
+            - JSONP
+            - JSON
+            - XML
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.qid"
+        - "$ref": "#/parameters/f.pageno"
+        - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.newsort"
+        - "$ref": "#/parameters/f.descending"
+        - name: qcolumns
+          in: formData
+          description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+          type: string
+          required: false
       tags: 
-      - Facility Information
+        - Facility Information
       responses: 
         '200': 
           description: Results are an array (page)  of CWA (ICIS NPDES) Facilities with the number of facilities equal to the responseset (page size).
@@ -3834,35 +3834,35 @@ paths:
               Results: 
                 "$ref": "#/definitions/cwa4_Results" 
             required: 
-            - Results
+              - Results
   "/cwa_rest_services.get_map": 
     get: 
       summary: Clean Water Act (CWA) Map Service
       description: The purpose of the GET_MAP service is to display facility coordinates and facility clusters related to a get_facilities facility query. Currently, the maximum number of coordinates returned is 500. GET_MAP performs automatic clustering at the state, county, and zip code levels to maximize the number of coordinates returned.
       parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/q.qid"
-      - "$ref": "#/parameters/q.callback"
-      - "$ref": "#/parameters/q.tablelist"
-      - "$ref": "#/parameters/q.c1_lat"
-      - "$ref": "#/parameters/q.c1_long"
-      - "$ref": "#/parameters/q.c2_lat"
-      - "$ref": "#/parameters/q.c2_long"
-      - "$ref": "#/parameters/q.p_id"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+          enum: 
+            - JSONP
+            - JSON
+            - XML
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.qid"
+        - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.tablelist"
+        - "$ref": "#/parameters/q.c1_lat"
+        - "$ref": "#/parameters/q.c1_long"
+        - "$ref": "#/parameters/q.c2_lat"
+        - "$ref": "#/parameters/q.c2_long"
+        - "$ref": "#/parameters/q.p_id"
       tags: 
-      - Facility Information
+        - Facility Information
       responses: 
         '200': 
           description: Results are either an array of State, County, Zip Code facility cluster map coordinates or individual facility coordinates.  Coordinates provided are in WGS84.
@@ -3874,34 +3874,34 @@ paths:
               MapOutput: 
                 "$ref": "#/definitions/cwa3_MapOutput" 
             required: 
-            - MapOutput
+              - MapOutput
     post: 
       summary: Clean Water Act (CWA) Map Service
       description: The purpose of the GET_MAP service is to display facility coordinates and facility clusters related to a get_facilities facility query. Currently, the maximum number of coordinates returned is 500. GET_MAP performs automatic clustering at the state, county, and zip code levels to maximize the number of coordinates returned.
       parameters: 
-      - name: output
-        in: formData
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/f.qid"
-      - "$ref": "#/parameters/f.callback"
-      - "$ref": "#/parameters/f.tablelist"
-      - "$ref": "#/parameters/f.c1_lat"
-      - "$ref": "#/parameters/f.c1_long"
-      - "$ref": "#/parameters/f.c2_lat"
-      - "$ref": "#/parameters/f.c2_long"
-      - "$ref": "#/parameters/f.p_id"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+          enum: 
+            - JSONP
+            - JSON
+            - XML
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.qid"
+        - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.tablelist"
+        - "$ref": "#/parameters/f.c1_lat"
+        - "$ref": "#/parameters/f.c1_long"
+        - "$ref": "#/parameters/f.c2_lat"
+        - "$ref": "#/parameters/f.c2_long"
+        - "$ref": "#/parameters/f.p_id"
       tags: 
-      - Facility Information
+        - Facility Information
       responses: 
         '200': 
           description: Results are either an array of State, County, Zip Code facility cluster map coordinates or individual facility coordinates.  Coordinates provided are in WGS84.
@@ -3913,28 +3913,28 @@ paths:
               MapOutput: 
                 "$ref": "#/definitions/cwa3_MapOutput" 
             required: 
-            - MapOutput
+              - MapOutput
   "/cwa_rest_services.get_download": 
     get: 
       summary: Clean Water Act (CWA) Download Data Service
       description: Based on the QID obtained from a get_facilities or get_facility_info query, return a comma separated value (CSV) file of the facilities found.
       parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - CSV = Facility results formatted as comma delimited file download (default).
-        type: string
-        required: false
-      - "$ref": "#/parameters/q.qid"
-      - name: qcolumns
-        in: query
-        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
-        type: string
-        required: false
-      - "$ref": "#/parameters/q.p_pretty_print"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - CSV = Facility results formatted as comma delimited file download (default).
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.qid"
+        - name: qcolumns
+          in: query
+          description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.p_pretty_print"
       tags: 
-      - Facility Information
+        - Facility Information
       responses: 
         '200': 
           description: Results are a comma separated value (CSV) file or a file containing a GeoJSON feature collection.
@@ -3944,22 +3944,22 @@ paths:
       summary: Clean Water Act (CWA) Download Data Service
       description: Based on the QID obtained from a get_facilities or get_facility_info query, return a comma separated value (CSV) file of the facilities found.
       parameters: 
-      - name: output
-        in: formData
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - CSV = Facility results formatted as comma delimited file download (default).
-        type: string
-        required: false
-      - "$ref": "#/parameters/f.qid"
-      - name: qcolumns
-        in: formData
-        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
-        type: string
-        required: false
-      - "$ref": "#/parameters/f.p_pretty_print"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - CSV = Facility results formatted as comma delimited file download (default).
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.qid"
+        - name: qcolumns
+          in: formData
+          description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.p_pretty_print"
       tags: 
-      - Facility Information
+        - Facility Information
       responses: 
         '200': 
           description: Results are a comma separated value (CSV) file or a file containing a GeoJSON feature collection.
@@ -3970,18 +3970,18 @@ paths:
       summary: Clean Water Act (CWA) Info Clusters Service
       description: Based on the QID obtained from a clustered get_facility_info query, download cluster facility information as either a CSV or GEOJSON file.
       parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - CSV = Facility results formatted as comma delimited file download (default).
-          - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
-        type: string
-        required: false
-      - "$ref": "#/parameters/q.p_qid"
-      - "$ref": "#/parameters/q.p_pretty_print"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - CSV = Facility results formatted as comma delimited file download (default).
+            - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.p_qid"
+        - "$ref": "#/parameters/q.p_pretty_print"
       tags: 
-      - Facility Information
+        - Facility Information
       responses: 
         '200': 
           description: Results are a comma separated value (CSV) file or a file containing a GeoJSON feature collection.
@@ -3991,18 +3991,18 @@ paths:
       summary: Clean Water Act (CWA) Info Clusters Service
       description: Based on the QID obtained from a clustered get_facility_info query, download cluster facility information as either a CSV or GEOJSON file.
       parameters: 
-      - name: output
-        in: formData
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - CSV = Facility results formatted as comma delimited file download (default).
-          - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
-        type: string
-        required: false
-      - "$ref": "#/parameters/f.p_qid"
-      - "$ref": "#/parameters/f.p_pretty_print"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - CSV = Facility results formatted as comma delimited file download (default).
+            - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.p_qid"
+        - "$ref": "#/parameters/f.p_pretty_print"
       tags: 
-      - Facility Information
+        - Facility Information
       responses: 
         '200': 
           description: Results are a comma separated value (CSV) file or a file containing a GeoJSON feature collection.
@@ -4013,27 +4013,27 @@ paths:
       summary: Clean Water Act (CWA) GeoJSON Service
       description: Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found.
       parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - GEOJSON = Facility results formatted as GeoJSON feature collection (default).
-          - GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
-          - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
-        type: string
-        required: false
-      - "$ref": "#/parameters/q.qid"
-      - "$ref": "#/parameters/q.callback"
-      - "$ref": "#/parameters/q.newsort"
-      - "$ref": "#/parameters/q.descending"
-      - name: qcolumns
-        in: query
-        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
-        type: string
-        required: false
-      - "$ref": "#/parameters/q.p_pretty_print"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - GEOJSON = Facility results formatted as GeoJSON feature collection (default).
+            - GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
+            - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.qid"
+        - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.newsort"
+        - "$ref": "#/parameters/q.descending"
+        - name: qcolumns
+          in: query
+          description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.p_pretty_print"
       tags: 
-      - Facility Information
+        - Facility Information
       responses: 
         '200': 
           description: Results are formatted as a GeoJSON feature collection.
@@ -4052,33 +4052,33 @@ paths:
                 items: 
                   "$ref": "#/definitions/cwa5_Feature" 
             required: 
-            - type
-            - features
+              - type
+              - features
     post: 
       summary: Clean Water Act (CWA) GeoJSON Service
       description: Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found.
       parameters: 
-      - name: output
-        in: formData
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - GEOJSON = Facility results formatted as GeoJSON feature collection (default).
-          - GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
-          - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
-        type: string
-        required: false
-      - "$ref": "#/parameters/f.qid"
-      - "$ref": "#/parameters/f.callback"
-      - "$ref": "#/parameters/f.newsort"
-      - "$ref": "#/parameters/f.descending"
-      - name: qcolumns
-        in: formData
-        description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
-        type: string
-        required: false
-      - "$ref": "#/parameters/f.p_pretty_print"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - GEOJSON = Facility results formatted as GeoJSON feature collection (default).
+            - GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.
+            - GEOJSOND = Facility results formatted as GeoJSON feature collection download.
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.qid"
+        - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.newsort"
+        - "$ref": "#/parameters/f.descending"
+        - name: qcolumns
+          in: formData
+          description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.p_pretty_print"
       tags: 
-      - Facility Information
+        - Facility Information
       responses: 
         '200': 
           description: Results are formatted as a GeoJSON feature collection.
@@ -4097,29 +4097,29 @@ paths:
                 items: 
                   "$ref": "#/definitions/cwa5_Feature" 
             required: 
-            - type
-            - features
+              - type
+              - features
   "/cwa_rest_services.metadata": 
     get: 
       summary: Clean Water Act (CWA) Metadata Service
       description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
       parameters: 
-      - name: output
-        in: query
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/q.callback"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+          enum: 
+            - JSONP
+            - JSON
+            - XML
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.callback"
       tags: 
-      - Metadata
+        - Metadata
       responses: 
         '200': 
           description: Results are an array of columns/objects.
@@ -4131,27 +4131,27 @@ paths:
               Results: 
                 "$ref": "#/definitions/met1" 
             required: 
-            - Results
+              - Results
     post: 
       summary: Clean Water Act (CWA) Metadata Service
       description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
       parameters: 
-      - name: output
-        in: formData
-        description: |-
-          Output Format Flag.  Enter one of the following keywords:
-          - JSON = Data model formatted as Javascript Object Notation (default).
-          - JSONP = Data model formatted as Javascript Object Notation with Padding.  
-          - XML = Data model formatted as Extensible Markup Language.
-        enum: 
-        - JSONP
-        - JSON
-        - XML
-        type: string
-        required: false
-      - "$ref": "#/parameters/f.callback"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+          enum: 
+            - JSONP
+            - JSON
+            - XML
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.callback"
       tags: 
-      - Metadata
+        - Metadata
       responses: 
         '200': 
           description: Results are an array of columns/objects.
@@ -4163,7 +4163,7 @@ paths:
               Results: 
                 "$ref": "#/definitions/met1" 
             required: 
-            - Results
+              - Results
 definitions: 
   qp0: 
     description: Query Parameters Object
@@ -4181,8 +4181,8 @@ definitions:
         example: JSON
         description: Query value
     required: 
-    - QP
-    - QV
+      - QP
+      - QV
   cwa1_Facilities: 
     description: Facilities Object
     xml: 
@@ -5253,6 +5253,10 @@ definitions:
         type: string
       E90Pollutants1yr: 
         type: string
+      FacCountyName: 
+        type: string
+      FacStdCountyName: 
+        type: string
       Score: 
         type: string
         title: Score
@@ -5263,303 +5267,305 @@ definitions:
         example: '1'
         description: "[Col. 121]"
     required: 
-    - CWPName
-    - SourceID
-    - CWPStreet
-    - CWPCity
-    - CWPState
-    - CWPStateDistrict
-    - CWPZip
-    - MasterExternalPermitNmbr
-    - RegistryID
-    - CWPCounty
-    - CWPEPARegion
-    - FacFederalAgencyCode
-    - FacFederalAgencyName
-    - FacDerivedHuc
-    - FacFIPSCode
-    - FacIndianCntryFlg
-    - CWPIndianCntryFlg
-    - FacIndianSpatialFlg
-    - FacDerivedTRIbes
-    - FacUsMexBorderFlg
-    - CWPSICCodes
-    - CWPNAICSCodes
-    - FacLat
-    - FacLong
-    - CWPTotalDesignFlowNmbr
-    - CWPActualAverageFlowNmbr
-    - CWPFacilityTypeIndicator
-    - BioReportingObligations
-    - DschToMs4
-    - ReceivingMs4Name
-    - StormWaterArea
-    - HistoricCriterionCode
-    - SpeciesCriticalHabitalFlag
-    - SwpppUrl
-    - ExposedActivity
-    - AssociatedPollutant
-    - ControlMeasure
-    - ControlMeasureSchedule
-    - TypeOfMonitoring
-    - TypeOfWater
-    - EjscreenFlagUs
-    - Over80CountUs
-    - PctilePctpre1960Us
-    - PctileDpmUs
-    - PctileCancerUs
-    - PctileRespUs
-    - PctileTrafficScoreUs
-    - PctileProximityNPDESUs
-    - PctileProximityNplUs
-    - PctileProximityRmpUs
-    - PctileProximityTsdfUs
-    - PctileO3Us
-    - PctilePmUs
-    - FacPopDen
-    - FacPercentMinority
-    - Sector
-    - Subsector
-    - MsgpPermitType
-    - CWPVersionNmbr
-    - CWPPermitStatusDesc
-    - IssuingAgency
-    - SubmittedDate
-    - CWPPermitTypeDesc
-    - CWPIssueDate
-    - CWPEffectiveDate
-    - CWPTerminationDate
-    - CWPExpirationDate
-    - CWPMajorMinorStatusFlag
-    - PermitComponents
-    - NPDESDataGroupsDescs
-    - MsgpLastReportYear
-    - MsgpFacilityInspctnSmmry
-    - MsgpVisualAssessmentSmmry
-    - MsgpNoFurtherRdctnRtnle
-    - MsgpCorrectiveActionSmmry
-    - AIRIDs
-    - NPDESIDs
-    - RCRAIDs
-    - SDWAIDs
-    - TRIIDs
-    - RmpIDs
-    - BioVioLastYearFlag
-    - BioQtrsWithVio
-    - CWPStatus
-    - CWPSNCStatus
-    - CWPSNCStatusDate
-    - CWPQtrsWithNC
-    - CWPViolStatus
-    - CWPQtrsWithSNC
-    - MissDMRQtrs
-    - CWPE90Cnt
-    - CWPComplianceTracking
-    - AlrExceedences
-    - BioReportYear
-    - CWPInspectionCount
-    - CWPDaysLastInspection
-    - CWPDateLastInspection
-    - CWPDateLastInspEPA
-    - CWPDateLastInspSt
-    - CWPBioInspCount
-    - CWPDaysLastBioInsp
-    - CWPDateLastBioInsp
-    - CWPDateLastBioInspEPA
-    - CWPDateLastBioInspSt
-    - CWPInformalEnfActCount
-    - CWPFormalEaCnt
-    - CWPDateLastInformalEa
-    - CWPDateLastIeaEPA
-    - CWPDateLastIeaSt
-    - CWPDateLastFea
-    - CWPDateLastFeaEPA
-    - CWPDateLastFeaSt
-    - CWPBioIeaCount
-    - CWPBioFeaCount
-    - CWPDateLastBioIea
-    - CWPDateLastBioIeaEPA
-    - CWPDateLastBioIeaSt
-    - CWPDateLastBioFea
-    - CWPDateLastBioFeaEPA
-    - CWPDateLastBioFeaSt
-    - CWPBioPenalties
-    - CWPDateLastBioPenalty
-    - BioReportYears
-    - BioReportingObligations2016
-    - BioTotalVolumeAmt
-    - BioTotalVolumeAmt2016
-    - BioLandApplicationSum
-    - BioLandApplicationSum2016
-    - BioSurfaceDispSum
-    - BioSurfaceDispSum2016
-    - BioIncinerationSum
-    - BioIncinerationSum2016
-    - BioOtherManagementSum
-    - BioOtherManagementSum2016
-    - BioTrtmntProcesses
-    - BioTrtmntProcesses2016
-    - BioTrtmntPrcssCmmntTxts
-    - BioTrmntPrcssCmntTxts2016
-    - BioAnalyMethodCatgrys
-    - BioAnalyMethodCatgrys2016
-    - BioAnalyMethods
-    - BioAnalyMethods2016
-    - BioMgmtPrctceTypes
-    - BioMgmtPrctceTypes2016
-    - BioOtherMgmtPrctcTxts
-    - BioOtherMgmtPrctcTxts2016
-    - BioMgmtPrctceStypes
-    - BioMgmtPrctceStypes2016
-    - BioMgmtHandlers
-    - BioMgmtHandlers2016
-    - BioMgmtContainers
-    - BioMgmtContainers2016
-    - BioMgmtPathogens
-    - BioMgmtPathogens2016
-    - BioMgmtPathreds
-    - BioMgmtPathreds2016
-    - BioMgmtVectors
-    - BioMgmtVectors2016
-    - BioCommentText
-    - BioCommentText2016
-    - BioReportDate
-    - BioReportDate2016
-    - BioMgmtDefCurrentCnt
-    - BioMgmtDefCurrentCnt2016
-    - BioMgmtDefCategories
-    - BioMgmtDefCategories2016
-    - BioMgmtDeficiencies
-    - BioMgmtDeficiencies2016
-    - BioVioStatus
-    - BioViolFlag
-    - BioVioLastYear
-    - BioReportingObligations2017
-    - BioTotalVolumeAmt2017
-    - BioLandApplicationSum2017
-    - BioSurfaceDispSum2017
-    - BioIncinerationSum2017
-    - BioOtherManagementSum2017
-    - BioTrtmntProcesses2017
-    - BioTrmntPrcssCmntTxts2017
-    - BioAnalyMethodCatgrys2017
-    - BioAnalyMethods2017
-    - BioOtherMgmtPrctcTxts2017
-    - BioMgmtPrctceTypes2017
-    - BioMgmtPrctceStypes2017
-    - BioMgmtHandlers2017
-    - BioMgmtContainers2017
-    - BioMgmtPathogens2017
-    - BioMgmtPathreds2017
-    - BioMgmtVectors2017
-    - BioCommentText2017
-    - BioReportDate2017
-    - BioMgmtDefCurrentCnt2017
-    - BioMgmtDefCategories2017
-    - BioMgmtDeficiencies2017
-    - PollWithViolation
-    - LimPollutant
-    - DMRPounds
-    - DMRTwpe
-    - PastCalYrConvPollutants
-    - PastCalYrConvPolOvrLmt
-    - PastCalYrToxicPolOvrLmt
-    - FacTRISwRel
-    - FacTRIPotwTrans
-    - CWPCsoFlag
-    - CWPCsoOutfalls
-    - CWPStateWaterBodyCode
-    - CWPStateWaterBodyName
-    - AttainsCycleYear
-    - RadGnisName
-    - RadReachcode
-    - RadWBDHu8
-    - RadWBDHu8Name
-    - FacDerivedWBDHu8
-    - FacDerivedWBDHu8Name
-    - RadWBDHuc12
-    - RadHu12Name
-    - FacDerivedWBD
-    - FacDerivedWBDName
-    - AttainsSource
-    - CWPImpWaterFlg
-    - AttainsImpWaterFlg
-    - AttainsAuCategory
-    - AttainsStateCauses
-    - AttainsCauseGroups
-    - AttainsPossibleNPDESParams
-    - AttainsAquaticLifeUseFlg
-    - AttainsExceptnlUseFlg
-    - AttainsRecreationUseFlg
-    - AttainsShellfishUseFlg
-    - BeachCloseLastYearFlg
-    - BeachCloseLast2yrsFlg
-    - ChesapeakeBayFlag
-    - EPASystem
-    - Statute
-    - CWPTRIbalLandCode
-    - CWPPermitStatusCode
-    - CWPPermitTypeCode
-    - CWPSNCEventDesc
-    - FacMapFlg
-    - FacMapIcon
-    - CWPDateLastPenalty
-    - FacTRIReporter
-    - CWP13qtrsComplHistory
-    - CWPCaseIDs
-    - CWPFIPSCode
-    - DMRImpairedPoll
-    - CurrSvFlag
-    - ViolFlag
-    - CurrVioFlag
-    - Insp5yrFlag
-    - Ea5yrFlag
-    - Infea5yrFlag
-    - CWPTotalPenalties
-    - TRIbalFlag
-    - CensusBlockGroup
-    - MaxPctileUs
-    - EjscreenFlag
-    - LastDMRValueRcvdDate
-    - Lower48
-    - ActiveLower48
-    - EffExceeds
-    - PastCalYrAverageFlow
-    - PastCalYrToxicPollutants
-    - CWPVioStatus
-    - IndswFlag
-    - CertifiedDate
-    - CollectionMethod
-    - ReferencePoint
-    - CalculatedAccuracyMeters
-    - Map
-    - BiosolidsFlag
-    - VioLastYear
-    - StateAuthNPDES
-    - StateAuthFedfac
-    - StateAuthPretreat
-    - StateAuthGen
-    - StateAuthBiosolids
-    - NPDESDataGroups
-    - PermittingAgency
-    - ElectrRptWaiverTypeCode
-    - ElectrRptWaiverTypeDesc
-    - ElectrRptWaiverEffDate
-    - ElectrRptWaiverExpDate
-    - ElectrSubmissionTypeCode
-    - ElectrSubmissionTypeDesc
-    - WebDocs
-    - E90Exceeds5yr
-    - E90Exceeds4yr
-    - E90Exceeds3yr
-    - E90Exceeds2yr
-    - E90Exceeds1yr
-    - E90Pollutants5yr
-    - E90Pollutants4yr
-    - E90Pollutants3yr
-    - E90Pollutants2yr
-    - E90Pollutants1yr
-    - Score
+      - CWPName
+      - SourceID
+      - CWPStreet
+      - CWPCity
+      - CWPState
+      - CWPStateDistrict
+      - CWPZip
+      - MasterExternalPermitNmbr
+      - RegistryID
+      - CWPCounty
+      - CWPEPARegion
+      - FacFederalAgencyCode
+      - FacFederalAgencyName
+      - FacDerivedHuc
+      - FacFIPSCode
+      - FacIndianCntryFlg
+      - CWPIndianCntryFlg
+      - FacIndianSpatialFlg
+      - FacDerivedTRIbes
+      - FacUsMexBorderFlg
+      - CWPSICCodes
+      - CWPNAICSCodes
+      - FacLat
+      - FacLong
+      - CWPTotalDesignFlowNmbr
+      - CWPActualAverageFlowNmbr
+      - CWPFacilityTypeIndicator
+      - BioReportingObligations
+      - DschToMs4
+      - ReceivingMs4Name
+      - StormWaterArea
+      - HistoricCriterionCode
+      - SpeciesCriticalHabitalFlag
+      - SwpppUrl
+      - ExposedActivity
+      - AssociatedPollutant
+      - ControlMeasure
+      - ControlMeasureSchedule
+      - TypeOfMonitoring
+      - TypeOfWater
+      - EjscreenFlagUs
+      - Over80CountUs
+      - PctilePctpre1960Us
+      - PctileDpmUs
+      - PctileCancerUs
+      - PctileRespUs
+      - PctileTrafficScoreUs
+      - PctileProximityNPDESUs
+      - PctileProximityNplUs
+      - PctileProximityRmpUs
+      - PctileProximityTsdfUs
+      - PctileO3Us
+      - PctilePmUs
+      - FacPopDen
+      - FacPercentMinority
+      - Sector
+      - Subsector
+      - MsgpPermitType
+      - CWPVersionNmbr
+      - CWPPermitStatusDesc
+      - IssuingAgency
+      - SubmittedDate
+      - CWPPermitTypeDesc
+      - CWPIssueDate
+      - CWPEffectiveDate
+      - CWPTerminationDate
+      - CWPExpirationDate
+      - CWPMajorMinorStatusFlag
+      - PermitComponents
+      - NPDESDataGroupsDescs
+      - MsgpLastReportYear
+      - MsgpFacilityInspctnSmmry
+      - MsgpVisualAssessmentSmmry
+      - MsgpNoFurtherRdctnRtnle
+      - MsgpCorrectiveActionSmmry
+      - AIRIDs
+      - NPDESIDs
+      - RCRAIDs
+      - SDWAIDs
+      - TRIIDs
+      - RmpIDs
+      - BioVioLastYearFlag
+      - BioQtrsWithVio
+      - CWPStatus
+      - CWPSNCStatus
+      - CWPSNCStatusDate
+      - CWPQtrsWithNC
+      - CWPViolStatus
+      - CWPQtrsWithSNC
+      - MissDMRQtrs
+      - CWPE90Cnt
+      - CWPComplianceTracking
+      - AlrExceedences
+      - BioReportYear
+      - CWPInspectionCount
+      - CWPDaysLastInspection
+      - CWPDateLastInspection
+      - CWPDateLastInspEPA
+      - CWPDateLastInspSt
+      - CWPBioInspCount
+      - CWPDaysLastBioInsp
+      - CWPDateLastBioInsp
+      - CWPDateLastBioInspEPA
+      - CWPDateLastBioInspSt
+      - CWPInformalEnfActCount
+      - CWPFormalEaCnt
+      - CWPDateLastInformalEa
+      - CWPDateLastIeaEPA
+      - CWPDateLastIeaSt
+      - CWPDateLastFea
+      - CWPDateLastFeaEPA
+      - CWPDateLastFeaSt
+      - CWPBioIeaCount
+      - CWPBioFeaCount
+      - CWPDateLastBioIea
+      - CWPDateLastBioIeaEPA
+      - CWPDateLastBioIeaSt
+      - CWPDateLastBioFea
+      - CWPDateLastBioFeaEPA
+      - CWPDateLastBioFeaSt
+      - CWPBioPenalties
+      - CWPDateLastBioPenalty
+      - BioReportYears
+      - BioReportingObligations2016
+      - BioTotalVolumeAmt
+      - BioTotalVolumeAmt2016
+      - BioLandApplicationSum
+      - BioLandApplicationSum2016
+      - BioSurfaceDispSum
+      - BioSurfaceDispSum2016
+      - BioIncinerationSum
+      - BioIncinerationSum2016
+      - BioOtherManagementSum
+      - BioOtherManagementSum2016
+      - BioTrtmntProcesses
+      - BioTrtmntProcesses2016
+      - BioTrtmntPrcssCmmntTxts
+      - BioTrmntPrcssCmntTxts2016
+      - BioAnalyMethodCatgrys
+      - BioAnalyMethodCatgrys2016
+      - BioAnalyMethods
+      - BioAnalyMethods2016
+      - BioMgmtPrctceTypes
+      - BioMgmtPrctceTypes2016
+      - BioOtherMgmtPrctcTxts
+      - BioOtherMgmtPrctcTxts2016
+      - BioMgmtPrctceStypes
+      - BioMgmtPrctceStypes2016
+      - BioMgmtHandlers
+      - BioMgmtHandlers2016
+      - BioMgmtContainers
+      - BioMgmtContainers2016
+      - BioMgmtPathogens
+      - BioMgmtPathogens2016
+      - BioMgmtPathreds
+      - BioMgmtPathreds2016
+      - BioMgmtVectors
+      - BioMgmtVectors2016
+      - BioCommentText
+      - BioCommentText2016
+      - BioReportDate
+      - BioReportDate2016
+      - BioMgmtDefCurrentCnt
+      - BioMgmtDefCurrentCnt2016
+      - BioMgmtDefCategories
+      - BioMgmtDefCategories2016
+      - BioMgmtDeficiencies
+      - BioMgmtDeficiencies2016
+      - BioVioStatus
+      - BioViolFlag
+      - BioVioLastYear
+      - BioReportingObligations2017
+      - BioTotalVolumeAmt2017
+      - BioLandApplicationSum2017
+      - BioSurfaceDispSum2017
+      - BioIncinerationSum2017
+      - BioOtherManagementSum2017
+      - BioTrtmntProcesses2017
+      - BioTrmntPrcssCmntTxts2017
+      - BioAnalyMethodCatgrys2017
+      - BioAnalyMethods2017
+      - BioOtherMgmtPrctcTxts2017
+      - BioMgmtPrctceTypes2017
+      - BioMgmtPrctceStypes2017
+      - BioMgmtHandlers2017
+      - BioMgmtContainers2017
+      - BioMgmtPathogens2017
+      - BioMgmtPathreds2017
+      - BioMgmtVectors2017
+      - BioCommentText2017
+      - BioReportDate2017
+      - BioMgmtDefCurrentCnt2017
+      - BioMgmtDefCategories2017
+      - BioMgmtDeficiencies2017
+      - PollWithViolation
+      - LimPollutant
+      - DMRPounds
+      - DMRTwpe
+      - PastCalYrConvPollutants
+      - PastCalYrConvPolOvrLmt
+      - PastCalYrToxicPolOvrLmt
+      - FacTRISwRel
+      - FacTRIPotwTrans
+      - CWPCsoFlag
+      - CWPCsoOutfalls
+      - CWPStateWaterBodyCode
+      - CWPStateWaterBodyName
+      - AttainsCycleYear
+      - RadGnisName
+      - RadReachcode
+      - RadWBDHu8
+      - RadWBDHu8Name
+      - FacDerivedWBDHu8
+      - FacDerivedWBDHu8Name
+      - RadWBDHuc12
+      - RadHu12Name
+      - FacDerivedWBD
+      - FacDerivedWBDName
+      - AttainsSource
+      - CWPImpWaterFlg
+      - AttainsImpWaterFlg
+      - AttainsAuCategory
+      - AttainsStateCauses
+      - AttainsCauseGroups
+      - AttainsPossibleNPDESParams
+      - AttainsAquaticLifeUseFlg
+      - AttainsExceptnlUseFlg
+      - AttainsRecreationUseFlg
+      - AttainsShellfishUseFlg
+      - BeachCloseLastYearFlg
+      - BeachCloseLast2yrsFlg
+      - ChesapeakeBayFlag
+      - EPASystem
+      - Statute
+      - CWPTRIbalLandCode
+      - CWPPermitStatusCode
+      - CWPPermitTypeCode
+      - CWPSNCEventDesc
+      - FacMapFlg
+      - FacMapIcon
+      - CWPDateLastPenalty
+      - FacTRIReporter
+      - CWP13qtrsComplHistory
+      - CWPCaseIDs
+      - CWPFIPSCode
+      - DMRImpairedPoll
+      - CurrSvFlag
+      - ViolFlag
+      - CurrVioFlag
+      - Insp5yrFlag
+      - Ea5yrFlag
+      - Infea5yrFlag
+      - CWPTotalPenalties
+      - TRIbalFlag
+      - CensusBlockGroup
+      - MaxPctileUs
+      - EjscreenFlag
+      - LastDMRValueRcvdDate
+      - Lower48
+      - ActiveLower48
+      - EffExceeds
+      - PastCalYrAverageFlow
+      - PastCalYrToxicPollutants
+      - CWPVioStatus
+      - IndswFlag
+      - CertifiedDate
+      - CollectionMethod
+      - ReferencePoint
+      - CalculatedAccuracyMeters
+      - Map
+      - BiosolidsFlag
+      - VioLastYear
+      - StateAuthNPDES
+      - StateAuthFedfac
+      - StateAuthPretreat
+      - StateAuthGen
+      - StateAuthBiosolids
+      - NPDESDataGroups
+      - PermittingAgency
+      - ElectrRptWaiverTypeCode
+      - ElectrRptWaiverTypeDesc
+      - ElectrRptWaiverEffDate
+      - ElectrRptWaiverExpDate
+      - ElectrSubmissionTypeCode
+      - ElectrSubmissionTypeDesc
+      - WebDocs
+      - E90Exceeds5yr
+      - E90Exceeds4yr
+      - E90Exceeds3yr
+      - E90Exceeds2yr
+      - E90Exceeds1yr
+      - E90Pollutants5yr
+      - E90Pollutants4yr
+      - E90Pollutants3yr
+      - E90Pollutants2yr
+      - E90Pollutants1yr
+      - FacCountyName
+      - FacStdCountyName
+      - Score
   cwa1_MapData: 
     description: Map Data Object
     xml: 
@@ -5615,16 +5621,16 @@ definitions:
         example: '1'
         description: The number of informal enforcement actions that have been taken against the facility
     required: 
-    - LAT
-    - LON
-    - ICON
-    - TYPE
-    - NAME
-    - PUV
-    - CWAstatus
-    - LastInsp
-    - FormalCount
-    - InformalCount
+      - LAT
+      - LON
+      - ICON
+      - TYPE
+      - NAME
+      - PUV
+      - CWAstatus
+      - LastInsp
+      - FormalCount
+      - InformalCount
   cwa1_MapOutput: 
     description: Map Output Object
     properties: 
@@ -5652,10 +5658,10 @@ definitions:
           name: MapData
           wrapped: true
     required: 
-    - QueryID
-    - IconBaseURL
-    - PopUpBaseURL
-    - MapData
+      - QueryID
+      - IconBaseURL
+      - PopUpBaseURL
+      - MapData
   cwa1_Results: 
     description: Results Object
     properties: 
@@ -5740,23 +5746,23 @@ definitions:
       MapOutput: 
         "$ref": "#/definitions/cwa1_MapOutput" 
     required: 
-    - Message
-    - Version
-    - QueryRows
-    - IndianCountryRows
-    - SVRows
-    - CVRows
-    - V3Rows
-    - FEARows
-    - InfFEARows
-    - INSPRows
-    - BioCVRows
-    - BioV3Rows
-    - VioLast4QRows
-    - TotalPenalties
-    - BadSystemIDs
-    - QueryID
-    - PageNo
+      - Message
+      - Version
+      - QueryRows
+      - IndianCountryRows
+      - SVRows
+      - CVRows
+      - V3Rows
+      - FEARows
+      - InfFEARows
+      - INSPRows
+      - BioCVRows
+      - BioV3Rows
+      - VioLast4QRows
+      - TotalPenalties
+      - BadSystemIDs
+      - QueryID
+      - PageNo
   cwa2_ClusterData: 
     description: Cluster Data Object
     properties: 
@@ -5839,26 +5845,26 @@ definitions:
         example: "$963,531"
         description: The total dollar amount of either assessed or final penalties within the five year time period
     required: 
-    - ObjectId
-    - ClusterLatitude
-    - ClusterLongitude
-    - ClusterIcon
-    - ClusterType
-    - ClusterName
-    - ClusterValue
-    - ClusterCount
-    - IndianCountryRows
-    - EPARegionCode
-    - SVRows
-    - CVRows
-    - V3Rows
-    - FEARows
-    - InfFEARows
-    - INSPRows
-    - BioCVRows
-    - BioV3Rows
-    - VioLast4QRows
-    - TotalPenalties
+      - ObjectId
+      - ClusterLatitude
+      - ClusterLongitude
+      - ClusterIcon
+      - ClusterType
+      - ClusterName
+      - ClusterValue
+      - ClusterCount
+      - IndianCountryRows
+      - EPARegionCode
+      - SVRows
+      - CVRows
+      - V3Rows
+      - FEARows
+      - InfFEARows
+      - INSPRows
+      - BioCVRows
+      - BioV3Rows
+      - VioLast4QRows
+      - TotalPenalties
   cwa2_ClusterOutput: 
     description: Cluster Output Object
     properties: 
@@ -5868,7 +5874,7 @@ definitions:
         items: 
           "$ref": "#/definitions/cwa2_ClusterData" 
     required: 
-    - ClusterData
+      - ClusterData
   cwa2_Facilities: 
     description: Facilities Object
     xml: 
@@ -6944,6 +6950,10 @@ definitions:
         type: string
       E90Pollutants1yr: 
         type: string
+      FacCountyName: 
+        type: string
+      FacStdCountyName: 
+        type: string
       Score: 
         type: string
         title: Score
@@ -6954,305 +6964,307 @@ definitions:
         example: '1'
         description: "[Col. 121]"
     required: 
-    - ObjectId
-    - CWPName
-    - SourceID
-    - CWPStreet
-    - CWPCity
-    - CWPState
-    - CWPStateDistrict
-    - CWPZip
-    - MasterExternalPermitNmbr
-    - RegistryID
-    - CWPCounty
-    - CWPEPARegion
-    - FacFederalAgencyCode
-    - FacFederalAgencyName
-    - FacDerivedHuc
-    - FacFIPSCode
-    - FacIndianCntryFlg
-    - CWPIndianCntryFlg
-    - FacIndianSpatialFlg
-    - FacDerivedTRIbes
-    - FacUsMexBorderFlg
-    - CWPSICCodes
-    - CWPNAICSCodes
-    - FacLat
-    - FacLong
-    - CWPTotalDesignFlowNmbr
-    - CWPActualAverageFlowNmbr
-    - CWPFacilityTypeIndicator
-    - BioReportingObligations
-    - DschToMs4
-    - ReceivingMs4Name
-    - StormWaterArea
-    - HistoricCriterionCode
-    - SpeciesCriticalHabitalFlag
-    - SwpppUrl
-    - ExposedActivity
-    - AssociatedPollutant
-    - ControlMeasure
-    - ControlMeasureSchedule
-    - TypeOfMonitoring
-    - TypeOfWater
-    - EjscreenFlagUs
-    - Over80CountUs
-    - PctilePctpre1960Us
-    - PctileDpmUs
-    - PctileCancerUs
-    - PctileRespUs
-    - PctileTrafficScoreUs
-    - PctileProximityNPDESUs
-    - PctileProximityNplUs
-    - PctileProximityRmpUs
-    - PctileProximityTsdfUs
-    - PctileO3Us
-    - PctilePmUs
-    - FacPopDen
-    - FacPercentMinority
-    - Sector
-    - Subsector
-    - MsgpPermitType
-    - CWPVersionNmbr
-    - CWPPermitStatusDesc
-    - IssuingAgency
-    - SubmittedDate
-    - CWPPermitTypeDesc
-    - CWPIssueDate
-    - CWPEffectiveDate
-    - CWPTerminationDate
-    - CWPExpirationDate
-    - CWPMajorMinorStatusFlag
-    - PermitComponents
-    - NPDESDataGroupsDescs
-    - MsgpLastReportYear
-    - MsgpFacilityInspctnSmmry
-    - MsgpVisualAssessmentSmmry
-    - MsgpNoFurtherRdctnRtnle
-    - MsgpCorrectiveActionSmmry
-    - AIRIDs
-    - NPDESIDs
-    - RCRAIDs
-    - SDWAIDs
-    - TRIIDs
-    - RmpIDs
-    - BioVioLastYearFlag
-    - BioQtrsWithVio
-    - CWPStatus
-    - CWPSNCStatus
-    - CWPSNCStatusDate
-    - CWPQtrsWithNC
-    - CWPViolStatus
-    - CWPQtrsWithSNC
-    - MissDMRQtrs
-    - CWPE90Cnt
-    - CWPComplianceTracking
-    - AlrExceedences
-    - BioReportYear
-    - CWPInspectionCount
-    - CWPDaysLastInspection
-    - CWPDateLastInspection
-    - CWPDateLastInspEPA
-    - CWPDateLastInspSt
-    - CWPBioInspCount
-    - CWPDaysLastBioInsp
-    - CWPDateLastBioInsp
-    - CWPDateLastBioInspEPA
-    - CWPDateLastBioInspSt
-    - CWPInformalEnfActCount
-    - CWPFormalEaCnt
-    - CWPDateLastInformalEa
-    - CWPDateLastIeaEPA
-    - CWPDateLastIeaSt
-    - CWPDateLastFea
-    - CWPDateLastFeaEPA
-    - CWPDateLastFeaSt
-    - CWPBioIeaCount
-    - CWPBioFeaCount
-    - CWPDateLastBioIea
-    - CWPDateLastBioIeaEPA
-    - CWPDateLastBioIeaSt
-    - CWPDateLastBioFea
-    - CWPDateLastBioFeaEPA
-    - CWPDateLastBioFeaSt
-    - CWPBioPenalties
-    - CWPDateLastBioPenalty
-    - BioReportYears
-    - BioReportingObligations2016
-    - BioTotalVolumeAmt
-    - BioTotalVolumeAmt2016
-    - BioLandApplicationSum
-    - BioLandApplicationSum2016
-    - BioSurfaceDispSum
-    - BioSurfaceDispSum2016
-    - BioIncinerationSum
-    - BioIncinerationSum2016
-    - BioOtherManagementSum
-    - BioOtherManagementSum2016
-    - BioTrtmntProcesses
-    - BioTrtmntProcesses2016
-    - BioTrtmntPrcssCmmntTxts
-    - BioTrmntPrcssCmntTxts2016
-    - BioAnalyMethodCatgrys
-    - BioAnalyMethodCatgrys2016
-    - BioAnalyMethods
-    - BioAnalyMethods2016
-    - BioMgmtPrctceTypes
-    - BioMgmtPrctceTypes2016
-    - BioOtherMgmtPrctcTxts
-    - BioOtherMgmtPrctcTxts2016
-    - BioMgmtPrctceStypes
-    - BioMgmtPrctceStypes2016
-    - BioMgmtHandlers
-    - BioMgmtHandlers2016
-    - BioMgmtContainers
-    - BioMgmtContainers2016
-    - BioMgmtPathogens
-    - BioMgmtPathogens2016
-    - BioMgmtPathreds
-    - BioMgmtPathreds2016
-    - BioMgmtVectors
-    - BioMgmtVectors2016
-    - BioCommentText
-    - BioCommentText2016
-    - BioReportDate
-    - BioReportDate2016
-    - BioMgmtDefCurrentCnt
-    - BioMgmtDefCurrentCnt2016
-    - BioMgmtDefCategories
-    - BioMgmtDefCategories2016
-    - BioMgmtDeficiencies
-    - BioMgmtDeficiencies2016
-    - BioVioStatus
-    - BioViolFlag
-    - BioVioLastYear
-    - BioReportingObligations2017
-    - BioTotalVolumeAmt2017
-    - BioLandApplicationSum2017
-    - BioSurfaceDispSum2017
-    - BioIncinerationSum2017
-    - BioOtherManagementSum2017
-    - BioTrtmntProcesses2017
-    - BioTrmntPrcssCmntTxts2017
-    - BioAnalyMethodCatgrys2017
-    - BioAnalyMethods2017
-    - BioMgmtPrctceTypes2017
-    - BioOtherMgmtPrctcTxts2017
-    - BioMgmtPrctceStypes2017
-    - BioMgmtHandlers2017
-    - BioMgmtContainers2017
-    - BioMgmtPathogens2017
-    - BioMgmtPathreds2017
-    - BioMgmtVectors2017
-    - BioCommentText2017
-    - BioReportDate2017
-    - BioMgmtDefCurrentCnt2017
-    - BioMgmtDefCategories2017
-    - BioMgmtDeficiencies2017
-    - PollWithViolation
-    - LimPollutant
-    - DMRPounds
-    - DMRTwpe
-    - PastCalYrConvPollutants
-    - PastCalYrToxicPolOvrLmt
-    - PastCalYrConvPolOvrLmt
-    - FacTRISwRel
-    - FacTRIPotwTrans
-    - CWPCsoFlag
-    - CWPCsoOutfalls
-    - CWPStateWaterBodyCode
-    - CWPStateWaterBodyName
-    - AttainsCycleYear
-    - RadGnisName
-    - RadReachcode
-    - RadWBDHu8
-    - RadWBDHu8Name
-    - FacDerivedWBDHu8
-    - FacDerivedWBDHu8Name
-    - RadWBDHuc12
-    - RadHu12Name
-    - FacDerivedWBD
-    - FacDerivedWBDName
-    - AttainsSource
-    - CWPImpWaterFlg
-    - AttainsImpWaterFlg
-    - AttainsAuCategory
-    - AttainsStateCauses
-    - AttainsCauseGroups
-    - AttainsPossibleNPDESParams
-    - AttainsAquaticLifeUseFlg
-    - AttainsExceptnlUseFlg
-    - AttainsRecreationUseFlg
-    - AttainsShellfishUseFlg
-    - BeachCloseLastYearFlg
-    - BeachCloseLast2yrsFlg
-    - ChesapeakeBayFlag
-    - EPASystem
-    - Statute
-    - CWPTRIbalLandCode
-    - CWPPermitStatusCode
-    - CWPPermitTypeCode
-    - CWPSNCEventDesc
-    - FacMapFlg
-    - FacMapIcon
-    - CWPDateLastPenalty
-    - FacTRIReporter
-    - CWP13qtrsComplHistory
-    - CWPCaseIDs
-    - CWPFIPSCode
-    - DMRImpairedPoll
-    - CurrSvFlag
-    - ViolFlag
-    - CurrVioFlag
-    - Insp5yrFlag
-    - Ea5yrFlag
-    - Infea5yrFlag
-    - CWPTotalPenalties
-    - TRIbalFlag
-    - CensusBlockGroup
-    - MaxPctileUs
-    - EjscreenFlag
-    - LastDMRValueRcvdDate
-    - Lower48
-    - ActiveLower48
-    - EffExceeds
-    - PastCalYrAverageFlow
-    - PastCalYrToxicPollutants
-    - CWPVioStatus
-    - IndswFlag
-    - CertifiedDate
-    - CollectionMethod
-    - ReferencePoint
-    - CalculatedAccuracyMeters
-    - Map
-    - BiosolidsFlag
-    - VioLastYear
-    - StateAuthNPDES
-    - StateAuthFedfac
-    - StateAuthPretreat
-    - StateAuthGen
-    - StateAuthBiosolids
-    - NPDESDataGroups
-    - PermittingAgency
-    - ElectrRptWaiverTypeCode
-    - ElectrRptWaiverTypeDesc
-    - ElectrRptWaiverEffDate
-    - ElectrRptWaiverExpDate
-    - ElectrSubmissionTypeCode
-    - ElectrSubmissionTypeDesc
-    - WebDocs
-    - E90Exceeds5yr
-    - E90Exceeds4yr
-    - E90Exceeds3yr
-    - E90Exceeds2yr
-    - E90Exceeds1yr
-    - E90Pollutants5yr
-    - E90Pollutants4yr
-    - E90Pollutants3yr
-    - E90Pollutants2yr
-    - E90Pollutants1yr
-    - Score
-    - MaxScore
+      - ObjectId
+      - CWPName
+      - SourceID
+      - CWPStreet
+      - CWPCity
+      - CWPState
+      - CWPStateDistrict
+      - CWPZip
+      - MasterExternalPermitNmbr
+      - RegistryID
+      - CWPCounty
+      - CWPEPARegion
+      - FacFederalAgencyCode
+      - FacFederalAgencyName
+      - FacDerivedHuc
+      - FacFIPSCode
+      - FacIndianCntryFlg
+      - CWPIndianCntryFlg
+      - FacIndianSpatialFlg
+      - FacDerivedTRIbes
+      - FacUsMexBorderFlg
+      - CWPSICCodes
+      - CWPNAICSCodes
+      - FacLat
+      - FacLong
+      - CWPTotalDesignFlowNmbr
+      - CWPActualAverageFlowNmbr
+      - CWPFacilityTypeIndicator
+      - BioReportingObligations
+      - DschToMs4
+      - ReceivingMs4Name
+      - StormWaterArea
+      - HistoricCriterionCode
+      - SpeciesCriticalHabitalFlag
+      - SwpppUrl
+      - ExposedActivity
+      - AssociatedPollutant
+      - ControlMeasure
+      - ControlMeasureSchedule
+      - TypeOfMonitoring
+      - TypeOfWater
+      - EjscreenFlagUs
+      - Over80CountUs
+      - PctilePctpre1960Us
+      - PctileDpmUs
+      - PctileCancerUs
+      - PctileRespUs
+      - PctileTrafficScoreUs
+      - PctileProximityNPDESUs
+      - PctileProximityNplUs
+      - PctileProximityRmpUs
+      - PctileProximityTsdfUs
+      - PctileO3Us
+      - PctilePmUs
+      - FacPopDen
+      - FacPercentMinority
+      - Sector
+      - Subsector
+      - MsgpPermitType
+      - CWPVersionNmbr
+      - CWPPermitStatusDesc
+      - IssuingAgency
+      - SubmittedDate
+      - CWPPermitTypeDesc
+      - CWPIssueDate
+      - CWPEffectiveDate
+      - CWPTerminationDate
+      - CWPExpirationDate
+      - CWPMajorMinorStatusFlag
+      - PermitComponents
+      - NPDESDataGroupsDescs
+      - MsgpLastReportYear
+      - MsgpFacilityInspctnSmmry
+      - MsgpVisualAssessmentSmmry
+      - MsgpNoFurtherRdctnRtnle
+      - MsgpCorrectiveActionSmmry
+      - AIRIDs
+      - NPDESIDs
+      - RCRAIDs
+      - SDWAIDs
+      - TRIIDs
+      - RmpIDs
+      - BioVioLastYearFlag
+      - BioQtrsWithVio
+      - CWPStatus
+      - CWPSNCStatus
+      - CWPSNCStatusDate
+      - CWPQtrsWithNC
+      - CWPViolStatus
+      - CWPQtrsWithSNC
+      - MissDMRQtrs
+      - CWPE90Cnt
+      - CWPComplianceTracking
+      - AlrExceedences
+      - BioReportYear
+      - CWPInspectionCount
+      - CWPDaysLastInspection
+      - CWPDateLastInspection
+      - CWPDateLastInspEPA
+      - CWPDateLastInspSt
+      - CWPBioInspCount
+      - CWPDaysLastBioInsp
+      - CWPDateLastBioInsp
+      - CWPDateLastBioInspEPA
+      - CWPDateLastBioInspSt
+      - CWPInformalEnfActCount
+      - CWPFormalEaCnt
+      - CWPDateLastInformalEa
+      - CWPDateLastIeaEPA
+      - CWPDateLastIeaSt
+      - CWPDateLastFea
+      - CWPDateLastFeaEPA
+      - CWPDateLastFeaSt
+      - CWPBioIeaCount
+      - CWPBioFeaCount
+      - CWPDateLastBioIea
+      - CWPDateLastBioIeaEPA
+      - CWPDateLastBioIeaSt
+      - CWPDateLastBioFea
+      - CWPDateLastBioFeaEPA
+      - CWPDateLastBioFeaSt
+      - CWPBioPenalties
+      - CWPDateLastBioPenalty
+      - BioReportYears
+      - BioReportingObligations2016
+      - BioTotalVolumeAmt
+      - BioTotalVolumeAmt2016
+      - BioLandApplicationSum
+      - BioLandApplicationSum2016
+      - BioSurfaceDispSum
+      - BioSurfaceDispSum2016
+      - BioIncinerationSum
+      - BioIncinerationSum2016
+      - BioOtherManagementSum
+      - BioOtherManagementSum2016
+      - BioTrtmntProcesses
+      - BioTrtmntProcesses2016
+      - BioTrtmntPrcssCmmntTxts
+      - BioTrmntPrcssCmntTxts2016
+      - BioAnalyMethodCatgrys
+      - BioAnalyMethodCatgrys2016
+      - BioAnalyMethods
+      - BioAnalyMethods2016
+      - BioMgmtPrctceTypes
+      - BioMgmtPrctceTypes2016
+      - BioOtherMgmtPrctcTxts
+      - BioOtherMgmtPrctcTxts2016
+      - BioMgmtPrctceStypes
+      - BioMgmtPrctceStypes2016
+      - BioMgmtHandlers
+      - BioMgmtHandlers2016
+      - BioMgmtContainers
+      - BioMgmtContainers2016
+      - BioMgmtPathogens
+      - BioMgmtPathogens2016
+      - BioMgmtPathreds
+      - BioMgmtPathreds2016
+      - BioMgmtVectors
+      - BioMgmtVectors2016
+      - BioCommentText
+      - BioCommentText2016
+      - BioReportDate
+      - BioReportDate2016
+      - BioMgmtDefCurrentCnt
+      - BioMgmtDefCurrentCnt2016
+      - BioMgmtDefCategories
+      - BioMgmtDefCategories2016
+      - BioMgmtDeficiencies
+      - BioMgmtDeficiencies2016
+      - BioVioStatus
+      - BioViolFlag
+      - BioVioLastYear
+      - BioReportingObligations2017
+      - BioTotalVolumeAmt2017
+      - BioLandApplicationSum2017
+      - BioSurfaceDispSum2017
+      - BioIncinerationSum2017
+      - BioOtherManagementSum2017
+      - BioTrtmntProcesses2017
+      - BioTrmntPrcssCmntTxts2017
+      - BioAnalyMethodCatgrys2017
+      - BioAnalyMethods2017
+      - BioMgmtPrctceTypes2017
+      - BioOtherMgmtPrctcTxts2017
+      - BioMgmtPrctceStypes2017
+      - BioMgmtHandlers2017
+      - BioMgmtContainers2017
+      - BioMgmtPathogens2017
+      - BioMgmtPathreds2017
+      - BioMgmtVectors2017
+      - BioCommentText2017
+      - BioReportDate2017
+      - BioMgmtDefCurrentCnt2017
+      - BioMgmtDefCategories2017
+      - BioMgmtDeficiencies2017
+      - PollWithViolation
+      - LimPollutant
+      - DMRPounds
+      - DMRTwpe
+      - PastCalYrConvPollutants
+      - PastCalYrToxicPolOvrLmt
+      - PastCalYrConvPolOvrLmt
+      - FacTRISwRel
+      - FacTRIPotwTrans
+      - CWPCsoFlag
+      - CWPCsoOutfalls
+      - CWPStateWaterBodyCode
+      - CWPStateWaterBodyName
+      - AttainsCycleYear
+      - RadGnisName
+      - RadReachcode
+      - RadWBDHu8
+      - RadWBDHu8Name
+      - FacDerivedWBDHu8
+      - FacDerivedWBDHu8Name
+      - RadWBDHuc12
+      - RadHu12Name
+      - FacDerivedWBD
+      - FacDerivedWBDName
+      - AttainsSource
+      - CWPImpWaterFlg
+      - AttainsImpWaterFlg
+      - AttainsAuCategory
+      - AttainsStateCauses
+      - AttainsCauseGroups
+      - AttainsPossibleNPDESParams
+      - AttainsAquaticLifeUseFlg
+      - AttainsExceptnlUseFlg
+      - AttainsRecreationUseFlg
+      - AttainsShellfishUseFlg
+      - BeachCloseLastYearFlg
+      - BeachCloseLast2yrsFlg
+      - ChesapeakeBayFlag
+      - EPASystem
+      - Statute
+      - CWPTRIbalLandCode
+      - CWPPermitStatusCode
+      - CWPPermitTypeCode
+      - CWPSNCEventDesc
+      - FacMapFlg
+      - FacMapIcon
+      - CWPDateLastPenalty
+      - FacTRIReporter
+      - CWP13qtrsComplHistory
+      - CWPCaseIDs
+      - CWPFIPSCode
+      - DMRImpairedPoll
+      - CurrSvFlag
+      - ViolFlag
+      - CurrVioFlag
+      - Insp5yrFlag
+      - Ea5yrFlag
+      - Infea5yrFlag
+      - CWPTotalPenalties
+      - TRIbalFlag
+      - CensusBlockGroup
+      - MaxPctileUs
+      - EjscreenFlag
+      - LastDMRValueRcvdDate
+      - Lower48
+      - ActiveLower48
+      - EffExceeds
+      - PastCalYrAverageFlow
+      - PastCalYrToxicPollutants
+      - CWPVioStatus
+      - IndswFlag
+      - CertifiedDate
+      - CollectionMethod
+      - ReferencePoint
+      - CalculatedAccuracyMeters
+      - Map
+      - BiosolidsFlag
+      - VioLastYear
+      - StateAuthNPDES
+      - StateAuthFedfac
+      - StateAuthPretreat
+      - StateAuthGen
+      - StateAuthBiosolids
+      - NPDESDataGroups
+      - PermittingAgency
+      - ElectrRptWaiverTypeCode
+      - ElectrRptWaiverTypeDesc
+      - ElectrRptWaiverEffDate
+      - ElectrRptWaiverExpDate
+      - ElectrSubmissionTypeCode
+      - ElectrSubmissionTypeDesc
+      - WebDocs
+      - E90Exceeds5yr
+      - E90Exceeds4yr
+      - E90Exceeds3yr
+      - E90Exceeds2yr
+      - E90Exceeds1yr
+      - E90Pollutants5yr
+      - E90Pollutants4yr
+      - E90Pollutants3yr
+      - E90Pollutants2yr
+      - E90Pollutants1yr
+      - FacCountyName
+      - FacStdCountyName
+      - Score
+      - MaxScore
   cwa2_Results: 
     description: Results Object
     properties: 
@@ -7355,25 +7367,25 @@ definitions:
       ClusterOutput: 
         "$ref": "#/definitions/cwa2_ClusterOutput" 
     required: 
-    - Message
-    - QueryID
-    - QueryRows
-    - IndianCountryRows
-    - SVRows
-    - CVRows
-    - V3Rows
-    - FEARows
-    - InfFEARows
-    - INSPRows
-    - BioCVRows
-    - BioV3Rows
-    - VioLast4QRows
-    - TotalPenalties
-    - BadSystemIDs
-    - IconBaseURL
-    - PopUpBaseURL
-    - ServiceBaseURL
-    - QueryParameters
+      - Message
+      - QueryID
+      - QueryRows
+      - IndianCountryRows
+      - SVRows
+      - CVRows
+      - V3Rows
+      - FEARows
+      - InfFEARows
+      - INSPRows
+      - BioCVRows
+      - BioV3Rows
+      - VioLast4QRows
+      - TotalPenalties
+      - BadSystemIDs
+      - IconBaseURL
+      - PopUpBaseURL
+      - ServiceBaseURL
+      - QueryParameters
   cwa5_Feature: 
     description: GeoJSON Feature Object
     properties: 
@@ -7387,9 +7399,9 @@ definitions:
       properties: 
         "$ref": "#/definitions/cwa5_properties" 
     required: 
-    - type
-    - geometry
-    - properties
+      - type
+      - geometry
+      - properties
   cwa5_properties: 
     description: GeoJSON Properties Object
     properties: 
@@ -8451,6 +8463,10 @@ definitions:
         type: string
       E90Pollutants1yr: 
         type: string
+      FacCountyName: 
+        type: string
+      FacStdCountyName: 
+        type: string
       Score: 
         type: number
         title: Score
@@ -8461,302 +8477,304 @@ definitions:
         example: 1
         description: "[Col. 121]"
     required: 
-    - CWPName
-    - SourceID
-    - CWPStreet
-    - CWPCity
-    - CWPState
-    - CWPStateDistrict
-    - CWPZip
-    - MasterExternalPermitNmbr
-    - RegistryID
-    - CWPCounty
-    - CWPEPARegion
-    - FacFederalAgencyCode
-    - FacFederalAgencyName
-    - FacDerivedHuc
-    - FacFIPSCode
-    - FacIndianCntryFlg
-    - CWPIndianCntryFlg
-    - FacIndianSpatialFlg
-    - FacDerivedTRIbes
-    - FacUsMexBorderFlg
-    - CWPSICCodes
-    - CWPNAICSCodes
-    - CWPTotalDesignFlowNmbr
-    - CWPActualAverageFlowNmbr
-    - CWPFacilityTypeIndicator
-    - BioReportingObligations
-    - DschToMs4
-    - ReceivingMs4Name
-    - StormWaterArea
-    - HistoricCriterionCode
-    - SpeciesCriticalHabitalFlag
-    - SwpppUrl
-    - ExposedActivity
-    - AssociatedPollutant
-    - ControlMeasure
-    - ControlMeasureSchedule
-    - TypeOfMonitoring
-    - TypeOfWater
-    - EjscreenFlagUs
-    - Over80CountUs
-    - PctilePctpre1960Us
-    - PctileDpmUs
-    - PctileCancerUs
-    - PctileRespUs
-    - PctileTrafficScoreUs
-    - PctileProximityNPDESUs
-    - PctileProximityNplUs
-    - PctileProximityRmpUs
-    - PctileProximityTsdfUs
-    - PctileO3Us
-    - PctilePmUs
-    - FacPopDen
-    - FacPercentMinority
-    - Sector
-    - Subsector
-    - MsgpPermitType
-    - CWPVersionNmbr
-    - CWPPermitStatusDesc
-    - IssuingAgency
-    - SubmittedDate
-    - CWPPermitTypeDesc
-    - CWPIssueDate
-    - CWPEffectiveDate
-    - CWPTerminationDate
-    - CWPExpirationDate
-    - CWPMajorMinorStatusFlag
-    - PermitComponents
-    - NPDESDataGroupsDescs
-    - MsgpLastReportYear
-    - MsgpFacilityInspctnSmmry
-    - MsgpVisualAssessmentSmmry
-    - MsgpNoFurtherRdctnRtnle
-    - MsgpCorrectiveActionSmmry
-    - AIRIDs
-    - NPDESIDs
-    - RCRAIDs
-    - SDWAIDs
-    - TRIIDs
-    - RmpIDs
-    - BioVioLastYearFlag
-    - BioQtrsWithVio
-    - CWPStatus
-    - CWPSNCStatus
-    - CWPSNCStatusDate
-    - CWPQtrsWithNC
-    - CWPViolStatus
-    - CWPQtrsWithSNC
-    - MissDMRQtrs
-    - CWPE90Cnt
-    - CWPComplianceTracking
-    - AlrExceedences
-    - BioReportYear
-    - CWPInspectionCount
-    - CWPDaysLastInspection
-    - CWPDateLastInspEPA
-    - CWPDateLastInspSt
-    - CWPDateLastInspection
-    - CWPBioInspCount
-    - CWPDaysLastBioInsp
-    - CWPDateLastBioInsp
-    - CWPDateLastBioInspEPA
-    - CWPDateLastBioInspSt
-    - CWPFormalEaCnt
-    - CWPInformalEnfActCount
-    - CWPDateLastInformalEa
-    - CWPDateLastIeaEPA
-    - CWPDateLastIeaSt
-    - CWPDateLastFea
-    - CWPDateLastFeaEPA
-    - CWPDateLastFeaSt
-    - CWPBioIeaCount
-    - CWPBioFeaCount
-    - CWPDateLastBioIea
-    - CWPDateLastBioIeaEPA
-    - CWPDateLastBioIeaSt
-    - CWPDateLastBioFea
-    - CWPDateLastBioFeaEPA
-    - CWPDateLastBioFeaSt
-    - CWPBioPenalties
-    - CWPDateLastBioPenalty
-    - BioReportYears
-    - BioReportingObligations2016
-    - BioTotalVolumeAmt
-    - BioTotalVolumeAmt2016
-    - BioLandApplicationSum
-    - BioLandApplicationSum2016
-    - BioSurfaceDispSum
-    - BioSurfaceDispSum2016
-    - BioIncinerationSum
-    - BioIncinerationSum2016
-    - BioOtherManagementSum
-    - BioOtherManagementSum2016
-    - BioTrtmntProcesses
-    - BioTrtmntProcesses2016
-    - BioTrtmntPrcssCmmntTxts
-    - BioTrmntPrcssCmntTxts2016
-    - BioAnalyMethodCatgrys
-    - BioAnalyMethodCatgrys2016
-    - BioAnalyMethods
-    - BioAnalyMethods2016
-    - BioMgmtPrctceTypes
-    - BioMgmtPrctceTypes2016
-    - BioOtherMgmtPrctcTxts
-    - BioOtherMgmtPrctcTxts2016
-    - BioMgmtPrctceStypes
-    - BioMgmtPrctceStypes2016
-    - BioMgmtHandlers
-    - BioMgmtHandlers2016
-    - BioMgmtContainers
-    - BioMgmtContainers2016
-    - BioMgmtPathogens
-    - BioMgmtPathogens2016
-    - BioMgmtPathreds
-    - BioMgmtPathreds2016
-    - BioMgmtVectors
-    - BioMgmtVectors2016
-    - BioCommentText
-    - BioCommentText2016
-    - BioReportDate
-    - BioReportDate2016
-    - BioMgmtDefCurrentCnt
-    - BioMgmtDefCurrentCnt2016
-    - BioMgmtDefCategories
-    - BioMgmtDefCategories2016
-    - BioMgmtDeficiencies
-    - BioMgmtDeficiencies2016
-    - BioVioStatus
-    - BioViolFlag
-    - BioVioLastYear
-    - BioReportingObligations2017
-    - BioTotalVolumeAmt2017
-    - BioLandApplicationSum2017
-    - BioSurfaceDispSum2017
-    - BioIncinerationSum2017
-    - BioOtherManagementSum2017
-    - BioTrtmntProcesses2017
-    - BioTrmntPrcssCmntTxts2017
-    - BioAnalyMethodCatgrys2017
-    - BioAnalyMethods2017
-    - BioMgmtPrctceTypes2017
-    - BioOtherMgmtPrctcTxts2017
-    - BioMgmtPrctceStypes2017
-    - BioMgmtHandlers2017
-    - BioMgmtContainers2017
-    - BioMgmtPathogens2017
-    - BioMgmtPathreds2017
-    - BioMgmtVectors2017
-    - BioCommentText2017
-    - BioReportDate2017
-    - BioMgmtDefCurrentCnt2017
-    - BioMgmtDefCategories2017
-    - BioMgmtDeficiencies2017
-    - PollWithViolation
-    - LimPollutant
-    - DMRPounds
-    - DMRTwpe
-    - PastCalYrConvPollutants
-    - PastCalYrConvPolOvrLmt
-    - PastCalYrToxicPolOvrLmt
-    - FacTRISwRel
-    - FacTRIPotwTrans
-    - CWPCsoFlag
-    - CWPCsoOutfalls
-    - CWPStateWaterBodyCode
-    - CWPStateWaterBodyName
-    - AttainsCycleYear
-    - RadGnisName
-    - RadReachcode
-    - RadWBDHu8
-    - RadWBDHu8Name
-    - FacDerivedWBDHu8
-    - FacDerivedWBDHu8Name
-    - RadWBDHuc12
-    - RadHu12Name
-    - FacDerivedWBD
-    - FacDerivedWBDName
-    - AttainsSource
-    - CWPImpWaterFlg
-    - AttainsImpWaterFlg
-    - AttainsAuCategory
-    - AttainsStateCauses
-    - AttainsCauseGroups
-    - AttainsPossibleNPDESParams
-    - AttainsAquaticLifeUseFlg
-    - AttainsExceptnlUseFlg
-    - AttainsRecreationUseFlg
-    - AttainsShellfishUseFlg
-    - BeachCloseLastYearFlg
-    - BeachCloseLast2yrsFlg
-    - ChesapeakeBayFlag
-    - EPASystem
-    - Statute
-    - CWPTRIbalLandCode
-    - CWPPermitStatusCode
-    - CWPPermitTypeCode
-    - CWPSNCEventDesc
-    - FacMapFlg
-    - FacMapIcon
-    - CWPDateLastPenalty
-    - FacTRIReporter
-    - CWP13qtrsComplHistory
-    - CWPCaseIDs
-    - CWPFIPSCode
-    - DMRImpairedPoll
-    - CurrSvFlag
-    - ViolFlag
-    - CurrVioFlag
-    - Insp5yrFlag
-    - Ea5yrFlag
-    - Infea5yrFlag
-    - CWPTotalPenalties
-    - TRIbalFlag
-    - CensusBlockGroup
-    - MaxPctileUs
-    - EjscreenFlag
-    - LastDMRValueRcvdDate
-    - Lower48
-    - ActiveLower48
-    - EffExceeds
-    - PastCalYrAverageFlow
-    - PastCalYrToxicPollutants
-    - CWPVioStatus
-    - IndswFlag
-    - CertifiedDate
-    - CollectionMethod
-    - ReferencePoint
-    - CalculatedAccuracyMeters
-    - Map
-    - BiosolidsFlag
-    - VioLastYear
-    - StateAuthNPDES
-    - StateAuthFedfac
-    - StateAuthPretreat
-    - StateAuthGen
-    - StateAuthBiosolids
-    - NPDESDataGroups
-    - PermittingAgency
-    - ElectrRptWaiverTypeCode
-    - ElectrRptWaiverTypeDesc
-    - ElectrRptWaiverEffDate
-    - ElectrRptWaiverExpDate
-    - ElectrSubmissionTypeCode
-    - ElectrSubmissionTypeDesc
-    - WebDocs
-    - E90Exceeds5yr
-    - E90Exceeds4yr
-    - E90Exceeds3yr
-    - E90Exceeds2yr
-    - E90Exceeds1yr
-    - E90Pollutants5yr
-    - E90Pollutants4yr
-    - E90Pollutants3yr
-    - E90Pollutants2yr
-    - E90Pollutants1yr
-    - Score
-    - MaxScore
+      - CWPName
+      - SourceID
+      - CWPStreet
+      - CWPCity
+      - CWPState
+      - CWPStateDistrict
+      - CWPZip
+      - MasterExternalPermitNmbr
+      - RegistryID
+      - CWPCounty
+      - CWPEPARegion
+      - FacFederalAgencyCode
+      - FacFederalAgencyName
+      - FacDerivedHuc
+      - FacFIPSCode
+      - FacIndianCntryFlg
+      - CWPIndianCntryFlg
+      - FacIndianSpatialFlg
+      - FacDerivedTRIbes
+      - FacUsMexBorderFlg
+      - CWPSICCodes
+      - CWPNAICSCodes
+      - CWPTotalDesignFlowNmbr
+      - CWPActualAverageFlowNmbr
+      - CWPFacilityTypeIndicator
+      - BioReportingObligations
+      - DschToMs4
+      - ReceivingMs4Name
+      - StormWaterArea
+      - HistoricCriterionCode
+      - SpeciesCriticalHabitalFlag
+      - SwpppUrl
+      - ExposedActivity
+      - AssociatedPollutant
+      - ControlMeasure
+      - ControlMeasureSchedule
+      - TypeOfMonitoring
+      - TypeOfWater
+      - EjscreenFlagUs
+      - Over80CountUs
+      - PctilePctpre1960Us
+      - PctileDpmUs
+      - PctileCancerUs
+      - PctileRespUs
+      - PctileTrafficScoreUs
+      - PctileProximityNPDESUs
+      - PctileProximityNplUs
+      - PctileProximityRmpUs
+      - PctileProximityTsdfUs
+      - PctileO3Us
+      - PctilePmUs
+      - FacPopDen
+      - FacPercentMinority
+      - Sector
+      - Subsector
+      - MsgpPermitType
+      - CWPVersionNmbr
+      - CWPPermitStatusDesc
+      - IssuingAgency
+      - SubmittedDate
+      - CWPPermitTypeDesc
+      - CWPIssueDate
+      - CWPEffectiveDate
+      - CWPTerminationDate
+      - CWPExpirationDate
+      - CWPMajorMinorStatusFlag
+      - PermitComponents
+      - NPDESDataGroupsDescs
+      - MsgpLastReportYear
+      - MsgpFacilityInspctnSmmry
+      - MsgpVisualAssessmentSmmry
+      - MsgpNoFurtherRdctnRtnle
+      - MsgpCorrectiveActionSmmry
+      - AIRIDs
+      - NPDESIDs
+      - RCRAIDs
+      - SDWAIDs
+      - TRIIDs
+      - RmpIDs
+      - BioVioLastYearFlag
+      - BioQtrsWithVio
+      - CWPStatus
+      - CWPSNCStatus
+      - CWPSNCStatusDate
+      - CWPQtrsWithNC
+      - CWPViolStatus
+      - CWPQtrsWithSNC
+      - MissDMRQtrs
+      - CWPE90Cnt
+      - CWPComplianceTracking
+      - AlrExceedences
+      - BioReportYear
+      - CWPInspectionCount
+      - CWPDaysLastInspection
+      - CWPDateLastInspEPA
+      - CWPDateLastInspSt
+      - CWPDateLastInspection
+      - CWPBioInspCount
+      - CWPDaysLastBioInsp
+      - CWPDateLastBioInsp
+      - CWPDateLastBioInspEPA
+      - CWPDateLastBioInspSt
+      - CWPFormalEaCnt
+      - CWPInformalEnfActCount
+      - CWPDateLastInformalEa
+      - CWPDateLastIeaEPA
+      - CWPDateLastIeaSt
+      - CWPDateLastFea
+      - CWPDateLastFeaEPA
+      - CWPDateLastFeaSt
+      - CWPBioIeaCount
+      - CWPBioFeaCount
+      - CWPDateLastBioIea
+      - CWPDateLastBioIeaEPA
+      - CWPDateLastBioIeaSt
+      - CWPDateLastBioFea
+      - CWPDateLastBioFeaEPA
+      - CWPDateLastBioFeaSt
+      - CWPBioPenalties
+      - CWPDateLastBioPenalty
+      - BioReportYears
+      - BioReportingObligations2016
+      - BioTotalVolumeAmt
+      - BioTotalVolumeAmt2016
+      - BioLandApplicationSum
+      - BioLandApplicationSum2016
+      - BioSurfaceDispSum
+      - BioSurfaceDispSum2016
+      - BioIncinerationSum
+      - BioIncinerationSum2016
+      - BioOtherManagementSum
+      - BioOtherManagementSum2016
+      - BioTrtmntProcesses
+      - BioTrtmntProcesses2016
+      - BioTrtmntPrcssCmmntTxts
+      - BioTrmntPrcssCmntTxts2016
+      - BioAnalyMethodCatgrys
+      - BioAnalyMethodCatgrys2016
+      - BioAnalyMethods
+      - BioAnalyMethods2016
+      - BioMgmtPrctceTypes
+      - BioMgmtPrctceTypes2016
+      - BioOtherMgmtPrctcTxts
+      - BioOtherMgmtPrctcTxts2016
+      - BioMgmtPrctceStypes
+      - BioMgmtPrctceStypes2016
+      - BioMgmtHandlers
+      - BioMgmtHandlers2016
+      - BioMgmtContainers
+      - BioMgmtContainers2016
+      - BioMgmtPathogens
+      - BioMgmtPathogens2016
+      - BioMgmtPathreds
+      - BioMgmtPathreds2016
+      - BioMgmtVectors
+      - BioMgmtVectors2016
+      - BioCommentText
+      - BioCommentText2016
+      - BioReportDate
+      - BioReportDate2016
+      - BioMgmtDefCurrentCnt
+      - BioMgmtDefCurrentCnt2016
+      - BioMgmtDefCategories
+      - BioMgmtDefCategories2016
+      - BioMgmtDeficiencies
+      - BioMgmtDeficiencies2016
+      - BioVioStatus
+      - BioViolFlag
+      - BioVioLastYear
+      - BioReportingObligations2017
+      - BioTotalVolumeAmt2017
+      - BioLandApplicationSum2017
+      - BioSurfaceDispSum2017
+      - BioIncinerationSum2017
+      - BioOtherManagementSum2017
+      - BioTrtmntProcesses2017
+      - BioTrmntPrcssCmntTxts2017
+      - BioAnalyMethodCatgrys2017
+      - BioAnalyMethods2017
+      - BioMgmtPrctceTypes2017
+      - BioOtherMgmtPrctcTxts2017
+      - BioMgmtPrctceStypes2017
+      - BioMgmtHandlers2017
+      - BioMgmtContainers2017
+      - BioMgmtPathogens2017
+      - BioMgmtPathreds2017
+      - BioMgmtVectors2017
+      - BioCommentText2017
+      - BioReportDate2017
+      - BioMgmtDefCurrentCnt2017
+      - BioMgmtDefCategories2017
+      - BioMgmtDeficiencies2017
+      - PollWithViolation
+      - LimPollutant
+      - DMRPounds
+      - DMRTwpe
+      - PastCalYrConvPollutants
+      - PastCalYrConvPolOvrLmt
+      - PastCalYrToxicPolOvrLmt
+      - FacTRISwRel
+      - FacTRIPotwTrans
+      - CWPCsoFlag
+      - CWPCsoOutfalls
+      - CWPStateWaterBodyCode
+      - CWPStateWaterBodyName
+      - AttainsCycleYear
+      - RadGnisName
+      - RadReachcode
+      - RadWBDHu8
+      - RadWBDHu8Name
+      - FacDerivedWBDHu8
+      - FacDerivedWBDHu8Name
+      - RadWBDHuc12
+      - RadHu12Name
+      - FacDerivedWBD
+      - FacDerivedWBDName
+      - AttainsSource
+      - CWPImpWaterFlg
+      - AttainsImpWaterFlg
+      - AttainsAuCategory
+      - AttainsStateCauses
+      - AttainsCauseGroups
+      - AttainsPossibleNPDESParams
+      - AttainsAquaticLifeUseFlg
+      - AttainsExceptnlUseFlg
+      - AttainsRecreationUseFlg
+      - AttainsShellfishUseFlg
+      - BeachCloseLastYearFlg
+      - BeachCloseLast2yrsFlg
+      - ChesapeakeBayFlag
+      - EPASystem
+      - Statute
+      - CWPTRIbalLandCode
+      - CWPPermitStatusCode
+      - CWPPermitTypeCode
+      - CWPSNCEventDesc
+      - FacMapFlg
+      - FacMapIcon
+      - CWPDateLastPenalty
+      - FacTRIReporter
+      - CWP13qtrsComplHistory
+      - CWPCaseIDs
+      - CWPFIPSCode
+      - DMRImpairedPoll
+      - CurrSvFlag
+      - ViolFlag
+      - CurrVioFlag
+      - Insp5yrFlag
+      - Ea5yrFlag
+      - Infea5yrFlag
+      - CWPTotalPenalties
+      - TRIbalFlag
+      - CensusBlockGroup
+      - MaxPctileUs
+      - EjscreenFlag
+      - LastDMRValueRcvdDate
+      - Lower48
+      - ActiveLower48
+      - EffExceeds
+      - PastCalYrAverageFlow
+      - PastCalYrToxicPollutants
+      - CWPVioStatus
+      - IndswFlag
+      - CertifiedDate
+      - CollectionMethod
+      - ReferencePoint
+      - CalculatedAccuracyMeters
+      - Map
+      - BiosolidsFlag
+      - VioLastYear
+      - StateAuthNPDES
+      - StateAuthFedfac
+      - StateAuthPretreat
+      - StateAuthGen
+      - StateAuthBiosolids
+      - NPDESDataGroups
+      - PermittingAgency
+      - ElectrRptWaiverTypeCode
+      - ElectrRptWaiverTypeDesc
+      - ElectrRptWaiverEffDate
+      - ElectrRptWaiverExpDate
+      - ElectrSubmissionTypeCode
+      - ElectrSubmissionTypeDesc
+      - WebDocs
+      - E90Exceeds5yr
+      - E90Exceeds4yr
+      - E90Exceeds3yr
+      - E90Exceeds2yr
+      - E90Exceeds1yr
+      - E90Pollutants5yr
+      - E90Pollutants4yr
+      - E90Pollutants3yr
+      - E90Pollutants2yr
+      - E90Pollutants1yr
+      - FacCountyName
+      - FacStdCountyName
+      - Score
+      - MaxScore
   cwa3_MapData: 
     description: Map Data Object
     xml: 
@@ -8812,16 +8830,16 @@ definitions:
         example: '1'
         description: The number of informal enforcement actions that have been taken against the facility
     required: 
-    - LAT
-    - LON
-    - ICON
-    - TYPE
-    - NAME
-    - PUV
-    - CWAstatus
-    - LastInsp
-    - FormalCount
-    - InformalCount
+      - LAT
+      - LON
+      - ICON
+      - TYPE
+      - NAME
+      - PUV
+      - CWAstatus
+      - LastInsp
+      - FormalCount
+      - InformalCount
   cwa3_MapOutput: 
     description: Map Output Object
     properties: 
@@ -8849,10 +8867,10 @@ definitions:
           name: MapData
           wrapped: true
     required: 
-    - QueryID
-    - IconBaseURL
-    - PopUpBaseURL
-    - MapData
+      - QueryID
+      - IconBaseURL
+      - PopUpBaseURL
+      - MapData
   cwa4_Results: 
     description: Results Object
     properties: 
@@ -8885,11 +8903,11 @@ definitions:
           name: Facilities
           wrapped: true
     required: 
-    - Message
-    - QueryRows
-    - QueryID
-    - PageNo
-    - Facilities
+      - Message
+      - QueryRows
+      - QueryID
+      - PageNo
+      - Facilities
   geo: 
     description: GeoJSON Geometry Object
     properties: 
@@ -8906,8 +8924,8 @@ definitions:
         items: 
           type: number 
     required: 
-    - type
-    - coordinates
+      - type
+      - coordinates
   met2: 
     description: Results Column Object
     xml: 
@@ -8937,12 +8955,12 @@ definitions:
         title: Description
         description: A description of the category of Supplemental Environment Project (SEP) for a settlement.
     required: 
-    - ColumnName
-    - DataType
-    - DataLength
-    - ColumnID
-    - ObjectName
-    - Description
+      - ColumnName
+      - DataType
+      - DataLength
+      - ColumnID
+      - ObjectName
+      - Description
   met1: 
     description: Results Object
     properties: 
@@ -8960,4 +8978,4 @@ definitions:
           name: ResultColumns
           wrapped: true
     required: 
-    - Message
+      - Message
