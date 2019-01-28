@@ -1013,6 +1013,7 @@ paths:
   "/rest_lookups.cwa_pollutants": 
     get: 
       summary: ECHO CWA Pollutants Lookup Service
+      description: Look up Clean Water Act pollutants by name
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.callback"
@@ -1034,6 +1035,7 @@ paths:
               - Results
     post: 
       summary: ECHO CWA Pollutants Lookup Service
+      description: Look up Clean Water Act pollutants by name
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.callback"
@@ -1184,7 +1186,7 @@ paths:
               - Results
   "/rest_lookups.ecatt_ams_years": 
     get: 
-      summary: Placeholder
+      summary: ECHO Clean Air Targeting Tool AMS Available Reporting Years Lookup Service
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.callback"
@@ -1203,7 +1205,7 @@ paths:
             required: 
               - Results
     post: 
-      summary: Placeholder
+      summary: ECHO Clean Air Targeting Tool AMS Available Reporting Years Lookup Service
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.callback"

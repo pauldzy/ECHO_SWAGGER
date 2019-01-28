@@ -80,21 +80,31 @@ parameters:
   q.p_missinglate: 
     name: p_missinglate
     in: query
+    description: "For the D80.D90 download, identifies whether or not MISSINGviolations are downloaded or LATE violations are downloaded.  Valid values are:  MiISSING and LATE."
+    enum: 
+      - MISSING
+      - LATE
     type: string
     required: false
   q.p_npdes_id: 
     name: p_npdes_id
     in: query
+    description: The NPDES_ID for the NPDES Permit to download DMR D80 and D90 Non-Receipt violations.
     type: string
     required: false
   q.p_qmvalue: 
     name: p_qmvalue
     in: query
+    description: A number between 1 and 39 that identifies the specific month or quarter for the D80/D90 violation download.
     type: string
     required: false
   q.p_qmtype: 
     name: p_qmtype
     in: query
+    description: Identifies the time frame type, month or quarter, for the D80/D90 download.
+    enum: 
+      - MONTH
+      - QUARTER
     type: string
     required: false
   f.p_system: 
@@ -107,16 +117,6 @@ parameters:
     name: p_system
     in: query
     description: System Acronym Filter.  Enter a single system acronym to filter results.
-    type: string
-    required: false
-  q.p_radius: 
-    name: p_radius
-    in: query
-    type: string
-    required: false
-  f.p_radius: 
-    name: p_radius
-    in: formData
     type: string
     required: false
 paths: 
@@ -253,7 +253,8 @@ paths:
               - Results
   "/dfr_rest_services.get_case_formal_actions": 
     get: 
-      summary: Placeholder
+      summary: Displays Cases related to the Facility
+      description: "Displays closed case information from EPA's Federal Enforcement & Compliance System that are related to the facility."
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_id"
@@ -262,7 +263,7 @@ paths:
         - Detailed Facility Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes information on cases.
           schema: 
             description: Root Object
             xml: 
@@ -273,7 +274,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Placeholder
+      summary: Displays Cases related to the Facility
+      description: "Displays closed case information from EPA's Federal Enforcement & Compliance System that are related to the facility."
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_id"
@@ -282,7 +284,7 @@ paths:
         - Detailed Facility Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes information on cases.
           schema: 
             description: Root Object
             xml: 
@@ -433,7 +435,8 @@ paths:
               - Results
   "/dfr_rest_services.get_cwa_3yr_d80d90_counts": 
     get: 
-      summary: Placeholder
+      summary: Displays monlthly and quarterly counts of D80 and D90 Effluent Non Reporting Violations Related to the Facility
+      description: "Displays monlthly and quarterly counts of D80 and D90 Effluent Non Reporting Violations Related to the Facility from EPA's ICIS NPDES System."
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_id"
@@ -442,7 +445,7 @@ paths:
         - Detailed Facility Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of D80/D90 counts for 13 quarters and 39 months.
           schema: 
             description: Root Object
             xml: 
@@ -453,7 +456,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Placeholder
+      summary: Displays monlthly and quarterly counts of D80 and D90 Effluent Non Reporting Violations Related to the Facility
+      description: "Displays monlthly and quarterly counts of D80 and D90 Effluent Non Reporting Violations Related to the Facility from EPA's ICIS NPDES System."
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_id"
@@ -462,7 +466,7 @@ paths:
         - Detailed Facility Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of D80/D90 counts for 13 quarters and 39 months.
           schema: 
             description: Root Object
             xml: 
@@ -474,7 +478,8 @@ paths:
               - Results
   "/dfr_rest_services.get_d80d90s_details": 
     get: 
-      summary: Placeholder
+      summary: Display detailed D80/D90 information for the facility for a given quarter or month
+      description: "Displays detailed D80/D90 Effluent Non Reporting  information from EPA's ICIS NPDES system for the facility for a given quarter or month."
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_npdes_id"
@@ -486,7 +491,7 @@ paths:
         - Detailed Facility Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes information for  D80/D90 violations.
           schema: 
             description: Root Object
             xml: 
@@ -497,7 +502,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Placeholder
+      summary: Display detailed D80/D90 information for the facility for a given quarter or month
+      description: "Displays detailed D80/D90 Effluent Non Reporting  information from EPA's ICIS NPDES system for the facility for a given quarter or month."
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_npdes_id"
@@ -509,7 +515,7 @@ paths:
         - Detailed Facility Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes information for  D80/D90 violations.
           schema: 
             description: Root Object
             xml: 
@@ -803,11 +809,11 @@ paths:
               - Results
   "/dfr_rest_services.get_demographics_by_id": 
     get: 
-      summary: Placeholder
+      summary: Displays 2010 Census and ACS demographics by Facility ID
+      description: Displays precalculated 2010 Census and American Community Survey demographic information for a provided facility identifier.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_id"
-        - "$ref": "#/parameters/q.p_radius"
         - "$ref": "#/parameters/q.callback"
       tags: 
         - Detailed Facility Report
@@ -824,11 +830,11 @@ paths:
             required: 
               - Results
     post: 
-      summary: Placeholder
+      summary: Displays 2010 Census and ACS demographics by Facility ID
+      description: Displays precalculated 2010 Census and American Community Survey demographic information for a provided facility identifier.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_id"
-        - "$ref": "#/parameters/f.p_radius"
         - "$ref": "#/parameters/f.callback"
       tags: 
         - Detailed Facility Report
@@ -889,7 +895,8 @@ paths:
               - Results
   "/dfr_rest_services.get_extract_dates": 
     get: 
-      summary: Placeholder
+      summary: Displays the dates that data was extracted from native EPA systems for the DFR.
+      description: By EPA System, displays the extract dates that data was extracted for the DFR from multiple EPA computer systems.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_id"
@@ -898,7 +905,7 @@ paths:
         - Detailed Facility Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object  that includes information on DFR system extract dates.
           schema: 
             description: Root Object
             xml: 
@@ -909,7 +916,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Placeholder
+      summary: Displays the dates that data was extracted from native EPA systems for the DFR.
+      description: By EPA System, displays the extract dates that data was extracted for the DFR from multiple EPA computer systems.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_id"
@@ -918,7 +926,7 @@ paths:
         - Detailed Facility Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object  that includes information on DFR system extract dates.
           schema: 
             description: Root Object
             xml: 
@@ -1682,7 +1690,6 @@ paths:
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_id"
-        - "$ref": "#/parameters/q.p_radius"
         - "$ref": "#/parameters/q.callback"
       tags: 
         - Detailed Facility Report
@@ -1704,7 +1711,6 @@ paths:
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_id"
-        - "$ref": "#/parameters/f.p_radius"
         - "$ref": "#/parameters/f.callback"
       tags: 
         - Detailed Facility Report
@@ -1722,17 +1728,17 @@ paths:
               - Results
   "/dfr_rest_services.get_water_quality_details": 
     get: 
-      summary: Placeholder
+      summary: "Displays detailed Water Quality information from EPA's Office of Water Systems"
+      description: "This information is only available for facilities with a NPDES permit. Based on spatial data, displays water quality information from EPA's Office of Water ATTAINS system."
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_id"
-        - "$ref": "#/parameters/q.p_radius"
         - "$ref": "#/parameters/q.callback"
       tags: 
         - Detailed Facility Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes water qualtity information.
           schema: 
             description: Root Object
             xml: 
@@ -1743,17 +1749,17 @@ paths:
             required: 
               - Results
     post: 
-      summary: Placeholder
+      summary: "Displays detailed Water Quality information from EPA's Office of Water Systems"
+      description: "This information is only available for facilities with a NPDES permit. Based on spatial data, displays water quality information from EPA's Office of Water ATTAINS system."
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_id"
-        - "$ref": "#/parameters/f.p_radius"
         - "$ref": "#/parameters/f.callback"
       tags: 
         - Detailed Facility Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes water qualtity information.
           schema: 
             description: Root Object
             xml: 
@@ -1806,6 +1812,111 @@ paths:
                 "$ref": "#/definitions/dfr119_Results" 
             required: 
               - Results
+  "/dfr_rest_services.cwa_3_yr_effluent_download": 
+    get: 
+      summary: Downloads NPDES Effluent Violation Information by month and quarter.
+      description: For the provided system identifier, dowloads all displayed NPDES quaterly/monthly effluent violation information in a Comma Seperated Value (CSV) format.
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results are a comma separated value (CSV) file.
+          schema: 
+            type: file
+    post: 
+      summary: Downloads NPDES Effluent Violation Information by month and quarter.
+      description: For the provided system identifier, dowloads all displayed NPDES quaterly/monthly effluent violation information in a Comma Seperated Value (CSV) format.
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results are a comma separated value (CSV) file.
+          schema: 
+            type: file
+  "/dfr_rest_services.cwa_3_yr_sepscs_download": 
+    get: 
+      summary: Downloads NPDES Compliance Schedule, Permit Schedule and Single Event Violation Information by month and quarter.
+      description: For the provided system identifier, dowloads all displayed NPDES quaterly/monthly Compliance Schedule, Permit Schedule, and Single Event Violation  information in a Comma Seperated Value (CSV) format.
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results are a comma separated value (CSV) file.
+          schema: 
+            type: file
+    post: 
+      summary: Downloads NPDES Compliance Schedule, Permit Schedule and Single Event Violation Information by month and quarter.
+      description: For the provided system identifier, dowloads all displayed NPDES quaterly/monthly Compliance Schedule, Permit Schedule, and Single Event Violation  information in a Comma Seperated Value (CSV) format.
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results are a comma separated value (CSV) file.
+          schema: 
+            type: file
+  "/dfr_rest_services.air_3_yr_download": 
+    get: 
+      summary: Downloads the complete Air Compliance History Section of the DFR
+      description: For the provided system identifier, dowloads all displayed Air quaterly/monthly Facility Level Status, High Priority Violation (HPV) History, HPV Detailed Violations and Federal Reportable Violation  information in a Comma Seperated Value (CSV) format.
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results are a comma separated value (CSV) file.
+          schema: 
+            type: file
+    post: 
+      summary: Downloads the complete Air Compliance History Section of the DFR
+      description: For the provided system identifier, dowloads all displayed Air quaterly/monthly Facility Level Status, High Priority Violation (HPV) History, HPV Detailed Violations and Federal Reportable Violation  information in a Comma Seperated Value (CSV) format.
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results are a comma separated value (CSV) file.
+          schema: 
+            type: file
+  "/dfr_rest_services.rcra_3_yr_download": 
+    get: 
+      summary: Downloads the complete RCRA Compliance History Section of the DFR
+      description: For the provided system identifier, dowloads all displayed RCRA quaterly/monthly Facility Level Status and Violation information in a Comma Seperated Value (CSV) format.
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results are a comma separated value (CSV) file.
+          schema: 
+            type: file
+    post: 
+      summary: Downloads the complete RCRA Compliance History Section of the DFR
+      description: For the provided system identifier, dowloads all displayed RCRA quaterly/monthly Facility Level Status and Violation information in a Comma Seperated Value (CSV) format.
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results are a comma separated value (CSV) file.
+          schema: 
+            type: file
+  "/dfr_rest_services.get_csv": 
+    get: 
+      summary: Downloads a spectific section  of the DFR in CSV Format
+      description: For a supplied system id and DFR section name, the procedure will download that section in a Comma Separated Value (CSV) format.
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results are a comma separated value (CSV) file.
+          schema: 
+            type: file
+    post: 
+      summary: Downloads a spectific section  of the DFR in CSV Format
+      description: For a supplied system id and DFR section name, the procedure will download that section in a Comma Separated Value (CSV) format.
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results are a comma separated value (CSV) file.
+          schema: 
+            type: file
 definitions: 
   dfr0_Qtr12Header: 
     description: Header Object
@@ -3860,10 +3971,16 @@ definitions:
         description: The name of the facility.
       PublishDate: 
         type: string
+        title: Document Published Date
+        description: The date the document was published.
       EPAProgram: 
         type: string
+        title: EPA Program
+        description: The EPA Program associated with the Document URL
       DocumentLink: 
         type: string
+        title: Dcoument Links
+        description: URLS for documents that EPA has colleted that are related to this Case.
   dfr025: 
     description: CWA 3-Year Compliance Object
     properties: 
@@ -5797,6 +5914,7 @@ definitions:
         title: State Local Penalty
       SepCost: 
         type: string
+        title: Supplemental Environmental Projects Cost
         example: "$4,100.00"
         description: The total value of all SEPs for all settlements at the enforcement case.
       CompActionCost: 
@@ -6387,6 +6505,7 @@ definitions:
         title: State Local Penalty
       SepCost: 
         type: string
+        title: Supplemental Environmental Projects Cost
         example: "$4,100.00"
         description: The total value of all SEPs for all settlements at the enforcement case.
       CompActionCost: 
@@ -6541,10 +6660,19 @@ definitions:
         type: string
       PbViol: 
         type: string
+        title: Lead Violations (5 years)
+        example: '5'
+        description: The count of lead violations in the past five years.
       CuViol: 
         type: string
+        title: Copper Violations (5 years)
+        example: '2'
+        description: The count of copper violations in the past five years.
       LeadAndCopperViol: 
         type: string
+        title: Lead and Copper Violations
+        example: '3'
+        description: The combined count of lead and copper violations in the past five years.
   dfr071: 
     description: Copper Samples
     xml: 
@@ -6647,6 +6775,7 @@ definitions:
       MapData: 
         type: array
         title: Map Data
+        description: An array of facility geospatial information.
         items: 
           "$ref": "#/definitions/dfr018_MapData" 
         xml: 
@@ -8386,6 +8515,7 @@ definitions:
       TotalCasePenalties: 
         type: string
         title: Total Case Penalities
+        example: "$4,100.00"
         description: "??"
     required: 
       - Statute
@@ -9063,6 +9193,8 @@ definitions:
         description: The most severe compliance status for an outfall and parameter during the entire selected date range
       DocumentLink: 
         type: string
+        title: Dcoument Links
+        description: URLS for documents that EPA has colleted that are related to this Case.
     required: 
       - RegistryId
       - FacilityName

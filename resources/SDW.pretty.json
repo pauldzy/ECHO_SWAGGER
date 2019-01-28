@@ -998,14 +998,14 @@
       ,"q.qcolumns": {
           "name": "qcolumns"
          ,"in": "query"
-         ,"description": "Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+         ,"description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
          ,"type": "string"
          ,"required": false
       }
       ,"f.qcolumns": {
           "name": "qcolumns"
          ,"in": "formData"
-         ,"description": "Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+         ,"description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
          ,"type": "string"
          ,"required": false
       }
@@ -1835,6 +1835,8 @@
             ,"ObjectName": {
                 "type": "string"
                ,"title": "Object Name"
+               ,"example": "CaseName"
+               ,"description": "The JSON name used for the database column."
             }
             ,"Description": {
                 "type": "string"
@@ -2048,6 +2050,9 @@
             }
             ,"StateCode": {
                 "type": "string"
+               ,"title": "State Code"
+               ,"example": "VA"
+               ,"description": "The state in which the system is located."
             }
             ,"ZipCodesServed": {
                 "type": "string"
@@ -2087,9 +2092,15 @@
             }
             ,"PrimarySourceCode": {
                 "type": "string"
+               ,"title": "Primary Source Code"
+               ,"example": "SW"
+               ,"description": "The source water type:\nSurface water (SW) - Water pumped and treated from sources open to the atmosphere, such as rivers, lakes, and reservoirs.\nGround water (GW) - Water pumped and treated from aquifers (natural reservoirs below the earth's surface).\nGround water under direct influence of surface water (GU) - Any water pumped from natural reservoirs below the earth's surface that has been determined to be under the direct influence of surface water.\nPurchased (Surface, Ground, Ground UDI Surface) Water - Water purchased from a wholesaler who pumps and treats water."
             }
             ,"PrimarySourceDesc": {
                 "type": "string"
+               ,"title": "Primary Source Description"
+               ,"example": "Surface water"
+               ,"description": "The source water type:\nSurface water (SW) - Water pumped and treated from sources open to the atmosphere, such as rivers, lakes, and reservoirs.\nGround water (GW) - Water pumped and treated from aquifers (natural reservoirs below the earth's surface).\nGround water under direct influence of surface water (GU) - Any water pumped from natural reservoirs below the earth's surface that has been determined to be under the direct influence of surface water.\nPurchased (Surface, Ground, Ground UDI Surface) Water - Water purchased from a wholesaler who pumps and treats water."
             }
             ,"PopulationServedCount": {
                 "type": "string"
@@ -2099,6 +2110,9 @@
             }
             ,"PWSActivityCode": {
                 "type": "string"
+               ,"title": "PWS Activity Code"
+               ,"example": "A"
+               ,"description": "Indicates whether systems have an active or inactive designation."
             }
             ,"PWSActivityDesc": {
                 "type": "string"
@@ -2120,9 +2134,15 @@
             }
             ,"QtrsWithVio": {
                 "type": "string"
+               ,"title": "Quarters with Violation"
+               ,"example": "0"
+               ,"description": "The number of quarters the system was in violation over the past three years. This includes the 12 most recent official quarters and new violations reported after the end of the last official quarter."
             }
             ,"QtrsWithSNC": {
                 "type": "string"
+               ,"title": "Quarters with SNC"
+               ,"example": "0"
+               ,"description": "The number of quarters the system was designated by EPA as a serious violator over the past 3 years (12 most recent quarters)."
             }
             ,"SeriousViolator": {
                 "type": "string"
@@ -2155,14 +2175,21 @@
             }
             ,"NewVioFlg": {
                 "type": "string"
-               ,"example": "N"
+               ,"title": "Has New Violations"
+               ,"example": "No"
+               ,"description": "Violations that have been reported to SDWA since end of the last official quarter. These violations are considered draft and do not reflect the official compliance status for the facility."
             }
             ,"RulesVio3yr": {
                 "type": "string"
+               ,"title": "Rules In Violation (past 3 years)"
                ,"example": "5"
+               ,"description": "The count of rules the system was in violation of over the past three years. This includes the 12 most recent official quarters and new violations reported after the end of the last official quarter."
             }
             ,"RulesVio": {
                 "type": "string"
+               ,"title": "Rules Being Violated"
+               ,"example": "0"
+               ,"description": "The count of rules the system is violating as of the latest official quarter of data in the source system, SDWIS, which may lag by 3-6 months. This includes violations in the most recent official quarter and new violations reported after the end of the last official quarter."
             }
             ,"Viopaccr": {
                 "type": "string"
@@ -2191,33 +2218,51 @@
             }
             ,"Ifea": {
                 "type": "string"
+               ,"title": "Informal Enforcement Actions"
+               ,"example": "3"
+               ,"description": "Number of informal enforcement responses during the past 5 years (20 most recent quarters) as of the last quarterly refresh.  Informal enforcement actions do not specify actions and deadlines for returning to compliance."
             }
             ,"Feas": {
                 "type": "string"
+               ,"title": "Formal Enforcement Actions"
+               ,"example": "2"
+               ,"description": "Number of formal enforcement responses during the past 5 years (20 most recent quarters) as of the last quarterly refresh.  Formal enforcement actions compel a PWS to take specific actions by specific dates to return to compliance."
             }
             ,"SDWDateLastIea": {
                 "type": "string"
+               ,"title": "Date Last Informal Enforcement Action"
                ,"example": "6\/30\/2008"
+               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the PWS within the last five years."
             }
             ,"SDWDateLastIeaEPA": {
                 "type": "string"
+               ,"title": "Date Last Informal Enforcement Action by EPA"
                ,"example": "4\/11\/2013"
+               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the PWS by EPA within the last five years."
             }
             ,"SDWDateLastIeaSt": {
                 "type": "string"
+               ,"title": "Date Last Informal Enforcement Action by State"
                ,"example": "7\/17\/2010"
+               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the PWS by a state environmental agency within the last five years."
             }
             ,"SDWDateLastFea": {
                 "type": "string"
+               ,"title": "Date Last Formal Enforcement Action"
                ,"example": "1\/27\/2013"
+               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the PWS within the last five years."
             }
             ,"SDWDateLastFeaEPA": {
                 "type": "string"
+               ,"title": "Date Last Formal Enforcement Action by EPA"
                ,"example": "4\/5\/2011"
+               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the PWS by EPA within the last five years."
             }
             ,"SDWDateLastFeaSt": {
                 "type": "string"
+               ,"title": "Date Last Formal Enforcement Action by State"
                ,"example": "2\/19\/2010"
+               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the PWS by a state environmental agency within the last five years."
             }
             ,"SDWAContaminantsInViol3yr": {
                 "type": "string"
@@ -2226,19 +2271,30 @@
             }
             ,"SDWAContaminantsInCurViol": {
                 "type": "string"
+               ,"title": "SDWA Contaminants in Current Violation"
                ,"example": "7500=Public Notice"
+               ,"description": "The contaminant name and code (in SDWIS) in violation of a SDWA regulation. This includes violations in the most recent official quarter and new violations that have been reported since the end of the last official quarter."
             }
             ,"PbAle": {
                 "type": "string"
+               ,"title": "Lead Action Level Exceedances (5 years)"
+               ,"description": "The count of occurrences when 90th percentile sample concentrations of lead exceeded the lead action level of 0.015 mg\/L in the past five years."
             }
             ,"CuAle": {
                 "type": "string"
+               ,"title": "Copper Action Level Exceedances (5 years)"
+               ,"example": "4"
+               ,"description": "The count of occurrences when 90th percentile sample concentrations of copper exceeded the copper action level of 1.3 mg\/L in the past five years."
             }
             ,"Rc350Viol": {
                 "type": "string"
+               ,"example": "2"
+               ,"description": "The count of open health-based lead violations in the past five years. These include violations of maximum contaminant levels (MCLs), maximum residual disinfectant levels (MRDLs), or treatment technique (TT) rules. This count includes new violations that have been reported since the end of the last official quarter."
             }
             ,"DfrUrl": {
                 "type": "string"
+               ,"title": "DFR URL"
+               ,"description": "The URL to the facility's Detailed Facility Report."
             }
             ,"FIPSCodes": {
                 "type": "string"
@@ -2247,29 +2303,50 @@
             }
             ,"SNC": {
                 "type": "string"
+               ,"title": "Compliance Status"
+               ,"example": "In Violation"
+               ,"description": "Indicates the system's compliance status: No Violation, In Violation, Signficant Noncompliance, or Unknown."
             }
             ,"GwSwCode": {
                 "type": "string"
+               ,"title": "Ground Water\/Surface Water Code"
+               ,"example": "GW"
+               ,"description": "Returns \"GW\" if the system source water type is ground water. Returns \"SW\" if the system source water type is surface water."
             }
             ,"SDWA3yrComplQtrsHistory": {
                 "type": "string"
+               ,"title": "SDWA 3-Year Compliance History"
+               ,"example": "____SS__VVUU"
+               ,"description": "The system's 3-year compliance status history by quarter (3-month period). Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:\n_ - No Violation Identified\nV - Noncompliance\nS - Significant Noncompliance\nU - Undetermined"
             }
             ,"SDWAContaminants": {
                 "type": "string"
+               ,"title": "SDWA Contaminants"
+               ,"description": "All unresolved violation contaminants or violation contaminants that have been resolved in the last 5 years."
             }
             ,"PbViol": {
                 "type": "string"
+               ,"title": "Lead Violations (5 years)"
+               ,"example": "5"
+               ,"description": "The count of lead violations in the past five years."
             }
             ,"CuViol": {
                 "type": "string"
+               ,"title": "Copper Violations (5 years)"
+               ,"example": "2"
+               ,"description": "The count of copper violations in the past five years."
             }
             ,"LeadAndCopperViol": {
                 "type": "string"
+               ,"title": "Lead and Copper Violations"
+               ,"example": "3"
+               ,"description": "The combined count of lead and copper violations in the past five years."
             }
             ,"TRIbalFlag": {
                 "type": "string"
                ,"title": "Tribal Lands Flag"
                ,"example": "1"
+               ,"description": "A flag indicating that the facility is within a tribal area."
             }
             ,"FeaFlag": {
                 "type": "string"
@@ -2278,9 +2355,15 @@
             }
             ,"IeaFlag": {
                 "type": "string"
+               ,"title": "Informal Enforcement Action Flag"
+               ,"example": "1"
+               ,"description": "Returns 0 if the system does not have informal enforcement actions in the past five years. Returns 1 if the system does have informal enforcement actions in the past five years."
             }
             ,"SNCFlag": {
                 "type": "string"
+               ,"title": "SNC Flag"
+               ,"example": "0"
+               ,"description": "Returns 1 if the system is in significant noncompliance (SNC); returns 0 if not."
             }
             ,"CurrVioFlag": {
                 "type": "string"
@@ -2290,6 +2373,9 @@
             }
             ,"VioFlag": {
                 "type": "string"
+               ,"title": "Violation Flag"
+               ,"example": "0"
+               ,"description": "Indicates whether the system has been in violation in the past five years (1 if yes, 0 if no)."
             }
             ,"Insp5yrFlag": {
                 "type": "string"
@@ -2299,27 +2385,45 @@
             }
             ,"Sansurvey5yr": {
                 "type": "string"
+               ,"title": "Sanitary Surveys (5 years)"
+               ,"example": "5"
+               ,"description": "The number of sanitary surveys completed within the past five years. A sanitary survey is an on-site review of a system's water source, facilities, equipment, operation, and maintenance, intended to point out sanitary deficiencies and assess the system's capability to supply safe drinking water."
             }
             ,"SignificantDeficiencyCount": {
                 "type": "string"
+               ,"title": "Significant Deficiency Count"
+               ,"example": "3"
+               ,"description": "The number of significant deficiencies found from a sanitary survey within the past five years."
             }
             ,"SDWDateLastVisit": {
                 "type": "string"
+               ,"title": "Date Last Visit"
+               ,"example": "4\/11\/2013"
+               ,"description": "The date of the last system visit."
             }
             ,"SDWDateLastVisitEPA": {
                 "type": "string"
+               ,"title": "Date Last Visit by EPA"
+               ,"example": "4\/11\/2013"
+               ,"description": "The date of the last system visit by EPA."
             }
             ,"SDWDateLastVisitState": {
                 "type": "string"
+               ,"title": "Date Last Visit by State"
+               ,"example": "4\/11\/2013"
+               ,"description": "The date of the last system visit by a state agency."
             }
             ,"SDWDateLastVisitLocal": {
                 "type": "string"
+               ,"title": "Date Last Visit by Local"
+               ,"example": "4\/11\/2013"
+               ,"description": "The date of the last system visit by a local agency."
             }
             ,"MaxScore": {
                 "type": "string"
                ,"title": "Max Score"
                ,"example": "1"
-               ,"description": "[Col. 121]"
+               ,"description": "A sorting score for internal use."
             }
          }
          ,"required": [

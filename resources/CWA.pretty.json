@@ -1044,14 +1044,14 @@
       ,"q.p_huc": {
           "name": "p_huc"
          ,"in": "query"
-         ,"description": "2-, 4-, 6-, or 8-character watershed. May contain multiple comma-separated values."
+         ,"description": "2-, 4-, 6-, or 8-character watershed code. May contain multiple comma-separated values."
          ,"type": "string"
          ,"required": false
       }
       ,"f.p_huc": {
           "name": "p_huc"
          ,"in": "formData"
-         ,"description": "2-, 4-, 6-, or 8-character watershed. May contain multiple comma-separated values."
+         ,"description": "2-, 4-, 6-, or 8-character watershed code. May contain multiple comma-separated values."
          ,"type": "string"
          ,"required": false
       }
@@ -2067,18 +2067,6 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"f.p_bio_insp_deficiencies": {
-          "name": "p_bio_insp_deficiencies"
-         ,"in": "formData"
-         ,"type": "number"
-         ,"required": false
-      }
-      ,"q.p_bio_insp_deficiencies": {
-          "name": "p_bio_insp_deficiencies"
-         ,"in": "query"
-         ,"type": "number"
-         ,"required": false
-      }
       ,"f.p_bio_total_volume_amt": {
           "name": "p_bio_total_volume_amt"
          ,"in": "formData"
@@ -2121,27 +2109,25 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"f.p_insp_deficiencies": {
-          "name": "p_insp_deficiencies"
-         ,"in": "formData"
-         ,"type": "number"
-         ,"required": false
-      }
-      ,"q.p_insp_deficiencies": {
-          "name": "p_insp_deficiencies"
-         ,"in": "query"
-         ,"type": "number"
-         ,"required": false
-      }
       ,"f.p_bio_vio_last_year": {
           "name": "p_bio_vio_last_year"
          ,"in": "formData"
+         ,"description": "Identifies if a biosolids violation has occured in the last year.  Valid values are Y and N."
+         ,"enum": [
+             "Y"
+            ,"N"
+         ]
          ,"type": "string"
          ,"required": false
       }
       ,"q.p_bio_vio_last_year": {
           "name": "p_bio_vio_last_year"
          ,"in": "query"
+         ,"description": "Identifies if a biosolids violation has occured in the last year.  Valid values are Y and N."
+         ,"enum": [
+             "Y"
+            ,"N"
+         ]
          ,"type": "string"
          ,"required": false
       }
@@ -2240,12 +2226,22 @@
       ,"f.p_vio_last_year": {
           "name": "p_vio_last_year"
          ,"in": "formData"
+         ,"description": "Identifies if a permit violation has occured in the last year.  Valid values are Y and N."
+         ,"enum": [
+             "Y"
+            ,"N"
+         ]
          ,"type": "string"
          ,"required": false
       }
       ,"q.p_vio_last_year": {
           "name": "p_vio_last_year"
          ,"in": "query"
+         ,"description": "Identifies if a permit violation has occured in the last year.  Valid values are Y and N."
+         ,"enum": [
+             "Y"
+            ,"N"
+         ]
          ,"type": "string"
          ,"required": false
       }
@@ -2322,24 +2318,28 @@
       ,"f.p_e90_years": {
           "name": "p_e90_years"
          ,"in": "formData"
+         ,"description": "Number of years for the p_e90_count search.  Identified the past number of years to be used for the p_e90_count search."
          ,"type": "number"
          ,"required": false
       }
       ,"q.p_e90_years": {
           "name": "p_e90_years"
          ,"in": "query"
+         ,"description": "Number of years for the p_e90_count search.  Identified the past number of years to be used for the p_e90_count search."
          ,"type": "number"
          ,"required": false
       }
       ,"f.p_e90_count": {
           "name": "p_e90_count"
          ,"in": "formData"
+         ,"description": "Number of E90 Exceedances.  Identifies water permits with a number of E90 (Effluient Exceedances) >= the value provided for the last number of years provided by the p_e90_years value."
          ,"type": "number"
          ,"required": false
       }
       ,"q.p_e90_count": {
           "name": "p_e90_count"
          ,"in": "query"
+         ,"description": "Number of E90 Exceedances.  Identifies water permits with a number of E90 (Effluient Exceedances) >= the value provided for the last number of years provided by the p_e90_years value."
          ,"type": "number"
          ,"required": false
       }
@@ -2360,12 +2360,24 @@
       ,"f.p_mon_type": {
           "name": "p_mon_type"
          ,"in": "formData"
+         ,"description": "For use with the Industrial Stormwater search only. Valid values are BENCHGS fro Benchmark (Alert Limit) G2 Ore, BENCH for Benchmark (Alert Limit), and ELG fro Effluent Limitation Guidelines(ELG)(Effluent Limit).  "
+         ,"enum": [
+             "BENCHG2"
+            ,"BENCH"
+            ,"ELG"
+         ]
          ,"type": "string"
          ,"required": false
       }
       ,"q.p_mon_type": {
           "name": "p_mon_type"
          ,"in": "query"
+         ,"description": "For use with the Industrial Stormwater search only. Valid values are BENCHGS fro Benchmark (Alert Limit) G2 Ore, BENCH for Benchmark (Alert Limit), and ELG fro Effluent Limitation Guidelines(ELG)(Effluent Limit).  "
+         ,"enum": [
+             "BENCHG2"
+            ,"BENCH"
+            ,"ELG"
+         ]
          ,"type": "string"
          ,"required": false
       }
@@ -2428,12 +2440,40 @@
       ,"f.p_ejscreen_over80cnt": {
           "name": "p_ejscreen_over80cnt"
          ,"in": "formData"
+         ,"description": "The number of Environmenmt Justice Indicators above the 80th percentile.  Valid values are 1 through 11."
+         ,"enum": [
+             "1"
+            ,"2"
+            ,"3"
+            ,"4"
+            ,"5"
+            ,"6"
+            ,"7"
+            ,"8"
+            ,"9"
+            ,"10"
+            ,"11"
+         ]
          ,"type": "string"
          ,"required": false
       }
       ,"q.p_ejscreen_over80cnt": {
           "name": "p_ejscreen_over80cnt"
          ,"in": "query"
+         ,"description": "The number of Environmenmt Justice Indicators above the 80th percentile.  Valid values are 1 through 11."
+         ,"enum": [
+             "1"
+            ,"2"
+            ,"3"
+            ,"4"
+            ,"5"
+            ,"6"
+            ,"7"
+            ,"8"
+            ,"9"
+            ,"10"
+            ,"11"
+         ]
          ,"type": "string"
          ,"required": false
       }
@@ -3276,9 +3316,6 @@
                    "$ref": "#\/parameters\/q.p_bio_mgmt_vector"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_insp_deficiencies"
-               }
-               ,{
                    "$ref": "#\/parameters\/q.p_bio_mgmt_def_category"
                }
                ,{
@@ -3295,9 +3332,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/q.p_bio_rpt_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_bio_insp_deficiencies"
                }
                ,{
                    "$ref": "#\/parameters\/q.p_bio_vio_last_year"
@@ -3329,7 +3363,7 @@
                ,{
                    "name": "qcolumns"
                   ,"in": "query"
-                  ,"description": "Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+                  ,"description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
                   ,"type": "string"
                   ,"required": false
                }
@@ -3762,9 +3796,6 @@
                    "$ref": "#\/parameters\/f.p_bio_mgmt_vector"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_insp_deficiencies"
-               }
-               ,{
                    "$ref": "#\/parameters\/f.p_bio_mgmt_def_category"
                }
                ,{
@@ -3781,9 +3812,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.p_bio_rpt_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_bio_insp_deficiencies"
                }
                ,{
                    "$ref": "#\/parameters\/f.p_bio_vio_last_year"
@@ -3815,7 +3843,7 @@
                ,{
                    "name": "qcolumns"
                   ,"in": "formData"
-                  ,"description": "Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+                  ,"description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
                   ,"type": "string"
                   ,"required": false
                }
@@ -4245,9 +4273,6 @@
                    "$ref": "#\/parameters\/q.p_bio_mgmt_vector"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_insp_deficiencies"
-               }
-               ,{
                    "$ref": "#\/parameters\/q.p_bio_mgmt_def_category"
                }
                ,{
@@ -4264,9 +4289,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/q.p_bio_rpt_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_bio_insp_deficiencies"
                }
                ,{
                    "$ref": "#\/parameters\/q.p_bio_vio_last_year"
@@ -4286,7 +4308,7 @@
                ,{
                    "name": "qcolumns"
                   ,"in": "query"
-                  ,"description": "Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+                  ,"description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
                   ,"type": "string"
                   ,"required": false
                }
@@ -4717,9 +4739,6 @@
                    "$ref": "#\/parameters\/f.p_bio_mgmt_vector"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_insp_deficiencies"
-               }
-               ,{
                    "$ref": "#\/parameters\/f.p_bio_mgmt_def_category"
                }
                ,{
@@ -4736,9 +4755,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.p_bio_rpt_year"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_bio_insp_deficiencies"
                }
                ,{
                    "$ref": "#\/parameters\/f.p_bio_vio_last_year"
@@ -4758,7 +4774,7 @@
                ,{
                    "name": "qcolumns"
                   ,"in": "formData"
-                  ,"description": "Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+                  ,"description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
                   ,"type": "string"
                   ,"required": false
                }
@@ -4832,7 +4848,7 @@
                ,{
                    "name": "qcolumns"
                   ,"in": "query"
-                  ,"description": "Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+                  ,"description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
                   ,"type": "string"
                   ,"required": false
                }
@@ -4895,7 +4911,7 @@
                ,{
                    "name": "qcolumns"
                   ,"in": "formData"
-                  ,"description": "Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+                  ,"description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
                   ,"type": "string"
                   ,"required": false
                }
@@ -5075,7 +5091,7 @@
                ,{
                    "name": "qcolumns"
                   ,"in": "query"
-                  ,"description": "Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+                  ,"description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
                   ,"type": "string"
                   ,"required": false
                }
@@ -5112,7 +5128,7 @@
                ,{
                    "name": "qcolumns"
                   ,"in": "formData"
-                  ,"description": "Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+                  ,"description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
                   ,"type": "string"
                   ,"required": false
                }
@@ -5222,7 +5238,7 @@
                ,{
                    "name": "qcolumns"
                   ,"in": "query"
-                  ,"description": "Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+                  ,"description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
                   ,"type": "string"
                   ,"required": false
                }
@@ -5289,7 +5305,7 @@
                ,{
                    "name": "qcolumns"
                   ,"in": "formData"
-                  ,"description": "Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+                  ,"description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
                   ,"type": "string"
                   ,"required": false
                }
@@ -5526,6 +5542,9 @@
             }
             ,"FacFederalAgencyName": {
                 "type": "string"
+               ,"title": "Federal Agency Name"
+               ,"example": "EPA"
+               ,"description": "Indicates the name of the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government."
             }
             ,"FacDerivedHuc": {
                 "type": "string"
@@ -5552,9 +5571,15 @@
             }
             ,"FacIndianSpatialFlg": {
                 "type": "string"
+               ,"title": "Indian Spatial Flag"
+               ,"example": "Y"
+               ,"description": "Returns \u201CY\u201D if a facility is located within a tribal spatial boundary as defined by the U.S. Census Bureau 2010 tribal boundary layer data for tribes in the lower 48 states and Bureau of Land Management Alaska State Office data for native villages in Alaska. Returns \u201CN\u201D if a facility is not located within a tribal or native Alaskan village area."
             }
             ,"FacDerivedTRIbes": {
                 "type": "string"
+               ,"title": "FRS Spatially Derived Tribe"
+               ,"example": "Cherokee Nation"
+               ,"description": "The tribes or tribal territories located within 25 miles of the facility's location."
             }
             ,"FacUsMexBorderFlg": {
                 "type": "string"
@@ -5608,6 +5633,8 @@
             }
             ,"DschToMs4": {
                 "type": "string"
+               ,"title": "Discharging to MS4"
+               ,"description": "Indicates if a facility discharges into a Municipal Separate Storm Sewer System (MS4)."
             }
             ,"ReceivingMs4Name": {
                 "type": "string"
@@ -5616,10 +5643,13 @@
             }
             ,"StormWaterArea": {
                 "type": "string"
-               ,"title": "Storm Water Area"
+               ,"title": "Est. Area Exposed to Stormwater (Acres)"
+               ,"description": "The estimated area of industrial activity at the site exposed to stormwater in acres."
             }
             ,"HistoricCriterionCode": {
                 "type": "string"
+               ,"title": "Historic Preservation Criterion"
+               ,"description": "Indicates the eligibility criteria for historic properties preservation."
             }
             ,"SpeciesCriticalHabitalFlag": {
                 "type": "string"
@@ -5650,16 +5680,23 @@
             ,"TypeOfMonitoring": {
                 "type": "string"
                ,"title": "Type Of Monitoring"
+               ,"description": "The type of monitoring specified in the SWPPP."
             }
             ,"TypeOfWater": {
                 "type": "string"
                ,"title": "Type Of Water"
+               ,"description": "The type of water body receiving discharges stormwater discharges specified in the SWPPP."
             }
             ,"EjscreenFlagUs": {
                 "type": "string"
+               ,"title": "EJ Screen Flag (US)"
+               ,"description": "A Y\/N indicator identifying whether or not the facility is within an Environmental Justice area."
             }
             ,"Over80CountUs": {
                 "type": "string"
+               ,"title": "EJ Indexes Above 80th Percentile"
+               ,"example": "3"
+               ,"description": "The number of primary EJSCREEN environmental justice (EJ) indexes exceeding the 80th or higher national percentile for the Census block group that the facility is located in."
             }
             ,"PctilePctpre1960Us": {
                 "type": "string"
@@ -5731,13 +5768,19 @@
             ,"Sector": {
                 "type": "string"
                ,"title": "Sector"
+               ,"example": "N: Scrap Recycling Facilities"
+               ,"description": "The sector code and description for the industrial stormwater facility."
             }
             ,"Subsector": {
                 "type": "string"
                ,"title": "Subsector"
+               ,"description": "The industrial subsector associated with the facility."
             }
             ,"MsgpPermitType": {
                 "type": "string"
+               ,"title": "MSGP Permit Type"
+               ,"example": "NOI"
+               ,"description": "The Industrial stormwater permit type."
             }
             ,"CWPVersionNmbr": {
                 "type": "string"
@@ -5759,6 +5802,7 @@
             ,"SubmittedDate": {
                 "type": "string"
                ,"title": "Submitted Date"
+               ,"description": "Date that the permit was submitted to the issuing agency."
             }
             ,"CWPPermitTypeDesc": {
                 "type": "string"
@@ -5768,12 +5812,20 @@
             }
             ,"CWPIssueDate": {
                 "type": "string"
+               ,"title": "Permit Issue Date"
+               ,"example": "11\/10\/2015"
+               ,"description": "Date (MM\/DD\/YYYY) that the permit was issued."
             }
             ,"CWPEffectiveDate": {
                 "type": "string"
+               ,"title": "Permit Effective Date"
+               ,"example": "01\/14\/2009"
+               ,"description": "Date (MM\/DD\/YYYY) that the permit became effective."
             }
             ,"CWPTerminationDate": {
                 "type": "string"
+               ,"title": "Permit Termination Date"
+               ,"description": "Date (MM\/DD\/YYYY) that the permit was terminated."
             }
             ,"CWPExpirationDate": {
                 "type": "string"
@@ -5789,7 +5841,9 @@
             }
             ,"PermitComponents": {
                 "type": "string"
+               ,"title": "Permit Components"
                ,"example": "POTW"
+               ,"description": "Indicates the permit component(s) associated with the NPDES Permit Program Area."
             }
             ,"NPDESDataGroupsDescs": {
                 "type": "string"
@@ -5798,18 +5852,28 @@
             }
             ,"MsgpLastReportYear": {
                 "type": "string"
+               ,"title": "MSGP Latest Annual Report Year"
+               ,"description": "The calendar year of the latest MSGP annual report submitted by the permitted facility."
             }
             ,"MsgpFacilityInspctnSmmry": {
                 "type": "string"
+               ,"title": "MSGP Facility Inspection Summary"
+               ,"description": "Summary of the quarterly facility inspection documentation (part 3.1 of the permit) during the MSGP annual report year."
             }
             ,"MsgpVisualAssessmentSmmry": {
                 "type": "string"
+               ,"title": "MSGP Visual Assessment Summary"
+               ,"description": "Summary of the quarterly visual assessment documentation (part 3.3 of the permit) during the MSGP annual report year."
             }
             ,"MsgpNoFurtherRdctnRtnle": {
                 "type": "string"
+               ,"title": "MsgpNoFurtherRdctnRtnle"
+               ,"description": "Description of rationale for why no further reductions are achievable (part 6.2.1.2 of the permit) during the MSGP annual report year."
             }
             ,"MsgpCorrectiveActionSmmry": {
                 "type": "string"
+               ,"title": "MSGP Corrective Action Summary"
+               ,"description": "Summary of the corrective action documentation (part 4.3 of the permit) during the MSGP annual report year."
             }
             ,"AIRIDs": {
                 "type": "string"
@@ -5841,12 +5905,21 @@
             }
             ,"RmpIDs": {
                 "type": "string"
+               ,"title": "RMP IDs"
+               ,"example": "110000"
+               ,"description": "A unique ID assigned to each facility submitting a Risk Management Plan to EPA under the Risk Management Plan Rule."
             }
             ,"BioVioLastYearFlag": {
                 "type": "string"
+               ,"title": "Biosolids Violation in Last Year"
+               ,"example": "N"
+               ,"description": "Y if the facility has a biosolids single event violation under the Clean Water Act in the last year. Note: Violations reported on the 2016 and 2017 Biosolids Annual Report are not updated with the weekly data refresh and may not be representative of a facility's recently submitted or updated report. "
             }
             ,"BioQtrsWithVio": {
                 "type": "string"
+               ,"title": "Quarters with Violation for Biosolids (3 years)"
+               ,"example": "0"
+               ,"description": "Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered with violations for biosolids."
             }
             ,"CWPStatus": {
                 "type": "string"
@@ -5856,21 +5929,37 @@
             }
             ,"CWPSNCStatus": {
                 "type": "string"
+               ,"title": "Significant Noncompliance (SNC) Status"
+               ,"description": "Indicates when a major source is in significant noncompliance (SNC) or a non-major source has a Category I violation."
             }
             ,"CWPSNCStatusDate": {
                 "type": "string"
+               ,"title": "SNC Status Date"
+               ,"example": "09\/30\/2018"
+               ,"description": "The status date of the facility's Significant Noncompliance designation."
             }
             ,"CWPQtrsWithNC": {
                 "type": "string"
+               ,"title": "Quarters with Noncompliance (3 years)"
+               ,"example": "0"
+               ,"description": "Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered either with violations, in noncompliance (NC) status, or in Significant Noncompliance (SNC), as described above under Compliance Status."
             }
             ,"CWPViolStatus": {
                 "type": "string"
+               ,"title": "Current Violation Status"
+               ,"example": "No"
+               ,"description": "Indicates if the facility is currently in any violation under the Clean Water Act, either in Noncompliance or Significant Noncompliance."
             }
             ,"CWPQtrsWithSNC": {
                 "type": "string"
+               ,"title": "Quarters with SNC (3 years)"
+               ,"example": "0"
+               ,"description": "Count of the number of quarters, out of the last twelve quarters, in which the permit is considered in Significant Noncompliance (SNC), as described above under Compliance Status."
             }
             ,"MissDMRQtrs": {
                 "type": "string"
+               ,"title": "Qtrs in Undetermined Compliance Status (2 years)"
+               ,"description": "Count of the number of quarters, out of the last twelve quarters, in which EPA's data system was not able to determine the facility-level compliance status."
             }
             ,"CWPE90Cnt": {
                 "type": "string"
@@ -5885,6 +5974,7 @@
             }
             ,"AlrExceedences": {
                 "type": "string"
+               ,"title": "Alert Limit Exceedences"
             }
             ,"BioReportYear": {
                 "type": "string"
@@ -5899,7 +5989,7 @@
             ,"CWPDaysLastInspection": {
                 "type": "string"
                ,"example": "247"
-               ,"description": "Indicates the number of days since the most recent inspection of the facility. Inspections listed within the last five years are included."
+               ,"description": "Indicates the number of days since the most recent inspection of the facility."
             }
             ,"CWPDateLastInspection": {
                 "type": "string"
@@ -5910,12 +6000,12 @@
             ,"CWPDateLastInspEPA": {
                 "type": "string"
                ,"example": "07\/29\/2015"
-               ,"description": "Indicates the effective date of the most recent inspection taken against the facility by EPA within the last five years."
+               ,"description": "Indicates the effective date of the most recent inspection taken against the facility."
             }
             ,"CWPDateLastInspSt": {
                 "type": "string"
                ,"example": "09\/15\/2004"
-               ,"description": "Indicates the effective date of the most recent inspection taken against the facility by a state environmental agency within the last five years."
+               ,"description": "Indicates the effective date of the most recent inspection taken against the facility by a state environmental agency."
             }
             ,"CWPBioInspCount": {
                 "type": "string"
@@ -5927,12 +6017,18 @@
             }
             ,"CWPDateLastBioInsp": {
                 "type": "string"
+               ,"title": "Date of Last Biosolids Inspection"
+               ,"description": "The date on which the most recent biosolids program inspection of the facility took place."
             }
             ,"CWPDateLastBioInspEPA": {
                 "type": "string"
+               ,"title": "Date of Last Biosolids Inspection (EPA)"
+               ,"description": "Indicate the last inspection date by EPA"
             }
             ,"CWPDateLastBioInspSt": {
                 "type": "string"
+               ,"title": "Date of Last Biosolids Inspection (State)"
+               ,"description": "Indicate the last inspection date by state environmental agency"
             }
             ,"CWPInformalEnfActCount": {
                 "type": "string"
@@ -5949,32 +6045,32 @@
                 "type": "string"
                ,"title": "Date of Last Informal Enf Action"
                ,"example": "06\/09\/2013"
-               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility within the last five years."
+               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility."
             }
             ,"CWPDateLastIeaEPA": {
                 "type": "string"
                ,"example": "12\/09\/1992"
-               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility by EPA within the last five years."
+               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility by EPA."
             }
             ,"CWPDateLastIeaSt": {
                 "type": "string"
                ,"example": "06\/09\/2013"
-               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility by a state environmental agency within the last five years."
+               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility by a state environmental agency."
             }
             ,"CWPDateLastFea": {
                 "type": "string"
                ,"example": "06\/01\/2006"
-               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility within the last five years."
+               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility."
             }
             ,"CWPDateLastFeaEPA": {
                 "type": "string"
                ,"example": "06\/01\/2006"
-               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility by EPA within the last five years."
+               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility by EPA."
             }
             ,"CWPDateLastFeaSt": {
                 "type": "string"
                ,"example": "09\/27\/2010"
-               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility by a state environmental agency within the last five years."
+               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility by a state environmental agency."
             }
             ,"CWPBioIeaCount": {
                 "type": "string"
@@ -5986,21 +6082,33 @@
             }
             ,"CWPDateLastBioIea": {
                 "type": "string"
+               ,"title": "Date Last Biosolids Informal Action"
+               ,"description": "Indicates the effective date of the most recent listed biosolids informal enforcement action taken against the facility within the last five years."
             }
             ,"CWPDateLastBioIeaEPA": {
                 "type": "string"
+               ,"title": "Date Last  Biosolids Informal Action (EPA)"
+               ,"description": "Indicates the effective date of the most recent listed biosolids informal enforcement action taken against the facility by EPA within the last five years."
             }
             ,"CWPDateLastBioIeaSt": {
                 "type": "string"
+               ,"title": "Date Last Biosolids Informal Action (State)"
+               ,"description": "Indicates the effective date of the most recent listed biosolids informal enforcement action taken against the facility by a state environmental agency within the last five years."
             }
             ,"CWPDateLastBioFea": {
                 "type": "string"
+               ,"title": "Date Last Biosolids Formal Action"
+               ,"description": "Indicates the effective date of the most recent listed biosolids formal enforcement action taken against the facility within the last five years."
             }
             ,"CWPDateLastBioFeaEPA": {
                 "type": "string"
+               ,"title": "Date Last Biosolids Formal Action (EPA)"
+               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility by EPA within the last five years."
             }
             ,"CWPDateLastBioFeaSt": {
                 "type": "string"
+               ,"title": "Date Last Biosolids Formal Action (State)"
+               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility by a state environmental agency within the last five years."
             }
             ,"CWPBioPenalties": {
                 "type": "string"
@@ -6008,9 +6116,13 @@
             }
             ,"CWPDateLastBioPenalty": {
                 "type": "string"
+               ,"title": "Date of Last Biosolids Penalty"
+               ,"description": "Indicates the date on which the most recent assessed (or final) biosolids penalty was taken against the facility within the last five years. This measure only includes penalties that have been entered in the program database ICIS-NPDES."
             }
             ,"BioReportYears": {
                 "type": "string"
+               ,"title": "Biosolids Annual Report"
+               ,"description": "Reporting years are determined by the year of the reporting period end date. Data reflect the last two reporting years."
             }
             ,"BioReportingObligations2016": {
                 "type": "string"
@@ -6194,6 +6306,9 @@
             }
             ,"BioVioStatus": {
                 "type": "string"
+               ,"title": "Biosolids Violation Status Flag"
+               ,"example": "0"
+               ,"description": "A value of 1 indicates if the Biosolids facility currently has an unresolved biosolids related Single Event Violation."
             }
             ,"BioViolFlag": {
                 "type": "string"
@@ -6297,9 +6412,13 @@
             }
             ,"PollWithViolation": {
                 "type": "string"
+               ,"title": "Pollutant(s) With Violations (3 years)"
+               ,"description": "The names of pollutants with effluent exceedances (i.e., violation code E90) in the past three years in ICIS-NPDES."
             }
             ,"LimPollutant": {
                 "type": "string"
+               ,"title": "Pollutants(s) With Limits"
+               ,"description": "The list of pollutants with enforceable (i.e., numeric limits or monitoring only) and\/or benchmark limits in the current version of a NPDES permit."
             }
             ,"DMRPounds": {
                 "type": "string"
@@ -6313,12 +6432,19 @@
             }
             ,"PastCalYrConvPollutants": {
                 "type": "string"
+               ,"title": "DMR Conventional Pollutants Loadings (lb\/year)"
+               ,"description": "Total pounds of conventional pollutants discharged by the NPDES ID for the most recent complete calendar year."
             }
             ,"PastCalYrConvPolOvrLmt": {
                 "type": "string"
+               ,"title": "DMR Conventional Pollutants - Load Over Limit (lb\/year)"
+               ,"description": "Total load over limit of conventional pollutant pounds equivalent discharged by the NPDES ID for the most recent complete calendar year."
             }
             ,"PastCalYrToxicPolOvrLmt": {
                 "type": "string"
+               ,"title": "DMR Toxic Load Over Limit (lb-eq\/year)"
+               ,"example": "0"
+               ,"description": "Total load over limit of toxic-weighted pounds equivalent (TWPE) discharged by the NPDES ID for the most recent complete calendar year."
             }
             ,"FacTRISwRel": {
                 "type": "string"
@@ -6372,15 +6498,27 @@
             }
             ,"RadWBDHu8": {
                 "type": "string"
+               ,"title": "WBD Hydrologic Unit Code (RAD)"
+               ,"example": "2060003"
+               ,"description": "Hydrologic Unit Code (HUC) from the Reach Address Database (RAD), which is derived from the USGS Watershed Boundary Dataset."
             }
             ,"RadWBDHu8Name": {
                 "type": "string"
+               ,"title": "WBD Hydrologic Unit Name (RAD)"
+               ,"example": "Gunpowder-Patapsco"
+               ,"description": "The name of the hydrologic unit in which the facility may discharge, from the Reach Address Database (RAD) and derived from the USGS Watershed Boundary Dataset."
             }
             ,"FacDerivedWBDHu8": {
                 "type": "string"
+               ,"title": "WBD Hydrologic Unit Code (FRS)"
+               ,"example": "2070003"
+               ,"description": "Spatially derived HUC based on the facility's geographic coordinates in FRS."
             }
             ,"FacDerivedWBDHu8Name": {
                 "type": "string"
+               ,"title": "WBD Hydrologic Unit Name (FRS Derived)"
+               ,"example": "Cacapon-Town"
+               ,"description": "The name of the hydrologic unit in which the facility is located within, derived spatially based on the facility's geographic coordinates in FRS."
             }
             ,"RadWBDHuc12": {
                 "type": "string"
@@ -6396,9 +6534,15 @@
             }
             ,"FacDerivedWBD": {
                 "type": "string"
+               ,"title": "12-Digit WBD HUC"
+               ,"example": "20700100204"
+               ,"description": "The Hydrologic Unit Code (HUC-12) of the waterbody in which the facility resides, derived based on location data in FRS."
             }
             ,"FacDerivedWBDName": {
                 "type": "string"
+               ,"title": "FRS Derived Watershed Boundary Dataset (WBD) Name"
+               ,"example": "Fourmile Run-Potomac River"
+               ,"description": "The 12 digit Watershed Boundary Dataset Name derived from the FRS Best Pick Coordinate"
             }
             ,"AttainsSource": {
                 "type": "string"
@@ -6496,6 +6640,8 @@
             }
             ,"CWPTRIbalLandCode": {
                 "type": "string"
+               ,"title": "ICIS Tribal Land Code"
+               ,"description": "From ICIS, the unique identifier for every unit of land within Indian Country."
             }
             ,"CWPPermitStatusCode": {
                 "type": "string"
@@ -6528,7 +6674,7 @@
             ,"CWPDateLastPenalty": {
                 "type": "string"
                ,"example": "09\/27\/2010"
-               ,"description": "Indicates date of most recent penalty against the facility within the last five years."
+               ,"description": "Indicates date of most recent penalty against the facility."
             }
             ,"FacTRIReporter": {
                 "type": "string"
@@ -6538,6 +6684,9 @@
             }
             ,"CWP13qtrsComplHistory": {
                 "type": "string"
+               ,"title": "CWP 13 Quarters Compliance History"
+               ,"example": "VV__SS_U__V_"
+               ,"description": "The facility's 3-year or 13-quarter compliance status history by quarter (3-month period). Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:\n_ - No Violation Identified\nV - Violation Identified\nS - High Priority Violation\nU - Undetermined"
             }
             ,"CWPCaseIDs": {
                 "type": "string"
@@ -6546,6 +6695,9 @@
             }
             ,"CWPFIPSCode": {
                 "type": "string"
+               ,"title": "CWP FIPS Code"
+               ,"example": "11032"
+               ,"description": "A 5 digit combination of the 2 digit Federal Information Processing Standards (FIPS) code for the state and the 3 digit FIPS code of the county that a facility is located in."
             }
             ,"DMRImpairedPoll": {
                 "type": "string"
@@ -6595,6 +6747,7 @@
                 "type": "string"
                ,"title": "Tribal Lands Flag"
                ,"example": "1"
+               ,"description": "A flag indicating that the facility is within a tribal area."
             }
             ,"CensusBlockGroup": {
                 "type": "string"
@@ -6609,9 +6762,14 @@
             }
             ,"EjscreenFlag": {
                 "type": "string"
+               ,"title": "EJ Screen Flag"
+               ,"description": "A Y\/N indicator identifying whether or not the facility is within an Environmental Justice area."
             }
             ,"LastDMRValueRcvdDate": {
                 "type": "string"
+               ,"title": "Last DMR Value Received Date"
+               ,"example": "01\/31\/2018"
+               ,"description": "The latest date that a Discharge Monitoring Report was received by the State or EPA."
             }
             ,"Lower48": {
                 "type": "string"
@@ -6621,26 +6779,43 @@
             }
             ,"ActiveLower48": {
                 "type": "string"
+               ,"description": "A Y\/N indicator indicating that the facility is active and located within the lower 48 contiguous US States."
             }
             ,"EffExceeds": {
                 "type": "string"
-               ,"example": "3"
+               ,"title": "Effluent Exceedances"
+               ,"example": "4"
+               ,"description": "The number of E90 Effluent Violations in the last 3 years."
             }
             ,"PastCalYrAverageFlow": {
                 "type": "string"
+               ,"title": "Past Calendar Year Average Flow"
+               ,"example": "209"
+               ,"description": "The past calendar year average flow in Million Gallons a Day (MGD)."
             }
             ,"PastCalYrToxicPollutants": {
                 "type": "string"
+               ,"title": "DMR Toxic Pollutants"
+               ,"example": "Benzene"
+               ,"description": "The toxic pollutants discharged by the NPDES facility for the most recent complete calendar year."
             }
             ,"CWPVioStatus": {
                 "type": "string"
+               ,"title": "Current RNC Violation Status"
+               ,"example": "E(EffViol)"
+               ,"description": "The current Reportable Non Compliance value for the facility."
             }
             ,"IndswFlag": {
                 "type": "string"
+               ,"title": "Industrial Stormwater Flag"
+               ,"example": "Y"
+               ,"description": "A value of Y indicates an Industrial Stormwater Permit."
             }
             ,"CertifiedDate": {
                 "type": "string"
                ,"title": "Certified Date"
+               ,"example": "01\/01\/2018"
+               ,"description": "The issue date or effective date of the permit."
             }
             ,"CollectionMethod": {
                 "type": "string"
@@ -6658,10 +6833,12 @@
                 "type": "string"
                ,"title": "Calculated Accuracy in Meters"
                ,"example": "50"
+               ,"description": "The estimated accuracy in Meters for the facility's geospatial coordinate."
             }
             ,"Map": {
                 "type": "string"
                ,"title": "Map"
+               ,"description": "No Longer Used."
             }
             ,"BiosolidsFlag": {
                 "type": "string"
@@ -6675,18 +6852,29 @@
             }
             ,"StateAuthNPDES": {
                 "type": "string"
+               ,"title": "State Authorization NPDES Facilities"
+               ,"description": "Indicates whether the state\/tribe\/territory code (first 2 digits of the NPDES_ID\/SOURCE_ID) is authorized for NPDES Facilities."
             }
             ,"StateAuthFedfac": {
                 "type": "string"
+               ,"title": "State Authorization Federal Facilities"
+               ,"description": "Indicates whether the state\/tribe\/territory code (first 2 digits of the NPDES_ID\/SOURCE_ID) is authorized to regulate Federally owned facilities."
             }
             ,"StateAuthPretreat": {
                 "type": "string"
+               ,"title": "State Authorization Pretreatment Facilities"
+               ,"description": "Indicates whether the state\/tribe\/territory code (first 2 digits of the NPDES_ID\/SOURCE_ID) is authorized for Pretreatment Facilities."
             }
             ,"StateAuthGen": {
                 "type": "string"
+               ,"title": "State Authorization General Facilities"
+               ,"description": "Indicates whether the state\/tribe\/territory code (first 2 digits of the NPDES_ID\/SOURCE_ID) is authorized for General NPDES Facilities."
             }
             ,"StateAuthBiosolids": {
                 "type": "string"
+               ,"title": "State Authorization Biosolids"
+               ,"example": "Y"
+               ,"description": "Indicates whether the state\/tribe\/territory code (first 2 digits of the NPDES_ID\/SOURCE_ID) is authorized for Biosolids."
             }
             ,"NPDESDataGroups": {
                 "type": "string"
@@ -6736,39 +6924,75 @@
             }
             ,"E90Exceeds5yr": {
                 "type": "string"
+               ,"title": "E90 Exceedences 5 Years"
+               ,"example": "16"
+               ,"description": "The number of E90 Exceedences in the last 5 years."
             }
             ,"E90Exceeds4yr": {
                 "type": "string"
+               ,"title": "E90 Exceedences 4 Years"
+               ,"example": "12"
+               ,"description": "The number of E90 Exceedences in the last 4 years."
             }
             ,"E90Exceeds3yr": {
                 "type": "string"
+               ,"title": "E90 Exceedences 3 Years"
+               ,"example": "10"
+               ,"description": "The number of E90 Exceedences in the last 3 years."
             }
             ,"E90Exceeds2yr": {
                 "type": "string"
+               ,"title": "E90 Exceedences 2 Years"
+               ,"example": "8"
+               ,"description": "The number of E90 Exceedences in the last 2 years."
             }
             ,"E90Exceeds1yr": {
                 "type": "string"
+               ,"title": "E90 Exceedences 1 Year"
+               ,"example": "4"
+               ,"description": "The number of E90 Exceedences in the last year."
             }
             ,"E90Pollutants5yr": {
                 "type": "string"
+               ,"title": "E90 Pollutants 5 Years"
+               ,"example": "Lead, Copper"
+               ,"description": "The pollutants for the E90 Exceedences in the last 5 years."
             }
             ,"E90Pollutants4yr": {
                 "type": "string"
+               ,"title": "E90 Pollutants 4 Years"
+               ,"example": "Lead, Copper"
+               ,"description": "The pollutants for the E90 Exceedences in the last 4 years."
             }
             ,"E90Pollutants3yr": {
                 "type": "string"
+               ,"title": "E90 Pollutants 3 Years"
+               ,"example": "Lead, Copper"
+               ,"description": "The pollutants for the E90 Exceedences in the last 3 years."
             }
             ,"E90Pollutants2yr": {
                 "type": "string"
+               ,"title": "E90 Pollutants 2 Years"
+               ,"example": "Lead, Copper"
+               ,"description": "The pollutants for the E90 Exceedences in the last 2 years."
             }
             ,"E90Pollutants1yr": {
                 "type": "string"
+               ,"title": "E90 Pollutants 1 Year"
+               ,"example": "Lead"
+               ,"description": "The pollutants for the E90 Exceedences in the last year."
             }
             ,"FacCountyName": {
                 "type": "string"
+               ,"title": "FRS Facility County Name"
+               ,"example": "Fairfax County"
+               ,"description": "The facility county name from EPA's Facility Registry System"
             }
             ,"FacStdCountyName": {
                 "type": "string"
+               ,"title": "FRS Standardized Facility County Name"
+               ,"example": "Fairfax County"
+               ,"description": "The standardized  facility county name from EPA's Facility Registry System"
             }
             ,"Score": {
                 "type": "string"
@@ -6779,7 +7003,7 @@
                 "type": "string"
                ,"title": "Max Score"
                ,"example": "1"
-               ,"description": "[Col. 121]"
+               ,"description": "A sorting score for internal use."
             }
          }
          ,"required": [
@@ -7189,6 +7413,7 @@
             ,"MapData": {
                 "type": "array"
                ,"title": "Map Data"
+               ,"description": "An array of facility geospatial information."
                ,"items": {
                    "$ref": "#\/definitions\/cwa1_MapData"
                }
@@ -7274,6 +7499,8 @@
             }
             ,"VioLast4QRows": {
                 "type": "string"
+               ,"title": "Facilities in Violation in the Last Year"
+               ,"description": "The number of facilities with a violation in the last year."
             }
             ,"TotalPenalties": {
                 "type": "string"
@@ -7283,6 +7510,7 @@
             }
             ,"BadSystemIDs": {
                 "type": "string"
+               ,"description": "Identifies which passed query system identifiers are invalid."
             }
             ,"QueryID": {
                 "type": "string"
@@ -7299,6 +7527,7 @@
             ,"Facilities": {
                 "type": "array"
                ,"title": "Facilities"
+               ,"description": "A complex array of facility information."
                ,"items": {
                    "$ref": "#\/definitions\/cwa1_Facilities"
                }
@@ -7339,7 +7568,7 @@
                 "type": "string"
                ,"title": "Object Identifier"
                ,"example": "1"
-               ,"description": "Sequential number assigned to each facility returned"
+               ,"description": "Sequential number assigned to each facility or cluster returned."
             }
             ,"ClusterLatitude": {
                 "type": "string"
@@ -7356,22 +7585,27 @@
             ,"ClusterIcon": {
                 "type": "string"
                ,"title": "Cluster Icon"
+               ,"description": "The icon file used to reprsent the cluster."
             }
             ,"ClusterType": {
                 "type": "string"
                ,"title": "Cluster Type"
+               ,"description": "The representative geographic area used for clustering.  Examples:  State, County, Zip Code"
             }
             ,"ClusterName": {
                 "type": "string"
                ,"title": "Cluster Name"
+               ,"description": "THe name or the identifier of the geographic area used for clustering.  Examples:  Alaska, Fairfax County, 22314"
             }
             ,"ClusterValue": {
                 "type": "string"
                ,"title": "Cluster Value"
+               ,"description": "The value, internal to the database report object, that represents this cluster, like a state abbreviation, zip code, or county FIPS code.  Examples: AK, 22314, 50011"
             }
             ,"ClusterCount": {
                 "type": "string"
                ,"title": "Cluster Count"
+               ,"description": "The number of facilities or cases in the cluster."
             }
             ,"IndianCountryRows": {
                 "type": "string"
@@ -7426,6 +7660,8 @@
             }
             ,"VioLast4QRows": {
                 "type": "string"
+               ,"title": "Facilities in Violation in the Last Year"
+               ,"description": "The number of facilities with a violation in the last year."
             }
             ,"TotalPenalties": {
                 "type": "string"
@@ -7464,6 +7700,7 @@
              "ClusterData": {
                 "type": "array"
                ,"title": "Cluster Data"
+               ,"description": "An array of state, county, or zip code cluster information"
                ,"items": {
                    "$ref": "#\/definitions\/cwa2_ClusterData"
                }
@@ -7484,7 +7721,7 @@
                 "type": "string"
                ,"title": "Object Identifier"
                ,"example": "1"
-               ,"description": "Sequential number assigned to each facility returned"
+               ,"description": "Sequential number assigned to each facility or cluster returned."
             }
             ,"CWPName": {
                 "type": "string"
@@ -7557,6 +7794,9 @@
             }
             ,"FacFederalAgencyName": {
                 "type": "string"
+               ,"title": "Federal Agency Name"
+               ,"example": "EPA"
+               ,"description": "Indicates the name of the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government."
             }
             ,"FacDerivedHuc": {
                 "type": "string"
@@ -7583,9 +7823,15 @@
             }
             ,"FacIndianSpatialFlg": {
                 "type": "string"
+               ,"title": "Indian Spatial Flag"
+               ,"example": "Y"
+               ,"description": "Returns \u201CY\u201D if a facility is located within a tribal spatial boundary as defined by the U.S. Census Bureau 2010 tribal boundary layer data for tribes in the lower 48 states and Bureau of Land Management Alaska State Office data for native villages in Alaska. Returns \u201CN\u201D if a facility is not located within a tribal or native Alaskan village area."
             }
             ,"FacDerivedTRIbes": {
                 "type": "string"
+               ,"title": "FRS Spatially Derived Tribe"
+               ,"example": "Cherokee Nation"
+               ,"description": "The tribes or tribal territories located within 25 miles of the facility's location."
             }
             ,"FacUsMexBorderFlg": {
                 "type": "string"
@@ -7639,6 +7885,8 @@
             }
             ,"DschToMs4": {
                 "type": "string"
+               ,"title": "Discharging to MS4"
+               ,"description": "Indicates if a facility discharges into a Municipal Separate Storm Sewer System (MS4)."
             }
             ,"ReceivingMs4Name": {
                 "type": "string"
@@ -7647,10 +7895,13 @@
             }
             ,"StormWaterArea": {
                 "type": "string"
-               ,"title": "Storm Water Area"
+               ,"title": "Est. Area Exposed to Stormwater (Acres)"
+               ,"description": "The estimated area of industrial activity at the site exposed to stormwater in acres."
             }
             ,"HistoricCriterionCode": {
                 "type": "string"
+               ,"title": "Historic Preservation Criterion"
+               ,"description": "Indicates the eligibility criteria for historic properties preservation."
             }
             ,"SpeciesCriticalHabitalFlag": {
                 "type": "string"
@@ -7681,16 +7932,23 @@
             ,"TypeOfMonitoring": {
                 "type": "string"
                ,"title": "Type Of Monitoring"
+               ,"description": "The type of monitoring specified in the SWPPP."
             }
             ,"TypeOfWater": {
                 "type": "string"
                ,"title": "Type Of Water"
+               ,"description": "The type of water body receiving discharges stormwater discharges specified in the SWPPP."
             }
             ,"EjscreenFlagUs": {
                 "type": "string"
+               ,"title": "EJ Screen Flag (US)"
+               ,"description": "A Y\/N indicator identifying whether or not the facility is within an Environmental Justice area."
             }
             ,"Over80CountUs": {
                 "type": "string"
+               ,"title": "EJ Indexes Above 80th Percentile"
+               ,"example": "3"
+               ,"description": "The number of primary EJSCREEN environmental justice (EJ) indexes exceeding the 80th or higher national percentile for the Census block group that the facility is located in."
             }
             ,"PctilePctpre1960Us": {
                 "type": "string"
@@ -7762,13 +8020,19 @@
             ,"Sector": {
                 "type": "string"
                ,"title": "Sector"
+               ,"example": "N: Scrap Recycling Facilities"
+               ,"description": "The sector code and description for the industrial stormwater facility."
             }
             ,"Subsector": {
                 "type": "string"
                ,"title": "Subsector"
+               ,"description": "The industrial subsector associated with the facility."
             }
             ,"MsgpPermitType": {
                 "type": "string"
+               ,"title": "MSGP Permit Type"
+               ,"example": "NOI"
+               ,"description": "The Industrial stormwater permit type."
             }
             ,"CWPVersionNmbr": {
                 "type": "string"
@@ -7790,6 +8054,7 @@
             ,"SubmittedDate": {
                 "type": "string"
                ,"title": "Submitted Date"
+               ,"description": "Date that the permit was submitted to the issuing agency."
             }
             ,"CWPPermitTypeDesc": {
                 "type": "string"
@@ -7799,12 +8064,20 @@
             }
             ,"CWPIssueDate": {
                 "type": "string"
+               ,"title": "Permit Issue Date"
+               ,"example": "11\/10\/2015"
+               ,"description": "Date (MM\/DD\/YYYY) that the permit was issued."
             }
             ,"CWPEffectiveDate": {
                 "type": "string"
+               ,"title": "Permit Effective Date"
+               ,"example": "01\/14\/2009"
+               ,"description": "Date (MM\/DD\/YYYY) that the permit became effective."
             }
             ,"CWPTerminationDate": {
                 "type": "string"
+               ,"title": "Permit Termination Date"
+               ,"description": "Date (MM\/DD\/YYYY) that the permit was terminated."
             }
             ,"CWPExpirationDate": {
                 "type": "string"
@@ -7820,7 +8093,9 @@
             }
             ,"PermitComponents": {
                 "type": "string"
+               ,"title": "Permit Components"
                ,"example": "POTW"
+               ,"description": "Indicates the permit component(s) associated with the NPDES Permit Program Area."
             }
             ,"NPDESDataGroupsDescs": {
                 "type": "string"
@@ -7829,18 +8104,28 @@
             }
             ,"MsgpLastReportYear": {
                 "type": "string"
+               ,"title": "MSGP Latest Annual Report Year"
+               ,"description": "The calendar year of the latest MSGP annual report submitted by the permitted facility."
             }
             ,"MsgpFacilityInspctnSmmry": {
                 "type": "string"
+               ,"title": "MSGP Facility Inspection Summary"
+               ,"description": "Summary of the quarterly facility inspection documentation (part 3.1 of the permit) during the MSGP annual report year."
             }
             ,"MsgpVisualAssessmentSmmry": {
                 "type": "string"
+               ,"title": "MSGP Visual Assessment Summary"
+               ,"description": "Summary of the quarterly visual assessment documentation (part 3.3 of the permit) during the MSGP annual report year."
             }
             ,"MsgpNoFurtherRdctnRtnle": {
                 "type": "string"
+               ,"title": "MsgpNoFurtherRdctnRtnle"
+               ,"description": "Description of rationale for why no further reductions are achievable (part 6.2.1.2 of the permit) during the MSGP annual report year."
             }
             ,"MsgpCorrectiveActionSmmry": {
                 "type": "string"
+               ,"title": "MSGP Corrective Action Summary"
+               ,"description": "Summary of the corrective action documentation (part 4.3 of the permit) during the MSGP annual report year."
             }
             ,"AIRIDs": {
                 "type": "string"
@@ -7872,12 +8157,21 @@
             }
             ,"RmpIDs": {
                 "type": "string"
+               ,"title": "RMP IDs"
+               ,"example": "110000"
+               ,"description": "A unique ID assigned to each facility submitting a Risk Management Plan to EPA under the Risk Management Plan Rule."
             }
             ,"BioVioLastYearFlag": {
                 "type": "string"
+               ,"title": "Biosolids Violation in Last Year"
+               ,"example": "N"
+               ,"description": "Y if the facility has a biosolids single event violation under the Clean Water Act in the last year. Note: Violations reported on the 2016 and 2017 Biosolids Annual Report are not updated with the weekly data refresh and may not be representative of a facility's recently submitted or updated report. "
             }
             ,"BioQtrsWithVio": {
                 "type": "string"
+               ,"title": "Quarters with Violation for Biosolids (3 years)"
+               ,"example": "0"
+               ,"description": "Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered with violations for biosolids."
             }
             ,"CWPStatus": {
                 "type": "string"
@@ -7887,21 +8181,37 @@
             }
             ,"CWPSNCStatus": {
                 "type": "string"
+               ,"title": "Significant Noncompliance (SNC) Status"
+               ,"description": "Indicates when a major source is in significant noncompliance (SNC) or a non-major source has a Category I violation."
             }
             ,"CWPSNCStatusDate": {
                 "type": "string"
+               ,"title": "SNC Status Date"
+               ,"example": "09\/30\/2018"
+               ,"description": "The status date of the facility's Significant Noncompliance designation."
             }
             ,"CWPQtrsWithNC": {
                 "type": "string"
+               ,"title": "Quarters with Noncompliance (3 years)"
+               ,"example": "0"
+               ,"description": "Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered either with violations, in noncompliance (NC) status, or in Significant Noncompliance (SNC), as described above under Compliance Status."
             }
             ,"CWPViolStatus": {
                 "type": "string"
+               ,"title": "Current Violation Status"
+               ,"example": "No"
+               ,"description": "Indicates if the facility is currently in any violation under the Clean Water Act, either in Noncompliance or Significant Noncompliance."
             }
             ,"CWPQtrsWithSNC": {
                 "type": "string"
+               ,"title": "Quarters with SNC (3 years)"
+               ,"example": "0"
+               ,"description": "Count of the number of quarters, out of the last twelve quarters, in which the permit is considered in Significant Noncompliance (SNC), as described above under Compliance Status."
             }
             ,"MissDMRQtrs": {
                 "type": "string"
+               ,"title": "Qtrs in Undetermined Compliance Status (2 years)"
+               ,"description": "Count of the number of quarters, out of the last twelve quarters, in which EPA's data system was not able to determine the facility-level compliance status."
             }
             ,"CWPE90Cnt": {
                 "type": "string"
@@ -7916,6 +8226,7 @@
             }
             ,"AlrExceedences": {
                 "type": "string"
+               ,"title": "Alert Limit Exceedences"
             }
             ,"BioReportYear": {
                 "type": "string"
@@ -7930,7 +8241,7 @@
             ,"CWPDaysLastInspection": {
                 "type": "string"
                ,"example": "247"
-               ,"description": "Indicates the number of days since the most recent inspection of the facility. Inspections listed within the last five years are included."
+               ,"description": "Indicates the number of days since the most recent inspection of the facility."
             }
             ,"CWPDateLastInspection": {
                 "type": "string"
@@ -7941,12 +8252,12 @@
             ,"CWPDateLastInspEPA": {
                 "type": "string"
                ,"example": "07\/29\/2015"
-               ,"description": "Indicates the effective date of the most recent inspection taken against the facility by EPA within the last five years."
+               ,"description": "Indicates the effective date of the most recent inspection taken against the facility."
             }
             ,"CWPDateLastInspSt": {
                 "type": "string"
                ,"example": "09\/15\/2004"
-               ,"description": "Indicates the effective date of the most recent inspection taken against the facility by a state environmental agency within the last five years."
+               ,"description": "Indicates the effective date of the most recent inspection taken against the facility by a state environmental agency."
             }
             ,"CWPBioInspCount": {
                 "type": "string"
@@ -7958,12 +8269,18 @@
             }
             ,"CWPDateLastBioInsp": {
                 "type": "string"
+               ,"title": "Date of Last Biosolids Inspection"
+               ,"description": "The date on which the most recent biosolids program inspection of the facility took place."
             }
             ,"CWPDateLastBioInspEPA": {
                 "type": "string"
+               ,"title": "Date of Last Biosolids Inspection (EPA)"
+               ,"description": "Indicate the last inspection date by EPA"
             }
             ,"CWPDateLastBioInspSt": {
                 "type": "string"
+               ,"title": "Date of Last Biosolids Inspection (State)"
+               ,"description": "Indicate the last inspection date by state environmental agency"
             }
             ,"CWPInformalEnfActCount": {
                 "type": "string"
@@ -7980,32 +8297,32 @@
                 "type": "string"
                ,"title": "Date of Last Informal Enf Action"
                ,"example": "06\/09\/2013"
-               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility within the last five years."
+               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility."
             }
             ,"CWPDateLastIeaEPA": {
                 "type": "string"
                ,"example": "12\/09\/1992"
-               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility by EPA within the last five years."
+               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility by EPA."
             }
             ,"CWPDateLastIeaSt": {
                 "type": "string"
                ,"example": "06\/09\/2013"
-               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility by a state environmental agency within the last five years."
+               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility by a state environmental agency."
             }
             ,"CWPDateLastFea": {
                 "type": "string"
                ,"example": "06\/01\/2006"
-               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility within the last five years."
+               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility."
             }
             ,"CWPDateLastFeaEPA": {
                 "type": "string"
                ,"example": "06\/01\/2006"
-               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility by EPA within the last five years."
+               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility by EPA."
             }
             ,"CWPDateLastFeaSt": {
                 "type": "string"
                ,"example": "09\/27\/2010"
-               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility by a state environmental agency within the last five years."
+               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility by a state environmental agency."
             }
             ,"CWPBioIeaCount": {
                 "type": "string"
@@ -8017,21 +8334,33 @@
             }
             ,"CWPDateLastBioIea": {
                 "type": "string"
+               ,"title": "Date Last Biosolids Informal Action"
+               ,"description": "Indicates the effective date of the most recent listed biosolids informal enforcement action taken against the facility within the last five years."
             }
             ,"CWPDateLastBioIeaEPA": {
                 "type": "string"
+               ,"title": "Date Last  Biosolids Informal Action (EPA)"
+               ,"description": "Indicates the effective date of the most recent listed biosolids informal enforcement action taken against the facility by EPA within the last five years."
             }
             ,"CWPDateLastBioIeaSt": {
                 "type": "string"
+               ,"title": "Date Last Biosolids Informal Action (State)"
+               ,"description": "Indicates the effective date of the most recent listed biosolids informal enforcement action taken against the facility by a state environmental agency within the last five years."
             }
             ,"CWPDateLastBioFea": {
                 "type": "string"
+               ,"title": "Date Last Biosolids Formal Action"
+               ,"description": "Indicates the effective date of the most recent listed biosolids formal enforcement action taken against the facility within the last five years."
             }
             ,"CWPDateLastBioFeaEPA": {
                 "type": "string"
+               ,"title": "Date Last Biosolids Formal Action (EPA)"
+               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility by EPA within the last five years."
             }
             ,"CWPDateLastBioFeaSt": {
                 "type": "string"
+               ,"title": "Date Last Biosolids Formal Action (State)"
+               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility by a state environmental agency within the last five years."
             }
             ,"CWPBioPenalties": {
                 "type": "string"
@@ -8039,9 +8368,13 @@
             }
             ,"CWPDateLastBioPenalty": {
                 "type": "string"
+               ,"title": "Date of Last Biosolids Penalty"
+               ,"description": "Indicates the date on which the most recent assessed (or final) biosolids penalty was taken against the facility within the last five years. This measure only includes penalties that have been entered in the program database ICIS-NPDES."
             }
             ,"BioReportYears": {
                 "type": "string"
+               ,"title": "Biosolids Annual Report"
+               ,"description": "Reporting years are determined by the year of the reporting period end date. Data reflect the last two reporting years."
             }
             ,"BioReportingObligations2016": {
                 "type": "string"
@@ -8225,6 +8558,9 @@
             }
             ,"BioVioStatus": {
                 "type": "string"
+               ,"title": "Biosolids Violation Status Flag"
+               ,"example": "0"
+               ,"description": "A value of 1 indicates if the Biosolids facility currently has an unresolved biosolids related Single Event Violation."
             }
             ,"BioViolFlag": {
                 "type": "string"
@@ -8328,9 +8664,13 @@
             }
             ,"PollWithViolation": {
                 "type": "string"
+               ,"title": "Pollutant(s) With Violations (3 years)"
+               ,"description": "The names of pollutants with effluent exceedances (i.e., violation code E90) in the past three years in ICIS-NPDES."
             }
             ,"LimPollutant": {
                 "type": "string"
+               ,"title": "Pollutants(s) With Limits"
+               ,"description": "The list of pollutants with enforceable (i.e., numeric limits or monitoring only) and\/or benchmark limits in the current version of a NPDES permit."
             }
             ,"DMRPounds": {
                 "type": "string"
@@ -8344,12 +8684,19 @@
             }
             ,"PastCalYrConvPollutants": {
                 "type": "string"
+               ,"title": "DMR Conventional Pollutants Loadings (lb\/year)"
+               ,"description": "Total pounds of conventional pollutants discharged by the NPDES ID for the most recent complete calendar year."
             }
             ,"PastCalYrToxicPolOvrLmt": {
                 "type": "string"
+               ,"title": "DMR Toxic Load Over Limit (lb-eq\/year)"
+               ,"example": "0"
+               ,"description": "Total load over limit of toxic-weighted pounds equivalent (TWPE) discharged by the NPDES ID for the most recent complete calendar year."
             }
             ,"PastCalYrConvPolOvrLmt": {
                 "type": "string"
+               ,"title": "DMR Conventional Pollutants - Load Over Limit (lb\/year)"
+               ,"description": "Total load over limit of conventional pollutant pounds equivalent discharged by the NPDES ID for the most recent complete calendar year."
             }
             ,"FacTRISwRel": {
                 "type": "string"
@@ -8403,15 +8750,27 @@
             }
             ,"RadWBDHu8": {
                 "type": "string"
+               ,"title": "WBD Hydrologic Unit Code (RAD)"
+               ,"example": "2060003"
+               ,"description": "Hydrologic Unit Code (HUC) from the Reach Address Database (RAD), which is derived from the USGS Watershed Boundary Dataset."
             }
             ,"RadWBDHu8Name": {
                 "type": "string"
+               ,"title": "WBD Hydrologic Unit Name (RAD)"
+               ,"example": "Gunpowder-Patapsco"
+               ,"description": "The name of the hydrologic unit in which the facility may discharge, from the Reach Address Database (RAD) and derived from the USGS Watershed Boundary Dataset."
             }
             ,"FacDerivedWBDHu8": {
                 "type": "string"
+               ,"title": "WBD Hydrologic Unit Code (FRS)"
+               ,"example": "2070003"
+               ,"description": "Spatially derived HUC based on the facility's geographic coordinates in FRS."
             }
             ,"FacDerivedWBDHu8Name": {
                 "type": "string"
+               ,"title": "WBD Hydrologic Unit Name (FRS Derived)"
+               ,"example": "Cacapon-Town"
+               ,"description": "The name of the hydrologic unit in which the facility is located within, derived spatially based on the facility's geographic coordinates in FRS."
             }
             ,"RadWBDHuc12": {
                 "type": "string"
@@ -8427,9 +8786,15 @@
             }
             ,"FacDerivedWBD": {
                 "type": "string"
+               ,"title": "12-Digit WBD HUC"
+               ,"example": "20700100204"
+               ,"description": "The Hydrologic Unit Code (HUC-12) of the waterbody in which the facility resides, derived based on location data in FRS."
             }
             ,"FacDerivedWBDName": {
                 "type": "string"
+               ,"title": "FRS Derived Watershed Boundary Dataset (WBD) Name"
+               ,"example": "Fourmile Run-Potomac River"
+               ,"description": "The 12 digit Watershed Boundary Dataset Name derived from the FRS Best Pick Coordinate"
             }
             ,"AttainsSource": {
                 "type": "string"
@@ -8527,6 +8892,8 @@
             }
             ,"CWPTRIbalLandCode": {
                 "type": "string"
+               ,"title": "ICIS Tribal Land Code"
+               ,"description": "From ICIS, the unique identifier for every unit of land within Indian Country."
             }
             ,"CWPPermitStatusCode": {
                 "type": "string"
@@ -8559,7 +8926,7 @@
             ,"CWPDateLastPenalty": {
                 "type": "string"
                ,"example": "09\/27\/2010"
-               ,"description": "Indicates date of most recent penalty against the facility within the last five years."
+               ,"description": "Indicates date of most recent penalty against the facility."
             }
             ,"FacTRIReporter": {
                 "type": "string"
@@ -8569,6 +8936,9 @@
             }
             ,"CWP13qtrsComplHistory": {
                 "type": "string"
+               ,"title": "CWP 13 Quarters Compliance History"
+               ,"example": "VV__SS_U__V_"
+               ,"description": "The facility's 3-year or 13-quarter compliance status history by quarter (3-month period). Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:\n_ - No Violation Identified\nV - Violation Identified\nS - High Priority Violation\nU - Undetermined"
             }
             ,"CWPCaseIDs": {
                 "type": "string"
@@ -8577,6 +8947,9 @@
             }
             ,"CWPFIPSCode": {
                 "type": "string"
+               ,"title": "CWP FIPS Code"
+               ,"example": "11032"
+               ,"description": "A 5 digit combination of the 2 digit Federal Information Processing Standards (FIPS) code for the state and the 3 digit FIPS code of the county that a facility is located in."
             }
             ,"DMRImpairedPoll": {
                 "type": "string"
@@ -8626,6 +8999,7 @@
                 "type": "string"
                ,"title": "Tribal Lands Flag"
                ,"example": "1"
+               ,"description": "A flag indicating that the facility is within a tribal area."
             }
             ,"CensusBlockGroup": {
                 "type": "string"
@@ -8640,9 +9014,14 @@
             }
             ,"EjscreenFlag": {
                 "type": "string"
+               ,"title": "EJ Screen Flag"
+               ,"description": "A Y\/N indicator identifying whether or not the facility is within an Environmental Justice area."
             }
             ,"LastDMRValueRcvdDate": {
                 "type": "string"
+               ,"title": "Last DMR Value Received Date"
+               ,"example": "01\/31\/2018"
+               ,"description": "The latest date that a Discharge Monitoring Report was received by the State or EPA."
             }
             ,"Lower48": {
                 "type": "string"
@@ -8652,26 +9031,43 @@
             }
             ,"ActiveLower48": {
                 "type": "string"
+               ,"description": "A Y\/N indicator indicating that the facility is active and located within the lower 48 contiguous US States."
             }
             ,"EffExceeds": {
                 "type": "string"
-               ,"example": "3"
+               ,"title": "Effluent Exceedances"
+               ,"example": "4"
+               ,"description": "The number of E90 Effluent Violations in the last 3 years."
             }
             ,"PastCalYrAverageFlow": {
                 "type": "string"
+               ,"title": "Past Calendar Year Average Flow"
+               ,"example": "209"
+               ,"description": "The past calendar year average flow in Million Gallons a Day (MGD)."
             }
             ,"PastCalYrToxicPollutants": {
                 "type": "string"
+               ,"title": "DMR Toxic Pollutants"
+               ,"example": "Benzene"
+               ,"description": "The toxic pollutants discharged by the NPDES facility for the most recent complete calendar year."
             }
             ,"CWPVioStatus": {
                 "type": "string"
+               ,"title": "Current RNC Violation Status"
+               ,"example": "E(EffViol)"
+               ,"description": "The current Reportable Non Compliance value for the facility."
             }
             ,"IndswFlag": {
                 "type": "string"
+               ,"title": "Industrial Stormwater Flag"
+               ,"example": "Y"
+               ,"description": "A value of Y indicates an Industrial Stormwater Permit."
             }
             ,"CertifiedDate": {
                 "type": "string"
                ,"title": "Certified Date"
+               ,"example": "01\/01\/2018"
+               ,"description": "The issue date or effective date of the permit."
             }
             ,"CollectionMethod": {
                 "type": "string"
@@ -8689,10 +9085,12 @@
                 "type": "string"
                ,"title": "Calculated Accuracy in Meters"
                ,"example": "50"
+               ,"description": "The estimated accuracy in Meters for the facility's geospatial coordinate."
             }
             ,"Map": {
                 "type": "string"
                ,"title": "Map"
+               ,"description": "No Longer Used."
             }
             ,"BiosolidsFlag": {
                 "type": "string"
@@ -8706,18 +9104,29 @@
             }
             ,"StateAuthNPDES": {
                 "type": "string"
+               ,"title": "State Authorization NPDES Facilities"
+               ,"description": "Indicates whether the state\/tribe\/territory code (first 2 digits of the NPDES_ID\/SOURCE_ID) is authorized for NPDES Facilities."
             }
             ,"StateAuthFedfac": {
                 "type": "string"
+               ,"title": "State Authorization Federal Facilities"
+               ,"description": "Indicates whether the state\/tribe\/territory code (first 2 digits of the NPDES_ID\/SOURCE_ID) is authorized to regulate Federally owned facilities."
             }
             ,"StateAuthPretreat": {
                 "type": "string"
+               ,"title": "State Authorization Pretreatment Facilities"
+               ,"description": "Indicates whether the state\/tribe\/territory code (first 2 digits of the NPDES_ID\/SOURCE_ID) is authorized for Pretreatment Facilities."
             }
             ,"StateAuthGen": {
                 "type": "string"
+               ,"title": "State Authorization General Facilities"
+               ,"description": "Indicates whether the state\/tribe\/territory code (first 2 digits of the NPDES_ID\/SOURCE_ID) is authorized for General NPDES Facilities."
             }
             ,"StateAuthBiosolids": {
                 "type": "string"
+               ,"title": "State Authorization Biosolids"
+               ,"example": "Y"
+               ,"description": "Indicates whether the state\/tribe\/territory code (first 2 digits of the NPDES_ID\/SOURCE_ID) is authorized for Biosolids."
             }
             ,"NPDESDataGroups": {
                 "type": "string"
@@ -8767,39 +9176,75 @@
             }
             ,"E90Exceeds5yr": {
                 "type": "string"
+               ,"title": "E90 Exceedences 5 Years"
+               ,"example": "16"
+               ,"description": "The number of E90 Exceedences in the last 5 years."
             }
             ,"E90Exceeds4yr": {
                 "type": "string"
+               ,"title": "E90 Exceedences 4 Years"
+               ,"example": "12"
+               ,"description": "The number of E90 Exceedences in the last 4 years."
             }
             ,"E90Exceeds3yr": {
                 "type": "string"
+               ,"title": "E90 Exceedences 3 Years"
+               ,"example": "10"
+               ,"description": "The number of E90 Exceedences in the last 3 years."
             }
             ,"E90Exceeds2yr": {
                 "type": "string"
+               ,"title": "E90 Exceedences 2 Years"
+               ,"example": "8"
+               ,"description": "The number of E90 Exceedences in the last 2 years."
             }
             ,"E90Exceeds1yr": {
                 "type": "string"
+               ,"title": "E90 Exceedences 1 Year"
+               ,"example": "4"
+               ,"description": "The number of E90 Exceedences in the last year."
             }
             ,"E90Pollutants5yr": {
                 "type": "string"
+               ,"title": "E90 Pollutants 5 Years"
+               ,"example": "Lead, Copper"
+               ,"description": "The pollutants for the E90 Exceedences in the last 5 years."
             }
             ,"E90Pollutants4yr": {
                 "type": "string"
+               ,"title": "E90 Pollutants 4 Years"
+               ,"example": "Lead, Copper"
+               ,"description": "The pollutants for the E90 Exceedences in the last 4 years."
             }
             ,"E90Pollutants3yr": {
                 "type": "string"
+               ,"title": "E90 Pollutants 3 Years"
+               ,"example": "Lead, Copper"
+               ,"description": "The pollutants for the E90 Exceedences in the last 3 years."
             }
             ,"E90Pollutants2yr": {
                 "type": "string"
+               ,"title": "E90 Pollutants 2 Years"
+               ,"example": "Lead, Copper"
+               ,"description": "The pollutants for the E90 Exceedences in the last 2 years."
             }
             ,"E90Pollutants1yr": {
                 "type": "string"
+               ,"title": "E90 Pollutants 1 Year"
+               ,"example": "Lead"
+               ,"description": "The pollutants for the E90 Exceedences in the last year."
             }
             ,"FacCountyName": {
                 "type": "string"
+               ,"title": "FRS Facility County Name"
+               ,"example": "Fairfax County"
+               ,"description": "The facility county name from EPA's Facility Registry System"
             }
             ,"FacStdCountyName": {
                 "type": "string"
+               ,"title": "FRS Standardized Facility County Name"
+               ,"example": "Fairfax County"
+               ,"description": "The standardized  facility county name from EPA's Facility Registry System"
             }
             ,"Score": {
                 "type": "string"
@@ -8810,7 +9255,7 @@
                 "type": "string"
                ,"title": "Max Score"
                ,"example": "1"
-               ,"description": "[Col. 121]"
+               ,"description": "A sorting score for internal use."
             }
          }
          ,"required": [
@@ -9186,6 +9631,8 @@
             }
             ,"VioLast4QRows": {
                 "type": "string"
+               ,"title": "Facilities in Violation in the Last Year"
+               ,"description": "The number of facilities with a violation in the last year."
             }
             ,"TotalPenalties": {
                 "type": "string"
@@ -9195,6 +9642,7 @@
             }
             ,"BadSystemIDs": {
                 "type": "string"
+               ,"description": "Identifies which passed query system identifiers are invalid."
             }
             ,"IconBaseURL": {
                 "type": "string"
@@ -9212,6 +9660,7 @@
                 "type": "string"
                ,"title": "Service Base URL"
                ,"example": "https:\/\/ofmpub.epa.gov\/echo\/echo_rest_services.get_facility_info"
+               ,"description": "The base service URL."
             }
             ,"QueryParameters": {
                 "type": "array"
@@ -9228,6 +9677,7 @@
             ,"Facilities": {
                 "type": "array"
                ,"title": "Facilities"
+               ,"description": "A complex array of facility information."
                ,"items": {
                    "$ref": "#\/definitions\/cwa2_Facilities"
                }
@@ -9366,6 +9816,9 @@
             }
             ,"FacFederalAgencyName": {
                 "type": "string"
+               ,"title": "Federal Agency Name"
+               ,"example": "EPA"
+               ,"description": "Indicates the name of the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government."
             }
             ,"FacDerivedHuc": {
                 "type": "string"
@@ -9392,9 +9845,15 @@
             }
             ,"FacIndianSpatialFlg": {
                 "type": "string"
+               ,"title": "Indian Spatial Flag"
+               ,"example": "Y"
+               ,"description": "Returns \u201CY\u201D if a facility is located within a tribal spatial boundary as defined by the U.S. Census Bureau 2010 tribal boundary layer data for tribes in the lower 48 states and Bureau of Land Management Alaska State Office data for native villages in Alaska. Returns \u201CN\u201D if a facility is not located within a tribal or native Alaskan village area."
             }
             ,"FacDerivedTRIbes": {
                 "type": "string"
+               ,"title": "FRS Spatially Derived Tribe"
+               ,"example": "Cherokee Nation"
+               ,"description": "The tribes or tribal territories located within 25 miles of the facility's location."
             }
             ,"FacUsMexBorderFlg": {
                 "type": "string"
@@ -9436,6 +9895,8 @@
             }
             ,"DschToMs4": {
                 "type": "string"
+               ,"title": "Discharging to MS4"
+               ,"description": "Indicates if a facility discharges into a Municipal Separate Storm Sewer System (MS4)."
             }
             ,"ReceivingMs4Name": {
                 "type": "string"
@@ -9444,10 +9905,13 @@
             }
             ,"StormWaterArea": {
                 "type": "string"
-               ,"title": "Storm Water Area"
+               ,"title": "Est. Area Exposed to Stormwater (Acres)"
+               ,"description": "The estimated area of industrial activity at the site exposed to stormwater in acres."
             }
             ,"HistoricCriterionCode": {
                 "type": "string"
+               ,"title": "Historic Preservation Criterion"
+               ,"description": "Indicates the eligibility criteria for historic properties preservation."
             }
             ,"SpeciesCriticalHabitalFlag": {
                 "type": "string"
@@ -9478,16 +9942,23 @@
             ,"TypeOfMonitoring": {
                 "type": "string"
                ,"title": "Type Of Monitoring"
+               ,"description": "The type of monitoring specified in the SWPPP."
             }
             ,"TypeOfWater": {
                 "type": "string"
                ,"title": "Type Of Water"
+               ,"description": "The type of water body receiving discharges stormwater discharges specified in the SWPPP."
             }
             ,"EjscreenFlagUs": {
                 "type": "string"
+               ,"title": "EJ Screen Flag (US)"
+               ,"description": "A Y\/N indicator identifying whether or not the facility is within an Environmental Justice area."
             }
             ,"Over80CountUs": {
                 "type": "number"
+               ,"title": "EJ Indexes Above 80th Percentile"
+               ,"example": 3
+               ,"description": "The number of primary EJSCREEN environmental justice (EJ) indexes exceeding the 80th or higher national percentile for the Census block group that the facility is located in."
             }
             ,"PctilePctpre1960Us": {
                 "type": "number"
@@ -9559,13 +10030,19 @@
             ,"Sector": {
                 "type": "string"
                ,"title": "Sector"
+               ,"example": "N: Scrap Recycling Facilities"
+               ,"description": "The sector code and description for the industrial stormwater facility."
             }
             ,"Subsector": {
                 "type": "string"
                ,"title": "Subsector"
+               ,"description": "The industrial subsector associated with the facility."
             }
             ,"MsgpPermitType": {
                 "type": "string"
+               ,"title": "MSGP Permit Type"
+               ,"example": "NOI"
+               ,"description": "The Industrial stormwater permit type."
             }
             ,"CWPVersionNmbr": {
                 "type": "number"
@@ -9587,6 +10064,7 @@
             ,"SubmittedDate": {
                 "type": "string"
                ,"title": "Submitted Date"
+               ,"description": "Date that the permit was submitted to the issuing agency."
             }
             ,"CWPPermitTypeDesc": {
                 "type": "string"
@@ -9596,12 +10074,20 @@
             }
             ,"CWPIssueDate": {
                 "type": "string"
+               ,"title": "Permit Issue Date"
+               ,"example": "11\/10\/2015"
+               ,"description": "Date (MM\/DD\/YYYY) that the permit was issued."
             }
             ,"CWPEffectiveDate": {
                 "type": "string"
+               ,"title": "Permit Effective Date"
+               ,"example": "01\/14\/2009"
+               ,"description": "Date (MM\/DD\/YYYY) that the permit became effective."
             }
             ,"CWPTerminationDate": {
                 "type": "string"
+               ,"title": "Permit Termination Date"
+               ,"description": "Date (MM\/DD\/YYYY) that the permit was terminated."
             }
             ,"CWPExpirationDate": {
                 "type": "string"
@@ -9617,7 +10103,9 @@
             }
             ,"PermitComponents": {
                 "type": "string"
+               ,"title": "Permit Components"
                ,"example": "POTW"
+               ,"description": "Indicates the permit component(s) associated with the NPDES Permit Program Area."
             }
             ,"NPDESDataGroupsDescs": {
                 "type": "string"
@@ -9626,18 +10114,28 @@
             }
             ,"MsgpLastReportYear": {
                 "type": "string"
+               ,"title": "MSGP Latest Annual Report Year"
+               ,"description": "The calendar year of the latest MSGP annual report submitted by the permitted facility."
             }
             ,"MsgpFacilityInspctnSmmry": {
                 "type": "string"
+               ,"title": "MSGP Facility Inspection Summary"
+               ,"description": "Summary of the quarterly facility inspection documentation (part 3.1 of the permit) during the MSGP annual report year."
             }
             ,"MsgpVisualAssessmentSmmry": {
                 "type": "string"
+               ,"title": "MSGP Visual Assessment Summary"
+               ,"description": "Summary of the quarterly visual assessment documentation (part 3.3 of the permit) during the MSGP annual report year."
             }
             ,"MsgpNoFurtherRdctnRtnle": {
                 "type": "string"
+               ,"title": "MsgpNoFurtherRdctnRtnle"
+               ,"description": "Description of rationale for why no further reductions are achievable (part 6.2.1.2 of the permit) during the MSGP annual report year."
             }
             ,"MsgpCorrectiveActionSmmry": {
                 "type": "string"
+               ,"title": "MSGP Corrective Action Summary"
+               ,"description": "Summary of the corrective action documentation (part 4.3 of the permit) during the MSGP annual report year."
             }
             ,"AIRIDs": {
                 "type": "string"
@@ -9669,12 +10167,21 @@
             }
             ,"RmpIDs": {
                 "type": "string"
+               ,"title": "RMP IDs"
+               ,"example": "110000"
+               ,"description": "A unique ID assigned to each facility submitting a Risk Management Plan to EPA under the Risk Management Plan Rule."
             }
             ,"BioVioLastYearFlag": {
                 "type": "string"
+               ,"title": "Biosolids Violation in Last Year"
+               ,"example": "N"
+               ,"description": "Y if the facility has a biosolids single event violation under the Clean Water Act in the last year. Note: Violations reported on the 2016 and 2017 Biosolids Annual Report are not updated with the weekly data refresh and may not be representative of a facility's recently submitted or updated report. "
             }
             ,"BioQtrsWithVio": {
                 "type": "number"
+               ,"title": "Quarters with Violation for Biosolids (3 years)"
+               ,"example": 0
+               ,"description": "Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered with violations for biosolids."
             }
             ,"CWPStatus": {
                 "type": "string"
@@ -9684,22 +10191,38 @@
             }
             ,"CWPSNCStatus": {
                 "type": "string"
+               ,"title": "Significant Noncompliance (SNC) Status"
+               ,"description": "Indicates when a major source is in significant noncompliance (SNC) or a non-major source has a Category I violation."
             }
             ,"CWPSNCStatusDate": {
                 "type": "string"
+               ,"title": "SNC Status Date"
+               ,"example": "09\/30\/2018"
+               ,"description": "The status date of the facility's Significant Noncompliance designation."
             }
             ,"CWPQtrsWithNC": {
                 "type": "number"
+               ,"title": "Quarters with Noncompliance (3 years)"
+               ,"example": 3
+               ,"description": "Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered either with violations, in noncompliance (NC) status, or in Significant Noncompliance (SNC), as described above under Compliance Status."
             }
             ,"CWPViolStatus": {
                 "type": "string"
+               ,"title": "Current Violation Status"
+               ,"example": "No"
+               ,"description": "Indicates if the facility is currently in any violation under the Clean Water Act, either in Noncompliance or Significant Noncompliance."
             }
             ,"CWPQtrsWithSNC": {
                 "type": "number"
+               ,"title": "Quarters with SNC (3 years)"
+               ,"example": "2"
+               ,"description": "Count of the number of quarters, out of the last twelve quarters, in which the permit is considered in Significant Noncompliance (SNC), as described above under Compliance Status."
             }
             ,"MissDMRQtrs": {
                 "type": "number"
+               ,"title": "Qtrs in Undetermined Compliance Status (2 years)"
                ,"example": 0
+               ,"description": "Count of the number of quarters, out of the last twelve quarters, in which EPA's data system was not able to determine the facility-level compliance status."
             }
             ,"CWPE90Cnt": {
                 "type": "number"
@@ -9714,6 +10237,7 @@
             }
             ,"AlrExceedences": {
                 "type": "string"
+               ,"title": "Alert Limit Exceedences"
             }
             ,"BioReportYear": {
                 "type": "string"
@@ -9728,17 +10252,17 @@
             ,"CWPDaysLastInspection": {
                 "type": "number"
                ,"example": 247
-               ,"description": "Indicates the number of days since the most recent inspection of the facility. Inspections listed within the last five years are included."
+               ,"description": "Indicates the number of days since the most recent inspection of the facility."
             }
             ,"CWPDateLastInspEPA": {
                 "type": "string"
                ,"example": "07\/29\/2015"
-               ,"description": "Indicates the effective date of the most recent inspection taken against the facility by EPA within the last five years."
+               ,"description": "Indicates the effective date of the most recent inspection taken against the facility."
             }
             ,"CWPDateLastInspSt": {
                 "type": "string"
                ,"example": "09\/15\/2004"
-               ,"description": "Indicates the effective date of the most recent inspection taken against the facility by a state environmental agency within the last five years."
+               ,"description": "Indicates the effective date of the most recent inspection taken against the facility by a state environmental agency."
             }
             ,"CWPDateLastInspection": {
                 "type": "string"
@@ -9756,12 +10280,18 @@
             }
             ,"CWPDateLastBioInsp": {
                 "type": "string"
+               ,"title": "Date of Last Biosolids Inspection"
+               ,"description": "The date on which the most recent biosolids program inspection of the facility took place."
             }
             ,"CWPDateLastBioInspEPA": {
                 "type": "string"
+               ,"title": "Date of Last Biosolids Inspection (EPA)"
+               ,"description": "Indicate the last inspection date by EPA"
             }
             ,"CWPDateLastBioInspSt": {
                 "type": "string"
+               ,"title": "Date of Last Biosolids Inspection (State)"
+               ,"description": "Indicate the last inspection date by state environmental agency"
             }
             ,"CWPFormalEaCnt": {
                 "type": "string"
@@ -9778,32 +10308,32 @@
                 "type": "string"
                ,"title": "Date of Last Informal Enf Action"
                ,"example": "06\/09\/2013"
-               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility within the last five years."
+               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility."
             }
             ,"CWPDateLastIeaEPA": {
                 "type": "string"
                ,"example": "12\/09\/1992"
-               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility by EPA within the last five years."
+               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility by EPA."
             }
             ,"CWPDateLastIeaSt": {
                 "type": "string"
                ,"example": "06\/09\/2013"
-               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility by a state environmental agency within the last five years."
+               ,"description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility by a state environmental agency."
             }
             ,"CWPDateLastFea": {
                 "type": "string"
                ,"example": "06\/01\/2006"
-               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility within the last five years."
+               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility."
             }
             ,"CWPDateLastFeaEPA": {
                 "type": "string"
                ,"example": "06\/01\/2006"
-               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility by EPA within the last five years."
+               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility by EPA."
             }
             ,"CWPDateLastFeaSt": {
                 "type": "string"
                ,"example": "09\/27\/2010"
-               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility by a state environmental agency within the last five years."
+               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility by a state environmental agency."
             }
             ,"CWPBioIeaCount": {
                 "type": "number"
@@ -9815,21 +10345,33 @@
             }
             ,"CWPDateLastBioIea": {
                 "type": "string"
+               ,"title": "Date Last Biosolids Informal Action"
+               ,"description": "Indicates the effective date of the most recent listed biosolids informal enforcement action taken against the facility within the last five years."
             }
             ,"CWPDateLastBioIeaEPA": {
                 "type": "string"
+               ,"title": "Date Last  Biosolids Informal Action (EPA)"
+               ,"description": "Indicates the effective date of the most recent listed biosolids informal enforcement action taken against the facility by EPA within the last five years."
             }
             ,"CWPDateLastBioIeaSt": {
                 "type": "string"
+               ,"title": "Date Last Biosolids Informal Action (State)"
+               ,"description": "Indicates the effective date of the most recent listed biosolids informal enforcement action taken against the facility by a state environmental agency within the last five years."
             }
             ,"CWPDateLastBioFea": {
                 "type": "string"
+               ,"title": "Date Last Biosolids Formal Action"
+               ,"description": "Indicates the effective date of the most recent listed biosolids formal enforcement action taken against the facility within the last five years."
             }
             ,"CWPDateLastBioFeaEPA": {
                 "type": "string"
+               ,"title": "Date Last Biosolids Formal Action (EPA)"
+               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility by EPA within the last five years."
             }
             ,"CWPDateLastBioFeaSt": {
                 "type": "string"
+               ,"title": "Date Last Biosolids Formal Action (State)"
+               ,"description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility by a state environmental agency within the last five years."
             }
             ,"CWPBioPenalties": {
                 "type": "number"
@@ -9837,9 +10379,13 @@
             }
             ,"CWPDateLastBioPenalty": {
                 "type": "string"
+               ,"title": "Date of Last Biosolids Penalty"
+               ,"description": "Indicates the date on which the most recent assessed (or final) biosolids penalty was taken against the facility within the last five years. This measure only includes penalties that have been entered in the program database ICIS-NPDES."
             }
             ,"BioReportYears": {
                 "type": "string"
+               ,"title": "Biosolids Annual Report"
+               ,"description": "Reporting years are determined by the year of the reporting period end date. Data reflect the last two reporting years."
             }
             ,"BioReportingObligations2016": {
                 "type": "string"
@@ -10025,6 +10571,9 @@
             }
             ,"BioVioStatus": {
                 "type": "number"
+               ,"title": "Biosolids Violation Status Flag"
+               ,"example": 1
+               ,"description": "A value of 1 indicates if the Biosolids facility currently has an unresolved biosolids related Single Event Violation."
             }
             ,"BioViolFlag": {
                 "type": "number"
@@ -10128,9 +10677,13 @@
             }
             ,"PollWithViolation": {
                 "type": "string"
+               ,"title": "Pollutant(s) With Violations (3 years)"
+               ,"description": "The names of pollutants with effluent exceedances (i.e., violation code E90) in the past three years in ICIS-NPDES."
             }
             ,"LimPollutant": {
                 "type": "string"
+               ,"title": "Pollutants(s) With Limits"
+               ,"description": "The list of pollutants with enforceable (i.e., numeric limits or monitoring only) and\/or benchmark limits in the current version of a NPDES permit."
             }
             ,"DMRPounds": {
                 "type": "number"
@@ -10144,12 +10697,19 @@
             }
             ,"PastCalYrConvPollutants": {
                 "type": "string"
+               ,"title": "DMR Conventional Pollutants Loadings (lb\/year)"
+               ,"description": "Total pounds of conventional pollutants discharged by the NPDES ID for the most recent complete calendar year."
             }
             ,"PastCalYrConvPolOvrLmt": {
                 "type": "number"
+               ,"title": "DMR Conventional Pollutants - Load Over Limit (lb\/year)"
+               ,"description": "Total load over limit of conventional pollutant pounds equivalent discharged by the NPDES ID for the most recent complete calendar year."
             }
             ,"PastCalYrToxicPolOvrLmt": {
                 "type": "number"
+               ,"title": "DMR Toxic Load Over Limit (lb-eq\/year)"
+               ,"example": 0
+               ,"description": "Total load over limit of toxic-weighted pounds equivalent (TWPE) discharged by the NPDES ID for the most recent complete calendar year."
             }
             ,"FacTRISwRel": {
                 "type": "string"
@@ -10203,15 +10763,27 @@
             }
             ,"RadWBDHu8": {
                 "type": "string"
+               ,"title": "WBD Hydrologic Unit Code (RAD)"
+               ,"example": "2060003"
+               ,"description": "Hydrologic Unit Code (HUC) from the Reach Address Database (RAD), which is derived from the USGS Watershed Boundary Dataset."
             }
             ,"RadWBDHu8Name": {
                 "type": "string"
+               ,"title": "WBD Hydrologic Unit Name (RAD)"
+               ,"example": "Gunpowder-Patapsco"
+               ,"description": "The name of the hydrologic unit in which the facility may discharge, from the Reach Address Database (RAD) and derived from the USGS Watershed Boundary Dataset."
             }
             ,"FacDerivedWBDHu8": {
                 "type": "string"
+               ,"title": "WBD Hydrologic Unit Code (FRS)"
+               ,"example": "2070003"
+               ,"description": "Spatially derived HUC based on the facility's geographic coordinates in FRS."
             }
             ,"FacDerivedWBDHu8Name": {
                 "type": "string"
+               ,"title": "WBD Hydrologic Unit Name (FRS Derived)"
+               ,"example": "Cacapon-Town"
+               ,"description": "The name of the hydrologic unit in which the facility is located within, derived spatially based on the facility's geographic coordinates in FRS."
             }
             ,"RadWBDHuc12": {
                 "type": "string"
@@ -10227,9 +10799,15 @@
             }
             ,"FacDerivedWBD": {
                 "type": "string"
+               ,"title": "12-Digit WBD HUC"
+               ,"example": "20700100204"
+               ,"description": "The Hydrologic Unit Code (HUC-12) of the waterbody in which the facility resides, derived based on location data in FRS."
             }
             ,"FacDerivedWBDName": {
                 "type": "string"
+               ,"title": "FRS Derived Watershed Boundary Dataset (WBD) Name"
+               ,"example": "Fourmile Run-Potomac River"
+               ,"description": "The 12 digit Watershed Boundary Dataset Name derived from the FRS Best Pick Coordinate"
             }
             ,"AttainsSource": {
                 "type": "string"
@@ -10327,6 +10905,8 @@
             }
             ,"CWPTRIbalLandCode": {
                 "type": "string"
+               ,"title": "ICIS Tribal Land Code"
+               ,"description": "From ICIS, the unique identifier for every unit of land within Indian Country."
             }
             ,"CWPPermitStatusCode": {
                 "type": "string"
@@ -10359,7 +10939,7 @@
             ,"CWPDateLastPenalty": {
                 "type": "string"
                ,"example": "09\/27\/2010"
-               ,"description": "Indicates date of most recent penalty against the facility within the last five years."
+               ,"description": "Indicates date of most recent penalty against the facility."
             }
             ,"FacTRIReporter": {
                 "type": "string"
@@ -10369,6 +10949,9 @@
             }
             ,"CWP13qtrsComplHistory": {
                 "type": "string"
+               ,"title": "CWP 13 Quarters Compliance History"
+               ,"example": "VV__SS_U__V_"
+               ,"description": "The facility's 3-year or 13-quarter compliance status history by quarter (3-month period). Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:\n_ - No Violation Identified\nV - Violation Identified\nS - High Priority Violation\nU - Undetermined"
             }
             ,"CWPCaseIDs": {
                 "type": "string"
@@ -10377,6 +10960,9 @@
             }
             ,"CWPFIPSCode": {
                 "type": "string"
+               ,"title": "CWP FIPS Code"
+               ,"example": "11032"
+               ,"description": "A 5 digit combination of the 2 digit Federal Information Processing Standards (FIPS) code for the state and the 3 digit FIPS code of the county that a facility is located in."
             }
             ,"DMRImpairedPoll": {
                 "type": "string"
@@ -10426,6 +11012,7 @@
                 "type": "number"
                ,"title": "Tribal Lands Flag"
                ,"example": 1
+               ,"description": "A value of \"1\" indicates that the facility is within an Indian Tribal or Alaskan Native Village area."
             }
             ,"CensusBlockGroup": {
                 "type": "string"
@@ -10440,9 +11027,14 @@
             }
             ,"EjscreenFlag": {
                 "type": "string"
+               ,"title": "EJ Screen Flag"
+               ,"description": "A Y\/N indicator identifying whether or not the facility is within an Environmental Justice area."
             }
             ,"LastDMRValueRcvdDate": {
                 "type": "string"
+               ,"title": "Last DMR Value Received Date"
+               ,"example": "01\/31\/2018"
+               ,"description": "The latest date that a Discharge Monitoring Report was received by the State or EPA."
             }
             ,"Lower48": {
                 "type": "string"
@@ -10452,26 +11044,43 @@
             }
             ,"ActiveLower48": {
                 "type": "string"
+               ,"description": "A Y\/N indicator indicating that the facility is active and located within the lower 48 contiguous US States."
             }
             ,"EffExceeds": {
                 "type": "number"
-               ,"example": 3
+               ,"title": "Effluent Exceedances"
+               ,"example": "4"
+               ,"description": "The number of E90 Effluent Violations in the last 3 years."
             }
             ,"PastCalYrAverageFlow": {
                 "type": "string"
+               ,"title": "Past Calendar Year Average Flow"
+               ,"example": "209"
+               ,"description": "The past calendar year average flow in Million Gallons a Day (MGD)."
             }
             ,"PastCalYrToxicPollutants": {
                 "type": "string"
+               ,"title": "DMR Toxic Pollutants"
+               ,"example": "Benzene"
+               ,"description": "The toxic pollutants discharged by the NPDES facility for the most recent complete calendar year."
             }
             ,"CWPVioStatus": {
                 "type": "string"
+               ,"title": "Current RNC Violation Status"
+               ,"example": "E(EffViol)"
+               ,"description": "The current Reportable Non Compliance value for the facility."
             }
             ,"IndswFlag": {
                 "type": "string"
+               ,"title": "Industrial Stormwater Flag"
+               ,"example": "Y"
+               ,"description": "A value of Y indicates an Industrial Stormwater Permit."
             }
             ,"CertifiedDate": {
                 "type": "string"
                ,"title": "Certified Date"
+               ,"example": "01\/01\/2018"
+               ,"description": "The issue date or effective date of the permit."
             }
             ,"CollectionMethod": {
                 "type": "string"
@@ -10489,10 +11098,12 @@
                 "type": "number"
                ,"title": "Calculated Accuracy in Meters"
                ,"example": 50
+               ,"description": "Indicates the calculated accuracy in meters for the facilities geospatial coordinate.  Generally, the accuracy is directly linked to the collection method where GPS methods are more accurate that manual methods like map or photo interpolations."
             }
             ,"Map": {
                 "type": "string"
                ,"title": "Map"
+               ,"description": "No Longer Used."
             }
             ,"BiosolidsFlag": {
                 "type": "string"
@@ -10506,18 +11117,29 @@
             }
             ,"StateAuthNPDES": {
                 "type": "string"
+               ,"title": "State Authorization NPDES Facilities"
+               ,"description": "Indicates whether the state\/tribe\/territory code (first 2 digits of the NPDES_ID\/SOURCE_ID) is authorized for NPDES Facilities."
             }
             ,"StateAuthFedfac": {
                 "type": "string"
+               ,"title": "State Authorization Federal Facilities"
+               ,"description": "Indicates whether the state\/tribe\/territory code (first 2 digits of the NPDES_ID\/SOURCE_ID) is authorized to regulate Federally owned facilities."
             }
             ,"StateAuthPretreat": {
                 "type": "string"
+               ,"title": "State Authorization Pretreatment Facilities"
+               ,"description": "Indicates whether the state\/tribe\/territory code (first 2 digits of the NPDES_ID\/SOURCE_ID) is authorized for Pretreatment Facilities."
             }
             ,"StateAuthGen": {
                 "type": "string"
+               ,"title": "State Authorization General Facilities"
+               ,"description": "Indicates whether the state\/tribe\/territory code (first 2 digits of the NPDES_ID\/SOURCE_ID) is authorized for General NPDES Facilities."
             }
             ,"StateAuthBiosolids": {
                 "type": "string"
+               ,"title": "State Authorization Biosolids"
+               ,"example": "Y"
+               ,"description": "Indicates whether the state\/tribe\/territory code (first 2 digits of the NPDES_ID\/SOURCE_ID) is authorized for Biosolids."
             }
             ,"NPDESDataGroups": {
                 "type": "string"
@@ -10567,39 +11189,75 @@
             }
             ,"E90Exceeds5yr": {
                 "type": "string"
+               ,"title": "E90 Exceedences 5 Years"
+               ,"example": "16"
+               ,"description": "The number of E90 Exceedences in the last 5 years."
             }
             ,"E90Exceeds4yr": {
                 "type": "string"
+               ,"title": "E90 Exceedences 4 Years"
+               ,"example": "12"
+               ,"description": "The number of E90 Exceedences in the last 4 years."
             }
             ,"E90Exceeds3yr": {
                 "type": "string"
+               ,"title": "E90 Exceedences 3 Years"
+               ,"example": "10"
+               ,"description": "The number of E90 Exceedences in the last 3 years."
             }
             ,"E90Exceeds2yr": {
                 "type": "string"
+               ,"title": "E90 Exceedences 2 Years"
+               ,"example": "8"
+               ,"description": "The number of E90 Exceedences in the last 2 years."
             }
             ,"E90Exceeds1yr": {
                 "type": "string"
+               ,"title": "E90 Exceedences 1 Year"
+               ,"example": "4"
+               ,"description": "The number of E90 Exceedences in the last year."
             }
             ,"E90Pollutants5yr": {
                 "type": "string"
+               ,"title": "E90 Pollutants 5 Years"
+               ,"example": "Lead, Copper"
+               ,"description": "The pollutants for the E90 Exceedences in the last 5 years."
             }
             ,"E90Pollutants4yr": {
                 "type": "string"
+               ,"title": "E90 Pollutants 4 Years"
+               ,"example": "Lead, Copper"
+               ,"description": "The pollutants for the E90 Exceedences in the last 4 years."
             }
             ,"E90Pollutants3yr": {
                 "type": "string"
+               ,"title": "E90 Pollutants 3 Years"
+               ,"example": "Lead, Copper"
+               ,"description": "The pollutants for the E90 Exceedences in the last 3 years."
             }
             ,"E90Pollutants2yr": {
                 "type": "string"
+               ,"title": "E90 Pollutants 2 Years"
+               ,"example": "Lead, Copper"
+               ,"description": "The pollutants for the E90 Exceedences in the last 2 years."
             }
             ,"E90Pollutants1yr": {
                 "type": "string"
+               ,"title": "E90 Pollutants 1 Year"
+               ,"example": "Lead"
+               ,"description": "The pollutants for the E90 Exceedences in the last year."
             }
             ,"FacCountyName": {
                 "type": "string"
+               ,"title": "FRS Facility County Name"
+               ,"example": "Fairfax County"
+               ,"description": "The facility county name from EPA's Facility Registry System"
             }
             ,"FacStdCountyName": {
                 "type": "string"
+               ,"title": "FRS Standardized Facility County Name"
+               ,"example": "Fairfax County"
+               ,"description": "The standardized  facility county name from EPA's Facility Registry System"
             }
             ,"Score": {
                 "type": "number"
@@ -11019,6 +11677,7 @@
             ,"MapData": {
                 "type": "array"
                ,"title": "Map Data"
+               ,"description": "An array of facility geospatial information."
                ,"items": {
                    "$ref": "#\/definitions\/cwa3_MapData"
                }
@@ -11066,6 +11725,7 @@
             ,"Facilities": {
                 "type": "array"
                ,"title": "Facilities"
+               ,"description": "A complex array of facility information."
                ,"items": {
                    "$ref": "#\/definitions\/cwa1_Facilities"
                }
@@ -11138,6 +11798,8 @@
             ,"ObjectName": {
                 "type": "string"
                ,"title": "Object Name"
+               ,"example": "CaseName"
+               ,"description": "The JSON name used for the database column."
             }
             ,"Description": {
                 "type": "string"

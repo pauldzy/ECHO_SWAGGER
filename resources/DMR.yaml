@@ -202,13 +202,13 @@ parameters:
   q.p_huc: 
     name: p_huc
     in: query
-    description: 2-, 4-, 6-, or 8-character watershed. May contain multiple comma-separated values.
+    description: 2-, 4-, 6-, or 8-character watershed code. May contain multiple comma-separated values.
     type: string
     required: false
   f.p_huc: 
     name: p_huc
     in: formData
-    description: 2-, 4-, 6-, or 8-character watershed. May contain multiple comma-separated values.
+    description: 2-, 4-, 6-, or 8-character watershed code. May contain multiple comma-separated values.
     type: string
     required: false
   q.pageno: 
@@ -258,36 +258,61 @@ parameters:
   q.p_nd: 
     name: p_nd
     in: query
+    description: |-
+      Annual Load Calculation Option. Provide a coded value to calculate annual loads using one of three methods: 
+      - ZERO = Set all non-detects to zero
+      - HALF = Set all non-detects to ½ the detection limit
+      - LIMIT = Set all non-detects to the detection limit
+    enum: 
+      - ZERO
+      - HALF
+      - LIMIT
     type: string
     required: false
   f.p_treatment_tech_present: 
     name: p_treatment_tech_present
     in: formData
+    description: "Treatment Technology Flag. A \"Y\" value limits results to facilities where the selected treatment technology is present. An \"N\" value limits results to facilities where the selected treatment technology is not present. Parameter can only be provided if p_fac_type=POTW and p_treatment_tech is used."
     type: string
     required: false
   q.p_treatment_tech_present: 
     name: p_treatment_tech_present
     in: query
+    description: "Treatment Technology Flag. A \"Y\" value limits results to facilities where the selected treatment technology is present. An \"N\" value limits results to facilities where the selected treatment technology is not present. Parameter can only be provided if p_fac_type=POTW and p_treatment_tech is used."
     type: string
     required: false
   f.p_intermittent_disch: 
     name: p_intermittent_disch
     in: formData
+    description: "Intermittent Discharges Flag. A \"Y\" value will limit results to facilities with intermittent discharges."
     type: string
     required: false
   q.p_intermittent_disch: 
     name: p_intermittent_disch
     in: query
+    description: "Intermittent Discharges Flag. A \"Y\" value will limit results to facilities with intermittent discharges."
     type: string
     required: false
   f.p_chem_univ_metric: 
     name: p_chem_univ_metric
     in: formData
+    description: |-
+      Chemical Universe Metric Option. Provide a coded value that indicates the metric used for the chemical universe (TriChemicals and DmrChemicals).
+      Top Industry/Chemicals metric: 
+      - COUNT = Count of facilities
+      - LBS = Total pounds of discharge
+      - TWPE = Total TWPE of discharge
     type: string
     required: false
   q.p_chem_univ_metric: 
     name: p_chem_univ_metric
     in: query
+    description: |-
+      Chemical Universe Metric Option. Provide a coded value that indicates the metric used for the chemical universe (TriChemicals and DmrChemicals).
+      Top Industry/Chemicals metric: 
+      - COUNT = Count of facilities
+      - LBS = Total pounds of discharge
+      - TWPE = Total TWPE of discharge
     type: string
     required: false
   f.p_watershed_group: 
@@ -325,31 +350,63 @@ parameters:
   f.p_rpt_disch_units: 
     name: p_rpt_disch_units
     in: formData
+    description: |-
+      Reported Discharges Option. Provide a coded value to identify the units represented by p_rpt_disch_amt. Required when p_rpt_disch_amt is provided.
+      - PCT = percent
+      - LBS = pounds
+      - TWPE = toxic-pounds equivalent
+    enum: 
+      - PCT
+      - LBS
+      - TWPE
     type: string
     required: false
   q.p_rpt_disch_units: 
     name: p_rpt_disch_units
     in: query
+    description: |-
+      Reported Discharges Option. Provide a coded value to identify the units represented by p_rpt_disch_amt. Required when p_rpt_disch_amt is provided.
+      - PCT = percent
+      - LBS = pounds
+      - TWPE = toxic-pounds equivalent
+    enum: 
+      - PCT
+      - LBS
+      - TWPE
     type: string
     required: false
   f.p_pct_limit_disch: 
     name: p_pct_limit_disch
     in: formData
+    description: Specify the percentage of the permit limit that the Loading Tool should assume is actually discharged for its loading calculations. Permitted only when p_loads_data=PERMITONLY or PERMITDMR.
     type: number
     required: false
   q.p_pct_limit_disch: 
     name: p_pct_limit_disch
     in: query
+    description: Specify the percentage of the permit limit that the Loading Tool should assume is actually discharged for its loading calculations. Permitted only when p_loads_data=PERMITONLY or PERMITDMR.
     type: number
     required: false
   f.p_fac_univ_metric: 
     name: p_fac_univ_metric
     in: formData
+    description: |-
+      Facility Universe Metric Option. Provide a coded value that indicates the metric used for the facility universe (DmrFacilities and TriFacilities).
+      Top Industry/Chemicals metric.
+      - COUNT = Count of facilities
+      - LBS = Total pounds of discharge
+      - TWPE = Total TWPE of discharge
     type: string
     required: false
   q.p_fac_univ_metric: 
     name: p_fac_univ_metric
     in: query
+    description: |-
+      Facility Universe Metric Option. Provide a coded value that indicates the metric used for the facility universe (DmrFacilities and TriFacilities).
+      Top Industry/Chemicals metric.
+      - COUNT = Count of facilities
+      - LBS = Total pounds of discharge
+      - TWPE = Total TWPE of discharge
     type: string
     required: false
   f.p_dmr_tri_release: 
@@ -367,41 +424,75 @@ parameters:
   f.suppress_headers: 
     name: suppress_headers
     in: formData
+    description: "Suppress Headers. A \"Y\" value will suppress download title and search criteria from being included in CSV output. Column headers will still be provided."
     type: string
     required: false
   q.suppress_headers: 
     name: suppress_headers
     in: query
+    description: "Suppress Headers. A \"Y\" value will suppress download title and search criteria from being included in CSV output. Column headers will still be provided."
     type: string
     required: false
   f.p_tri_npdes_link: 
     name: p_tri_npdes_link
     in: formData
+    description: "Facilities that link to a NPDES permit.  A \"Y\" value will select only facilities that do have a link to a NPDES permit. An \"N\" value will select only facilities that do NOT have a link to a NPDES permit."
+    enum: 
+      - Y
+      - N
     type: string
     required: false
   q.p_tri_npdes_link: 
     name: p_tri_npdes_link
     in: query
+    description: "Facilities that link to a NPDES permit.  A \"Y\" value will select only facilities that do have a link to a NPDES permit. An \"N\" value will select only facilities that do NOT have a link to a NPDES permit."
+    enum: 
+      - Y
+      - N
     type: string
     required: false
   f.p_treatment_tech: 
     name: p_treatment_tech
     in: formData
+    description: Treatment Technology. Provide a coded value that limits results to facilities where a treatment technology is or is not present. Parameter can only be provided if p_fac_type=POTW.
     type: string
     required: false
   q.p_treatment_tech: 
     name: p_treatment_tech
     in: query
+    description: Treatment Technology. Provide a coded value that limits results to facilities where a treatment technology is or is not present. Parameter can only be provided if p_fac_type=POTW.
     type: string
     required: false
   f.p_discharge_type: 
     name: p_discharge_type
     in: formData
+    description: |-
+      Location or type of water body into which the TRI chemical is being discharged.  Provide a coded value to limit results to facilities discharging to a specific discharge type. 
+      - SW = Surface waters; 
+      - STP = Sewage treatment plants;
+      - SWONLY = ONLY to surface waters;
+      - STPONLY = ONLY to sewage treatment plants
+    enum: 
+      - SW
+      - STPONLY
+      - SWONLY
+      - STPONLY
     type: string
     required: false
   q.p_discharge_type: 
     name: p_discharge_type
     in: query
+    description: |-
+      Location or type of water body into which the TRI chemical is being discharged.  Provide a coded value to limit results to facilities discharging to a specific discharge type. 
+      - SW = Surface waters; 
+      - STP = Sewage treatment plants;
+      - SWONLY = ONLY to surface waters;
+      - STPONLY = ONLY to sewage treatment plants
+    enum: 
+      - SW
+      - STPONLY
+      - SWONLY
+      - STPONLY
     type: string
     required: false
   f.p_watershed_zip: 
@@ -419,101 +510,177 @@ parameters:
   f.p_top_chem_univ: 
     name: p_top_chem_univ
     in: formData
+    description: |-
+      Top Chemicals Universe Option. Provide a coded value to select the universe of chemicals to be included in the Top Chemicals results.
+      - TRI = TRI Chemicals
+      - TOXIC = All Toxic Chemicals
+      - ALL= All Chemicals
     type: string
     required: false
   q.p_top_chem_univ: 
     name: p_top_chem_univ
     in: query
+    description: |-
+      Top Chemicals Universe Option. Provide a coded value to select the universe of chemicals to be included in the Top Chemicals results.
+      - TRI = TRI Chemicals
+      - TOXIC = All Toxic Chemicals
+      - ALL= All Chemicals
     type: string
     required: false
   f.p_rpt_disch_amt: 
     name: p_rpt_disch_amt
     in: formData
+    description: Reported Discharges Option. Enter an amount to restrict search results based on percent, pounds, or TWPE differences between DMR discharges and TRI releases. Required when p_rpt_disch=WHERE. You must also provide p_rpt_disch_gt and p_rpt_disch_units.
     type: string
     required: false
   q.p_rpt_disch_amt: 
     name: p_rpt_disch_amt
     in: query
+    description: Reported Discharges Option. Enter an amount to restrict search results based on percent, pounds, or TWPE differences between DMR discharges and TRI releases. Required when p_rpt_disch=WHERE. You must also provide p_rpt_disch_gt and p_rpt_disch_units.
     type: string
     required: false
   f.p_ind_sector_id: 
     name: p_ind_sector_id
     in: formData
+    description: Industrial Sector Drilldown. Provide the IndSectorID from the service results object you wish to drilldown on.
     type: string
     required: false
   q.p_ind_sector_id: 
     name: p_ind_sector_id
     in: query
+    description: Industrial Sector Drilldown. Provide the IndSectorID from the service results object you wish to drilldown on.
     type: string
     required: false
   f.p_imp_sw_source: 
     name: p_imp_sw_source
     in: formData
+    description: |-
+      Surface Water Impairment Based On Option. Provide a coded value to filter on facilities potentially contributing to surface water impairments based on DMR or TRI. Required if p_imp_sw=POLL is provided.
+      - BOTH = Surface water impairments are based on DMR and TRI data.
+      - DMR = Surface water impairments are based on DMR data only.
+      - TRI = Surface water impairments are based on TRI data only.
+    enum: 
+      - TRI
+      - DMR
+      - BOTH
     type: string
     required: false
   q.p_imp_sw_source: 
     name: p_imp_sw_source
     in: query
+    description: |-
+      Surface Water Impairment Based On Option. Provide a coded value to filter on facilities potentially contributing to surface water impairments based on DMR or TRI. Required if p_imp_sw=POLL is provided.
+      - BOTH = Surface water impairments are based on DMR and TRI data.
+      - DMR = Surface water impairments are based on DMR data only.
+      - TRI = Surface water impairments are based on TRI data only.
+    enum: 
+      - TRI
+      - DMR
+      - BOTH
     type: string
     required: false
   f.p_chem_group_id: 
     name: p_chem_group_id
     in: formData
+    description: Chemical Group Drilldown. Provide the ChemGroupId from the service results object you wish to drilldown on.
     type: string
     required: false
   q.p_chem_group_id: 
     name: p_chem_group_id
     in: query
+    description: Chemical Group Drilldown. Provide the ChemGroupId from the service results object you wish to drilldown on.
     type: string
     required: false
   f.p_top_ind_univ: 
     name: p_top_ind_univ
     in: formData
+    description: |-
+      Top Industries Universe Option. Provide a coded value to select the universe of industries to be included in the Top Industries results.
+      - TRI = TRI Industries
+      - NONPOTW = All Non-POTWs
+      - ALL = All Point Sources
     type: string
     required: false
   q.p_top_ind_univ: 
     name: p_top_ind_univ
     in: query
+    description: |-
+      Top Industries Universe Option. Provide a coded value to select the universe of industries to be included in the Top Industries results.
+      - TRI = TRI Industries
+      - NONPOTW = All Non-POTWs
+      - ALL = All Point Sources
     type: string
     required: false
   f.p_rpt_disch_gt: 
     name: p_rpt_disch_gt
     in: formData
+    description: |-
+      Reported Discharges Option. Provide a coded value to restrict search results based on differences between DMR discharges and TRI releases. 
+      - DMR = Discharges reported in DMR are greater than discharges reported in TRI.
+      - TRI = Discharges reported in TRI are greater than discharges reported in TRI.
+    enum: 
+      - DMR
+      - TRIONLY
     type: string
     required: false
   q.p_rpt_disch_gt: 
     name: p_rpt_disch_gt
     in: query
+    description: |-
+      Reported Discharges Option. Provide a coded value to restrict search results based on differences between DMR discharges and TRI releases. 
+      - DMR = Discharges reported in DMR are greater than discharges reported in TRI.
+      - TRI = Discharges reported in TRI are greater than discharges reported in TRI.
+    enum: 
+      - DMR
+      - TRIONLY
     type: string
     required: false
   f.p_nutrient_agg: 
     name: p_nutrient_agg
     in: formData
+    description: "Nutrient Aggregation Option. A \"Y\" value applies a nutrient aggregation methodology to generate nitrogen and phosphorus pollutant category loads."
     type: string
     required: false
   q.p_nutrient_agg: 
     name: p_nutrient_agg
     in: query
+    description: "Nutrient Aggregation Option. A \"Y\" value applies a nutrient aggregation methodology to generate nitrogen and phosphorus pollutant category loads."
     type: string
     required: false
   f.p_exceed_scope: 
     name: p_exceed_scope
     in: formData
+    description: |-
+      Scope of exceedances to include in minimum count. Provide a coded value to filter results.
+      - FAC = Count exceedances across entire facilitiy
+      - OUTFALL = Count exceedances for any single facility outfall.
+    enum: 
+      - FAC
+      - OUTFALL
     type: string
     required: false
   q.p_exceed_scope: 
     name: p_exceed_scope
     in: query
+    description: |-
+      Scope of exceedances to include in minimum count. Provide a coded value to filter results.
+      - FAC = Count exceedances across entire facilitiy
+      - OUTFALL = Count exceedances for any single facility outfall.
+    enum: 
+      - FAC
+      - OUTFALL
     type: string
     required: false
   f.p_exceed_count: 
     name: p_exceed_count
     in: formData
+    description: Mininum number of exceedances. Provide a whole number greater than zero to limit the search to a minimum number of effuent exceedances.
     type: string
     required: false
   q.p_exceed_count: 
     name: p_exceed_count
     in: query
+    description: Mininum number of exceedances. Provide a whole number greater than zero to limit the search to a minimum number of effuent exceedances.
     type: string
     required: false
   f.p_dmr_tri_link: 
@@ -531,151 +698,227 @@ parameters:
   f.p_cso_outfalls: 
     name: p_cso_outfalls
     in: formData
+    description: "CSO Outfall Flag. A \"Y\" value will limit results to facilities with one or more CSO outfalls. Can only be used if p_fac_type=POTW."
+    enum: 
+      - Y
+      - N
     type: string
     required: false
   q.p_cso_outfalls: 
     name: p_cso_outfalls
     in: query
+    description: "CSO Outfall Flag. A \"Y\" value will limit results to facilities with one or more CSO outfalls. Can only be used if p_fac_type=POTW."
+    enum: 
+      - Y
+      - N
     type: string
     required: false
   f.p_twpe_exceed: 
     name: p_twpe_exceed
     in: formData
+    description: Limit results to facilities based on a specific amount (in toxic pounds equivalent (TWPE)) of exceedances of NPDES permit limits. Provide when p_exceed=Y is used. Cannot be combined with p_pct_exceed.
     type: string
     required: false
   q.p_twpe_exceed: 
     name: p_twpe_exceed
     in: query
+    description: Limit results to facilities based on a specific amount (in toxic pounds equivalent (TWPE)) of exceedances of NPDES permit limits. Provide when p_exceed=Y is used. Cannot be combined with p_pct_exceed.
     type: string
     required: false
   f.p_permit_type: 
     name: p_permit_type
     in: formData
+    description: |-
+      Permit classification in ICIS-NPDES. Provide a coded value.
+      - NPD = NPDES Individual Permit
+      - NGP = NPDES Master General Permit
+      - GPC = General Permit Covered Facility
+    enum: 
+      - NPD
+      - NGP
+      - GPC
     type: string
     required: false
   q.p_permit_type: 
     name: p_permit_type
     in: query
+    description: |-
+      Permit classification in ICIS-NPDES. Provide a coded value.
+      - NPD = NPDES Individual Permit
+      - NGP = NPDES Master General Permit
+      - GPC = General Permit Covered Facility
+    enum: 
+      - NPD
+      - NGP
+      - GPC
     type: string
     required: false
   f.p_param_group: 
     name: p_param_group
     in: formData
+    description: "Parameter Grouping Option. A \"Y\" value applies a parameter grouping function to avoid double-counting loads for pollutant parameters that represent the same pollutant."
     type: string
     required: false
   q.p_param_group: 
     name: p_param_group
     in: query
+    description: "Parameter Grouping Option. A \"Y\" value applies a parameter grouping function to avoid double-counting loads for pollutant parameters that represent the same pollutant."
     type: string
     required: false
   f.p_exceed_type: 
     name: p_exceed_type
     in: formData
+    description: |-
+      Any Exceedance or Only SNC Exceedances. Provide a coded value to filter results.
+      - ANY = Filter on all exceedances 
+      - SNC = only those in which the permit is considered in Significant Noncompliance (SNC).
     type: string
     required: false
   q.p_exceed_type: 
     name: p_exceed_type
     in: query
+    description: |-
+      Any Exceedance or Only SNC Exceedances. Provide a coded value to filter results.
+      - ANY = Filter on all exceedances 
+      - SNC = only those in which the permit is considered in Significant Noncompliance (SNC).
     type: string
     required: false
   f.p_top_metric: 
     name: p_top_metric
     in: formData
+    description: |-
+      Top Industries and Chemicals Metric Option. Provide a coded value that indicates the metric used for top industries and chemical values.
+      Top Industry/Chemicals metric: 
+      - COUNT = Count of facilities
+      - LBS = Total pounds of discharge
+      - TWPE = Total TWPE of discharge
     type: string
     required: false
   q.p_top_metric: 
     name: p_top_metric
     in: query
+    description: |-
+      Top Industries and Chemicals Metric Option. Provide a coded value that indicates the metric used for top industries and chemical values.
+      Top Industry/Chemicals metric: 
+      - COUNT = Count of facilities
+      - LBS = Total pounds of discharge
+      - TWPE = Total TWPE of discharge
     type: string
     required: false
   f.p_start_year: 
     name: p_start_year
     in: formData
+    description: Start of Year Range.  Provide a year value in YYYY format to specifcy the first year to include in results.  Parameter p_end_year must also be populated when using this parameter.
     type: string
     required: false
   q.p_start_year: 
     name: p_start_year
     in: query
+    description: Start of Year Range.  Provide a year value in YYYY format to specifcy the first year to include in results.  Parameter p_end_year must also be populated when using this parameter.
     type: string
     required: false
   f.p_start_date: 
     name: p_start_date
     in: formData
+    description: Monitoring Period Start Date.  Provide a date value in MM/YYYY format to specify the first monitoring period to include in results.  Parameter p_end_date must also be populated when using this parameter.
     type: string
     required: false
   q.p_start_date: 
     name: p_start_date
     in: query
+    description: Monitoring Period Start Date.  Provide a date value in MM/YYYY format to specify the first monitoring period to include in results.  Parameter p_end_date must also be populated when using this parameter.
     type: string
     required: false
   f.p_ptreatment: 
     name: p_ptreatment
     in: formData
+    description: "Pretreatment Program. A \"Y\" value limits results to facilities with an approved pretreatment program. Parameter can only be passed if p_fac_type=POTW."
     type: string
     required: false
   q.p_ptreatment: 
     name: p_ptreatment
     in: query
+    description: "Pretreatment Program. A \"Y\" value limits results to facilities with an approved pretreatment program. Parameter can only be passed if p_fac_type=POTW."
     type: string
     required: false
   f.p_pct_exceed: 
     name: p_pct_exceed
     in: formData
+    description: Limit results to facilities based on a specific percentage of exceedances of NPDES permit limits. Provide when p_exceed=Y is used. Cannot be combined with p_lbs_exceed.
     type: number
     required: false
   q.p_pct_exceed: 
     name: p_pct_exceed
     in: query
+    description: Limit results to facilities based on a specific percentage of exceedances of NPDES permit limits. Provide when p_exceed=Y is used. Cannot be combined with p_lbs_exceed.
     type: number
     required: false
   f.p_param_code: 
     name: p_param_code
     in: formData
+    description: Five-digit numeric code identifying the parameter. See Parameter Lookup documentation for a complete list of codes.
     type: string
     required: false
   q.p_param_code: 
     name: p_param_code
     in: query
+    description: Five-digit numeric code identifying the parameter. See Parameter Lookup documentation for a complete list of codes.
     type: string
     required: false
   f.p_loads_data: 
     name: p_loads_data
     in: formData
+    description: |-
+      Loading Calculations Option. Provide a coded value to indicate the data to be used for loading calculations.
+      - DMR = DMR data only (default)
+      - PERMITONLY = Permit limits only
+      - PERMITDMR = Use permit limits for months where DMR data are missing
     type: string
     required: false
   q.p_loads_data: 
     name: p_loads_data
     in: query
+    description: |-
+      Loading Calculations Option. Provide a coded value to indicate the data to be used for loading calculations.
+      - DMR = DMR data only (default)
+      - PERMITONLY = Permit limits only
+      - PERMITDMR = Use permit limits for months where DMR data are missing
     type: string
     required: false
   f.p_lbs_exceed: 
     name: p_lbs_exceed
     in: formData
+    description: Limit results to facilities based on a specific amount (in lb) of exceedances of NPDES permit limits. Provide when p_exceed=Y is used. Cannot be combined with p_pct_exceed.
     type: number
     required: false
   q.p_lbs_exceed: 
     name: p_lbs_exceed
     in: query
+    description: Limit results to facilities based on a specific amount (in lb) of exceedances of NPDES permit limits. Provide when p_exceed=Y is used. Cannot be combined with p_pct_exceed.
     type: number
     required: false
   f.p_huc_region: 
     name: p_huc_region
     in: formData
+    description: HUC Region. 2-digit Hydrologic Unit Code
     type: string
     required: false
   q.p_huc_region: 
     name: p_huc_region
     in: query
+    description: HUC Region. 2-digit Hydrologic Unit Code
     type: string
     required: false
   f.p_chem_slice: 
     name: p_chem_slice
     in: formData
+    description: "Chemical Universe Download Option. Provide the JSON object name to indicate which \"slice\" of the chemical universe to download. For example, AlsoReportDmr or Report Only Dmr in TriChemicals."
     type: string
     required: false
   q.p_chem_slice: 
     name: p_chem_slice
     in: query
+    description: "Chemical Universe Download Option. Provide the JSON object name to indicate which \"slice\" of the chemical universe to download. For example, AlsoReportDmr or Report Only Dmr in TriChemicals."
     type: string
     required: false
   f.p_watershed: 
@@ -693,23 +936,41 @@ parameters:
   f.p_rpt_disch: 
     name: p_rpt_disch
     in: formData
+    description: |-
+      DMR/TRI Discharges. Provide a coded value to limit results to facilities that report discharges in DMR and/or TRI.
+      - BOTH = Reports discharges in both DMR and TRI
+      - WHERE = Reports discharges in both DMR and TRI where specified restriction is true (p_rpt_disch_gt must also be provided)
+      - TRIONLY = Reports discharges in TRI only
+    enum: 
+      - BOTH
+      - WHERE
+      - TRIONLY
     type: string
     required: false
   q.p_rpt_disch: 
     name: p_rpt_disch
     in: query
+    description: |-
+      DMR/TRI Discharges. Provide a coded value to limit results to facilities that report discharges in DMR and/or TRI.
+      - BOTH = Reports discharges in both DMR and TRI
+      - WHERE = Reports discharges in both DMR and TRI where specified restriction is true (p_rpt_disch_gt must also be provided)
+      - TRIONLY = Reports discharges in TRI only
+    enum: 
+      - BOTH
+      - WHERE
+      - TRIONLY
     type: string
     required: false
   f.p_poll_name: 
     name: p_poll_name
     in: formData
-    description: Polltant Name. Provide a single pollutant name to restrict results.
+    description: Pollutant Name. Provide a single pollutant name to restrict results.
     type: string
     required: false
   q.p_poll_name: 
     name: p_poll_name
     in: query
-    description: Polltant Name. Provide a single pollutant name to restrict results.
+    description: Pollutant Name. Provide a single pollutant name to restrict results.
     type: string
     required: false
   f.p_permit_id: 
@@ -727,83 +988,167 @@ parameters:
   f.p_maj_model: 
     name: p_maj_model
     in: formData
+    description: |-
+      Major Model Basin. If results are limited to facilities that contribute to the Chesapeake Bay TMDL (p_tmdl=Y), provide a coded value for a Chesapeake Bay water basin as constructed by modeling software.
+      JAMES RIVER
+      MD EASTERN SHORE
+      PATUXENT RIVER
+      POTOMAC RIVER
+      RAPPAHANNOCK RIVER
+      SUSQUEHANNA RIVER
+      VA EASTERN SHORE
+      YORK RIVER
+    enum: 
+      - JAMES RIVER
+      - MD EASTERN SHORE
+      - PATUXENT RIVER
+      - POTOMAC RIVER
+      - RAPPAHANNOCK RIVER
+      - SUSQUEHANNA RIVER
+      - VA EASTERN SHORE
+      - YORK RIVER
     type: string
     required: false
   q.p_maj_model: 
     name: p_maj_model
     in: query
+    description: |-
+      Major Model Basin. If results are limited to facilities that contribute to the Chesapeake Bay TMDL (p_tmdl=Y), provide a coded value for a Chesapeake Bay water basin as constructed by modeling software.
+      JAMES RIVER
+      MD EASTERN SHORE
+      PATUXENT RIVER
+      POTOMAC RIVER
+      RAPPAHANNOCK RIVER
+      SUSQUEHANNA RIVER
+      VA EASTERN SHORE
+      YORK RIVER
+    enum: 
+      - JAMES RIVER
+      - MD EASTERN SHORE
+      - PATUXENT RIVER
+      - POTOMAC RIVER
+      - RAPPAHANNOCK RIVER
+      - SUSQUEHANNA RIVER
+      - VA EASTERN SHORE
+      - YORK RIVER
     type: string
     required: false
   f.p_imp_water: 
     name: p_imp_water
     in: formData
-    description: Discharge to impaired waterbodies flag. Provide Y or N to restrict results to DMR facilities that discharge to impaired waterbodies
+    description: Discharge to impaired waterbodies flag. Provide Y or N to restrict results to DMR facilities that discharge to impaired waterbodies.
     type: string
     required: false
   q.p_imp_water: 
     name: p_imp_water
     in: query
-    description: Discharge to impaired waterbodies flag. Provide Y or N to restrict results to DMR facilities that discharge to impaired waterbodies
+    description: Discharge to impaired waterbodies flag. Provide Y or N to restrict results to DMR facilities that discharge to impaired waterbodies.
     type: string
     required: false
   f.p_get_chart: 
     name: p_get_chart
     in: formData
+    description: DO NOT PUBLICIZE - HIDDEN PARAMETER
     type: string
     required: false
   q.p_get_chart: 
     name: p_get_chart
     in: query
+    description: DO NOT PUBLICIZE - HIDDEN PARAMETER
     type: string
     required: false
   f.p_fac_slice: 
     name: p_fac_slice
     in: formData
+    description: "Facility Universe Download Option. Provide the JSON object name to indicate which \"slice\" of the facility universe to download. For example, DmrDirectDsch or DmrDirectIndDsch in TriFacilities."
     type: string
     required: false
   q.p_fac_slice: 
     name: p_fac_slice
     in: query
+    description: "Facility Universe Download Option. Provide the JSON object name to indicate which \"slice\" of the facility universe to download. For example, DmrDirectDsch or DmrDirectIndDsch in TriFacilities."
     type: string
     required: false
   f.p_drilldown: 
     name: p_drilldown
     in: formData
+    description: DO NOT PUBLICIZE - HIDDEN PARAMETER
     type: string
     required: false
   q.p_drilldown: 
     name: p_drilldown
     in: query
+    description: DO NOT PUBLICIZE - HIDDEN PARAMETER
     type: string
     required: false
   f.p_chem_name: 
     name: p_chem_name
     in: formData
+    description: TRI Chemical Name. Provide a single chemical name to restrict results.
     type: string
     required: false
   q.p_chem_name: 
     name: p_chem_name
     in: query
+    description: TRI Chemical Name. Provide a single chemical name to restrict results.
     type: string
     required: false
   f.p_top_sort: 
     name: p_top_sort
     in: formData
+    description: |-
+      Top Industries and Chemicals Sort Option. Provide a coded value that indicates how top industries and chemicals should be sorted.
+      - TRIFAC = TRI facility count
+      - DMRFAC = DMR facility count
+      - TRILBS = TRI pounds
+      - DMRLBS = DMR pounds
+      - TRITWPE = TRI TWPE
+      - DMRTWPE = DMR TWPE
+      - LBSDIFFTRI = Pounds Difference (TRI>DMR)
+      - LBSDIFFDMR = Pounds Difference (DMR>TRI)
+      - TWPEDIFFTRI = TWPE Difference (TRI>DMR)
+      - TWPEDIFFDMR = TWPE Difference (DMR>TRI)
     type: string
     required: false
   q.p_top_sort: 
     name: p_top_sort
     in: query
+    description: |-
+      Top Industries and Chemicals Sort Option. Provide a coded value that indicates how top industries and chemicals should be sorted.
+      - TRIFAC = TRI facility count
+      - DMRFAC = DMR facility count
+      - TRILBS = TRI pounds
+      - DMRLBS = DMR pounds
+      - TRITWPE = TRI TWPE
+      - DMRTWPE = DMR TWPE
+      - LBSDIFFTRI = Pounds Difference (TRI>DMR)
+      - LBSDIFFDMR = Pounds Difference (DMR>TRI)
+      - TWPEDIFFTRI = TWPE Difference (TRI>DMR)
+      - TWPEDIFFDMR = TWPE Difference (DMR>TRI)
     type: string
     required: false
   f.p_sig_flag: 
     name: p_sig_flag
     in: formData
+    description: |-
+      Significant Discharge Facility Flag. Provide a coded value that will limits results to facilities that are or are not defined as a significant discharge facility by the jurisdiction in which they are permitted.
+      - SIG = Significant Discharge Facility
+      - NONSIG = Nonsignificant Discharge Facility
+    enum: 
+      - SIG
+      - NONSIG
     type: string
     required: false
   q.p_sig_flag: 
     name: p_sig_flag
     in: query
+    description: |-
+      Significant Discharge Facility Flag. Provide a coded value that will limits results to facilities that are or are not defined as a significant discharge facility by the jurisdiction in which they are permitted.
+      - SIG = Significant Discharge Facility
+      - NONSIG = Nonsignificant Discharge Facility
+    enum: 
+      - SIG
+      - NONSIG
     type: string
     required: false
   f.p_poll_cat: 
@@ -897,71 +1242,111 @@ parameters:
   f.p_fac_type: 
     name: p_fac_type
     in: formData
+    description: |-
+      Facility Type. Provide a coded value to filter on a facility type.
+      - POTW = Publicly Owned Treatment Works
+      - NON-POTW = Industrial Point Sources (non-POTW)
+      - FEDERAL = Federal facilities
+      - STATE = State facilities
+    enum: 
+      - POTW
+      - NON-POTW
+      - FEDERAL
+      - STATE
     type: string
     required: false
   q.p_fac_type: 
     name: p_fac_type
     in: query
+    description: |-
+      Facility Type. Provide a coded value to filter on a facility type.
+      - POTW = Publicly Owned Treatment Works
+      - NON-POTW = Industrial Point Sources (non-POTW)
+      - FEDERAL = Federal facilities
+      - STATE = State facilities
+    enum: 
+      - POTW
+      - NON-POTW
+      - FEDERAL
+      - STATE
     type: string
     required: false
   f.p_end_year: 
     name: p_end_year
     in: formData
+    description: End of Year Range.  Provide a year value in YYYY format to specifcy the last year to include in results.  Parameter p_start_year must also be populated when using this parameter.
     type: string
     required: false
   q.p_end_year: 
     name: p_end_year
     in: query
+    description: End of Year Range.  Provide a year value in YYYY format to specifcy the last year to include in results.  Parameter p_start_year must also be populated when using this parameter.
     type: string
     required: false
   f.p_end_date: 
     name: p_end_date
     in: formData
+    description: Monitoring Period End Date.  Provide a date value in MM/YYYY format to specify the last monitoring period to include in results.  Parameter p_start_date must also be populated when using this parameter.
     type: string
     required: false
   q.p_end_date: 
     name: p_end_date
     in: query
+    description: Monitoring Period End Date.  Provide a date value in MM/YYYY format to specify the last monitoring period to include in results.  Parameter p_start_date must also be populated when using this parameter.
     type: string
     required: false
   f.p_qc_flag: 
     name: p_qc_flag
     in: formData
+    description: "QC Flag. A \"Y\" value limits results to loads that have been flagged as potential outliers or data errors."
     type: string
     required: false
   q.p_qc_flag: 
     name: p_qc_flag
     in: query
+    description: "QC Flag. A \"Y\" value limits results to loads that have been flagged as potential outliers or data errors."
     type: string
     required: false
   f.p_outfall: 
     name: p_outfall
     in: formData
+    description: Facility outfall designation.
     type: string
     required: false
   q.p_outfall: 
     name: p_outfall
     in: query
+    description: Facility outfall designation.
     type: string
     required: false
   f.p_mon_loc: 
     name: p_mon_loc
     in: formData
+    description: Monitoring Location Code.
     type: string
     required: false
   q.p_mon_loc: 
     name: p_mon_loc
     in: query
+    description: Monitoring Location Code.
     type: string
     required: false
   f.p_cerclis: 
     name: p_cerclis
     in: formData
+    description: "CERCLIS Flag. A \"Y\" value will limit results to abandoned, inactive, or uncontrolled hazardous waste sites. "
+    enum: 
+      - Y
+      - N
     type: string
     required: false
   q.p_cerclis: 
     name: p_cerclis
     in: query
+    description: "CERCLIS Flag. A \"Y\" value will limit results to abandoned, inactive, or uncontrolled hazardous waste sites. "
+    enum: 
+      - Y
+      - N
     type: string
     required: false
   f.p_naics2: 
@@ -979,23 +1364,37 @@ parameters:
   f.p_imp_sw: 
     name: p_imp_sw
     in: formData
+    description: |-
+      Surface Water Impairment Flag. Provide a coded value to filter on facilities potentially contributing to surface water impairments.
+      - Y = Only include facilities that discharge to impaired surface waters;
+      - POLL = Only include facilities that discharge to impaired surface waters and discharge one or more pollutants that are potentially causing the impairment (you must also provide p_imp_sw_source with this value).
+    enum: 
+      - Y
+      - POLL
     type: string
     required: false
   q.p_imp_sw: 
     name: p_imp_sw
     in: query
+    description: |-
+      Surface Water Impairment Flag. Provide a coded value to filter on facilities potentially contributing to surface water impairments.
+      - Y = Only include facilities that discharge to impaired surface waters;
+      - POLL = Only include facilities that discharge to impaired surface waters and discharge one or more pollutants that are potentially causing the impairment (you must also provide p_imp_sw_source with this value).
+    enum: 
+      - Y
+      - POLL
     type: string
     required: false
   f.p_exceed: 
     name: p_exceed
     in: formData
-    description: Effluent limit exceedance flag. Provide Y or N to restrict results to DMR facilities with or with no effluent limit exceedences
+    description: Effluent limit exceedance flag. Provide Y or N to restrict results to DMR facilities with or with no effluent limit exceedances
     type: string
     required: false
   q.p_exceed: 
     name: p_exceed
     in: query
-    description: Effluent limit exceedance flag. Provide Y or N to restrict results to DMR facilities with or with no effluent limit exceedences
+    description: Effluent limit exceedance flag. Provide Y or N to restrict results to DMR facilities with or with no effluent limit exceedances
     type: string
     required: false
   f.download: 
@@ -1013,11 +1412,13 @@ parameters:
   f.p_pf_id: 
     name: p_pf_id
     in: formData
+    description: Permit Feature ID (outfall/pipe number)
     type: string
     required: false
   q.p_pf_id: 
     name: p_pf_id
     in: query
+    description: Permit Feature ID (outfall/pipe number)
     type: string
     required: false
   f.p_fname: 
@@ -1035,41 +1436,49 @@ parameters:
   f.p_fifra: 
     name: p_fifra
     in: formData
+    description: "FIFRA Flag. A \"Y\" value will limit results to pesticide-producing establishments regulated under FIFRA."
     type: string
     required: false
   q.p_fifra: 
     name: p_fifra
     in: query
+    description: "FIFRA Flag. A \"Y\" value will limit results to pesticide-producing establishments regulated under FIFRA."
     type: string
     required: false
   f.p_count: 
     name: p_count
     in: formData
+    description: DO NOT PUBLICIZE - HIDDEN PARAMETER
     type: string
     required: false
   q.p_count: 
     name: p_count
     in: query
+    description: DO NOT PUBLICIZE - HIDDEN PARAMETER
     type: string
     required: false
   f.p_tmdl: 
     name: p_tmdl
     in: formData
+    description: "Chesapeake Bay TMDL Flag. A \"Y\" value will limit results to facilities that contribute to the Chesapeake Bay TMDL."
     type: string
     required: false
   q.p_tmdl: 
     name: p_tmdl
     in: query
+    description: "Chesapeake Bay TMDL Flag. A \"Y\" value will limit results to facilities that contribute to the Chesapeake Bay TMDL."
     type: string
     required: false
   f.p_spcc: 
     name: p_spcc
     in: formData
+    description: "SPCC/FRP Flag. A \"Y\" value limits results to facilities subject to SPCC/FRP to prevent and respond to oil spills."
     type: string
     required: false
   q.p_spcc: 
     name: p_spcc
     in: query
+    description: "SPCC/FRP Flag. A \"Y\" value limits results to facilities subject to SPCC/FRP to prevent and respond to oil spills."
     type: string
     required: false
   f.p_potw: 
@@ -1099,16 +1508,27 @@ parameters:
   f.p_lod: 
     name: p_lod
     in: formData
+    description: DO NOT PUBLICIZE - HIDDEN PARAMETER
     type: string
     required: false
   q.p_lod: 
     name: p_lod
     in: query
+    description: DO NOT PUBLICIZE - HIDDEN PARAMETER
     type: string
     required: false
   f.p_nd: 
     name: p_nd
     in: formData
+    description: |-
+      Annual Load Calculation Option. Provide a coded value to calculate annual loads using one of three methods: 
+      - ZERO = Set all non-detects to zero
+      - HALF = Set all non-detects to ½ the detection limit
+      - LIMIT = Set all non-detects to the detection limit
+    enum: 
+      - ZERO
+      - HALF
+      - LIMIT
     type: string
     required: false
   q.p_cas: 
@@ -1138,23 +1558,25 @@ parameters:
   q.p_est: 
     name: p_est
     in: query
+    description: "Estimation Function Flag. A \"Y\" value will estimates loads when monitoring data are not reported for one or more monitoring periods in a reporting year. "
     type: string
     required: false
   f.p_est: 
     name: p_est
     in: formData
+    description: "Estimation Function Flag. A \"Y\" value will estimates loads when monitoring data are not reported for one or more monitoring periods in a reporting year. "
     type: string
     required: false
   q.qcolumns: 
     name: qcolumns
     in: query
-    description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+    description: Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
     type: string
     required: false
   f.qcolumns: 
     name: qcolumns
     in: formData
-    description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+    description: Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
     type: string
     required: false
   q.p_naics: 
@@ -1208,7 +1630,8 @@ parameters:
 paths: 
   "/dmr_rest_services.get_all_dmr_facilities": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Water Pollution Search Discharge Monitoring Report Facilities Service
+      description: This procedure returns facilities with DMR discharges for the selected criteria.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.download"
@@ -1266,9 +1689,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of facilities with DMR discharges for the selected criteria.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -1277,7 +1700,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Water Pollution Search Discharge Monitoring Report Facilities Service
+      description: This procedure returns facilities with DMR discharges for the selected criteria.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.download"
@@ -1322,9 +1746,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of facilities with DMR discharges for the selected criteria.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -1334,7 +1758,8 @@ paths:
               - Results
   "/dmr_rest_services.get_all_tri_facilities": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Water Pollution Search Toxics Release Inventory (TRI) Facilities Service
+      description: This procedure returns facilities with TRI releases for the selected criteria.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.download"
@@ -1379,9 +1804,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of facilities with TRIreleases for the selected criteria.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -1390,7 +1815,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Water Pollution Search Toxics Release Inventory (TRI) Facilities Service
+      description: This procedure returns facilities with TRI releases for the selected criteria.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.download"
@@ -1435,9 +1861,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of facilities with TRIreleases for the selected criteria.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -1447,7 +1873,8 @@ paths:
               - Results
   "/dmr_rest_services.get_comparison_dashboard": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Toxics Release Inventory (TRI) and Discharge Monitoring Report (DMR) Comparison Dashboard Service
+      description: This procedure returns a comparison of TRI and DMR data for the selected criteria.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_chem_group_id"
@@ -1482,9 +1909,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns a complex object containing a comparison of TRI and DMR data for the selected criteria.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -1493,7 +1920,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Toxics Release Inventory (TRI) and Discharge Monitoring Report (DMR) Comparison Dashboard Service
+      description: This procedure returns a comparison of TRI and DMR data for the selected criteria.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_chem_group_id"
@@ -1528,9 +1956,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns a complex object containing a comparison of TRI and DMR data for the selected criteria.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -1540,7 +1968,8 @@ paths:
               - Results
   "/dmr_rest_services.get_custom_data_annual": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Discharge Monitoring Report Custom Search Annual Loadings Service
+      description: This procedure returns pollutant loadings by year, NPDES ID, outfall, and pollutant for the selected criteria.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_count"
@@ -1617,9 +2046,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of loadings by year, NPDES ID, outfall, and pollutant for the selected criteria.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -1628,7 +2057,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Discharge Monitoring Report Custom Search Annual Loadings Service
+      description: This procedure returns pollutant loadings by year, NPDES ID, outfall, and pollutant for the selected criteria.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_count"
@@ -1705,9 +2135,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of loadings by year, NPDES ID, outfall, and pollutant for the selected criteria.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -1717,7 +2147,8 @@ paths:
               - Results
   "/dmr_rest_services.get_custom_data_facility": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Discharge Monitoring Report Custom Search Facility Loadings Service
+      description: This procedure returns facilities that meet the search criteria along with total pollutant loadings, including facilities that do not have DMR data in ICIS-NPDES.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_count"
@@ -1794,9 +2225,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of facilities that meet the search criteria, including facilities that do not have DMR data in ICIS-NPDES.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -1805,7 +2236,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Discharge Monitoring Report Custom Search Facility Loadings Service
+      description: This procedure returns facilities that meet the search criteria along with total pollutant loadings, including facilities that do not have DMR data in ICIS-NPDES.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_count"
@@ -1882,9 +2314,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of facilities that meet the search criteria, including facilities that do not have DMR data in ICIS-NPDES.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -1894,7 +2326,8 @@ paths:
               - Results
   "/dmr_rest_services.get_custom_data_monitor_pd": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Discharge Monitoring Report Custom Search Monitoring Period Loadings Service
+      description: This procedure returns pollutant loadings by year, NPDES ID, outfall, monitoring period, and pollutant for the selected criteria.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_count"
@@ -1971,9 +2404,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of loadings by year, NPDES ID, outfall, monitoring period, and pollutant for the selected criteria.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -1982,7 +2415,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Discharge Monitoring Report Custom Search Monitoring Period Loadings Service
+      description: This procedure returns pollutant loadings by year, NPDES ID, outfall, monitoring period, and pollutant for the selected criteria.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_count"
@@ -2059,9 +2493,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of loadings by year, NPDES ID, outfall, monitoring period, and pollutant for the selected criteria.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2071,7 +2505,8 @@ paths:
               - Results
   "/dmr_rest_services.get_dashboard_chemicals": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Toxics Release Inventory (TRI) and Discharge Monitoring Report (DMR) Comparison Dashboard Chemicals Download Service
+      description: This procedure returns chemicals reported in the selected reporting year and facility counts and DMR and TRI releases for each.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_chem_slice"
@@ -2099,9 +2534,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of chemicals reported in the selected reporting year and facilitiy counts and DMR and TRI releases for each.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2110,7 +2545,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Toxics Release Inventory (TRI) and Discharge Monitoring Report (DMR) Comparison Dashboard Chemicals Download Service
+      description: This procedure returns chemicals reported in the selected reporting year and facility counts and DMR and TRI releases for each.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_chem_slice"
@@ -2138,9 +2574,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of chemicals reported in the selected reporting year and facilitiy counts and DMR and TRI releases for each.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2150,7 +2586,8 @@ paths:
               - Results
   "/dmr_rest_services.get_dashboard_facilities": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Toxics Release Inventory (TRI) and Discharge Monitoring Report (DMR) Comparison Dashboard Facilities Download Service
+      description: This procedure returns facilities reporting DMR discharges and TRI releases for the selected criteria.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_co"
@@ -2178,9 +2615,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of facilities reporting DMR discharges and TRI releases for the selected criteria.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2189,7 +2626,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Toxics Release Inventory (TRI) and Discharge Monitoring Report (DMR) Comparison Dashboard Facilities Download Service
+      description: This procedure returns facilities reporting DMR discharges and TRI releases for the selected criteria.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_co"
@@ -2217,9 +2655,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of facilities reporting DMR discharges and TRI releases for the selected criteria.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2229,7 +2667,8 @@ paths:
               - Results
   "/dmr_rest_services.get_dashboard_industries": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Toxics Release Inventory (TRI) and Discharge Monitoring Report (DMR) Comparison Dashboard Industries Download Service
+      description: This procedure returns industrial sectors reported in the selected reporting year and facility counts and DMR and TRI releases for each.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_co"
@@ -2256,9 +2695,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of industrial sectors reported in the selected reporting year and facilitiy counts and DMR and TRI releases for each.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2267,7 +2706,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Toxics Release Inventory (TRI) and Discharge Monitoring Report (DMR) Comparison Dashboard Industries Download Service
+      description: This procedure returns industrial sectors reported in the selected reporting year and facility counts and DMR and TRI releases for each.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_co"
@@ -2294,9 +2734,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of industrial sectors reported in the selected reporting year and facilitiy counts and DMR and TRI releases for each.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2306,7 +2746,8 @@ paths:
               - Results
   "/dmr_rest_services.get_dmr_loadings": 
     get: 
-      summary: Discharge Monitoring Report Loadings Service
+      summary: Water Pollution Search Discharge Monitoring Report (DMR) Loadings Service
+      description: This procedure returns top pollutant loadings organized by geographic location, industry, or facility.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.download"
@@ -2352,9 +2793,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Returns a complex object (Water Pollutant Loadings) composed of objects that contain top pollutant loadings organized by geographic location, industry, or facility.
+          description: Returns a complex object composed of objects that contain top pollutant loadings organized by geographic location, industry, or facility.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2363,7 +2804,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Loadings Service
+      summary: Water Pollution Search Discharge Monitoring Report (DMR) Loadings Service
+      description: This procedure returns top pollutant loadings organized by geographic location, industry, or facility.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.download"
@@ -2409,9 +2851,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Returns a complex object (Water Pollutant Loadings) composed of objects that contain top pollutant loadings organized by geographic location, industry, or facility.
+          description: Returns a complex object composed of objects that contain top pollutant loadings organized by geographic location, industry, or facility.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2421,7 +2863,8 @@ paths:
               - Results
   "/dmr_rest_services.get_eff_exceedances": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Effluent Limit Exceedances Search Service
+      description: This procedure returns facility-level, or if selected, pollutant-level, information about E90 effluent exceedances.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.download"
@@ -2470,9 +2913,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of  facility-level, or if selected, pollutant-level, information about E90 effluent exceedances.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2481,7 +2924,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Effluent Limit Exceedances Search Service
+      description: This procedure returns facility-level, or if selected, pollutant-level, information about E90 effluent exceedances.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.download"
@@ -2530,9 +2974,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of facility-level, or if selected, pollutant-level, information about E90 effluent exceedances.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2542,7 +2986,8 @@ paths:
               - Results
   "/dmr_rest_services.get_eff_exceedances_report": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Effluent Limit Exceedances Report Service
+      description: This procedure returns detailed information about effluent exceedance (E90) violations under the Clean Water Act National Pollutant Discharge Elimination System (NPDES) permit program for a single permit.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.download"
@@ -2554,9 +2999,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns a complex object composed of objects that contain detailed information about effluent exceedance (E90) violations under the Clean Water Act National Pollutant Discharge Elimination System (NPDES) permit program for a single permit.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2565,7 +3010,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Effluent Limit Exceedances Report Service
+      description: This procedure returns detailed information about effluent exceedance (E90) violations under the Clean Water Act National Pollutant Discharge Elimination System (NPDES) permit program for a single permit.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.download"
@@ -2577,9 +3023,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns a complex object composed of objects that contain detailed information about effluent exceedance (E90) violations under the Clean Water Act National Pollutant Discharge Elimination System (NPDES) permit program for a single permit.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2587,60 +3033,10 @@ paths:
                 "$ref": "#/definitions/dmr12_Results" 
             required: 
               - Results
-  "/dmr_rest_services.get_facility_annual_discharges": 
-    get: 
-      summary: Discharge Monitoring Report Custom Service
-      parameters: 
-        - "$ref": "#/parameters/q.output"
-        - "$ref": "#/parameters/q.p_permit_id"
-        - name: p_year
-          in: query
-          description: The calendar year for the annual pollutant loadings. 
-          type: string
-          required: false
-        - "$ref": "#/parameters/q.callback"
-      tags: 
-        - Discharge Monitoring Report
-      responses: 
-        '200': 
-          description: Results
-          schema: 
-            type: object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dmr13_Results" 
-            required: 
-              - Results
-    post: 
-      summary: Discharge Monitoring Report Custom Service
-      parameters: 
-        - "$ref": "#/parameters/f.output"
-        - "$ref": "#/parameters/f.p_permit_id"
-        - name: p_year
-          in: formData
-          description: The calendar year for the annual pollutant loadings. 
-          type: string
-          required: false
-        - "$ref": "#/parameters/f.callback"
-      tags: 
-        - Discharge Monitoring Report
-      responses: 
-        '200': 
-          description: Results
-          schema: 
-            type: object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dmr13_Results" 
-            required: 
-              - Results
   "/dmr_rest_services.get_facility_loads": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Facility Loading Calculations Service
+      description: This procedure returns pollutant loadings data for a single NPDES permit by reporting year.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - name: p_year
@@ -2657,9 +3053,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of pollutant loadings data for a single NPDES permit by reporting year.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2668,7 +3064,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Facility Loading Calculations Service
+      description: This procedure returns pollutant loadings data for a single NPDES permit by reporting year.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - name: p_year
@@ -2685,9 +3082,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of pollutant loadings data for a single NPDES permit by reporting year.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2697,7 +3094,8 @@ paths:
               - Results
   "/dmr_rest_services.get_facility_report": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Pollutant Loading Report (Discharge Monitoring Report (DMR)) Service
+      description: This procedure returns detailed information about a single NPDES permit by reporting year.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.download"
@@ -2712,9 +3110,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns a complex object composed of objects that contain detailed information about a single NPDES permit by reporting year.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2723,7 +3121,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Pollutant Loading Report (Discharge Monitoring Report (DMR)) Service
+      description: This procedure returns detailed information about a single NPDES permit by reporting year.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.download"
@@ -2738,9 +3137,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns a complex object composed of objects that contain detailed information about a single NPDES permit by reporting year.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2750,7 +3149,8 @@ paths:
               - Results
   "/dmr_rest_services.get_industrial_dischargers": 
     get: 
-      summary: Placeholder
+      summary: Pollutant Loading Report Top Industrial Discharges Service
+      description: This procedure returns industrial facilities that discharge to a single POTW NPDES permit for a reporting year.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_permit_id"
@@ -2764,9 +3164,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of industrial facilities that discharge to a single NPDES permit for a reporting year.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2775,7 +3175,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Placeholder
+      summary: Pollutant Loading Report Top Industrial Discharges Service
+      description: This procedure returns industrial facilities that discharge to a single POTW NPDES permit for a reporting year.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_permit_id"
@@ -2789,9 +3190,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of industrial facilities that discharge to a single NPDES permit for a reporting year.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2801,7 +3202,8 @@ paths:
               - Results
   "/dmr_rest_services.get_manual_corrections": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Water Pollutant Loading Tool Manual Corrections Service
+      description: This procedure provides the manual corrections that are applied to Loading Tool data during each refresh.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - name: p_year
@@ -2814,9 +3216,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of  manual corrections that are applied to Loading Tool data for each weekly refresh.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2825,7 +3227,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Water Pollutant Loading Tool Manual Corrections Service
+      description: This procedure provides the manual corrections that are applied to Loading Tool data during each refresh.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - name: p_year
@@ -2838,9 +3241,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of  manual corrections that are applied to Loading Tool data for each weekly refresh.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2850,7 +3253,8 @@ paths:
               - Results
   "/dmr_rest_services.get_monitor_pd_loads": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Facility Pollutant Loading Calculations by Monitoring Period Service
+      description: This procedure returns pollutant loadings data for a single NPDES permit, pollutant, outfall by monitoring period within the selected reporting year.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - name: p_year
@@ -2867,9 +3271,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of  pollutant loadings data for a single NPDES permit, pollutant, outfall by monitoring period within the selected reporting year.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2878,7 +3282,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Facility Pollutant Loading Calculations by Monitoring Period Service
+      description: This procedure returns pollutant loadings data for a single NPDES permit, pollutant, outfall by monitoring period within the selected reporting year.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - name: p_year
@@ -2895,9 +3300,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of  pollutant loadings data for a single NPDES permit, pollutant, outfall by monitoring period within the selected reporting year.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2907,7 +3312,8 @@ paths:
               - Results
   "/dmr_rest_services.get_multiyear_loading": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Discharge Monitoring Report (DMR) and Toxics Release Inventory (TRI) Multi-Year Loading Report Service
+      description: This procedure returns DMR and TRI discharges for a single NPDES permit, grouped by chemical group for the last 5 years.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_end_year"
@@ -2918,9 +3324,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of  DMR and TRI discharges for a single NPDES permit, grouped by chemical group for the last 5 years.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2929,7 +3335,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Discharge Monitoring Report (DMR) and Toxics Release Inventory (TRI) Multi-Year Loading Report Service
+      description: This procedure returns DMR and TRI discharges for a single NPDES permit, grouped by chemical group for the last 5 years.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_end_year"
@@ -2940,9 +3347,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of  DMR and TRI discharges for a single NPDES permit, grouped by chemical group for the last 5 years.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2952,7 +3359,8 @@ paths:
               - Results
   "/dmr_rest_services.get_multiyear_loading_detail": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Discharge Monitoring Report (DMR) and Toxics Release Inventory (TRI) Multi-Year Loading Report By Chemical Service
+      description: This procedure returns DMR and TRI discharges for a single NPDES permit, grouped by pollutant for the last 5 years.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_chem_group_id"
@@ -2964,9 +3372,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of  DMR and TRI discharges for a single NPDES permit, grouped by pollutant for the last 5 years.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2975,7 +3383,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Discharge Monitoring Report (DMR) and Toxics Release Inventory (TRI) Multi-Year Loading Report By Chemical Service
+      description: This procedure returns DMR and TRI discharges for a single NPDES permit, grouped by pollutant for the last 5 years.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_chem_group_id"
@@ -2987,9 +3396,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of  DMR and TRI discharges for a single NPDES permit, grouped by pollutant for the last 5 years.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -2999,7 +3408,8 @@ paths:
               - Results
   "/dmr_rest_services.get_outfall_loads": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Facility Pollutant Loading Calculations by Outfall Service
+      description: This procedure returns pollutant loadings data for a single NPDES permit, by pollutant and outfall within the selected reporting year.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - name: p_year
@@ -3015,9 +3425,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of  DMR and TRI discharges for a single NPDES permit, grouped by pollutant for the last 5 years.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -3026,7 +3436,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Facility Pollutant Loading Calculations by Outfall Service
+      description: This procedure returns pollutant loadings data for a single NPDES permit, by pollutant and outfall within the selected reporting year.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - name: p_year
@@ -3042,9 +3453,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of  pollutant loadings data for a single NPDES permit, by pollutant and outfall within the selected reporting year.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -3054,7 +3465,8 @@ paths:
               - Results
   "/dmr_rest_services.get_permit_fact_sheet": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: NPDES Monitoring Data Download Service
+      description: This procedure returns NPDES Monitoring Data for a single NPDES permit for a specified time period.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_end_date"
@@ -3066,9 +3478,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: This procedure returns NPDES Monitoring Data for a single NPDES permit for a specified time period.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -3077,7 +3489,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: NPDES Monitoring Data Download Service
+      description: This procedure returns NPDES Monitoring Data for a single NPDES permit for a specified time period.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_end_date"
@@ -3089,9 +3502,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: This procedure returns NPDES Monitoring Data for a single NPDES permit for a specified time period.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -3101,7 +3514,8 @@ paths:
               - Results
   "/dmr_rest_services.get_permit_limits": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: NPDES Permit Limits and Monitoring Requirements Service
+      description: This procedure returns NPDES permit limits and monitoring requirements by pollutant for a single NPDES permit and reporting year.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - name: p_year
@@ -3130,9 +3544,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of NPDES permit limits and monitoring requirements by pollutant for a single NPDES permit and reporting year.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -3141,7 +3555,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: NPDES Permit Limits and Monitoring Requirements Service
+      description: This procedure returns NPDES permit limits and monitoring requirements by pollutant for a single NPDES permit and reporting year.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - name: p_year
@@ -3170,9 +3585,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of NPDES permit limits and monitoring requirements by pollutant for a single NPDES permit and reporting year.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -3182,7 +3597,8 @@ paths:
               - Results
   "/dmr_rest_services.get_pollutant_loads": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Facility Loading Calculations By Pollutant Service
+      description: This procedure returns pollutant loadings data for a single NPDES permit within the selected reporting year.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - name: p_year
@@ -3198,9 +3614,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of pollutant loadings data for a single NPDES permit within the selected reporting year.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -3209,7 +3625,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Facility Loading Calculations By Pollutant Service
+      description: This procedure returns pollutant loadings data for a single NPDES permit within the selected reporting year.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - name: p_year
@@ -3225,9 +3642,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes an array of pollutant loadings data for a single NPDES permit within the selected reporting year.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -3237,7 +3654,8 @@ paths:
               - Results
   "/dmr_rest_services.get_state_stats": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: State Statistics Download Service
+      description: This procedure generates a comma separated value (CSV) file containing the counts and magnitudes of pollutant loadings for major and non-major NPDES permittees during a selected calendar year, summarized by state and EPA Region.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - name: p_year
@@ -3250,18 +3668,12 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Retuns as object that includes an array of counts and magnitude of pollutant loadings for major and minor NPDES permittees during a selected calendar year, summarized by state and EPA Region.
           schema: 
-            type: object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dmr28_Results" 
-            required: 
-              - Results
+            type: file
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: State Statistics Download Service
+      description: This procedure generates a comma separated value (CSV) file containing the counts and magnitudes of pollutant loadings for major and non-major NPDES permittees during a selected calendar year, summarized by state and EPA Region.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - name: p_year
@@ -3274,19 +3686,13 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Retuns as object that includes an array of counts and magnitude of pollutant loadings for major and minor NPDES permittees during a selected calendar year, summarized by state and EPA Region.
           schema: 
-            type: object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dmr28_Results" 
-            required: 
-              - Results
+            type: file
   "/dmr_rest_services.get_tri_facility_report": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Pollutant Loading Report (Toxics Release Inventory (TRI)) Service
+      description: This procedure returns detailed information about a single TRI Facility ID by reporting year.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.download"
@@ -3301,9 +3707,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns a complex object composed of objects that contain detailed information about a single TRI Facility ID by reporting year.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -3312,7 +3718,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Pollutant Loading Report (Toxics Release Inventory (TRI)) Service
+      description: This procedure returns detailed information about a single TRI Facility ID by reporting year.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.download"
@@ -3327,9 +3734,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns a complex object composed of objects that contain detailed information about a single TRI Facility ID by reporting year.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -3339,7 +3746,8 @@ paths:
               - Results
   "/dmr_rest_services.get_tri_releases": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Water Pollution Search Toxics Release Inventory (TRI) Discharges Service
+      description: This procedure returns top chemical discharges organized by geographic location, industry, or facility.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.download"
@@ -3397,9 +3805,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns a complex object composed of objects that contain top chemical discharges organized by geographic location, industry, or facility.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -3408,7 +3816,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Water Pollution Search Toxics Release Inventory (TRI) Discharges Service
+      description: This procedure returns top chemical discharges organized by geographic location, industry, or facility.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.download"
@@ -3453,9 +3862,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Returns a complex object composed of objects that contain top chemical discharges organized by geographic location, industry, or facility.
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -3465,7 +3874,8 @@ paths:
               - Results
   "/dmr_rest_services.get_watershed_facilities": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Watershed Statistics Search Facilities Service
+      description: This procedure generates a comma separated value (CSV) file containing facility attribute information (e.g., facility name, unique identifiers, address) for the selected watershed(s).
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_huc"
@@ -3483,9 +3893,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Results are a comma separated value (CSV) file containing facility attribute information (e.g., facility name, unique identifiers, address) for the selected watershed(s).
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -3494,7 +3904,8 @@ paths:
             required: 
               - Results
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Watershed Statistics Search Facilities Service
+      description: This procedure generates a comma separated value (CSV) file containing facility attribute information (e.g., facility name, unique identifiers, address) for the selected watershed(s).
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_huc"
@@ -3512,9 +3923,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Results are a comma separated value (CSV) file containing facility attribute information (e.g., facility name, unique identifiers, address) for the selected watershed(s).
           schema: 
-            type: object
+            description: Root Object
             xml: 
               name: Root
             properties: 
@@ -3524,7 +3935,8 @@ paths:
               - Results
   "/dmr_rest_services.get_watershed_stats": 
     get: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Watershed Statistics Search Service
+      description: This procedure generates a comma separated value (CSV) file containing facility counts and loadings for the selected watershed(s).
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_huc"
@@ -3542,18 +3954,12 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Results are a comma separated value (CSV) file containing facility counts and loadings for the selected watershed(s).
           schema: 
-            type: object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dmr32_Results" 
-            required: 
-              - Results
+            type: file
     post: 
-      summary: Discharge Monitoring Report Custom Service
+      summary: Watershed Statistics Search Service
+      description: This procedure generates a comma separated value (CSV) file containing facility counts and loadings for the selected watershed(s).
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_huc"
@@ -3571,16 +3977,9 @@ paths:
         - Discharge Monitoring Report
       responses: 
         '200': 
-          description: Results
+          description: Results are a comma separated value (CSV) file containing facility counts and loadings for the selected watershed(s).
           schema: 
-            type: object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dmr32_Results" 
-            required: 
-              - Results
+            type: file
 definitions: 
   dmr01_Facilities: 
     description: Facilities Object
@@ -3603,13 +4002,14 @@ definitions:
         type: string
       StateCode: 
         type: string
+        title: State Code
+        example: VA
+        description: The state in which the system is located.
       GeocodeLatitude: 
         type: string
       GeocodeLongitude: 
         type: string
       MajorMinorStatusFlag: 
-        type: string
-      FacInfoOnly: 
         type: string
       FacPermitData: 
         type: string
@@ -3632,13 +4032,12 @@ definitions:
       - GeocodeLatitude
       - GeocodeLongitude
       - MajorMinorStatusFlag
-      - FacInfoOnly
       - FacPermitData
       - MonReqOnly
       - MonReqAndLimits
       - FacPermitDmrData
   dmr01_Results: 
-    type: object
+    description: Results Object
     properties: 
       Message: 
         type: string
@@ -3664,6 +4063,7 @@ definitions:
       Facilities: 
         type: array
         title: Facilities
+        description: A complex array of facility information.
         items: 
           "$ref": "#/definitions/dmr01_Facilities" 
         xml: 
@@ -3678,7 +4078,7 @@ definitions:
       - EndRec
       - Facilities
   dmr02_Facilities: 
-    type: object
+    description: Facilities Object
     xml: 
       name: Facilities
     properties: 
@@ -3699,6 +4099,9 @@ definitions:
         type: string
       StateCode: 
         type: string
+        title: State Code
+        example: VA
+        description: The state in which the system is located.
       DirectReleaseOnly: 
         type: string
       IndirectReleaseOnly: 
@@ -3722,7 +4125,7 @@ definitions:
       - Linktodmr
       - DmrDischarges
   dmr02_Results: 
-    type: object
+    description: Results Object
     properties: 
       Message: 
         type: string
@@ -3748,6 +4151,7 @@ definitions:
       Facilities: 
         type: array
         title: Facilities
+        description: A complex array of facility information.
         items: 
           "$ref": "#/definitions/dmr02_Facilities" 
         xml: 
@@ -3762,7 +4166,7 @@ definitions:
       - EndRec
       - Facilities
   dmr03_DmrChemicals: 
-    type: object
+    description: DMR Chemicals Object
     properties: 
       Total: 
         type: string
@@ -3778,7 +4182,7 @@ definitions:
       - NotOnTriList
       - OnTriList
   dmr03_DmrFacilities: 
-    type: object
+    description: DMR Facilities Object
     properties: 
       Total: 
         type: string
@@ -3797,7 +4201,7 @@ definitions:
       - OtherNonTri
       - NoTriForm
   dmr03_Results: 
-    type: object
+    description: Results Object
     properties: 
       Message: 
         type: string
@@ -3843,7 +4247,7 @@ definitions:
       - TopIndustries
       - TopChemicals
   dmr03_Summary: 
-    type: object
+    description: Summary Object
     properties: 
       TriDischargers: 
         type: string
@@ -3871,7 +4275,7 @@ definitions:
       - DmrPounds
       - DmrTwpe
   dmr03_TopChemicals: 
-    type: object
+    description: Top Chemicals Object
     xml: 
       name: TopChemicals
     properties: 
@@ -3879,6 +4283,8 @@ definitions:
         type: string
       GroupName: 
         type: string
+        title: Group Name
+        description: Name of the group represented. Either a state name or point source category (PSC).
       Dmrfac: 
         type: string
       TRIfac: 
@@ -3907,7 +4313,7 @@ definitions:
       - DmrValue
       - TRIValue
   dmr03_TopIndustries: 
-    type: object
+    description: Top Industries Object
     xml: 
       name: TopIndustries
     properties: 
@@ -3943,7 +4349,7 @@ definitions:
       - DmrValue
       - TRIValue
   dmr03_TriChemicals: 
-    type: object
+    description: TRI Chemicals Object
     properties: 
       Total: 
         type: string
@@ -3956,7 +4362,7 @@ definitions:
       - AlsoReportDmr
       - ReportOnlyTri
   dmr03_TriFacilities: 
-    type: object
+    description: TRI Facilities Object
     properties: 
       Total: 
         type: string
@@ -3981,7 +4387,7 @@ definitions:
       - NodmrDirectIndDsch
       - NodmrIndDsch
   dmr04_Results: 
-    type: object
+    description: Results Object
     properties: 
       Message: 
         type: string
@@ -4012,6 +4418,7 @@ definitions:
       Results: 
         type: array
         title: Results
+        description: A complex array representing the results of the service query or service report.
         items: 
           "$ref": "#/definitions/dmr04_Results-2" 
     required: 
@@ -4024,7 +4431,7 @@ definitions:
       - EndRec
       - Results
   dmr04_Results-2: 
-    type: object
+    description: Results Data Object
     properties: 
       DmrYear: 
         type: string
@@ -4061,6 +4468,9 @@ definitions:
         description: The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery.
       StateCode: 
         type: string
+        title: State Code
+        example: VA
+        description: The state in which the system is located.
       Zip: 
         type: string
         title: Zip Code
@@ -4248,7 +4658,7 @@ definitions:
       - TRIIndirectPounds
       - EstFactor
   dmr05_Results: 
-    type: object
+    description: Results Object
     properties: 
       Message: 
         type: string
@@ -4279,6 +4689,7 @@ definitions:
       Results: 
         type: array
         title: Results
+        description: A complex array representing the results of the service query or service report.
         items: 
           "$ref": "#/definitions/dmr05_Results-2" 
     required: 
@@ -4291,7 +4702,7 @@ definitions:
       - EndRec
       - Results
   dmr05_Results-2: 
-    type: object
+    description: Results Data Object
     properties: 
       DmrYear: 
         type: string
@@ -4328,6 +4739,9 @@ definitions:
         description: The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery.
       StateCode: 
         type: string
+        title: State Code
+        example: VA
+        description: The state in which the system is located.
       Zip: 
         type: string
         title: Zip Code
@@ -4435,7 +4849,7 @@ definitions:
       - HasLoadingsData
       - QcFlag
   dmr06_Results: 
-    type: object
+    description: Results Object
     properties: 
       Message: 
         type: string
@@ -4466,6 +4880,7 @@ definitions:
       Results: 
         type: array
         title: Results
+        description: A complex array representing the results of the service query or service report.
         items: 
           "$ref": "#/definitions/dmr06_Results-2" 
     required: 
@@ -4478,7 +4893,7 @@ definitions:
       - EndRec
       - Results
   dmr06_Results-2: 
-    type: object
+    description: Results Data Object
     properties: 
       Mped: 
         type: string
@@ -4515,6 +4930,9 @@ definitions:
         description: The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery.
       StateCode: 
         type: string
+        title: State Code
+        example: VA
+        description: The state in which the system is located.
       Zip: 
         type: string
         title: Zip Code
@@ -4741,6 +5159,8 @@ definitions:
     properties: 
       GroupName: 
         type: string
+        title: Group Name
+        description: Name of the group represented. Either a state name or point source category (PSC).
       DmrFacCount: 
         type: string
       TRIFacCount: 
@@ -4771,7 +5191,7 @@ definitions:
       - HasToxicWeight
       - OnTRIList
   dmr07_Results: 
-    type: object
+    description: Results Object
     properties: 
       QueryRows: 
         type: string
@@ -4805,7 +5225,7 @@ definitions:
       - EndRec
       - Chemicals
   dmr08_Facilities: 
-    type: object
+    description: Facilities Object
     xml: 
       name: Facilities
     properties: 
@@ -4830,6 +5250,9 @@ definitions:
         type: string
       StateCode: 
         type: string
+        title: State Code
+        example: VA
+        description: The state in which the system is located.
       EPARegionCode: 
         type: string
         title: EPA Region Code
@@ -4896,7 +5319,7 @@ definitions:
       - TRIIndirectTwpe
       - MultiyrLink
   dmr08_Results: 
-    type: object
+    description: Results Object
     properties: 
       QueryRows: 
         type: string
@@ -4917,6 +5340,7 @@ definitions:
       Facilities: 
         type: array
         title: Facilities
+        description: A complex array of facility information.
         items: 
           "$ref": "#/definitions/dmr08_Facilities" 
         xml: 
@@ -4930,7 +5354,7 @@ definitions:
       - EndRec
       - Facilities
   dmr09_Industries: 
-    type: object
+    description: Industries Object
     xml: 
       name: Industries
     properties: 
@@ -4966,7 +5390,7 @@ definitions:
       - HasToxicWeight
       - OnTRIList
   dmr09_Results: 
-    type: object
+    description: Results Object
     properties: 
       QueryRows: 
         type: string
@@ -5000,41 +5424,9 @@ definitions:
       - EndRec
       - Industries
   dmr10_FacilityCounts: 
-    type: object
-    properties: 
-      AllFacs: 
-        type: string
-      AllMajor: 
-        type: string
-      AllMinor: 
-        type: string
-      FacInfoOnly: 
-        type: string
-      WithPermitData: 
-        type: string
-      WithPermitDataMajor: 
-        type: string
-      WithPermitDataMinor: 
-        type: string
-      WithMonReqOnly: 
-        type: string
-      WithMonReqLimits: 
-        type: string
-      WithDataIcis: 
-        type: string
-    required: 
-      - AllFacs
-      - AllMajor
-      - AllMinor
-      - FacInfoOnly
-      - WithPermitData
-      - WithPermitDataMajor
-      - WithPermitDataMinor
-      - WithMonReqOnly
-      - WithMonReqLimits
-      - WithDataIcis
+    description: Facility Counts Objects
   dmr10_Results: 
-    type: object
+    description: Results Object
     properties: 
       Message: 
         type: string
@@ -5117,7 +5509,7 @@ definitions:
       - QueryID
       - FacilityCounts
   dmr10_TopFacilities: 
-    type: object
+    description: Top Facilities Object
     xml: 
       name: TopFacilities
     properties: 
@@ -5138,6 +5530,9 @@ definitions:
         description: The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery.
       StateCode: 
         type: string
+        title: State Code
+        example: VA
+        description: The state in which the system is located.
       MajorMinorStatusFlag: 
         type: string
       GeocodeLatitude: 
@@ -5203,7 +5598,7 @@ definitions:
       - LimitsInfoFlag
       - DmrInfoFlag
   dmr10_TopFacilityPounds: 
-    type: object
+    description: Top Facility Pounds Object
     xml: 
       name: TopFacilityPounds
     properties: 
@@ -5226,6 +5621,9 @@ definitions:
         type: string
       StateCode: 
         type: string
+        title: State Code
+        example: VA
+        description: The state in which the system is located.
       Huc12: 
         type: string
       Huc12Name: 
@@ -5286,7 +5684,7 @@ definitions:
       - TotalPounds
       - TotalTwpe
   dmr10_TopFacilityTWPE: 
-    type: object
+    description: Top Facility TWPE Object
     xml: 
       name: TopFacilityTWPE
     properties: 
@@ -5309,6 +5707,9 @@ definitions:
         type: string
       StateCode: 
         type: string
+        title: State Code
+        example: VA
+        description: The state in which the system is located.
       Huc12: 
         type: string
       Huc12Name: 
@@ -5369,7 +5770,7 @@ definitions:
       - TotalTwpe
       - TotalPounds
   dmr10_TopPollutantPounds: 
-    type: object
+    description: Top Pollutant Pounds Object
     xml: 
       name: TopPollutantPounds
     properties: 
@@ -5399,7 +5800,7 @@ definitions:
       - TotalPounds
       - QcFlag
   dmr10_TopPollutantTWPE: 
-    type: object
+    description: Top Pollutant TWPE Object
     xml: 
       name: TopPollutantTWPE
     properties: 
@@ -5429,7 +5830,7 @@ definitions:
       - TotalTwpe
       - QcFlag
   dmr10_TopSIC: 
-    type: object
+    description: Top SIC Object
     xml: 
       name: TopSIC
     properties: 
@@ -5474,7 +5875,7 @@ definitions:
       - LimitsInfoFlag
       - DmrInfoFlag
   dmr10_TopSICPounds: 
-    type: object
+    description: Top SIC Pounds Object
     xml: 
       name: TopSICPounds
     properties: 
@@ -5519,7 +5920,7 @@ definitions:
       - QcFlag
       - TotalPounds
   dmr10_TopSICTWPE: 
-    type: object
+    description: Top SIC TWPE Object
     xml: 
       name: TopSICTWPE
     properties: 
@@ -5564,7 +5965,7 @@ definitions:
       - QcFlag
       - TotalTwpe
   dmr10_TopWatersheds: 
-    type: object
+    description: Top Watersheds Objects
     xml: 
       name: TopWatersheds
     properties: 
@@ -5627,7 +6028,7 @@ definitions:
       - ViolationCount
       - LoadOverLimit
   dmr11_FacilityExceedances: 
-    type: object
+    description: Facilitiy Exceedabces Object
     xml: 
       name: FacilityExceedances
     properties: 
@@ -5644,6 +6045,9 @@ definitions:
         description: The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery.
       StateCode: 
         type: string
+        title: State Code
+        example: VA
+        description: The state in which the system is located.
       EPARegionCode: 
         type: string
         title: EPA Region Code
@@ -5675,6 +6079,7 @@ definitions:
         type: string
         title: Tribal Lands Flag
         example: '1'
+        description: A flag indicating that the facility is within a tribal area.
       QcFlag: 
         type: string
       ActualAverageFlowNmbr: 
@@ -5741,7 +6146,7 @@ definitions:
       - LoadOverLimitTwpe
       - ExceedanceYears
   dmr11_Results: 
-    type: object
+    description: Results Object
     properties: 
       QueryRows: 
         type: string
@@ -5774,7 +6179,7 @@ definitions:
       - EndRec
       - FacilityExceedances
   dmr12_EnforcementInfo: 
-    type: object
+    description: Enforcement Information Object
     properties: 
       LastFea: 
         type: string
@@ -5796,7 +6201,7 @@ definitions:
       - DocketNumber
       - TypeDescription
   dmr12_ExceedanceDetails: 
-    type: object
+    description: Exceedance Details Object
     xml: 
       name: ExceedanceDetails
     properties: 
@@ -5859,7 +6264,7 @@ definitions:
       - NmbrOfDays
       - ViolationDays
   dmr12_FacilityInfo: 
-    type: object
+    description: Facility Information Object
     properties: 
       FacName: 
         type: string
@@ -5940,7 +6345,7 @@ definitions:
       - SicCode
       - NaicsCode
   dmr12_PermitInfo: 
-    type: object
+    description: Permit Information Object
     properties: 
       PermitType: 
         type: string
@@ -5974,7 +6379,7 @@ definitions:
       - PretreatProgram
       - CsoOutfall
   dmr12_PollutantExceedanceCounts: 
-    type: object
+    description: Pollutant Exceedance Counts Object
     xml: 
       name: PollutantExceedanceCounts
     properties: 
@@ -6004,7 +6409,7 @@ definitions:
       - ViolationDays
       - QcFlag
   dmr12_ReceivingWater: 
-    type: object
+    description: Receiving Water Object
     properties: 
       WbName: 
         type: string
@@ -6023,7 +6428,7 @@ definitions:
       - ListedImpairment
       - ImpairmentClass
   dmr12_Results: 
-    type: object
+    description: Results Object
     properties: 
       Message: 
         type: string
@@ -6084,7 +6489,7 @@ definitions:
       - PollutantExceedanceCounts
       - ExceedanceDetails
   dmr12_TotalExceedanceCounts: 
-    type: object
+    description: Total Exceedance Counts Object
     xml: 
       name: TotalExceedanceCounts
     properties: 
@@ -6101,106 +6506,6 @@ definitions:
       - MonitoringPeriodEndDate
       - ViolCount
       - ViolationDays
-  dmr13_AnnualDischarges: 
-    description: Annua Discharges Object
-    xml: 
-      name: AnnualDischarges
-    properties: 
-      NPDESID: 
-        type: string
-      DmrYear: 
-        type: string
-      TotalLoadoverlimit: 
-        type: string
-      TotalLbs: 
-        type: string
-      TotalLbsMetals: 
-        type: string
-      TotalLbsNitrogen: 
-        type: string
-      TotalLbsOrganics: 
-        type: string
-      TotalLbsPhosphorus: 
-        type: string
-      TotalLbsPrioritypoll: 
-        type: string
-      TotalLbsSolids: 
-        type: string
-      TotalTwpe: 
-        type: string
-      TotalTwpeMetals: 
-        type: string
-      TotalTwpeNitrogen: 
-        type: string
-      TotalTwpeOrganics: 
-        type: string
-      TotalTwpePhosphorus: 
-        type: string
-      TotalTwpePrioritypoll: 
-        type: string
-      TotalTwpeSolids: 
-        type: string
-      PathAvgConc: 
-        type: string
-      PathMaxConc: 
-        type: string
-      AvgTemp: 
-        type: string
-      MaxTemp: 
-        type: string
-      AvgDailyFlow: 
-        type: string
-      TotalAnnualFlow: 
-        type: string
-      TopLbsPollutant: 
-        type: string
-      TopLbs: 
-        type: string
-      TopTwpePollutant: 
-        type: string
-      TopTwpe: 
-        type: string
-    required: 
-      - NPDESID
-      - DmrYear
-      - TotalLoadoverlimit
-      - TotalLbs
-      - TotalLbsMetals
-      - TotalLbsNitrogen
-      - TotalLbsOrganics
-      - TotalLbsPhosphorus
-      - TotalLbsPrioritypoll
-      - TotalLbsSolids
-      - TotalTwpe
-      - TotalTwpeMetals
-      - TotalTwpeNitrogen
-      - TotalTwpeOrganics
-      - TotalTwpePhosphorus
-      - TotalTwpePrioritypoll
-      - TotalTwpeSolids
-      - PathAvgConc
-      - PathMaxConc
-      - AvgTemp
-      - MaxTemp
-      - AvgDailyFlow
-      - TotalAnnualFlow
-      - TopLbsPollutant
-      - TopLbs
-      - TopTwpePollutant
-      - TopTwpe
-  dmr13_Results: 
-    type: object
-    properties: 
-      AnnualDischarges: 
-        type: array
-        title: Annual Discharges
-        items: 
-          "$ref": "#/definitions/dmr13_AnnualDischarges" 
-        xml: 
-          name: AnnualDischarges
-          wrapped: true
-    required: 
-      - AnnualDischarges
   dmr14_FacilityInfo: 
     description: Facility Info Object
     properties: 
@@ -6419,7 +6724,7 @@ definitions:
       - QcReviewPounds
       - QcReviewTwpe
   dmr14_Results: 
-    type: object
+    description: Results Object
     properties: 
       Message: 
         type: string
@@ -6724,7 +7029,7 @@ definitions:
       - EsaDischarge
       - EsaFips
   dmr15_Results: 
-    type: object
+    description: Results Object
     properties: 
       Message: 
         type: string
@@ -6851,14 +7156,14 @@ definitions:
       - ExceedanceFlag
       - LoadOverLimit
   dmr16_Results: 
-    type: object
+    description: Results Object
     properties: 
       Dummy: 
         type: string
     required: 
       - Dummy
   dmr17_Results: 
-    type: object
+    description: Results Object
     properties: 
       QueryRows: 
         type: string
@@ -6879,6 +7184,7 @@ definitions:
       Results: 
         type: array
         title: Results Object
+        description: A complex array representing the results of the service query or service report.
         items: 
           "$ref": "#/definitions/dmr17_Results-2" 
         xml: 
@@ -7076,7 +7382,7 @@ definitions:
       - Equation
       - QcReviewMonitorPdLoad
   dmr18_Results: 
-    type: object
+    description: Results Object
     properties: 
       Message: 
         type: string
@@ -7186,7 +7492,7 @@ definitions:
       - NpdesIds
       - TriIds
   dmr19_Results: 
-    type: object
+    description: Results Object
     properties: 
       Message: 
         type: string
@@ -7208,7 +7514,7 @@ definitions:
       - FacilityInfo
       - ChemicalGroups
   dmr21_FacilityInfo: 
-    type: object
+    description: Facility Information Object
     properties: 
       FacName: 
         type: string
@@ -7245,7 +7551,7 @@ definitions:
       - NpdesIds
       - TriIds
   dmr21_Pollutants: 
-    type: object
+    description: Pollutants Object
     xml: 
       name: Pollutants
     properties: 
@@ -7269,7 +7575,7 @@ definitions:
       - Pollutant
       - PollutantDischarges
   dmr22_PollutantDischarges: 
-    type: object
+    description: Pollutant Discharges Object
     xml: 
       name: PollutantDischarges
     properties: 
@@ -7287,7 +7593,7 @@ definitions:
       - Twpe
       - QcFlag
   dmr21_Results: 
-    type: object
+    description: Results Object
     properties: 
       Message: 
         type: string
@@ -7360,7 +7666,7 @@ definitions:
       - QcReviewPounds
       - QcReviewTwpe
   dmr23_Results: 
-    type: object
+    description: Results Object
     properties: 
       Message: 
         type: string
@@ -7493,7 +7799,7 @@ definitions:
       - DmrUnitDesc
       - DmrValue
   dmr24_Results: 
-    type: object
+    description: Results Object
     properties: 
       Outfalls: 
         type: array
@@ -7584,7 +7890,7 @@ definitions:
       - LimitConc3
       - LimitConc3Basis
   dmr26_Results: 
-    type: object
+    description: Results Object
     properties: 
       PermitLimits: 
         type: array
@@ -7645,7 +7951,7 @@ definitions:
       - QcReviewPounds
       - QcReviewTwpe
   dmr27_Results: 
-    type: object
+    description: Results Object
     properties: 
       Message: 
         type: string
@@ -7663,66 +7969,8 @@ definitions:
     required: 
       - Message
       - PollutantLoads
-  dmr28_Results: 
-    type: object
-    properties: 
-      StateStatistics: 
-        type: array
-        title: State Statistics
-        items: 
-          "$ref": "#/definitions/dmr28_StateStatistics" 
-        xml: 
-          name: StateStatistics
-          wrapped: true
-    required: 
-      - StateStatistics
-  dmr28_StateStatistics: 
-    description: State Statistics Object
-    xml: 
-      name: StateStatistics
-    properties: 
-      EPARegion: 
-        type: string
-        title: EPA Region
-        example: '04'
-        description: The EPA region in which the facility is located
-      StateName: 
-        type: string
-      FacCountMaj: 
-        type: string
-      FacCountMin: 
-        type: string
-      LoadFacCountMaj: 
-        type: string
-      LoadFacCountMin: 
-        type: string
-      PercentCountMaj: 
-        type: string
-      PercentCountMin: 
-        type: string
-      PoundsMaj: 
-        type: string
-      PoundsMin: 
-        type: string
-      TwpeMaj: 
-        type: string
-      TwpeMin: 
-        type: string
-    required: 
-      - EPARegion
-      - StateName
-      - FacCountMaj
-      - FacCountMin
-      - LoadFacCountMaj
-      - LoadFacCountMin
-      - PercentCountMaj
-      - PercentCountMin
-      - PoundsMaj
-      - PoundsMin
-      - TwpeMaj
-      - TwpeMin
   dmr29_FacilityInfo: 
-    type: object
+    description: Facility Information Object
     properties: 
       FacName: 
         type: string
@@ -7788,14 +8036,14 @@ definitions:
       - NaicsCode
       - LikelyPsc
   dmr29_PotwTransfers: 
-    type: object
+    description: POTW Transfers Object
     properties: 
       PotwNoInfo: 
         type: string
     required: 
       - PotwNoInfo
   dmr29_ReceivingWater: 
-    type: object
+    description: Receiving Water Object
     properties: 
       WbName: 
         type: string
@@ -7826,7 +8074,7 @@ definitions:
       - EsaDischarge
       - EsaFips
   dmr29_Results: 
-    type: object
+    description: Results Object
     properties: 
       Message: 
         type: string
@@ -7869,7 +8117,7 @@ definitions:
       - UpstreamStationUrl
       - DownstreamStationUrl
   dmr29_TopChemicalPounds: 
-    type: object
+    description: Top Chemical Pounds Object
     properties: 
       ChemicalName: 
         type: string
@@ -7896,7 +8144,7 @@ definitions:
       - QcReviewIndirectPounds
       - QcReviewIndirectFlag
   dmr29_TopChemicalTWPE: 
-    type: object
+    description: Top Chemical TWPE Object
     properties: 
       ChemicalName: 
         type: string
@@ -7923,48 +8171,21 @@ definitions:
       - QcReviewIndirectTwpe
       - QcReviewIndirectFlag
   dmr29_TriWastewaterTreatment: 
-    type: object
+    description: TRI Wastewater Treatment Object
     properties: 
       TreatmentInPlace: 
         type: string
     required: 
       - TreatmentInPlace
   dmr30_FacilityCounts: 
-    type: object
+    description: Facility Counts Object
     properties: 
-      AllFacs: 
-        type: string
-      DirectOnly: 
-        type: string
       IndirectOnly: 
         type: string
-      BothDischarges: 
-        type: string
-      NoDischarges: 
-        type: string
-      Nationwide: 
-        type: string
-      AllPollutants: 
-        type: string
-      AllIndustries: 
-        type: string
-      LinkToNpdes: 
-        type: string
-      WithDataIcis: 
-        type: string
     required: 
-      - AllFacs
-      - DirectOnly
       - IndirectOnly
-      - BothDischarges
-      - NoDischarges
-      - Nationwide
-      - AllPollutants
-      - AllIndustries
-      - LinkToNpdes
-      - WithDataIcis
   dmr30_Results: 
-    type: object
+    description: Results Object
     properties: 
       Message: 
         type: string
@@ -8104,6 +8325,9 @@ definitions:
         type: string
       StateCode: 
         type: string
+        title: State Code
+        example: VA
+        description: The state in which the system is located.
       NaicsCode: 
         type: string
       Huc12: 
@@ -8159,6 +8383,9 @@ definitions:
         type: string
       StateCode: 
         type: string
+        title: State Code
+        example: VA
+        description: The state in which the system is located.
       NaicsCode: 
         type: string
       Huc12: 
@@ -8251,7 +8478,7 @@ definitions:
       - TotalTwpe
       - DmrInfoFlag
   dmr31_Facilities: 
-    type: object
+    description: Facilities Object
     xml: 
       name: Facilities
     properties: 
@@ -8344,7 +8571,7 @@ definitions:
       - InTRIOnly
       - InBothIcisAndTRI
   dmr31_Results: 
-    type: object
+    description: Results Object
     properties: 
       QueryRows: 
         type: string
@@ -8365,6 +8592,7 @@ definitions:
       Facilities: 
         type: array
         title: Facilities
+        description: A complex array of facility information.
         items: 
           "$ref": "#/definitions/dmr31_Facilities" 
         xml: 
@@ -8377,139 +8605,3 @@ definitions:
       - StartRec
       - EndRec
       - Facilities
-  dmr32_Results: 
-    type: object
-    properties: 
-      QueryRows: 
-        type: string
-        title: Query Row Count
-        example: '5'
-        description: Number of query results returned
-      PageCount: 
-        type: string
-      PageNo: 
-        type: string
-        title: Page Number
-        example: '1'
-        description: The number of pages of results returned
-      StartRec: 
-        type: string
-      EndRec: 
-        type: string
-      Watersheds: 
-        type: array
-        title: Watersheds
-        items: 
-          "$ref": "#/definitions/dmr32_Watersheds" 
-        xml: 
-          name: Watersheds
-          wrapped: true
-    required: 
-      - QueryRows
-      - PageCount
-      - PageNo
-      - StartRec
-      - EndRec
-      - Watersheds
-  dmr32_Watersheds: 
-    type: object
-    xml: 
-      name: Watersheds
-    properties: 
-      ReportingYear: 
-        type: string
-      Huc12Code: 
-        type: string
-      Huc12Name: 
-        type: string
-      DmrFacCount: 
-        type: string
-      TRIFacCount: 
-        type: string
-      DmrLby: 
-        type: string
-      TRILby: 
-        type: string
-      DmrTwpe: 
-        type: string
-      TRITwpe: 
-        type: string
-      DmrMetLby: 
-        type: string
-      TRIMetLby: 
-        type: string
-      DmrMetTwpe: 
-        type: string
-      TRIMetTwpe: 
-        type: string
-      DmrPpLby: 
-        type: string
-      TRIPpLby: 
-        type: string
-      DmrPpTwpe: 
-        type: string
-      TRIPpTwpe: 
-        type: string
-      DmrSsLby: 
-        type: string
-      DmrOrgLby: 
-        type: string
-      DmrTotalNLby: 
-        type: string
-      DmrPotwNLby: 
-        type: string
-      DmrTotalPLby: 
-        type: string
-      DmrPotwPPby: 
-        type: string
-      DmrNonpotwNLby: 
-        type: string
-      DmrNonpotwPLby: 
-        type: string
-      DmrPatAvg: 
-        type: string
-      DmrPatMax: 
-        type: string
-      DmrTempAvg: 
-        type: string
-      DmrTempMax: 
-        type: string
-      DmrDailyFlow: 
-        type: string
-      DmrAnnualFlow: 
-        type: string
-      DmrCsoCount: 
-        type: string
-    required: 
-      - ReportingYear
-      - Huc12Code
-      - Huc12Name
-      - DmrFacCount
-      - TRIFacCount
-      - DmrLby
-      - TRILby
-      - DmrTwpe
-      - TRITwpe
-      - DmrMetLby
-      - TRIMetLby
-      - DmrMetTwpe
-      - TRIMetTwpe
-      - DmrPpLby
-      - TRIPpLby
-      - DmrPpTwpe
-      - TRIPpTwpe
-      - DmrSsLby
-      - DmrOrgLby
-      - DmrTotalNLby
-      - DmrPotwNLby
-      - DmrTotalPLby
-      - DmrPotwPPby
-      - DmrNonpotwNLby
-      - DmrNonpotwPLby
-      - DmrPatAvg
-      - DmrPatMax
-      - DmrTempAvg
-      - DmrTempMax
-      - DmrDailyFlow
-      - DmrAnnualFlow
-      - DmrCsoCount

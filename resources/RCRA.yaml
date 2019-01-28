@@ -868,13 +868,13 @@ parameters:
   q.p_huc: 
     name: p_huc
     in: query
-    description: 2-, 4-, 6-, or 8-character watershed. May contain multiple comma-separated values.
+    description: 2-, 4-, 6-, or 8-character watershed code. May contain multiple comma-separated values.
     type: string
     required: false
   f.p_huc: 
     name: p_huc
     in: formData
-    description: 2-, 4-, 6-, or 8-character watershed. May contain multiple comma-separated values.
+    description: 2-, 4-, 6-, or 8-character watershed code. May contain multiple comma-separated values.
     type: string
     required: false
   q.p_pid: 
@@ -1477,26 +1477,16 @@ parameters:
     description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
     type: number
     required: false
-  f.p_lsdate: 
-    name: p_lsdate
-    in: formData
-    type: string
-    required: false
-  q.p_lsdate: 
-    name: p_lsdate
-    in: query
-    type: string
-    required: false
   q.qcolumns: 
     name: qcolumns
     in: query
-    description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+    description: Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
     type: string
     required: false
   f.qcolumns: 
     name: qcolumns
     in: formData
-    description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+    description: Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
     type: string
     required: false
   q.p_fcv: 
@@ -1618,11 +1608,37 @@ parameters:
   f.p_ejscreen_over80cnt: 
     name: p_ejscreen_over80cnt
     in: formData
+    description: The number of Environmenmt Justice Indicators above the 80th percentile.  Valid values are 1 through 11.
+    enum: 
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+      - '6'
+      - '7'
+      - '8'
+      - '9'
+      - '10'
+      - '11'
     type: string
     required: false
   q.p_ejscreen_over80cnt: 
     name: p_ejscreen_over80cnt
     in: query
+    description: The number of Environmenmt Justice Indicators above the 80th percentile.  Valid values are 1 through 11.
+    enum: 
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+      - '6'
+      - '7'
+      - '8'
+      - '9'
+      - '10'
+      - '11'
     type: string
     required: false
   f.p_fac_icos: 
@@ -1860,7 +1876,6 @@ paths:
         - "$ref": "#/parameters/q.p_cmps"
         - "$ref": "#/parameters/q.p_law"
         - "$ref": "#/parameters/q.p_section"
-        - "$ref": "#/parameters/q.p_lsdate"
         - "$ref": "#/parameters/q.p_qiv"
         - "$ref": "#/parameters/q.p_impw"
         - "$ref": "#/parameters/q.p_trep"
@@ -1979,7 +1994,6 @@ paths:
         - "$ref": "#/parameters/f.p_cmps"
         - "$ref": "#/parameters/f.p_law"
         - "$ref": "#/parameters/f.p_section"
-        - "$ref": "#/parameters/f.p_lsdate"
         - "$ref": "#/parameters/f.p_qiv"
         - "$ref": "#/parameters/f.p_impw"
         - "$ref": "#/parameters/f.p_trep"
@@ -2099,7 +2113,6 @@ paths:
         - "$ref": "#/parameters/q.p_cmps"
         - "$ref": "#/parameters/q.p_law"
         - "$ref": "#/parameters/q.p_section"
-        - "$ref": "#/parameters/q.p_lsdate"
         - "$ref": "#/parameters/q.p_qiv"
         - "$ref": "#/parameters/q.p_impw"
         - "$ref": "#/parameters/q.p_trep"
@@ -2217,7 +2230,6 @@ paths:
         - "$ref": "#/parameters/f.p_cmps"
         - "$ref": "#/parameters/f.p_law"
         - "$ref": "#/parameters/f.p_section"
-        - "$ref": "#/parameters/f.p_lsdate"
         - "$ref": "#/parameters/f.p_qiv"
         - "$ref": "#/parameters/f.p_impw"
         - "$ref": "#/parameters/f.p_trep"
@@ -2737,6 +2749,8 @@ definitions:
       ObjectName: 
         type: string
         title: Object Name
+        example: CaseName
+        description: The JSON name used for the database column.
       Description: 
         type: string
         title: Description
@@ -2799,6 +2813,9 @@ definitions:
         type: string
       FacFederalAgencyName: 
         type: string
+        title: Federal Agency Name
+        example: EPA
+        description: Indicates the name of the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government.
       RCRALandTypeCode: 
         type: string
       FacDerivedHuc: 
@@ -2819,8 +2836,14 @@ definitions:
         type: string
       FacIndianSpatialFlg: 
         type: string
+        title: Indian Spatial Flag
+        example: Y
+        description: Returns “Y” if a facility is located within a tribal spatial boundary as defined by the U.S. Census Bureau 2010 tribal boundary layer data for tribes in the lower 48 states and Bureau of Land Management Alaska State Office data for native villages in Alaska. Returns “N” if a facility is not located within a tribal or native Alaskan village area.
       FacDerivedTRIbes: 
         type: string
+        title: FRS Spatially Derived Tribe
+        example: Cherokee Nation
+        description: "The tribes or tribal territories located within 25 miles of the facility's location."
       FacUsMexBorderFlg: 
         type: string
         title: Near US-Mexico Border
@@ -2828,8 +2851,14 @@ definitions:
         description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
       FacSICCodes: 
         type: string
+        title: SIC Codes
+        example: '811'
+        description: "Indicates the facility’s or permit's primary Standard Industrial Classification (SIC) Code. The SIC code describes the primary activity of the facility."
       RCRANAICS: 
         type: string
+        title: RCRA NAICS Code
+        example: '8111'
+        description: "The RCRA permit's primary North American Industry Classification System (NAICS) Code."
       FacLat: 
         type: string
         title: Latitude
@@ -2853,6 +2882,9 @@ definitions:
         description: Air Facility System (AFS) ID.
       CWAIDs: 
         type: string
+        title: CWA IDs
+        example: DC0000001
+        description: A unique  ID assigned for each record/permit/site/facility within ICIS-NPDES. These identifiers are for used tracking purposes in the individual data systems.
       RCRAIDs: 
         type: string
         title: Resource Conservation and Recovery Act IDs
@@ -2860,6 +2892,9 @@ definitions:
         description: A unique 12-character ID assigned for each record/permit/site/facility within the RCRAInfo database.
       RmpIDs: 
         type: string
+        title: RMP IDs
+        example: '110000'
+        description: A unique ID assigned to each facility submitting a Risk Management Plan to EPA under the Risk Management Plan Rule.
       SDWAIDs: 
         type: string
         example: DC0000001
@@ -2875,6 +2910,9 @@ definitions:
         type: string
       RCRAQtrsWithNC: 
         type: string
+        title: RCRA Quarters with Violation
+        example: '8'
+        description: The number of quarters, out of the last twelve quarters, in which the RCRA permit is considered in violation.
       RCRAViolationTypes: 
         type: string
       RCRAQtrsWithSNC: 
@@ -2902,8 +2940,14 @@ definitions:
         type: string
       FacDerivedWBD: 
         type: string
+        title: 12-Digit WBD HUC
+        example: '20700100204'
+        description: The Hydrologic Unit Code (HUC-12) of the waterbody in which the facility resides, derived based on location data in FRS.
       FacDerivedWBDName: 
         type: string
+        title: FRS Derived Watershed Boundary Dataset (WBD) Name
+        example: Fourmile Run-Potomac River
+        description: The 12 digit Watershed Boundary Dataset Name derived from the FRS Best Pick Coordinate
       RCRAImpWaterFlg: 
         type: string
       ChesapeakeBayFlag: 
@@ -2931,11 +2975,19 @@ definitions:
         type: string
       RCRAPenalties: 
         type: string
+        title: RCRA Penalties
         example: "$987"
+        description: The total dollar amount of assessed (or final) penalties taken against the facility within the last five years, entered in the RCRAInfo program database.
       RCRALastPenaltyDate: 
         type: string
+        title: RCRA Last Penalty Date
+        example: 12/12/2016
+        description: Indicates the date on which the most recent assessed (or final) penalty was taken against the facility, entered in the RCRAInfo program database.
       Over80CountUs: 
         type: string
+        title: EJ Indexes Above 80th Percentile
+        example: '3'
+        description: The number of primary EJSCREEN environmental justice (EJ) indexes exceeding the 80th or higher national percentile for the Census block group that the facility is located in.
       PctilePctpre1960Us: 
         type: string
         example: '14.6'
@@ -2982,7 +3034,9 @@ definitions:
         description: The national percentile of the census block group for the EJSCREEN particulate matter indicator.
       FacPopulationDensity: 
         type: string
+        title: Population Density
         example: '9611.17'
+        description: The number of persons per square mile in the profiled area.
       FacPercentMinority: 
         type: string
         title: Facility Percent Minority
@@ -3052,6 +3106,14 @@ definitions:
         type: string
       RCRA3yrComplQtrsHistory: 
         type: string
+        title: RCRA 3-Year Compliance History
+        example: ________VVSS
+        description: |-
+          The system's 3-year compliance status history by quarter (3-month period) entered in the RCRA program database. Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:
+          _ - No Violation
+          V - Violation
+          S - Significant Violation
+          U - Undetermined
       CensusBlockGroup: 
         type: string
         title: Census Block Group
@@ -3063,12 +3125,17 @@ definitions:
         description: The maximum percentile from all individual EJSCREEN indicators.
       EjscreenFlagUs: 
         type: string
+        title: EJ Screen Flag (US)
+        description: A Y/N indicator identifying whether or not the facility is within an Environmental Justice area.
       EjscreenFlag: 
         type: string
+        title: EJ Screen Flag
+        description: A Y/N indicator identifying whether or not the facility is within an Environmental Justice area.
       TRIbalFlag: 
         type: string
         title: Tribal Lands Flag
         example: '1'
+        description: A flag indicating that the facility is within a tribal area.
       CurrSvFlag: 
         type: string
         title: Current Significant Violation Flag
@@ -3104,6 +3171,7 @@ definitions:
         description: Flag showing Y/N whether location is within the contiguous (lower 48) United States.
       ActiveLower48: 
         type: string
+        description: A Y/N indicator indicating that the facility is active and located within the lower 48 contiguous US States.
       CollectionMethod: 
         type: string
         title: Collection Method
@@ -3118,9 +3186,11 @@ definitions:
         type: string
         title: Calculated Accuracy in Meters
         example: '50'
+        description: "The estimated accuracy in Meters for the facility's geospatial coordinate."
       Map: 
         type: string
         title: Map
+        description: No Longer Used.
       WebDocs: 
         type: string
         title: Web Documents
@@ -3128,8 +3198,14 @@ definitions:
         description: Contains flags that identify what web accessible documents are available for the facility.
       FacCountyName: 
         type: string
+        title: FRS Facility County Name
+        example: Fairfax County
+        description: "The facility county name from EPA's Facility Registry System"
       FacStdCountyName: 
         type: string
+        title: FRS Standardized Facility County Name
+        example: Fairfax County
+        description: "The standardized  facility county name from EPA's Facility Registry System"
       Score: 
         type: string
         title: Score
@@ -3138,7 +3214,7 @@ definitions:
         type: string
         title: Max Score
         example: '1'
-        description: "[Col. 121]"
+        description: A sorting score for internal use.
     required: 
       - RCRAName
       - SourceID
@@ -3287,6 +3363,14 @@ definitions:
         description: Pop up value. Combine with PopUpBaseURL to give the popup for the facility
       RCRAstatus: 
         type: string
+        title: RCRA 3-Year Compliance Status
+        example: ________VVSS
+        description: |-
+          The facility's 3-year compliance status history by quarter (3-month period) entered in the RCRAInfo program database. Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:
+          _ - No Violation
+          V - Violation
+          S - Significant Violation
+          U - Undetermined
       LastInsp: 
         type: string
         title: Last Inspection
@@ -3334,6 +3418,7 @@ definitions:
       MapData: 
         type: array
         title: Map Data
+        description: An array of facility geospatial information.
         items: 
           "$ref": "#/definitions/rcr1_MapData" 
         xml: 
@@ -3394,6 +3479,7 @@ definitions:
         description: The total dollar amount of either assessed or final penalties within the five year time period
       BadSystemIDs: 
         type: string
+        description: Identifies which passed query system identifiers are invalid.
       QueryID: 
         type: string
         title: Query Identifier
@@ -3407,6 +3493,7 @@ definitions:
       Facilities: 
         type: array
         title: Facilities
+        description: A complex array of facility information.
         items: 
           "$ref": "#/definitions/rcr1_Facilities" 
         xml: 
@@ -3435,7 +3522,7 @@ definitions:
         type: string
         title: Object Identifier
         example: '1'
-        description: Sequential number assigned to each facility returned
+        description: Sequential number assigned to each facility or cluster returned.
       ClusterLatitude: 
         type: string
         title: Cluster Latitude
@@ -3449,18 +3536,23 @@ definitions:
       ClusterIcon: 
         type: string
         title: Cluster Icon
+        description: The icon file used to reprsent the cluster.
       ClusterType: 
         type: string
         title: Cluster Type
+        description: "The representative geographic area used for clustering.  Examples:  State, County, Zip Code"
       ClusterName: 
         type: string
         title: Cluster Name
+        description: "THe name or the identifier of the geographic area used for clustering.  Examples:  Alaska, Fairfax County, 22314"
       ClusterValue: 
         type: string
         title: Cluster Value
+        description: "The value, internal to the database report object, that represents this cluster, like a state abbreviation, zip code, or county FIPS code.  Examples: AK, 22314, 50011"
       ClusterCount: 
         type: string
         title: Cluster Count
+        description: The number of facilities or cases in the cluster.
       IndianCountryRows: 
         type: string
         title: Indian Country Row Count
@@ -3525,6 +3617,7 @@ definitions:
       ClusterData: 
         type: array
         title: Cluster Data
+        description: An array of state, county, or zip code cluster information
         items: 
           "$ref": "#/definitions/rcr2_ClusterData" 
     required: 
@@ -3538,7 +3631,7 @@ definitions:
         type: string
         title: Object Identifier
         example: '1'
-        description: Sequential number assigned to each facility returned
+        description: Sequential number assigned to each facility or cluster returned.
       RCRAName: 
         type: string
       SourceID: 
@@ -3567,6 +3660,9 @@ definitions:
         type: string
       FacFederalAgencyName: 
         type: string
+        title: Federal Agency Name
+        example: EPA
+        description: Indicates the name of the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government.
       RCRALandTypeCode: 
         type: string
       FacDerivedHuc: 
@@ -3587,8 +3683,14 @@ definitions:
         type: string
       FacIndianSpatialFlg: 
         type: string
+        title: Indian Spatial Flag
+        example: Y
+        description: Returns “Y” if a facility is located within a tribal spatial boundary as defined by the U.S. Census Bureau 2010 tribal boundary layer data for tribes in the lower 48 states and Bureau of Land Management Alaska State Office data for native villages in Alaska. Returns “N” if a facility is not located within a tribal or native Alaskan village area.
       FacDerivedTRIbes: 
         type: string
+        title: FRS Spatially Derived Tribe
+        example: Cherokee Nation
+        description: "The tribes or tribal territories located within 25 miles of the facility's location."
       FacUsMexBorderFlg: 
         type: string
         title: Near US-Mexico Border
@@ -3596,8 +3698,14 @@ definitions:
         description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
       FacSICCodes: 
         type: string
+        title: SIC Codes
+        example: '811'
+        description: "Indicates the facility’s or permit's primary Standard Industrial Classification (SIC) Code. The SIC code describes the primary activity of the facility."
       RCRANAICS: 
         type: string
+        title: RCRA NAICS Code
+        example: '8111'
+        description: "The RCRA permit's primary North American Industry Classification System (NAICS) Code."
       FacLat: 
         type: string
         title: Latitude
@@ -3621,6 +3729,9 @@ definitions:
         description: Air Facility System (AFS) ID.
       CWAIDs: 
         type: string
+        title: CWA IDs
+        example: DC0000001
+        description: A unique  ID assigned for each record/permit/site/facility within ICIS-NPDES. These identifiers are for used tracking purposes in the individual data systems.
       RCRAIDs: 
         type: string
         title: Resource Conservation and Recovery Act IDs
@@ -3628,6 +3739,9 @@ definitions:
         description: A unique 12-character ID assigned for each record/permit/site/facility within the RCRAInfo database.
       RmpIDs: 
         type: string
+        title: RMP IDs
+        example: '110000'
+        description: A unique ID assigned to each facility submitting a Risk Management Plan to EPA under the Risk Management Plan Rule.
       SDWAIDs: 
         type: string
         example: DC0000001
@@ -3643,6 +3757,9 @@ definitions:
         type: string
       RCRAQtrsWithNC: 
         type: string
+        title: RCRA Quarters with Violation
+        example: '8'
+        description: The number of quarters, out of the last twelve quarters, in which the RCRA permit is considered in violation.
       RCRAViolationTypes: 
         type: string
       RCRAQtrsWithSNC: 
@@ -3670,8 +3787,14 @@ definitions:
         type: string
       FacDerivedWBD: 
         type: string
+        title: 12-Digit WBD HUC
+        example: '20700100204'
+        description: The Hydrologic Unit Code (HUC-12) of the waterbody in which the facility resides, derived based on location data in FRS.
       FacDerivedWBDName: 
         type: string
+        title: FRS Derived Watershed Boundary Dataset (WBD) Name
+        example: Fourmile Run-Potomac River
+        description: The 12 digit Watershed Boundary Dataset Name derived from the FRS Best Pick Coordinate
       RCRAImpWaterFlg: 
         type: string
       ChesapeakeBayFlag: 
@@ -3699,11 +3822,19 @@ definitions:
         type: string
       RCRAPenalties: 
         type: string
+        title: RCRA Penalties
         example: "$987"
+        description: The total dollar amount of assessed (or final) penalties taken against the facility within the last five years, entered in the RCRAInfo program database.
       RCRALastPenaltyDate: 
         type: string
+        title: RCRA Last Penalty Date
+        example: 12/12/2016
+        description: Indicates the date on which the most recent assessed (or final) penalty was taken against the facility, entered in the RCRAInfo program database.
       Over80CountUs: 
         type: string
+        title: EJ Indexes Above 80th Percentile
+        example: '3'
+        description: The number of primary EJSCREEN environmental justice (EJ) indexes exceeding the 80th or higher national percentile for the Census block group that the facility is located in.
       PctilePctpre1960Us: 
         type: string
         example: '14.6'
@@ -3750,7 +3881,9 @@ definitions:
         description: The national percentile of the census block group for the EJSCREEN particulate matter indicator.
       FacPopulationDensity: 
         type: string
+        title: Population Density
         example: '9611.17'
+        description: The number of persons per square mile in the profiled area.
       FacPercentMinority: 
         type: string
         title: Facility Percent Minority
@@ -3820,6 +3953,14 @@ definitions:
         type: string
       RCRA3yrComplQtrsHistory: 
         type: string
+        title: RCRA 3-Year Compliance History
+        example: ________VVSS
+        description: |-
+          The system's 3-year compliance status history by quarter (3-month period) entered in the RCRA program database. Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:
+          _ - No Violation
+          V - Violation
+          S - Significant Violation
+          U - Undetermined
       CensusBlockGroup: 
         type: string
         title: Census Block Group
@@ -3831,12 +3972,17 @@ definitions:
         description: The maximum percentile from all individual EJSCREEN indicators.
       EjscreenFlagUs: 
         type: string
+        title: EJ Screen Flag (US)
+        description: A Y/N indicator identifying whether or not the facility is within an Environmental Justice area.
       EjscreenFlag: 
         type: string
+        title: EJ Screen Flag
+        description: A Y/N indicator identifying whether or not the facility is within an Environmental Justice area.
       TRIbalFlag: 
         type: string
         title: Tribal Lands Flag
         example: '1'
+        description: A flag indicating that the facility is within a tribal area.
       CurrSvFlag: 
         type: string
         title: Current Significant Violation Flag
@@ -3872,6 +4018,7 @@ definitions:
         description: Flag showing Y/N whether location is within the contiguous (lower 48) United States.
       ActiveLower48: 
         type: string
+        description: A Y/N indicator indicating that the facility is active and located within the lower 48 contiguous US States.
       CollectionMethod: 
         type: string
         title: Collection Method
@@ -3886,9 +4033,11 @@ definitions:
         type: string
         title: Calculated Accuracy in Meters
         example: '50'
+        description: "The estimated accuracy in Meters for the facility's geospatial coordinate."
       Map: 
         type: string
         title: Map
+        description: No Longer Used.
       WebDocs: 
         type: string
         title: Web Documents
@@ -3896,8 +4045,14 @@ definitions:
         description: Contains flags that identify what web accessible documents are available for the facility.
       FacCountyName: 
         type: string
+        title: FRS Facility County Name
+        example: Fairfax County
+        description: "The facility county name from EPA's Facility Registry System"
       FacStdCountyName: 
         type: string
+        title: FRS Standardized Facility County Name
+        example: Fairfax County
+        description: "The standardized  facility county name from EPA's Facility Registry System"
       Score: 
         type: string
         title: Score
@@ -3906,7 +4061,7 @@ definitions:
         type: string
         title: Max Score
         example: '1'
-        description: "[Col. 121]"
+        description: A sorting score for internal use.
     required: 
       - ObjectId
       - RCRAName
@@ -4074,6 +4229,7 @@ definitions:
         description: The total dollar amount of either assessed or final penalties within the five year time period
       BadSystemIDs: 
         type: string
+        description: Identifies which passed query system identifiers are invalid.
       IconBaseURL: 
         type: string
         title: Icon Base URL
@@ -4088,6 +4244,7 @@ definitions:
         type: string
         title: Service Base URL
         example: "https://ofmpub.epa.gov/echo/echo_rest_services.get_facility_info"
+        description: The base service URL.
       QueryParameters: 
         type: array
         title: Query Parameters
@@ -4100,6 +4257,7 @@ definitions:
       Facilities: 
         type: array
         title: Facilities
+        description: A complex array of facility information.
         items: 
           "$ref": "#/definitions/rcr2_Facilities" 
         xml: 
@@ -4176,6 +4334,9 @@ definitions:
         type: string
       FacFederalAgencyName: 
         type: string
+        title: Federal Agency Name
+        example: EPA
+        description: Indicates the name of the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government.
       RCRALandTypeCode: 
         type: string
       FacDerivedHuc: 
@@ -4196,8 +4357,14 @@ definitions:
         type: string
       FacIndianSpatialFlg: 
         type: string
+        title: Indian Spatial Flag
+        example: Y
+        description: Returns “Y” if a facility is located within a tribal spatial boundary as defined by the U.S. Census Bureau 2010 tribal boundary layer data for tribes in the lower 48 states and Bureau of Land Management Alaska State Office data for native villages in Alaska. Returns “N” if a facility is not located within a tribal or native Alaskan village area.
       FacDerivedTRIbes: 
         type: string
+        title: FRS Spatially Derived Tribe
+        example: Cherokee Nation
+        description: "The tribes or tribal territories located within 25 miles of the facility's location."
       FacUsMexBorderFlg: 
         type: string
         title: Near US-Mexico Border
@@ -4205,8 +4372,14 @@ definitions:
         description: A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.
       FacSICCodes: 
         type: string
+        title: SIC Codes
+        example: '811'
+        description: "Indicates the facility’s or permit's primary Standard Industrial Classification (SIC) Code. The SIC code describes the primary activity of the facility."
       RCRANAICS: 
         type: string
+        title: RCRA NAICS Code
+        example: '8111'
+        description: "The RCRA permit's primary North American Industry Classification System (NAICS) Code."
       RCRAUniverse: 
         type: string
       Tsdf: 
@@ -4220,6 +4393,9 @@ definitions:
         description: Air Facility System (AFS) ID.
       CWAIDs: 
         type: string
+        title: CWA IDs
+        example: DC0000001
+        description: A unique  ID assigned for each record/permit/site/facility within ICIS-NPDES. These identifiers are for used tracking purposes in the individual data systems.
       RCRAIDs: 
         type: string
         title: Resource Conservation and Recovery Act IDs
@@ -4227,6 +4403,9 @@ definitions:
         description: A unique 12-character ID assigned for each record/permit/site/facility within the RCRAInfo database.
       RmpIDs: 
         type: string
+        title: RMP IDs
+        example: '110000'
+        description: A unique ID assigned to each facility submitting a Risk Management Plan to EPA under the Risk Management Plan Rule.
       SDWAIDs: 
         type: string
         example: DC0000001
@@ -4269,8 +4448,14 @@ definitions:
         type: string
       FacDerivedWBD: 
         type: string
+        title: 12-Digit WBD HUC
+        example: '20700100204'
+        description: The Hydrologic Unit Code (HUC-12) of the waterbody in which the facility resides, derived based on location data in FRS.
       FacDerivedWBDName: 
         type: string
+        title: FRS Derived Watershed Boundary Dataset (WBD) Name
+        example: Fourmile Run-Potomac River
+        description: The 12 digit Watershed Boundary Dataset Name derived from the FRS Best Pick Coordinate
       RCRAImpWaterFlg: 
         type: string
       ChesapeakeBayFlag: 
@@ -4301,8 +4486,14 @@ definitions:
         example: 987
       RCRALastPenaltyDate: 
         type: string
+        title: RCRA Last Penalty Date
+        example: 12/12/2016
+        description: Indicates the date on which the most recent assessed (or final) penalty was taken against the facility, entered in the RCRAInfo program database.
       Over80CountUs: 
         type: number
+        title: EJ Indexes Above 80th Percentile
+        example: 3
+        description: The number of primary EJSCREEN environmental justice (EJ) indexes exceeding the 80th or higher national percentile for the Census block group that the facility is located in.
       PctilePctpre1960Us: 
         type: number
         example: 14.6
@@ -4349,7 +4540,9 @@ definitions:
         description: The national percentile of the census block group for the EJSCREEN particulate matter indicator.
       FacPopulationDensity: 
         type: number
+        title: Population Density
         example: 9611.17
+        description: The number of persons per square mile in the profiled area.
       FacPercentMinority: 
         type: number
         title: Facility Percent Minority
@@ -4419,6 +4612,14 @@ definitions:
         type: string
       RCRA3yrComplQtrsHistory: 
         type: string
+        title: RCRA 3-Year Compliance History
+        example: ________VVSS
+        description: |-
+          The system's 3-year compliance status history by quarter (3-month period) entered in the RCRA program database. Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:
+          _ - No Violation
+          V - Violation
+          S - Significant Violation
+          U - Undetermined
       CensusBlockGroup: 
         type: string
         title: Census Block Group
@@ -4430,12 +4631,17 @@ definitions:
         description: The maximum percentile from all individual EJSCREEN indicators.
       EjscreenFlagUs: 
         type: string
+        title: EJ Screen Flag (US)
+        description: A Y/N indicator identifying whether or not the facility is within an Environmental Justice area.
       EjscreenFlag: 
         type: string
+        title: EJ Screen Flag
+        description: A Y/N indicator identifying whether or not the facility is within an Environmental Justice area.
       TRIbalFlag: 
         type: number
         title: Tribal Lands Flag
         example: 1
+        description: "A value of \"1\" indicates that the facility is within an Indian Tribal or Alaskan Native Village area."
       CurrSvFlag: 
         type: number
         title: Current Significant Violation Flag
@@ -4471,6 +4677,7 @@ definitions:
         description: Flag showing Y/N whether location is within the contiguous (lower 48) United States.
       ActiveLower48: 
         type: string
+        description: A Y/N indicator indicating that the facility is active and located within the lower 48 contiguous US States.
       CollectionMethod: 
         type: string
         title: Collection Method
@@ -4485,9 +4692,11 @@ definitions:
         type: number
         title: Calculated Accuracy in Meters
         example: 50
+        description: Indicates the calculated accuracy in meters for the facilities geospatial coordinate.  Generally, the accuracy is directly linked to the collection method where GPS methods are more accurate that manual methods like map or photo interpolations.
       Map: 
         type: string
         title: Map
+        description: No Longer Used.
       WebDocs: 
         type: string
         title: Web Documents
@@ -4495,8 +4704,14 @@ definitions:
         description: Contains flags that identify what web accessible documents are available for the facility.
       FacCountyName: 
         type: string
+        title: FRS Facility County Name
+        example: Fairfax County
+        description: "The facility county name from EPA's Facility Registry System"
       FacStdCountyName: 
         type: string
+        title: FRS Standardized Facility County Name
+        example: Fairfax County
+        description: "The standardized  facility county name from EPA's Facility Registry System"
       Score: 
         type: number
         title: Score
@@ -4652,6 +4867,14 @@ definitions:
         description: Pop up value. Combine with PopUpBaseURL to give the popup for the facility
       RCRAstatus: 
         type: string
+        title: RCRA 3-Year Compliance Status
+        example: ________VVSS
+        description: |-
+          The facility's 3-year compliance status history by quarter (3-month period) entered in the RCRAInfo program database. Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:
+          _ - No Violation
+          V - Violation
+          S - Significant Violation
+          U - Undetermined
       LastInsp: 
         type: string
         title: Last Inspection
@@ -4699,6 +4922,7 @@ definitions:
       MapData: 
         type: array
         title: Map Data
+        description: An array of facility geospatial information.
         items: 
           "$ref": "#/definitions/rcr3_MapData" 
         xml: 
@@ -4730,6 +4954,7 @@ definitions:
       Facilities: 
         type: array
         title: Facilities
+        description: A complex array of facility information.
         items: 
           "$ref": "#/definitions/rcr1_Facilities" 
         xml: 

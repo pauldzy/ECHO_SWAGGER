@@ -1044,7 +1044,7 @@
       ,"q.p_huc": {
           "name": "p_huc"
          ,"in": "query"
-         ,"description": "2-, 4-, 6-, or 8-character watershed. May contain multiple comma-separated values."
+         ,"description": "2-, 4-, 6-, or 8-character watershed code. May contain multiple comma-separated values."
          ,"type": "string"
          ,"required": false
       }
@@ -1163,7 +1163,7 @@
       ,"f.p_huc": {
           "name": "p_huc"
          ,"in": "formData"
-         ,"description": "2-, 4-, 6-, or 8-character watershed. May contain multiple comma-separated values."
+         ,"description": "2-, 4-, 6-, or 8-character watershed code. May contain multiple comma-separated values."
          ,"type": "string"
          ,"required": false
       }
@@ -1966,24 +1966,28 @@
       ,"f.p_nspsm": {
           "name": "p_nspsm"
          ,"in": "formData"
+         ,"description": "Air Programl New Source Performance Standards Minors (NSPSM) Subpart Code Search.  One or more valid Air Program NSPSM Subpart codes can be passed.  "
          ,"type": "string"
          ,"required": false
       }
       ,"q.p_nspsm": {
           "name": "p_nspsm"
          ,"in": "query"
+         ,"description": "Air Programl New Source Performance Standards Minors (NSPSM) Subpart Code Search.  One or more valid Air Program NSPSM Subpart codes can be passed.  "
          ,"type": "string"
          ,"required": false
       }
       ,"f.p_nsps": {
           "name": "p_nsps"
          ,"in": "formData"
+         ,"description": "Air Programl New Source Performance Standards (NSPS)  Subpart Code Search.  One or more valid Air Program NSPS Program codes cand be passed.  "
          ,"type": "string"
          ,"required": false
       }
       ,"q.p_nsps": {
           "name": "p_nsps"
          ,"in": "query"
+         ,"description": "Air Programl New Source Performance Standards (NSPS)  Subpart Code Search.  One or more valid Air Program NSPS Program codes cand be passed.  "
          ,"type": "string"
          ,"required": false
       }
@@ -2004,14 +2008,14 @@
       ,"q.qcolumns": {
           "name": "qcolumns"
          ,"in": "query"
-         ,"description": "Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+         ,"description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
          ,"type": "string"
          ,"required": false
       }
       ,"f.qcolumns": {
           "name": "qcolumns"
          ,"in": "formData"
-         ,"description": "Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+         ,"description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
          ,"type": "string"
          ,"required": false
       }
@@ -2054,12 +2058,40 @@
       ,"f.p_ejscreen_over80cnt": {
           "name": "p_ejscreen_over80cnt"
          ,"in": "formData"
+         ,"description": "The number of Environmenmt Justice Indicators above the 80th percentile.  Valid values are 1 through 11."
+         ,"enum": [
+             "1"
+            ,"2"
+            ,"3"
+            ,"4"
+            ,"5"
+            ,"6"
+            ,"7"
+            ,"8"
+            ,"9"
+            ,"10"
+            ,"11"
+         ]
          ,"type": "string"
          ,"required": false
       }
       ,"q.p_ejscreen_over80cnt": {
           "name": "p_ejscreen_over80cnt"
          ,"in": "query"
+         ,"description": "The number of Environmenmt Justice Indicators above the 80th percentile.  Valid values are 1 through 11."
+         ,"enum": [
+             "1"
+            ,"2"
+            ,"3"
+            ,"4"
+            ,"5"
+            ,"6"
+            ,"7"
+            ,"8"
+            ,"9"
+            ,"10"
+            ,"11"
+         ]
          ,"type": "string"
          ,"required": false
       }
@@ -4428,7 +4460,7 @@
                 "type": "string"
                ,"title": "Object Identifier"
                ,"example": "1"
-               ,"description": "Sequential number assigned to each facility returned"
+               ,"description": "Sequential number assigned to each facility or cluster returned."
             }
             ,"ClusterLatitude": {
                 "type": "string"
@@ -4445,22 +4477,27 @@
             ,"ClusterIcon": {
                 "type": "string"
                ,"title": "Cluster Icon"
+               ,"description": "The icon file used to reprsent the cluster."
             }
             ,"ClusterType": {
                 "type": "string"
                ,"title": "Cluster Type"
+               ,"description": "The representative geographic area used for clustering.  Examples:  State, County, Zip Code"
             }
             ,"ClusterName": {
                 "type": "string"
                ,"title": "Cluster Name"
+               ,"description": "THe name or the identifier of the geographic area used for clustering.  Examples:  Alaska, Fairfax County, 22314"
             }
             ,"ClusterValue": {
                 "type": "string"
                ,"title": "Cluster Value"
+               ,"description": "The value, internal to the database report object, that represents this cluster, like a state abbreviation, zip code, or county FIPS code.  Examples: AK, 22314, 50011"
             }
             ,"ClusterCount": {
                 "type": "string"
                ,"title": "Cluster Count"
+               ,"description": "The number of facilities or cases in the cluster."
             }
             ,"IndianCountryRows": {
                 "type": "string"
@@ -4539,6 +4576,7 @@
              "ClusterData": {
                 "type": "array"
                ,"title": "Cluster Data"
+               ,"description": "An array of state, county, or zip code cluster information"
                ,"items": {
                    "$ref": "#\/definitions\/air1_ClusterData"
                }
@@ -4590,7 +4628,9 @@
             }
             ,"CAAstatus": {
                 "type": "string"
+               ,"title": "3-Year Compliance Status History"
                ,"example": "______UUUUUU"
+               ,"description": "The facility's 3-year compliance status history by quarter (3-month period). Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:\n_ - No Violation Identified\nV - Violation Identified\nS - High Priority Violation\nU - Undetermined"
             }
             ,"LastInsp": {
                 "type": "string"
@@ -4651,6 +4691,9 @@
             }
             ,"AIRCity": {
                 "type": "string"
+               ,"title": "City"
+               ,"example": "Washington"
+               ,"description": "The city where the AIR facility is located."
             }
             ,"AIRState": {
                 "type": "string"
@@ -4693,6 +4736,9 @@
             }
             ,"FacFederalAgencyName": {
                 "type": "string"
+               ,"title": "Federal Agency Name"
+               ,"example": "EPA"
+               ,"description": "Indicates the name of the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government."
             }
             ,"FacDerivedHuc": {
                 "type": "string"
@@ -4719,9 +4765,15 @@
             }
             ,"FacIndianSpatialFlg": {
                 "type": "string"
+               ,"title": "Indian Spatial Flag"
+               ,"example": "Y"
+               ,"description": "Returns \u201CY\u201D if a facility is located within a tribal spatial boundary as defined by the U.S. Census Bureau 2010 tribal boundary layer data for tribes in the lower 48 states and Bureau of Land Management Alaska State Office data for native villages in Alaska. Returns \u201CN\u201D if a facility is not located within a tribal or native Alaskan village area."
             }
             ,"FacDerivedTRIbes": {
                 "type": "string"
+               ,"title": "FRS Spatially Derived Tribe"
+               ,"example": "Cherokee Nation"
+               ,"description": "The tribes or tribal territories located within 25 miles of the facility's location."
             }
             ,"FacUsMexBorderFlg": {
                 "type": "string"
@@ -4731,10 +4783,15 @@
             }
             ,"FacSICCodes": {
                 "type": "string"
+               ,"title": "SIC Codes"
+               ,"example": "811"
+               ,"description": "Indicates the facility\u2019s or permit's primary Standard Industrial Classification (SIC) Code. The SIC code describes the primary activity of the facility."
             }
             ,"AIRNAICS": {
                 "type": "string"
+               ,"title": "NAICS Codes"
                ,"example": "812320"
+               ,"description": "The facility\u2019s or permit's primary North American Industry Classification System (NAICS) Code."
             }
             ,"FacLat": {
                 "type": "string"
@@ -4756,7 +4813,9 @@
             }
             ,"AIRMacts": {
                 "type": "string"
+               ,"title": "MACT Subparts"
                ,"example": "ZZZZZ"
+               ,"description": "The Maximum Achievable Control Technology (MACT) Subpart associated with the facility."
             }
             ,"AIRStatus": {
                 "type": "string"
@@ -4766,13 +4825,21 @@
             }
             ,"AIRUniverse": {
                 "type": "string"
+               ,"title": "AIR Universe"
                ,"example": "Minor Emissions"
+               ,"description": "The program office defines each CAA Source ID and the associated permits as being Federally Reportable or Non-Federally Reportable. Under the CAA, federally reportable source include majors, synthetic minors, NESHAP Part 61 minors, minors with an unresolved High Priority Violation (HPV), with recent enforcement action, or included on a Compliance Monitoring Strategy plan."
             }
             ,"FacDerivedWBD": {
                 "type": "string"
+               ,"title": "12-Digit WBD HUC"
+               ,"example": "20700100204"
+               ,"description": "The Hydrologic Unit Code (HUC-12) of the waterbody in which the facility resides, derived based on location data in FRS."
             }
             ,"FacDerivedWBDName": {
                 "type": "string"
+               ,"title": "FRS Derived Watershed Boundary Dataset (WBD) Name"
+               ,"example": "Fourmile Run-Potomac River"
+               ,"description": "The 12 digit Watershed Boundary Dataset Name derived from the FRS Best Pick Coordinate"
             }
             ,"ChesapeakeBayFlag": {
                 "type": "string"
@@ -4788,6 +4855,9 @@
             }
             ,"CWAIDs": {
                 "type": "string"
+               ,"title": "CWA IDs"
+               ,"example": "DC0000001"
+               ,"description": "A unique  ID assigned for each record\/permit\/site\/facility within ICIS-NPDES. These identifiers are for used tracking purposes in the individual data systems."
             }
             ,"RCRAIDs": {
                 "type": "string"
@@ -4797,6 +4867,9 @@
             }
             ,"RmpIDs": {
                 "type": "string"
+               ,"title": "RMP IDs"
+               ,"example": "110000"
+               ,"description": "A unique ID assigned to each facility submitting a Risk Management Plan to EPA under the Risk Management Plan Rule."
             }
             ,"SDWAIDs": {
                 "type": "string"
@@ -4811,9 +4884,15 @@
             }
             ,"GHGIDs": {
                 "type": "string"
+               ,"title": "GHG IDs"
+               ,"example": "110000"
+               ,"description": "A unique ID assigned for each facility within EPA\u2019s Greenhouse Gas Reporting Program (GHGRP) Emissions Data Sets."
             }
             ,"EisIDs": {
                 "type": "string"
+               ,"title": "EIS IDs"
+               ,"example": "12620001"
+               ,"description": "A unique ID assigned for each facility within EPA\u2019s Emissions Inventory System (EIS) Database."
             }
             ,"CamdIDs": {
                 "type": "string"
@@ -4822,67 +4901,117 @@
             }
             ,"AIRComplStatus": {
                 "type": "string"
+               ,"title": "Compliance Status"
+               ,"example": "No Viol"
+               ,"description": "The facility's recent violation status under the Clean Air Act."
             }
             ,"AIRHpvStatus": {
                 "type": "string"
+               ,"title": "HPV Status"
+               ,"example": "Yes"
+               ,"description": "Indicates whether the facility currently has an unresolved High Priority Violation (HPV) under the Clean Air Act."
             }
             ,"AIRMnthsWithHpv": {
                 "type": "string"
+               ,"title": "Months with HPV"
+               ,"example": "3"
+               ,"description": "The number of months in the last three years in which the permit or site is considered in High Priority Violation (HPV) status"
             }
             ,"AIRQtrsWithHpv": {
                 "type": "string"
+               ,"title": "Quarters with HPV"
+               ,"example": "4"
+               ,"description": "The number of quarters in the last three years in which the permit or site is considered in High Priority Violation (HPV) status."
             }
             ,"AIRQtrsWithViol": {
                 "type": "string"
+               ,"title": "Quarters with Violation Reported"
                ,"example": "2"
+               ,"description": "The number of quarters in the last three years in which the permit or site has had unresolved violation(s) reported."
             }
             ,"AIRPollRecentViol": {
                 "type": "string"
+               ,"title": "Pollutants with Recent Violation"
+               ,"example": "Sulfur"
+               ,"description": "The names of pollutants or pollutant categories with violations reported in the last year."
             }
             ,"AIRRecentViolCnt": {
                 "type": "string"
+               ,"title": "Recent Violation Count"
                ,"example": "1"
+               ,"description": "The number of violations reported in the last year."
             }
             ,"AIRLastViolDate": {
                 "type": "string"
+               ,"title": "Last Violation Date"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent violation was reported."
             }
             ,"AIREvalCnt": {
                 "type": "string"
+               ,"title": "Compliance Evaluation Count"
                ,"example": "0"
+               ,"description": "The number of compliance evaluations, under the Clean Air Act, occurring at the facility within the last five years."
             }
             ,"AIRDaysLastEval": {
                 "type": "string"
+               ,"title": "Days Since Last Compliance Evaluation"
                ,"example": "2806"
+               ,"description": "The number of days since the most recent compliance evaluation of the facility."
             }
             ,"AIRLastEvalDate": {
                 "type": "string"
+               ,"title": "Last Compliance Evaluation Date"
                ,"example": "05\/18\/2009"
+               ,"description": "The date on which the most recent Full Compliance Evaluation (FCE) of the facility by EPA or a state agency was completed."
             }
             ,"AIRLastEvalDateEPA": {
                 "type": "string"
+               ,"title": "Air Last EPA Inspection Date"
                ,"example": "05\/16\/2014"
+               ,"description": "The last Air Inspection Date performed by EPA."
             }
             ,"AIRLastEvalDateState": {
                 "type": "string"
+               ,"title": "Air Last State Insprection Date"
                ,"example": "05\/18\/2009"
+               ,"description": "The last Air Inspection Date performed by State or local authorities."
             }
             ,"LastDatePce": {
                 "type": "string"
+               ,"title": "Date of Last Partial Compliance Evaluation"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent Partial Compliance Evaluation (PCE) of the facility by EPA or a state agency was completed."
             }
             ,"LastDatePceEPA": {
                 "type": "string"
+               ,"title": "Date of Last Partial Compliance Evaluation by EPA"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent Partial Compliance Evaluation (PCE) of the facility by EPA was completed."
             }
             ,"LastDatePceSta": {
                 "type": "string"
+               ,"title": "Date of Last Partial Compliance Evaluation by State"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent Partial Compliance Evaluation (PCE) of the facility by a state agency was completed."
             }
             ,"AIRLastStckTestDate": {
                 "type": "string"
+               ,"title": "Last Stack Test Date"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent stack test occurred."
             }
             ,"AIRLastStckTestResults": {
                 "type": "string"
+               ,"title": "Last Stack Test Results"
+               ,"example": "04\/25\/2014"
+               ,"description": "The result of the most recent stack test (Pass, Fail, Pending, or Blank)."
             }
             ,"FacNaaFlag": {
                 "type": "string"
+               ,"title": "NAA Flag"
+               ,"example": "Y"
+               ,"description": "Indicates whether the facility is located in a nonattainment area of the country, where air pollution levels persistently exceed the national ambient air quality standards. This flag does not indicate whether or not the facility has violated national ambient area quality standards."
             }
             ,"FacTRIReporter": {
                 "type": "string"
@@ -4892,59 +5021,99 @@
             }
             ,"FacTRIAIRReleases": {
                 "type": "string"
+               ,"title": "TRI Releases"
                ,"example": "36"
+               ,"description": "The total chemical releases to air, in pounds, as reported to TRI by the facility for the most recent reporting year."
             }
             ,"FacTRICarcAIRReleases": {
                 "type": "string"
+               ,"title": "TRI Carcinogen Releases"
                ,"example": "24"
+               ,"description": "The pounds of chemicals considered to be carcinogens released to air, as reported to TRI for the most recent reporting year. Chemicals are classified as carcinogens under the requirements of the Occupational Safety and Health Administration (OSHA)."
             }
             ,"FacTRIHapsReleases": {
                 "type": "string"
+               ,"title": "TRI HAPS Releases"
                ,"example": "35.5"
+               ,"description": "The pounds of chemicals classified as hazardous air pollutants (HAPS) released to air in pounds per year, as reported to TRI for the most recent reporting year."
             }
             ,"FacEisAIRReleases": {
                 "type": "string"
+               ,"title": "EIS Releases"
+               ,"example": "2.35"
+               ,"description": "The amount of hazardous air pollutants released to air in tons per year, as reported in the most recent National Emissions Inventory (NEI)."
             }
             ,"FacGHGCO2Releases": {
                 "type": "string"
+               ,"title": "GHG CO2 Releases"
+               ,"example": "100"
+               ,"description": "The annual sum of total release amounts and \"associated quantities\" of all linked Greenhouse Gas IDs from the Office of Air and Radiation \"Summary 2010 Greenhouse Gas Data.\" Units are reported as metric tons of CO2 equivalents per year (MTCO2e\/year)."
             }
             ,"AIRIeaCnt": {
                 "type": "string"
+               ,"title": "Informal Enforcement Action Count"
+               ,"example": "2"
+               ,"description": "The total number of informal enforcement actions taken against the facility within the last five years."
             }
             ,"AIRFeaCnt": {
                 "type": "string"
+               ,"title": "Formal Enforcement Action Count"
                ,"example": "2"
+               ,"description": "The total number of formal enforcement actions taken against the facility within the last five years."
             }
             ,"AIRLastIeaDate": {
                 "type": "string"
+               ,"title": "Last Informal Enforcement Action Date"
                ,"example": "04\/25\/2014"
+               ,"description": "The effective date of the most recent listed informal enforcement action taken against the facility."
             }
             ,"AIRLastIeaDateState": {
                 "type": "string"
+               ,"title": "Last State Informal Enforcement Action Date"
+               ,"example": "04\/25\/2014"
+               ,"description": "The effective date of the most recent listed informal enforcement action taken against the facility by a state agency."
             }
             ,"AIRLastIeaDateEPA": {
                 "type": "string"
+               ,"title": "Last EPA Informal Enforcement Action Date"
                ,"example": "04\/25\/2014"
+               ,"description": "The effective date of the most recent listed informal enforcement action taken against the facility by EPA."
             }
             ,"AIRLastFeaDate": {
                 "type": "string"
+               ,"title": "Last Formal Enforcement Action Date"
                ,"example": "05\/16\/2014"
+               ,"description": "The effective date of the most recent listed formal enforcement action taken against the facility."
             }
             ,"AIRLastFeaDateState": {
                 "type": "string"
+               ,"title": "Air Last State Formal Enforcement Action Date"
+               ,"example": "05\/16\/2014"
+               ,"description": "The last Air Formal Enforcement Action Date take by State or Local authorities."
             }
             ,"AIRLastFeaDateEPA": {
                 "type": "string"
+               ,"title": "Air Last EPA Formal Enforcement Action Date"
+               ,"example": "05\/16\/2014"
+               ,"description": "The last Air Formal Enforcement Action Date take by EPA."
             }
             ,"AIRPenalties": {
                 "type": "string"
+               ,"title": "Penalties"
                ,"example": "$435"
+               ,"description": "The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Air Act. This value only includes penalties that have been entered in the national program database, ICIS-Air."
             }
             ,"AIRLastPenaltyDate": {
                 "type": "string"
+               ,"title": "Air Last Penalty Date"
+               ,"example": "05\/16\/2014"
+               ,"description": "Indicates the date on which the most recent assessed (or final) penalty was taken against the facility for AIR."
             }
             ,"Over80CountUs": {
                 "type": "string"
+               ,"title": "EJ Indexes Above 80th Percentile"
+               ,"example": "3"
+               ,"description": "The number of primary EJSCREEN environmental justice (EJ) indexes exceeding the 80th or higher national percentile for the Census block group that the facility is located in."
             }
             ,"PctilePctpre1960Us": {
                 "type": "string"
@@ -5003,7 +5172,9 @@
             }
             ,"FacPopulationDensity": {
                 "type": "string"
+               ,"title": "Population Density"
                ,"example": "9611.17"
+               ,"description": "The number of persons per square mile in the profiled area."
             }
             ,"FacPercentMinority": {
                 "type": "string"
@@ -5030,12 +5201,19 @@
             }
             ,"AIRFIPSCode": {
                 "type": "string"
+               ,"title": "State County FIPS Code"
+               ,"example": "11001"
+               ,"description": "A 5 digit combination of the 2 digit Federal Information Processing Standards (FIPS) code for the state and the 3 digit FIPS code of the county that a facility is located in."
             }
             ,"AIRTRIbalEPAids": {
                 "type": "string"
+               ,"title": "Tribal EPA IDs"
+               ,"description": "The EPA Tribal or Native Alaskan Village Identifier for facilities, that based on their Best Pick FRS spatial coordinate, are within a Tribal or Alaskan Village area."
             }
             ,"AIRTRIbalNames": {
                 "type": "string"
+               ,"title": "Tribal Names"
+               ,"description": "The EPA Tribal or Native Alaskan Village Name for facilities, that based on their Best Pick FRS spatial coordinate, are within a Tribal or Alaskan Village area."
             }
             ,"AIRCaseIDs": {
                 "type": "string"
@@ -5044,9 +5222,15 @@
             }
             ,"AIRLastStckDateEPA": {
                 "type": "string"
+               ,"title": "Last EPA Stack Test Date"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent stack test by EPA occurred."
             }
             ,"AIRLastStckDateState": {
                 "type": "string"
+               ,"title": "Last State Stack Test Date"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent stack test by a state agency occurred."
             }
             ,"FacMapFlg": {
                 "type": "string"
@@ -5062,23 +5246,39 @@
             }
             ,"FacGHGReporter": {
                 "type": "string"
+               ,"title": "GHG Reporter"
+               ,"example": "Y"
+               ,"description": "Indicates whether the facility reports to the Greenhouse Gas Reporting Program (GHGRP)"
             }
             ,"FacEisReporter": {
                 "type": "string"
+               ,"title": "EIS Reporter"
+               ,"example": "Y"
+               ,"description": "Indicates whether the facility reports to the Emissions Inventory System (EIS)."
             }
             ,"FacCamdReporter": {
                 "type": "string"
+               ,"title": "CAMD Reporter"
+               ,"example": "Y"
+               ,"description": "Indicates whether the facility reports to the Clean Air Markets Division (CAMD)."
             }
             ,"AIRFacilityTypeCode": {
                 "type": "string"
+               ,"title": "Facility Type Code"
                ,"example": "POF"
+               ,"description": "A three-character code indicating if plant is government facility.\nCOR - Corporation\nCNG - County Government\nDIS - District\nFDF - Federal Facility (U.S. Government)\nGOC - GOCO (Gov Owned\/Contractor Operated)\nIND - Individual\nMXO - Mixed Ownership (e.g., Public\/Private)\nMWD - Municipal or Water District\nCTG\t- Municipality\nNON - Non-Government\nPOF - Privately Owned Facility\nSDT - School District\nSTF - State Government\nTRB - Tribal Government\nUNK - Unknown"
             }
             ,"AIRMajorFlag": {
                 "type": "string"
+               ,"title": "Major Flag"
                ,"example": "N"
+               ,"description": "Indicated whether the facility is designated as a major facilitiy."
             }
             ,"AIR3yrComplQtrsHistory": {
                 "type": "string"
+               ,"title": "3-Year Compliance Status History"
+               ,"example": "VV__SS_U__V_"
+               ,"description": "The facility's 3-year compliance status history by quarter (3-month period). Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:\n_ - No Violation Identified\nV - Violation Identified\nS - High Priority Violation\nU - Undetermined"
             }
             ,"HasPollRpt": {
                 "type": "string"
@@ -5098,14 +5298,19 @@
             }
             ,"EjscreenFlagUs": {
                 "type": "string"
+               ,"title": "EJ Screen Flag (US)"
+               ,"description": "A Y\/N indicator identifying whether or not the facility is within an Environmental Justice area."
             }
             ,"EjscreenFlag": {
                 "type": "string"
+               ,"title": "EJ Screen Flag"
+               ,"description": "A Y\/N indicator identifying whether or not the facility is within an Environmental Justice area."
             }
             ,"TRIbalFlag": {
                 "type": "string"
                ,"title": "Tribal Lands Flag"
                ,"example": "1"
+               ,"description": "A flag indicating that the facility is within a tribal area."
             }
             ,"CurrSvFlag": {
                 "type": "string"
@@ -5149,6 +5354,7 @@
             }
             ,"ActiveLower48": {
                 "type": "string"
+               ,"description": "A Y\/N indicator indicating that the facility is active and located within the lower 48 contiguous US States."
             }
             ,"CollectionMethod": {
                 "type": "string"
@@ -5166,10 +5372,12 @@
                 "type": "string"
                ,"title": "Calculated Accuracy in Meters"
                ,"example": "50"
+               ,"description": "The estimated accuracy in Meters for the facility's geospatial coordinate."
             }
             ,"Map": {
                 "type": "string"
                ,"title": "Map"
+               ,"description": "No Longer Used."
             }
             ,"WebDocs": {
                 "type": "string"
@@ -5179,21 +5387,39 @@
             }
             ,"NaaCategories": {
                 "type": "string"
+               ,"title": "NAA Categories"
+               ,"example": "8-HOUR OZONE(2015)"
+               ,"description": "The nonattainment area categories that the facility is in, derived spatially based on the facility's geographic coordinates in FRS. "
             }
             ,"NaaPollutants": {
                 "type": "string"
+               ,"title": "NAA Pollutants"
+               ,"example": "OZONE"
+               ,"description": "All criteria pollutants that the facility is in nonattainment for."
             }
             ,"FacCountyName": {
                 "type": "string"
+               ,"title": "FRS Facility County Name"
+               ,"example": "Fairfax County"
+               ,"description": "The facility county name from EPA's Facility Registry System"
             }
             ,"FacStdCountyName": {
                 "type": "string"
+               ,"title": "FRS Standardized Facility County Name"
+               ,"example": "Fairfax County"
+               ,"description": "The standardized  facility county name from EPA's Facility Registry System"
             }
             ,"AIRNsps": {
                 "type": "string"
+               ,"title": "NSPS Subpart"
+               ,"example": "NSPS Part 60"
+               ,"description": "The New Source Performance Standards (NSPS) Subpart associated with the facility."
             }
             ,"AIRNspsm": {
                 "type": "string"
+               ,"title": "NSPS Subpart (Non-Major)"
+               ,"example": "NSPS Part 60"
+               ,"description": "The Non-Major New Source Performance Standards (NSPS) Subpart associated with the facility."
             }
             ,"Score": {
                 "type": "string"
@@ -5204,7 +5430,7 @@
                 "type": "string"
                ,"title": "Max Score"
                ,"example": "1"
-               ,"description": "[Col. 121]"
+               ,"description": "A sorting score for internal use."
             }
          }
          ,"required": [
@@ -5367,6 +5593,7 @@
             ,"MapData": {
                 "type": "array"
                ,"title": "Map Data"
+               ,"description": "An array of facility geospatial information."
                ,"items": {
                    "$ref": "#\/definitions\/air1_MapData"
                }
@@ -5444,6 +5671,7 @@
             }
             ,"BadSystemIDs": {
                 "type": "string"
+               ,"description": "Identifies which passed query system identifiers are invalid."
             }
             ,"QueryID": {
                 "type": "string"
@@ -5460,6 +5688,7 @@
             ,"Facilities": {
                 "type": "array"
                ,"title": "Facilities"
+               ,"description": "A complex array of facility information."
                ,"items": {
                    "$ref": "#\/definitions\/air2_Facilities"
                }
@@ -5499,7 +5728,7 @@
                 "type": "string"
                ,"title": "Object Identifier"
                ,"example": "1"
-               ,"description": "Sequential number assigned to each facility returned"
+               ,"description": "Sequential number assigned to each facility or cluster returned."
             }
             ,"AIRName": {
                 "type": "string"
@@ -5521,6 +5750,9 @@
             }
             ,"AIRCity": {
                 "type": "string"
+               ,"title": "City"
+               ,"example": "Washington"
+               ,"description": "The city where the AIR facility is located."
             }
             ,"AIRState": {
                 "type": "string"
@@ -5563,6 +5795,9 @@
             }
             ,"FacFederalAgencyName": {
                 "type": "string"
+               ,"title": "Federal Agency Name"
+               ,"example": "EPA"
+               ,"description": "Indicates the name of the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government."
             }
             ,"FacDerivedHuc": {
                 "type": "string"
@@ -5589,9 +5824,15 @@
             }
             ,"FacIndianSpatialFlg": {
                 "type": "string"
+               ,"title": "Indian Spatial Flag"
+               ,"example": "Y"
+               ,"description": "Returns \u201CY\u201D if a facility is located within a tribal spatial boundary as defined by the U.S. Census Bureau 2010 tribal boundary layer data for tribes in the lower 48 states and Bureau of Land Management Alaska State Office data for native villages in Alaska. Returns \u201CN\u201D if a facility is not located within a tribal or native Alaskan village area."
             }
             ,"FacDerivedTRIbes": {
                 "type": "string"
+               ,"title": "FRS Spatially Derived Tribe"
+               ,"example": "Cherokee Nation"
+               ,"description": "The tribes or tribal territories located within 25 miles of the facility's location."
             }
             ,"FacUsMexBorderFlg": {
                 "type": "string"
@@ -5601,10 +5842,15 @@
             }
             ,"FacSICCodes": {
                 "type": "string"
+               ,"title": "SIC Codes"
+               ,"example": "811"
+               ,"description": "Indicates the facility\u2019s or permit's primary Standard Industrial Classification (SIC) Code. The SIC code describes the primary activity of the facility."
             }
             ,"AIRNAICS": {
                 "type": "string"
+               ,"title": "NAICS Codes"
                ,"example": "812320"
+               ,"description": "The facility\u2019s or permit's primary North American Industry Classification System (NAICS) Code."
             }
             ,"FacLat": {
                 "type": "string"
@@ -5626,7 +5872,9 @@
             }
             ,"AIRMacts": {
                 "type": "string"
+               ,"title": "MACT Subparts"
                ,"example": "ZZZZZ"
+               ,"description": "The Maximum Achievable Control Technology (MACT) Subpart associated with the facility."
             }
             ,"AIRStatus": {
                 "type": "string"
@@ -5636,13 +5884,21 @@
             }
             ,"AIRUniverse": {
                 "type": "string"
+               ,"title": "AIR Universe"
                ,"example": "Minor Emissions"
+               ,"description": "The program office defines each CAA Source ID and the associated permits as being Federally Reportable or Non-Federally Reportable. Under the CAA, federally reportable source include majors, synthetic minors, NESHAP Part 61 minors, minors with an unresolved High Priority Violation (HPV), with recent enforcement action, or included on a Compliance Monitoring Strategy plan."
             }
             ,"FacDerivedWBD": {
                 "type": "string"
+               ,"title": "12-Digit WBD HUC"
+               ,"example": "20700100204"
+               ,"description": "The Hydrologic Unit Code (HUC-12) of the waterbody in which the facility resides, derived based on location data in FRS."
             }
             ,"FacDerivedWBDName": {
                 "type": "string"
+               ,"title": "FRS Derived Watershed Boundary Dataset (WBD) Name"
+               ,"example": "Fourmile Run-Potomac River"
+               ,"description": "The 12 digit Watershed Boundary Dataset Name derived from the FRS Best Pick Coordinate"
             }
             ,"ChesapeakeBayFlag": {
                 "type": "string"
@@ -5658,6 +5914,9 @@
             }
             ,"CWAIDs": {
                 "type": "string"
+               ,"title": "CWA IDs"
+               ,"example": "DC0000001"
+               ,"description": "A unique  ID assigned for each record\/permit\/site\/facility within ICIS-NPDES. These identifiers are for used tracking purposes in the individual data systems."
             }
             ,"RCRAIDs": {
                 "type": "string"
@@ -5667,6 +5926,9 @@
             }
             ,"RmpIDs": {
                 "type": "string"
+               ,"title": "RMP IDs"
+               ,"example": "110000"
+               ,"description": "A unique ID assigned to each facility submitting a Risk Management Plan to EPA under the Risk Management Plan Rule."
             }
             ,"SDWAIDs": {
                 "type": "string"
@@ -5681,9 +5943,15 @@
             }
             ,"GHGIDs": {
                 "type": "string"
+               ,"title": "GHG IDs"
+               ,"example": "110000"
+               ,"description": "A unique ID assigned for each facility within EPA\u2019s Greenhouse Gas Reporting Program (GHGRP) Emissions Data Sets."
             }
             ,"EisIDs": {
                 "type": "string"
+               ,"title": "EIS IDs"
+               ,"example": "12620001"
+               ,"description": "A unique ID assigned for each facility within EPA\u2019s Emissions Inventory System (EIS) Database."
             }
             ,"CamdIDs": {
                 "type": "string"
@@ -5692,67 +5960,117 @@
             }
             ,"AIRComplStatus": {
                 "type": "string"
+               ,"title": "Compliance Status"
+               ,"example": "No Viol"
+               ,"description": "The facility's recent violation status under the Clean Air Act."
             }
             ,"AIRHpvStatus": {
                 "type": "string"
+               ,"title": "HPV Status"
+               ,"example": "Yes"
+               ,"description": "Indicates whether the facility currently has an unresolved High Priority Violation (HPV) under the Clean Air Act."
             }
             ,"AIRMnthsWithHpv": {
                 "type": "string"
+               ,"title": "Months with HPV"
+               ,"example": "3"
+               ,"description": "The number of months in the last three years in which the permit or site is considered in High Priority Violation (HPV) status"
             }
             ,"AIRQtrsWithHpv": {
                 "type": "string"
+               ,"title": "Quarters with HPV"
+               ,"example": "4"
+               ,"description": "The number of quarters in the last three years in which the permit or site is considered in High Priority Violation (HPV) status."
             }
             ,"AIRQtrsWithViol": {
                 "type": "string"
+               ,"title": "Quarters with Violation Reported"
                ,"example": "2"
+               ,"description": "The number of quarters in the last three years in which the permit or site has had unresolved violation(s) reported."
             }
             ,"AIRPollRecentViol": {
                 "type": "string"
+               ,"title": "Pollutants with Recent Violation"
+               ,"example": "Sulfur"
+               ,"description": "The names of pollutants or pollutant categories with violations reported in the last year."
             }
             ,"AIRRecentViolCnt": {
                 "type": "string"
+               ,"title": "Recent Violation Count"
                ,"example": "1"
+               ,"description": "The number of violations reported in the last year."
             }
             ,"AIRLastViolDate": {
                 "type": "string"
+               ,"title": "Last Violation Date"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent violation was reported."
             }
             ,"AIREvalCnt": {
                 "type": "string"
+               ,"title": "Compliance Evaluation Count"
                ,"example": "0"
+               ,"description": "The number of compliance evaluations, under the Clean Air Act, occurring at the facility within the last five years."
             }
             ,"AIRDaysLastEval": {
                 "type": "string"
+               ,"title": "Days Since Last Compliance Evaluation"
                ,"example": "2806"
+               ,"description": "The number of days since the most recent compliance evaluation of the facility."
             }
             ,"AIRLastEvalDate": {
                 "type": "string"
+               ,"title": "Last Compliance Evaluation Date"
                ,"example": "05\/18\/2009"
+               ,"description": "The date on which the most recent Full Compliance Evaluation (FCE) of the facility by EPA or a state agency was completed."
             }
             ,"AIRLastEvalDateEPA": {
                 "type": "string"
+               ,"title": "Air Last EPA Inspection Date"
                ,"example": "05\/16\/2014"
+               ,"description": "The last Air Inspection Date performed by EPA."
             }
             ,"AIRLastEvalDateState": {
                 "type": "string"
+               ,"title": "Air Last State Insprection Date"
                ,"example": "05\/18\/2009"
+               ,"description": "The last Air Inspection Date performed by State or local authorities."
             }
             ,"LastDatePce": {
                 "type": "string"
+               ,"title": "Date of Last Partial Compliance Evaluation"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent Partial Compliance Evaluation (PCE) of the facility by EPA or a state agency was completed."
             }
             ,"LastDatePceEPA": {
                 "type": "string"
+               ,"title": "Date of Last Partial Compliance Evaluation by EPA"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent Partial Compliance Evaluation (PCE) of the facility by EPA was completed."
             }
             ,"LastDatePceSta": {
                 "type": "string"
+               ,"title": "Date of Last Partial Compliance Evaluation by State"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent Partial Compliance Evaluation (PCE) of the facility by a state agency was completed."
             }
             ,"AIRLastStckTestDate": {
                 "type": "string"
+               ,"title": "Last Stack Test Date"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent stack test occurred."
             }
             ,"AIRLastStckTestResults": {
                 "type": "string"
+               ,"title": "Last Stack Test Results"
+               ,"example": "04\/25\/2014"
+               ,"description": "The result of the most recent stack test (Pass, Fail, Pending, or Blank)."
             }
             ,"FacNaaFlag": {
                 "type": "string"
+               ,"title": "NAA Flag"
+               ,"example": "Y"
+               ,"description": "Indicates whether the facility is located in a nonattainment area of the country, where air pollution levels persistently exceed the national ambient air quality standards. This flag does not indicate whether or not the facility has violated national ambient area quality standards."
             }
             ,"FacTRIReporter": {
                 "type": "string"
@@ -5762,59 +6080,99 @@
             }
             ,"FacTRIAIRReleases": {
                 "type": "string"
+               ,"title": "TRI Releases"
                ,"example": "36"
+               ,"description": "The total chemical releases to air, in pounds, as reported to TRI by the facility for the most recent reporting year."
             }
             ,"FacTRICarcAIRReleases": {
                 "type": "string"
+               ,"title": "TRI Carcinogen Releases"
                ,"example": "24"
+               ,"description": "The pounds of chemicals considered to be carcinogens released to air, as reported to TRI for the most recent reporting year. Chemicals are classified as carcinogens under the requirements of the Occupational Safety and Health Administration (OSHA)."
             }
             ,"FacTRIHapsReleases": {
                 "type": "string"
+               ,"title": "TRI HAPS Releases"
                ,"example": "35.5"
+               ,"description": "The pounds of chemicals classified as hazardous air pollutants (HAPS) released to air in pounds per year, as reported to TRI for the most recent reporting year."
             }
             ,"FacEisAIRReleases": {
                 "type": "string"
+               ,"title": "EIS Releases"
+               ,"example": "2.35"
+               ,"description": "The amount of hazardous air pollutants released to air in tons per year, as reported in the most recent National Emissions Inventory (NEI)."
             }
             ,"FacGHGCO2Releases": {
                 "type": "string"
+               ,"title": "GHG CO2 Releases"
+               ,"example": "100"
+               ,"description": "The annual sum of total release amounts and \"associated quantities\" of all linked Greenhouse Gas IDs from the Office of Air and Radiation \"Summary 2010 Greenhouse Gas Data.\" Units are reported as metric tons of CO2 equivalents per year (MTCO2e\/year)."
             }
             ,"AIRIeaCnt": {
                 "type": "string"
+               ,"title": "Informal Enforcement Action Count"
+               ,"example": "2"
+               ,"description": "The total number of informal enforcement actions taken against the facility within the last five years."
             }
             ,"AIRFeaCnt": {
                 "type": "string"
+               ,"title": "Formal Enforcement Action Count"
                ,"example": "2"
+               ,"description": "The total number of formal enforcement actions taken against the facility within the last five years."
             }
             ,"AIRLastIeaDate": {
                 "type": "string"
+               ,"title": "Last Informal Enforcement Action Date"
                ,"example": "04\/25\/2014"
+               ,"description": "The effective date of the most recent listed informal enforcement action taken against the facility."
             }
             ,"AIRLastIeaDateState": {
                 "type": "string"
+               ,"title": "Last State Informal Enforcement Action Date"
+               ,"example": "04\/25\/2014"
+               ,"description": "The effective date of the most recent listed informal enforcement action taken against the facility by a state agency."
             }
             ,"AIRLastIeaDateEPA": {
                 "type": "string"
+               ,"title": "Last EPA Informal Enforcement Action Date"
                ,"example": "04\/25\/2014"
+               ,"description": "The effective date of the most recent listed informal enforcement action taken against the facility by EPA."
             }
             ,"AIRLastFeaDate": {
                 "type": "string"
+               ,"title": "Last Formal Enforcement Action Date"
                ,"example": "05\/16\/2014"
+               ,"description": "The effective date of the most recent listed formal enforcement action taken against the facility."
             }
             ,"AIRLastFeaDateState": {
                 "type": "string"
+               ,"title": "Air Last State Formal Enforcement Action Date"
+               ,"example": "05\/16\/2014"
+               ,"description": "The last Air Formal Enforcement Action Date take by State or Local authorities."
             }
             ,"AIRLastFeaDateEPA": {
                 "type": "string"
+               ,"title": "Air Last EPA Formal Enforcement Action Date"
+               ,"example": "05\/16\/2014"
+               ,"description": "The last Air Formal Enforcement Action Date take by EPA."
             }
             ,"AIRPenalties": {
                 "type": "string"
+               ,"title": "Penalties"
                ,"example": "$435"
+               ,"description": "The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Air Act. This value only includes penalties that have been entered in the national program database, ICIS-Air."
             }
             ,"AIRLastPenaltyDate": {
                 "type": "string"
+               ,"title": "Air Last Penalty Date"
+               ,"example": "05\/16\/2014"
+               ,"description": "Indicates the date on which the most recent assessed (or final) penalty was taken against the facility for AIR."
             }
             ,"Over80CountUs": {
                 "type": "string"
+               ,"title": "EJ Indexes Above 80th Percentile"
+               ,"example": "3"
+               ,"description": "The number of primary EJSCREEN environmental justice (EJ) indexes exceeding the 80th or higher national percentile for the Census block group that the facility is located in."
             }
             ,"PctilePctpre1960Us": {
                 "type": "string"
@@ -5873,7 +6231,9 @@
             }
             ,"FacPopulationDensity": {
                 "type": "string"
+               ,"title": "Population Density"
                ,"example": "9611.17"
+               ,"description": "The number of persons per square mile in the profiled area."
             }
             ,"FacPercentMinority": {
                 "type": "string"
@@ -5900,12 +6260,19 @@
             }
             ,"AIRFIPSCode": {
                 "type": "string"
+               ,"title": "State County FIPS Code"
+               ,"example": "11001"
+               ,"description": "A 5 digit combination of the 2 digit Federal Information Processing Standards (FIPS) code for the state and the 3 digit FIPS code of the county that a facility is located in."
             }
             ,"AIRTRIbalEPAids": {
                 "type": "string"
+               ,"title": "Tribal EPA IDs"
+               ,"description": "The EPA Tribal or Native Alaskan Village Identifier for facilities, that based on their Best Pick FRS spatial coordinate, are within a Tribal or Alaskan Village area."
             }
             ,"AIRTRIbalNames": {
                 "type": "string"
+               ,"title": "Tribal Names"
+               ,"description": "The EPA Tribal or Native Alaskan Village Name for facilities, that based on their Best Pick FRS spatial coordinate, are within a Tribal or Alaskan Village area."
             }
             ,"AIRCaseIDs": {
                 "type": "string"
@@ -5914,9 +6281,15 @@
             }
             ,"AIRLastStckDateEPA": {
                 "type": "string"
+               ,"title": "Last EPA Stack Test Date"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent stack test by EPA occurred."
             }
             ,"AIRLastStckDateState": {
                 "type": "string"
+               ,"title": "Last State Stack Test Date"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent stack test by a state agency occurred."
             }
             ,"FacMapFlg": {
                 "type": "string"
@@ -5932,23 +6305,39 @@
             }
             ,"FacGHGReporter": {
                 "type": "string"
+               ,"title": "GHG Reporter"
+               ,"example": "Y"
+               ,"description": "Indicates whether the facility reports to the Greenhouse Gas Reporting Program (GHGRP)"
             }
             ,"FacEisReporter": {
                 "type": "string"
+               ,"title": "EIS Reporter"
+               ,"example": "Y"
+               ,"description": "Indicates whether the facility reports to the Emissions Inventory System (EIS)."
             }
             ,"FacCamdReporter": {
                 "type": "string"
+               ,"title": "CAMD Reporter"
+               ,"example": "Y"
+               ,"description": "Indicates whether the facility reports to the Clean Air Markets Division (CAMD)."
             }
             ,"AIRFacilityTypeCode": {
                 "type": "string"
+               ,"title": "Facility Type Code"
                ,"example": "POF"
+               ,"description": "A three-character code indicating if plant is government facility.\nCOR - Corporation\nCNG - County Government\nDIS - District\nFDF - Federal Facility (U.S. Government)\nGOC - GOCO (Gov Owned\/Contractor Operated)\nIND - Individual\nMXO - Mixed Ownership (e.g., Public\/Private)\nMWD - Municipal or Water District\nCTG\t- Municipality\nNON - Non-Government\nPOF - Privately Owned Facility\nSDT - School District\nSTF - State Government\nTRB - Tribal Government\nUNK - Unknown"
             }
             ,"AIRMajorFlag": {
                 "type": "string"
+               ,"title": "Major Flag"
                ,"example": "N"
+               ,"description": "Indicated whether the facility is designated as a major facilitiy."
             }
             ,"AIR3yrComplQtrsHistory": {
                 "type": "string"
+               ,"title": "3-Year Compliance Status History"
+               ,"example": "VV__SS_U__V_"
+               ,"description": "The facility's 3-year compliance status history by quarter (3-month period). Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:\n_ - No Violation Identified\nV - Violation Identified\nS - High Priority Violation\nU - Undetermined"
             }
             ,"HasPollRpt": {
                 "type": "string"
@@ -5968,14 +6357,19 @@
             }
             ,"EjscreenFlagUs": {
                 "type": "string"
+               ,"title": "EJ Screen Flag (US)"
+               ,"description": "A Y\/N indicator identifying whether or not the facility is within an Environmental Justice area."
             }
             ,"EjscreenFlag": {
                 "type": "string"
+               ,"title": "EJ Screen Flag"
+               ,"description": "A Y\/N indicator identifying whether or not the facility is within an Environmental Justice area."
             }
             ,"TRIbalFlag": {
                 "type": "string"
                ,"title": "Tribal Lands Flag"
                ,"example": "1"
+               ,"description": "A flag indicating that the facility is within a tribal area."
             }
             ,"CurrSvFlag": {
                 "type": "string"
@@ -6019,6 +6413,7 @@
             }
             ,"ActiveLower48": {
                 "type": "string"
+               ,"description": "A Y\/N indicator indicating that the facility is active and located within the lower 48 contiguous US States."
             }
             ,"CollectionMethod": {
                 "type": "string"
@@ -6036,10 +6431,12 @@
                 "type": "string"
                ,"title": "Calculated Accuracy in Meters"
                ,"example": "50"
+               ,"description": "The estimated accuracy in Meters for the facility's geospatial coordinate."
             }
             ,"Map": {
                 "type": "string"
                ,"title": "Map"
+               ,"description": "No Longer Used."
             }
             ,"WebDocs": {
                 "type": "string"
@@ -6049,21 +6446,39 @@
             }
             ,"NaaCategories": {
                 "type": "string"
+               ,"title": "NAA Categories"
+               ,"example": "8-HOUR OZONE(2015)"
+               ,"description": "The nonattainment area categories that the facility is in, derived spatially based on the facility's geographic coordinates in FRS. "
             }
             ,"NaaPollutants": {
                 "type": "string"
+               ,"title": "NAA Pollutants"
+               ,"example": "OZONE"
+               ,"description": "All criteria pollutants that the facility is in nonattainment for."
             }
             ,"FacCountyName": {
                 "type": "string"
+               ,"title": "FRS Facility County Name"
+               ,"example": "Fairfax County"
+               ,"description": "The facility county name from EPA's Facility Registry System"
             }
             ,"FacStdCountyName": {
                 "type": "string"
+               ,"title": "FRS Standardized Facility County Name"
+               ,"example": "Fairfax County"
+               ,"description": "The standardized  facility county name from EPA's Facility Registry System"
             }
             ,"AIRNsps": {
                 "type": "string"
+               ,"title": "NSPS Subpart"
+               ,"example": "NSPS Part 60"
+               ,"description": "The New Source Performance Standards (NSPS) Subpart associated with the facility."
             }
             ,"AIRNspsm": {
                 "type": "string"
+               ,"title": "NSPS Subpart (Non-Major)"
+               ,"example": "NSPS Part 60"
+               ,"description": "The Non-Major New Source Performance Standards (NSPS) Subpart associated with the facility."
             }
             ,"Score": {
                 "type": "string"
@@ -6074,7 +6489,7 @@
                 "type": "string"
                ,"title": "Max Score"
                ,"example": "1"
-               ,"description": "[Col. 121]"
+               ,"description": "A sorting score for internal use."
             }
          }
          ,"required": [
@@ -6280,6 +6695,7 @@
             }
             ,"BadSystemIDs": {
                 "type": "string"
+               ,"description": "Identifies which passed query system identifiers are invalid."
             }
             ,"IconBaseURL": {
                 "type": "string"
@@ -6297,6 +6713,7 @@
                 "type": "string"
                ,"title": "Service Base URL"
                ,"example": "https:\/\/ofmpub.epa.gov\/echo\/echo_rest_services.get_facility_info"
+               ,"description": "The base service URL."
             }
             ,"QueryParameters": {
                 "type": "array"
@@ -6313,6 +6730,7 @@
             ,"Facilities": {
                 "type": "array"
                ,"title": "Facilities"
+               ,"description": "A complex array of facility information."
                ,"items": {
                    "$ref": "#\/definitions\/air3_Facilities"
                }
@@ -6397,6 +6815,9 @@
             }
             ,"AIRCity": {
                 "type": "string"
+               ,"title": "City"
+               ,"example": "Washington"
+               ,"description": "The city where the AIR facility is located."
             }
             ,"AIRState": {
                 "type": "string"
@@ -6439,6 +6860,9 @@
             }
             ,"FacFederalAgencyName": {
                 "type": "string"
+               ,"title": "Federal Agency Name"
+               ,"example": "EPA"
+               ,"description": "Indicates the name of the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government."
             }
             ,"FacDerivedHuc": {
                 "type": "string"
@@ -6465,9 +6889,15 @@
             }
             ,"FacIndianSpatialFlg": {
                 "type": "string"
+               ,"title": "Indian Spatial Flag"
+               ,"example": "Y"
+               ,"description": "Returns \u201CY\u201D if a facility is located within a tribal spatial boundary as defined by the U.S. Census Bureau 2010 tribal boundary layer data for tribes in the lower 48 states and Bureau of Land Management Alaska State Office data for native villages in Alaska. Returns \u201CN\u201D if a facility is not located within a tribal or native Alaskan village area."
             }
             ,"FacDerivedTRIbes": {
                 "type": "string"
+               ,"title": "FRS Spatially Derived Tribe"
+               ,"example": "Cherokee Nation"
+               ,"description": "The tribes or tribal territories located within 25 miles of the facility's location."
             }
             ,"FacUsMexBorderFlg": {
                 "type": "string"
@@ -6477,10 +6907,15 @@
             }
             ,"FacSICCodes": {
                 "type": "string"
+               ,"title": "SIC Codes"
+               ,"example": "811"
+               ,"description": "Indicates the facility\u2019s or permit's primary Standard Industrial Classification (SIC) Code. The SIC code describes the primary activity of the facility."
             }
             ,"AIRNAICS": {
                 "type": "string"
+               ,"title": "NAICS Codes"
                ,"example": "812320"
+               ,"description": "The facility\u2019s or permit's primary North American Industry Classification System (NAICS) Code."
             }
             ,"AIRPrograms": {
                 "type": "string"
@@ -6490,7 +6925,9 @@
             }
             ,"AIRMacts": {
                 "type": "string"
+               ,"title": "MACT Subparts"
                ,"example": "ZZZZZ"
+               ,"description": "The Maximum Achievable Control Technology (MACT) Subpart associated with the facility."
             }
             ,"AIRStatus": {
                 "type": "string"
@@ -6500,13 +6937,21 @@
             }
             ,"AIRUniverse": {
                 "type": "string"
+               ,"title": "AIR Universe"
                ,"example": "Minor Emissions"
+               ,"description": "The program office defines each CAA Source ID and the associated permits as being Federally Reportable or Non-Federally Reportable. Under the CAA, federally reportable source include majors, synthetic minors, NESHAP Part 61 minors, minors with an unresolved High Priority Violation (HPV), with recent enforcement action, or included on a Compliance Monitoring Strategy plan."
             }
             ,"FacDerivedWBD": {
                 "type": "string"
+               ,"title": "12-Digit WBD HUC"
+               ,"example": "20700100204"
+               ,"description": "The Hydrologic Unit Code (HUC-12) of the waterbody in which the facility resides, derived based on location data in FRS."
             }
             ,"FacDerivedWBDName": {
                 "type": "string"
+               ,"title": "FRS Derived Watershed Boundary Dataset (WBD) Name"
+               ,"example": "Fourmile Run-Potomac River"
+               ,"description": "The 12 digit Watershed Boundary Dataset Name derived from the FRS Best Pick Coordinate"
             }
             ,"ChesapeakeBayFlag": {
                 "type": "string"
@@ -6522,6 +6967,9 @@
             }
             ,"CWAIDs": {
                 "type": "string"
+               ,"title": "CWA IDs"
+               ,"example": "DC0000001"
+               ,"description": "A unique  ID assigned for each record\/permit\/site\/facility within ICIS-NPDES. These identifiers are for used tracking purposes in the individual data systems."
             }
             ,"RCRAIDs": {
                 "type": "string"
@@ -6531,6 +6979,9 @@
             }
             ,"RmpIDs": {
                 "type": "string"
+               ,"title": "RMP IDs"
+               ,"example": "110000"
+               ,"description": "A unique ID assigned to each facility submitting a Risk Management Plan to EPA under the Risk Management Plan Rule."
             }
             ,"SDWAIDs": {
                 "type": "string"
@@ -6545,9 +6996,15 @@
             }
             ,"GHGIDs": {
                 "type": "string"
+               ,"title": "GHG IDs"
+               ,"example": "110000"
+               ,"description": "A unique ID assigned for each facility within EPA\u2019s Greenhouse Gas Reporting Program (GHGRP) Emissions Data Sets."
             }
             ,"EisIDs": {
                 "type": "string"
+               ,"title": "EIS IDs"
+               ,"example": "12620001"
+               ,"description": "A unique ID assigned for each facility within EPA\u2019s Emissions Inventory System (EIS) Database."
             }
             ,"CamdIDs": {
                 "type": "string"
@@ -6556,67 +7013,117 @@
             }
             ,"AIRComplStatus": {
                 "type": "string"
+               ,"title": "Compliance Status"
+               ,"example": "No Viol"
+               ,"description": "The facility's recent violation status under the Clean Air Act."
             }
             ,"AIRHpvStatus": {
                 "type": "string"
+               ,"title": "HPV Status"
+               ,"example": "Yes"
+               ,"description": "Indicates whether the facility currently has an unresolved High Priority Violation (HPV) under the Clean Air Act."
             }
             ,"AIRMnthsWithHpv": {
                 "type": "number"
+               ,"title": "Months with HPV"
+               ,"example": 3
+               ,"description": "The number of months in the last three years in which the permit or site is considered in High Priority Violation (HPV) status"
             }
             ,"AIRQtrsWithHpv": {
                 "type": "number"
+               ,"title": "Quarters with HPV"
+               ,"example": 4
+               ,"description": "The number of quarters in the last three years in which the permit or site is considered in High Priority Violation (HPV) status."
             }
             ,"AIRQtrsWithViol": {
                 "type": "number"
+               ,"title": "Quarters with Violation Reported"
                ,"example": 2
+               ,"description": "The number of quarters in the last three years in which the permit or site has had unresolved violation(s) reported."
             }
             ,"AIRPollRecentViol": {
                 "type": "string"
+               ,"title": "Pollutants with Recent Violation"
+               ,"example": "Sulfur"
+               ,"description": "The names of pollutants or pollutant categories with violations reported in the last year."
             }
             ,"AIRRecentViolCnt": {
                 "type": "number"
+               ,"title": "Recent Violation Count"
                ,"example": 2
+               ,"description": "The number of violations reported in the last year."
             }
             ,"AIRLastViolDate": {
                 "type": "string"
+               ,"title": "Last Violation Date"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent violation was reported."
             }
             ,"AIREvalCnt": {
                 "type": "number"
+               ,"title": "Compliance Evaluation Count"
                ,"example": 0
+               ,"description": "The number of compliance evaluations, under the Clean Air Act, occurring at the facility within the last five years."
             }
             ,"AIRDaysLastEval": {
                 "type": "number"
+               ,"title": "Days Since Last Compliance Evaluation"
                ,"example": 2806
+               ,"description": "The number of days since the most recent compliance evaluation of the facility."
             }
             ,"AIRLastEvalDate": {
                 "type": "string"
+               ,"title": "Last Compliance Evaluation Date"
                ,"example": "05\/18\/2009"
+               ,"description": "The date on which the most recent Full Compliance Evaluation (FCE) of the facility by EPA or a state agency was completed."
             }
             ,"AIRLastEvalDateEPA": {
                 "type": "string"
+               ,"title": "Air Last EPA Inspection Date"
                ,"example": "05\/16\/2014"
+               ,"description": "The last Air Inspection Date performed by EPA."
             }
             ,"AIRLastEvalDateState": {
                 "type": "string"
+               ,"title": "Air Last State Insprection Date"
                ,"example": "05\/18\/2009"
+               ,"description": "The last Air Inspection Date performed by State or local authorities."
             }
             ,"LastDatePce": {
                 "type": "string"
+               ,"title": "Date of Last Partial Compliance Evaluation"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent Partial Compliance Evaluation (PCE) of the facility by EPA or a state agency was completed."
             }
             ,"LastDatePceEPA": {
                 "type": "string"
+               ,"title": "Date of Last Partial Compliance Evaluation by EPA"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent Partial Compliance Evaluation (PCE) of the facility by EPA was completed."
             }
             ,"LastDatePceSta": {
                 "type": "string"
+               ,"title": "Date of Last Partial Compliance Evaluation by State"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent Partial Compliance Evaluation (PCE) of the facility by a state agency was completed."
             }
             ,"AIRLastStckTestDate": {
                 "type": "string"
+               ,"title": "Last Stack Test Date"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent stack test occurred."
             }
             ,"AIRLastStckTestResults": {
                 "type": "string"
+               ,"title": "Last Stack Test Results"
+               ,"example": "04\/25\/2014"
+               ,"description": "The result of the most recent stack test (Pass, Fail, Pending, or Blank)."
             }
             ,"FacNaaFlag": {
                 "type": "string"
+               ,"title": "NAA Flag"
+               ,"example": "Y"
+               ,"description": "Indicates whether the facility is located in a nonattainment area of the country, where air pollution levels persistently exceed the national ambient air quality standards. This flag does not indicate whether or not the facility has violated national ambient area quality standards."
             }
             ,"FacTRIReporter": {
                 "type": "string"
@@ -6626,59 +7133,99 @@
             }
             ,"FacTRIAIRReleases": {
                 "type": "string"
+               ,"title": "TRI Releases"
                ,"example": "36"
+               ,"description": "The total chemical releases to air, in pounds, as reported to TRI by the facility for the most recent reporting year."
             }
             ,"FacTRICarcAIRReleases": {
                 "type": "string"
+               ,"title": "TRI Carcinogen Releases"
                ,"example": "24"
+               ,"description": "The pounds of chemicals considered to be carcinogens released to air, as reported to TRI for the most recent reporting year. Chemicals are classified as carcinogens under the requirements of the Occupational Safety and Health Administration (OSHA)."
             }
             ,"FacTRIHapsReleases": {
                 "type": "string"
+               ,"title": "TRI HAPS Releases"
                ,"example": "35.5"
+               ,"description": "The pounds of chemicals classified as hazardous air pollutants (HAPS) released to air in pounds per year, as reported to TRI for the most recent reporting year."
             }
             ,"FacEisAIRReleases": {
                 "type": "string"
+               ,"title": "EIS Releases"
+               ,"example": "2.35"
+               ,"description": "The amount of hazardous air pollutants released to air in tons per year, as reported in the most recent National Emissions Inventory (NEI)."
             }
             ,"FacGHGCO2Releases": {
                 "type": "string"
+               ,"title": "GHG CO2 Releases"
+               ,"example": "100"
+               ,"description": "The annual sum of total release amounts and \"associated quantities\" of all linked Greenhouse Gas IDs from the Office of Air and Radiation \"Summary 2010 Greenhouse Gas Data.\" Units are reported as metric tons of CO2 equivalents per year (MTCO2e\/year)."
             }
             ,"AIRIeaCnt": {
                 "type": "string"
+               ,"title": "Informal Enforcement Action Count"
+               ,"example": "2"
+               ,"description": "The total number of informal enforcement actions taken against the facility within the last five years."
             }
             ,"AIRFeaCnt": {
                 "type": "string"
+               ,"title": "Formal Enforcement Action Count"
                ,"example": "2"
+               ,"description": "The total number of formal enforcement actions taken against the facility within the last five years."
             }
             ,"AIRLastIeaDate": {
                 "type": "string"
+               ,"title": "Last Informal Enforcement Action Date"
                ,"example": "04\/25\/2014"
+               ,"description": "The effective date of the most recent listed informal enforcement action taken against the facility."
             }
             ,"AIRLastIeaDateState": {
                 "type": "string"
+               ,"title": "Last State Informal Enforcement Action Date"
+               ,"example": "04\/25\/2014"
+               ,"description": "The effective date of the most recent listed informal enforcement action taken against the facility by a state agency."
             }
             ,"AIRLastIeaDateEPA": {
                 "type": "string"
+               ,"title": "Last EPA Informal Enforcement Action Date"
                ,"example": "04\/25\/2014"
+               ,"description": "The effective date of the most recent listed informal enforcement action taken against the facility by EPA."
             }
             ,"AIRLastFeaDate": {
                 "type": "string"
+               ,"title": "Last Formal Enforcement Action Date"
                ,"example": "05\/16\/2014"
+               ,"description": "The effective date of the most recent listed formal enforcement action taken against the facility."
             }
             ,"AIRLastFeaDateState": {
                 "type": "string"
+               ,"title": "Air Last State Formal Enforcement Action Date"
+               ,"example": "05\/16\/2014"
+               ,"description": "The last Air Formal Enforcement Action Date take by State or Local authorities."
             }
             ,"AIRLastFeaDateEPA": {
                 "type": "string"
+               ,"title": "Air Last EPA Formal Enforcement Action Date"
+               ,"example": "05\/16\/2014"
+               ,"description": "The last Air Formal Enforcement Action Date take by EPA."
             }
             ,"AIRPenalties": {
                 "type": "string"
+               ,"title": "Penalties"
                ,"example": "$435"
+               ,"description": "The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Air Act. This value only includes penalties that have been entered in the national program database, ICIS-Air."
             }
             ,"AIRLastPenaltyDate": {
                 "type": "string"
+               ,"title": "Air Last Penalty Date"
+               ,"example": "05\/16\/2014"
+               ,"description": "Indicates the date on which the most recent assessed (or final) penalty was taken against the facility for AIR."
             }
             ,"Over80CountUs": {
                 "type": "number"
+               ,"title": "EJ Indexes Above 80th Percentile"
+               ,"example": 3
+               ,"description": "The number of primary EJSCREEN environmental justice (EJ) indexes exceeding the 80th or higher national percentile for the Census block group that the facility is located in."
             }
             ,"PctilePctpre1960Us": {
                 "type": "number"
@@ -6737,7 +7284,9 @@
             }
             ,"FacPopulationDensity": {
                 "type": "number"
+               ,"title": "Population Density"
                ,"example": 9611.17
+               ,"description": "The number of persons per square mile in the profiled area."
             }
             ,"FacPercentMinority": {
                 "type": "number"
@@ -6764,12 +7313,19 @@
             }
             ,"AIRFIPSCode": {
                 "type": "string"
+               ,"title": "State County FIPS Code"
+               ,"example": "11001"
+               ,"description": "A 5 digit combination of the 2 digit Federal Information Processing Standards (FIPS) code for the state and the 3 digit FIPS code of the county that a facility is located in."
             }
             ,"AIRTRIbalEPAids": {
                 "type": "string"
+               ,"title": "Tribal EPA IDs"
+               ,"description": "The EPA Tribal or Native Alaskan Village Identifier for facilities, that based on their Best Pick FRS spatial coordinate, are within a Tribal or Alaskan Village area."
             }
             ,"AIRTRIbalNames": {
                 "type": "string"
+               ,"title": "Tribal Names"
+               ,"description": "The EPA Tribal or Native Alaskan Village Name for facilities, that based on their Best Pick FRS spatial coordinate, are within a Tribal or Alaskan Village area."
             }
             ,"AIRCaseIDs": {
                 "type": "string"
@@ -6778,9 +7334,15 @@
             }
             ,"AIRLastStckDateEPA": {
                 "type": "string"
+               ,"title": "Last EPA Stack Test Date"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent stack test by EPA occurred."
             }
             ,"AIRLastStckDateState": {
                 "type": "string"
+               ,"title": "Last State Stack Test Date"
+               ,"example": "04\/25\/2014"
+               ,"description": "The date on which the most recent stack test by a state agency occurred."
             }
             ,"FacMapFlg": {
                 "type": "string"
@@ -6796,23 +7358,39 @@
             }
             ,"FacGHGReporter": {
                 "type": "string"
+               ,"title": "GHG Reporter"
+               ,"example": "Y"
+               ,"description": "Indicates whether the facility reports to the Greenhouse Gas Reporting Program (GHGRP)"
             }
             ,"FacEisReporter": {
                 "type": "string"
+               ,"title": "EIS Reporter"
+               ,"example": "Y"
+               ,"description": "Indicates whether the facility reports to the Emissions Inventory System (EIS)."
             }
             ,"FacCamdReporter": {
                 "type": "string"
+               ,"title": "CAMD Reporter"
+               ,"example": "Y"
+               ,"description": "Indicates whether the facility reports to the Clean Air Markets Division (CAMD)."
             }
             ,"AIRFacilityTypeCode": {
                 "type": "string"
+               ,"title": "Facility Type Code"
                ,"example": "POF"
+               ,"description": "A three-character code indicating if plant is government facility.\nCOR - Corporation\nCNG - County Government\nDIS - District\nFDF - Federal Facility (U.S. Government)\nGOC - GOCO (Gov Owned\/Contractor Operated)\nIND - Individual\nMXO - Mixed Ownership (e.g., Public\/Private)\nMWD - Municipal or Water District\nCTG\t- Municipality\nNON - Non-Government\nPOF - Privately Owned Facility\nSDT - School District\nSTF - State Government\nTRB - Tribal Government\nUNK - Unknown"
             }
             ,"AIRMajorFlag": {
                 "type": "string"
+               ,"title": "Major Flag"
                ,"example": "N"
+               ,"description": "Indicated whether the facility is designated as a major facilitiy."
             }
             ,"AIR3yrComplQtrsHistory": {
                 "type": "string"
+               ,"title": "3-Year Compliance Status History"
+               ,"example": "VV__SS_U__V_"
+               ,"description": "The facility's 3-year compliance status history by quarter (3-month period). Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:\n_ - No Violation Identified\nV - Violation Identified\nS - High Priority Violation\nU - Undetermined"
             }
             ,"HasPollRpt": {
                 "type": "string"
@@ -6832,14 +7410,19 @@
             }
             ,"EjscreenFlagUs": {
                 "type": "string"
+               ,"title": "EJ Screen Flag (US)"
+               ,"description": "A Y\/N indicator identifying whether or not the facility is within an Environmental Justice area."
             }
             ,"EjscreenFlag": {
                 "type": "string"
+               ,"title": "EJ Screen Flag"
+               ,"description": "A Y\/N indicator identifying whether or not the facility is within an Environmental Justice area."
             }
             ,"TRIbalFlag": {
                 "type": "number"
                ,"title": "Tribal Lands Flag"
                ,"example": 1
+               ,"description": "A value of \"1\" indicates that the facility is within an Indian Tribal or Alaskan Native Village area."
             }
             ,"CurrSvFlag": {
                 "type": "number"
@@ -6883,6 +7466,7 @@
             }
             ,"ActiveLower48": {
                 "type": "string"
+               ,"description": "A Y\/N indicator indicating that the facility is active and located within the lower 48 contiguous US States."
             }
             ,"CollectionMethod": {
                 "type": "string"
@@ -6900,10 +7484,12 @@
                 "type": "number"
                ,"title": "Calculated Accuracy in Meters"
                ,"example": 50
+               ,"description": "Indicates the calculated accuracy in meters for the facilities geospatial coordinate.  Generally, the accuracy is directly linked to the collection method where GPS methods are more accurate that manual methods like map or photo interpolations."
             }
             ,"Map": {
                 "type": "string"
                ,"title": "Map"
+               ,"description": "No Longer Used."
             }
             ,"WebDocs": {
                 "type": "string"
@@ -6913,21 +7499,39 @@
             }
             ,"NaaCategories": {
                 "type": "string"
+               ,"title": "NAA Categories"
+               ,"example": "8-HOUR OZONE(2015)"
+               ,"description": "The nonattainment area categories that the facility is in, derived spatially based on the facility's geographic coordinates in FRS. "
             }
             ,"NaaPollutants": {
                 "type": "string"
+               ,"title": "NAA Pollutants"
+               ,"example": "OZONE"
+               ,"description": "All criteria pollutants that the facility is in nonattainment for."
             }
             ,"FacCountyName": {
                 "type": "string"
+               ,"title": "FRS Facility County Name"
+               ,"example": "Fairfax County"
+               ,"description": "The facility county name from EPA's Facility Registry System"
             }
             ,"FacStdCountyName": {
                 "type": "string"
+               ,"title": "FRS Standardized Facility County Name"
+               ,"example": "Fairfax County"
+               ,"description": "The standardized  facility county name from EPA's Facility Registry System"
             }
             ,"AIRNsps": {
                 "type": "string"
+               ,"title": "NSPS Subpart"
+               ,"example": "NSPS Part 60"
+               ,"description": "The New Source Performance Standards (NSPS) Subpart associated with the facility."
             }
             ,"AIRNspsm": {
                 "type": "string"
+               ,"title": "NSPS Subpart (Non-Major)"
+               ,"example": "NSPS Part 60"
+               ,"description": "The Non-Major New Source Performance Standards (NSPS) Subpart associated with the facility."
             }
             ,"Score": {
                 "type": "number"
@@ -7099,6 +7703,7 @@
             ,"MapData": {
                 "type": "array"
                ,"title": "Map Data"
+               ,"description": "An array of facility geospatial information."
                ,"items": {
                    "$ref": "#\/definitions\/air1_MapData"
                }
@@ -7146,6 +7751,7 @@
             ,"Facilities": {
                 "type": "array"
                ,"title": "Facilities"
+               ,"description": "A complex array of facility information."
                ,"items": {
                    "$ref": "#\/definitions\/air2_Facilities"
                }
@@ -7218,6 +7824,8 @@
             ,"ObjectName": {
                 "type": "string"
                ,"title": "Object Name"
+               ,"example": "CaseName"
+               ,"description": "The JSON name used for the database column."
             }
             ,"Description": {
                 "type": "string"

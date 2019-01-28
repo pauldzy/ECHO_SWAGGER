@@ -8,7 +8,7 @@ info:
     Integrated Compliance Information System (ICIS) and criminal cases entered into the Summary of Criminal Prosecutions database.  
     See Enforcement Case Search Help (https://echo.epa.gov/help/enforcement-case-search-help) for additional information on searching civil and criminal cases. 
     <BR><BR>
-    The get_cases, get_map, get_qid, and get_download end points are meant to be used together.<br>  
+    The get_cases, get_map, get_qid, and get_download end points are meant to be used together, while the enhanced get_case_info end point is self contained..<br>  
     The recommended use scenario for get_cases, get_qid, get_map, and get_downoad is:
     <br>
     <br><b>1)</b>  Use get_cases to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.
@@ -182,6 +182,18 @@ parameters:
       - CONTAINS
       - EXACT
       - BEGINS
+    type: string
+    required: false
+  q.p_ocmap_fy: 
+    name: p_ocmap_fy
+    in: query
+    description: Fiscal Year to select cases that are displayed in the Office of Complicance Fiscal Year Map Services
+    type: string
+    required: false
+  f.p_ocmap_fy: 
+    name: p_ocmap_fy
+    in: formData
+    description: Fiscal Year to select cases that are displayed in the Office of Complicance Fiscal Year Map Services
     type: string
     required: false
   q.tablelist: 
@@ -432,15 +444,17 @@ parameters:
     description: "Activity Contact Last Name Filter.  Enter a single last name or partial last name to filter results.  Use \"%\" as a wild-card for advanced searching."
     type: string
     required: false
-  f.p_open_case: 
-    name: p_open_case
+  f.p_pretty_print: 
+    name: p_pretty_print
     in: formData
-    type: string
+    description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
+    type: number
     required: false
-  q.p_open_case: 
-    name: p_open_case
+  q.p_pretty_print: 
+    name: p_pretty_print
     in: query
-    type: string
+    description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
+    type: number
     required: false
   q.p_role: 
     name: p_role
@@ -451,13 +465,13 @@ parameters:
   f.qcolumns: 
     name: qcolumns
     in: formData
-    description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+    description: Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
     type: string
     required: false
   q.qcolumns: 
     name: qcolumns
     in: query
-    description: Used to cutomize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+    description: Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
     type: string
     required: false
   f.p_role: 
@@ -1027,11 +1041,21 @@ parameters:
   f.p_case_summary_type: 
     name: p_case_summary_type
     in: formData
+    description: Identifies how the the search terms enterened in p_case_summary are searched.  Valid values are ALL (Default), WITHIN, and CONTAINS.  Must be used with p_case_summary.
+    enum: 
+      - ALL
+      - CONTAINS
+      - WITHIN
     type: string
     required: false
   q.p_case_summary_type: 
     name: p_case_summary_type
     in: query
+    description: Identifies how the the search terms enterened in p_case_summary are searched.  Valid values are ALL (Default), WITHIN, and CONTAINS.  Must be used with p_case_summary.
+    enum: 
+      - ALL
+      - CONTAINS
+      - WITHIN
     type: string
     required: false
   f.p_case_summary: 
@@ -1302,6 +1326,20 @@ parameters:
     description: Violation Type Code Filter.  Enter one or more violation type codes to limit results.  Provide multiple values as a comma-delimited list.
     type: string
     required: false
+  q.mapset: 
+    name: mapset
+    in: query
+    description: Identifies the maxium number of case facilities to return from the case_rest_services.get_case_info query.
+    default: '1400'
+    type: string
+    required: false
+  f.mapset: 
+    name: mapset
+    in: formData
+    description: Identifies the maxium number of case facilities to return from the case_rest_services.get_case_info query.
+    default: '1400'
+    type: string
+    required: false
 paths: 
   "/case_rest_services.get_case_report": 
     get: 
@@ -1473,7 +1511,6 @@ paths:
           required: false
         - "$ref": "#/parameters/q.p_case_category"
         - "$ref": "#/parameters/q.p_case_status"
-        - "$ref": "#/parameters/q.p_open_case"
         - "$ref": "#/parameters/q.p_milestone"
         - "$ref": "#/parameters/q.p_from_date"
         - "$ref": "#/parameters/q.p_to_date"
@@ -1543,6 +1580,7 @@ paths:
         - "$ref": "#/parameters/q.tablelist"
         - "$ref": "#/parameters/q.callback"
         - "$ref": "#/parameters/q.qcolumns"
+        - "$ref": "#/parameters/q.p_ocmap_fy"
       tags: 
         - Case Enforcement
       responses: 
@@ -1576,7 +1614,6 @@ paths:
           required: false
         - "$ref": "#/parameters/f.p_case_category"
         - "$ref": "#/parameters/f.p_case_status"
-        - "$ref": "#/parameters/f.p_open_case"
         - "$ref": "#/parameters/f.p_milestone"
         - "$ref": "#/parameters/f.p_from_date"
         - "$ref": "#/parameters/f.p_to_date"
@@ -1646,6 +1683,7 @@ paths:
         - "$ref": "#/parameters/f.tablelist"
         - "$ref": "#/parameters/f.callback"
         - "$ref": "#/parameters/f.qcolumns"
+        - "$ref": "#/parameters/f.p_ocmap_fy"
       tags: 
         - Case Enforcement
       responses: 
@@ -1660,6 +1698,197 @@ paths:
                 "$ref": "#/definitions/crs2_Results" 
             required: 
               - Results
+  "/case_rest_services.get_case_info": 
+    get: 
+      summary: Enforcement Case Search
+      description: The get_case_info service end point searches for civil enforcement and criminal cases based on the provided selection criteria and returns either individual cases or clusters of case facility locations.
+      parameters: 
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+          enum: 
+            - JSONP
+            - JSON
+            - XML
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.p_case_category"
+        - "$ref": "#/parameters/q.p_case_status"
+        - "$ref": "#/parameters/q.p_milestone"
+        - "$ref": "#/parameters/q.p_from_date"
+        - "$ref": "#/parameters/q.p_to_date"
+        - "$ref": "#/parameters/q.p_milestone_fy"
+        - "$ref": "#/parameters/q.p_name"
+        - "$ref": "#/parameters/q.p_name_type"
+        - "$ref": "#/parameters/q.p_case_number"
+        - "$ref": "#/parameters/q.p_docket_number"
+        - "$ref": "#/parameters/q.p_activity_number"
+        - "$ref": "#/parameters/q.p_case_lead"
+        - "$ref": "#/parameters/q.p_case_sens_flg"
+        - "$ref": "#/parameters/q.p_region"
+        - "$ref": "#/parameters/q.p_state"
+        - "$ref": "#/parameters/q.p_district"
+        - "$ref": "#/parameters/q.p_sic"
+        - "$ref": "#/parameters/q.p_sic_ao_naics"
+        - "$ref": "#/parameters/q.p_sic_primary_flg"
+        - "$ref": "#/parameters/q.p_sic_frs_flg"
+        - "$ref": "#/parameters/q.p_naics"
+        - "$ref": "#/parameters/q.p_naics_primary_flg"
+        - "$ref": "#/parameters/q.p_naics_frs_flg"
+        - "$ref": "#/parameters/q.p_enf_type"
+        - "$ref": "#/parameters/q.p_law"
+        - "$ref": "#/parameters/q.p_section"
+        - "$ref": "#/parameters/q.p_cp_citation"
+        - "$ref": "#/parameters/q.p_rank_order"
+        - "$ref": "#/parameters/q.p_enf_program"
+        - "$ref": "#/parameters/q.p_violation"
+        - "$ref": "#/parameters/q.p_priority_area"
+        - "$ref": "#/parameters/q.p_priority_area_desc"
+        - "$ref": "#/parameters/q.p_tribal"
+        - "$ref": "#/parameters/q.p_oeca_core"
+        - "$ref": "#/parameters/q.p_multimedia"
+        - "$ref": "#/parameters/q.p_fed_case"
+        - "$ref": "#/parameters/q.p_activity_contact"
+        - "$ref": "#/parameters/q.p_role"
+        - "$ref": "#/parameters/q.p_fed_penalty"
+        - "$ref": "#/parameters/q.p_total_fed_penalty"
+        - "$ref": "#/parameters/q.p_cost_recovery"
+        - "$ref": "#/parameters/q.p_total_cost_recovery"
+        - "$ref": "#/parameters/q.p_complying_actions"
+        - "$ref": "#/parameters/q.p_comp_act_val"
+        - "$ref": "#/parameters/q.p_total_comp_act_val"
+        - "$ref": "#/parameters/q.p_sep_cats"
+        - "$ref": "#/parameters/q.p_sep_val"
+        - "$ref": "#/parameters/q.p_total_sep_val"
+        - "$ref": "#/parameters/q.p_lodged_date"
+        - "$ref": "#/parameters/q.p_entered_date"
+        - "$ref": "#/parameters/q.p_facility_id"
+        - "$ref": "#/parameters/q.p_fac_city"
+        - "$ref": "#/parameters/q.p_fac_zip"
+        - "$ref": "#/parameters/q.p_fac_county"
+        - "$ref": "#/parameters/q.p_case_summary"
+        - "$ref": "#/parameters/q.p_case_summary_type"
+        - "$ref": "#/parameters/q.p_usmex"
+        - "$ref": "#/parameters/q.p_c1lat"
+        - "$ref": "#/parameters/q.p_c1lon"
+        - "$ref": "#/parameters/q.p_c2lat"
+        - "$ref": "#/parameters/q.p_c2lon"
+        - "$ref": "#/parameters/q.p_voluntary"
+        - "$ref": "#/parameters/q.p_fed_indicator"
+        - "$ref": "#/parameters/q.p_fntype"
+        - "$ref": "#/parameters/q.p_civil_criminal_indicator"
+        - "$ref": "#/parameters/q.queryset"
+        - "$ref": "#/parameters/q.responseset"
+        - "$ref": "#/parameters/q.mapset"
+        - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.qcolumns"
+        - "$ref": "#/parameters/q.p_pretty_print"
+        - "$ref": "#/parameters/q.p_ocmap_fy"
+      tags: 
+        - Case Enforcement
+      responses: 
+        '200': 
+          description: Returns an array of cases that meet the selection criteria.
+          schema: 
+    post: 
+      summary: Enforcement Case Search
+      description: The get_case_info service end point searches for civil enforcement and criminal cases based on the provided selection criteria and returns either individual cases or clusters of case facility locations.
+      parameters: 
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+          enum: 
+            - JSONP
+            - JSON
+            - XML
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.p_case_category"
+        - "$ref": "#/parameters/f.p_case_status"
+        - "$ref": "#/parameters/f.p_milestone"
+        - "$ref": "#/parameters/f.p_from_date"
+        - "$ref": "#/parameters/f.p_to_date"
+        - "$ref": "#/parameters/f.p_milestone_fy"
+        - "$ref": "#/parameters/f.p_name"
+        - "$ref": "#/parameters/f.p_name_type"
+        - "$ref": "#/parameters/f.p_case_number"
+        - "$ref": "#/parameters/f.p_docket_number"
+        - "$ref": "#/parameters/f.p_activity_number"
+        - "$ref": "#/parameters/f.p_case_lead"
+        - "$ref": "#/parameters/f.p_case_sens_flg"
+        - "$ref": "#/parameters/f.p_region"
+        - "$ref": "#/parameters/f.p_state"
+        - "$ref": "#/parameters/f.p_district"
+        - "$ref": "#/parameters/f.p_sic"
+        - "$ref": "#/parameters/f.p_sic_ao_naics"
+        - "$ref": "#/parameters/f.p_sic_primary_flg"
+        - "$ref": "#/parameters/f.p_sic_frs_flg"
+        - "$ref": "#/parameters/f.p_naics"
+        - "$ref": "#/parameters/f.p_naics_primary_flg"
+        - "$ref": "#/parameters/f.p_naics_frs_flg"
+        - "$ref": "#/parameters/f.p_enf_type"
+        - "$ref": "#/parameters/f.p_law"
+        - "$ref": "#/parameters/f.p_section"
+        - "$ref": "#/parameters/f.p_cp_citation"
+        - "$ref": "#/parameters/f.p_rank_order"
+        - "$ref": "#/parameters/f.p_enf_program"
+        - "$ref": "#/parameters/f.p_violation"
+        - "$ref": "#/parameters/f.p_priority_area"
+        - "$ref": "#/parameters/f.p_priority_area_desc"
+        - "$ref": "#/parameters/f.p_tribal"
+        - "$ref": "#/parameters/f.p_oeca_core"
+        - "$ref": "#/parameters/f.p_multimedia"
+        - "$ref": "#/parameters/f.p_fed_case"
+        - "$ref": "#/parameters/f.p_activity_contact"
+        - "$ref": "#/parameters/f.p_role"
+        - "$ref": "#/parameters/f.p_fed_penalty"
+        - "$ref": "#/parameters/f.p_total_fed_penalty"
+        - "$ref": "#/parameters/f.p_cost_recovery"
+        - "$ref": "#/parameters/f.p_total_cost_recovery"
+        - "$ref": "#/parameters/f.p_complying_actions"
+        - "$ref": "#/parameters/f.p_comp_act_val"
+        - "$ref": "#/parameters/f.p_total_comp_act_val"
+        - "$ref": "#/parameters/f.p_sep_cats"
+        - "$ref": "#/parameters/f.p_sep_val"
+        - "$ref": "#/parameters/f.p_total_sep_val"
+        - "$ref": "#/parameters/f.p_lodged_date"
+        - "$ref": "#/parameters/f.p_entered_date"
+        - "$ref": "#/parameters/f.p_facility_id"
+        - "$ref": "#/parameters/f.p_fac_city"
+        - "$ref": "#/parameters/f.p_fac_zip"
+        - "$ref": "#/parameters/f.p_fac_county"
+        - "$ref": "#/parameters/f.p_case_summary"
+        - "$ref": "#/parameters/f.p_case_summary_type"
+        - "$ref": "#/parameters/f.p_usmex"
+        - "$ref": "#/parameters/f.p_c1lat"
+        - "$ref": "#/parameters/f.p_c1lon"
+        - "$ref": "#/parameters/f.p_c2lat"
+        - "$ref": "#/parameters/f.p_c2lon"
+        - "$ref": "#/parameters/f.p_voluntary"
+        - "$ref": "#/parameters/f.p_fed_indicator"
+        - "$ref": "#/parameters/f.p_fntype"
+        - "$ref": "#/parameters/f.p_civil_criminal_indicator"
+        - "$ref": "#/parameters/f.queryset"
+        - "$ref": "#/parameters/f.responseset"
+        - "$ref": "#/parameters/f.mapset"
+        - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.qcolumns"
+        - "$ref": "#/parameters/f.p_pretty_print"
+        - "$ref": "#/parameters/f.p_ocmap_fy"
+      tags: 
+        - Case Enforcement
+      responses: 
+        '200': 
+          description: Returns an array of cases that meet the selection criteria.
+          schema: 
   "/case_rest_services.get_qid": 
     get: 
       summary: Enforcement Case Paginated Results Service
@@ -1919,6 +2148,24 @@ paths:
             required: 
               - Results
 definitions: 
+  qp0: 
+    description: Query Parameters Object
+    xml: 
+      name: Parameter
+    properties: 
+      QP: 
+        type: string
+        title: Query Parameter
+        example: output
+        description: Query parameter
+      QV: 
+        type: string
+        title: Query Value
+        example: JSON
+        description: Query value
+    required: 
+      - QP
+      - QV
   crs0_Cases: 
     description: A summary of the violation(s), environmental problem(s), and a description of the cause of action.
     xml: 
@@ -2063,6 +2310,7 @@ definitions:
       StateLocPenaltyAmt: 
         type: string
         title: State Local Penalty Amount
+        description: The total State or Local Penalty amount collected pursuant to a Final Order.
       SEPCategories: 
         type: string
         title: Supplemental Environmental Projects Categories
@@ -2085,29 +2333,53 @@ definitions:
         description: A description of the SEP. These actions do not include activities a violator must take to return to compliance with the law.
       RcraFlag: 
         type: string
+        title: RCRA Flag
+        example: '1'
+        description: A flag indicating that the Primary Law cited for the case was the Resource Conservation and Recovery Act.
       CwaFlag: 
         type: string
+        title: CWA Flag
+        example: '1'
+        description: A flag indicating that the Primary Law cited for the case was the Clean Water Act.
       CaaFlag: 
         type: string
+        title: CAA Flag
+        example: '1'
+        description: A flag indicating that the Primary Law cited for the case was the Clean Air Act.
       EpcraFlag: 
         type: string
+        title: EPCRA Flag
+        example: '1'
+        description: A flag indicating that the Primary Law cited for the case was the Emergency Planning and Community Right to Know Act.
       SdwaFlag: 
         type: string
+        title: SDWA Flag
+        example: '1'
+        description: A flag indicating that the Primary Law cited for the case was the Safe Drinking Water Act.
       FifraFlag: 
         type: string
+        title: FIFRA Flag
+        example: '1'
+        description: A flag indicating that the Primary Law cited for the case was the Federal Insecticide, Fungicide, and Rodenticide Act.
       CerclaFlag: 
         type: string
+        title: CERCLA Flag
+        example: '1'
+        description: A flag indicating that the Primary Law cited for the case was the Comprehensive Environmental Response, Compensation, and Liability Act.
       TscaFlag: 
         type: string
         title: Toxic Substances Control Act Flag
         description: Flag indicating whether or not a facility has a TSCA ID
       FederalFlag: 
         type: string
+        title: Federal Flag
+        example: '1'
+        description: A flag indicating that the  case is related to a Federally Owned facility.
       MaxScore: 
         type: string
         title: Max Score
         example: '1'
-        description: "[Col. 121]"
+        description: A sorting score for internal use.
     required: 
       - CaseNumber
       - CaseName
@@ -2211,6 +2483,7 @@ definitions:
       MapData: 
         type: array
         title: Map Data
+        description: An array of facility geospatial information.
         items: 
           "$ref": "#/definitions/crs0_MapData" 
         xml: 
@@ -2238,10 +2511,16 @@ definitions:
         description: The name of the facility.
       PublishDate: 
         type: string
+        title: Document Published Date
+        description: The date the document was published.
       EPAProgram: 
         type: string
+        title: EPA Program
+        description: The EPA Program associated with the Document URL
       DocumentLink: 
         type: string
+        title: Dcoument Links
+        description: URLS for documents that EPA has colleted that are related to this Case.
     required: 
       - CaseNumber
       - FacilityName
@@ -2337,6 +2616,7 @@ definitions:
       TotalSEPCost: 
         type: string
         title: Total Supplemental Environmental Projects Cost
+        example: "$4,100.00"
         description: The total value of all SEPs for all settlements at the enforcement case.
       TotalComplianceActionCost: 
         type: string
@@ -2356,7 +2636,7 @@ definitions:
         type: string
         title: Violations
         example: General Facility Requirements
-        description: "???"
+        description: A compilation of all Case Violation Descriptions related to the case.
     required: 
       - CaseNumber
       - CaseName
@@ -2392,6 +2672,7 @@ definitions:
         description: Identifies a major judicial or administrative enforcement action milestone.
       ActualDate: 
         type: string
+        title: Actual Date
         example: 08/12/1988
         description: The actual date on which the event was completed/achieved.
     required: 
@@ -2411,7 +2692,7 @@ definitions:
         type: string
         title: Sections
         example: '106'
-        description: "???"
+        description: A compilation of all Case Law Sections applicable for the Case.
       Programs: 
         type: string
         title: Programs
@@ -2450,8 +2731,10 @@ definitions:
         type: string
         example: 08/12/1988
         description: The actual date on which the Compliance Schedule event was completed/achieved.
-      EventAmount.ComplianceSchedules: 
+      EventAmount: 
         type: string
+        title: Event Amount
+        example: "$100.00"
         description: The dollar amount of a scheduled payment initiated through a penalty action or a cost recovery pursuant to a Final Order.
     required: 
       - FacilityFRSID
@@ -2460,7 +2743,7 @@ definitions:
       - ScheduleEventDescription
       - ScheduleDate
       - ActualDate
-      - EventAmount.ComplianceSchedules
+      - EventAmount
   crs1_ComplyingActions: 
     description: For civil enforcement actions, the value of the costs incurred by the defendant/respondent to attain compliance with the law and restore the environment. This value does not include penalties, cost recovery, or costs associated with SEPs.
     xml: 
@@ -2576,6 +2859,8 @@ definitions:
         description: The date the actions requested in the final order have been completed by the recipient; or the termination date of the final order (if such a date is specified) has passed; or the enforcement action has been withdrawn or dismissed; or the enforcement action has been superseded by, or combined into, another related enforcement action addressing the same violations.
       ActualTerminationDate: 
         type: string
+        title: Actual Termination Date
+        example: 07/09/2011
         description: The date on which the Final Order was terminated.
       CostRecovery: 
         type: string
@@ -2740,7 +3025,7 @@ definitions:
         type: string
         title: Sections
         example: '106'
-        description: "???"
+        description: A compilation of all Case Law Sections applicable for the Case.
       Programs: 
         type: string
         title: Programs
@@ -2768,6 +3053,7 @@ definitions:
       SEPId: 
         type: string
         title: Supplemental Environmental Projects ID
+        example: '12345'
         description: The system-generated unique identifier of the SEP record affiliated with the Environmental Impact.
       Pollutant: 
         type: string
@@ -2790,6 +3076,7 @@ definitions:
         description: The name/description of the media where the pollutants or waste were emitted/discharged.
       SEPorComp: 
         type: string
+        title: SEP or Complying Action Flag
         example: C
         description: A flag that indicates whether the quantitative environmental impact pertains to a SEP or Complying Action.
     required: 
@@ -2853,6 +3140,7 @@ definitions:
         description: A description of the category of Supplemental Environment Project (SEP) for a settlement.
       ActualDate: 
         type: string
+        title: Actual Date
         example: 08/12/1988
         description: The actual date on which the event was completed/achieved.
     required: 
@@ -2895,6 +3183,7 @@ definitions:
       Facilities: 
         type: array
         title: Facilities
+        description: A complex array of facility information.
         items: 
           "$ref": "#/definitions/crs1_Facilities" 
         xml: 
@@ -2978,14 +3267,16 @@ definitions:
       SEPId: 
         type: string
         title: Supplemental Environmental Projects ID
+        example: '12345'
         description: The system-generated unique identifier of the SEP record affiliated with the Environmental Impact.
       SEPText: 
         type: string
-        title: "Supplemental Environmental Projects Text'"
+        title: Supplemental Environmental Projects Text
         description: The free-form textual description used to further describe the SEP.
       SEPAmount: 
         type: string
         title: Supplemental Environmental Projects Amount
+        example: "$4,100.00"
         description: The cost applied to the type(s) of environmentally beneficial projects which a defendant/respondent agree to undertake in settlement of an enforcement action, but which the defendant/respondent is not otherwise legally required to perform.
     required: 
       - Category
@@ -3013,14 +3304,17 @@ definitions:
         description: Displays the number of Judicial cases within the search results.
       AFRRows: 
         type: string
+        title: Administrative Formal Actions Row Count
         example: '5'
         description: Displays the number of Administrative Formal cases within the search results.
       FedPenRows: 
         type: string
+        title: Federal Penalty Rows
         example: '3'
         description: "Displays the number of cases with federal penalty assessed greater than $0."
       SEPRows: 
         type: string
+        title: Number of Cases found with SEP data
         example: '0'
         description: "Displays the number of cases with SEP amount greater than $0."
       CriminalRows: 
@@ -3136,7 +3430,7 @@ definitions:
         type: string
         title: Statuetes
         example: Title 18 U.S. Criminal Code
-        description: "???"
+        description: A compilation of all Case Law Statutes applicable to the Case.
       Citations: 
         type: string
         title: Citations
@@ -3301,6 +3595,8 @@ definitions:
       ObjectName: 
         type: string
         title: Object Name
+        example: CaseName
+        description: The JSON name used for the database column.
       Description: 
         type: string
         title: Description
