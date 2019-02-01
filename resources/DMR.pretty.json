@@ -119,6 +119,20 @@
          ,"type": "string"
          ,"required": false
       }
+      ,"q.p_frs": {
+          "name": "p_frs"
+         ,"in": "query"
+         ,"description": "Facility Registry Service ID Filter. Enter a single 12-digit FRS identifier to filter results."
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"f.p_frs": {
+          "name": "p_frs"
+         ,"in": "formData"
+         ,"description": "Facility Registry Service ID Filter. Enter a single 12-digit FRS identifier to filter results."
+         ,"type": "string"
+         ,"required": false
+      }
       ,"q.p_reg": {
           "name": "p_reg"
          ,"in": "query"
@@ -486,10 +500,10 @@
       ,"f.p_discharge_type": {
           "name": "p_discharge_type"
          ,"in": "formData"
-         ,"description": "Location or type of water body into which the TRI chemical is being discharged.  Provide a coded value to limit results to facilities discharging to a specific discharge type. \n- SW = Surface waters; \n- STP = Sewage treatment plants;\n- SWONLY = ONLY to surface waters;\n- STPONLY = ONLY to sewage treatment plants"
+         ,"description": "Location or type of water body into which the TRI chemical is being discharged. Provide a coded value to limit results to facilities discharging to a specific discharge type. \n- SW = Surface waters; \n- STP = Sewage treatment plants;\n- SWONLY = ONLY to surface waters;\n- STPONLY = ONLY to sewage treatment plants"
          ,"enum": [
              "SW"
-            ,"STPONLY"
+            ,"STP"
             ,"SWONLY"
             ,"STPONLY"
          ]
@@ -499,10 +513,10 @@
       ,"q.p_discharge_type": {
           "name": "p_discharge_type"
          ,"in": "query"
-         ,"description": "Location or type of water body into which the TRI chemical is being discharged.  Provide a coded value to limit results to facilities discharging to a specific discharge type. \n- SW = Surface waters; \n- STP = Sewage treatment plants;\n- SWONLY = ONLY to surface waters;\n- STPONLY = ONLY to sewage treatment plants"
+         ,"description": "Location or type of water body into which the TRI chemical is being discharged. Provide a coded value to limit results to facilities discharging to a specific discharge type. \n- SW = Surface waters; \n- STP = Sewage treatment plants;\n- SWONLY = ONLY to surface waters;\n- STPONLY = ONLY to sewage treatment plants"
          ,"enum": [
              "SW"
-            ,"STPONLY"
+            ,"STP"
             ,"SWONLY"
             ,"STPONLY"
          ]
@@ -1182,6 +1196,20 @@
             ,"CLR"
             ,"WET"
          ]
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"f.p_npdes_id": {
+          "name": "p_npdes_id"
+         ,"in": "formData"
+         ,"description": "The NPDES_ID for the NPDES Permit to download DMR D80 and D90 Non-Receipt violations."
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"q.p_npdes_id": {
+          "name": "p_npdes_id"
+         ,"in": "query"
+         ,"description": "The NPDES_ID for the NPDES Permit to download DMR D80 and D90 Non-Receipt violations."
          ,"type": "string"
          ,"required": false
       }
@@ -5852,6 +5880,12 @@
                    "$ref": "#\/parameters\/q.p_fname"
                }
                ,{
+                   "$ref": "#\/parameters\/q.p_frs"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_npdes_id"
+               }
+               ,{
                    "$ref": "#\/parameters\/q.p_permit_id"
                }
                ,{
@@ -5897,6 +5931,12 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.p_fname"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_frs"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_npdes_id"
                }
                ,{
                    "$ref": "#\/parameters\/f.p_permit_id"

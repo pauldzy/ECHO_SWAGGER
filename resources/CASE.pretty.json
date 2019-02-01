@@ -2135,7 +2135,7 @@
       }
       ,"\/case_rest_services.get_case_info": {
           "get": {
-             "summary": "Enforcement Case Search"
+             "summary": "Enforcement Case Search (new version)"
             ,"description": "The get_case_info service end point searches for civil enforcement and criminal cases based on the provided selection criteria and returns either individual cases or clusters of case facility locations."
             ,"parameters": [
                 {
@@ -2373,11 +2373,26 @@
             ,"responses": {
              "200": {
                 "description": "Returns an array of cases that meet the selection criteria."
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Case"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/crs0_get_case_info.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
             }
             }
          }
          ,"post": {
-             "summary": "Enforcement Case Search"
+             "summary": "Enforcement Case Search (new version)"
             ,"description": "The get_case_info service end point searches for civil enforcement and criminal cases based on the provided selection criteria and returns either individual cases or clusters of case facility locations."
             ,"parameters": [
                 {
@@ -2615,6 +2630,21 @@
             ,"responses": {
              "200": {
                 "description": "Returns an array of cases that meet the selection criteria."
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Case"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/crs0_get_case_info.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
             }
             }
          }
@@ -3324,6 +3354,177 @@
             ,"MaxScore"
          ]
       }
+      ,"crs0_ClusterData": {
+          "type": "object"
+         ,"description": "Cluster Data Complex Object"
+         ,"properties": {
+             "ObjectId": {
+                "type": "string"
+               ,"title": "Object Identifier"
+               ,"example": "1"
+               ,"description": "Sequential number assigned to each facility or cluster returned."
+            }
+            ,"ClusterLatitude": {
+                "type": "string"
+               ,"title": "Cluster Latitude"
+               ,"example": "38.904149"
+               ,"description": "The latitude in decimal degrees expressed using the NAD83 horizontal datum."
+            }
+            ,"ClusterLongitude": {
+                "type": "string"
+               ,"title": "Cluster Longitude"
+               ,"example": "-77.017094"
+               ,"description": "The longitude in decimal degrees expressed using the NAD83 horizontal datum."
+            }
+            ,"ClusterIcon": {
+                "type": "string"
+               ,"title": "Cluster Icon"
+               ,"description": "The icon file used to reprsent the cluster."
+            }
+            ,"ClusterType": {
+                "type": "string"
+               ,"title": "Cluster Type"
+               ,"description": "The representative geographic area used for clustering.  Examples:  State, County, Zip Code"
+            }
+            ,"ClusterName": {
+                "type": "string"
+               ,"title": "Cluster Name"
+               ,"description": "THe name or the identifier of the geographic area used for clustering.  Examples:  Alaska, Fairfax County, 22314"
+            }
+            ,"ClusterValue": {
+                "type": "string"
+               ,"title": "Cluster Value"
+               ,"description": "The value, internal to the database report object, that represents this cluster, like a state abbreviation, zip code, or county FIPS code.  Examples: AK, 22314, 50011"
+            }
+            ,"ClusterCount": {
+                "type": "string"
+               ,"title": "Cluster Count"
+               ,"description": "The number of facilities or cases in the cluster."
+            }
+            ,"JDCRows": {
+                "type": "string"
+               ,"title": "Judicial Cases Row Count"
+               ,"example": "2"
+               ,"description": "Displays the number of Judicial cases within the search results."
+            }
+            ,"AFRRows": {
+                "type": "string"
+               ,"title": "Administrative Formal Actions Row Count"
+               ,"example": "5"
+               ,"description": "Displays the number of Administrative Formal cases within the search results."
+            }
+            ,"FedPenRows": {
+                "type": "string"
+               ,"title": "Federal Penalty Rows"
+               ,"example": "3"
+               ,"description": "Displays the number of cases with federal penalty assessed greater than $0."
+            }
+            ,"SEPRows": {
+                "type": "string"
+               ,"title": "Number of Cases found with SEP data"
+               ,"example": "0"
+               ,"description": "Displays the number of cases with SEP amount greater than $0."
+            }
+            ,"CriminalRows": {
+                "type": "string"
+               ,"title": "Count of Criminal Cases"
+               ,"example": "0"
+               ,"description": "Displays the number of criminal enforcement cases within the search results."
+            }
+            ,"RCRARows": {
+                "type": "string"
+               ,"title": "Resource Conservation & Recovery Act Count"
+               ,"example": "50"
+               ,"description": "The number of facilities or cases within the results set that have Resource Conservation and Recovery Action (RCRA) permits."
+            }
+            ,"CWARows": {
+                "type": "string"
+               ,"title": "Clean Water Act Count"
+               ,"example": "50"
+               ,"description": "The number of facilities or cases within the results set that have Clean Water Act (CWA) permits."
+            }
+            ,"CAARows": {
+                "type": "string"
+               ,"title": "Clean Air Act Count"
+               ,"example": "50"
+               ,"description": "The number of facilities or cases within the result set that have Clean Air Act (CAA) permits."
+            }
+            ,"SDWARows": {
+                "type": "string"
+               ,"title": "Safe Drinking Water Act Count"
+               ,"example": "50"
+               ,"description": "The number of facilities or cases within the results set that have Safe Drinking Water Act (SDWA) permits."
+            }
+            ,"EPCRARows": {
+                "type": "string"
+               ,"title": "Emergency Planning and Community Right to Know Act Count"
+               ,"example": "50"
+               ,"description": "The number of cases within the results set that relate to the Emergency Planning and Community Right to Know Act (EPCRA)."
+            }
+            ,"CERCLARows": {
+                "type": "string"
+               ,"title": "Comprehensive Environmental Response, Compensation, and Liability Act Count"
+               ,"example": "50"
+               ,"description": "The number of cases within the results set that relate to the Comprehensive Environmental Response, Compensation, and Liability Act (CERCLA)."
+            }
+            ,"FIFRARows": {
+                "type": "string"
+               ,"title": "Federal Insecticide, Fungicide, and Rodenticide Act Count"
+               ,"example": "50"
+               ,"description": "The number of cases within the result set that relate to the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA)."
+            }
+            ,"TSCARows": {
+                "type": "string"
+               ,"title": "Toxic Substances Control Act Count"
+               ,"example": "50"
+               ,"description": "The number of cases within the result set that relate to the Toxic Substances Control Act (TSCA)."
+            }
+            ,"FederalRows": {
+                "type": "string"
+               ,"title": "Federal Related Facility Count"
+               ,"example": "50"
+               ,"description": "The number of facilities or cases within the result set that have a relationship to a Federal facility."
+            }
+         }
+         ,"required": [
+             "ObjectId"
+            ,"ClusterLatitude"
+            ,"ClusterLongitude"
+            ,"ClusterIcon"
+            ,"ClusterType"
+            ,"ClusterName"
+            ,"ClusterValue"
+            ,"ClusterCount"
+            ,"JDCRows"
+            ,"AFRRows"
+            ,"FedPenRows"
+            ,"SEPRows"
+            ,"CriminalRows"
+            ,"RCRARows"
+            ,"CWARows"
+            ,"CAARows"
+            ,"SDWARows"
+            ,"EPCRARows"
+            ,"CERCLARows"
+            ,"FIFRARows"
+            ,"TSCARows"
+            ,"FederalRows"
+         ]
+      }
+      ,"crs0_ClusterOutput": {
+          "type": "object"
+         ,"description": "Cluster Ouput Complex Object Array"
+         ,"properties": {
+             "ClusterData": {
+                "type": "array"
+               ,"title": "Cluster Data"
+               ,"description": "An array of state, county, or zip code cluster information"
+               ,"items": {
+                   "$ref": "#\/definitions\/crs0_ClusterData"
+               }
+            }
+         }
+      }
       ,"crs0_MapData": {
           "type": "object"
          ,"description": "Data container providing locational information for each case."
@@ -3361,6 +3562,9 @@
                ,"example": "VIRGINIA CONCRETE ALEXANDRIA PLANT"
                ,"description": "For DFR, this is the Facility name. The name corresponds to the TYPE value"
             }
+            ,"VALUE": {
+                "type": "string"
+            }
             ,"PUV": {
                 "type": "string"
                ,"title": "Popup Value"
@@ -3374,6 +3578,7 @@
             ,"ICON"
             ,"TYPE"
             ,"NAME"
+            ,"VALUE"
             ,"PUV"
          ]
       }
@@ -3419,8 +3624,163 @@
             ,"MapData"
          ]
       }
+      ,"crs0_get_case_info.Results": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"QueryRows": {
+                "type": "string"
+               ,"title": "Query Row Count"
+               ,"example": "5"
+               ,"description": "Number of query results returned"
+            }
+            ,"MapLocations": {
+                "type": "string"
+               ,"title": "Map Locations"
+               ,"example": "200"
+               ,"description": "Number of Faciliy Locations related to the Case Search Results"
+            }
+            ,"JDCRows": {
+                "type": "string"
+               ,"title": "Judicial Cases Row Count"
+               ,"example": "2"
+               ,"description": "Displays the number of Judicial cases within the search results."
+            }
+            ,"AFRRows": {
+                "type": "string"
+               ,"title": "Administrative Formal Actions Row Count"
+               ,"example": "5"
+               ,"description": "Displays the number of Administrative Formal cases within the search results."
+            }
+            ,"FedPenRows": {
+                "type": "string"
+               ,"title": "Federal Penalty Rows"
+               ,"example": "3"
+               ,"description": "Displays the number of cases with federal penalty assessed greater than $0."
+            }
+            ,"SEPRows": {
+                "type": "string"
+               ,"title": "Number of Cases found with SEP data"
+               ,"example": "0"
+               ,"description": "Displays the number of cases with SEP amount greater than $0."
+            }
+            ,"CriminalRows": {
+                "type": "string"
+               ,"title": "Count of Criminal Cases"
+               ,"example": "0"
+               ,"description": "Displays the number of criminal enforcement cases within the search results."
+            }
+            ,"RCRARows": {
+                "type": "string"
+               ,"title": "Resource Conservation & Recovery Act Count"
+               ,"example": "50"
+               ,"description": "The number of facilities or cases within the results set that have Resource Conservation and Recovery Action (RCRA) permits."
+            }
+            ,"CWARows": {
+                "type": "string"
+               ,"title": "Clean Water Act Count"
+               ,"example": "50"
+               ,"description": "The number of facilities or cases within the results set that have Clean Water Act (CWA) permits."
+            }
+            ,"SDWARows": {
+                "type": "string"
+               ,"title": "Safe Drinking Water Act Count"
+               ,"example": "50"
+               ,"description": "The number of facilities or cases within the results set that have Safe Drinking Water Act (SDWA) permits."
+            }
+            ,"EPCRARows": {
+                "type": "string"
+               ,"title": "Emergency Planning and Community Right to Know Act Count"
+               ,"example": "50"
+               ,"description": "The number of cases within the results set that relate to the Emergency Planning and Community Right to Know Act (EPCRA)."
+            }
+            ,"CERCLARows": {
+                "type": "string"
+               ,"title": "Comprehensive Environmental Response, Compensation, and Liability Act Count"
+               ,"example": "50"
+               ,"description": "The number of cases within the results set that relate to the Comprehensive Environmental Response, Compensation, and Liability Act (CERCLA)."
+            }
+            ,"FIFRARows": {
+                "type": "string"
+               ,"title": "Federal Insecticide, Fungicide, and Rodenticide Act Count"
+               ,"example": "50"
+               ,"description": "The number of cases within the result set that relate to the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA)."
+            }
+            ,"TSCARows": {
+                "type": "string"
+               ,"title": "Toxic Substances Control Act Count"
+               ,"example": "50"
+               ,"description": "The number of cases within the result set that relate to the Toxic Substances Control Act (TSCA)."
+            }
+            ,"FederalRows": {
+                "type": "string"
+               ,"title": "Federal Related Facility Count"
+               ,"example": "50"
+               ,"description": "The number of facilities or cases within the result set that have a relationship to a Federal facility."
+            }
+            ,"QueryParameters": {
+                "type": "array"
+               ,"title": "Query Parameters"
+               ,"description": "A list of submitted query parameters and their values."
+               ,"items": {
+                   "$ref": "#\/definitions\/qp0"
+               }
+               ,"xml": {
+                   "name": "QueryParameters"
+                  ,"wrapped": true
+               }
+            }
+            ,"Cases": {
+                "type": "array"
+               ,"title": "Cases"
+               ,"description": "A summary of the violation(s), environmental problem(s), and a description of the cause of action."
+               ,"items": {
+                   "$ref": "#\/definitions\/crs0_Cases"
+               }
+               ,"xml": {
+                   "name": "Cases"
+                  ,"wrapped": true
+               }
+            }
+            ,"ClusterRecords": {
+                "type": "string"
+               ,"title": "Cluster Records"
+               ,"example": "199"
+               ,"description": "Number of clusters returned."
+            }
+            ,"ClusterOutput": {
+                "$ref": "#\/definitions\/crs0_ClusterOutput"
+            }
+         }
+         ,"required": [
+             "Message"
+            ,"QueryRows"
+            ,"MapLocations"
+            ,"JDCRows"
+            ,"AFRRows"
+            ,"FedPenRows"
+            ,"SEPRows"
+            ,"CriminalRows"
+            ,"RCRARows"
+            ,"CWARows"
+            ,"SDWARows"
+            ,"EPCRARows"
+            ,"CERCLARows"
+            ,"FIFRARows"
+            ,"TSCARows"
+            ,"FederalRows"
+            ,"QueryParameters"
+         ]
+      }
       ,"crs1_CAEDDocuments": {
           "type": "object"
+         ,"description": "Case Related Uploaded Documents"
          ,"xml": {
              "name": "CAEDDocument"
          }
@@ -4477,6 +4837,60 @@
                ,"example": "0"
                ,"description": "Displays the number of criminal enforcement cases within the search results."
             }
+            ,"RCRARows": {
+                "type": "string"
+               ,"title": "Resource Conservation & Recovery Act Count"
+               ,"example": "50"
+               ,"description": "The number of facilities or cases within the results set that have Resource Conservation and Recovery Action (RCRA) permits."
+            }
+            ,"CWARows": {
+                "type": "string"
+               ,"title": "Clean Water Act Count"
+               ,"example": "50"
+               ,"description": "The number of facilities or cases within the results set that have Clean Water Act (CWA) permits."
+            }
+            ,"CAARows": {
+                "type": "string"
+               ,"title": "Clean Air Act Count"
+               ,"example": "50"
+               ,"description": "The number of facilities or cases within the result set that have Clean Air Act (CAA) permits."
+            }
+            ,"SDWARows": {
+                "type": "string"
+               ,"title": "Safe Drinking Water Act Count"
+               ,"example": "50"
+               ,"description": "The number of facilities or cases within the results set that have Safe Drinking Water Act (SDWA) permits."
+            }
+            ,"EPCRARows": {
+                "type": "string"
+               ,"title": "Emergency Planning and Community Right to Know Act Count"
+               ,"example": "50"
+               ,"description": "The number of cases within the results set that relate to the Emergency Planning and Community Right to Know Act (EPCRA)."
+            }
+            ,"CERCLARows": {
+                "type": "string"
+               ,"title": "Comprehensive Environmental Response, Compensation, and Liability Act Count"
+               ,"example": "50"
+               ,"description": "The number of cases within the results set that relate to the Comprehensive Environmental Response, Compensation, and Liability Act (CERCLA)."
+            }
+            ,"FIFRARows": {
+                "type": "string"
+               ,"title": "Federal Insecticide, Fungicide, and Rodenticide Act Count"
+               ,"example": "50"
+               ,"description": "The number of cases within the result set that relate to the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA)."
+            }
+            ,"TSCARows": {
+                "type": "string"
+               ,"title": "Toxic Substances Control Act Count"
+               ,"example": "50"
+               ,"description": "The number of cases within the result set that relate to the Toxic Substances Control Act (TSCA)."
+            }
+            ,"FederalRows": {
+                "type": "string"
+               ,"title": "Federal Related Facility Count"
+               ,"example": "50"
+               ,"description": "The number of facilities or cases within the result set that have a relationship to a Federal facility."
+            }
             ,"QueryID": {
                 "type": "string"
                ,"title": "Query Identifier"
@@ -4513,6 +4927,15 @@
             ,"FedPenRows"
             ,"SEPRows"
             ,"CriminalRows"
+            ,"RCRARows"
+            ,"CWARows"
+            ,"CAARows"
+            ,"SDWARows"
+            ,"EPCRARows"
+            ,"CERCLARows"
+            ,"FIFRARows"
+            ,"TSCARows"
+            ,"FederalRows"
             ,"QueryID"
             ,"PageNo"
          ]

@@ -3459,6 +3459,8 @@ definitions:
         title: Measured Value Type Code
         example: C1
         description: The indication of the limit value type (e.g., Quantity 1, Concentration 2)
+      StatisticalBaseMonthlyAvg: 
+        type: string
       MonitoringPeriodEndDate: 
         type: string
         title: Monitoring Period End Date
@@ -3516,6 +3518,7 @@ definitions:
       - ParameterCode
       - ParameterDesc
       - ValueTypeCode
+      - StatisticalBaseMonthlyAvg
       - MonitoringPeriodEndDate
       - DmrDueDate
       - NpdesViolationId
