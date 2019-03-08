@@ -1,14 +1,14 @@
 {
     "swagger": "2.0"
    ,"info": {
-       "title": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Discharge Monitoring Report (DMR) Rest Services"
-      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\n\n<br><br>\nAdditional ECHO Resources:   <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a>\n<br>"
+       "title": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Water Pollutant Loading Tool Rest Services"
+      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for over 800,000 regulated facilities nationwide. \n<br><br>\nThe Water Pollutant Loading Tool (Loading Tool) Rest Services provide multiple service endpoints, each with specific capabilities, to search and retrieve data on pollutant mass discharges to surface waters from facilities regulated under the Clean Water Act (CWA) and managed under the National Pollutant Discharge Elimination System (NPDES) program. The Loading Tool uses discharge monitoring report (DMR) and permit data from EPA\u2019s program system, ICIS-NPDES, to calculate pollutant discharges by year and monitoring period. The returned results reflect data drawn from EPA's Loading Tool database. Data from other EPA sources, such as water release data from the Toxics Release Inventory (TRI), are also supplied for context and comparative purposes. \n<br><br>\nAdditional ECHO Resources: <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a><br> "
       ,"contact": {
           "name": "US EPA, OECA Integration, Targeting and Access Branch"
       }
       ,"license": {
-          "name": "Creative Commons Zero Public Domain Dedication"
-         ,"url": "https:\/\/creativecommons.org\/publicdomain\/zero\/1.0\/"
+          "name": "This page was built with the Swagger API."
+         ,"url": "https:\/\/swagger.io"
       }
       ,"version": "0.0.0"
    }
@@ -88,20 +88,6 @@
           "name": "p_co"
          ,"in": "formData"
          ,"description": "Facility County Filter. Provide a single county name in combination with a state value provided via p_st."
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"q.p_st": {
-          "name": "p_st"
-         ,"in": "query"
-         ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"f.p_st": {
-          "name": "p_st"
-         ,"in": "formData"
-         ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
          ,"type": "string"
          ,"required": false
       }
@@ -310,6 +296,7 @@
             ,"HALF"
             ,"LIMIT"
          ]
+         ,"default": "ZERO"
          ,"type": "string"
          ,"required": false
       }
@@ -657,6 +644,7 @@
           "name": "p_nutrient_agg"
          ,"in": "formData"
          ,"description": "Nutrient Aggregation Option. A \"Y\" value applies a nutrient aggregation methodology to generate nitrogen and phosphorus pollutant category loads."
+         ,"default": "N"
          ,"type": "string"
          ,"required": false
       }
@@ -664,6 +652,7 @@
           "name": "p_nutrient_agg"
          ,"in": "query"
          ,"description": "Nutrient Aggregation Option. A \"Y\" value applies a nutrient aggregation methodology to generate nitrogen and phosphorus pollutant category loads."
+         ,"default": "N"
          ,"type": "string"
          ,"required": false
       }
@@ -781,6 +770,7 @@
           "name": "p_param_group"
          ,"in": "formData"
          ,"description": "Parameter Grouping Option. A \"Y\" value applies a parameter grouping function to avoid double-counting loads for pollutant parameters that represent the same pollutant."
+         ,"default": "N"
          ,"type": "string"
          ,"required": false
       }
@@ -788,6 +778,7 @@
           "name": "p_param_group"
          ,"in": "query"
          ,"description": "Parameter Grouping Option. A \"Y\" value applies a parameter grouping function to avoid double-counting loads for pollutant parameters that represent the same pollutant."
+         ,"default": "N"
          ,"type": "string"
          ,"required": false
       }
@@ -823,29 +814,33 @@
           "name": "p_start_year"
          ,"in": "formData"
          ,"description": "Start of Year Range.  Provide a year value in YYYY format to specifcy the first year to include in results.  Parameter p_end_year must also be populated when using this parameter."
+         ,"default": "2018"
          ,"type": "string"
-         ,"required": false
+         ,"required": true
       }
       ,"q.p_start_year": {
           "name": "p_start_year"
          ,"in": "query"
          ,"description": "Start of Year Range.  Provide a year value in YYYY format to specifcy the first year to include in results.  Parameter p_end_year must also be populated when using this parameter."
+         ,"default": "2018"
          ,"type": "string"
-         ,"required": false
+         ,"required": true
       }
       ,"f.p_start_date": {
           "name": "p_start_date"
          ,"in": "formData"
          ,"description": "Monitoring Period Start Date.  Provide a date value in MM\/YYYY format to specify the first monitoring period to include in results.  Parameter p_end_date must also be populated when using this parameter."
+         ,"default": "12\/2018"
          ,"type": "string"
-         ,"required": false
+         ,"required": true
       }
       ,"q.p_start_date": {
           "name": "p_start_date"
          ,"in": "query"
          ,"description": "Monitoring Period Start Date.  Provide a date value in MM\/YYYY format to specify the first monitoring period to include in results.  Parameter p_end_date must also be populated when using this parameter."
+         ,"default": "12\/2018"
          ,"type": "string"
-         ,"required": false
+         ,"required": true
       }
       ,"f.p_ptreatment": {
           "name": "p_ptreatment"
@@ -893,6 +888,7 @@
           "name": "p_loads_data"
          ,"in": "formData"
          ,"description": "Loading Calculations Option. Provide a coded value to indicate the data to be used for loading calculations.\n- DMR = DMR data only (default)\n- PERMITONLY = Permit limits only\n- PERMITDMR = Use permit limits for months where DMR data are missing"
+         ,"default": "DMR"
          ,"type": "string"
          ,"required": false
       }
@@ -900,6 +896,7 @@
           "name": "p_loads_data"
          ,"in": "query"
          ,"description": "Loading Calculations Option. Provide a coded value to indicate the data to be used for loading calculations.\n- DMR = DMR data only (default)\n- PERMITONLY = Permit limits only\n- PERMITDMR = Use permit limits for months where DMR data are missing"
+         ,"default": "DMR"
          ,"type": "string"
          ,"required": false
       }
@@ -1059,20 +1056,6 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"f.p_get_chart": {
-          "name": "p_get_chart"
-         ,"in": "formData"
-         ,"description": "DO NOT PUBLICIZE - HIDDEN PARAMETER"
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"q.p_get_chart": {
-          "name": "p_get_chart"
-         ,"in": "query"
-         ,"description": "DO NOT PUBLICIZE - HIDDEN PARAMETER"
-         ,"type": "string"
-         ,"required": false
-      }
       ,"f.p_fac_slice": {
           "name": "p_fac_slice"
          ,"in": "formData"
@@ -1084,20 +1067,6 @@
           "name": "p_fac_slice"
          ,"in": "query"
          ,"description": "Facility Universe Download Option. Provide the JSON object name to indicate which \"slice\" of the facility universe to download. For example, DmrDirectDsch or DmrDirectIndDsch in TriFacilities."
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"f.p_drilldown": {
-          "name": "p_drilldown"
-         ,"in": "formData"
-         ,"description": "DO NOT PUBLICIZE - HIDDEN PARAMETER"
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"q.p_drilldown": {
-          "name": "p_drilldown"
-         ,"in": "query"
-         ,"description": "DO NOT PUBLICIZE - HIDDEN PARAMETER"
          ,"type": "string"
          ,"required": false
       }
@@ -1257,29 +1226,33 @@
           "name": "p_end_year"
          ,"in": "formData"
          ,"description": "End of Year Range.  Provide a year value in YYYY format to specifcy the last year to include in results.  Parameter p_start_year must also be populated when using this parameter."
+         ,"default": "2018"
          ,"type": "string"
-         ,"required": false
+         ,"required": true
       }
       ,"q.p_end_year": {
           "name": "p_end_year"
          ,"in": "query"
          ,"description": "End of Year Range.  Provide a year value in YYYY format to specifcy the last year to include in results.  Parameter p_start_year must also be populated when using this parameter."
+         ,"default": "2018"
          ,"type": "string"
-         ,"required": false
+         ,"required": true
       }
       ,"f.p_end_date": {
           "name": "p_end_date"
          ,"in": "formData"
          ,"description": "Monitoring Period End Date.  Provide a date value in MM\/YYYY format to specify the last monitoring period to include in results.  Parameter p_start_date must also be populated when using this parameter."
+         ,"default": "12\/2018"
          ,"type": "string"
-         ,"required": false
+         ,"required": true
       }
       ,"q.p_end_date": {
           "name": "p_end_date"
          ,"in": "query"
          ,"description": "Monitoring Period End Date.  Provide a date value in MM\/YYYY format to specify the last monitoring period to include in results.  Parameter p_start_date must also be populated when using this parameter."
+         ,"default": "12\/2018"
          ,"type": "string"
-         ,"required": false
+         ,"required": true
       }
       ,"f.p_qc_flag": {
           "name": "p_qc_flag"
@@ -1507,20 +1480,6 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"f.p_lod": {
-          "name": "p_lod"
-         ,"in": "formData"
-         ,"description": "DO NOT PUBLICIZE - HIDDEN PARAMETER"
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"q.p_lod": {
-          "name": "p_lod"
-         ,"in": "query"
-         ,"description": "DO NOT PUBLICIZE - HIDDEN PARAMETER"
-         ,"type": "string"
-         ,"required": false
-      }
       ,"f.p_nd": {
           "name": "p_nd"
          ,"in": "formData"
@@ -1530,6 +1489,7 @@
             ,"HALF"
             ,"LIMIT"
          ]
+         ,"default": "ZERO"
          ,"type": "string"
          ,"required": false
       }
@@ -1565,15 +1525,17 @@
           "name": "p_est"
          ,"in": "query"
          ,"description": "Estimation Function Flag. A \"Y\" value will estimates loads when monitoring data are not reported for one or more monitoring periods in a reporting year. "
+         ,"default": "Y"
          ,"type": "string"
-         ,"required": false
+         ,"required": true
       }
       ,"f.p_est": {
           "name": "p_est"
          ,"in": "formData"
          ,"description": "Estimation Function Flag. A \"Y\" value will estimates loads when monitoring data are not reported for one or more monitoring periods in a reporting year. "
+         ,"default": "Y"
          ,"type": "string"
-         ,"required": false
+         ,"required": true
       }
       ,"q.qcolumns": {
           "name": "qcolumns"
@@ -1668,16 +1630,10 @@
                    "$ref": "#\/parameters\/q.p_ct"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_drilldown"
-               }
-               ,{
                    "$ref": "#\/parameters\/q.p_esa"
                }
                ,{
                    "$ref": "#\/parameters\/q.p_fac_univ_metric"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_get_chart"
                }
                ,{
                    "$ref": "#\/parameters\/q.p_huc"
@@ -1695,7 +1651,11 @@
                    "$ref": "#\/parameters\/q.p_reg"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_st"
+                   "name": "p_st"
+                  ,"in": "query"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/q.p_top_chem_univ"
@@ -1722,8 +1682,9 @@
                    "name": "p_year"
                   ,"in": "query"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/q.p_zip"
@@ -1733,7 +1694,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -1776,16 +1737,10 @@
                    "$ref": "#\/parameters\/f.p_ct"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_drilldown"
-               }
-               ,{
                    "$ref": "#\/parameters\/f.p_esa"
                }
                ,{
                    "$ref": "#\/parameters\/f.p_fac_univ_metric"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_get_chart"
                }
                ,{
                    "$ref": "#\/parameters\/f.p_huc"
@@ -1803,7 +1758,11 @@
                    "$ref": "#\/parameters\/f.p_reg"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_st"
+                   "name": "p_st"
+                  ,"in": "formData"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/f.p_top_chem_univ"
@@ -1830,8 +1789,9 @@
                    "name": "p_year"
                   ,"in": "formData"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/f.p_zip"
@@ -1841,7 +1801,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -1892,9 +1852,6 @@
                    "$ref": "#\/parameters\/q.p_dmr_tri_link"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_end_date"
-               }
-               ,{
                    "$ref": "#\/parameters\/q.p_esa"
                }
                ,{
@@ -1941,9 +1898,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/q.p_loads_data"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_lod"
                }
                ,{
                    "$ref": "#\/parameters\/q.p_maj"
@@ -2021,10 +1975,12 @@
                    "$ref": "#\/parameters\/q.p_spcc"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_start_date"
+                   "name": "p_st"
+                  ,"in": "query"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"default": "DC"
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/q.p_tmdl"
@@ -2044,9 +2000,24 @@
                ,{
                    "name": "p_year"
                   ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"description": "Required.  The calendar year for the DMR annual pollutant loadings."
+                  ,"enum": [
+                      2018
+                     ,2017
+                     ,2016
+                     ,2015
+                     ,2014
+                     ,2013
+                     ,2012
+                     ,2011
+                     ,2010
+                     ,2009
+                     ,2008
+                     ,2007
+                  ]
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/q.p_zip"
@@ -2074,7 +2045,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Custom Search"
             ]
             ,"responses": {
              "200": {
@@ -2123,9 +2094,6 @@
                    "$ref": "#\/parameters\/f.p_dmr_tri_link"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_end_date"
-               }
-               ,{
                    "$ref": "#\/parameters\/f.p_esa"
                }
                ,{
@@ -2172,9 +2140,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.p_loads_data"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_lod"
                }
                ,{
                    "$ref": "#\/parameters\/f.p_maj"
@@ -2252,10 +2217,12 @@
                    "$ref": "#\/parameters\/f.p_spcc"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_start_date"
+                   "name": "p_st"
+                  ,"in": "formData"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"default": "DC"
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/f.p_tmdl"
@@ -2275,9 +2242,24 @@
                ,{
                    "name": "p_year"
                   ,"in": "formData"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"description": "Required.  The calendar year for the DMR annual pollutant loadings."
+                  ,"enum": [
+                      2018
+                     ,2017
+                     ,2016
+                     ,2015
+                     ,2014
+                     ,2013
+                     ,2012
+                     ,2011
+                     ,2010
+                     ,2009
+                     ,2008
+                     ,2007
+                  ]
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/f.p_zip"
@@ -2305,7 +2287,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Custom Search"
             ]
             ,"responses": {
              "200": {
@@ -2356,13 +2338,7 @@
                    "$ref": "#\/parameters\/q.p_dmr_tri_link"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_end_date"
-               }
-               ,{
                    "$ref": "#\/parameters\/q.p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_est"
                }
                ,{
                    "$ref": "#\/parameters\/q.p_exceed"
@@ -2407,16 +2383,10 @@
                    "$ref": "#\/parameters\/q.p_loads_data"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_lod"
-               }
-               ,{
                    "$ref": "#\/parameters\/q.p_maj"
                }
                ,{
                    "$ref": "#\/parameters\/q.p_maj_model"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_mon_loc"
                }
                ,{
                    "$ref": "#\/parameters\/q.p_naics"
@@ -2428,13 +2398,7 @@
                    "$ref": "#\/parameters\/q.p_nd"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_nutrient_agg"
-               }
-               ,{
                    "$ref": "#\/parameters\/q.p_param_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_param_group"
                }
                ,{
                    "$ref": "#\/parameters\/q.p_pct_exceed"
@@ -2447,9 +2411,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/q.p_permit_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_pf_id"
                }
                ,{
                    "$ref": "#\/parameters\/q.p_poll_cat"
@@ -2485,10 +2446,12 @@
                    "$ref": "#\/parameters\/q.p_spcc"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_start_date"
+                   "name": "p_st"
+                  ,"in": "query"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"default": "DC"
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/q.p_tmdl"
@@ -2508,9 +2471,24 @@
                ,{
                    "name": "p_year"
                   ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"description": "Required.  The calendar year for the DMR annual pollutant loadings."
+                  ,"enum": [
+                      2018
+                     ,2017
+                     ,2016
+                     ,2015
+                     ,2014
+                     ,2013
+                     ,2012
+                     ,2011
+                     ,2010
+                     ,2009
+                     ,2008
+                     ,2007
+                  ]
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/q.p_zip"
@@ -2538,7 +2516,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Custom Search"
             ]
             ,"responses": {
              "200": {
@@ -2587,13 +2565,7 @@
                    "$ref": "#\/parameters\/f.p_dmr_tri_link"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_end_date"
-               }
-               ,{
                    "$ref": "#\/parameters\/f.p_esa"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_est"
                }
                ,{
                    "$ref": "#\/parameters\/f.p_exceed"
@@ -2638,16 +2610,10 @@
                    "$ref": "#\/parameters\/f.p_loads_data"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_lod"
-               }
-               ,{
                    "$ref": "#\/parameters\/f.p_maj"
                }
                ,{
                    "$ref": "#\/parameters\/f.p_maj_model"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_mon_loc"
                }
                ,{
                    "$ref": "#\/parameters\/f.p_naics"
@@ -2659,13 +2625,7 @@
                    "$ref": "#\/parameters\/f.p_nd"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_nutrient_agg"
-               }
-               ,{
                    "$ref": "#\/parameters\/f.p_param_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_param_group"
                }
                ,{
                    "$ref": "#\/parameters\/f.p_pct_exceed"
@@ -2678,9 +2638,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.p_permit_type"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_pf_id"
                }
                ,{
                    "$ref": "#\/parameters\/f.p_poll_cat"
@@ -2716,10 +2673,12 @@
                    "$ref": "#\/parameters\/f.p_spcc"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_st"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_start_date"
+                   "name": "p_st"
+                  ,"in": "formData"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"default": "DC"
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/f.p_tmdl"
@@ -2739,9 +2698,24 @@
                ,{
                    "name": "p_year"
                   ,"in": "formData"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"description": "Required.  The calendar year for the DMR annual pollutant loadings."
+                  ,"enum": [
+                      2018
+                     ,2017
+                     ,2016
+                     ,2015
+                     ,2014
+                     ,2013
+                     ,2012
+                     ,2011
+                     ,2010
+                     ,2009
+                     ,2008
+                     ,2007
+                  ]
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/f.p_zip"
@@ -2769,7 +2743,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Custom Search"
             ]
             ,"responses": {
              "200": {
@@ -2871,9 +2845,6 @@
                    "$ref": "#\/parameters\/q.p_loads_data"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_lod"
-               }
-               ,{
                    "$ref": "#\/parameters\/q.p_maj"
                }
                ,{
@@ -2949,7 +2920,12 @@
                    "$ref": "#\/parameters\/q.p_spcc"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_st"
+                   "name": "p_st"
+                  ,"in": "query"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"default": "DC"
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/q.p_start_date"
@@ -2968,13 +2944,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/q.p_watershed_group"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/q.p_zip"
@@ -3002,7 +2971,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Custom Search"
             ]
             ,"responses": {
              "200": {
@@ -3102,9 +3071,6 @@
                    "$ref": "#\/parameters\/f.p_loads_data"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_lod"
-               }
-               ,{
                    "$ref": "#\/parameters\/f.p_maj"
                }
                ,{
@@ -3180,7 +3146,12 @@
                    "$ref": "#\/parameters\/f.p_spcc"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_st"
+                   "name": "p_st"
+                  ,"in": "formData"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"default": "DC"
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/f.p_start_date"
@@ -3199,13 +3170,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.p_watershed_group"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "formData"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/f.p_zip"
@@ -3233,7 +3197,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Custom Search"
             ]
             ,"responses": {
              "200": {
@@ -3290,7 +3254,11 @@
                    "$ref": "#\/parameters\/q.p_reg"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_st"
+                   "name": "p_st"
+                  ,"in": "query"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/q.p_top_chem_univ"
@@ -3311,8 +3279,9 @@
                    "name": "p_year"
                   ,"in": "query"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/q.p_zip"
@@ -3322,7 +3291,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -3377,7 +3346,11 @@
                    "$ref": "#\/parameters\/f.p_reg"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_st"
+                   "name": "p_st"
+                  ,"in": "formData"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/f.p_top_chem_univ"
@@ -3398,8 +3371,9 @@
                    "name": "p_year"
                   ,"in": "formData"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/f.p_zip"
@@ -3409,7 +3383,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -3466,7 +3440,11 @@
                    "$ref": "#\/parameters\/q.p_reg"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_st"
+                   "name": "p_st"
+                  ,"in": "query"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/q.p_top_chem_univ"
@@ -3487,8 +3465,9 @@
                    "name": "p_year"
                   ,"in": "query"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/q.p_zip"
@@ -3498,7 +3477,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -3553,7 +3532,11 @@
                    "$ref": "#\/parameters\/f.p_reg"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_st"
+                   "name": "p_st"
+                  ,"in": "formData"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/f.p_top_chem_univ"
@@ -3574,8 +3557,9 @@
                    "name": "p_year"
                   ,"in": "formData"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/f.p_zip"
@@ -3585,7 +3569,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -3639,7 +3623,11 @@
                    "$ref": "#\/parameters\/q.p_reg"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_st"
+                   "name": "p_st"
+                  ,"in": "query"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/q.p_top_chem_univ"
@@ -3660,8 +3648,9 @@
                    "name": "p_year"
                   ,"in": "query"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/q.p_zip"
@@ -3671,7 +3660,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -3723,7 +3712,11 @@
                    "$ref": "#\/parameters\/f.p_reg"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_st"
+                   "name": "p_st"
+                  ,"in": "formData"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/f.p_top_chem_univ"
@@ -3744,8 +3737,9 @@
                    "name": "p_year"
                   ,"in": "formData"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/f.p_zip"
@@ -3755,7 +3749,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -3794,8 +3788,9 @@
                    "name": "p_year"
                   ,"in": "query"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/q.p_zip"
@@ -3804,7 +3799,12 @@
                    "$ref": "#\/parameters\/q.p_reg"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_st"
+                   "name": "p_st"
+                  ,"in": "query"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"default": "DC"
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/q.p_co"
@@ -3898,7 +3898,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -3935,8 +3935,9 @@
                    "name": "p_year"
                   ,"in": "formData"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/f.p_zip"
@@ -3945,7 +3946,12 @@
                    "$ref": "#\/parameters\/f.p_reg"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_st"
+                   "name": "p_st"
+                  ,"in": "formData"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"default": "DC"
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/f.p_co"
@@ -4039,7 +4045,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -4092,8 +4098,9 @@
                      ,2008
                      ,2007
                   ]
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/q.p_zip"
@@ -4102,7 +4109,12 @@
                    "$ref": "#\/parameters\/q.p_reg"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_st"
+                   "name": "p_st"
+                  ,"in": "query"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"default": "DC"
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/q.p_co"
@@ -4193,7 +4205,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -4230,8 +4242,9 @@
                    "name": "p_year"
                   ,"in": "formData"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/f.p_zip"
@@ -4240,7 +4253,12 @@
                    "$ref": "#\/parameters\/f.p_reg"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_st"
+                   "name": "p_st"
+                  ,"in": "formData"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"default": "DC"
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/f.p_co"
@@ -4331,7 +4349,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -4454,7 +4472,12 @@
                    "$ref": "#\/parameters\/q.p_sic2"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_st"
+                   "name": "p_st"
+                  ,"in": "query"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"default": "DC"
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/q.p_start_year"
@@ -4491,7 +4514,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -4612,7 +4635,12 @@
                    "$ref": "#\/parameters\/f.p_sic2"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_st"
+                   "name": "p_st"
+                  ,"in": "formData"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"default": "DC"
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/f.p_start_year"
@@ -4649,7 +4677,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -4698,7 +4726,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -4745,7 +4773,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -4781,8 +4809,9 @@
                    "name": "p_year"
                   ,"in": "query"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/q.p_outfall"
@@ -4801,7 +4830,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -4835,8 +4864,9 @@
                    "name": "p_year"
                   ,"in": "formData"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/f.p_outfall"
@@ -4855,7 +4885,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -4894,8 +4924,9 @@
                    "name": "p_year"
                   ,"in": "query"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/q.p_permit_id"
@@ -4905,7 +4936,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -4942,8 +4973,9 @@
                    "name": "p_year"
                   ,"in": "formData"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/f.p_permit_id"
@@ -4953,7 +4985,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -4977,184 +5009,6 @@
             }
          }
       }
-      ,"\/dmr_rest_services.get_industrial_dischargers": {
-          "get": {
-             "summary": "Pollutant Loading Report Top Industrial Discharges Service"
-            ,"description": "This procedure returns industrial facilities that discharge to a single POTW NPDES permit for a reporting year."
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/q.output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_permit_id"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Returns an object that includes an array of industrial facilities that discharge to a single NPDES permit for a reporting year."
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr16_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Pollutant Loading Report Top Industrial Discharges Service"
-            ,"description": "This procedure returns industrial facilities that discharge to a single POTW NPDES permit for a reporting year."
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/f.output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_permit_id"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "formData"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Returns an object that includes an array of industrial facilities that discharge to a single NPDES permit for a reporting year."
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr16_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/dmr_rest_services.get_manual_corrections": {
-          "get": {
-             "summary": "Water Pollutant Loading Tool Manual Corrections Service"
-            ,"description": "This procedure provides the manual corrections that are applied to Loading Tool data during each refresh."
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/q.output"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Returns an object that includes an array of  manual corrections that are applied to Loading Tool data for each weekly refresh."
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr17_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Water Pollutant Loading Tool Manual Corrections Service"
-            ,"description": "This procedure provides the manual corrections that are applied to Loading Tool data during each refresh."
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/f.output"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "formData"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Returns an object that includes an array of  manual corrections that are applied to Loading Tool data for each weekly refresh."
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr17_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
       ,"\/dmr_rest_services.get_monitor_pd_loads": {
           "get": {
              "summary": "Facility Pollutant Loading Calculations by Monitoring Period Service"
@@ -5167,8 +5021,9 @@
                    "name": "p_year"
                   ,"in": "query"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/q.p_outfall"
@@ -5187,7 +5042,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -5221,8 +5076,9 @@
                    "name": "p_year"
                   ,"in": "formData"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/f.p_outfall"
@@ -5241,7 +5097,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -5287,7 +5143,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -5331,7 +5187,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -5380,7 +5236,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -5427,7 +5283,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -5441,110 +5297,6 @@
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/dmr21_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/dmr_rest_services.get_outfall_loads": {
-          "get": {
-             "summary": "Facility Pollutant Loading Calculations by Outfall Service"
-            ,"description": "This procedure returns pollutant loadings data for a single NPDES permit, by pollutant and outfall within the selected reporting year."
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/q.output"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_param_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Returns an object that includes an array of  DMR and TRI discharges for a single NPDES permit, grouped by pollutant for the last 5 years."
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr23_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Facility Pollutant Loading Calculations by Outfall Service"
-            ,"description": "This procedure returns pollutant loadings data for a single NPDES permit, by pollutant and outfall within the selected reporting year."
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/f.output"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "formData"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_param_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Returns an object that includes an array of  pollutant loadings data for a single NPDES permit, by pollutant and outfall within the selected reporting year."
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr23_Results"
                      }
                   }
                   ,"required": [
@@ -5586,7 +5338,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -5639,7 +5391,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -5689,8 +5441,9 @@
                      ,2008
                      ,2007
                   ]
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/q.p_permit_id"
@@ -5706,7 +5459,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -5754,8 +5507,9 @@
                      ,2008
                      ,2007
                   ]
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/f.p_permit_id"
@@ -5771,7 +5525,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -5795,110 +5549,6 @@
             }
          }
       }
-      ,"\/dmr_rest_services.get_pollutant_loads": {
-          "get": {
-             "summary": "Facility Loading Calculations By Pollutant Service"
-            ,"description": "This procedure returns pollutant loadings data for a single NPDES permit within the selected reporting year."
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/q.output"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "query"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_param_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Returns an object that includes an array of pollutant loadings data for a single NPDES permit within the selected reporting year."
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr27_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Facility Loading Calculations By Pollutant Service"
-            ,"description": "This procedure returns pollutant loadings data for a single NPDES permit within the selected reporting year."
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/f.output"
-               }
-               ,{
-                   "name": "p_year"
-                  ,"in": "formData"
-                  ,"description": "The calendar year for the annual pollutant loadings. "
-                  ,"type": "string"
-                  ,"required": false
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_permit_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_poll_name"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_param_code"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.callback"
-               }
-            ]
-            ,"tags": [
-                "Discharge Monitoring Report"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Returns an object that includes an array of pollutant loadings data for a single NPDES permit within the selected reporting year."
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/dmr27_Results"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
       ,"\/dmr_rest_services.get_state_stats": {
           "get": {
              "summary": "State Statistics Download Service"
@@ -5911,15 +5561,16 @@
                    "name": "p_year"
                   ,"in": "query"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/q.callback"
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -5941,15 +5592,16 @@
                    "name": "p_year"
                   ,"in": "formData"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/f.callback"
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -5976,8 +5628,9 @@
                    "name": "p_year"
                   ,"in": "query"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/q.p_permit_id"
@@ -5987,7 +5640,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -6024,8 +5677,9 @@
                    "name": "p_year"
                   ,"in": "formData"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/f.p_permit_id"
@@ -6035,7 +5689,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -6088,8 +5742,9 @@
                      ,2008
                      ,2007
                   ]
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/q.p_zip"
@@ -6098,7 +5753,12 @@
                    "$ref": "#\/parameters\/q.p_reg"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_st"
+                   "name": "p_st"
+                  ,"in": "query"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"default": "DC"
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/q.p_co"
@@ -6189,7 +5849,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -6226,8 +5886,9 @@
                    "name": "p_year"
                   ,"in": "formData"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/f.p_zip"
@@ -6236,7 +5897,12 @@
                    "$ref": "#\/parameters\/f.p_reg"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_st"
+                   "name": "p_st"
+                  ,"in": "formData"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"default": "DC"
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/f.p_co"
@@ -6327,7 +5993,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -6366,8 +6032,9 @@
                    "name": "p_year"
                   ,"in": "query"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/q.p_zip"
@@ -6376,7 +6043,12 @@
                    "$ref": "#\/parameters\/q.p_reg"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_st"
+                   "name": "p_st"
+                  ,"in": "query"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"default": "DC"
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/q.p_co"
@@ -6467,7 +6139,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -6504,8 +6176,9 @@
                    "name": "p_year"
                   ,"in": "formData"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/f.p_zip"
@@ -6514,7 +6187,12 @@
                    "$ref": "#\/parameters\/f.p_reg"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_st"
+                   "name": "p_st"
+                  ,"in": "formData"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"default": "DC"
+                  ,"type": "string"
+                  ,"required": false
                }
                ,{
                    "$ref": "#\/parameters\/f.p_co"
@@ -6605,7 +6283,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Water Pollution Search, Facility Reports, and Loading Calculations"
             ]
             ,"responses": {
              "200": {
@@ -6653,8 +6331,9 @@
                    "name": "p_year"
                   ,"in": "query"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/q.pageno"
@@ -6664,7 +6343,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -6710,8 +6389,9 @@
                    "name": "p_year"
                   ,"in": "formData"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/f.pageno"
@@ -6721,7 +6401,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -6769,8 +6449,9 @@
                    "name": "p_year"
                   ,"in": "query"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/q.pageno"
@@ -6780,7 +6461,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -6814,8 +6495,9 @@
                    "name": "p_year"
                   ,"in": "formData"
                   ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
                   ,"type": "string"
-                  ,"required": false
+                  ,"required": true
                }
                ,{
                    "$ref": "#\/parameters\/f.pageno"
@@ -6825,7 +6507,7 @@
                }
             ]
             ,"tags": [
-                "Discharge Monitoring Report"
+                "Everyday Searches and Other Data Downloads"
             ]
             ,"responses": {
              "200": {
@@ -11121,151 +10803,6 @@
             ,"LoadOverLimit"
          ]
       }
-      ,"dmr16_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Dummy": {
-                "type": "string"
-            }
-         }
-         ,"required": [
-             "Dummy"
-         ]
-      }
-      ,"dmr17_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "QueryRows": {
-                "type": "string"
-               ,"title": "Query Row Count"
-               ,"example": "5"
-               ,"description": "Number of query results returned"
-            }
-            ,"PageCount": {
-                "type": "string"
-            }
-            ,"PageNo": {
-                "type": "string"
-               ,"title": "Page Number"
-               ,"example": "1"
-               ,"description": "The number of pages of results returned"
-            }
-            ,"StartRec": {
-                "type": "string"
-            }
-            ,"EndRec": {
-                "type": "string"
-            }
-            ,"Results": {
-                "type": "array"
-               ,"title": "Results Object"
-               ,"description": "A complex array representing the results of the service query or service report."
-               ,"items": {
-                   "$ref": "#\/definitions\/dmr17_Results-2"
-               }
-               ,"xml": {
-                   "name": "Results"
-                  ,"wrapped": true
-               }
-            }
-         }
-         ,"required": [
-             "QueryRows"
-            ,"PageCount"
-            ,"PageNo"
-            ,"StartRec"
-            ,"EndRec"
-            ,"Results"
-         ]
-      }
-      ,"dmr17_Results-2": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"xml": {
-             "name": "Results"
-         }
-         ,"properties": {
-             "ExternalPermitNmbr": {
-                "type": "string"
-            }
-            ,"DmrYear": {
-                "type": "string"
-            }
-            ,"PermFeatureNmbr": {
-                "type": "string"
-               ,"title": "Discharge Point"
-               ,"example": "001"
-               ,"description": "A three-character code in ICIS-NPDES that identifies the point of discharge (e.g., outfall) for a facility. A NPDES permit may have multiple points of discharge. If the code is less than three characters in the .CSV, append zeros to the beginning of the number (e.g., 1 is equivalent to 001)"
-            }
-            ,"MonitoringLocationCode": {
-                "type": "string"
-               ,"title": "Monitoring Location Code"
-               ,"example": "1"
-               ,"description": "The code that the monitoring location at which the monitoring requirement (and effluent limit if limited) applies. One parameter may have several monitoring location codes pertaining to the same permitted feature"
-            }
-            ,"LimitSetDesignator": {
-                "type": "string"
-            }
-            ,"LimitSeasonID": {
-                "type": "string"
-            }
-            ,"MonitoringPeriodEndDate": {
-                "type": "string"
-               ,"title": "Monitoring Period End Date"
-               ,"example": "30-APR-14"
-               ,"description": "The date that the monitoring period for the values covered by the DMR Form ends"
-            }
-            ,"ParameterDesc": {
-                "type": "string"
-               ,"title": "Parameter Description"
-               ,"example": "pH"
-               ,"description": "The pollutant name and form (e.g., dissolved, suspended) associated with the parameter code"
-            }
-            ,"ParameterCode": {
-                "type": "string"
-               ,"title": "Parameter Code"
-               ,"example": "00400"
-               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
-            }
-            ,"DataField": {
-                "type": "string"
-            }
-            ,"OldValue": {
-                "type": "string"
-            }
-            ,"NewValue": {
-                "type": "string"
-            }
-            ,"CorrDesc": {
-                "type": "string"
-            }
-            ,"CorrectionTypeCode": {
-                "type": "string"
-            }
-            ,"ReviewCycle": {
-                "type": "string"
-            }
-         }
-         ,"required": [
-             "ExternalPermitNmbr"
-            ,"DmrYear"
-            ,"PermFeatureNmbr"
-            ,"MonitoringLocationCode"
-            ,"LimitSetDesignator"
-            ,"LimitSeasonID"
-            ,"MonitoringPeriodEndDate"
-            ,"ParameterDesc"
-            ,"ParameterCode"
-            ,"DataField"
-            ,"OldValue"
-            ,"NewValue"
-            ,"CorrDesc"
-            ,"CorrectionTypeCode"
-            ,"ReviewCycle"
-         ]
-      }
       ,"dmr18_FacilityInfo": {
           "type": "object"
          ,"description": "Facility Info Object"
@@ -11921,102 +11458,6 @@
             ,"Pollutants"
          ]
       }
-      ,"dmr23_OutfallLoads": {
-          "type": "object"
-         ,"description": "Outfall Loads Object"
-         ,"xml": {
-             "name": "OutfallLoads"
-         }
-         ,"properties": {
-             "PollutantName": {
-                "type": "string"
-               ,"title": "Pollutant Name"
-               ,"example": "NONE"
-               ,"description": "The name designating the waste material substance or chemical involved at the facility that has a Quantitative Environmental Impact addressed in the SEP or Complying Actions."
-            }
-            ,"ParameterCode": {
-                "type": "string"
-               ,"title": "Parameter Code"
-               ,"example": "00400"
-               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
-            }
-            ,"Outfall": {
-                "type": "string"
-            }
-            ,"TotalPounds": {
-                "type": "string"
-            }
-            ,"MaxAllowablePounds": {
-                "type": "string"
-            }
-            ,"LoadOverLimit": {
-                "type": "string"
-            }
-            ,"TotalTwpe": {
-                "type": "string"
-            }
-            ,"MaxAllowableTwpe": {
-                "type": "string"
-            }
-            ,"LoadOverLimitTwpe": {
-                "type": "string"
-            }
-            ,"QcFlag": {
-                "type": "string"
-            }
-            ,"ExceedanceCount": {
-                "type": "string"
-            }
-            ,"QcReviewPounds": {
-                "type": "string"
-            }
-            ,"QcReviewTwpe": {
-                "type": "string"
-            }
-         }
-         ,"required": [
-             "PollutantName"
-            ,"ParameterCode"
-            ,"Outfall"
-            ,"TotalPounds"
-            ,"MaxAllowablePounds"
-            ,"LoadOverLimit"
-            ,"TotalTwpe"
-            ,"MaxAllowableTwpe"
-            ,"LoadOverLimitTwpe"
-            ,"QcFlag"
-            ,"ExceedanceCount"
-            ,"QcReviewPounds"
-            ,"QcReviewTwpe"
-         ]
-      }
-      ,"dmr23_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Message": {
-                "type": "string"
-               ,"title": "Message"
-               ,"example": "Success"
-               ,"description": "Field to record messages (typically performance-related) about packet processing"
-            }
-            ,"OutfallLoads": {
-                "type": "array"
-               ,"title": "Outfall Loads"
-               ,"items": {
-                   "$ref": "#\/definitions\/dmr23_OutfallLoads"
-               }
-               ,"xml": {
-                   "name": "OutfallLoads"
-                  ,"wrapped": true
-               }
-            }
-         }
-         ,"required": [
-             "Message"
-            ,"OutfallLoads"
-         ]
-      }
       ,"dmr26_PermitLimits": {
           "type": "object"
          ,"description": "Permit Limits Object"
@@ -12140,98 +11581,6 @@
          }
          ,"required": [
              "PermitLimits"
-         ]
-      }
-      ,"dmr27_PollutantLoads": {
-          "type": "object"
-         ,"description": "Pollutant Loads Object"
-         ,"xml": {
-             "name": "PollutantLoads"
-         }
-         ,"properties": {
-             "PollutantName": {
-                "type": "string"
-               ,"title": "Pollutant Name"
-               ,"example": "NONE"
-               ,"description": "The name designating the waste material substance or chemical involved at the facility that has a Quantitative Environmental Impact addressed in the SEP or Complying Actions."
-            }
-            ,"ParameterCode": {
-                "type": "string"
-               ,"title": "Parameter Code"
-               ,"example": "00400"
-               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
-            }
-            ,"TotalPounds": {
-                "type": "string"
-            }
-            ,"MaxAllowablePounds": {
-                "type": "string"
-            }
-            ,"LoadOverLimit": {
-                "type": "string"
-            }
-            ,"TotalTwpe": {
-                "type": "string"
-            }
-            ,"MaxAllowableTwpe": {
-                "type": "string"
-            }
-            ,"LoadOverLimitTwpe": {
-                "type": "string"
-            }
-            ,"QcFlag": {
-                "type": "string"
-            }
-            ,"ExceedanceCount": {
-                "type": "string"
-            }
-            ,"QcReviewPounds": {
-                "type": "string"
-            }
-            ,"QcReviewTwpe": {
-                "type": "string"
-            }
-         }
-         ,"required": [
-             "PollutantName"
-            ,"ParameterCode"
-            ,"TotalPounds"
-            ,"MaxAllowablePounds"
-            ,"LoadOverLimit"
-            ,"TotalTwpe"
-            ,"MaxAllowableTwpe"
-            ,"LoadOverLimitTwpe"
-            ,"QcFlag"
-            ,"ExceedanceCount"
-            ,"QcReviewPounds"
-            ,"QcReviewTwpe"
-         ]
-      }
-      ,"dmr27_Results": {
-          "type": "object"
-         ,"description": "Results Object"
-         ,"properties": {
-             "Message": {
-                "type": "string"
-               ,"title": "Message"
-               ,"example": "Success"
-               ,"description": "Field to record messages (typically performance-related) about packet processing"
-            }
-            ,"PollutantLoads": {
-                "type": "array"
-               ,"title": "Pollutant Loads"
-               ,"items": {
-                   "$ref": "#\/definitions\/dmr27_PollutantLoads"
-               }
-               ,"xml": {
-                   "name": "PollutantLoads"
-                  ,"wrapped": true
-               }
-            }
-         }
-         ,"required": [
-             "Message"
-            ,"PollutantLoads"
          ]
       }
       ,"dmr29_FacilityInfo": {

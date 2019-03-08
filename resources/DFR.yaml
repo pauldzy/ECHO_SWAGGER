@@ -3579,11 +3579,12 @@ definitions:
       name: Sources
     properties: 
       PermitHistory: 
-        "$ref": "#/definitions/dfr0_Qtr12Status" 
+        "$ref": "#/definitions/dfr020_.PermitHistory" 
       HPVHistory: 
-        "$ref": "#/definitions/dfr0_Qtr12Status" 
+        "$ref": "#/definitions/dfr020_.HPVHistory" 
       HPVProgramsPollutants: 
         type: array
+        title: HPV Programs Pollutants
         items: 
           "$ref": "#/definitions/dfr023" 
         xml: 
@@ -3599,6 +3600,7 @@ definitions:
           wrapped: true
       AFSPrograms: 
         type: array
+        title: AFS Programs
         items: 
           "$ref": "#/definitions/dfr021" 
         xml: 
@@ -3779,6 +3781,78 @@ definitions:
         title: Quarter 12 Status
         example: No Viol
         description: The relevant status for the quarter.
+      Mnth1Status: 
+        type: string
+      Mnth2Status: 
+        type: string
+      Mnth3Status: 
+        type: string
+      Mnth4Status: 
+        type: string
+      Mnth5Status: 
+        type: string
+      Mnth6Status: 
+        type: string
+      Mnth7Status: 
+        type: string
+      Mnth8Status: 
+        type: string
+      Mnth9Status: 
+        type: string
+      Mnth10Status: 
+        type: string
+      Mnth11Status: 
+        type: string
+      Mnth12Status: 
+        type: string
+      Mnth13Status: 
+        type: string
+      Mnth14Status: 
+        type: string
+      Mnth15Status: 
+        type: string
+      Mnth16Status: 
+        type: string
+      Mnth17Status: 
+        type: string
+      Mnth18Status: 
+        type: string
+      Mnth19Status: 
+        type: string
+      Mnth20Status: 
+        type: string
+      Mnth21Status: 
+        type: string
+      Mnth22Status: 
+        type: string
+      Mnth23Status: 
+        type: string
+      Mnth24Status: 
+        type: string
+      Mnth25Status: 
+        type: string
+      Mnth26Status: 
+        type: string
+      Mnth27Status: 
+        type: string
+      Mnth28Status: 
+        type: string
+      Mnth29Status: 
+        type: string
+      Mnth30Status: 
+        type: string
+      Mnth31Status: 
+        type: string
+      Mnth32Status: 
+        type: string
+      Mnth33Status: 
+        type: string
+      Mnth34Status: 
+        type: string
+      Mnth35Status: 
+        type: string
+      Mnth36Status: 
+        type: string
       Agency: 
         type: string
         title: Agency
@@ -3803,7 +3877,233 @@ definitions:
       - Qtr10Status
       - Qtr11Status
       - Qtr12Status
+      - Mnth1Status
+      - Mnth2Status
+      - Mnth3Status
+      - Mnth4Status
+      - Mnth5Status
+      - Mnth6Status
+      - Mnth7Status
+      - Mnth8Status
+      - Mnth9Status
+      - Mnth10Status
+      - Mnth11Status
+      - Mnth12Status
+      - Mnth13Status
+      - Mnth14Status
+      - Mnth15Status
+      - Mnth16Status
+      - Mnth17Status
+      - Mnth18Status
+      - Mnth19Status
+      - Mnth20Status
+      - Mnth21Status
+      - Mnth22Status
+      - Mnth23Status
+      - Mnth24Status
+      - Mnth25Status
+      - Mnth26Status
+      - Mnth27Status
+      - Mnth28Status
+      - Mnth29Status
+      - Mnth30Status
+      - Mnth31Status
+      - Mnth32Status
+      - Mnth33Status
+      - Mnth34Status
+      - Mnth35Status
+      - Mnth36Status
       - Agency
+  dfr020_.HPVHistory: 
+    description: HPV History Object
+    properties: 
+      SourceID: 
+        type: string
+        title: EPA Source Identifier
+        example: ALR040033
+        description: Unique Identifier assigned by EPA.
+      Qtr1Status: 
+        type: string
+        title: Quarter 1 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr2Status: 
+        type: string
+        title: Quarter 2 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr3Status: 
+        type: string
+        title: Quarter 3 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr4Status: 
+        type: string
+        title: Quarter 4 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr5Status: 
+        type: string
+        title: Quarter 5 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr6Status: 
+        type: string
+        title: Quarter 6 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr7Status: 
+        type: string
+        title: Quarter 7 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr8Status: 
+        type: string
+        title: Quarter 8 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr9Status: 
+        type: string
+        title: Quarter 9 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr10Status: 
+        type: string
+        title: Quarter 10 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr11Status: 
+        type: string
+        title: Quarter 11 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr12Status: 
+        type: string
+        title: Quarter 12 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Mnth1Status: 
+        type: string
+      Mnth2Status: 
+        type: string
+      Mnth3Status: 
+        type: string
+      Mnth4Status: 
+        type: string
+      Mnth5Status: 
+        type: string
+      Mnth6Status: 
+        type: string
+      Mnth7Status: 
+        type: string
+      Mnth8Status: 
+        type: string
+      Mnth9Status: 
+        type: string
+      Mnth10Status: 
+        type: string
+      Mnth11Status: 
+        type: string
+      Mnth12Status: 
+        type: string
+      Mnth13Status: 
+        type: string
+      Mnth14Status: 
+        type: string
+      Mnth15Status: 
+        type: string
+      Mnth16Status: 
+        type: string
+      Mnth17Status: 
+        type: string
+      Mnth18Status: 
+        type: string
+      Mnth19Status: 
+        type: string
+      Mnth20Status: 
+        type: string
+      Mnth21Status: 
+        type: string
+      Mnth22Status: 
+        type: string
+      Mnth23Status: 
+        type: string
+      Mnth24Status: 
+        type: string
+      Mnth25Status: 
+        type: string
+      Mnth26Status: 
+        type: string
+      Mnth27Status: 
+        type: string
+      Mnth28Status: 
+        type: string
+      Mnth29Status: 
+        type: string
+      Mnth30Status: 
+        type: string
+      Mnth31Status: 
+        type: string
+      Mnth32Status: 
+        type: string
+      Mnth33Status: 
+        type: string
+      Mnth34Status: 
+        type: string
+      Mnth35Status: 
+        type: string
+      Mnth36Status: 
+        type: string
+    required: 
+      - SourceID
+      - Qtr1Status
+      - Qtr2Status
+      - Qtr3Status
+      - Qtr4Status
+      - Qtr5Status
+      - Qtr6Status
+      - Qtr7Status
+      - Qtr8Status
+      - Qtr9Status
+      - Qtr10Status
+      - Qtr11Status
+      - Qtr12Status
+      - Mnth1Status
+      - Mnth2Status
+      - Mnth3Status
+      - Mnth4Status
+      - Mnth5Status
+      - Mnth6Status
+      - Mnth7Status
+      - Mnth8Status
+      - Mnth9Status
+      - Mnth10Status
+      - Mnth11Status
+      - Mnth12Status
+      - Mnth13Status
+      - Mnth14Status
+      - Mnth15Status
+      - Mnth16Status
+      - Mnth17Status
+      - Mnth18Status
+      - Mnth19Status
+      - Mnth20Status
+      - Mnth21Status
+      - Mnth22Status
+      - Mnth23Status
+      - Mnth24Status
+      - Mnth25Status
+      - Mnth26Status
+      - Mnth27Status
+      - Mnth28Status
+      - Mnth29Status
+      - Mnth30Status
+      - Mnth31Status
+      - Mnth32Status
+      - Mnth33Status
+      - Mnth34Status
+      - Mnth35Status
+      - Mnth36Status
   dfr023: 
     description: HPV Programs Pollutant Object
     xml: 
@@ -3885,6 +4185,78 @@ definitions:
         title: Quarter 12 Status
         example: No Viol
         description: The relevant status for the quarter.
+      Mnth1Status: 
+        type: string
+      Mnth2Status: 
+        type: string
+      Mnth3Status: 
+        type: string
+      Mnth4Status: 
+        type: string
+      Mnth5Status: 
+        type: string
+      Mnth6Status: 
+        type: string
+      Mnth7Status: 
+        type: string
+      Mnth8Status: 
+        type: string
+      Mnth9Status: 
+        type: string
+      Mnth10Status: 
+        type: string
+      Mnth11Status: 
+        type: string
+      Mnth12Status: 
+        type: string
+      Mnth13Status: 
+        type: string
+      Mnth14Status: 
+        type: string
+      Mnth15Status: 
+        type: string
+      Mnth16Status: 
+        type: string
+      Mnth17Status: 
+        type: string
+      Mnth18Status: 
+        type: string
+      Mnth19Status: 
+        type: string
+      Mnth20Status: 
+        type: string
+      Mnth21Status: 
+        type: string
+      Mnth22Status: 
+        type: string
+      Mnth23Status: 
+        type: string
+      Mnth24Status: 
+        type: string
+      Mnth25Status: 
+        type: string
+      Mnth26Status: 
+        type: string
+      Mnth27Status: 
+        type: string
+      Mnth28Status: 
+        type: string
+      Mnth29Status: 
+        type: string
+      Mnth30Status: 
+        type: string
+      Mnth31Status: 
+        type: string
+      Mnth32Status: 
+        type: string
+      Mnth33Status: 
+        type: string
+      Mnth34Status: 
+        type: string
+      Mnth35Status: 
+        type: string
+      Mnth36Status: 
+        type: string
       Agency: 
         type: string
         title: Agency
@@ -3909,7 +4281,233 @@ definitions:
       - Qtr10Status
       - Qtr11Status
       - Qtr12Status
+      - Mnth1Status
+      - Mnth2Status
+      - Mnth3Status
+      - Mnth4Status
+      - Mnth5Status
+      - Mnth6Status
+      - Mnth7Status
+      - Mnth8Status
+      - Mnth9Status
+      - Mnth10Status
+      - Mnth11Status
+      - Mnth12Status
+      - Mnth13Status
+      - Mnth14Status
+      - Mnth15Status
+      - Mnth16Status
+      - Mnth17Status
+      - Mnth18Status
+      - Mnth19Status
+      - Mnth20Status
+      - Mnth21Status
+      - Mnth22Status
+      - Mnth23Status
+      - Mnth24Status
+      - Mnth25Status
+      - Mnth26Status
+      - Mnth27Status
+      - Mnth28Status
+      - Mnth29Status
+      - Mnth30Status
+      - Mnth31Status
+      - Mnth32Status
+      - Mnth33Status
+      - Mnth34Status
+      - Mnth35Status
+      - Mnth36Status
       - Agency
+  dfr020_.PermitHistory: 
+    description: Permit History Object
+    properties: 
+      SourceID: 
+        type: string
+        title: EPA Source Identifier
+        example: ALR040033
+        description: Unique Identifier assigned by EPA.
+      Qtr1Status: 
+        type: string
+        title: Quarter 1 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr2Status: 
+        type: string
+        title: Quarter 2 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr3Status: 
+        type: string
+        title: Quarter 3 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr4Status: 
+        type: string
+        title: Quarter 4 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr5Status: 
+        type: string
+        title: Quarter 5 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr6Status: 
+        type: string
+        title: Quarter 6 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr7Status: 
+        type: string
+        title: Quarter 7 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr8Status: 
+        type: string
+        title: Quarter 8 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr9Status: 
+        type: string
+        title: Quarter 9 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr10Status: 
+        type: string
+        title: Quarter 10 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr11Status: 
+        type: string
+        title: Quarter 11 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr12Status: 
+        type: string
+        title: Quarter 12 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Mnth1Status: 
+        type: string
+      Mnth2Status: 
+        type: string
+      Mnth3Status: 
+        type: string
+      Mnth4Status: 
+        type: string
+      Mnth5Status: 
+        type: string
+      Mnth6Status: 
+        type: string
+      Mnth7Status: 
+        type: string
+      Mnth8Status: 
+        type: string
+      Mnth9Status: 
+        type: string
+      Mnth10Status: 
+        type: string
+      Mnth11Status: 
+        type: string
+      Mnth12Status: 
+        type: string
+      Mnth13Status: 
+        type: string
+      Mnth14Status: 
+        type: string
+      Mnth15Status: 
+        type: string
+      Mnth16Status: 
+        type: string
+      Mnth17Status: 
+        type: string
+      Mnth18Status: 
+        type: string
+      Mnth19Status: 
+        type: string
+      Mnth20Status: 
+        type: string
+      Mnth21Status: 
+        type: string
+      Mnth22Status: 
+        type: string
+      Mnth23Status: 
+        type: string
+      Mnth24Status: 
+        type: string
+      Mnth25Status: 
+        type: string
+      Mnth26Status: 
+        type: string
+      Mnth27Status: 
+        type: string
+      Mnth28Status: 
+        type: string
+      Mnth29Status: 
+        type: string
+      Mnth30Status: 
+        type: string
+      Mnth31Status: 
+        type: string
+      Mnth32Status: 
+        type: string
+      Mnth33Status: 
+        type: string
+      Mnth34Status: 
+        type: string
+      Mnth35Status: 
+        type: string
+      Mnth36Status: 
+        type: string
+    required: 
+      - SourceID
+      - Qtr1Status
+      - Qtr2Status
+      - Qtr3Status
+      - Qtr4Status
+      - Qtr5Status
+      - Qtr6Status
+      - Qtr7Status
+      - Qtr8Status
+      - Qtr9Status
+      - Qtr10Status
+      - Qtr11Status
+      - Qtr12Status
+      - Mnth1Status
+      - Mnth2Status
+      - Mnth3Status
+      - Mnth4Status
+      - Mnth5Status
+      - Mnth6Status
+      - Mnth7Status
+      - Mnth8Status
+      - Mnth9Status
+      - Mnth10Status
+      - Mnth11Status
+      - Mnth12Status
+      - Mnth13Status
+      - Mnth14Status
+      - Mnth15Status
+      - Mnth16Status
+      - Mnth17Status
+      - Mnth18Status
+      - Mnth19Status
+      - Mnth20Status
+      - Mnth21Status
+      - Mnth22Status
+      - Mnth23Status
+      - Mnth24Status
+      - Mnth25Status
+      - Mnth26Status
+      - Mnth27Status
+      - Mnth28Status
+      - Mnth29Status
+      - Mnth30Status
+      - Mnth31Status
+      - Mnth32Status
+      - Mnth33Status
+      - Mnth34Status
+      - Mnth35Status
+      - Mnth36Status
   dfr024: 
     description: Air Quality Object
     properties: 
@@ -4705,6 +5303,84 @@ definitions:
       Qtr13Value: 
         type: string
         title: Quarter 13 Value
+      Mnth1Value: 
+        type: string
+      Mnth2Value: 
+        type: string
+      Mnth3Value: 
+        type: string
+      Mnth4Value: 
+        type: string
+      Mnth5Value: 
+        type: string
+      Mnth6Value: 
+        type: string
+      Mnth7Value: 
+        type: string
+      Mnth8Value: 
+        type: string
+      Mnth9Value: 
+        type: string
+      Mnth10Value: 
+        type: string
+      Mnth11Value: 
+        type: string
+      Mnth12Value: 
+        type: string
+      Mnth13Value: 
+        type: string
+      Mnth14Value: 
+        type: string
+      Mnth15Value: 
+        type: string
+      Mnth16Value: 
+        type: string
+      Mnth17Value: 
+        type: string
+      Mnth18Value: 
+        type: string
+      Mnth19Value: 
+        type: string
+      Mnth20Value: 
+        type: string
+      Mnth21Value: 
+        type: string
+      Mnth22Value: 
+        type: string
+      Mnth23Value: 
+        type: string
+      Mnth24Value: 
+        type: string
+      Mnth25Value: 
+        type: string
+      Mnth26Value: 
+        type: string
+      Mnth27Value: 
+        type: string
+      Mnth28Value: 
+        type: string
+      Mnth29Value: 
+        type: string
+      Mnth30Value: 
+        type: string
+      Mnth31Value: 
+        type: string
+      Mnth32Value: 
+        type: string
+      Mnth33Value: 
+        type: string
+      Mnth34Value: 
+        type: string
+      Mnth35Value: 
+        type: string
+      Mnth36Value: 
+        type: string
+      Mnth37Value: 
+        type: string
+      Mnth38Value: 
+        type: string
+      Mnth39Value: 
+        type: string
     required: 
       - SourceID
       - ParameterCode
@@ -4724,6 +5400,45 @@ definitions:
       - Qtr11Value
       - Qtr12Value
       - Qtr13Value
+      - Mnth1Value
+      - Mnth2Value
+      - Mnth3Value
+      - Mnth4Value
+      - Mnth5Value
+      - Mnth6Value
+      - Mnth7Value
+      - Mnth8Value
+      - Mnth9Value
+      - Mnth10Value
+      - Mnth11Value
+      - Mnth12Value
+      - Mnth13Value
+      - Mnth14Value
+      - Mnth15Value
+      - Mnth16Value
+      - Mnth17Value
+      - Mnth18Value
+      - Mnth19Value
+      - Mnth20Value
+      - Mnth21Value
+      - Mnth22Value
+      - Mnth23Value
+      - Mnth24Value
+      - Mnth25Value
+      - Mnth26Value
+      - Mnth27Value
+      - Mnth28Value
+      - Mnth29Value
+      - Mnth30Value
+      - Mnth31Value
+      - Mnth32Value
+      - Mnth33Value
+      - Mnth34Value
+      - Mnth35Value
+      - Mnth36Value
+      - Mnth37Value
+      - Mnth38Value
+      - Mnth39Value
   dfr037: 
     description: Sources Object
     xml: 
@@ -5315,6 +6030,162 @@ definitions:
       Qtr13Value: 
         type: string
         title: Quarter 13 Value
+      Mnth1Status: 
+        type: string
+      Mnth1Value: 
+        type: string
+      Mnth2Status: 
+        type: string
+      Mnth2Value: 
+        type: string
+      Mnth3Status: 
+        type: string
+      Mnth3Value: 
+        type: string
+      Mnth4Status: 
+        type: string
+      Mnth4Value: 
+        type: string
+      Mnth5Status: 
+        type: string
+      Mnth5Value: 
+        type: string
+      Mnth6Status: 
+        type: string
+      Mnth6Value: 
+        type: string
+      Mnth7Status: 
+        type: string
+      Mnth7Value: 
+        type: string
+      Mnth8Status: 
+        type: string
+      Mnth8Value: 
+        type: string
+      Mnth9Status: 
+        type: string
+      Mnth9Value: 
+        type: string
+      Mnth10Status: 
+        type: string
+      Mnth10Value: 
+        type: string
+      Mnth11Status: 
+        type: string
+      Mnth11Value: 
+        type: string
+      Mnth12Status: 
+        type: string
+      Mnth12Value: 
+        type: string
+      Mnth13Status: 
+        type: string
+      Mnth13Value: 
+        type: string
+      Mnth14Status: 
+        type: string
+      Mnth14Value: 
+        type: string
+      Mnth15Status: 
+        type: string
+      Mnth15Value: 
+        type: string
+      Mnth16Status: 
+        type: string
+      Mnth16Value: 
+        type: string
+      Mnth17Status: 
+        type: string
+      Mnth17Value: 
+        type: string
+      Mnth18Status: 
+        type: string
+      Mnth18Value: 
+        type: string
+      Mnth19Status: 
+        type: string
+      Mnth19Value: 
+        type: string
+      Mnth20Status: 
+        type: string
+      Mnth20Value: 
+        type: string
+      Mnth21Status: 
+        type: string
+      Mnth21Value: 
+        type: string
+      Mnth22Status: 
+        type: string
+      Mnth22Value: 
+        type: string
+      Mnth23Status: 
+        type: string
+      Mnth23Value: 
+        type: string
+      Mnth24Status: 
+        type: string
+      Mnth24Value: 
+        type: string
+      Mnth25Status: 
+        type: string
+      Mnth25Value: 
+        type: string
+      Mnth26Status: 
+        type: string
+      Mnth26Value: 
+        type: string
+      Mnth27Status: 
+        type: string
+      Mnth27Value: 
+        type: string
+      Mnth28Status: 
+        type: string
+      Mnth28Value: 
+        type: string
+      Mnth29Status: 
+        type: string
+      Mnth29Value: 
+        type: string
+      Mnth30Status: 
+        type: string
+      Mnth30Value: 
+        type: string
+      Mnth31Status: 
+        type: string
+      Mnth31Value: 
+        type: string
+      Mnth32Status: 
+        type: string
+      Mnth32Value: 
+        type: string
+      Mnth33Status: 
+        type: string
+      Mnth33Value: 
+        type: string
+      Mnth34Status: 
+        type: string
+      Mnth34Value: 
+        type: string
+      Mnth35Status: 
+        type: string
+      Mnth35Value: 
+        type: string
+      Mnth36Status: 
+        type: string
+      Mnth36Value: 
+        type: string
+      Mnth37Status: 
+        type: string
+      Mnth37Value: 
+        type: string
+      Mnth38Status: 
+        type: string
+      Mnth38Value: 
+        type: string
+      Mnth39Status: 
+        type: string
+      Mnth39Value: 
+        type: string
     required: 
       - SourceID
       - ViolationDesc
@@ -5345,6 +6216,84 @@ definitions:
       - Qtr12Value
       - Qtr13Status
       - Qtr13Value
+      - Mnth1Status
+      - Mnth1Value
+      - Mnth2Status
+      - Mnth2Value
+      - Mnth3Status
+      - Mnth3Value
+      - Mnth4Status
+      - Mnth4Value
+      - Mnth5Status
+      - Mnth5Value
+      - Mnth6Status
+      - Mnth6Value
+      - Mnth7Status
+      - Mnth7Value
+      - Mnth8Status
+      - Mnth8Value
+      - Mnth9Status
+      - Mnth9Value
+      - Mnth10Status
+      - Mnth10Value
+      - Mnth11Status
+      - Mnth11Value
+      - Mnth12Status
+      - Mnth12Value
+      - Mnth13Status
+      - Mnth13Value
+      - Mnth14Status
+      - Mnth14Value
+      - Mnth15Status
+      - Mnth15Value
+      - Mnth16Status
+      - Mnth16Value
+      - Mnth17Status
+      - Mnth17Value
+      - Mnth18Status
+      - Mnth18Value
+      - Mnth19Status
+      - Mnth19Value
+      - Mnth20Status
+      - Mnth20Value
+      - Mnth21Status
+      - Mnth21Value
+      - Mnth22Status
+      - Mnth22Value
+      - Mnth23Status
+      - Mnth23Value
+      - Mnth24Status
+      - Mnth24Value
+      - Mnth25Status
+      - Mnth25Value
+      - Mnth26Status
+      - Mnth26Value
+      - Mnth27Status
+      - Mnth27Value
+      - Mnth28Status
+      - Mnth28Value
+      - Mnth29Status
+      - Mnth29Value
+      - Mnth30Status
+      - Mnth30Value
+      - Mnth31Status
+      - Mnth31Value
+      - Mnth32Status
+      - Mnth32Value
+      - Mnth33Status
+      - Mnth33Value
+      - Mnth34Status
+      - Mnth34Value
+      - Mnth35Status
+      - Mnth35Value
+      - Mnth36Status
+      - Mnth36Value
+      - Mnth37Status
+      - Mnth37Value
+      - Mnth38Status
+      - Mnth38Value
+      - Mnth39Status
+      - Mnth39Value
   dfr046: 
     description: CWA RNC Compliance Object
     properties: 
@@ -5818,6 +6767,8 @@ definitions:
   dfr053: 
     description: Case Formal Action
     properties: 
+      DataSource: 
+        type: string
       StatuteCode: 
         type: string
         title: Statute Code
@@ -5882,6 +6833,7 @@ definitions:
       Settlements: 
         "$ref": "#/definitions/dfr055" 
     required: 
+      - DataSource
       - StatuteCode
       - LawSectionCode
       - CaseID
@@ -7445,7 +8397,15 @@ definitions:
       name: Sources
     properties: 
       Status: 
-        "$ref": "#/definitions/dfr0_Qtr12Status" 
+        "$ref": "#/definitions/dfr079_s.Status" 
+      Evaluations: 
+        type: array
+        title: Evaluations
+        items: 
+          "$ref": "#/definitions/dfr079_s.Evaluations" 
+        xml: 
+          name: Evaluations
+          wrapped: true
       Violations: 
         type: array
         title: Violations
@@ -7454,6 +8414,402 @@ definitions:
         xml: 
           name: Violations
           wrapped: true
+  dfr079_s.Evaluations: 
+    description: Evaluations Object
+    xml: 
+      name: Evaluations
+    properties: 
+      SourceID: 
+        type: string
+        title: EPA Source Identifier
+        example: ALR040033
+        description: Unique Identifier assigned by EPA.
+      EvaluationType: 
+        type: string
+      Evaluation: 
+        type: string
+      Agency: 
+        type: string
+        title: Agency
+        example: State
+        description: |-
+          Identifies the lead agency (e.g., EPA, State) conducting the inspection. 
+          Values: State abbreviation or "EPA"
+      Qtr1Status: 
+        type: string
+        title: Quarter 1 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr2Status: 
+        type: string
+        title: Quarter 2 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr3Status: 
+        type: string
+        title: Quarter 3 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr4Status: 
+        type: string
+        title: Quarter 4 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr5Status: 
+        type: string
+        title: Quarter 5 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr6Status: 
+        type: string
+        title: Quarter 6 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr7Status: 
+        type: string
+        title: Quarter 7 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr8Status: 
+        type: string
+        title: Quarter 8 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr9Status: 
+        type: string
+        title: Quarter 9 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr10Status: 
+        type: string
+        title: Quarter 10 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr11Status: 
+        type: string
+        title: Quarter 11 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr12Status: 
+        type: string
+        title: Quarter 12 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Mnth1Status: 
+        type: string
+      Mnth2Status: 
+        type: string
+      Mnth3Status: 
+        type: string
+      Mnth4Status: 
+        type: string
+      Mnth5Status: 
+        type: string
+      Mnth6Status: 
+        type: string
+      Mnth7Status: 
+        type: string
+      Mnth8Status: 
+        type: string
+      Mnth9Status: 
+        type: string
+      Mnth10Status: 
+        type: string
+      Mnth11Status: 
+        type: string
+      Mnth12Status: 
+        type: string
+      Mnth13Status: 
+        type: string
+      Mnth14Status: 
+        type: string
+      Mnth15Status: 
+        type: string
+      Mnth16Status: 
+        type: string
+      Mnth17Status: 
+        type: string
+      Mnth18Status: 
+        type: string
+      Mnth19Status: 
+        type: string
+      Mnth20Status: 
+        type: string
+      Mnth21Status: 
+        type: string
+      Mnth22Status: 
+        type: string
+      Mnth23Status: 
+        type: string
+      Mnth24Status: 
+        type: string
+      Mnth25Status: 
+        type: string
+      Mnth26Status: 
+        type: string
+      Mnth27Status: 
+        type: string
+      Mnth28Status: 
+        type: string
+      Mnth29Status: 
+        type: string
+      Mnth30Status: 
+        type: string
+      Mnth31Status: 
+        type: string
+      Mnth32Status: 
+        type: string
+      Mnth33Status: 
+        type: string
+      Mnth34Status: 
+        type: string
+      Mnth35Status: 
+        type: string
+      Mnth36Status: 
+        type: string
+    required: 
+      - SourceID
+      - EvaluationType
+      - Evaluation
+      - Agency
+      - Qtr1Status
+      - Qtr2Status
+      - Qtr3Status
+      - Qtr4Status
+      - Qtr5Status
+      - Qtr6Status
+      - Qtr7Status
+      - Qtr8Status
+      - Qtr9Status
+      - Qtr10Status
+      - Qtr11Status
+      - Qtr12Status
+      - Mnth1Status
+      - Mnth2Status
+      - Mnth3Status
+      - Mnth4Status
+      - Mnth5Status
+      - Mnth6Status
+      - Mnth7Status
+      - Mnth8Status
+      - Mnth9Status
+      - Mnth10Status
+      - Mnth11Status
+      - Mnth12Status
+      - Mnth13Status
+      - Mnth14Status
+      - Mnth15Status
+      - Mnth16Status
+      - Mnth17Status
+      - Mnth18Status
+      - Mnth19Status
+      - Mnth20Status
+      - Mnth21Status
+      - Mnth22Status
+      - Mnth23Status
+      - Mnth24Status
+      - Mnth25Status
+      - Mnth26Status
+      - Mnth27Status
+      - Mnth28Status
+      - Mnth29Status
+      - Mnth30Status
+      - Mnth31Status
+      - Mnth32Status
+      - Mnth33Status
+      - Mnth34Status
+      - Mnth35Status
+      - Mnth36Status
+  dfr079_s.Status: 
+    description: Status Object
+    properties: 
+      SourceID: 
+        type: string
+        title: EPA Source Identifier
+        example: ALR040033
+        description: Unique Identifier assigned by EPA.
+      Qtr1Status: 
+        type: string
+        title: Quarter 1 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr2Status: 
+        type: string
+        title: Quarter 2 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr3Status: 
+        type: string
+        title: Quarter 3 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr4Status: 
+        type: string
+        title: Quarter 4 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr5Status: 
+        type: string
+        title: Quarter 5 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr6Status: 
+        type: string
+        title: Quarter 6 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr7Status: 
+        type: string
+        title: Quarter 7 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr8Status: 
+        type: string
+        title: Quarter 8 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr9Status: 
+        type: string
+        title: Quarter 9 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr10Status: 
+        type: string
+        title: Quarter 10 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr11Status: 
+        type: string
+        title: Quarter 11 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Qtr12Status: 
+        type: string
+        title: Quarter 12 Status
+        example: No Viol
+        description: The relevant status for the quarter.
+      Mnth1Status: 
+        type: string
+      Mnth2Status: 
+        type: string
+      Mnth3Status: 
+        type: string
+      Mnth4Status: 
+        type: string
+      Mnth5Status: 
+        type: string
+      Mnth6Status: 
+        type: string
+      Mnth7Status: 
+        type: string
+      Mnth8Status: 
+        type: string
+      Mnth9Status: 
+        type: string
+      Mnth10Status: 
+        type: string
+      Mnth11Status: 
+        type: string
+      Mnth12Status: 
+        type: string
+      Mnth13Status: 
+        type: string
+      Mnth14Status: 
+        type: string
+      Mnth15Status: 
+        type: string
+      Mnth16Status: 
+        type: string
+      Mnth17Status: 
+        type: string
+      Mnth18Status: 
+        type: string
+      Mnth19Status: 
+        type: string
+      Mnth20Status: 
+        type: string
+      Mnth21Status: 
+        type: string
+      Mnth22Status: 
+        type: string
+      Mnth23Status: 
+        type: string
+      Mnth24Status: 
+        type: string
+      Mnth25Status: 
+        type: string
+      Mnth26Status: 
+        type: string
+      Mnth27Status: 
+        type: string
+      Mnth28Status: 
+        type: string
+      Mnth29Status: 
+        type: string
+      Mnth30Status: 
+        type: string
+      Mnth31Status: 
+        type: string
+      Mnth32Status: 
+        type: string
+      Mnth33Status: 
+        type: string
+      Mnth34Status: 
+        type: string
+      Mnth35Status: 
+        type: string
+      Mnth36Status: 
+        type: string
+    required: 
+      - SourceID
+      - Qtr1Status
+      - Qtr2Status
+      - Qtr3Status
+      - Qtr4Status
+      - Qtr5Status
+      - Qtr6Status
+      - Qtr7Status
+      - Qtr8Status
+      - Qtr9Status
+      - Qtr10Status
+      - Qtr11Status
+      - Qtr12Status
+      - Mnth1Status
+      - Mnth2Status
+      - Mnth3Status
+      - Mnth4Status
+      - Mnth5Status
+      - Mnth6Status
+      - Mnth7Status
+      - Mnth8Status
+      - Mnth9Status
+      - Mnth10Status
+      - Mnth11Status
+      - Mnth12Status
+      - Mnth13Status
+      - Mnth14Status
+      - Mnth15Status
+      - Mnth16Status
+      - Mnth17Status
+      - Mnth18Status
+      - Mnth19Status
+      - Mnth20Status
+      - Mnth21Status
+      - Mnth22Status
+      - Mnth23Status
+      - Mnth24Status
+      - Mnth25Status
+      - Mnth26Status
+      - Mnth27Status
+      - Mnth28Status
+      - Mnth29Status
+      - Mnth30Status
+      - Mnth31Status
+      - Mnth32Status
+      - Mnth33Status
+      - Mnth34Status
+      - Mnth35Status
+      - Mnth36Status
   dfr079_s.Violations: 
     description: Violations Object
     xml: 
@@ -7537,6 +8893,78 @@ definitions:
         title: Quarter 12 Status
         example: No Viol
         description: The relevant status for the quarter.
+      Mnth1Status: 
+        type: string
+      Mnth2Status: 
+        type: string
+      Mnth3Status: 
+        type: string
+      Mnth4Status: 
+        type: string
+      Mnth5Status: 
+        type: string
+      Mnth6Status: 
+        type: string
+      Mnth7Status: 
+        type: string
+      Mnth8Status: 
+        type: string
+      Mnth9Status: 
+        type: string
+      Mnth10Status: 
+        type: string
+      Mnth11Status: 
+        type: string
+      Mnth12Status: 
+        type: string
+      Mnth13Status: 
+        type: string
+      Mnth14Status: 
+        type: string
+      Mnth15Status: 
+        type: string
+      Mnth16Status: 
+        type: string
+      Mnth17Status: 
+        type: string
+      Mnth18Status: 
+        type: string
+      Mnth19Status: 
+        type: string
+      Mnth20Status: 
+        type: string
+      Mnth21Status: 
+        type: string
+      Mnth22Status: 
+        type: string
+      Mnth23Status: 
+        type: string
+      Mnth24Status: 
+        type: string
+      Mnth25Status: 
+        type: string
+      Mnth26Status: 
+        type: string
+      Mnth27Status: 
+        type: string
+      Mnth28Status: 
+        type: string
+      Mnth29Status: 
+        type: string
+      Mnth30Status: 
+        type: string
+      Mnth31Status: 
+        type: string
+      Mnth32Status: 
+        type: string
+      Mnth33Status: 
+        type: string
+      Mnth34Status: 
+        type: string
+      Mnth35Status: 
+        type: string
+      Mnth36Status: 
+        type: string
     required: 
       - SourceID
       - ViolationType
@@ -7554,6 +8982,42 @@ definitions:
       - Qtr10Status
       - Qtr11Status
       - Qtr12Status
+      - Mnth1Status
+      - Mnth2Status
+      - Mnth3Status
+      - Mnth4Status
+      - Mnth5Status
+      - Mnth6Status
+      - Mnth7Status
+      - Mnth8Status
+      - Mnth9Status
+      - Mnth10Status
+      - Mnth11Status
+      - Mnth12Status
+      - Mnth13Status
+      - Mnth14Status
+      - Mnth15Status
+      - Mnth16Status
+      - Mnth17Status
+      - Mnth18Status
+      - Mnth19Status
+      - Mnth20Status
+      - Mnth21Status
+      - Mnth22Status
+      - Mnth23Status
+      - Mnth24Status
+      - Mnth25Status
+      - Mnth26Status
+      - Mnth27Status
+      - Mnth28Status
+      - Mnth29Status
+      - Mnth30Status
+      - Mnth31Status
+      - Mnth32Status
+      - Mnth33Status
+      - Mnth34Status
+      - Mnth35Status
+      - Mnth36Status
   dfr018_RegistryIDs: 
     description: Registry IDs Object
     xml: 
