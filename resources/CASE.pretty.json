@@ -75,6 +75,20 @@
          ,"type": "string"
          ,"required": false
       }
+      ,"q.p_qs": {
+          "name": "p_qs"
+         ,"in": "query"
+         ,"description": "Quick Search. Allows entry for city, state, and\/or zip code."
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"f.p_qs": {
+          "name": "p_qs"
+         ,"in": "formData"
+         ,"description": "Quick Search. Allows entry for city, state, and\/or zip code."
+         ,"type": "string"
+         ,"required": false
+      }
       ,"q.p_c1lat": {
           "name": "p_c1lat"
          ,"in": "query"
@@ -1850,6 +1864,9 @@
                ,{
                    "$ref": "#\/parameters\/q.p_ocmap_fy"
                }
+               ,{
+                   "$ref": "#\/parameters\/q.p_qs"
+               }
             ]
             ,"tags": [
                 "Case Enforcement"
@@ -2106,6 +2123,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.p_ocmap_fy"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_qs"
                }
             ]
             ,"tags": [
