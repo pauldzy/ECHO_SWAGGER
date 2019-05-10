@@ -1481,6 +1481,18 @@
          ,"type": "string"
          ,"required": false
       }
+      ,"f.p_neiu": {
+          "name": "p_neiu"
+         ,"in": "formData"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"q.p_neiu": {
+          "name": "p_neiu"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
       ,"q.p_feac": {
           "name": "p_feac"
          ,"in": "query"
@@ -1865,6 +1877,9 @@
                    "$ref": "#\/parameters\/q.p_agoo"
                }
                ,{
+                   "$ref": "#\/parameters\/q.p_neiu"
+               }
+               ,{
                    "$ref": "#\/parameters\/q.queryset"
                }
                ,{
@@ -2135,6 +2150,9 @@
                    "$ref": "#\/parameters\/f.p_agoo"
                }
                ,{
+                   "$ref": "#\/parameters\/f.p_neiu"
+               }
+               ,{
                    "$ref": "#\/parameters\/f.queryset"
                }
                ,{
@@ -2399,6 +2417,9 @@
                    "$ref": "#\/parameters\/q.p_agoo"
                }
                ,{
+                   "$ref": "#\/parameters\/q.p_neiu"
+               }
+               ,{
                    "$ref": "#\/parameters\/q.responseset"
                }
                ,{
@@ -2650,6 +2671,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.p_agoo"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_neiu"
                }
                ,{
                    "$ref": "#\/parameters\/f.responseset"

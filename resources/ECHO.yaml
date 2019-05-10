@@ -1423,6 +1423,16 @@ parameters:
     description: A Y value identifies facilities that have had a formal enforcement action within the last 5 years.
     type: string
     required: false
+  f.p_neiu: 
+    name: p_neiu
+    in: formData
+    type: string
+    required: false
+  q.p_neiu: 
+    name: p_neiu
+    in: query
+    type: string
+    required: false
   q.p_feac: 
     name: p_feac
     in: query
@@ -1648,6 +1658,7 @@ paths:
         - "$ref": "#/parameters/q.p_radius"
         - "$ref": "#/parameters/q.p_ejscreen_over80cnt"
         - "$ref": "#/parameters/q.p_agoo"
+        - "$ref": "#/parameters/q.p_neiu"
         - "$ref": "#/parameters/q.queryset"
         - "$ref": "#/parameters/q.responseset"
         - "$ref": "#/parameters/q.tablelist"
@@ -1758,6 +1769,7 @@ paths:
         - "$ref": "#/parameters/f.p_radius"
         - "$ref": "#/parameters/f.p_ejscreen_over80cnt"
         - "$ref": "#/parameters/f.p_agoo"
+        - "$ref": "#/parameters/f.p_neiu"
         - "$ref": "#/parameters/f.queryset"
         - "$ref": "#/parameters/f.responseset"
         - "$ref": "#/parameters/f.tablelist"
@@ -1868,6 +1880,7 @@ paths:
         - "$ref": "#/parameters/q.p_radius"
         - "$ref": "#/parameters/q.p_ejscreen_over80cnt"
         - "$ref": "#/parameters/q.p_agoo"
+        - "$ref": "#/parameters/q.p_neiu"
         - "$ref": "#/parameters/q.responseset"
         - "$ref": "#/parameters/q.callback"
         - name: qcolumns
@@ -1974,6 +1987,7 @@ paths:
         - "$ref": "#/parameters/f.p_radius"
         - "$ref": "#/parameters/f.p_ejscreen_over80cnt"
         - "$ref": "#/parameters/f.p_agoo"
+        - "$ref": "#/parameters/f.p_neiu"
         - "$ref": "#/parameters/f.responseset"
         - "$ref": "#/parameters/f.callback"
         - name: qcolumns
