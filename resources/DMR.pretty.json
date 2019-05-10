@@ -1137,7 +1137,7 @@
       ,"f.p_poll_cat": {
           "name": "p_poll_cat"
          ,"in": "formData"
-         ,"description": "Pollutant Category. Provide a keyword to limit results.\n- NutN = Nitrogen\n- NutP = Phosphorus\n- ORG = Organic Enrichment\n- SS = Solids\n- MET = Metals\n- PP = Clean Water Act Priority Pollutants\n- CER = CERCLA Hazardous Substances\n- TRI = TRI Chemicals\n- RAD = Radionuclides \n- PAT = Pathogen Indicators\n- Temp = Temperature\n- WW = Wastewater Flow\n- GRAD = General Radioactivity\n- CLR = Color\n- WET = Whole Effluent Toxicity"
+         ,"description": "Pollutant Category. Provide a keyword to limit results.\n- NutN = Nitrogen\n- NutP = Phosphorus\n- ORG = Organic Enrichment\n- SS = Solids\n- MET = Metals\n- PP = Clean Water Act Priority Pollutants\n- CER = CERCLA Hazardous Substances\n- TRI = TRI Chemicals\n- RAD = Radionuclides \n- PAT = Pathogen Indicators\n- Temp = Temperature\n- WW = Wastewater Flow\n- GRAD = General Radioactivity\n- CLR = Color\n- WET = Whole Effluent Toxicity\n- PFAS = Per- and Polyfluoroalkyl Substances (PFAS)"
          ,"enum": [
              "NUTN"
             ,"NUTP"
@@ -1154,6 +1154,7 @@
             ,"GRAD"
             ,"CLR"
             ,"WET"
+            ,"PFAS"
          ]
          ,"type": "string"
          ,"required": false
@@ -1161,7 +1162,7 @@
       ,"q.p_poll_cat": {
           "name": "p_poll_cat"
          ,"in": "query"
-         ,"description": "Pollutant Category. Provide a keyword to limit results.\n- NutN = Nitrogen\n- NutP = Phosphorus\n- ORG = Organic Enrichment\n- SS = Solids\n- MET = Metals\n- PP = Clean Water Act Priority Pollutants\n- CER = CERCLA Hazardous Substances\n- TRI = TRI Chemicals\n- RAD = Radionuclides \n- PAT = Pathogen Indicators\n- Temp = Temperature\n- WW = Wastewater Flow\n- GRAD = General Radioactivity\n- CLR = Color\n- WET = Whole Effluent Toxicity"
+         ,"description": "Pollutant Category. Provide a keyword to limit results.\n- NutN = Nitrogen\n- NutP = Phosphorus\n- ORG = Organic Enrichment\n- SS = Solids\n- MET = Metals\n- PP = Clean Water Act Priority Pollutants\n- CER = CERCLA Hazardous Substances\n- TRI = TRI Chemicals\n- RAD = Radionuclides \n- PAT = Pathogen Indicators\n- Temp = Temperature\n- WW = Wastewater Flow\n- GRAD = General Radioactivity\n- CLR = Color\n- WET = Whole Effluent Toxicity\n- PFAS = Per- and Polyfluoroalkyl Substances (PFAS)"
          ,"enum": [
              "NUTN"
             ,"NUTP"
@@ -1178,6 +1179,7 @@
             ,"GRAD"
             ,"CLR"
             ,"WET"
+            ,"PFAS"
          ]
          ,"type": "string"
          ,"required": false
@@ -1371,14 +1373,14 @@
       ,"f.download": {
           "name": "download"
          ,"in": "formData"
-         ,"description": "Name of data object to be downloaded, e.g., TopWatersheds, TopSIC, TopFacilities, TopPollutantPounds, TopPollutantTWPE, TopWatershedPounds, TopWatershedTWPE, TopSICPounds, TopSICTWPE, TopFacilityPounds, TopFacilityTWPE."
+         ,"description": "Name of data object to be downloaded, e.g., TopWatersheds, TopSIC, TopFacilities, TopPollutantPounds, TopPollutantTWPE, TopWatershedPounds, TopWatershedTWPE, TopSICPounds, TopSICTWPE, TopFacilityPounds, TopFacilityTWPE. NOTE: Use TopWatersheds, TopSIC, or TopFacilities in combination with the search parameters p_cas, p_poll_name, or p_poll_cat."
          ,"type": "string"
          ,"required": false
       }
       ,"q.download": {
           "name": "download"
          ,"in": "query"
-         ,"description": "Name of data object to be downloaded, e.g., TopWatersheds, TopSIC, TopFacilities, TopPollutantPounds, TopPollutantTWPE, TopWatershedPounds, TopWatershedTWPE, TopSICPounds, TopSICTWPE, TopFacilityPounds, TopFacilityTWPE."
+         ,"description": "Name of data object to be downloaded, e.g., TopWatersheds, TopSIC, TopFacilities, TopPollutantPounds, TopPollutantTWPE, TopWatershedPounds, TopWatershedTWPE, TopSICPounds, TopSICTWPE, TopFacilityPounds, TopFacilityTWPE. NOTE: Use TopWatersheds, TopSIC, or TopFacilities in combination with the search parameters p_cas, p_poll_name, or p_poll_cat."
          ,"type": "string"
          ,"required": false
       }
@@ -4139,7 +4141,7 @@
       ,"\/dmr_rest_services.get_all_dmr_facilities": {
           "get": {
              "summary": "Water Pollution Search Discharge Monitoring Report Facilities Service"
-            ,"description": "This procedure returns facilities with DMR discharges for the selected criteria."
+            ,"description": "The procedure returns summary information about NPDES permits, indicating whether they have monitoring requirements, permit limits, and\/or DMR data. It provides the data for the Search Statistics table on the Water Pollution Search Results."
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/q.output"
@@ -4276,7 +4278,7 @@
             ]
             ,"responses": {
              "200": {
-                "description": "Returns an object that includes an array of facilities with DMR discharges for the selected criteria."
+                "description": "Returns an object that includes an array of facilities with NPDES permits for the selected criteria."
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
@@ -4297,7 +4299,7 @@
          }
          ,"post": {
              "summary": "Water Pollution Search Discharge Monitoring Report Facilities Service"
-            ,"description": "This procedure returns facilities with DMR discharges for the selected criteria."
+            ,"description": "The procedure returns summary information about NPDES permits, indicating whether they have monitoring requirements, permit limits, and\/or DMR data. It provides the data for the Search Statistics table on the Water Pollution Search Results."
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/f.output"
@@ -4420,7 +4422,7 @@
             ]
             ,"responses": {
              "200": {
-                "description": "Returns an object that includes an array of facilities with DMR discharges for the selected criteria."
+                "description": "Returns an object that includes an array of facilities with NPDES permits for the selected criteria."
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"

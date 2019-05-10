@@ -1171,6 +1171,7 @@ parameters:
       - GRAD = General Radioactivity
       - CLR = Color
       - WET = Whole Effluent Toxicity
+      - PFAS = Per- and Polyfluoroalkyl Substances (PFAS)
     enum: 
       - NUTN
       - NUTP
@@ -1187,6 +1188,7 @@ parameters:
       - GRAD
       - CLR
       - WET
+      - PFAS
     type: string
     required: false
   q.p_poll_cat: 
@@ -1209,6 +1211,7 @@ parameters:
       - GRAD = General Radioactivity
       - CLR = Color
       - WET = Whole Effluent Toxicity
+      - PFAS = Per- and Polyfluoroalkyl Substances (PFAS)
     enum: 
       - NUTN
       - NUTP
@@ -1225,6 +1228,7 @@ parameters:
       - GRAD
       - CLR
       - WET
+      - PFAS
     type: string
     required: false
   f.p_imp_poll: 
@@ -1404,13 +1408,13 @@ parameters:
   f.download: 
     name: download
     in: formData
-    description: Name of data object to be downloaded, e.g., TopWatersheds, TopSIC, TopFacilities, TopPollutantPounds, TopPollutantTWPE, TopWatershedPounds, TopWatershedTWPE, TopSICPounds, TopSICTWPE, TopFacilityPounds, TopFacilityTWPE.
+    description: "Name of data object to be downloaded, e.g., TopWatersheds, TopSIC, TopFacilities, TopPollutantPounds, TopPollutantTWPE, TopWatershedPounds, TopWatershedTWPE, TopSICPounds, TopSICTWPE, TopFacilityPounds, TopFacilityTWPE. NOTE: Use TopWatersheds, TopSIC, or TopFacilities in combination with the search parameters p_cas, p_poll_name, or p_poll_cat."
     type: string
     required: false
   q.download: 
     name: download
     in: query
-    description: Name of data object to be downloaded, e.g., TopWatersheds, TopSIC, TopFacilities, TopPollutantPounds, TopPollutantTWPE, TopWatershedPounds, TopWatershedTWPE, TopSICPounds, TopSICTWPE, TopFacilityPounds, TopFacilityTWPE.
+    description: "Name of data object to be downloaded, e.g., TopWatersheds, TopSIC, TopFacilities, TopPollutantPounds, TopPollutantTWPE, TopWatershedPounds, TopWatershedTWPE, TopSICPounds, TopSICTWPE, TopFacilityPounds, TopFacilityTWPE. NOTE: Use TopWatersheds, TopSIC, or TopFacilities in combination with the search parameters p_cas, p_poll_name, or p_poll_cat."
     type: string
     required: false
   f.p_pf_id: 
@@ -2727,7 +2731,7 @@ paths:
   "/dmr_rest_services.get_all_dmr_facilities": 
     get: 
       summary: Water Pollution Search Discharge Monitoring Report Facilities Service
-      description: This procedure returns facilities with DMR discharges for the selected criteria.
+      description: The procedure returns summary information about NPDES permits, indicating whether they have monitoring requirements, permit limits, and/or DMR data. It provides the data for the Search Statistics table on the Water Pollution Search Results.
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.download"
@@ -2791,7 +2795,7 @@ paths:
         - Water Pollution Search, Facility Reports, and Loading Calculations
       responses: 
         '200': 
-          description: Returns an object that includes an array of facilities with DMR discharges for the selected criteria.
+          description: Returns an object that includes an array of facilities with NPDES permits for the selected criteria.
           schema: 
             description: Root Object
             xml: 
@@ -2803,7 +2807,7 @@ paths:
               - Results
     post: 
       summary: Water Pollution Search Discharge Monitoring Report Facilities Service
-      description: This procedure returns facilities with DMR discharges for the selected criteria.
+      description: The procedure returns summary information about NPDES permits, indicating whether they have monitoring requirements, permit limits, and/or DMR data. It provides the data for the Search Statistics table on the Water Pollution Search Results.
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.download"
@@ -2854,7 +2858,7 @@ paths:
         - Water Pollution Search, Facility Reports, and Loading Calculations
       responses: 
         '200': 
-          description: Returns an object that includes an array of facilities with DMR discharges for the selected criteria.
+          description: Returns an object that includes an array of facilities with NPDES permits for the selected criteria.
           schema: 
             description: Root Object
             xml: 
