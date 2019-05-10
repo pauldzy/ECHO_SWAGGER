@@ -893,6 +893,47 @@ paths:
                 "$ref": "#/definitions/dfr114_Results" 
             required: 
               - Results
+  "/dfr_rest_services.get_ejscreen_indexes": 
+    get: 
+      summary: Detailed Facility Report EJScreen Indexes Service
+      parameters: 
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.p_id"
+        - "$ref": "#/parameters/q.callback"
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dfr0_get_ejscreen_indexes.Results" 
+            required: 
+              - Results
+    post: 
+      summary: Detailed Facility Report EJScreen Indexes Service
+      parameters: 
+        - "$ref": "#/parameters/f.output"
+        - "$ref": "#/parameters/f.p_id"
+        - "$ref": "#/parameters/f.callback"
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dfr0_get_ejscreen_indexes.Results" 
+            required: 
+              - Results
   "/dfr_rest_services.get_extract_dates": 
     get: 
       summary: Displays the dates that data was extracted from native EPA systems for the DFR.
@@ -6975,6 +7016,8 @@ definitions:
         type: string
         title: Finding
         description: For CAA, includes results of source or performance stack tests or Title V certification review results when applicable; for CWA and RCRA, includes whether violations or compliance issues were found during an inspection, if entered into an EPA system
+      CompMonitorID: 
+        type: string
     required: 
       - Statute
       - SourceID
@@ -6984,6 +7027,7 @@ definitions:
       - Date
       - CMSFlag
       - Finding
+      - CompMonitorID
   dfr059: 
     description: Compliance Summary Object
     properties: 
@@ -7252,6 +7296,52 @@ definitions:
       - Income25to50k
       - Income50to75k
       - Income75kPlus
+  dfr018_EJScreenIndexes: 
+    description: EJScreen Index Object
+    properties: 
+      RegistryID: 
+        type: string
+        title: FRS ID
+        example: '110020837601'
+        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
+      PM25: 
+        type: string
+      Ozone: 
+        type: string
+      NATADieselPM: 
+        type: string
+      NATACancerRisk: 
+        type: string
+      NATARespiratoryHI: 
+        type: string
+      TrafficProximity: 
+        type: string
+      LeadPaintIndicator: 
+        type: string
+      RMPProximity: 
+        type: string
+      SuperfundProximity: 
+        type: string
+      HazardWasteProximity: 
+        type: string
+      WaterDischargeProximity: 
+        type: string
+      Over80Count: 
+        type: string
+    required: 
+      - RegistryID
+      - PM25
+      - Ozone
+      - NATADieselPM
+      - NATACancerRisk
+      - NATARespiratoryHI
+      - TrafficProximity
+      - LeadPaintIndicator
+      - RMPProximity
+      - SuperfundProximity
+      - HazardWasteProximity
+      - WaterDischargeProximity
+      - Over80Count
   dfr062: 
     description: Enforcement Compliance Summaries Object
     properties: 
@@ -9188,6 +9278,8 @@ definitions:
         "$ref": "#/definitions/dfr094" 
       Demographics: 
         "$ref": "#/definitions/dfr061" 
+      EJScreenIndexes: 
+        "$ref": "#/definitions/dfr018_EJScreenIndexes" 
       MapOutput: 
         "$ref": "#/definitions/dfr073" 
     required: 
@@ -10670,6 +10762,18 @@ definitions:
       - ReportDocType
       - DocumentType
       - DocumentLink
+  dfr0_get_ejscreen_indexes.Results: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      EJScreenIndexes: 
+        "$ref": "#/definitions/dfr018_EJScreenIndexes" 
+    required: 
+      - Message
   dfr114_Results: 
     description: Results Object
     properties: 
