@@ -468,6 +468,16 @@ parameters:
     description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
     type: number
     required: false
+  f.p_has_map: 
+    name: p_has_map
+    in: formData
+    type: string
+    required: false
+  q.p_has_map: 
+    name: p_has_map
+    in: query
+    type: string
+    required: false
   q.p_role: 
     name: p_role
     in: query
@@ -1452,6 +1462,7 @@ paths:
           type: string
           required: false
         - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.mapset"
       tags: 
         - Case Enforcement
       responses: 
@@ -1594,6 +1605,7 @@ paths:
         - "$ref": "#/parameters/q.qcolumns"
         - "$ref": "#/parameters/q.p_ocmap_fy"
         - "$ref": "#/parameters/q.p_qs"
+        - "$ref": "#/parameters/q.p_has_map"
       tags: 
         - Case Enforcement
       responses: 
@@ -1698,6 +1710,7 @@ paths:
         - "$ref": "#/parameters/f.qcolumns"
         - "$ref": "#/parameters/f.p_ocmap_fy"
         - "$ref": "#/parameters/f.p_qs"
+        - "$ref": "#/parameters/f.p_has_map"
       tags: 
         - Case Enforcement
       responses: 
@@ -1802,6 +1815,8 @@ paths:
         - "$ref": "#/parameters/q.qcolumns"
         - "$ref": "#/parameters/q.p_pretty_print"
         - "$ref": "#/parameters/q.p_ocmap_fy"
+        - "$ref": "#/parameters/q.p_qs"
+        - "$ref": "#/parameters/q.p_has_map"
       tags: 
         - Case Enforcement
       responses: 
@@ -1905,6 +1920,8 @@ paths:
         - "$ref": "#/parameters/f.qcolumns"
         - "$ref": "#/parameters/f.p_pretty_print"
         - "$ref": "#/parameters/f.p_ocmap_fy"
+        - "$ref": "#/parameters/f.p_qs"
+        - "$ref": "#/parameters/f.p_has_map"
       tags: 
         - Case Enforcement
       responses: 
@@ -2057,6 +2074,7 @@ paths:
         - "$ref": "#/parameters/f.c1_long"
         - "$ref": "#/parameters/f.c2_lat"
         - "$ref": "#/parameters/f.c2_long"
+        - "$ref": "#/parameters/f.mapset"
       tags: 
         - Case Enforcement
       responses: 

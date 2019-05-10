@@ -523,6 +523,18 @@
          ,"type": "number"
          ,"required": false
       }
+      ,"f.p_has_map": {
+          "name": "p_has_map"
+         ,"in": "formData"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"q.p_has_map": {
+          "name": "p_has_map"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
       ,"q.p_role": {
           "name": "p_role"
          ,"in": "query"
@@ -1554,6 +1566,9 @@
                ,{
                    "$ref": "#\/parameters\/q.callback"
                }
+               ,{
+                   "$ref": "#\/parameters\/q.mapset"
+               }
             ]
             ,"tags": [
                 "Case Enforcement"
@@ -1867,6 +1882,9 @@
                ,{
                    "$ref": "#\/parameters\/q.p_qs"
                }
+               ,{
+                   "$ref": "#\/parameters\/q.p_has_map"
+               }
             ]
             ,"tags": [
                 "Case Enforcement"
@@ -2127,6 +2145,9 @@
                ,{
                    "$ref": "#\/parameters\/f.p_qs"
                }
+               ,{
+                   "$ref": "#\/parameters\/f.p_has_map"
+               }
             ]
             ,"tags": [
                 "Case Enforcement"
@@ -2386,6 +2407,12 @@
                ,{
                    "$ref": "#\/parameters\/q.p_ocmap_fy"
                }
+               ,{
+                   "$ref": "#\/parameters\/q.p_qs"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_has_map"
+               }
             ]
             ,"tags": [
                 "Case Enforcement"
@@ -2643,6 +2670,12 @@
                ,{
                    "$ref": "#\/parameters\/f.p_ocmap_fy"
                }
+               ,{
+                   "$ref": "#\/parameters\/f.p_qs"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_has_map"
+               }
             ]
             ,"tags": [
                 "Case Enforcement"
@@ -2888,6 +2921,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.c2_long"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.mapset"
                }
             ]
             ,"tags": [
