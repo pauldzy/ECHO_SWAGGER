@@ -740,7 +740,7 @@
             ,4
             ,5
          ]
-         ,"type": "number"
+         ,"type": "string"
          ,"required": false
       }
       ,"f.p_ysly": {
@@ -754,7 +754,7 @@
             ,4
             ,5
          ]
-         ,"type": "number"
+         ,"type": "string"
          ,"required": false
       }
       ,"q.p_ysla": {
@@ -950,6 +950,18 @@
              "Y"
             ,"N"
          ]
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"f.p_cms_flag": {
+          "name": "p_cms_flag"
+         ,"in": "formData"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"q.p_cms_flag": {
+          "name": "p_cms_flag"
+         ,"in": "query"
          ,"type": "string"
          ,"required": false
       }
@@ -1291,6 +1303,9 @@
                    "$ref": "#\/parameters\/q.p_pityp"
                }
                ,{
+                   "$ref": "#\/parameters\/q.p_cms_flag"
+               }
+               ,{
                    "$ref": "#\/parameters\/q.queryset"
                }
                ,{
@@ -1492,6 +1507,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.p_pityp"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_cms_flag"
                }
                ,{
                    "$ref": "#\/parameters\/f.queryset"
@@ -1985,6 +2003,10 @@
                ,"example": "1"
                ,"description": "Number of facilities with insp_5yr_flag populated (CWP_DATE_LAST_INSPECTION)"
             }
+            ,"BadSystemIDs": {
+                "type": "string"
+               ,"description": "Identifies which passed query system identifiers are invalid."
+            }
             ,"QueryID": {
                 "type": "string"
                ,"title": "Query Identifier"
@@ -2020,6 +2042,7 @@
             ,"FEARows"
             ,"InfFEARows"
             ,"INSPRows"
+            ,"BadSystemIDs"
             ,"QueryID"
             ,"PageNo"
          ]
@@ -2419,7 +2442,13 @@
                ,"example": "4\/11\/2013"
                ,"description": "The date of the last system visit by a local agency."
             }
-            ,"SDW5yrSiteVisitCount": {
+            ,"SiteVisits5yrAll": {
+                "type": "string"
+            }
+            ,"SiteVisits5yrInspections": {
+                "type": "string"
+            }
+            ,"SiteVisits5yrOther": {
                 "type": "string"
             }
             ,"MaxScore": {
@@ -2497,7 +2526,9 @@
             ,"SDWDateLastVisitEPA"
             ,"SDWDateLastVisitState"
             ,"SDWDateLastVisitLocal"
-            ,"SDW5yrSiteVisitCount"
+            ,"SiteVisits5yrAll"
+            ,"SiteVisits5yrInspections"
+            ,"SiteVisits5yrOther"
             ,"MaxScore"
          ]
       }

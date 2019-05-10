@@ -752,7 +752,7 @@ parameters:
     - 3
     - 4
     - 5
-    type: number
+    type: string
     required: false
   f.p_ysly: 
     name: p_ysly
@@ -764,7 +764,7 @@ parameters:
     - 3
     - 4
     - 5
-    type: number
+    type: string
     required: false
   q.p_ysla: 
     name: p_ysla
@@ -964,6 +964,16 @@ parameters:
     enum: 
       - Y
       - N
+    type: string
+    required: false
+  f.p_cms_flag: 
+    name: p_cms_flag
+    in: formData
+    type: string
+    required: false
+  q.p_cms_flag: 
+    name: p_cms_flag
+    in: query
     type: string
     required: false
   f.p_qis: 
@@ -1227,6 +1237,7 @@ paths:
         - "$ref": "#/parameters/q.p_idt1"
         - "$ref": "#/parameters/q.p_idt2"
         - "$ref": "#/parameters/q.p_pityp"
+        - "$ref": "#/parameters/q.p_cms_flag"
         - "$ref": "#/parameters/q.queryset"
         - "$ref": "#/parameters/q.responseset"
         - "$ref": "#/parameters/q.callback"
@@ -1312,6 +1323,7 @@ paths:
         - "$ref": "#/parameters/f.p_idt1"
         - "$ref": "#/parameters/f.p_idt2"
         - "$ref": "#/parameters/f.p_pityp"
+        - "$ref": "#/parameters/f.p_cms_flag"
         - "$ref": "#/parameters/f.queryset"
         - "$ref": "#/parameters/f.responseset"
         - "$ref": "#/parameters/f.callback"
@@ -1651,6 +1663,9 @@ definitions:
         type: string
         example: '1'
         description: Number of facilities with insp_5yr_flag populated (CWP_DATE_LAST_INSPECTION)
+      BadSystemIDs: 
+        type: string
+        description: Identifies which passed query system identifiers are invalid.
       QueryID: 
         type: string
         title: Query Identifier
@@ -1680,6 +1695,7 @@ definitions:
       - FEARows
       - InfFEARows
       - INSPRows
+      - BadSystemIDs
       - QueryID
       - PageNo
   sdw3_WaterSystems: 
@@ -2033,7 +2049,11 @@ definitions:
         title: Date Last Visit by Local
         example: 4/11/2013
         description: The date of the last system visit by a local agency.
-      SDW5yrSiteVisitCount: 
+      SiteVisits5yrAll: 
+        type: string
+      SiteVisits5yrInspections: 
+        type: string
+      SiteVisits5yrOther: 
         type: string
       MaxScore: 
         type: string
@@ -2108,5 +2128,7 @@ definitions:
       - SDWDateLastVisitEPA
       - SDWDateLastVisitState
       - SDWDateLastVisitLocal
-      - SDW5yrSiteVisitCount
+      - SiteVisits5yrAll
+      - SiteVisits5yrInspections
+      - SiteVisits5yrOther
       - MaxScore
