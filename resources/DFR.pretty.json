@@ -2,7 +2,7 @@
     "swagger": "2.0"
    ,"info": {
        "title": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Detailed Facility Report (DFR)"
-      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\n<BR><BR>DFR Rest Services provide multiple service endpoints, to retrieve detailed facility location, enforcement, compliance monitoring, and pollutant information for any single facility.  See the Detailed Facility Report (DFR) Help Page (https:\/\/echo.epa.gov\/help\/reports\/detailed-facility-report-help) for additional information on the DFR.  Additionally, a Data Dictionary (https:\/\/echo.epa.gov\/help\/reports\/dfr-data-dictionary) is also available.<BR><BR>\nThere is one primary service end point, get_dfr, that provides all available DFR data.  All other service end points that are exposed, will return data on a single section of the DFR. <br>  \n<br>\nAdditional ECHO Resources:   <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a>\n<br>"
+      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for over 1 million regulated facilities nationwide.\n\nDFR Rest Services provide multiple service endpoints, to retrieve detailed facility location, enforcement, compliance monitoring, and pollutant information for any single facility.  See the Detailed Facility Report (DFR) Help Page (https:\/\/echo.epa.gov\/help\/reports\/detailed-facility-report-help) for additional information on the DFR.  Additionally, a Data Dictionary (https:\/\/echo.epa.gov\/help\/reports\/dfr-data-dictionary) is also available. \nThere is one primary service end point, get_dfr, that provides all available DFR data.  All other service end points that are exposed, will return data on a single section of the DFR.    \n \nAdditional ECHO Resources:   <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a>\n "
       ,"contact": {
           "name": "US EPA, OECA Integration, Targeting and Access Branch"
       }
@@ -1011,6 +1011,82 @@
             }
          }
       }
+      ,"\/dfr_rest_services.get_cwa_eff_alr_exp": {
+          "get": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/q.output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.callback"
+               }
+            ]
+            ,"tags": [
+                "Detailed Facility Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dfr0_get_cwa_eff_alr_exp.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/f.output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.callback"
+               }
+            ]
+            ,"tags": [
+                "Detailed Facility Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dfr0_get_cwa_eff_alr_exp.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
       ,"\/dfr_rest_services.get_cwa_eff_compliance": {
           "get": {
              "summary": "Detailed Facility Report CWA Effluent Compliance Service"
@@ -1079,6 +1155,82 @@
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/dfr012_Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/dfr_rest_services.get_cwa_eff_compliance_exp": {
+          "get": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/q.output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.callback"
+               }
+            ]
+            ,"tags": [
+                "Detailed Facility Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dfr0_get_cwa_eff_compliance_exp.Results"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/f.output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_id"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.callback"
+               }
+            ]
+            ,"tags": [
+                "Detailed Facility Report"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dfr0_get_cwa_eff_compliance_exp.Results"
                      }
                   }
                   ,"required": [
@@ -5183,6 +5335,24 @@
              "Message"
          ]
       }
+      ,"dfr0_get_cwa_eff_alr_exp.Results": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"CWAEffluentALRExceedencesEXP": {
+                "$ref": "#\/definitions\/dfr035_EXP"
+            }
+         }
+         ,"required": [
+             "Message"
+         ]
+      }
       ,"dfr012_Results": {
           "type": "object"
          ,"description": "Results Object"
@@ -5195,6 +5365,24 @@
             }
             ,"CWAEffluentCompliance": {
                 "$ref": "#\/definitions\/dfr038"
+            }
+         }
+         ,"required": [
+             "Message"
+         ]
+      }
+      ,"dfr0_get_cwa_eff_compliance_exp.Results": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"CWAEffluentComplianceEXP": {
+                "$ref": "#\/definitions\/dfr038_EXP"
             }
          }
          ,"required": [
@@ -7949,6 +8137,316 @@
              "Parameters"
          ]
       }
+      ,"dfr035_EXP": {
+          "type": "object"
+         ,"properties": {
+             "Header": {
+                "$ref": "#\/definitions\/dfr0_Qtr13Header"
+            }
+            ,"Sources": {
+                "type": "array"
+               ,"title": "Sources"
+               ,"items": {
+                   "$ref": "#\/definitions\/dfr035_EXP.Sources"
+               }
+               ,"xml": {
+                   "name": "Sources"
+                  ,"wrapped": true
+               }
+            }
+         }
+      }
+      ,"dfr035_EXP.Parameters": {
+          "type": "object"
+         ,"xml": {
+             "name": "Parameters"
+         }
+         ,"properties": {
+             "SourceID": {
+                "type": "string"
+               ,"title": "EPA Source Identifier"
+               ,"example": "ALR040033"
+               ,"description": "Unique Identifier assigned by EPA."
+            }
+            ,"ParameterCode": {
+                "type": "string"
+               ,"title": "Parameter Code"
+               ,"example": "00400"
+               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
+            }
+            ,"ParameterName": {
+                "type": "string"
+               ,"title": "Parameter Name"
+               ,"example": "Iron, total [as Fe]"
+               ,"description": "The pollutant name."
+            }
+            ,"DischargePoint": {
+                "type": "string"
+               ,"title": "Discharge Point"
+               ,"example": "001Q"
+            }
+            ,"MonitoringLocation": {
+                "type": "string"
+               ,"title": "Monitoring Location"
+            }
+            ,"MeasurementType": {
+                "type": "string"
+               ,"title": "Measurement Type"
+               ,"example": "NMth"
+            }
+            ,"Qtr1Value": {
+                "type": "string"
+               ,"title": "Quarter 1 Value"
+            }
+            ,"Qtr2Value": {
+                "type": "string"
+               ,"title": "Quarter 2 Value"
+            }
+            ,"Qtr3Value": {
+                "type": "string"
+               ,"title": "Quarter 3 Value"
+            }
+            ,"Qtr4Value": {
+                "type": "string"
+               ,"title": "Quarter 4 Value"
+            }
+            ,"Qtr5Value": {
+                "type": "string"
+               ,"title": "Quarter 5 Value"
+            }
+            ,"Qtr6Value": {
+                "type": "string"
+               ,"title": "Quarter 6 Value"
+            }
+            ,"Qtr7Value": {
+                "type": "string"
+               ,"title": "Quarter 7 Value"
+            }
+            ,"Qtr8Value": {
+                "type": "string"
+               ,"title": "Quarter 8 Value"
+            }
+            ,"Qtr9Value": {
+                "type": "string"
+               ,"title": "Quarter 9 Value"
+            }
+            ,"Qtr10Value": {
+                "type": "string"
+               ,"title": "Quarter 10 Value"
+            }
+            ,"Qtr11Value": {
+                "type": "string"
+               ,"title": "Quarter 11 Value"
+            }
+            ,"Qtr12Value": {
+                "type": "string"
+               ,"title": "Quarter 12 Value"
+            }
+            ,"Qtr13Value": {
+                "type": "string"
+               ,"title": "Quarter 13 Value"
+            }
+            ,"Mnth1Value": {
+                "type": "string"
+            }
+            ,"Mnth2Value": {
+                "type": "string"
+            }
+            ,"Mnth3Value": {
+                "type": "string"
+            }
+            ,"Mnth4Value": {
+                "type": "string"
+            }
+            ,"Mnth5Value": {
+                "type": "string"
+            }
+            ,"Mnth6Value": {
+                "type": "string"
+            }
+            ,"Mnth7Value": {
+                "type": "string"
+            }
+            ,"Mnth8Value": {
+                "type": "string"
+            }
+            ,"Mnth9Value": {
+                "type": "string"
+            }
+            ,"Mnth10Value": {
+                "type": "string"
+            }
+            ,"Mnth11Value": {
+                "type": "string"
+            }
+            ,"Mnth12Value": {
+                "type": "string"
+            }
+            ,"Mnth13Value": {
+                "type": "string"
+            }
+            ,"Mnth14Value": {
+                "type": "string"
+            }
+            ,"Mnth15Value": {
+                "type": "string"
+            }
+            ,"Mnth16Value": {
+                "type": "string"
+            }
+            ,"Mnth17Value": {
+                "type": "string"
+            }
+            ,"Mnth18Value": {
+                "type": "string"
+            }
+            ,"Mnth19Value": {
+                "type": "string"
+            }
+            ,"Mnth20Value": {
+                "type": "string"
+            }
+            ,"Mnth21Value": {
+                "type": "string"
+            }
+            ,"Mnth22Value": {
+                "type": "string"
+            }
+            ,"Mnth23Value": {
+                "type": "string"
+            }
+            ,"Mnth24Value": {
+                "type": "string"
+            }
+            ,"Mnth25Value": {
+                "type": "string"
+            }
+            ,"Mnth26Value": {
+                "type": "string"
+            }
+            ,"Mnth27Value": {
+                "type": "string"
+            }
+            ,"Mnth28Value": {
+                "type": "string"
+            }
+            ,"Mnth29Value": {
+                "type": "string"
+            }
+            ,"Mnth30Value": {
+                "type": "string"
+            }
+            ,"Mnth31Value": {
+                "type": "string"
+            }
+            ,"Mnth32Value": {
+                "type": "string"
+            }
+            ,"Mnth33Value": {
+                "type": "string"
+            }
+            ,"Mnth34Value": {
+                "type": "string"
+            }
+            ,"Mnth35Value": {
+                "type": "string"
+            }
+            ,"Mnth36Value": {
+                "type": "string"
+            }
+            ,"Mnth37Value": {
+                "type": "string"
+            }
+            ,"Mnth38Value": {
+                "type": "string"
+            }
+            ,"Mnth39Value": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "SourceID"
+            ,"ParameterCode"
+            ,"ParameterName"
+            ,"DischargePoint"
+            ,"MonitoringLocation"
+            ,"MeasurementType"
+            ,"Qtr1Value"
+            ,"Qtr2Value"
+            ,"Qtr3Value"
+            ,"Qtr4Value"
+            ,"Qtr5Value"
+            ,"Qtr6Value"
+            ,"Qtr7Value"
+            ,"Qtr8Value"
+            ,"Qtr9Value"
+            ,"Qtr10Value"
+            ,"Qtr11Value"
+            ,"Qtr12Value"
+            ,"Qtr13Value"
+            ,"Mnth1Value"
+            ,"Mnth2Value"
+            ,"Mnth3Value"
+            ,"Mnth4Value"
+            ,"Mnth5Value"
+            ,"Mnth6Value"
+            ,"Mnth7Value"
+            ,"Mnth8Value"
+            ,"Mnth9Value"
+            ,"Mnth10Value"
+            ,"Mnth11Value"
+            ,"Mnth12Value"
+            ,"Mnth13Value"
+            ,"Mnth14Value"
+            ,"Mnth15Value"
+            ,"Mnth16Value"
+            ,"Mnth17Value"
+            ,"Mnth18Value"
+            ,"Mnth19Value"
+            ,"Mnth20Value"
+            ,"Mnth21Value"
+            ,"Mnth22Value"
+            ,"Mnth23Value"
+            ,"Mnth24Value"
+            ,"Mnth25Value"
+            ,"Mnth26Value"
+            ,"Mnth27Value"
+            ,"Mnth28Value"
+            ,"Mnth29Value"
+            ,"Mnth30Value"
+            ,"Mnth31Value"
+            ,"Mnth32Value"
+            ,"Mnth33Value"
+            ,"Mnth34Value"
+            ,"Mnth35Value"
+            ,"Mnth36Value"
+            ,"Mnth37Value"
+            ,"Mnth38Value"
+            ,"Mnth39Value"
+         ]
+      }
+      ,"dfr035_EXP.Sources": {
+          "type": "object"
+         ,"xml": {
+             "name": "Sources"
+         }
+         ,"properties": {
+             "Parameters": {
+                "type": "array"
+               ,"title": "Parameters"
+               ,"items": {
+                   "$ref": "#\/definitions\/dfr035_EXP.Parameters"
+               }
+               ,"xml": {
+                   "name": "Parameters"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Parameters"
+         ]
+      }
       ,"dfr038": {
           "type": "object"
          ,"description": "CWA Effluent Compliance Object"
@@ -8493,6 +8991,560 @@
                ,"title": "Parameters"
                ,"items": {
                    "$ref": "#\/definitions\/dfr040"
+               }
+               ,"xml": {
+                   "name": "Parameters"
+                  ,"wrapped": true
+               }
+            }
+         }
+      }
+      ,"dfr038_EXP": {
+          "type": "object"
+         ,"properties": {
+             "Header": {
+                "$ref": "#\/definitions\/dfr0_Qtr13Header"
+            }
+            ,"Sources": {
+                "type": "array"
+               ,"title": "Sources"
+               ,"items": {
+                   "$ref": "#\/definitions\/dfr038_EXP.Sources"
+               }
+               ,"xml": {
+                   "name": "Sources"
+                  ,"wrapped": true
+               }
+            }
+         }
+      }
+      ,"dfr038_EXP.Parameters": {
+          "type": "object"
+         ,"xml": {
+             "name": "Parameters"
+         }
+         ,"properties": {
+             "SourceID": {
+                "type": "string"
+               ,"title": "EPA Source Identifier"
+               ,"example": "ALR040033"
+               ,"description": "Unique Identifier assigned by EPA."
+            }
+            ,"ParameterCode": {
+                "type": "string"
+               ,"title": "Parameter Code"
+               ,"example": "00400"
+               ,"description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)"
+            }
+            ,"ParameterName": {
+                "type": "string"
+               ,"title": "Parameter Name"
+               ,"example": "Iron, total [as Fe]"
+               ,"description": "The pollutant name."
+            }
+            ,"DischargePoint": {
+                "type": "string"
+               ,"title": "Discharge Point"
+               ,"example": "001Q"
+            }
+            ,"MonitoringLocation": {
+                "type": "string"
+               ,"title": "Monitoring Location"
+            }
+            ,"MeasurementType": {
+                "type": "string"
+               ,"title": "Measurement Type"
+               ,"example": "NMth"
+            }
+            ,"Qtr1Status": {
+                "type": "string"
+               ,"title": "Quarter 1 Status"
+               ,"example": "No Viol"
+               ,"description": "The relevant status for the quarter."
+            }
+            ,"Qtr1Value": {
+                "type": "string"
+               ,"title": "Quarter 1 Value"
+            }
+            ,"Qtr2Status": {
+                "type": "string"
+               ,"title": "Quarter 2 Status"
+               ,"example": "No Viol"
+               ,"description": "The relevant status for the quarter."
+            }
+            ,"Qtr2Value": {
+                "type": "string"
+               ,"title": "Quarter 2 Value"
+            }
+            ,"Qtr3Status": {
+                "type": "string"
+               ,"title": "Quarter 3 Status"
+               ,"example": "No Viol"
+               ,"description": "The relevant status for the quarter."
+            }
+            ,"Qtr3Value": {
+                "type": "string"
+               ,"title": "Quarter 3 Value"
+            }
+            ,"Qtr4Status": {
+                "type": "string"
+               ,"title": "Quarter 4 Status"
+               ,"example": "No Viol"
+               ,"description": "The relevant status for the quarter."
+            }
+            ,"Qtr4Value": {
+                "type": "string"
+               ,"title": "Quarter 4 Value"
+            }
+            ,"Qtr5Status": {
+                "type": "string"
+               ,"title": "Quarter 5 Status"
+               ,"example": "No Viol"
+               ,"description": "The relevant status for the quarter."
+            }
+            ,"Qtr5Value": {
+                "type": "string"
+               ,"title": "Quarter 5 Value"
+            }
+            ,"Qtr6Status": {
+                "type": "string"
+               ,"title": "Quarter 6 Status"
+               ,"example": "No Viol"
+               ,"description": "The relevant status for the quarter."
+            }
+            ,"Qtr6Value": {
+                "type": "string"
+               ,"title": "Quarter 6 Value"
+            }
+            ,"Qtr7Status": {
+                "type": "string"
+               ,"title": "Quarter 7 Status"
+               ,"example": "No Viol"
+               ,"description": "The relevant status for the quarter."
+            }
+            ,"Qtr7Value": {
+                "type": "string"
+               ,"title": "Quarter 7 Value"
+            }
+            ,"Qtr8Status": {
+                "type": "string"
+               ,"title": "Quarter 8 Status"
+               ,"example": "No Viol"
+               ,"description": "The relevant status for the quarter."
+            }
+            ,"Qtr8Value": {
+                "type": "string"
+               ,"title": "Quarter 8 Value"
+            }
+            ,"Qtr9Status": {
+                "type": "string"
+               ,"title": "Quarter 9 Status"
+               ,"example": "No Viol"
+               ,"description": "The relevant status for the quarter."
+            }
+            ,"Qtr9Value": {
+                "type": "string"
+               ,"title": "Quarter 9 Value"
+            }
+            ,"Qtr10Status": {
+                "type": "string"
+               ,"title": "Quarter 10 Status"
+               ,"example": "No Viol"
+               ,"description": "The relevant status for the quarter."
+            }
+            ,"Qtr10Value": {
+                "type": "string"
+               ,"title": "Quarter 10 Value"
+            }
+            ,"Qtr11Status": {
+                "type": "string"
+               ,"title": "Quarter 11 Status"
+               ,"example": "No Viol"
+               ,"description": "The relevant status for the quarter."
+            }
+            ,"Qtr11Value": {
+                "type": "string"
+               ,"title": "Quarter 11 Value"
+            }
+            ,"Qtr12Status": {
+                "type": "string"
+               ,"title": "Quarter 12 Status"
+               ,"example": "No Viol"
+               ,"description": "The relevant status for the quarter."
+            }
+            ,"Qtr12Value": {
+                "type": "string"
+               ,"title": "Quarter 12 Value"
+            }
+            ,"Qtr13Status": {
+                "type": "string"
+               ,"title": "Quarter 13 Status"
+               ,"example": "No Viol"
+               ,"description": "The relevant status for the quarter."
+            }
+            ,"Qtr13Value": {
+                "type": "string"
+               ,"title": "Quarter 13 Value"
+            }
+            ,"Mnth1Status": {
+                "type": "string"
+            }
+            ,"Mnth1Value": {
+                "type": "string"
+            }
+            ,"Mnth2Status": {
+                "type": "string"
+            }
+            ,"Mnth2Value": {
+                "type": "string"
+            }
+            ,"Mnth3Status": {
+                "type": "string"
+            }
+            ,"Mnth3Value": {
+                "type": "string"
+            }
+            ,"Mnth4Status": {
+                "type": "string"
+            }
+            ,"Mnth4Value": {
+                "type": "string"
+            }
+            ,"Mnth5Status": {
+                "type": "string"
+            }
+            ,"Mnth5Value": {
+                "type": "string"
+            }
+            ,"Mnth6Status": {
+                "type": "string"
+            }
+            ,"Mnth6Value": {
+                "type": "string"
+            }
+            ,"Mnth7Status": {
+                "type": "string"
+            }
+            ,"Mnth7Value": {
+                "type": "string"
+            }
+            ,"Mnth8Status": {
+                "type": "string"
+            }
+            ,"Mnth8Value": {
+                "type": "string"
+            }
+            ,"Mnth9Status": {
+                "type": "string"
+            }
+            ,"Mnth9Value": {
+                "type": "string"
+            }
+            ,"Mnth10Status": {
+                "type": "string"
+            }
+            ,"Mnth10Value": {
+                "type": "string"
+            }
+            ,"Mnth11Status": {
+                "type": "string"
+            }
+            ,"Mnth11Value": {
+                "type": "string"
+            }
+            ,"Mnth12Status": {
+                "type": "string"
+            }
+            ,"Mnth12Value": {
+                "type": "string"
+            }
+            ,"Mnth13Status": {
+                "type": "string"
+            }
+            ,"Mnth13Value": {
+                "type": "string"
+            }
+            ,"Mnth14Status": {
+                "type": "string"
+            }
+            ,"Mnth14Value": {
+                "type": "string"
+            }
+            ,"Mnth15Status": {
+                "type": "string"
+            }
+            ,"Mnth15Value": {
+                "type": "string"
+            }
+            ,"Mnth16Status": {
+                "type": "string"
+            }
+            ,"Mnth16Value": {
+                "type": "string"
+            }
+            ,"Mnth17Status": {
+                "type": "string"
+            }
+            ,"Mnth17Value": {
+                "type": "string"
+            }
+            ,"Mnth18Status": {
+                "type": "string"
+            }
+            ,"Mnth18Value": {
+                "type": "string"
+            }
+            ,"Mnth19Status": {
+                "type": "string"
+            }
+            ,"Mnth19Value": {
+                "type": "string"
+            }
+            ,"Mnth20Status": {
+                "type": "string"
+            }
+            ,"Mnth20Value": {
+                "type": "string"
+            }
+            ,"Mnth21Status": {
+                "type": "string"
+            }
+            ,"Mnth21Value": {
+                "type": "string"
+            }
+            ,"Mnth22Status": {
+                "type": "string"
+            }
+            ,"Mnth22Value": {
+                "type": "string"
+            }
+            ,"Mnth23Status": {
+                "type": "string"
+            }
+            ,"Mnth23Value": {
+                "type": "string"
+            }
+            ,"Mnth24Status": {
+                "type": "string"
+            }
+            ,"Mnth24Value": {
+                "type": "string"
+            }
+            ,"Mnth25Status": {
+                "type": "string"
+            }
+            ,"Mnth25Value": {
+                "type": "string"
+            }
+            ,"Mnth26Status": {
+                "type": "string"
+            }
+            ,"Mnth26Value": {
+                "type": "string"
+            }
+            ,"Mnth27Status": {
+                "type": "string"
+            }
+            ,"Mnth27Value": {
+                "type": "string"
+            }
+            ,"Mnth28Status": {
+                "type": "string"
+            }
+            ,"Mnth28Value": {
+                "type": "string"
+            }
+            ,"Mnth29Status": {
+                "type": "string"
+            }
+            ,"Mnth29Value": {
+                "type": "string"
+            }
+            ,"Mnth30Status": {
+                "type": "string"
+            }
+            ,"Mnth30Value": {
+                "type": "string"
+            }
+            ,"Mnth31Status": {
+                "type": "string"
+            }
+            ,"Mnth31Value": {
+                "type": "string"
+            }
+            ,"Mnth32Status": {
+                "type": "string"
+            }
+            ,"Mnth32Value": {
+                "type": "string"
+            }
+            ,"Mnth33Status": {
+                "type": "string"
+            }
+            ,"Mnth33Value": {
+                "type": "string"
+            }
+            ,"Mnth34Status": {
+                "type": "string"
+            }
+            ,"Mnth34Value": {
+                "type": "string"
+            }
+            ,"Mnth35Status": {
+                "type": "string"
+            }
+            ,"Mnth35Value": {
+                "type": "string"
+            }
+            ,"Mnth36Status": {
+                "type": "string"
+            }
+            ,"Mnth36Value": {
+                "type": "string"
+            }
+            ,"Mnth37Status": {
+                "type": "string"
+            }
+            ,"Mnth37Value": {
+                "type": "string"
+            }
+            ,"Mnth38Status": {
+                "type": "string"
+            }
+            ,"Mnth38Value": {
+                "type": "string"
+            }
+            ,"Mnth39Status": {
+                "type": "string"
+            }
+            ,"Mnth39Value": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "SourceID"
+            ,"ParameterCode"
+            ,"ParameterName"
+            ,"DischargePoint"
+            ,"MonitoringLocation"
+            ,"MeasurementType"
+            ,"Qtr1Status"
+            ,"Qtr1Value"
+            ,"Qtr2Status"
+            ,"Qtr2Value"
+            ,"Qtr3Status"
+            ,"Qtr3Value"
+            ,"Qtr4Status"
+            ,"Qtr4Value"
+            ,"Qtr5Status"
+            ,"Qtr5Value"
+            ,"Qtr6Status"
+            ,"Qtr6Value"
+            ,"Qtr7Status"
+            ,"Qtr7Value"
+            ,"Qtr8Status"
+            ,"Qtr8Value"
+            ,"Qtr9Status"
+            ,"Qtr9Value"
+            ,"Qtr10Status"
+            ,"Qtr10Value"
+            ,"Qtr11Status"
+            ,"Qtr11Value"
+            ,"Qtr12Status"
+            ,"Qtr12Value"
+            ,"Qtr13Status"
+            ,"Qtr13Value"
+            ,"Mnth1Status"
+            ,"Mnth1Value"
+            ,"Mnth2Status"
+            ,"Mnth2Value"
+            ,"Mnth3Status"
+            ,"Mnth3Value"
+            ,"Mnth4Status"
+            ,"Mnth4Value"
+            ,"Mnth5Status"
+            ,"Mnth5Value"
+            ,"Mnth6Status"
+            ,"Mnth6Value"
+            ,"Mnth7Status"
+            ,"Mnth7Value"
+            ,"Mnth8Status"
+            ,"Mnth8Value"
+            ,"Mnth9Status"
+            ,"Mnth9Value"
+            ,"Mnth10Status"
+            ,"Mnth10Value"
+            ,"Mnth11Status"
+            ,"Mnth11Value"
+            ,"Mnth12Status"
+            ,"Mnth12Value"
+            ,"Mnth13Status"
+            ,"Mnth13Value"
+            ,"Mnth14Status"
+            ,"Mnth14Value"
+            ,"Mnth15Status"
+            ,"Mnth15Value"
+            ,"Mnth16Status"
+            ,"Mnth16Value"
+            ,"Mnth17Status"
+            ,"Mnth17Value"
+            ,"Mnth18Status"
+            ,"Mnth18Value"
+            ,"Mnth19Status"
+            ,"Mnth19Value"
+            ,"Mnth20Status"
+            ,"Mnth20Value"
+            ,"Mnth21Status"
+            ,"Mnth21Value"
+            ,"Mnth22Status"
+            ,"Mnth22Value"
+            ,"Mnth23Status"
+            ,"Mnth23Value"
+            ,"Mnth24Status"
+            ,"Mnth24Value"
+            ,"Mnth25Status"
+            ,"Mnth25Value"
+            ,"Mnth26Status"
+            ,"Mnth26Value"
+            ,"Mnth27Status"
+            ,"Mnth27Value"
+            ,"Mnth28Status"
+            ,"Mnth28Value"
+            ,"Mnth29Status"
+            ,"Mnth29Value"
+            ,"Mnth30Status"
+            ,"Mnth30Value"
+            ,"Mnth31Status"
+            ,"Mnth31Value"
+            ,"Mnth32Status"
+            ,"Mnth32Value"
+            ,"Mnth33Status"
+            ,"Mnth33Value"
+            ,"Mnth34Status"
+            ,"Mnth34Value"
+            ,"Mnth35Status"
+            ,"Mnth35Value"
+            ,"Mnth36Status"
+            ,"Mnth36Value"
+            ,"Mnth37Status"
+            ,"Mnth37Value"
+            ,"Mnth38Status"
+            ,"Mnth38Value"
+            ,"Mnth39Status"
+            ,"Mnth39Value"
+         ]
+      }
+      ,"dfr038_EXP.Sources": {
+          "type": "object"
+         ,"xml": {
+             "name": "Sources"
+         }
+         ,"properties": {
+             "Parameters": {
+                "type": "array"
+               ,"title": "Parameters"
+               ,"items": {
+                   "$ref": "#\/definitions\/dfr038_EXP.Parameters"
                }
                ,"xml": {
                    "name": "Parameters"
@@ -12637,6 +13689,9 @@
             ,"CWAEffluentCompliance": {
                 "$ref": "#\/definitions\/dfr038"
             }
+            ,"CWAEffluentComplianceEXP": {
+                "$ref": "#\/definitions\/dfr038_EXP"
+            }
             ,"CWAPSCompliance": {
                 "$ref": "#\/definitions\/dfr042"
             }
@@ -12648,6 +13703,9 @@
             }
             ,"CWAEffluentALRExceedences": {
                 "$ref": "#\/definitions\/dfr035"
+            }
+            ,"CWAEffluentALRExceedencesEXP": {
+                "$ref": "#\/definitions\/dfr035_EXP"
             }
             ,"AirCompliance": {
                 "$ref": "#\/definitions\/dfr019"
