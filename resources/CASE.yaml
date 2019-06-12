@@ -2856,6 +2856,8 @@ definitions:
         title: Message
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
+      QueryId: 
+        type: string
       QueryRows: 
         type: string
         title: Query Row Count
@@ -2958,6 +2960,7 @@ definitions:
         "$ref": "#/definitions/crs0_ClusterOutput" 
     required: 
       - Message
+      - QueryId
       - QueryRows
       - MapLocations
       - JDCRows

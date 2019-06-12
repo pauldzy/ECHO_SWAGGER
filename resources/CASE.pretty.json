@@ -3922,6 +3922,9 @@
                ,"example": "Success"
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
+            ,"QueryId": {
+                "type": "string"
+            }
             ,"QueryRows": {
                 "type": "string"
                ,"title": "Query Row Count"
@@ -4048,6 +4051,7 @@
          }
          ,"required": [
              "Message"
+            ,"QueryId"
             ,"QueryRows"
             ,"MapLocations"
             ,"JDCRows"
