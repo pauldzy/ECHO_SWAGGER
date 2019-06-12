@@ -26,6 +26,12 @@ Prototype of hosting ECHO Open API resources on GitHub.  Add more blurbage here.
 
 * [View service documentation in Swagger Editor](http://editor.swagger.io?url=http://raw.githubusercontent.com/pauldzy/ECHO_SWAGGER/master/resources/CWA.yaml)
 
+#### U.S. EPA Enforcement and Compliance History Online (ECHO) - Corporate Compliance Screener Rest Services
+
+* [View service documentation via Swagger UI](http://petstore.swagger.io?url=https://raw.githubusercontent.com/pauldzy/ECHO_SWAGGER/master/resources/COMPSCREEN.json)
+
+* [View service documentation in Swagger Editor](http://editor.swagger.io?url=http://raw.githubusercontent.com/pauldzy/ECHO_SWAGGER/master/resources/COMPSCREEN.yaml)
+
 #### U.S. EPA Enforcement and Compliance History Online (ECHO) - Detailed Facility Report (DFR)
 
 * [View service documentation via Swagger UI](http://petstore.swagger.io?url=https://raw.githubusercontent.com/pauldzy/ECHO_SWAGGER/master/resources/DFR.json)
