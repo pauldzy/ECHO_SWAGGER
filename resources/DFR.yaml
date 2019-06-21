@@ -4273,193 +4273,6 @@ definitions:
         "$ref": "#/definitions/dfr066z" 
     required: 
       - Message
-  dfr000zget_d80d90s_details.D80D90sDetails: 
-    description: D80D90sDetails Object
-    properties: 
-      Sources: 
-        type: array
-        title: Sources
-        items: 
-          "$ref": "#/definitions/dfr000zget_d80d90s_details.D80D90sDetails.Sources" 
-        xml: 
-          name: Sources
-          wrapped: true
-    required: 
-      - Sources
-  dfr000zget_d80d90s_details.D80D90sDetails.Sources: 
-    description: Sources Object
-    properties: 
-      NPDESId: 
-        type: string
-        title: National Pollutant Discharge Elimination System (NPDES) ID
-        example: IN0000094
-        description: A unique ID assigned for each record/permit/site/facility within ICIS-NPDES.
-      VersionNmbr: 
-        type: string
-        title: Version Number
-        example: '0'
-        description: The version of the permit when a modification or reissuance is applied to the permit. Version = 0 indicates the original permit issuance
-      PermFeatureNmbr: 
-        type: string
-        title: Discharge Point
-        example: '001'
-        description: A three-character code in ICIS-NPDES that identifies the point of discharge (e.g., outfall) for a facility. A NPDES permit may have multiple points of discharge. If the code is less than three characters in the .CSV, append zeros to the beginning of the number (e.g., 1 is equivalent to 001)
-      LimitId: 
-        type: string
-        title: Limit ID
-        example: '3401161480'
-        description: The unique identifier for a limit parameter record
-      MonitoringLocationCode: 
-        type: string
-        title: Monitoring Location Code
-        example: '1'
-        description: The code that the monitoring location at which the monitoring requirement (and effluent limit if limited) applies. One parameter may have several monitoring location codes pertaining to the same permitted feature
-      MonitoringLocationDesc: 
-        type: string
-        title: Monitoring Location Description
-        example: Effluent Gross
-        description: The name of the monitoring location at which the monitoring requirement (and effluent limit if limited) applies
-      LimitBeginDate: 
-        type: string
-        title: Limit Begin Date
-        example: 01-APR-14
-        description: The date on which a limit becomes in effect for a particular parameter in a limit set
-      LimitEndDate: 
-        type: string
-        title: Limit End Date
-        example: 31-MAR-19
-        description: The date on which a limit stops being in effect for a particular parameter in a limit set
-      LimitSetName: 
-        type: string
-        title: Limit Set Name
-        description: The name associated with a group of parameter permit limits.
-      ParameterCode: 
-        type: string
-        title: Parameter Code
-        example: '00400'
-        description: The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)
-      ParameterDesc: 
-        type: string
-        title: Parameter Description
-        example: pH
-        description: The pollutant name and form (e.g., dissolved, suspended) associated with the parameter code
-      ValueTypeCode: 
-        type: string
-        title: Measured Value Type Code
-        example: C1
-        description: The indication of the limit value type (e.g., Quantity 1, Concentration 2)
-      StatisticalBaseMonthlyAvg: 
-        type: string
-      MonitoringPeriodEndDate: 
-        type: string
-        title: Monitoring Period End Date
-        example: 30-APR-14
-        description: The date that the monitoring period for the values covered by the DMR Form ends
-      DmrDueDate: 
-        type: string
-        title: DMR Due Date
-        example: 01/25/2018
-        description: The due date for the DMR to the NPDES program authority (e.g., EPA or state environmental agency) (MM/DD/YYYY). 
-      NpdesViolationId: 
-        type: string
-        title: NPDES Violation ID
-        example: '3638943345'
-        description: The unique identifier for the violation related to a particular site.
-      RncDetectionDate: 
-        type: string
-        title: Reportable Noncompliance Detection Date
-        example: 02/19/2016
-        description: The date that RNC was detected. It can be entered manually or automatically. In cases in which RNC is detected by ICIS-NPDES, the detection date entered will vary according to the type of violation detected (MM/DD/YYY).
-      RncDetectionCode: 
-        type: string
-        title: Reportable Noncompliance Detection Code
-        example: A
-        description: The reportable noncompliance detection code.
-      RncDetectionDesc: 
-        type: string
-        title: Reportable Noncompliance Detection Description
-        example: Enforcement Order
-        description: The reportable noncompliance detection description.
-      RncResolutionDate: 
-        type: string
-        title: Reportable Noncompliance Resolution Date
-        example: 02/19/2016
-        description: The reportable noncompliance resolution date.
-      RncResolutionCode: 
-        type: string
-        title: Reportable Noncompliance Resolution Code
-        example: '4'
-        description: The reportable noncompliance resolution code.
-      RncResolutionDesc: 
-        type: string
-        title: Reportable Noncompliance Resolution Description
-        example: 	RP - In Compliance with Formal Enforcement Action Final Order Requirement
-        description: The reportable noncompliance resolution description.
-      NodiCode: 
-        type: string
-        title: No Data Indicator (NODI) Code
-        example: '1'
-        description: The no data indicator code for DMRs where no measurements are reported.
-      NodiDesc: 
-        type: string
-        title: No Data Indicator (NODI) Description
-        example: Wrong Flow
-        description: The description of the NODI code explaining why no data are reported (e.g., no discharge, not quantifiable, conditional monitoring).
-      NodiValidationFlag: 
-        type: string
-        title: No Data Indicator (NODI) Validation Flag
-        example: Y
-        description: Indicates whether the NODI is considered valid (Y) or invalid (N) for compliance determination purposes.
-      DaysLate: 
-        type: string
-        title: Days Received Late
-        example: '5'
-        description: The number of days the DMR value is late, as generated in ICIS-NPDES
-      MissingLate: 
-        type: string
-        title: "Missing or Late DMR?"
-        example: LATE
-        description: Indicates if the permitted facility submitted missing or late DMRS to the NPDES permitting authority within the past three years.
-      ValueReceivedDate: 
-        type: string
-        title: Date Received
-        example: 08-MAY-14
-        description: The date the DMR value was received by the regulatory authority
-      ViolationCode: 
-        type: string
-        title: Violation Code
-        example: E90
-        description: The code identifying which type of Violation has occurred (e.g., D80 = Required Monitoring DMR Value Non-Receipt, E90 = Effluent Violation, C20 = Schedule Event Achieved Late)
-    required: 
-      - NPDESId
-      - VersionNmbr
-      - PermFeatureNmbr
-      - LimitId
-      - MonitoringLocationCode
-      - MonitoringLocationDesc
-      - LimitBeginDate
-      - LimitEndDate
-      - LimitSetName
-      - ParameterCode
-      - ParameterDesc
-      - ValueTypeCode
-      - StatisticalBaseMonthlyAvg
-      - MonitoringPeriodEndDate
-      - DmrDueDate
-      - NpdesViolationId
-      - RncDetectionDate
-      - RncDetectionCode
-      - RncDetectionDesc
-      - RncResolutionDate
-      - RncResolutionCode
-      - RncResolutionDesc
-      - NodiCode
-      - NodiDesc
-      - NodiValidationFlag
-      - DaysLate
-      - MissingLate
-      - ValueReceivedDate
-      - ViolationCode
   dfr022z: 
     description: Results Object
     properties: 
@@ -4469,7 +4282,7 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       D80D90sDetails: 
-        "$ref": "#/definitions/dfr000zget_d80d90s_details.D80D90sDetails" 
+        "$ref": "#/definitions/dfr078z" 
     required: 
       - Message
       - D80D90sDetails
@@ -9900,11 +9713,11 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfr064z.Status" 
+          "$ref": "#/definitions/dfr065z" 
         xml: 
           name: Sources
           wrapped: true
-  dfr064z.Status: 
+  dfr065z: 
     description: CWA RNC Compliance Statuses Object
     xml: 
       name: Status
@@ -10925,6 +10738,193 @@ definitions:
       - Description
       - CurrentAsOf
       - QtrsInNC
+  dfr078z: 
+    description: D80D90sDetails Object
+    properties: 
+      Sources: 
+        type: array
+        title: Sources
+        items: 
+          "$ref": "#/definitions/dfr080z" 
+        xml: 
+          name: Sources
+          wrapped: true
+    required: 
+      - Sources
+  dfr080z: 
+    description: D80D90sDetails Sources Object
+    properties: 
+      NPDESId: 
+        type: string
+        title: National Pollutant Discharge Elimination System (NPDES) ID
+        example: IN0000094
+        description: A unique ID assigned for each record/permit/site/facility within ICIS-NPDES.
+      VersionNmbr: 
+        type: string
+        title: Version Number
+        example: '0'
+        description: The version of the permit when a modification or reissuance is applied to the permit. Version = 0 indicates the original permit issuance
+      PermFeatureNmbr: 
+        type: string
+        title: Discharge Point
+        example: '001'
+        description: A three-character code in ICIS-NPDES that identifies the point of discharge (e.g., outfall) for a facility. A NPDES permit may have multiple points of discharge. If the code is less than three characters in the .CSV, append zeros to the beginning of the number (e.g., 1 is equivalent to 001)
+      LimitId: 
+        type: string
+        title: Limit ID
+        example: '3401161480'
+        description: The unique identifier for a limit parameter record
+      MonitoringLocationCode: 
+        type: string
+        title: Monitoring Location Code
+        example: '1'
+        description: The code that the monitoring location at which the monitoring requirement (and effluent limit if limited) applies. One parameter may have several monitoring location codes pertaining to the same permitted feature
+      MonitoringLocationDesc: 
+        type: string
+        title: Monitoring Location Description
+        example: Effluent Gross
+        description: The name of the monitoring location at which the monitoring requirement (and effluent limit if limited) applies
+      LimitBeginDate: 
+        type: string
+        title: Limit Begin Date
+        example: 01-APR-14
+        description: The date on which a limit becomes in effect for a particular parameter in a limit set
+      LimitEndDate: 
+        type: string
+        title: Limit End Date
+        example: 31-MAR-19
+        description: The date on which a limit stops being in effect for a particular parameter in a limit set
+      LimitSetName: 
+        type: string
+        title: Limit Set Name
+        description: The name associated with a group of parameter permit limits.
+      ParameterCode: 
+        type: string
+        title: Parameter Code
+        example: '00400'
+        description: The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)
+      ParameterDesc: 
+        type: string
+        title: Parameter Description
+        example: pH
+        description: The pollutant name and form (e.g., dissolved, suspended) associated with the parameter code
+      ValueTypeCode: 
+        type: string
+        title: Measured Value Type Code
+        example: C1
+        description: The indication of the limit value type (e.g., Quantity 1, Concentration 2)
+      StatisticalBaseMonthlyAvg: 
+        type: string
+      MonitoringPeriodEndDate: 
+        type: string
+        title: Monitoring Period End Date
+        example: 30-APR-14
+        description: The date that the monitoring period for the values covered by the DMR Form ends
+      DmrDueDate: 
+        type: string
+        title: DMR Due Date
+        example: 01/25/2018
+        description: The due date for the DMR to the NPDES program authority (e.g., EPA or state environmental agency) (MM/DD/YYYY). 
+      NpdesViolationId: 
+        type: string
+        title: NPDES Violation ID
+        example: '3638943345'
+        description: The unique identifier for the violation related to a particular site.
+      RncDetectionDate: 
+        type: string
+        title: Reportable Noncompliance Detection Date
+        example: 02/19/2016
+        description: The date that RNC was detected. It can be entered manually or automatically. In cases in which RNC is detected by ICIS-NPDES, the detection date entered will vary according to the type of violation detected (MM/DD/YYY).
+      RncDetectionCode: 
+        type: string
+        title: Reportable Noncompliance Detection Code
+        example: A
+        description: The reportable noncompliance detection code.
+      RncDetectionDesc: 
+        type: string
+        title: Reportable Noncompliance Detection Description
+        example: Enforcement Order
+        description: The reportable noncompliance detection description.
+      RncResolutionDate: 
+        type: string
+        title: Reportable Noncompliance Resolution Date
+        example: 02/19/2016
+        description: The reportable noncompliance resolution date.
+      RncResolutionCode: 
+        type: string
+        title: Reportable Noncompliance Resolution Code
+        example: '4'
+        description: The reportable noncompliance resolution code.
+      RncResolutionDesc: 
+        type: string
+        title: Reportable Noncompliance Resolution Description
+        example: 	RP - In Compliance with Formal Enforcement Action Final Order Requirement
+        description: The reportable noncompliance resolution description.
+      NodiCode: 
+        type: string
+        title: No Data Indicator (NODI) Code
+        example: '1'
+        description: The no data indicator code for DMRs where no measurements are reported.
+      NodiDesc: 
+        type: string
+        title: No Data Indicator (NODI) Description
+        example: Wrong Flow
+        description: The description of the NODI code explaining why no data are reported (e.g., no discharge, not quantifiable, conditional monitoring).
+      NodiValidationFlag: 
+        type: string
+        title: No Data Indicator (NODI) Validation Flag
+        example: Y
+        description: Indicates whether the NODI is considered valid (Y) or invalid (N) for compliance determination purposes.
+      DaysLate: 
+        type: string
+        title: Days Received Late
+        example: '5'
+        description: The number of days the DMR value is late, as generated in ICIS-NPDES
+      MissingLate: 
+        type: string
+        title: "Missing or Late DMR?"
+        example: LATE
+        description: Indicates if the permitted facility submitted missing or late DMRS to the NPDES permitting authority within the past three years.
+      ValueReceivedDate: 
+        type: string
+        title: Date Received
+        example: 08-MAY-14
+        description: The date the DMR value was received by the regulatory authority
+      ViolationCode: 
+        type: string
+        title: Violation Code
+        example: E90
+        description: The code identifying which type of Violation has occurred (e.g., D80 = Required Monitoring DMR Value Non-Receipt, E90 = Effluent Violation, C20 = Schedule Event Achieved Late)
+    required: 
+      - NPDESId
+      - VersionNmbr
+      - PermFeatureNmbr
+      - LimitId
+      - MonitoringLocationCode
+      - MonitoringLocationDesc
+      - LimitBeginDate
+      - LimitEndDate
+      - LimitSetName
+      - ParameterCode
+      - ParameterDesc
+      - ValueTypeCode
+      - StatisticalBaseMonthlyAvg
+      - MonitoringPeriodEndDate
+      - DmrDueDate
+      - NpdesViolationId
+      - RncDetectionDate
+      - RncDetectionCode
+      - RncDetectionDesc
+      - RncResolutionDate
+      - RncResolutionCode
+      - RncResolutionDesc
+      - NodiCode
+      - NodiDesc
+      - NodiValidationFlag
+      - DaysLate
+      - MissingLate
+      - ValueReceivedDate
+      - ViolationCode
   dfr081z: 
     description: Demographics Object
     properties: 
@@ -12579,22 +12579,22 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfr105zs" 
+          "$ref": "#/definitions/dfr105z" 
         xml: 
           name: Sources
           wrapped: true
-  dfr105zs: 
+  dfr105z: 
     description: Source Object
     xml: 
       name: Sources
     properties: 
       Status: 
-        "$ref": "#/definitions/dfr105zs.Status" 
+        "$ref": "#/definitions/dfr105x" 
       Evaluations: 
         type: array
         title: Evaluations
         items: 
-          "$ref": "#/definitions/dfr105zs.Evaluations" 
+          "$ref": "#/definitions/dfr105y" 
         xml: 
           name: Evaluations
           wrapped: true
@@ -12602,11 +12602,11 @@ definitions:
         type: array
         title: Violations
         items: 
-          "$ref": "#/definitions/dfr105zs.Violations" 
+          "$ref": "#/definitions/dfr105w" 
         xml: 
           name: Violations
           wrapped: true
-  dfr105zs.Evaluations: 
+  dfr105y: 
     description: Evaluations Object
     xml: 
       name: Evaluations
@@ -12920,7 +12920,7 @@ definitions:
       - Mnth34Status
       - Mnth35Status
       - Mnth36Status
-  dfr105zs.Status: 
+  dfr105x: 
     description: Status Object
     properties: 
       SourceID: 
@@ -13218,7 +13218,7 @@ definitions:
       - Mnth34Status
       - Mnth35Status
       - Mnth36Status
-  dfr105zs.Violations: 
+  dfr105w: 
     description: Violations Object
     xml: 
       name: Violations
@@ -14385,13 +14385,13 @@ definitions:
       SICCodes: 
         type: array
         items: 
-          "$ref": "#/definitions/dfr113zCodes" 
+          "$ref": "#/definitions/dfr115z" 
         xml: 
           name: SICCodes
           wrapped: true
     required: 
       - SICCodes
-  dfr113zCodes: 
+  dfr115z: 
     description: SIC Codes Object
     xml: 
       name: SICCodes
