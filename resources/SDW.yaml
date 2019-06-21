@@ -3,23 +3,22 @@ swagger: '2.0'
 info: 
   title: U.S. EPA Enforcement and Compliance History Online (ECHO) - Safe Drinking Water Act
   description: |-
-    Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.
-    <BR><BR>SDW Rest Services provides multiple service endpoints, each with specific capabilities, to search and retrieve data on public water systems regulated under the Safe Drinking Water Act (SDWA) .
-    The returned results reflect data drawn from EPA's Federal Safe Drinking Water Information System (SDWIS) database.
-    <BR><BR>
+    Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for over 1 million regulated facilities nationwide.
+       SDW Rest Services provides multiple service endpoints, each with specific capabilities, to search and retrieve data on public water systems regulated under the Safe Drinking Water Act (SDWA).  The returned results reflect data drawn from EPA's Federal Safe Drinking Water Information System (SDWIS) database.
+     
     The get_systems, get_qid, and get_download end points are meant to be used together.
-    <br><br>
+     
     The recommended use scenario for get_systems, get_qid, and get_downoad is:
-    <br>
-    <br><b>1)</b>  Use get_systems to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.
-    <br><b>2)</b>  Use get_qid, with the returned QID, to paginate through arrays of water system results.
-    <br><b>3)</b>  Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of water system information that meets the QID query criteria.
-    <br>
-    <br>
+     
+     <b>1)</b>  Use get_systems to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.
+     <b>2)</b>  Use get_qid, with the returned QID, to paginate through arrays of water system results.
+     <b>3)</b>  Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of water system information that meets the QID query criteria.
+     
+     
     Use the qcolumns parameter to customize your search results.  Use the Metdata service endpoint for a list of available output objects, their Column Ids, and their definitions to help you build your customized output. 
-    <br><br>
+     
     Additional ECHO Resources:   <a href="https://echo.epa.gov/tools/web-services">Web Services</a>, <a href="https://echo.epa.gov/resources/echo-data/about-the-data">About ECHO's Data</a>, <a href="https://echo.epa.gov/tools/data-downloads">Data Downloads</a>
-    <br>
+     
   contact: 
     name: US EPA, OECA Integration, Targeting and Access Branch
   license: 
@@ -747,11 +746,11 @@ parameters:
     in: query
     description: Number of years (1 to 5) since last facility inspection.  A value of 1 means that it has been inspected within the year.
     enum: 
-    - 1
-    - 2
-    - 3
-    - 4
-    - 5
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
     type: string
     required: false
   f.p_ysly: 
@@ -759,11 +758,11 @@ parameters:
     in: formData
     description: Number of years (1 to 5) since last facility inspection.  A value of 1 means that it has been inspected within the year.
     enum: 
-    - 1
-    - 2
-    - 3
-    - 4
-    - 5
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
     type: string
     required: false
   q.p_ysla: 
@@ -973,6 +972,16 @@ parameters:
     required: false
   q.p_cms_flag: 
     name: p_cms_flag
+    in: query
+    type: string
+    required: false
+  f.p_cntysv: 
+    name: p_cntysv
+    in: formData
+    type: string
+    required: false
+  q.p_cntysv: 
+    name: p_cntysv
     in: query
     type: string
     required: false
@@ -1203,6 +1212,7 @@ paths:
         - "$ref": "#/parameters/q.p_systyp"
         - "$ref": "#/parameters/q.p_swtyp"
         - "$ref": "#/parameters/q.p_popsv"
+        - "$ref": "#/parameters/q.p_cntysv"
         - "$ref": "#/parameters/q.p_cs"
         - "$ref": "#/parameters/q.p_mr"
         - "$ref": "#/parameters/q.p_health"
@@ -1253,7 +1263,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/sdw3_Results" 
+                "$ref": "#/definitions/sdw03" 
             required: 
               - Results
     post: 
@@ -1289,6 +1299,7 @@ paths:
         - "$ref": "#/parameters/f.p_systyp"
         - "$ref": "#/parameters/f.p_swtyp"
         - "$ref": "#/parameters/f.p_popsv"
+        - "$ref": "#/parameters/f.p_cntysv"
         - "$ref": "#/parameters/f.p_cs"
         - "$ref": "#/parameters/f.p_mr"
         - "$ref": "#/parameters/f.p_health"
@@ -1339,7 +1350,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/sdw3_Results" 
+                "$ref": "#/definitions/sdw03" 
             required: 
               - Results
   "/sdw_rest_services.get_qid": 
@@ -1377,7 +1388,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/sdw2_Results" 
+                "$ref": "#/definitions/sdw02" 
             required: 
               - Results
     post: 
@@ -1414,7 +1425,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/sdw2_Results" 
+                "$ref": "#/definitions/sdw02" 
             required: 
               - Results
   "/sdw_rest_services.get_download": 
@@ -1488,7 +1499,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/met1" 
+                "$ref": "#/definitions/meta1" 
             required: 
               - Results
     post: 
@@ -1520,11 +1531,11 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/met1" 
+                "$ref": "#/definitions/meta1" 
             required: 
               - Results
 definitions: 
-  met2: 
+  meta2: 
     description: Results Column Object
     xml: 
       name: ResultColumn
@@ -1552,8 +1563,7 @@ definitions:
         description: The JSON name used for the database column.
       Description: 
         type: string
-        title: Description
-        description: A description of the category of Supplemental Environment Project (SEP) for a settlement.
+        title: Column Description
     required: 
       - ColumnName
       - DataType
@@ -1561,7 +1571,7 @@ definitions:
       - ColumnID
       - ObjectName
       - Description
-  met1: 
+  meta1: 
     description: Results Object
     properties: 
       Message: 
@@ -1573,13 +1583,13 @@ definitions:
         type: array
         title: Result Columns
         items: 
-          "$ref": "#/definitions/met2" 
+          "$ref": "#/definitions/meta2" 
         xml: 
           name: ResultColumns
           wrapped: true
     required: 
       - Message
-  sdw2_Results: 
+  sdw02: 
     description: Results Object
     properties: 
       Message: 
@@ -1606,7 +1616,7 @@ definitions:
         type: array
         title: Water Systems
         items: 
-          "$ref": "#/definitions/sdw3_WaterSystems" 
+          "$ref": "#/definitions/sdw04" 
         xml: 
           name: WaterSystems
           wrapped: true
@@ -1615,7 +1625,7 @@ definitions:
       - QueryRows
       - QueryID
       - PageNo
-  sdw3_Results: 
+  sdw03: 
     description: Results Object
     properties: 
       Message: 
@@ -1680,7 +1690,7 @@ definitions:
         type: array
         title: Water Systems
         items: 
-          "$ref": "#/definitions/sdw3_WaterSystems" 
+          "$ref": "#/definitions/sdw04" 
         xml: 
           name: WaterSystems
           wrapped: true
@@ -1698,7 +1708,7 @@ definitions:
       - BadSystemIDs
       - QueryID
       - PageNo
-  sdw3_WaterSystems: 
+  sdw04: 
     description: Safe Drinking Water Search Results Object
     xml: 
       name: WaterSystem
@@ -1972,19 +1982,19 @@ definitions:
         description: All unresolved violation contaminants or violation contaminants that have been resolved in the last 5 years.
       PbViol: 
         type: string
-        title: Lead Violations (5 years)
-        example: '5'
-        description: The count of lead violations in the past five years.
+        title: Lead Violation
+        example: '1'
+        description: The number of lead violations in the last five years.
       CuViol: 
         type: string
-        title: Copper Violations (5 years)
+        title: Copper Violation
         example: '2'
-        description: The count of copper violations in the past five years.
+        description: The number of copper violations in the last five years.
       LeadAndCopperViol: 
         type: string
-        title: Lead and Copper Violations
-        example: '3'
-        description: The combined count of lead and copper violations in the past five years.
+        title: Lead and Copper Violation
+        example: '4'
+        description: The number of lead and copper violations.
       TRIbalFlag: 
         type: string
         title: Tribal Lands Flag
@@ -2060,6 +2070,11 @@ definitions:
         title: Max Score
         example: '1'
         description: A sorting score for internal use.
+      RegistryID: 
+        type: string
+        title: FRS ID
+        example: '110020837601'
+        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
     required: 
       - PWSName
       - PWSId
@@ -2132,3 +2147,4 @@ definitions:
       - SiteVisits5yrInspections
       - SiteVisits5yrOther
       - MaxScore
+      - RegistryID

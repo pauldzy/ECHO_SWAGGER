@@ -2,7 +2,7 @@
     "swagger": "2.0"
    ,"info": {
        "title": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Safe Drinking Water Act"
-      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.\n<BR><BR>SDW Rest Services provides multiple service endpoints, each with specific capabilities, to search and retrieve data on public water systems regulated under the Safe Drinking Water Act (SDWA) .\nThe returned results reflect data drawn from EPA's Federal Safe Drinking Water Information System (SDWIS) database.\n<BR><BR>\nThe get_systems, get_qid, and get_download end points are meant to be used together.\n<br><br>\nThe recommended use scenario for get_systems, get_qid, and get_downoad is:\n<br>\n<br><b>1)<\/b>  Use get_systems to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.\n<br><b>2)<\/b>  Use get_qid, with the returned QID, to paginate through arrays of water system results.\n<br><b>3)<\/b>  Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of water system information that meets the QID query criteria.\n<br>\n<br>\nUse the qcolumns parameter to customize your search results.  Use the Metdata service endpoint for a list of available output objects, their Column Ids, and their definitions to help you build your customized output. \n<br><br>\nAdditional ECHO Resources:   <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a>\n<br>"
+      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for over 1 million regulated facilities nationwide.\n   SDW Rest Services provides multiple service endpoints, each with specific capabilities, to search and retrieve data on public water systems regulated under the Safe Drinking Water Act (SDWA).  The returned results reflect data drawn from EPA's Federal Safe Drinking Water Information System (SDWIS) database.\n \nThe get_systems, get_qid, and get_download end points are meant to be used together.\n \nThe recommended use scenario for get_systems, get_qid, and get_downoad is:\n \n <b>1)<\/b>  Use get_systems to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.\n <b>2)<\/b>  Use get_qid, with the returned QID, to paginate through arrays of water system results.\n <b>3)<\/b>  Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of water system information that meets the QID query criteria.\n \n \nUse the qcolumns parameter to customize your search results.  Use the Metdata service endpoint for a list of available output objects, their Column Ids, and their definitions to help you build your customized output. \n \nAdditional ECHO Resources:   <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a>\n "
       ,"contact": {
           "name": "US EPA, OECA Integration, Targeting and Access Branch"
       }
@@ -734,11 +734,11 @@
          ,"in": "query"
          ,"description": "Number of years (1 to 5) since last facility inspection.  A value of 1 means that it has been inspected within the year."
          ,"enum": [
-             1
-            ,2
-            ,3
-            ,4
-            ,5
+             "1"
+            ,"2"
+            ,"3"
+            ,"4"
+            ,"5"
          ]
          ,"type": "string"
          ,"required": false
@@ -748,11 +748,11 @@
          ,"in": "formData"
          ,"description": "Number of years (1 to 5) since last facility inspection.  A value of 1 means that it has been inspected within the year."
          ,"enum": [
-             1
-            ,2
-            ,3
-            ,4
-            ,5
+             "1"
+            ,"2"
+            ,"3"
+            ,"4"
+            ,"5"
          ]
          ,"type": "string"
          ,"required": false
@@ -961,6 +961,18 @@
       }
       ,"q.p_cms_flag": {
           "name": "p_cms_flag"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"f.p_cntysv": {
+          "name": "p_cntysv"
+         ,"in": "formData"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"q.p_cntysv": {
+          "name": "p_cntysv"
          ,"in": "query"
          ,"type": "string"
          ,"required": false
@@ -1201,6 +1213,9 @@
                    "$ref": "#\/parameters\/q.p_popsv"
                }
                ,{
+                   "$ref": "#\/parameters\/q.p_cntysv"
+               }
+               ,{
                    "$ref": "#\/parameters\/q.p_cs"
                }
                ,{
@@ -1332,7 +1347,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/sdw3_Results"
+                         "$ref": "#\/definitions\/sdw03"
                      }
                   }
                   ,"required": [
@@ -1405,6 +1420,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.p_popsv"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_cntysv"
                }
                ,{
                    "$ref": "#\/parameters\/f.p_cs"
@@ -1538,7 +1556,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/sdw3_Results"
+                         "$ref": "#\/definitions\/sdw03"
                      }
                   }
                   ,"required": [
@@ -1599,7 +1617,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/sdw2_Results"
+                         "$ref": "#\/definitions\/sdw02"
                      }
                   }
                   ,"required": [
@@ -1658,7 +1676,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/sdw2_Results"
+                         "$ref": "#\/definitions\/sdw02"
                      }
                   }
                   ,"required": [
@@ -1766,7 +1784,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/met1"
+                         "$ref": "#\/definitions\/meta1"
                      }
                   }
                   ,"required": [
@@ -1810,7 +1828,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/met1"
+                         "$ref": "#\/definitions\/meta1"
                      }
                   }
                   ,"required": [
@@ -1823,7 +1841,7 @@
       }
    }
    ,"definitions": {
-       "met2": {
+       "meta2": {
           "type": "object"
          ,"description": "Results Column Object"
          ,"xml": {
@@ -1858,8 +1876,7 @@
             }
             ,"Description": {
                 "type": "string"
-               ,"title": "Description"
-               ,"description": "A description of the category of Supplemental Environment Project (SEP) for a settlement."
+               ,"title": "Column Description"
             }
          }
          ,"required": [
@@ -1871,7 +1888,7 @@
             ,"Description"
          ]
       }
-      ,"met1": {
+      ,"meta1": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -1885,7 +1902,7 @@
                 "type": "array"
                ,"title": "Result Columns"
                ,"items": {
-                   "$ref": "#\/definitions\/met2"
+                   "$ref": "#\/definitions\/meta2"
                }
                ,"xml": {
                    "name": "ResultColumns"
@@ -1897,7 +1914,7 @@
              "Message"
          ]
       }
-      ,"sdw2_Results": {
+      ,"sdw02": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -1929,7 +1946,7 @@
                 "type": "array"
                ,"title": "Water Systems"
                ,"items": {
-                   "$ref": "#\/definitions\/sdw3_WaterSystems"
+                   "$ref": "#\/definitions\/sdw04"
                }
                ,"xml": {
                    "name": "WaterSystems"
@@ -1944,7 +1961,7 @@
             ,"PageNo"
          ]
       }
-      ,"sdw3_Results": {
+      ,"sdw03": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -2023,7 +2040,7 @@
                 "type": "array"
                ,"title": "Water Systems"
                ,"items": {
-                   "$ref": "#\/definitions\/sdw3_WaterSystems"
+                   "$ref": "#\/definitions\/sdw04"
                }
                ,"xml": {
                    "name": "WaterSystems"
@@ -2047,7 +2064,7 @@
             ,"PageNo"
          ]
       }
-      ,"sdw3_WaterSystems": {
+      ,"sdw04": {
           "type": "object"
          ,"description": "Safe Drinking Water Search Results Object"
          ,"xml": {
@@ -2349,21 +2366,21 @@
             }
             ,"PbViol": {
                 "type": "string"
-               ,"title": "Lead Violations (5 years)"
-               ,"example": "5"
-               ,"description": "The count of lead violations in the past five years."
+               ,"title": "Lead Violation"
+               ,"example": "1"
+               ,"description": "The number of lead violations in the last five years."
             }
             ,"CuViol": {
                 "type": "string"
-               ,"title": "Copper Violations (5 years)"
+               ,"title": "Copper Violation"
                ,"example": "2"
-               ,"description": "The count of copper violations in the past five years."
+               ,"description": "The number of copper violations in the last five years."
             }
             ,"LeadAndCopperViol": {
                 "type": "string"
-               ,"title": "Lead and Copper Violations"
-               ,"example": "3"
-               ,"description": "The combined count of lead and copper violations in the past five years."
+               ,"title": "Lead and Copper Violation"
+               ,"example": "4"
+               ,"description": "The number of lead and copper violations."
             }
             ,"TRIbalFlag": {
                 "type": "string"
@@ -2457,6 +2474,12 @@
                ,"example": "1"
                ,"description": "A sorting score for internal use."
             }
+            ,"RegistryID": {
+                "type": "string"
+               ,"title": "FRS ID"
+               ,"example": "110020837601"
+               ,"description": "An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases."
+            }
          }
          ,"required": [
              "PWSName"
@@ -2530,6 +2553,7 @@
             ,"SiteVisits5yrInspections"
             ,"SiteVisits5yrOther"
             ,"MaxScore"
+            ,"RegistryID"
          ]
       }
    }
