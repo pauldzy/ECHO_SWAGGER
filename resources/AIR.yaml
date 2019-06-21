@@ -2372,7 +2372,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/air2_Results" 
+                "$ref": "#/definitions/air05" 
             required: 
               - Results
     post: 
@@ -2515,7 +2515,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/air2_Results" 
+                "$ref": "#/definitions/air05" 
             required: 
               - Results
   "/air_rest_services.get_facility_info": 
@@ -2658,7 +2658,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/air3_Results" 
+                "$ref": "#/definitions/air08" 
             required: 
               - Results
     post: 
@@ -2800,7 +2800,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/air3_Results" 
+                "$ref": "#/definitions/air08" 
             required: 
               - Results
   "/air_rest_services.get_qid": 
@@ -2838,7 +2838,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/air5_Results" 
+                "$ref": "#/definitions/air12" 
             required: 
               - Results
     post: 
@@ -2875,7 +2875,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/air5_Results" 
+                "$ref": "#/definitions/air12" 
             required: 
               - Results
   "/air_rest_services.get_map": 
@@ -2915,7 +2915,7 @@ paths:
               name: Root
             properties: 
               MapOutput: 
-                "$ref": "#/definitions/air4_MapOutput" 
+                "$ref": "#/definitions/air11" 
             required: 
               - MapOutput
     post: 
@@ -2954,7 +2954,7 @@ paths:
               name: Root
             properties: 
               MapOutput: 
-                "$ref": "#/definitions/air4_MapOutput" 
+                "$ref": "#/definitions/air11" 
             required: 
               - MapOutput
   "/air_rest_services.get_download": 
@@ -3083,7 +3083,7 @@ paths:
                 title: Features Array
                 description: Array of features in the feature collection.
                 items: 
-                  "$ref": "#/definitions/air6_Feature" 
+                  "$ref": "#/definitions/air09" 
             required: 
               - type
               - features
@@ -3124,7 +3124,7 @@ paths:
                 title: Features Array
                 description: Array of features in the feature collection.
                 items: 
-                  "$ref": "#/definitions/air6_Feature" 
+                  "$ref": "#/definitions/air09" 
             required: 
               - type
               - features
@@ -3212,7 +3212,7 @@ definitions:
     required: 
       - QP
       - QV
-  air1_ClusterData: 
+  air00: 
     description: Cluster Data Object
     properties: 
       ObjectId: 
@@ -3308,7 +3308,7 @@ definitions:
       - InfFEARows
       - INSPRows
       - TotalPenalties
-  air1_ClusterOutput: 
+  air01: 
     description: Cluster Output Object
     properties: 
       ClusterData: 
@@ -3316,8 +3316,8 @@ definitions:
         title: Cluster Data
         description: An array of state, county, or zip code cluster information
         items: 
-          "$ref": "#/definitions/air1_ClusterData" 
-  air1_MapData: 
+          "$ref": "#/definitions/air00" 
+  air02: 
     description: Map Data Object
     xml: 
       name: Object
@@ -3388,7 +3388,7 @@ definitions:
       - LastInsp
       - FormalCount
       - InformalCount
-  air2_Facilities: 
+  air03: 
     description: Facilities Object
     xml: 
       name: Facility
@@ -4197,7 +4197,7 @@ definitions:
       - AIRNspsm
       - Score
       - MaxScore
-  air2_MapOutput: 
+  air04: 
     description: Map Output Object
     properties: 
       QueryID: 
@@ -4220,7 +4220,7 @@ definitions:
         title: Map Data
         description: An array of facility geospatial information.
         items: 
-          "$ref": "#/definitions/air1_MapData" 
+          "$ref": "#/definitions/air02" 
         xml: 
           name: MapData
           wrapped: true
@@ -4229,7 +4229,7 @@ definitions:
       - IconBaseURL
       - PopUpBaseURL
       - MapData
-  air2_Results: 
+  air05: 
     description: Results Object
     properties: 
       Message: 
@@ -4295,12 +4295,12 @@ definitions:
         title: Facilities
         description: A complex array of facility information.
         items: 
-          "$ref": "#/definitions/air2_Facilities" 
+          "$ref": "#/definitions/air03" 
         xml: 
           name: Facilities
           wrapped: true
       MapOutput: 
-        "$ref": "#/definitions/air2_MapOutput" 
+        "$ref": "#/definitions/air04" 
     required: 
       - Message
       - QueryRows
@@ -4315,7 +4315,7 @@ definitions:
       - BadSystemIDs
       - QueryID
       - PageNo
-  air3_Facilities: 
+  air06: 
     description: Facilities Object
     xml: 
       name: Facility
@@ -5130,7 +5130,7 @@ definitions:
       - AIRNspsm
       - Score
       - MaxScore
-  air3_Results: 
+  air08: 
     description: Results Object
     properties: 
       Message: 
@@ -5215,7 +5215,7 @@ definitions:
         title: Facilities
         description: A complex array of facility information.
         items: 
-          "$ref": "#/definitions/air3_Facilities" 
+          "$ref": "#/definitions/air06" 
         xml: 
           name: Facilities
           wrapped: true
@@ -5225,7 +5225,7 @@ definitions:
         example: '199'
         description: Number of clusters returned.
       ClusterOutput: 
-        "$ref": "#/definitions/air1_ClusterOutput" 
+        "$ref": "#/definitions/air01" 
     required: 
       - Message
       - QueryID
@@ -5243,7 +5243,7 @@ definitions:
       - PopUpBaseURL
       - ServiceBaseURL
       - QueryParameters
-  air6_Feature: 
+  air09: 
     description: GeoJSON Feature Object
     properties: 
       type: 
@@ -5254,12 +5254,12 @@ definitions:
       geometry: 
         "$ref": "#/definitions/geo" 
       properties: 
-        "$ref": "#/definitions/air6_properties" 
+        "$ref": "#/definitions/air10" 
     required: 
       - type
       - geometry
       - properties
-  air6_properties: 
+  air10: 
     description: GeoJSON Properties Object
     properties: 
       AIRName: 
@@ -6054,7 +6054,7 @@ definitions:
       - AIRNspsm
       - Score
       - MaxScore
-  air4_MapOutput: 
+  air11: 
     description: Map Output Object
     properties: 
       QueryID: 
@@ -6077,7 +6077,7 @@ definitions:
         title: Map Data
         description: An array of facility geospatial information.
         items: 
-          "$ref": "#/definitions/air1_MapData" 
+          "$ref": "#/definitions/air02" 
         xml: 
           name: MapData
           wrapped: true
@@ -6086,7 +6086,7 @@ definitions:
       - IconBaseURL
       - PopUpBaseURL
       - MapData
-  air5_Results: 
+  air12: 
     description: Results Object
     properties: 
       Message: 
@@ -6114,7 +6114,7 @@ definitions:
         title: Facilities
         description: A complex array of facility information.
         items: 
-          "$ref": "#/definitions/air2_Facilities" 
+          "$ref": "#/definitions/air03" 
         xml: 
           name: Facilities
           wrapped: true

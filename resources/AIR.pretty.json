@@ -2697,7 +2697,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/air2_Results"
+                         "$ref": "#\/definitions\/air05"
                      }
                   }
                   ,"required": [
@@ -3074,7 +3074,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/air2_Results"
+                         "$ref": "#\/definitions\/air05"
                      }
                   }
                   ,"required": [
@@ -3445,7 +3445,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/air3_Results"
+                         "$ref": "#\/definitions\/air08"
                      }
                   }
                   ,"required": [
@@ -3814,7 +3814,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/air3_Results"
+                         "$ref": "#\/definitions\/air08"
                      }
                   }
                   ,"required": [
@@ -3875,7 +3875,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/air5_Results"
+                         "$ref": "#\/definitions\/air12"
                      }
                   }
                   ,"required": [
@@ -3934,7 +3934,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/air5_Results"
+                         "$ref": "#\/definitions\/air12"
                      }
                   }
                   ,"required": [
@@ -4001,7 +4001,7 @@
                   }
                   ,"properties": {
                       "MapOutput": {
-                         "$ref": "#\/definitions\/air4_MapOutput"
+                         "$ref": "#\/definitions\/air11"
                      }
                   }
                   ,"required": [
@@ -4066,7 +4066,7 @@
                   }
                   ,"properties": {
                       "MapOutput": {
-                         "$ref": "#\/definitions\/air4_MapOutput"
+                         "$ref": "#\/definitions\/air11"
                      }
                   }
                   ,"required": [
@@ -4259,7 +4259,7 @@
                         ,"title": "Features Array"
                         ,"description": "Array of features in the feature collection."
                         ,"items": {
-                            "$ref": "#\/definitions\/air6_Feature"
+                            "$ref": "#\/definitions\/air09"
                         }
                      }
                   }
@@ -4322,7 +4322,7 @@
                         ,"title": "Features Array"
                         ,"description": "Array of features in the feature collection."
                         ,"items": {
-                            "$ref": "#\/definitions\/air6_Feature"
+                            "$ref": "#\/definitions\/air09"
                         }
                      }
                   }
@@ -4452,7 +4452,7 @@
             ,"QV"
          ]
       }
-      ,"air1_ClusterData": {
+      ,"air00": {
           "type": "object"
          ,"description": "Cluster Data Object"
          ,"properties": {
@@ -4569,7 +4569,7 @@
             ,"TotalPenalties"
          ]
       }
-      ,"air1_ClusterOutput": {
+      ,"air01": {
           "type": "object"
          ,"description": "Cluster Output Object"
          ,"properties": {
@@ -4578,12 +4578,12 @@
                ,"title": "Cluster Data"
                ,"description": "An array of state, county, or zip code cluster information"
                ,"items": {
-                   "$ref": "#\/definitions\/air1_ClusterData"
+                   "$ref": "#\/definitions\/air00"
                }
             }
          }
       }
-      ,"air1_MapData": {
+      ,"air02": {
           "type": "object"
          ,"description": "Map Data Object"
          ,"xml": {
@@ -4664,7 +4664,7 @@
             ,"InformalCount"
          ]
       }
-      ,"air2_Facilities": {
+      ,"air03": {
           "type": "object"
          ,"description": "Facilities Object"
          ,"xml": {
@@ -5576,7 +5576,7 @@
             ,"MaxScore"
          ]
       }
-      ,"air2_MapOutput": {
+      ,"air04": {
           "type": "object"
          ,"description": "Map Output Object"
          ,"properties": {
@@ -5603,7 +5603,7 @@
                ,"title": "Map Data"
                ,"description": "An array of facility geospatial information."
                ,"items": {
-                   "$ref": "#\/definitions\/air1_MapData"
+                   "$ref": "#\/definitions\/air02"
                }
                ,"xml": {
                    "name": "MapData"
@@ -5618,7 +5618,7 @@
             ,"MapData"
          ]
       }
-      ,"air2_Results": {
+      ,"air05": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -5698,7 +5698,7 @@
                ,"title": "Facilities"
                ,"description": "A complex array of facility information."
                ,"items": {
-                   "$ref": "#\/definitions\/air2_Facilities"
+                   "$ref": "#\/definitions\/air03"
                }
                ,"xml": {
                    "name": "Facilities"
@@ -5706,7 +5706,7 @@
                }
             }
             ,"MapOutput": {
-                "$ref": "#\/definitions\/air2_MapOutput"
+                "$ref": "#\/definitions\/air04"
             }
          }
          ,"required": [
@@ -5725,7 +5725,7 @@
             ,"PageNo"
          ]
       }
-      ,"air3_Facilities": {
+      ,"air06": {
           "type": "object"
          ,"description": "Facilities Object"
          ,"xml": {
@@ -6644,7 +6644,7 @@
             ,"MaxScore"
          ]
       }
-      ,"air3_Results": {
+      ,"air08": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -6748,7 +6748,7 @@
                ,"title": "Facilities"
                ,"description": "A complex array of facility information."
                ,"items": {
-                   "$ref": "#\/definitions\/air3_Facilities"
+                   "$ref": "#\/definitions\/air06"
                }
                ,"xml": {
                    "name": "Facilities"
@@ -6762,7 +6762,7 @@
                ,"description": "Number of clusters returned."
             }
             ,"ClusterOutput": {
-                "$ref": "#\/definitions\/air1_ClusterOutput"
+                "$ref": "#\/definitions\/air01"
             }
          }
          ,"required": [
@@ -6784,7 +6784,7 @@
             ,"QueryParameters"
          ]
       }
-      ,"air6_Feature": {
+      ,"air09": {
           "type": "object"
          ,"description": "GeoJSON Feature Object"
          ,"properties": {
@@ -6798,7 +6798,7 @@
                 "$ref": "#\/definitions\/geo"
             }
             ,"properties": {
-                "$ref": "#\/definitions\/air6_properties"
+                "$ref": "#\/definitions\/air10"
             }
          }
          ,"required": [
@@ -6807,7 +6807,7 @@
             ,"properties"
          ]
       }
-      ,"air6_properties": {
+      ,"air10": {
           "type": "object"
          ,"description": "GeoJSON Properties Object"
          ,"properties": {
@@ -7702,7 +7702,7 @@
             ,"MaxScore"
          ]
       }
-      ,"air4_MapOutput": {
+      ,"air11": {
           "type": "object"
          ,"description": "Map Output Object"
          ,"properties": {
@@ -7729,7 +7729,7 @@
                ,"title": "Map Data"
                ,"description": "An array of facility geospatial information."
                ,"items": {
-                   "$ref": "#\/definitions\/air1_MapData"
+                   "$ref": "#\/definitions\/air02"
                }
                ,"xml": {
                    "name": "MapData"
@@ -7744,7 +7744,7 @@
             ,"MapData"
          ]
       }
-      ,"air5_Results": {
+      ,"air12": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -7777,7 +7777,7 @@
                ,"title": "Facilities"
                ,"description": "A complex array of facility information."
                ,"items": {
-                   "$ref": "#\/definitions\/air2_Facilities"
+                   "$ref": "#\/definitions\/air03"
                }
                ,"xml": {
                    "name": "Facilities"
