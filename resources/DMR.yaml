@@ -638,14 +638,14 @@ parameters:
   f.p_nutrient_agg: 
     name: p_nutrient_agg
     in: formData
-    description: "Nutrient Aggregation Option. A \"Y\" value applies a nutrient aggregation methodology to generate nitrogen and phosphorus pollutant category loads."
+    description: "Nutrient Aggregation Option. A \"Y\" value applies a nutrient aggregation methodology to generate nitrogen and phosphorus pollutant category loads. If not specified, defaults to \"N\"."
     default: N
     type: string
     required: false
   q.p_nutrient_agg: 
     name: p_nutrient_agg
     in: query
-    description: "Nutrient Aggregation Option. A \"Y\" value applies a nutrient aggregation methodology to generate nitrogen and phosphorus pollutant category loads."
+    description: "Nutrient Aggregation Option. A \"Y\" value applies a nutrient aggregation methodology to generate nitrogen and phosphorus pollutant category loads. If not specified, defaults to \"N\"."
     default: N
     type: string
     required: false
@@ -770,14 +770,14 @@ parameters:
   f.p_param_group: 
     name: p_param_group
     in: formData
-    description: "Parameter Grouping Option. A \"Y\" value applies a parameter grouping function to avoid double-counting loads for pollutant parameters that represent the same pollutant."
+    description: "Parameter Grouping Option. A \"Y\" value applies a parameter grouping function to avoid double-counting loads for pollutant parameters that represent the same pollutant. If not specified, defaults to \"N\"."
     default: N
     type: string
     required: false
   q.p_param_group: 
     name: p_param_group
     in: query
-    description: "Parameter Grouping Option. A \"Y\" value applies a parameter grouping function to avoid double-counting loads for pollutant parameters that represent the same pollutant."
+    description: "Parameter Grouping Option. A \"Y\" value applies a parameter grouping function to avoid double-counting loads for pollutant parameters that represent the same pollutant. If not specified, defaults to \"N\"."
     default: N
     type: string
     required: false
@@ -1541,14 +1541,14 @@ parameters:
   q.p_est: 
     name: p_est
     in: query
-    description: "Estimation Function Flag. A \"Y\" value will estimates loads when monitoring data are not reported for one or more monitoring periods in a reporting year. "
+    description: "Estimation Function Flag. A \"Y\" value will estimates loads when monitoring data are not reported for one or more monitoring periods in a reporting year. If not specified, defaults to \"Y\"."
     default: Y
     type: string
     required: true
   f.p_est: 
     name: p_est
     in: formData
-    description: "Estimation Function Flag. A \"Y\" value will estimates loads when monitoring data are not reported for one or more monitoring periods in a reporting year. "
+    description: "Estimation Function Flag. A \"Y\" value will estimates loads when monitoring data are not reported for one or more monitoring periods in a reporting year. If not specified, defaults to \"Y\"."
     default: Y
     type: string
     required: true
@@ -1661,7 +1661,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr03_Results" 
+                "$ref": "#/definitions/dmr007" 
             required: 
               - Results
     post: 
@@ -1711,7 +1711,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr03_Results" 
+                "$ref": "#/definitions/dmr007" 
             required: 
               - Results
   "/dmr_rest_services.get_custom_data_annual": 
@@ -1818,7 +1818,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr04_Results" 
+                "$ref": "#/definitions/dmr013" 
             required: 
               - Results
     post: 
@@ -1924,7 +1924,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr04_Results" 
+                "$ref": "#/definitions/dmr013" 
             required: 
               - Results
   "/dmr_rest_services.get_custom_data_facility": 
@@ -2031,7 +2031,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr05_Results" 
+                "$ref": "#/definitions/dmr015" 
             required: 
               - Results
     post: 
@@ -2136,7 +2136,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr05_Results" 
+                "$ref": "#/definitions/dmr015" 
             required: 
               - Results
   "/dmr_rest_services.get_custom_data_monitor_pd": 
@@ -2230,7 +2230,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr06_Results" 
+                "$ref": "#/definitions/dmr017" 
             required: 
               - Results
     post: 
@@ -2323,7 +2323,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr06_Results" 
+                "$ref": "#/definitions/dmr017" 
             required: 
               - Results
   "/dmr_rest_services.get_dashboard_chemicals": 
@@ -2369,7 +2369,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr07_Results" 
+                "$ref": "#/definitions/dmr020" 
             required: 
               - Results
     post: 
@@ -2414,7 +2414,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr07_Results" 
+                "$ref": "#/definitions/dmr020" 
             required: 
               - Results
   "/dmr_rest_services.get_dashboard_facilities": 
@@ -2460,7 +2460,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr08_Results" 
+                "$ref": "#/definitions/dmr022" 
             required: 
               - Results
     post: 
@@ -2505,7 +2505,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr08_Results" 
+                "$ref": "#/definitions/dmr022" 
             required: 
               - Results
   "/dmr_rest_services.get_dashboard_industries": 
@@ -2550,7 +2550,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr09_Results" 
+                "$ref": "#/definitions/dmr024" 
             required: 
               - Results
     post: 
@@ -2594,7 +2594,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr09_Results" 
+                "$ref": "#/definitions/dmr024" 
             required: 
               - Results
   "/dmr_rest_services.get_dmr_loadings": 
@@ -2659,7 +2659,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr10_Results" 
+                "$ref": "#/definitions/dmr026" 
             required: 
               - Results
     post: 
@@ -2723,7 +2723,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr10_Results" 
+                "$ref": "#/definitions/dmr026" 
             required: 
               - Results
   "/dmr_rest_services.get_all_dmr_facilities": 
@@ -2800,7 +2800,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr01_Results" 
+                "$ref": "#/definitions/dmr002" 
             required: 
               - Results
     post: 
@@ -2863,7 +2863,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr01_Results" 
+                "$ref": "#/definitions/dmr002" 
             required: 
               - Results
   "/dmr_rest_services.get_eff_exceedances": 
@@ -2930,7 +2930,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr11_Results" 
+                "$ref": "#/definitions/dmr038" 
             required: 
               - Results
     post: 
@@ -2996,7 +2996,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr11_Results" 
+                "$ref": "#/definitions/dmr038" 
             required: 
               - Results
   "/dmr_rest_services.get_eff_exceedances_report": 
@@ -3021,7 +3021,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr12_Results" 
+                "$ref": "#/definitions/dmr045" 
             required: 
               - Results
     post: 
@@ -3045,7 +3045,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr12_Results" 
+                "$ref": "#/definitions/dmr045" 
             required: 
               - Results
   "/dmr_rest_services.get_facility_loads": 
@@ -3076,7 +3076,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr73" 
+                "$ref": "#/definitions/dmr053" 
             required: 
               - Results
     post: 
@@ -3106,7 +3106,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr73" 
+                "$ref": "#/definitions/dmr053" 
             required: 
               - Results
   "/dmr_rest_services.get_facility_report": 
@@ -3135,7 +3135,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr65" 
+                "$ref": "#/definitions/dmr060" 
             required: 
               - Results
     post: 
@@ -3163,7 +3163,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr65" 
+                "$ref": "#/definitions/dmr060" 
             required: 
               - Results
   "/dmr_rest_services.get_monitor_pd_loads": 
@@ -3194,7 +3194,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr64" 
+                "$ref": "#/definitions/dmr069" 
             required: 
               - Results
     post: 
@@ -3224,7 +3224,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr64" 
+                "$ref": "#/definitions/dmr069" 
             required: 
               - Results
   "/dmr_rest_services.get_multiyear_loading": 
@@ -3248,7 +3248,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr38" 
+                "$ref": "#/definitions/dmr079" 
             required: 
               - Results
     post: 
@@ -3271,7 +3271,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr38" 
+                "$ref": "#/definitions/dmr079" 
             required: 
               - Results
   "/dmr_rest_services.get_multiyear_loading_detail": 
@@ -3296,7 +3296,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr41" 
+                "$ref": "#/definitions/dmr083" 
             required: 
               - Results
     post: 
@@ -3320,7 +3320,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr41" 
+                "$ref": "#/definitions/dmr083" 
             required: 
               - Results
   "/dmr_rest_services.get_monitoring_data": 
@@ -3347,7 +3347,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr36" 
+                "$ref": "#/definitions/dmr074" 
             required: 
               - Results
     post: 
@@ -3373,7 +3373,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr36" 
+                "$ref": "#/definitions/dmr074" 
             required: 
               - Results
   "/dmr_rest_services.get_permit_limits": 
@@ -3416,7 +3416,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr42" 
+                "$ref": "#/definitions/dmr089" 
             required: 
               - Results
     post: 
@@ -3458,7 +3458,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr42" 
+                "$ref": "#/definitions/dmr089" 
             required: 
               - Results
   "/dmr_rest_services.get_state_stats": 
@@ -3526,7 +3526,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr44" 
+                "$ref": "#/definitions/dmr096" 
             required: 
               - Results
     post: 
@@ -3554,7 +3554,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr44" 
+                "$ref": "#/definitions/dmr096" 
             required: 
               - Results
   "/dmr_rest_services.get_tri_releases": 
@@ -3631,7 +3631,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr51" 
+                "$ref": "#/definitions/dmr102" 
             required: 
               - Results
     post: 
@@ -3707,7 +3707,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr51" 
+                "$ref": "#/definitions/dmr102" 
             required: 
               - Results
   "/dmr_rest_services.get_all_tri_facilities": 
@@ -3771,7 +3771,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr02_Results" 
+                "$ref": "#/definitions/dmr004" 
             required: 
               - Results
     post: 
@@ -3834,7 +3834,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr02_Results" 
+                "$ref": "#/definitions/dmr004" 
             required: 
               - Results
   "/dmr_rest_services.get_watershed_facilities": 
@@ -3866,7 +3866,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr58" 
+                "$ref": "#/definitions/dmr111" 
             required: 
               - Results
     post: 
@@ -3897,7 +3897,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/dmr58" 
+                "$ref": "#/definitions/dmr111" 
             required: 
               - Results
   "/dmr_rest_services.get_watershed_stats": 
@@ -3950,7 +3950,7 @@ paths:
           schema: 
             type: file
 definitions: 
-  dmr01_Facilities: 
+  dmr001: 
     description: Facilities Object
     xml: 
       name: Facilities
@@ -4012,7 +4012,7 @@ definitions:
       - MonReqOnly
       - MonReqAndLimits
       - FacPermitDmrData
-  dmr01_Results: 
+  dmr002: 
     description: Results Object
     properties: 
       Message: 
@@ -4041,7 +4041,7 @@ definitions:
         title: Facilities
         description: A complex array of facility information.
         items: 
-          "$ref": "#/definitions/dmr01_Facilities" 
+          "$ref": "#/definitions/dmr001" 
         xml: 
           name: Facilities
           wrapped: true
@@ -4053,7 +4053,7 @@ definitions:
       - StartRec
       - EndRec
       - Facilities
-  dmr02_Facilities: 
+  dmr003: 
     description: Facilities Object
     xml: 
       name: Facilities
@@ -4100,7 +4100,7 @@ definitions:
       - ReleaseBoth
       - Linktodmr
       - DmrDischarges
-  dmr02_Results: 
+  dmr004: 
     description: Results Object
     properties: 
       Message: 
@@ -4129,7 +4129,7 @@ definitions:
         title: Facilities
         description: A complex array of facility information.
         items: 
-          "$ref": "#/definitions/dmr02_Facilities" 
+          "$ref": "#/definitions/dmr003" 
         xml: 
           name: Facilities
           wrapped: true
@@ -4141,7 +4141,7 @@ definitions:
       - StartRec
       - EndRec
       - Facilities
-  dmr03_DmrChemicals: 
+  dmr005: 
     description: DMR Chemicals Object
     properties: 
       Total: 
@@ -4157,7 +4157,7 @@ definitions:
       - AlsoReportTri
       - NotOnTriList
       - OnTriList
-  dmr03_DmrFacilities: 
+  dmr006: 
     description: DMR Facilities Object
     properties: 
       Total: 
@@ -4176,7 +4176,7 @@ definitions:
       - Potws
       - OtherNonTri
       - NoTriForm
-  dmr03_Results: 
+  dmr007: 
     description: Results Object
     properties: 
       Message: 
@@ -4187,20 +4187,20 @@ definitions:
       SearchCriteria: 
         type: string
       TriFacilities: 
-        "$ref": "#/definitions/dmr03_TriFacilities" 
+        "$ref": "#/definitions/dmr012" 
       DmrFacilities: 
-        "$ref": "#/definitions/dmr03_DmrFacilities" 
+        "$ref": "#/definitions/dmr006" 
       TriChemicals: 
-        "$ref": "#/definitions/dmr03_TriChemicals" 
+        "$ref": "#/definitions/dmr011" 
       DmrChemicals: 
-        "$ref": "#/definitions/dmr03_DmrChemicals" 
+        "$ref": "#/definitions/dmr005" 
       Summary: 
-        "$ref": "#/definitions/dmr03_Summary" 
+        "$ref": "#/definitions/dmr008" 
       TopIndustries: 
         type: array
         title: Top Industries
         items: 
-          "$ref": "#/definitions/dmr03_TopIndustries" 
+          "$ref": "#/definitions/dmr010" 
         xml: 
           name: TopIndustries
           wrapped: true
@@ -4208,7 +4208,7 @@ definitions:
         type: array
         title: Top Chemicals
         items: 
-          "$ref": "#/definitions/dmr03_TopChemicals" 
+          "$ref": "#/definitions/dmr009" 
         xml: 
           name: TopChemicals
           wrapped: true
@@ -4222,7 +4222,7 @@ definitions:
       - Summary
       - TopIndustries
       - TopChemicals
-  dmr03_Summary: 
+  dmr008: 
     description: Summary Object
     properties: 
       TriDischargers: 
@@ -4250,7 +4250,7 @@ definitions:
       - DmrChemicals
       - DmrPounds
       - DmrTwpe
-  dmr03_TopChemicals: 
+  dmr009: 
     description: Top Chemicals Object
     xml: 
       name: TopChemicals
@@ -4288,7 +4288,7 @@ definitions:
       - TRIDirectTwpe
       - DmrValue
       - TRIValue
-  dmr03_TopIndustries: 
+  dmr010: 
     description: Top Industries Object
     xml: 
       name: TopIndustries
@@ -4324,7 +4324,7 @@ definitions:
       - TRIDirectTwpe
       - DmrValue
       - TRIValue
-  dmr03_TriChemicals: 
+  dmr011: 
     description: TRI Chemicals Object
     properties: 
       Total: 
@@ -4337,7 +4337,7 @@ definitions:
       - Total
       - AlsoReportDmr
       - ReportOnlyTri
-  dmr03_TriFacilities: 
+  dmr012: 
     description: TRI Facilities Object
     properties: 
       Total: 
@@ -4362,7 +4362,7 @@ definitions:
       - NodmrDirectDisch
       - NodmrDirectIndDsch
       - NodmrIndDsch
-  dmr04_Results: 
+  dmr013: 
     description: Results Object
     properties: 
       Message: 
@@ -4396,7 +4396,7 @@ definitions:
         title: Results
         description: A complex array representing the results of the service query or service report.
         items: 
-          "$ref": "#/definitions/dmr04_Results-2" 
+          "$ref": "#/definitions/dmr014" 
     required: 
       - Message
       - QueryID
@@ -4406,7 +4406,7 @@ definitions:
       - StartRec
       - EndRec
       - Results
-  dmr04_Results-2: 
+  dmr014: 
     description: Results Data Object
     properties: 
       DmrYear: 
@@ -4477,6 +4477,8 @@ definitions:
         type: string
       AssessmentUnitEPACategory: 
         type: string
+        title: Assessment Unit Category (ATTAINS)
+        description: "The water quality category under which the water body or water segment is classified. Additional information: https://www.epa.gov/wqs-tech/supplemental-module-listing-impaired-waters-and-developing-tmdls"
       CsoCount: 
         type: string
       TotalDesignFlowNmbr: 
@@ -4633,7 +4635,7 @@ definitions:
       - TRIDirectPounds
       - TRIIndirectPounds
       - EstFactor
-  dmr05_Results: 
+  dmr015: 
     description: Results Object
     properties: 
       Message: 
@@ -4667,7 +4669,7 @@ definitions:
         title: Results
         description: A complex array representing the results of the service query or service report.
         items: 
-          "$ref": "#/definitions/dmr05_Results-2" 
+          "$ref": "#/definitions/dmr016" 
     required: 
       - Message
       - QueryID
@@ -4677,7 +4679,7 @@ definitions:
       - StartRec
       - EndRec
       - Results
-  dmr05_Results-2: 
+  dmr016: 
     description: Results Data Object
     properties: 
       DmrYear: 
@@ -4748,6 +4750,8 @@ definitions:
         type: string
       AssessmentUnitEPACategory: 
         type: string
+        title: Assessment Unit Category (ATTAINS)
+        description: "The water quality category under which the water body or water segment is classified. Additional information: https://www.epa.gov/wqs-tech/supplemental-module-listing-impaired-waters-and-developing-tmdls"
       CsoCount: 
         type: string
       TotalDesignFlowNmbr: 
@@ -4824,7 +4828,7 @@ definitions:
       - HasPermitLimits
       - HasLoadingsData
       - QcFlag
-  dmr06_Results: 
+  dmr017: 
     description: Results Object
     properties: 
       Message: 
@@ -4858,7 +4862,7 @@ definitions:
         title: Results
         description: A complex array representing the results of the service query or service report.
         items: 
-          "$ref": "#/definitions/dmr06_Results-2" 
+          "$ref": "#/definitions/dmr018" 
     required: 
       - Message
       - QueryID
@@ -4868,7 +4872,7 @@ definitions:
       - StartRec
       - EndRec
       - Results
-  dmr06_Results-2: 
+  dmr018: 
     description: Results Data Object
     properties: 
       Mped: 
@@ -4939,6 +4943,8 @@ definitions:
         type: string
       AssessmentUnitEPACategory: 
         type: string
+        title: Assessment Unit Category (ATTAINS)
+        description: "The water quality category under which the water body or water segment is classified. Additional information: https://www.epa.gov/wqs-tech/supplemental-module-listing-impaired-waters-and-developing-tmdls"
       CsoCount: 
         type: string
       TotalDesignFlowNmbr: 
@@ -5049,8 +5055,15 @@ definitions:
         type: string
         title: Measurement Type
         example: NMth
+        description: |-
+          The type of measurement used to determine the violation. Applicable values:
+          - "Mnthly"  stands for monthly. This means that the exceedance shown in that row was based upon a monthly average of readings submitted by the permittee.
+          - "NMth" stands for non-monthly. This is generally a "maximum" amount read during the reporting period (and could indicate a spike that is not continuous). "Neither" denotes other measurements such as a minimum (e.g., pH could be in violation if below the permitted level).
       NodiDesc: 
         type: string
+        title: No Data Indicator (NODI) Description
+        example: Wrong Flow
+        description: The description of the NODI code explaining why no data are reported (e.g., no discharge, not quantifiable, conditional monitoring).
     required: 
       - Mped
       - ExternalPermitNmbr
@@ -5128,7 +5141,7 @@ definitions:
       - QcFlag
       - MeasurementType
       - NodiDesc
-  dmr07_Chemicals: 
+  dmr019: 
     description: Chemicals Object
     xml: 
       name: Chemicals
@@ -5166,7 +5179,7 @@ definitions:
       - DmrQcFlag
       - HasToxicWeight
       - OnTRIList
-  dmr07_Results: 
+  dmr020: 
     description: Results Object
     properties: 
       QueryRows: 
@@ -5189,7 +5202,7 @@ definitions:
         type: array
         title: Chemicals
         items: 
-          "$ref": "#/definitions/dmr07_Chemicals" 
+          "$ref": "#/definitions/dmr019" 
         xml: 
           name: Chemicals
           wrapped: true
@@ -5200,7 +5213,7 @@ definitions:
       - StartRec
       - EndRec
       - Chemicals
-  dmr08_Facilities: 
+  dmr021: 
     description: Facilities Object
     xml: 
       name: Facilities
@@ -5294,7 +5307,7 @@ definitions:
       - TRIIndirectPounds
       - TRIIndirectTwpe
       - MultiyrLink
-  dmr08_Results: 
+  dmr022: 
     description: Results Object
     properties: 
       QueryRows: 
@@ -5318,7 +5331,7 @@ definitions:
         title: Facilities
         description: A complex array of facility information.
         items: 
-          "$ref": "#/definitions/dmr08_Facilities" 
+          "$ref": "#/definitions/dmr021" 
         xml: 
           name: Facilities
           wrapped: true
@@ -5329,7 +5342,7 @@ definitions:
       - StartRec
       - EndRec
       - Facilities
-  dmr09_Industries: 
+  dmr023: 
     description: Industries Object
     xml: 
       name: Industries
@@ -5365,7 +5378,7 @@ definitions:
       - DmrQcFlag
       - HasToxicWeight
       - OnTRIList
-  dmr09_Results: 
+  dmr024: 
     description: Results Object
     properties: 
       QueryRows: 
@@ -5388,7 +5401,7 @@ definitions:
         type: array
         title: Industries
         items: 
-          "$ref": "#/definitions/dmr09_Industries" 
+          "$ref": "#/definitions/dmr023" 
         xml: 
           name: Industries
           wrapped: true
@@ -5399,7 +5412,7 @@ definitions:
       - StartRec
       - EndRec
       - Industries
-  dmr10_FacilityCounts: 
+  dmr025: 
     description: Facility Counts Objects
     properties: 
       AllFacs: 
@@ -5434,7 +5447,7 @@ definitions:
       - WithMonReqOnly
       - WithMonReqLimits
       - WithDataIcis
-  dmr10_Results: 
+  dmr026: 
     description: Results Object
     properties: 
       Message: 
@@ -5448,60 +5461,60 @@ definitions:
         example: '245'
         description: Sequential number assigned to entire search result
       FacilityCounts: 
-        "$ref": "#/definitions/dmr10_FacilityCounts" 
+        "$ref": "#/definitions/dmr025" 
       TopPollutantPounds: 
         type: array
         items: 
-          "$ref": "#/definitions/dmr10_TopPollutantPounds" 
+          "$ref": "#/definitions/dmr030" 
         xml: 
           name: TopPollutantPounds
           wrapped: true
       TopPollutantTWPE: 
         type: array
         items: 
-          "$ref": "#/definitions/dmr10_TopPollutantTWPE" 
+          "$ref": "#/definitions/dmr031" 
         xml: 
           name: TopPollutantTWPE
           wrapped: true
       TopSICPounds: 
         type: array
         items: 
-          "$ref": "#/definitions/dmr10_TopSICPounds" 
+          "$ref": "#/definitions/dmr033" 
         xml: 
           name: TopSICPounds
           wrapped: true
       TopSICTWPE: 
         type: array
         items: 
-          "$ref": "#/definitions/dmr10_TopSICTWPE" 
+          "$ref": "#/definitions/dmr034" 
         xml: 
           name: TopSICTWPE
           wrapped: true
       TopFacilityPounds: 
         type: array
         items: 
-          "$ref": "#/definitions/dmr10_TopFacilityPounds" 
+          "$ref": "#/definitions/dmr028" 
         xml: 
           name: TopFacilityPounds
           wrapped: true
       TopFacilityTWPE: 
         type: array
         items: 
-          "$ref": "#/definitions/dmr10_TopFacilityTWPE" 
+          "$ref": "#/definitions/dmr029" 
         xml: 
           name: TopFacilityTWPE
           wrapped: true
       TopWatersheds: 
         type: array
         items: 
-          "$ref": "#/definitions/dmr10_TopWatersheds" 
+          "$ref": "#/definitions/dmr035" 
         xml: 
           name: TopWatersheds
           wrapped: true
       TopSIC: 
         type: array
         items: 
-          "$ref": "#/definitions/dmr10_TopSIC" 
+          "$ref": "#/definitions/dmr032" 
         xml: 
           name: TopSIC
           wrapped: true
@@ -5509,7 +5522,7 @@ definitions:
         type: array
         title: Top Facilities
         items: 
-          "$ref": "#/definitions/dmr10_TopFacilities" 
+          "$ref": "#/definitions/dmr027" 
         xml: 
           name: TopFacilities
           wrapped: true
@@ -5517,7 +5530,7 @@ definitions:
       - Message
       - QueryID
       - FacilityCounts
-  dmr10_TopFacilities: 
+  dmr027: 
     description: Top Facilities Object
     xml: 
       name: TopFacilities
@@ -5606,7 +5619,7 @@ definitions:
       - QcFlag
       - LimitsInfoFlag
       - DmrInfoFlag
-  dmr10_TopFacilityPounds: 
+  dmr028: 
     description: Top Facility Pounds Object
     xml: 
       name: TopFacilityPounds
@@ -5689,7 +5702,7 @@ definitions:
       - QcFlag
       - TotalPounds
       - TotalTwpe
-  dmr10_TopFacilityTWPE: 
+  dmr029: 
     description: Top Facility TWPE Object
     xml: 
       name: TopFacilityTWPE
@@ -5772,7 +5785,7 @@ definitions:
       - QcFlag
       - TotalTwpe
       - TotalPounds
-  dmr10_TopPollutantPounds: 
+  dmr030: 
     description: Top Pollutant Pounds Object
     xml: 
       name: TopPollutantPounds
@@ -5802,7 +5815,7 @@ definitions:
       - TRIInfoFlag
       - TotalPounds
       - QcFlag
-  dmr10_TopPollutantTWPE: 
+  dmr031: 
     description: Top Pollutant TWPE Object
     xml: 
       name: TopPollutantTWPE
@@ -5832,7 +5845,7 @@ definitions:
       - TRIInfoFlag
       - TotalTwpe
       - QcFlag
-  dmr10_TopSIC: 
+  dmr032: 
     description: Top SIC Object
     xml: 
       name: TopSIC
@@ -5877,7 +5890,7 @@ definitions:
       - QcFlag
       - LimitsInfoFlag
       - DmrInfoFlag
-  dmr10_TopSICPounds: 
+  dmr033: 
     description: Top SIC Pounds Object
     xml: 
       name: TopSICPounds
@@ -5922,7 +5935,7 @@ definitions:
       - TRIInfoFlag
       - QcFlag
       - TotalPounds
-  dmr10_TopSICTWPE: 
+  dmr034: 
     description: Top SIC TWPE Object
     xml: 
       name: TopSICTWPE
@@ -5967,7 +5980,7 @@ definitions:
       - TRIInfoFlag
       - QcFlag
       - TotalTwpe
-  dmr10_TopWatersheds: 
+  dmr035: 
     description: Top Watersheds Objects
     xml: 
       name: TopWatersheds
@@ -6012,7 +6025,7 @@ definitions:
       - QcFlag
       - LimitsInfoFlag
       - DmrInfoFlag
-  dmr11_ExceedanceYears: 
+  dmr036: 
     description: Exceedance Years Object
     xml: 
       name: ExceedanceYears
@@ -6030,7 +6043,7 @@ definitions:
       - Year
       - ViolationCount
       - LoadOverLimit
-  dmr11_FacilityExceedances: 
+  dmr037: 
     description: Facilitiy Exceedabces Object
     xml: 
       name: FacilityExceedances
@@ -6112,7 +6125,7 @@ definitions:
       ExceedanceYears: 
         type: array
         items: 
-          "$ref": "#/definitions/dmr11_ExceedanceYears" 
+          "$ref": "#/definitions/dmr036" 
         xml: 
           name: ExceedanceYears
           wrapped: true
@@ -6148,7 +6161,7 @@ definitions:
       - LoadOverLimit
       - LoadOverLimitTwpe
       - ExceedanceYears
-  dmr11_Results: 
+  dmr038: 
     description: Results Object
     properties: 
       QueryRows: 
@@ -6170,7 +6183,7 @@ definitions:
       FacilityExceedances: 
         type: array
         items: 
-          "$ref": "#/definitions/dmr11_FacilityExceedances" 
+          "$ref": "#/definitions/dmr037" 
         xml: 
           name: FacilityExceedances
           wrapped: true
@@ -6181,7 +6194,7 @@ definitions:
       - StartRec
       - EndRec
       - FacilityExceedances
-  dmr12_EnforcementInfo: 
+  dmr039: 
     description: Enforcement Information Object
     properties: 
       LastFea: 
@@ -6203,7 +6216,7 @@ definitions:
       - CaseNumber
       - DocketNumber
       - TypeDescription
-  dmr12_ExceedanceDetails: 
+  dmr040: 
     description: Exceedance Details Object
     xml: 
       name: ExceedanceDetails
@@ -6266,7 +6279,7 @@ definitions:
       - LoadOverLimitLbs
       - NmbrOfDays
       - ViolationDays
-  dmr12_FacilityInfo: 
+  dmr041: 
     description: Facility Information Object
     properties: 
       FacName: 
@@ -6347,7 +6360,7 @@ definitions:
       - AvgFacilityFlow
       - SicCode
       - NaicsCode
-  dmr12_PermitInfo: 
+  dmr042: 
     description: Permit Information Object
     properties: 
       PermitType: 
@@ -6381,7 +6394,7 @@ definitions:
       - DmrSigner
       - PretreatProgram
       - CsoOutfall
-  dmr12_PollutantExceedanceCounts: 
+  dmr043: 
     description: Pollutant Exceedance Counts Object
     xml: 
       name: PollutantExceedanceCounts
@@ -6411,13 +6424,16 @@ definitions:
       - ViolCount
       - ViolationDays
       - QcFlag
-  dmr12_ReceivingWater: 
+  dmr044: 
     description: Receiving Water Object
     properties: 
       WbName: 
         type: string
       ReachCode: 
         type: string
+        title: Reach Code
+        example: "\"05030201000270\""
+        description: A nationally unique and permanent 14-digit identifier for the waterbody, assigned by the U.S. Geological Survey.
       WaterNameNumber: 
         type: string
       ListedImpairment: 
@@ -6430,7 +6446,7 @@ definitions:
       - WaterNameNumber
       - ListedImpairment
       - ImpairmentClass
-  dmr12_Results: 
+  dmr045: 
     description: Results Object
     properties: 
       Message: 
@@ -6449,18 +6465,18 @@ definitions:
         example: 01/01/2016
         description: End date for the date range of interest. Formatted as mm/dd/yyyy
       FacilityInfo: 
-        "$ref": "#/definitions/dmr12_FacilityInfo" 
+        "$ref": "#/definitions/dmr041" 
       PermitInfo: 
-        "$ref": "#/definitions/dmr12_PermitInfo" 
+        "$ref": "#/definitions/dmr042" 
       EnforcementInfo: 
-        "$ref": "#/definitions/dmr12_EnforcementInfo" 
+        "$ref": "#/definitions/dmr039" 
       ReceivingWater: 
-        "$ref": "#/definitions/dmr12_ReceivingWater" 
+        "$ref": "#/definitions/dmr044" 
       TotalExceedanceCounts: 
         type: array
         title: Total Exceedance Counts
         items: 
-          "$ref": "#/definitions/dmr12_TotalExceedanceCounts" 
+          "$ref": "#/definitions/dmr046" 
         xml: 
           name: TotalExceedanceCounts
           wrapped: true
@@ -6468,7 +6484,7 @@ definitions:
         type: array
         title: Pollutant Exceedance Counts
         items: 
-          "$ref": "#/definitions/dmr12_PollutantExceedanceCounts" 
+          "$ref": "#/definitions/dmr043" 
         xml: 
           name: PollutantExceedanceCounts
           wrapped: true
@@ -6476,7 +6492,7 @@ definitions:
         type: array
         title: Exceedance Details
         items: 
-          "$ref": "#/definitions/dmr12_ExceedanceDetails" 
+          "$ref": "#/definitions/dmr040" 
         xml: 
           name: ExceedanceDetails
           wrapped: true
@@ -6491,7 +6507,7 @@ definitions:
       - TotalExceedanceCounts
       - PollutantExceedanceCounts
       - ExceedanceDetails
-  dmr12_TotalExceedanceCounts: 
+  dmr046: 
     description: Total Exceedance Counts Object
     xml: 
       name: TotalExceedanceCounts
@@ -6509,7 +6525,7 @@ definitions:
       - MonitoringPeriodEndDate
       - ViolCount
       - ViolationDays
-  dmr78: 
+  dmr048: 
     description: Facility Info Object
     properties: 
       FacName: 
@@ -6537,7 +6553,7 @@ definitions:
       - FacCity
       - FacState
       - FacZip
-  dmr77: 
+  dmr049: 
     description: Facility Totals Object
     properties: 
       ReportedAnnualLoad: 
@@ -6553,7 +6569,7 @@ definitions:
       - NumEstMonths
       - AnnualLoad
       - AnnualLoadEquation
-  dmr76: 
+  dmr050: 
     description: Monitor Period Loads Object
     xml: 
       name: MonitorPeriodLoads
@@ -6582,10 +6598,17 @@ definitions:
         type: string
       NodiCode: 
         type: string
+        title: No Data Indicator (NODI) Code
+        example: '1'
+        description: The no data indicator code for DMRs where no measurements are reported.
       MeasurementType: 
         type: string
         title: Measurement Type
         example: NMth
+        description: |-
+          The type of measurement used to determine the violation. Applicable values:
+          - "Mnthly"  stands for monthly. This means that the exceedance shown in that row was based upon a monthly average of readings submitted by the permittee.
+          - "NMth" stands for non-monthly. This is generally a "maximum" amount read during the reporting period (and could indicate a spike that is not continuous). "Neither" denotes other measurements such as a minimum (e.g., pH could be in violation if below the permitted level).
       AvgDailyValue: 
         type: string
       LimitValue: 
@@ -6627,7 +6650,7 @@ definitions:
       - ExceedanceCount
       - Equation
       - QcReviewMonitorPdLoad
-  dmr75: 
+  dmr051: 
     description: Outfall Loads Object
     xml: 
       name: OutfallLoads
@@ -6678,7 +6701,7 @@ definitions:
       - ExceedanceCount
       - QcReviewPounds
       - QcReviewTwpe
-  dmr74: 
+  dmr052: 
     description: Pollutant Loads Object
     xml: 
       name: PollutantLoads
@@ -6726,7 +6749,7 @@ definitions:
       - ExceedanceCount
       - QcReviewPounds
       - QcReviewTwpe
-  dmr73: 
+  dmr053: 
     description: Results Object
     properties: 
       Message: 
@@ -6738,7 +6761,7 @@ definitions:
         type: array
         title: Pollutant Loads
         items: 
-          "$ref": "#/definitions/dmr74" 
+          "$ref": "#/definitions/dmr052" 
         xml: 
           name: PollutantLoads
           wrapped: true
@@ -6746,22 +6769,22 @@ definitions:
         type: array
         title: Outfall Loads
         items: 
-          "$ref": "#/definitions/dmr75" 
+          "$ref": "#/definitions/dmr051" 
         xml: 
           name: OutfallLoads
           wrapped: true
       FacilityInfo: 
-        "$ref": "#/definitions/dmr78" 
+        "$ref": "#/definitions/dmr048" 
       MonitorPeriodLoads: 
         type: array
         title: Monitor Period Loads
         items: 
-          "$ref": "#/definitions/dmr76" 
+          "$ref": "#/definitions/dmr050" 
         xml: 
           name: MonitorPeriodLoads
           wrapped: true
       FacilityTotals: 
-        "$ref": "#/definitions/dmr77" 
+        "$ref": "#/definitions/dmr049" 
     required: 
       - Message
       - PollutantLoads
@@ -6769,7 +6792,7 @@ definitions:
       - FacilityInfo
       - MonitorPeriodLoads
       - FacilityTotals
-  dmr72: 
+  dmr055: 
     description: Facility Info Object
     properties: 
       FacName: 
@@ -6874,7 +6897,7 @@ definitions:
       - SicCode
       - NaicsCode
       - LikelyPsc
-  dmr71: 
+  dmr056: 
     description: Industrial Dischargers Object
     xml: 
       name: IndustrialDischargers
@@ -6912,7 +6935,7 @@ definitions:
       - TopChemical
       - IndirectPounds
       - IndirectTwpe
-  dmr70: 
+  dmr057: 
     description: Pollutant Loads Object
     xml: 
       name: PollutantLoads
@@ -6960,7 +6983,7 @@ definitions:
       - ExceedanceCount
       - QcReviewPounds
       - QcReviewTwpe
-  dmr69: 
+  dmr058: 
     description: Potw Wastewater Treatment Object
     properties: 
       CwnsIds: 
@@ -7000,13 +7023,16 @@ definitions:
       - AmmoniaRemoval
       - Residents
       - NonResidents
-  dmr68: 
+  dmr059: 
     description: Receiving Water Object
     properties: 
       WbName: 
         type: string
       ReachCode: 
         type: string
+        title: Reach Code
+        example: "\"05030201000270\""
+        description: A nationally unique and permanent 14-digit identifier for the waterbody, assigned by the U.S. Geological Survey.
       WaterNameNumber: 
         type: string
       ListedImpairment: 
@@ -7031,7 +7057,7 @@ definitions:
       - ImpairmentPolls
       - EsaDischarge
       - EsaFips
-  dmr65: 
+  dmr060: 
     description: Results Object
     properties: 
       Message: 
@@ -7040,12 +7066,12 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       FacilityInfo: 
-        "$ref": "#/definitions/dmr72" 
+        "$ref": "#/definitions/dmr055" 
       TopPollutantPounds: 
         type: array
         title: Top Pollutant Pounds
         items: 
-          "$ref": "#/definitions/dmr66" 
+          "$ref": "#/definitions/dmr061" 
         xml: 
           name: TopPollutantPounds
           wrapped: true
@@ -7053,7 +7079,7 @@ definitions:
         type: array
         title: Top Pollutant TWPE
         items: 
-          "$ref": "#/definitions/dmr67" 
+          "$ref": "#/definitions/dmr062" 
         xml: 
           name: TopPollutantTWPE
           wrapped: true
@@ -7061,19 +7087,19 @@ definitions:
         type: array
         title: Pollutant Loads
         items: 
-          "$ref": "#/definitions/dmr70" 
+          "$ref": "#/definitions/dmr057" 
         xml: 
           name: PollutantLoads
           wrapped: true
       ReceivingWater: 
-        "$ref": "#/definitions/dmr68" 
+        "$ref": "#/definitions/dmr059" 
       PotwWastewaterTreatment: 
-        "$ref": "#/definitions/dmr69" 
+        "$ref": "#/definitions/dmr058" 
       IndustrialDischargers: 
         type: array
         title: Industrial Dischargers
         items: 
-          "$ref": "#/definitions/dmr71" 
+          "$ref": "#/definitions/dmr056" 
         xml: 
           name: IndustrialDischargers
           wrapped: true
@@ -7086,7 +7112,7 @@ definitions:
       - ReceivingWater
       - PotwWastewaterTreatment
       - IndustrialDischargers
-  dmr66: 
+  dmr061: 
     description: Top Pollutant Pounds Object
     xml: 
       name: TopPollutantPounds
@@ -7122,7 +7148,7 @@ definitions:
       - MaxAllowable
       - ExceedanceFlag
       - LoadOverLimit
-  dmr67: 
+  dmr062: 
     description: Top Pollutant TWPE Object
     xml: 
       name: TopPollutantTWPE
@@ -7158,7 +7184,7 @@ definitions:
       - MaxAllowable
       - ExceedanceFlag
       - LoadOverLimit
-  dmr61: 
+  dmr066: 
     description: Facility Info Object
     properties: 
       FacName: 
@@ -7186,7 +7212,7 @@ definitions:
       - FacCity
       - FacState
       - FacZip
-  dmr62: 
+  dmr067: 
     description: Facility Totals Object
     properties: 
       ReportedAnnualLoad: 
@@ -7202,7 +7228,7 @@ definitions:
       - NumEstMonths
       - AnnualLoad
       - AnnualLoadEquation
-  dmr63: 
+  dmr068: 
     description: Monitor Period Loads Object
     xml: 
       name: MonitorPeriodLoads
@@ -7231,10 +7257,17 @@ definitions:
         type: string
       NodiCode: 
         type: string
+        title: No Data Indicator (NODI) Code
+        example: '1'
+        description: The no data indicator code for DMRs where no measurements are reported.
       MeasurementType: 
         type: string
         title: Measurement Type
         example: NMth
+        description: |-
+          The type of measurement used to determine the violation. Applicable values:
+          - "Mnthly"  stands for monthly. This means that the exceedance shown in that row was based upon a monthly average of readings submitted by the permittee.
+          - "NMth" stands for non-monthly. This is generally a "maximum" amount read during the reporting period (and could indicate a spike that is not continuous). "Neither" denotes other measurements such as a minimum (e.g., pH could be in violation if below the permitted level).
       AvgDailyValue: 
         type: string
       LimitValue: 
@@ -7276,7 +7309,7 @@ definitions:
       - ExceedanceCount
       - Equation
       - QcReviewMonitorPdLoad
-  dmr64: 
+  dmr069: 
     description: Results Object
     properties: 
       Message: 
@@ -7285,23 +7318,23 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       FacilityInfo: 
-        "$ref": "#/definitions/dmr61" 
+        "$ref": "#/definitions/dmr066" 
       MonitorPeriodLoads: 
         type: array
         title: Monitor Period Loads Object
         items: 
-          "$ref": "#/definitions/dmr63" 
+          "$ref": "#/definitions/dmr068" 
         xml: 
           name: MonitorPeriodLoads
           wrapped: true
       FacilityTotals: 
-        "$ref": "#/definitions/dmr62" 
+        "$ref": "#/definitions/dmr067" 
     required: 
       - Message
       - FacilityInfo
       - MonitorPeriodLoads
       - FacilityTotals
-  dmr33: 
+  dmr071: 
     description: Outfalls Object
     xml: 
       name: Outfalls
@@ -7324,7 +7357,7 @@ definitions:
         type: array
         title: Pollutant Limits
         items: 
-          "$ref": "#/definitions/dmr34" 
+          "$ref": "#/definitions/dmr072" 
         xml: 
           name: PollutantLimits
           wrapped: true
@@ -7332,7 +7365,7 @@ definitions:
         type: array
         title: Pollutant Measurements
         items: 
-          "$ref": "#/definitions/dmr35" 
+          "$ref": "#/definitions/dmr073" 
         xml: 
           name: PollutantMeasurements
           wrapped: true
@@ -7343,7 +7376,7 @@ definitions:
       - LimitSetDesignator
       - PollutantLimits
       - PollutantMeasurements
-  dmr34: 
+  dmr072: 
     description: Pollutant Limits Object
     xml: 
       name: PollutantLimits
@@ -7373,7 +7406,7 @@ definitions:
       - LimitValue
       - LimitUnitDesc
       - LimitType
-  dmr35: 
+  dmr073: 
     description: Pollutant Measurements Object
     xml: 
       name: PollutantMeasurements
@@ -7415,20 +7448,20 @@ definitions:
       - LimitType
       - DmrUnitDesc
       - DmrValue
-  dmr36: 
+  dmr074: 
     description: Results Object
     properties: 
       Outfalls: 
         type: array
         title: Outfalls
         items: 
-          "$ref": "#/definitions/dmr33" 
+          "$ref": "#/definitions/dmr071" 
         xml: 
           name: Outfalls
           wrapped: true
     required: 
       - Outfalls
-  dmr20: 
+  dmr076: 
     description: Chemical Groups Object
     xml: 
       name: ChemicalGroups
@@ -7443,7 +7476,7 @@ definitions:
         type: array
         title: Chemical Group Discharges Object
         items: 
-          "$ref": "#/definitions/dmr39" 
+          "$ref": "#/definitions/dmr077" 
         xml: 
           name: ChemicalGroupDischarges
           wrapped: true
@@ -7452,7 +7485,7 @@ definitions:
       - ChemicalGroupName
       - CoveredByTRI
       - ChemicalGroupDischarges
-  dmr39: 
+  dmr077: 
     description: Chemical Group Discharges Object
     xml: 
       name: ChemicalGroupDischarges
@@ -7476,7 +7509,7 @@ definitions:
       - DmrTwpe
       - TriDirectTwpe
       - QcFlag
-  dmr37: 
+  dmr078: 
     description: Facility Info Object
     properties: 
       FacName: 
@@ -7513,7 +7546,7 @@ definitions:
       - FrsId
       - NpdesIds
       - TriIds
-  dmr38: 
+  dmr079: 
     description: Results Object
     properties: 
       Message: 
@@ -7522,12 +7555,12 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       FacilityInfo: 
-        "$ref": "#/definitions/dmr37" 
+        "$ref": "#/definitions/dmr078" 
       ChemicalGroups: 
         type: array
         title: Chemical Groups Object
         items: 
-          "$ref": "#/definitions/dmr20" 
+          "$ref": "#/definitions/dmr076" 
         xml: 
           name: ChemicalGroups
           wrapped: true
@@ -7535,7 +7568,7 @@ definitions:
       - Message
       - FacilityInfo
       - ChemicalGroups
-  dmr21_FacilityInfo: 
+  dmr080: 
     description: Facility Information Object
     properties: 
       FacName: 
@@ -7572,7 +7605,7 @@ definitions:
       - FrsId
       - NpdesIds
       - TriIds
-  dmr22: 
+  dmr081: 
     description: Pollutants Object
     xml: 
       name: Pollutants
@@ -7588,7 +7621,7 @@ definitions:
         type: array
         title: Pollutant Discharges
         items: 
-          "$ref": "#/definitions/dmr40" 
+          "$ref": "#/definitions/dmr082" 
         xml: 
           name: PollutantDischarges
           wrapped: true
@@ -7596,7 +7629,7 @@ definitions:
       - PollutantType
       - Pollutant
       - PollutantDischarges
-  dmr40: 
+  dmr082: 
     description: Pollutant Discharges Object
     xml: 
       name: PollutantDischarges
@@ -7614,7 +7647,7 @@ definitions:
       - Pounds
       - Twpe
       - QcFlag
-  dmr41: 
+  dmr083: 
     description: Results Object
     properties: 
       Message: 
@@ -7623,12 +7656,12 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       FacilityInfo: 
-        "$ref": "#/definitions/dmr21_FacilityInfo" 
+        "$ref": "#/definitions/dmr080" 
       Pollutants: 
         type: array
         title: Pollutants
         items: 
-          "$ref": "#/definitions/dmr22" 
+          "$ref": "#/definitions/dmr081" 
         xml: 
           name: Pollutants
           wrapped: true
@@ -7636,7 +7669,7 @@ definitions:
       - Message
       - FacilityInfo
       - Pollutants
-  dmr43: 
+  dmr088: 
     description: Permit Limits Object
     xml: 
       name: PermitLimits
@@ -7714,20 +7747,20 @@ definitions:
       - LimitConc2Basis
       - LimitConc3
       - LimitConc3Basis
-  dmr42: 
+  dmr089: 
     description: Results Object
     properties: 
       PermitLimits: 
         type: array
         title: Permit Limits
         items: 
-          "$ref": "#/definitions/dmr43" 
+          "$ref": "#/definitions/dmr088" 
         xml: 
           name: PermitLimits
           wrapped: true
     required: 
       - PermitLimits
-  dmr47: 
+  dmr093: 
     description: Facility Information Object
     properties: 
       FacName: 
@@ -7793,20 +7826,23 @@ definitions:
       - SicCode
       - NaicsCode
       - LikelyPsc
-  dmr46: 
+  dmr094: 
     description: POTW Transfers Object
     properties: 
       PotwNoInfo: 
         type: string
     required: 
       - PotwNoInfo
-  dmr45: 
+  dmr095: 
     description: Receiving Water Object
     properties: 
       WbName: 
         type: string
       ReachCode: 
         type: string
+        title: Reach Code
+        example: "\"05030201000270\""
+        description: A nationally unique and permanent 14-digit identifier for the waterbody, assigned by the U.S. Geological Survey.
       WaterNameNumber: 
         type: string
       ListedImpairment: 
@@ -7831,7 +7867,7 @@ definitions:
       - ImpairmentChems
       - EsaDischarge
       - EsaFips
-  dmr44: 
+  dmr096: 
     description: Results Object
     properties: 
       Message: 
@@ -7842,23 +7878,23 @@ definitions:
       ValidationMessage: 
         type: string
       FacilityInfo: 
-        "$ref": "#/definitions/dmr47" 
+        "$ref": "#/definitions/dmr093" 
       TopChemicalPounds: 
         type: array
         title: Top Chemical Pounds
         items: 
-          "$ref": "#/definitions/dmr48" 
+          "$ref": "#/definitions/dmr097" 
       TopChemicalTWPE: 
         type: array
         title: Top Chemical TWPE
         items: 
-          "$ref": "#/definitions/dmr49" 
+          "$ref": "#/definitions/dmr098" 
       ReceivingWater: 
-        "$ref": "#/definitions/dmr45" 
+        "$ref": "#/definitions/dmr095" 
       PotwTransfers: 
-        "$ref": "#/definitions/dmr46" 
+        "$ref": "#/definitions/dmr094" 
       TriWastewaterTreatment: 
-        "$ref": "#/definitions/dmr50" 
+        "$ref": "#/definitions/dmr099" 
       UpstreamStationUrl: 
         type: string
       DownstreamStationUrl: 
@@ -7874,7 +7910,7 @@ definitions:
       - TriWastewaterTreatment
       - UpstreamStationUrl
       - DownstreamStationUrl
-  dmr48: 
+  dmr097: 
     description: Top Chemical Pounds Object
     properties: 
       ChemicalName: 
@@ -7901,7 +7937,7 @@ definitions:
       - TotalIndirectPounds
       - QcReviewIndirectPounds
       - QcReviewIndirectFlag
-  dmr49: 
+  dmr098: 
     description: Top Chemical TWPE Object
     properties: 
       ChemicalName: 
@@ -7928,14 +7964,14 @@ definitions:
       - TotalIndirectTwpe
       - QcReviewIndirectTwpe
       - QcReviewIndirectFlag
-  dmr50: 
+  dmr099: 
     description: TRI Wastewater Treatment Object
     properties: 
       TreatmentInPlace: 
         type: string
     required: 
       - TreatmentInPlace
-  dmr60: 
+  dmr101: 
     description: Facility Counts Object
     properties: 
       AllFacs: 
@@ -7969,7 +8005,7 @@ definitions:
       - AllIndustries
       - LinkToNpdes
       - WithDataIcis
-  dmr51: 
+  dmr102: 
     description: Results Object
     properties: 
       Message: 
@@ -7983,12 +8019,12 @@ definitions:
         example: '245'
         description: Sequential number assigned to entire search result
       FacilityCounts: 
-        "$ref": "#/definitions/dmr60" 
+        "$ref": "#/definitions/dmr101" 
       TopChemicalPounds: 
         type: array
         title: Top Chemical Pounds Object
         items: 
-          "$ref": "#/definitions/dmr52" 
+          "$ref": "#/definitions/dmr103" 
         xml: 
           name: TopChemicalPounds
           wrapped: true
@@ -7996,7 +8032,7 @@ definitions:
         type: array
         title: Top Chemical TWPE Object
         items: 
-          "$ref": "#/definitions/dmr53" 
+          "$ref": "#/definitions/dmr104" 
         xml: 
           name: TopChemicalTWPE
           wrapped: true
@@ -8004,7 +8040,7 @@ definitions:
         type: array
         title: Top NAICS Pounds Object
         items: 
-          "$ref": "#/definitions/dmr56" 
+          "$ref": "#/definitions/dmr107" 
         xml: 
           name: TopNAICSPounds
           wrapped: true
@@ -8012,7 +8048,7 @@ definitions:
         type: array
         title: Top NAICS TWPE Object
         items: 
-          "$ref": "#/definitions/dmr57" 
+          "$ref": "#/definitions/dmr108" 
         xml: 
           name: TopNAICSTWPE
           wrapped: true
@@ -8020,7 +8056,7 @@ definitions:
         type: array
         title: Top Facility Pounds
         items: 
-          "$ref": "#/definitions/dmr54" 
+          "$ref": "#/definitions/dmr105" 
         xml: 
           name: TopFacilityPounds
           wrapped: true
@@ -8028,7 +8064,7 @@ definitions:
         type: array
         title: Top Facility TWPE
         items: 
-          "$ref": "#/definitions/dmr55" 
+          "$ref": "#/definitions/dmr106" 
         xml: 
           name: TopFacilityTWPE
           wrapped: true
@@ -8042,7 +8078,7 @@ definitions:
       - TopNAICSTWPE
       - TopFacilityPounds
       - TopFacilityTWPE
-  dmr52: 
+  dmr103: 
     description: Top Chemical Pounds Object
     xml: 
       name: TopChemicalPounds
@@ -8065,7 +8101,7 @@ definitions:
       - IndirectRelease
       - TotalRelease
       - DmrInfoFlag
-  dmr53: 
+  dmr104: 
     description: Top Chemical TWPE Object
     xml: 
       name: TopChemicalTWPE
@@ -8088,7 +8124,7 @@ definitions:
       - IndirectTwpe
       - TotalTwpe
       - DmrInfoFlag
-  dmr54: 
+  dmr105: 
     description: Top Facility Pounds Object
     xml: 
       name: TopFacilityPounds
@@ -8146,7 +8182,7 @@ definitions:
       - IndirectRelease
       - TotalRelease
       - DmrInfoFlag
-  dmr55: 
+  dmr106: 
     description: Top Facility TWPE Object
     xml: 
       name: TopFacilityTWPE
@@ -8204,7 +8240,7 @@ definitions:
       - IndirectTwpe
       - TotalTwpe
       - DmrInfoFlag
-  dmr56: 
+  dmr107: 
     description: Top NAICS Pounds Object
     xml: 
       name: TopNAICSPounds
@@ -8233,7 +8269,7 @@ definitions:
       - IndirectRelease
       - TotalRelease
       - DmrInfoFlag
-  dmr57: 
+  dmr108: 
     description: Top NAICS TWPE Object
     xml: 
       name: TopNAICSTWPE
@@ -8262,7 +8298,7 @@ definitions:
       - IndirectTwpe
       - TotalTwpe
       - DmrInfoFlag
-  dmr59: 
+  dmr110: 
     description: Facilities Object
     xml: 
       name: Facilities
@@ -8355,7 +8391,7 @@ definitions:
       - InIcisOnly
       - InTRIOnly
       - InBothIcisAndTRI
-  dmr58: 
+  dmr111: 
     description: Results Object
     properties: 
       QueryRows: 
@@ -8379,7 +8415,7 @@ definitions:
         title: Facilities
         description: A complex array of facility information.
         items: 
-          "$ref": "#/definitions/dmr59" 
+          "$ref": "#/definitions/dmr110" 
         xml: 
           name: Facilities
           wrapped: true

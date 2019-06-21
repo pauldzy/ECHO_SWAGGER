@@ -643,7 +643,7 @@
       ,"f.p_nutrient_agg": {
           "name": "p_nutrient_agg"
          ,"in": "formData"
-         ,"description": "Nutrient Aggregation Option. A \"Y\" value applies a nutrient aggregation methodology to generate nitrogen and phosphorus pollutant category loads."
+         ,"description": "Nutrient Aggregation Option. A \"Y\" value applies a nutrient aggregation methodology to generate nitrogen and phosphorus pollutant category loads. If not specified, defaults to \"N\"."
          ,"default": "N"
          ,"type": "string"
          ,"required": false
@@ -651,7 +651,7 @@
       ,"q.p_nutrient_agg": {
           "name": "p_nutrient_agg"
          ,"in": "query"
-         ,"description": "Nutrient Aggregation Option. A \"Y\" value applies a nutrient aggregation methodology to generate nitrogen and phosphorus pollutant category loads."
+         ,"description": "Nutrient Aggregation Option. A \"Y\" value applies a nutrient aggregation methodology to generate nitrogen and phosphorus pollutant category loads. If not specified, defaults to \"N\"."
          ,"default": "N"
          ,"type": "string"
          ,"required": false
@@ -783,7 +783,7 @@
       ,"f.p_param_group": {
           "name": "p_param_group"
          ,"in": "formData"
-         ,"description": "Parameter Grouping Option. A \"Y\" value applies a parameter grouping function to avoid double-counting loads for pollutant parameters that represent the same pollutant."
+         ,"description": "Parameter Grouping Option. A \"Y\" value applies a parameter grouping function to avoid double-counting loads for pollutant parameters that represent the same pollutant. If not specified, defaults to \"N\"."
          ,"default": "N"
          ,"type": "string"
          ,"required": false
@@ -791,7 +791,7 @@
       ,"q.p_param_group": {
           "name": "p_param_group"
          ,"in": "query"
-         ,"description": "Parameter Grouping Option. A \"Y\" value applies a parameter grouping function to avoid double-counting loads for pollutant parameters that represent the same pollutant."
+         ,"description": "Parameter Grouping Option. A \"Y\" value applies a parameter grouping function to avoid double-counting loads for pollutant parameters that represent the same pollutant. If not specified, defaults to \"N\"."
          ,"default": "N"
          ,"type": "string"
          ,"required": false
@@ -1526,7 +1526,7 @@
       ,"q.p_est": {
           "name": "p_est"
          ,"in": "query"
-         ,"description": "Estimation Function Flag. A \"Y\" value will estimates loads when monitoring data are not reported for one or more monitoring periods in a reporting year. "
+         ,"description": "Estimation Function Flag. A \"Y\" value will estimates loads when monitoring data are not reported for one or more monitoring periods in a reporting year. If not specified, defaults to \"Y\"."
          ,"default": "Y"
          ,"type": "string"
          ,"required": true
@@ -1534,7 +1534,7 @@
       ,"f.p_est": {
           "name": "p_est"
          ,"in": "formData"
-         ,"description": "Estimation Function Flag. A \"Y\" value will estimates loads when monitoring data are not reported for one or more monitoring periods in a reporting year. "
+         ,"description": "Estimation Function Flag. A \"Y\" value will estimates loads when monitoring data are not reported for one or more monitoring periods in a reporting year. If not specified, defaults to \"Y\"."
          ,"default": "Y"
          ,"type": "string"
          ,"required": true
@@ -1709,7 +1709,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr03_Results"
+                         "$ref": "#\/definitions\/dmr007"
                      }
                   }
                   ,"required": [
@@ -1816,7 +1816,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr03_Results"
+                         "$ref": "#\/definitions\/dmr007"
                      }
                   }
                   ,"required": [
@@ -2066,7 +2066,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr04_Results"
+                         "$ref": "#\/definitions\/dmr013"
                      }
                   }
                   ,"required": [
@@ -2314,7 +2314,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr04_Results"
+                         "$ref": "#\/definitions\/dmr013"
                      }
                   }
                   ,"required": [
@@ -2564,7 +2564,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr05_Results"
+                         "$ref": "#\/definitions\/dmr015"
                      }
                   }
                   ,"required": [
@@ -2809,7 +2809,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr05_Results"
+                         "$ref": "#\/definitions\/dmr015"
                      }
                   }
                   ,"required": [
@@ -3045,7 +3045,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr06_Results"
+                         "$ref": "#\/definitions\/dmr017"
                      }
                   }
                   ,"required": [
@@ -3279,7 +3279,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr06_Results"
+                         "$ref": "#\/definitions\/dmr017"
                      }
                   }
                   ,"required": [
@@ -3373,7 +3373,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr07_Results"
+                         "$ref": "#\/definitions\/dmr020"
                      }
                   }
                   ,"required": [
@@ -3465,7 +3465,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr07_Results"
+                         "$ref": "#\/definitions\/dmr020"
                      }
                   }
                   ,"required": [
@@ -3559,7 +3559,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr08_Results"
+                         "$ref": "#\/definitions\/dmr022"
                      }
                   }
                   ,"required": [
@@ -3651,7 +3651,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr08_Results"
+                         "$ref": "#\/definitions\/dmr022"
                      }
                   }
                   ,"required": [
@@ -3742,7 +3742,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr09_Results"
+                         "$ref": "#\/definitions\/dmr024"
                      }
                   }
                   ,"required": [
@@ -3831,7 +3831,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr09_Results"
+                         "$ref": "#\/definitions\/dmr024"
                      }
                   }
                   ,"required": [
@@ -3980,7 +3980,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr10_Results"
+                         "$ref": "#\/definitions\/dmr026"
                      }
                   }
                   ,"required": [
@@ -4127,7 +4127,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr10_Results"
+                         "$ref": "#\/definitions\/dmr026"
                      }
                   }
                   ,"required": [
@@ -4287,7 +4287,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr01_Results"
+                         "$ref": "#\/definitions\/dmr002"
                      }
                   }
                   ,"required": [
@@ -4431,7 +4431,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr01_Results"
+                         "$ref": "#\/definitions\/dmr002"
                      }
                   }
                   ,"required": [
@@ -4596,7 +4596,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr11_Results"
+                         "$ref": "#\/definitions\/dmr038"
                      }
                   }
                   ,"required": [
@@ -4759,7 +4759,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr11_Results"
+                         "$ref": "#\/definitions\/dmr038"
                      }
                   }
                   ,"required": [
@@ -4808,7 +4808,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr12_Results"
+                         "$ref": "#\/definitions\/dmr045"
                      }
                   }
                   ,"required": [
@@ -4855,7 +4855,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr12_Results"
+                         "$ref": "#\/definitions\/dmr045"
                      }
                   }
                   ,"required": [
@@ -4912,7 +4912,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr73"
+                         "$ref": "#\/definitions\/dmr053"
                      }
                   }
                   ,"required": [
@@ -4967,7 +4967,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr73"
+                         "$ref": "#\/definitions\/dmr053"
                      }
                   }
                   ,"required": [
@@ -5018,7 +5018,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr65"
+                         "$ref": "#\/definitions\/dmr060"
                      }
                   }
                   ,"required": [
@@ -5067,7 +5067,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr65"
+                         "$ref": "#\/definitions\/dmr060"
                      }
                   }
                   ,"required": [
@@ -5124,7 +5124,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr64"
+                         "$ref": "#\/definitions\/dmr069"
                      }
                   }
                   ,"required": [
@@ -5179,7 +5179,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr64"
+                         "$ref": "#\/definitions\/dmr069"
                      }
                   }
                   ,"required": [
@@ -5225,7 +5225,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr38"
+                         "$ref": "#\/definitions\/dmr079"
                      }
                   }
                   ,"required": [
@@ -5269,7 +5269,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr38"
+                         "$ref": "#\/definitions\/dmr079"
                      }
                   }
                   ,"required": [
@@ -5318,7 +5318,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr41"
+                         "$ref": "#\/definitions\/dmr083"
                      }
                   }
                   ,"required": [
@@ -5365,7 +5365,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr41"
+                         "$ref": "#\/definitions\/dmr083"
                      }
                   }
                   ,"required": [
@@ -5420,7 +5420,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr36"
+                         "$ref": "#\/definitions\/dmr074"
                      }
                   }
                   ,"required": [
@@ -5473,7 +5473,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr36"
+                         "$ref": "#\/definitions\/dmr074"
                      }
                   }
                   ,"required": [
@@ -5541,7 +5541,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr42"
+                         "$ref": "#\/definitions\/dmr089"
                      }
                   }
                   ,"required": [
@@ -5607,7 +5607,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr42"
+                         "$ref": "#\/definitions\/dmr089"
                      }
                   }
                   ,"required": [
@@ -5722,7 +5722,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr44"
+                         "$ref": "#\/definitions\/dmr096"
                      }
                   }
                   ,"required": [
@@ -5771,7 +5771,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr44"
+                         "$ref": "#\/definitions\/dmr096"
                      }
                   }
                   ,"required": [
@@ -5931,7 +5931,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr51"
+                         "$ref": "#\/definitions\/dmr102"
                      }
                   }
                   ,"required": [
@@ -6089,7 +6089,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr51"
+                         "$ref": "#\/definitions\/dmr102"
                      }
                   }
                   ,"required": [
@@ -6235,7 +6235,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr02_Results"
+                         "$ref": "#\/definitions\/dmr004"
                      }
                   }
                   ,"required": [
@@ -6379,7 +6379,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr02_Results"
+                         "$ref": "#\/definitions\/dmr004"
                      }
                   }
                   ,"required": [
@@ -6439,7 +6439,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr58"
+                         "$ref": "#\/definitions\/dmr111"
                      }
                   }
                   ,"required": [
@@ -6497,7 +6497,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/dmr58"
+                         "$ref": "#\/definitions\/dmr111"
                      }
                   }
                   ,"required": [
@@ -6604,7 +6604,7 @@
       }
    }
    ,"definitions": {
-       "dmr01_Facilities": {
+       "dmr001": {
           "type": "object"
          ,"description": "Facilities Object"
          ,"xml": {
@@ -6685,7 +6685,7 @@
             ,"FacPermitDmrData"
          ]
       }
-      ,"dmr01_Results": {
+      ,"dmr002": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -6721,7 +6721,7 @@
                ,"title": "Facilities"
                ,"description": "A complex array of facility information."
                ,"items": {
-                   "$ref": "#\/definitions\/dmr01_Facilities"
+                   "$ref": "#\/definitions\/dmr001"
                }
                ,"xml": {
                    "name": "Facilities"
@@ -6739,7 +6739,7 @@
             ,"Facilities"
          ]
       }
-      ,"dmr02_Facilities": {
+      ,"dmr003": {
           "type": "object"
          ,"description": "Facilities Object"
          ,"xml": {
@@ -6802,7 +6802,7 @@
             ,"DmrDischarges"
          ]
       }
-      ,"dmr02_Results": {
+      ,"dmr004": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -6838,7 +6838,7 @@
                ,"title": "Facilities"
                ,"description": "A complex array of facility information."
                ,"items": {
-                   "$ref": "#\/definitions\/dmr02_Facilities"
+                   "$ref": "#\/definitions\/dmr003"
                }
                ,"xml": {
                    "name": "Facilities"
@@ -6856,7 +6856,7 @@
             ,"Facilities"
          ]
       }
-      ,"dmr03_DmrChemicals": {
+      ,"dmr005": {
           "type": "object"
          ,"description": "DMR Chemicals Object"
          ,"properties": {
@@ -6880,7 +6880,7 @@
             ,"OnTriList"
          ]
       }
-      ,"dmr03_DmrFacilities": {
+      ,"dmr006": {
           "type": "object"
          ,"description": "DMR Facilities Object"
          ,"properties": {
@@ -6908,7 +6908,7 @@
             ,"NoTriForm"
          ]
       }
-      ,"dmr03_Results": {
+      ,"dmr007": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -6922,25 +6922,25 @@
                 "type": "string"
             }
             ,"TriFacilities": {
-                "$ref": "#\/definitions\/dmr03_TriFacilities"
+                "$ref": "#\/definitions\/dmr012"
             }
             ,"DmrFacilities": {
-                "$ref": "#\/definitions\/dmr03_DmrFacilities"
+                "$ref": "#\/definitions\/dmr006"
             }
             ,"TriChemicals": {
-                "$ref": "#\/definitions\/dmr03_TriChemicals"
+                "$ref": "#\/definitions\/dmr011"
             }
             ,"DmrChemicals": {
-                "$ref": "#\/definitions\/dmr03_DmrChemicals"
+                "$ref": "#\/definitions\/dmr005"
             }
             ,"Summary": {
-                "$ref": "#\/definitions\/dmr03_Summary"
+                "$ref": "#\/definitions\/dmr008"
             }
             ,"TopIndustries": {
                 "type": "array"
                ,"title": "Top Industries"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr03_TopIndustries"
+                   "$ref": "#\/definitions\/dmr010"
                }
                ,"xml": {
                    "name": "TopIndustries"
@@ -6951,7 +6951,7 @@
                 "type": "array"
                ,"title": "Top Chemicals"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr03_TopChemicals"
+                   "$ref": "#\/definitions\/dmr009"
                }
                ,"xml": {
                    "name": "TopChemicals"
@@ -6971,7 +6971,7 @@
             ,"TopChemicals"
          ]
       }
-      ,"dmr03_Summary": {
+      ,"dmr008": {
           "type": "object"
          ,"description": "Summary Object"
          ,"properties": {
@@ -7011,7 +7011,7 @@
             ,"DmrTwpe"
          ]
       }
-      ,"dmr03_TopChemicals": {
+      ,"dmr009": {
           "type": "object"
          ,"description": "Top Chemicals Object"
          ,"xml": {
@@ -7064,7 +7064,7 @@
             ,"TRIValue"
          ]
       }
-      ,"dmr03_TopIndustries": {
+      ,"dmr010": {
           "type": "object"
          ,"description": "Top Industries Object"
          ,"xml": {
@@ -7115,7 +7115,7 @@
             ,"TRIValue"
          ]
       }
-      ,"dmr03_TriChemicals": {
+      ,"dmr011": {
           "type": "object"
          ,"description": "TRI Chemicals Object"
          ,"properties": {
@@ -7135,7 +7135,7 @@
             ,"ReportOnlyTri"
          ]
       }
-      ,"dmr03_TriFacilities": {
+      ,"dmr012": {
           "type": "object"
          ,"description": "TRI Facilities Object"
          ,"properties": {
@@ -7171,7 +7171,7 @@
             ,"NodmrIndDsch"
          ]
       }
-      ,"dmr04_Results": {
+      ,"dmr013": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -7213,7 +7213,7 @@
                ,"title": "Results"
                ,"description": "A complex array representing the results of the service query or service report."
                ,"items": {
-                   "$ref": "#\/definitions\/dmr04_Results-2"
+                   "$ref": "#\/definitions\/dmr014"
                }
             }
          }
@@ -7228,7 +7228,7 @@
             ,"Results"
          ]
       }
-      ,"dmr04_Results-2": {
+      ,"dmr014": {
           "type": "object"
          ,"description": "Results Data Object"
          ,"properties": {
@@ -7326,6 +7326,8 @@
             }
             ,"AssessmentUnitEPACategory": {
                 "type": "string"
+               ,"title": "Assessment Unit Category (ATTAINS)"
+               ,"description": "The water quality category under which the water body or water segment is classified. Additional information: https:\/\/www.epa.gov\/wqs-tech\/supplemental-module-listing-impaired-waters-and-developing-tmdls"
             }
             ,"CsoCount": {
                 "type": "string"
@@ -7524,7 +7526,7 @@
             ,"EstFactor"
          ]
       }
-      ,"dmr05_Results": {
+      ,"dmr015": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -7566,7 +7568,7 @@
                ,"title": "Results"
                ,"description": "A complex array representing the results of the service query or service report."
                ,"items": {
-                   "$ref": "#\/definitions\/dmr05_Results-2"
+                   "$ref": "#\/definitions\/dmr016"
                }
             }
          }
@@ -7581,7 +7583,7 @@
             ,"Results"
          ]
       }
-      ,"dmr05_Results-2": {
+      ,"dmr016": {
           "type": "object"
          ,"description": "Results Data Object"
          ,"properties": {
@@ -7679,6 +7681,8 @@
             }
             ,"AssessmentUnitEPACategory": {
                 "type": "string"
+               ,"title": "Assessment Unit Category (ATTAINS)"
+               ,"description": "The water quality category under which the water body or water segment is classified. Additional information: https:\/\/www.epa.gov\/wqs-tech\/supplemental-module-listing-impaired-waters-and-developing-tmdls"
             }
             ,"CsoCount": {
                 "type": "string"
@@ -7775,7 +7779,7 @@
             ,"QcFlag"
          ]
       }
-      ,"dmr06_Results": {
+      ,"dmr017": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -7817,7 +7821,7 @@
                ,"title": "Results"
                ,"description": "A complex array representing the results of the service query or service report."
                ,"items": {
-                   "$ref": "#\/definitions\/dmr06_Results-2"
+                   "$ref": "#\/definitions\/dmr018"
                }
             }
          }
@@ -7832,7 +7836,7 @@
             ,"Results"
          ]
       }
-      ,"dmr06_Results-2": {
+      ,"dmr018": {
           "type": "object"
          ,"description": "Results Data Object"
          ,"properties": {
@@ -7930,6 +7934,8 @@
             }
             ,"AssessmentUnitEPACategory": {
                 "type": "string"
+               ,"title": "Assessment Unit Category (ATTAINS)"
+               ,"description": "The water quality category under which the water body or water segment is classified. Additional information: https:\/\/www.epa.gov\/wqs-tech\/supplemental-module-listing-impaired-waters-and-developing-tmdls"
             }
             ,"CsoCount": {
                 "type": "string"
@@ -8088,9 +8094,13 @@
                 "type": "string"
                ,"title": "Measurement Type"
                ,"example": "NMth"
+               ,"description": "The type of measurement used to determine the violation. Applicable values:\n- \"Mnthly\"  stands for monthly. This means that the exceedance shown in that row was based upon a monthly average of readings submitted by the permittee.\n- \"NMth\" stands for non-monthly. This is generally a \"maximum\" amount read during the reporting period (and could indicate a spike that is not continuous). \"Neither\" denotes other measurements such as a minimum (e.g., pH could be in violation if below the permitted level)."
             }
             ,"NodiDesc": {
                 "type": "string"
+               ,"title": "No Data Indicator (NODI) Description"
+               ,"example": "Wrong Flow"
+               ,"description": "The description of the NODI code explaining why no data are reported (e.g., no discharge, not quantifiable, conditional monitoring)."
             }
          }
          ,"required": [
@@ -8172,7 +8182,7 @@
             ,"NodiDesc"
          ]
       }
-      ,"dmr07_Chemicals": {
+      ,"dmr019": {
           "type": "object"
          ,"description": "Chemicals Object"
          ,"xml": {
@@ -8225,7 +8235,7 @@
             ,"OnTRIList"
          ]
       }
-      ,"dmr07_Results": {
+      ,"dmr020": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -8254,7 +8264,7 @@
                 "type": "array"
                ,"title": "Chemicals"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr07_Chemicals"
+                   "$ref": "#\/definitions\/dmr019"
                }
                ,"xml": {
                    "name": "Chemicals"
@@ -8271,7 +8281,7 @@
             ,"Chemicals"
          ]
       }
-      ,"dmr08_Facilities": {
+      ,"dmr021": {
           "type": "object"
          ,"description": "Facilities Object"
          ,"xml": {
@@ -8394,7 +8404,7 @@
             ,"MultiyrLink"
          ]
       }
-      ,"dmr08_Results": {
+      ,"dmr022": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -8424,7 +8434,7 @@
                ,"title": "Facilities"
                ,"description": "A complex array of facility information."
                ,"items": {
-                   "$ref": "#\/definitions\/dmr08_Facilities"
+                   "$ref": "#\/definitions\/dmr021"
                }
                ,"xml": {
                    "name": "Facilities"
@@ -8441,7 +8451,7 @@
             ,"Facilities"
          ]
       }
-      ,"dmr09_Industries": {
+      ,"dmr023": {
           "type": "object"
          ,"description": "Industries Object"
          ,"xml": {
@@ -8492,7 +8502,7 @@
             ,"OnTRIList"
          ]
       }
-      ,"dmr09_Results": {
+      ,"dmr024": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -8521,7 +8531,7 @@
                 "type": "array"
                ,"title": "Industries"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr09_Industries"
+                   "$ref": "#\/definitions\/dmr023"
                }
                ,"xml": {
                    "name": "Industries"
@@ -8538,7 +8548,7 @@
             ,"Industries"
          ]
       }
-      ,"dmr10_FacilityCounts": {
+      ,"dmr025": {
           "type": "object"
          ,"description": "Facility Counts Objects"
          ,"properties": {
@@ -8587,7 +8597,7 @@
             ,"WithDataIcis"
          ]
       }
-      ,"dmr10_Results": {
+      ,"dmr026": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -8604,12 +8614,12 @@
                ,"description": "Sequential number assigned to entire search result"
             }
             ,"FacilityCounts": {
-                "$ref": "#\/definitions\/dmr10_FacilityCounts"
+                "$ref": "#\/definitions\/dmr025"
             }
             ,"TopPollutantPounds": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr10_TopPollutantPounds"
+                   "$ref": "#\/definitions\/dmr030"
                }
                ,"xml": {
                    "name": "TopPollutantPounds"
@@ -8619,7 +8629,7 @@
             ,"TopPollutantTWPE": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr10_TopPollutantTWPE"
+                   "$ref": "#\/definitions\/dmr031"
                }
                ,"xml": {
                    "name": "TopPollutantTWPE"
@@ -8629,7 +8639,7 @@
             ,"TopSICPounds": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr10_TopSICPounds"
+                   "$ref": "#\/definitions\/dmr033"
                }
                ,"xml": {
                    "name": "TopSICPounds"
@@ -8639,7 +8649,7 @@
             ,"TopSICTWPE": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr10_TopSICTWPE"
+                   "$ref": "#\/definitions\/dmr034"
                }
                ,"xml": {
                    "name": "TopSICTWPE"
@@ -8649,7 +8659,7 @@
             ,"TopFacilityPounds": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr10_TopFacilityPounds"
+                   "$ref": "#\/definitions\/dmr028"
                }
                ,"xml": {
                    "name": "TopFacilityPounds"
@@ -8659,7 +8669,7 @@
             ,"TopFacilityTWPE": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr10_TopFacilityTWPE"
+                   "$ref": "#\/definitions\/dmr029"
                }
                ,"xml": {
                    "name": "TopFacilityTWPE"
@@ -8669,7 +8679,7 @@
             ,"TopWatersheds": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr10_TopWatersheds"
+                   "$ref": "#\/definitions\/dmr035"
                }
                ,"xml": {
                    "name": "TopWatersheds"
@@ -8679,7 +8689,7 @@
             ,"TopSIC": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr10_TopSIC"
+                   "$ref": "#\/definitions\/dmr032"
                }
                ,"xml": {
                    "name": "TopSIC"
@@ -8690,7 +8700,7 @@
                 "type": "array"
                ,"title": "Top Facilities"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr10_TopFacilities"
+                   "$ref": "#\/definitions\/dmr027"
                }
                ,"xml": {
                    "name": "TopFacilities"
@@ -8704,7 +8714,7 @@
             ,"FacilityCounts"
          ]
       }
-      ,"dmr10_TopFacilities": {
+      ,"dmr027": {
           "type": "object"
          ,"description": "Top Facilities Object"
          ,"xml": {
@@ -8823,7 +8833,7 @@
             ,"DmrInfoFlag"
          ]
       }
-      ,"dmr10_TopFacilityPounds": {
+      ,"dmr028": {
           "type": "object"
          ,"description": "Top Facility Pounds Object"
          ,"xml": {
@@ -8934,7 +8944,7 @@
             ,"TotalTwpe"
          ]
       }
-      ,"dmr10_TopFacilityTWPE": {
+      ,"dmr029": {
           "type": "object"
          ,"description": "Top Facility TWPE Object"
          ,"xml": {
@@ -9045,7 +9055,7 @@
             ,"TotalPounds"
          ]
       }
-      ,"dmr10_TopPollutantPounds": {
+      ,"dmr030": {
           "type": "object"
          ,"description": "Top Pollutant Pounds Object"
          ,"xml": {
@@ -9088,7 +9098,7 @@
             ,"QcFlag"
          ]
       }
-      ,"dmr10_TopPollutantTWPE": {
+      ,"dmr031": {
           "type": "object"
          ,"description": "Top Pollutant TWPE Object"
          ,"xml": {
@@ -9131,7 +9141,7 @@
             ,"QcFlag"
          ]
       }
-      ,"dmr10_TopSIC": {
+      ,"dmr032": {
           "type": "object"
          ,"description": "Top SIC Object"
          ,"xml": {
@@ -9194,7 +9204,7 @@
             ,"DmrInfoFlag"
          ]
       }
-      ,"dmr10_TopSICPounds": {
+      ,"dmr033": {
           "type": "object"
          ,"description": "Top SIC Pounds Object"
          ,"xml": {
@@ -9257,7 +9267,7 @@
             ,"TotalPounds"
          ]
       }
-      ,"dmr10_TopSICTWPE": {
+      ,"dmr034": {
           "type": "object"
          ,"description": "Top SIC TWPE Object"
          ,"xml": {
@@ -9320,7 +9330,7 @@
             ,"TotalTwpe"
          ]
       }
-      ,"dmr10_TopWatersheds": {
+      ,"dmr035": {
           "type": "object"
          ,"description": "Top Watersheds Objects"
          ,"xml": {
@@ -9383,7 +9393,7 @@
             ,"DmrInfoFlag"
          ]
       }
-      ,"dmr11_ExceedanceYears": {
+      ,"dmr036": {
           "type": "object"
          ,"description": "Exceedance Years Object"
          ,"xml": {
@@ -9409,7 +9419,7 @@
             ,"LoadOverLimit"
          ]
       }
-      ,"dmr11_FacilityExceedances": {
+      ,"dmr037": {
           "type": "object"
          ,"description": "Facilitiy Exceedabces Object"
          ,"xml": {
@@ -9523,7 +9533,7 @@
             ,"ExceedanceYears": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr11_ExceedanceYears"
+                   "$ref": "#\/definitions\/dmr036"
                }
                ,"xml": {
                    "name": "ExceedanceYears"
@@ -9565,7 +9575,7 @@
             ,"ExceedanceYears"
          ]
       }
-      ,"dmr11_Results": {
+      ,"dmr038": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -9593,7 +9603,7 @@
             ,"FacilityExceedances": {
                 "type": "array"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr11_FacilityExceedances"
+                   "$ref": "#\/definitions\/dmr037"
                }
                ,"xml": {
                    "name": "FacilityExceedances"
@@ -9610,7 +9620,7 @@
             ,"FacilityExceedances"
          ]
       }
-      ,"dmr12_EnforcementInfo": {
+      ,"dmr039": {
           "type": "object"
          ,"description": "Enforcement Information Object"
          ,"properties": {
@@ -9640,7 +9650,7 @@
             ,"TypeDescription"
          ]
       }
-      ,"dmr12_ExceedanceDetails": {
+      ,"dmr040": {
           "type": "object"
          ,"description": "Exceedance Details Object"
          ,"xml": {
@@ -9725,7 +9735,7 @@
             ,"ViolationDays"
          ]
       }
-      ,"dmr12_FacilityInfo": {
+      ,"dmr041": {
           "type": "object"
          ,"description": "Facility Information Object"
          ,"properties": {
@@ -9829,7 +9839,7 @@
             ,"NaicsCode"
          ]
       }
-      ,"dmr12_PermitInfo": {
+      ,"dmr042": {
           "type": "object"
          ,"description": "Permit Information Object"
          ,"properties": {
@@ -9877,7 +9887,7 @@
             ,"CsoOutfall"
          ]
       }
-      ,"dmr12_PollutantExceedanceCounts": {
+      ,"dmr043": {
           "type": "object"
          ,"description": "Pollutant Exceedance Counts Object"
          ,"xml": {
@@ -9918,7 +9928,7 @@
             ,"QcFlag"
          ]
       }
-      ,"dmr12_ReceivingWater": {
+      ,"dmr044": {
           "type": "object"
          ,"description": "Receiving Water Object"
          ,"properties": {
@@ -9927,6 +9937,9 @@
             }
             ,"ReachCode": {
                 "type": "string"
+               ,"title": "Reach Code"
+               ,"example": "\"05030201000270\""
+               ,"description": "A nationally unique and permanent 14-digit identifier for the waterbody, assigned by the U.S. Geological Survey."
             }
             ,"WaterNameNumber": {
                 "type": "string"
@@ -9946,7 +9959,7 @@
             ,"ImpairmentClass"
          ]
       }
-      ,"dmr12_Results": {
+      ,"dmr045": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -9969,22 +9982,22 @@
                ,"description": "End date for the date range of interest. Formatted as mm\/dd\/yyyy"
             }
             ,"FacilityInfo": {
-                "$ref": "#\/definitions\/dmr12_FacilityInfo"
+                "$ref": "#\/definitions\/dmr041"
             }
             ,"PermitInfo": {
-                "$ref": "#\/definitions\/dmr12_PermitInfo"
+                "$ref": "#\/definitions\/dmr042"
             }
             ,"EnforcementInfo": {
-                "$ref": "#\/definitions\/dmr12_EnforcementInfo"
+                "$ref": "#\/definitions\/dmr039"
             }
             ,"ReceivingWater": {
-                "$ref": "#\/definitions\/dmr12_ReceivingWater"
+                "$ref": "#\/definitions\/dmr044"
             }
             ,"TotalExceedanceCounts": {
                 "type": "array"
                ,"title": "Total Exceedance Counts"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr12_TotalExceedanceCounts"
+                   "$ref": "#\/definitions\/dmr046"
                }
                ,"xml": {
                    "name": "TotalExceedanceCounts"
@@ -9995,7 +10008,7 @@
                 "type": "array"
                ,"title": "Pollutant Exceedance Counts"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr12_PollutantExceedanceCounts"
+                   "$ref": "#\/definitions\/dmr043"
                }
                ,"xml": {
                    "name": "PollutantExceedanceCounts"
@@ -10006,7 +10019,7 @@
                 "type": "array"
                ,"title": "Exceedance Details"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr12_ExceedanceDetails"
+                   "$ref": "#\/definitions\/dmr040"
                }
                ,"xml": {
                    "name": "ExceedanceDetails"
@@ -10027,7 +10040,7 @@
             ,"ExceedanceDetails"
          ]
       }
-      ,"dmr12_TotalExceedanceCounts": {
+      ,"dmr046": {
           "type": "object"
          ,"description": "Total Exceedance Counts Object"
          ,"xml": {
@@ -10053,7 +10066,7 @@
             ,"ViolationDays"
          ]
       }
-      ,"dmr78": {
+      ,"dmr048": {
           "type": "object"
          ,"description": "Facility Info Object"
          ,"properties": {
@@ -10089,7 +10102,7 @@
             ,"FacZip"
          ]
       }
-      ,"dmr77": {
+      ,"dmr049": {
           "type": "object"
          ,"description": "Facility Totals Object"
          ,"properties": {
@@ -10113,7 +10126,7 @@
             ,"AnnualLoadEquation"
          ]
       }
-      ,"dmr76": {
+      ,"dmr050": {
           "type": "object"
          ,"description": "Monitor Period Loads Object"
          ,"xml": {
@@ -10152,11 +10165,15 @@
             }
             ,"NodiCode": {
                 "type": "string"
+               ,"title": "No Data Indicator (NODI) Code"
+               ,"example": "1"
+               ,"description": "The no data indicator code for DMRs where no measurements are reported."
             }
             ,"MeasurementType": {
                 "type": "string"
                ,"title": "Measurement Type"
                ,"example": "NMth"
+               ,"description": "The type of measurement used to determine the violation. Applicable values:\n- \"Mnthly\"  stands for monthly. This means that the exceedance shown in that row was based upon a monthly average of readings submitted by the permittee.\n- \"NMth\" stands for non-monthly. This is generally a \"maximum\" amount read during the reporting period (and could indicate a spike that is not continuous). \"Neither\" denotes other measurements such as a minimum (e.g., pH could be in violation if below the permitted level)."
             }
             ,"AvgDailyValue": {
                 "type": "string"
@@ -10212,7 +10229,7 @@
             ,"QcReviewMonitorPdLoad"
          ]
       }
-      ,"dmr75": {
+      ,"dmr051": {
           "type": "object"
          ,"description": "Outfall Loads Object"
          ,"xml": {
@@ -10281,7 +10298,7 @@
             ,"QcReviewTwpe"
          ]
       }
-      ,"dmr74": {
+      ,"dmr052": {
           "type": "object"
          ,"description": "Pollutant Loads Object"
          ,"xml": {
@@ -10346,7 +10363,7 @@
             ,"QcReviewTwpe"
          ]
       }
-      ,"dmr73": {
+      ,"dmr053": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -10360,7 +10377,7 @@
                 "type": "array"
                ,"title": "Pollutant Loads"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr74"
+                   "$ref": "#\/definitions\/dmr052"
                }
                ,"xml": {
                    "name": "PollutantLoads"
@@ -10371,7 +10388,7 @@
                 "type": "array"
                ,"title": "Outfall Loads"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr75"
+                   "$ref": "#\/definitions\/dmr051"
                }
                ,"xml": {
                    "name": "OutfallLoads"
@@ -10379,13 +10396,13 @@
                }
             }
             ,"FacilityInfo": {
-                "$ref": "#\/definitions\/dmr78"
+                "$ref": "#\/definitions\/dmr048"
             }
             ,"MonitorPeriodLoads": {
                 "type": "array"
                ,"title": "Monitor Period Loads"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr76"
+                   "$ref": "#\/definitions\/dmr050"
                }
                ,"xml": {
                    "name": "MonitorPeriodLoads"
@@ -10393,7 +10410,7 @@
                }
             }
             ,"FacilityTotals": {
-                "$ref": "#\/definitions\/dmr77"
+                "$ref": "#\/definitions\/dmr049"
             }
          }
          ,"required": [
@@ -10405,7 +10422,7 @@
             ,"FacilityTotals"
          ]
       }
-      ,"dmr72": {
+      ,"dmr055": {
           "type": "object"
          ,"description": "Facility Info Object"
          ,"properties": {
@@ -10541,7 +10558,7 @@
             ,"LikelyPsc"
          ]
       }
-      ,"dmr71": {
+      ,"dmr056": {
           "type": "object"
          ,"description": "Industrial Dischargers Object"
          ,"xml": {
@@ -10592,7 +10609,7 @@
             ,"IndirectTwpe"
          ]
       }
-      ,"dmr70": {
+      ,"dmr057": {
           "type": "object"
          ,"description": "Pollutant Loads Object"
          ,"xml": {
@@ -10657,7 +10674,7 @@
             ,"QcReviewTwpe"
          ]
       }
-      ,"dmr69": {
+      ,"dmr058": {
           "type": "object"
          ,"description": "Potw Wastewater Treatment Object"
          ,"properties": {
@@ -10713,7 +10730,7 @@
             ,"NonResidents"
          ]
       }
-      ,"dmr68": {
+      ,"dmr059": {
           "type": "object"
          ,"description": "Receiving Water Object"
          ,"properties": {
@@ -10722,6 +10739,9 @@
             }
             ,"ReachCode": {
                 "type": "string"
+               ,"title": "Reach Code"
+               ,"example": "\"05030201000270\""
+               ,"description": "A nationally unique and permanent 14-digit identifier for the waterbody, assigned by the U.S. Geological Survey."
             }
             ,"WaterNameNumber": {
                 "type": "string"
@@ -10757,7 +10777,7 @@
             ,"EsaFips"
          ]
       }
-      ,"dmr65": {
+      ,"dmr060": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -10768,13 +10788,13 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"FacilityInfo": {
-                "$ref": "#\/definitions\/dmr72"
+                "$ref": "#\/definitions\/dmr055"
             }
             ,"TopPollutantPounds": {
                 "type": "array"
                ,"title": "Top Pollutant Pounds"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr66"
+                   "$ref": "#\/definitions\/dmr061"
                }
                ,"xml": {
                    "name": "TopPollutantPounds"
@@ -10785,7 +10805,7 @@
                 "type": "array"
                ,"title": "Top Pollutant TWPE"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr67"
+                   "$ref": "#\/definitions\/dmr062"
                }
                ,"xml": {
                    "name": "TopPollutantTWPE"
@@ -10796,7 +10816,7 @@
                 "type": "array"
                ,"title": "Pollutant Loads"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr70"
+                   "$ref": "#\/definitions\/dmr057"
                }
                ,"xml": {
                    "name": "PollutantLoads"
@@ -10804,16 +10824,16 @@
                }
             }
             ,"ReceivingWater": {
-                "$ref": "#\/definitions\/dmr68"
+                "$ref": "#\/definitions\/dmr059"
             }
             ,"PotwWastewaterTreatment": {
-                "$ref": "#\/definitions\/dmr69"
+                "$ref": "#\/definitions\/dmr058"
             }
             ,"IndustrialDischargers": {
                 "type": "array"
                ,"title": "Industrial Dischargers"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr71"
+                   "$ref": "#\/definitions\/dmr056"
                }
                ,"xml": {
                    "name": "IndustrialDischargers"
@@ -10832,7 +10852,7 @@
             ,"IndustrialDischargers"
          ]
       }
-      ,"dmr66": {
+      ,"dmr061": {
           "type": "object"
          ,"description": "Top Pollutant Pounds Object"
          ,"xml": {
@@ -10882,7 +10902,7 @@
             ,"LoadOverLimit"
          ]
       }
-      ,"dmr67": {
+      ,"dmr062": {
           "type": "object"
          ,"description": "Top Pollutant TWPE Object"
          ,"xml": {
@@ -10932,7 +10952,7 @@
             ,"LoadOverLimit"
          ]
       }
-      ,"dmr61": {
+      ,"dmr066": {
           "type": "object"
          ,"description": "Facility Info Object"
          ,"properties": {
@@ -10968,7 +10988,7 @@
             ,"FacZip"
          ]
       }
-      ,"dmr62": {
+      ,"dmr067": {
           "type": "object"
          ,"description": "Facility Totals Object"
          ,"properties": {
@@ -10992,7 +11012,7 @@
             ,"AnnualLoadEquation"
          ]
       }
-      ,"dmr63": {
+      ,"dmr068": {
           "type": "object"
          ,"description": "Monitor Period Loads Object"
          ,"xml": {
@@ -11031,11 +11051,15 @@
             }
             ,"NodiCode": {
                 "type": "string"
+               ,"title": "No Data Indicator (NODI) Code"
+               ,"example": "1"
+               ,"description": "The no data indicator code for DMRs where no measurements are reported."
             }
             ,"MeasurementType": {
                 "type": "string"
                ,"title": "Measurement Type"
                ,"example": "NMth"
+               ,"description": "The type of measurement used to determine the violation. Applicable values:\n- \"Mnthly\"  stands for monthly. This means that the exceedance shown in that row was based upon a monthly average of readings submitted by the permittee.\n- \"NMth\" stands for non-monthly. This is generally a \"maximum\" amount read during the reporting period (and could indicate a spike that is not continuous). \"Neither\" denotes other measurements such as a minimum (e.g., pH could be in violation if below the permitted level)."
             }
             ,"AvgDailyValue": {
                 "type": "string"
@@ -11091,7 +11115,7 @@
             ,"QcReviewMonitorPdLoad"
          ]
       }
-      ,"dmr64": {
+      ,"dmr069": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11102,13 +11126,13 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"FacilityInfo": {
-                "$ref": "#\/definitions\/dmr61"
+                "$ref": "#\/definitions\/dmr066"
             }
             ,"MonitorPeriodLoads": {
                 "type": "array"
                ,"title": "Monitor Period Loads Object"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr63"
+                   "$ref": "#\/definitions\/dmr068"
                }
                ,"xml": {
                    "name": "MonitorPeriodLoads"
@@ -11116,7 +11140,7 @@
                }
             }
             ,"FacilityTotals": {
-                "$ref": "#\/definitions\/dmr62"
+                "$ref": "#\/definitions\/dmr067"
             }
          }
          ,"required": [
@@ -11126,7 +11150,7 @@
             ,"FacilityTotals"
          ]
       }
-      ,"dmr33": {
+      ,"dmr071": {
           "type": "object"
          ,"description": "Outfalls Object"
          ,"xml": {
@@ -11155,7 +11179,7 @@
                 "type": "array"
                ,"title": "Pollutant Limits"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr34"
+                   "$ref": "#\/definitions\/dmr072"
                }
                ,"xml": {
                    "name": "PollutantLimits"
@@ -11166,7 +11190,7 @@
                 "type": "array"
                ,"title": "Pollutant Measurements"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr35"
+                   "$ref": "#\/definitions\/dmr073"
                }
                ,"xml": {
                    "name": "PollutantMeasurements"
@@ -11183,7 +11207,7 @@
             ,"PollutantMeasurements"
          ]
       }
-      ,"dmr34": {
+      ,"dmr072": {
           "type": "object"
          ,"description": "Pollutant Limits Object"
          ,"xml": {
@@ -11223,7 +11247,7 @@
             ,"LimitType"
          ]
       }
-      ,"dmr35": {
+      ,"dmr073": {
           "type": "object"
          ,"description": "Pollutant Measurements Object"
          ,"xml": {
@@ -11278,7 +11302,7 @@
             ,"DmrValue"
          ]
       }
-      ,"dmr36": {
+      ,"dmr074": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11286,7 +11310,7 @@
                 "type": "array"
                ,"title": "Outfalls"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr33"
+                   "$ref": "#\/definitions\/dmr071"
                }
                ,"xml": {
                    "name": "Outfalls"
@@ -11298,7 +11322,7 @@
              "Outfalls"
          ]
       }
-      ,"dmr20": {
+      ,"dmr076": {
           "type": "object"
          ,"description": "Chemical Groups Object"
          ,"xml": {
@@ -11318,7 +11342,7 @@
                 "type": "array"
                ,"title": "Chemical Group Discharges Object"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr39"
+                   "$ref": "#\/definitions\/dmr077"
                }
                ,"xml": {
                    "name": "ChemicalGroupDischarges"
@@ -11333,7 +11357,7 @@
             ,"ChemicalGroupDischarges"
          ]
       }
-      ,"dmr39": {
+      ,"dmr077": {
           "type": "object"
          ,"description": "Chemical Group Discharges Object"
          ,"xml": {
@@ -11368,7 +11392,7 @@
             ,"QcFlag"
          ]
       }
-      ,"dmr37": {
+      ,"dmr078": {
           "type": "object"
          ,"description": "Facility Info Object"
          ,"properties": {
@@ -11416,7 +11440,7 @@
             ,"TriIds"
          ]
       }
-      ,"dmr38": {
+      ,"dmr079": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11427,13 +11451,13 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"FacilityInfo": {
-                "$ref": "#\/definitions\/dmr37"
+                "$ref": "#\/definitions\/dmr078"
             }
             ,"ChemicalGroups": {
                 "type": "array"
                ,"title": "Chemical Groups Object"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr20"
+                   "$ref": "#\/definitions\/dmr076"
                }
                ,"xml": {
                    "name": "ChemicalGroups"
@@ -11447,7 +11471,7 @@
             ,"ChemicalGroups"
          ]
       }
-      ,"dmr21_FacilityInfo": {
+      ,"dmr080": {
           "type": "object"
          ,"description": "Facility Information Object"
          ,"properties": {
@@ -11495,7 +11519,7 @@
             ,"TriIds"
          ]
       }
-      ,"dmr22": {
+      ,"dmr081": {
           "type": "object"
          ,"description": "Pollutants Object"
          ,"xml": {
@@ -11515,7 +11539,7 @@
                 "type": "array"
                ,"title": "Pollutant Discharges"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr40"
+                   "$ref": "#\/definitions\/dmr082"
                }
                ,"xml": {
                    "name": "PollutantDischarges"
@@ -11529,7 +11553,7 @@
             ,"PollutantDischarges"
          ]
       }
-      ,"dmr40": {
+      ,"dmr082": {
           "type": "object"
          ,"description": "Pollutant Discharges Object"
          ,"xml": {
@@ -11556,7 +11580,7 @@
             ,"QcFlag"
          ]
       }
-      ,"dmr41": {
+      ,"dmr083": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11567,13 +11591,13 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"FacilityInfo": {
-                "$ref": "#\/definitions\/dmr21_FacilityInfo"
+                "$ref": "#\/definitions\/dmr080"
             }
             ,"Pollutants": {
                 "type": "array"
                ,"title": "Pollutants"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr22"
+                   "$ref": "#\/definitions\/dmr081"
                }
                ,"xml": {
                    "name": "Pollutants"
@@ -11587,7 +11611,7 @@
             ,"Pollutants"
          ]
       }
-      ,"dmr43": {
+      ,"dmr088": {
           "type": "object"
          ,"description": "Permit Limits Object"
          ,"xml": {
@@ -11692,7 +11716,7 @@
             ,"LimitConc3Basis"
          ]
       }
-      ,"dmr42": {
+      ,"dmr089": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11700,7 +11724,7 @@
                 "type": "array"
                ,"title": "Permit Limits"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr43"
+                   "$ref": "#\/definitions\/dmr088"
                }
                ,"xml": {
                    "name": "PermitLimits"
@@ -11712,7 +11736,7 @@
              "PermitLimits"
          ]
       }
-      ,"dmr47": {
+      ,"dmr093": {
           "type": "object"
          ,"description": "Facility Information Object"
          ,"properties": {
@@ -11796,7 +11820,7 @@
             ,"LikelyPsc"
          ]
       }
-      ,"dmr46": {
+      ,"dmr094": {
           "type": "object"
          ,"description": "POTW Transfers Object"
          ,"properties": {
@@ -11808,7 +11832,7 @@
              "PotwNoInfo"
          ]
       }
-      ,"dmr45": {
+      ,"dmr095": {
           "type": "object"
          ,"description": "Receiving Water Object"
          ,"properties": {
@@ -11817,6 +11841,9 @@
             }
             ,"ReachCode": {
                 "type": "string"
+               ,"title": "Reach Code"
+               ,"example": "\"05030201000270\""
+               ,"description": "A nationally unique and permanent 14-digit identifier for the waterbody, assigned by the U.S. Geological Survey."
             }
             ,"WaterNameNumber": {
                 "type": "string"
@@ -11852,7 +11879,7 @@
             ,"EsaFips"
          ]
       }
-      ,"dmr44": {
+      ,"dmr096": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -11866,30 +11893,30 @@
                 "type": "string"
             }
             ,"FacilityInfo": {
-                "$ref": "#\/definitions\/dmr47"
+                "$ref": "#\/definitions\/dmr093"
             }
             ,"TopChemicalPounds": {
                 "type": "array"
                ,"title": "Top Chemical Pounds"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr48"
+                   "$ref": "#\/definitions\/dmr097"
                }
             }
             ,"TopChemicalTWPE": {
                 "type": "array"
                ,"title": "Top Chemical TWPE"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr49"
+                   "$ref": "#\/definitions\/dmr098"
                }
             }
             ,"ReceivingWater": {
-                "$ref": "#\/definitions\/dmr45"
+                "$ref": "#\/definitions\/dmr095"
             }
             ,"PotwTransfers": {
-                "$ref": "#\/definitions\/dmr46"
+                "$ref": "#\/definitions\/dmr094"
             }
             ,"TriWastewaterTreatment": {
-                "$ref": "#\/definitions\/dmr50"
+                "$ref": "#\/definitions\/dmr099"
             }
             ,"UpstreamStationUrl": {
                 "type": "string"
@@ -11911,7 +11938,7 @@
             ,"DownstreamStationUrl"
          ]
       }
-      ,"dmr48": {
+      ,"dmr097": {
           "type": "object"
          ,"description": "Top Chemical Pounds Object"
          ,"properties": {
@@ -11949,7 +11976,7 @@
             ,"QcReviewIndirectFlag"
          ]
       }
-      ,"dmr49": {
+      ,"dmr098": {
           "type": "object"
          ,"description": "Top Chemical TWPE Object"
          ,"properties": {
@@ -11987,7 +12014,7 @@
             ,"QcReviewIndirectFlag"
          ]
       }
-      ,"dmr50": {
+      ,"dmr099": {
           "type": "object"
          ,"description": "TRI Wastewater Treatment Object"
          ,"properties": {
@@ -11999,7 +12026,7 @@
              "TreatmentInPlace"
          ]
       }
-      ,"dmr60": {
+      ,"dmr101": {
           "type": "object"
          ,"description": "Facility Counts Object"
          ,"properties": {
@@ -12047,7 +12074,7 @@
             ,"WithDataIcis"
          ]
       }
-      ,"dmr51": {
+      ,"dmr102": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -12064,13 +12091,13 @@
                ,"description": "Sequential number assigned to entire search result"
             }
             ,"FacilityCounts": {
-                "$ref": "#\/definitions\/dmr60"
+                "$ref": "#\/definitions\/dmr101"
             }
             ,"TopChemicalPounds": {
                 "type": "array"
                ,"title": "Top Chemical Pounds Object"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr52"
+                   "$ref": "#\/definitions\/dmr103"
                }
                ,"xml": {
                    "name": "TopChemicalPounds"
@@ -12081,7 +12108,7 @@
                 "type": "array"
                ,"title": "Top Chemical TWPE Object"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr53"
+                   "$ref": "#\/definitions\/dmr104"
                }
                ,"xml": {
                    "name": "TopChemicalTWPE"
@@ -12092,7 +12119,7 @@
                 "type": "array"
                ,"title": "Top NAICS Pounds Object"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr56"
+                   "$ref": "#\/definitions\/dmr107"
                }
                ,"xml": {
                    "name": "TopNAICSPounds"
@@ -12103,7 +12130,7 @@
                 "type": "array"
                ,"title": "Top NAICS TWPE Object"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr57"
+                   "$ref": "#\/definitions\/dmr108"
                }
                ,"xml": {
                    "name": "TopNAICSTWPE"
@@ -12114,7 +12141,7 @@
                 "type": "array"
                ,"title": "Top Facility Pounds"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr54"
+                   "$ref": "#\/definitions\/dmr105"
                }
                ,"xml": {
                    "name": "TopFacilityPounds"
@@ -12125,7 +12152,7 @@
                 "type": "array"
                ,"title": "Top Facility TWPE"
                ,"items": {
-                   "$ref": "#\/definitions\/dmr55"
+                   "$ref": "#\/definitions\/dmr106"
                }
                ,"xml": {
                    "name": "TopFacilityTWPE"
@@ -12145,7 +12172,7 @@
             ,"TopFacilityTWPE"
          ]
       }
-      ,"dmr52": {
+      ,"dmr103": {
           "type": "object"
          ,"description": "Top Chemical Pounds Object"
          ,"xml": {
@@ -12178,7 +12205,7 @@
             ,"DmrInfoFlag"
          ]
       }
-      ,"dmr53": {
+      ,"dmr104": {
           "type": "object"
          ,"description": "Top Chemical TWPE Object"
          ,"xml": {
@@ -12211,7 +12238,7 @@
             ,"DmrInfoFlag"
          ]
       }
-      ,"dmr54": {
+      ,"dmr105": {
           "type": "object"
          ,"description": "Top Facility Pounds Object"
          ,"xml": {
@@ -12288,7 +12315,7 @@
             ,"DmrInfoFlag"
          ]
       }
-      ,"dmr55": {
+      ,"dmr106": {
           "type": "object"
          ,"description": "Top Facility TWPE Object"
          ,"xml": {
@@ -12365,7 +12392,7 @@
             ,"DmrInfoFlag"
          ]
       }
-      ,"dmr56": {
+      ,"dmr107": {
           "type": "object"
          ,"description": "Top NAICS Pounds Object"
          ,"xml": {
@@ -12406,7 +12433,7 @@
             ,"DmrInfoFlag"
          ]
       }
-      ,"dmr57": {
+      ,"dmr108": {
           "type": "object"
          ,"description": "Top NAICS TWPE Object"
          ,"xml": {
@@ -12447,7 +12474,7 @@
             ,"DmrInfoFlag"
          ]
       }
-      ,"dmr59": {
+      ,"dmr110": {
           "type": "object"
          ,"description": "Facilities Object"
          ,"xml": {
@@ -12567,7 +12594,7 @@
             ,"InBothIcisAndTRI"
          ]
       }
-      ,"dmr58": {
+      ,"dmr111": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -12597,7 +12624,7 @@
                ,"title": "Facilities"
                ,"description": "A complex array of facility information."
                ,"items": {
-                   "$ref": "#\/definitions\/dmr59"
+                   "$ref": "#\/definitions\/dmr110"
                }
                ,"xml": {
                    "name": "Facilities"
