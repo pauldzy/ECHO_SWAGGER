@@ -2,7 +2,9 @@
 swagger: '2.0'
 info: 
   title: U.S. EPA Enforcement and Compliance History Online (ECHO) - Air Pollutant Report Rest Services
-  description: "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.<br><br>The Air Pollutant Report presents ten years of EPA air emissions data from the National Emissions Inventory (NEI), Greenhouse Gas Reporting Program (GHGRP), Toxics Release Inventory (TRI), and Clean Air Markets Programs for a selected facility. Emissions are presented by pollutant for each program and each year that values are available.<br><br>Additional ECHO Resources: <a href=\"https://echo.epa.gov/tools/web-services\">Web Services</a>, <a href=\"https://echo.epa.gov/resources/echo-data/about-the-data\">About ECHO's Data</a>, <a href=\"https://echo.epa.gov/tools/data-downloads\">Data Downloads</a><br> "
+  description: |-
+    Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for over 1 million regulated facilities nationwide. The Air Pollutant Report presents ten years of EPA air emissions data from the National Emissions Inventory (NEI), Greenhouse Gas Reporting Program (GHGRP), Toxics Release Inventory (TRI), and Clean Air Markets Programs for a selected facility. Emissions are presented by pollutant for each program and each year that values are available. 
+    Additional ECHO Resources: <a href="https://echo.epa.gov/tools/web-services">Web Services</a>, <a href="https://echo.epa.gov/resources/echo-data/about-the-data">About ECHO's Data</a>, <a href="https://echo.epa.gov/tools/data-downloads">Data Downloads</a>  
   contact: 
     name: US EPA, OECA Integration, Targeting and Access Branch
   license: 
@@ -120,7 +122,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/caah_Results" 
+                "$ref": "#/definitions/caa09" 
             required: 
               - Results
     post: 
@@ -146,7 +148,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/caah_Results" 
+                "$ref": "#/definitions/caa09" 
             required: 
               - Results
   "/caa_poll_rpt_rest_services.get_nnnPermits": 
@@ -173,7 +175,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/caaf_Results" 
+                "$ref": "#/definitions/caa16" 
             required: 
               - Results
     post: 
@@ -199,7 +201,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/caaf_Results" 
+                "$ref": "#/definitions/caa16" 
             required: 
               - Results
   "/caa_poll_rpt_rest_services.get_aggregate_emissions": 
@@ -226,7 +228,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/caa7_Results" 
+                "$ref": "#/definitions/caa07" 
             required: 
               - Results
     post: 
@@ -252,7 +254,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/caa7_Results" 
+                "$ref": "#/definitions/caa07" 
             required: 
               - Results
   "/caa_poll_rpt_rest_services.get_air_quality": 
@@ -278,7 +280,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/caa8_Results" 
+                "$ref": "#/definitions/caa08" 
             required: 
               - Results
     post: 
@@ -303,7 +305,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/caa8_Results" 
+                "$ref": "#/definitions/caa08" 
             required: 
               - Results
   "/caa_poll_rpt_rest_services.get_map": 
@@ -329,7 +331,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/caae_Results" 
+                "$ref": "#/definitions/caa15" 
             required: 
               - Results
     post: 
@@ -354,7 +356,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/caae_Results" 
+                "$ref": "#/definitions/caa15" 
             required: 
               - Results
   "/caa_poll_rpt_rest_services.get_spatial_metadata": 
@@ -380,7 +382,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/caag_Results" 
+                "$ref": "#/definitions/caa17" 
             required: 
               - Results
     post: 
@@ -405,11 +407,11 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/caag_Results" 
+                "$ref": "#/definitions/caa17" 
             required: 
               - Results
 definitions: 
-  caa1: 
+  caa01: 
     description: Air Quality Object
     properties: 
       Ozone8hr1997Area: 
@@ -424,8 +426,14 @@ definitions:
         description: If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name
       Ozone8hr2015Area: 
         type: string
+        title: 8-Hour Ozone (2005) Nonattainment Area
+        example: Chicago-Naperville, IL-IN-WI
+        description: Indicates the relevant National Ambient Air Quality Standards (NAAQS) nontattinment standard for 8-Hour Ozone (2005).
       Lead1978Area: 
         type: string
+        title: Lead (1978) Nonattainment Area
+        example: "Lewis & Clark County (part); City of East Helena and vicinity, MT"
+        description: Indicates the relevant National Ambient Air Quality Standards (NAAQS) nontattinment standard for Lead (1978).
       Lead2008Area: 
         type: string
         title: Lead Area - 2008
@@ -433,10 +441,19 @@ definitions:
         description: If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name
       CarbonMonoxide1971Area: 
         type: string
+        title: Carbon Monoxide (1971) Nonattainment Area
+        example: Billings Area, MT
+        description: Indicates the relevant National Ambient Air Quality Standards (NAAQS) nontattinment standard for Carbon Monoxide (1971).
       NitrogenDioxide1971Area: 
         type: string
+        title: Nitrogen Dioxide (1971) Nonattainment Area
+        example: Los Angeles-South Coast Air Basin Area, CA
+        description: Indicates the relevant National Ambient Air Quality Standards (NAAQS) nontattinment standard for Nitrogen Dioxide (1971).
       SulfurDioxide1971Area: 
         type: string
+        title: Sulfur Dioxide (1971) Nonattainment Area
+        example: "Lake County: (part), IN"
+        description: Indicates the relevant National Ambient Air Quality Standards (NAAQS) nontattinment standard for Sulfur Dioxide (1971).
       SulfurDioxide2010Area: 
         type: string
         title: Sulfur Dioxide Area - 2010
@@ -444,6 +461,9 @@ definitions:
         description: If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name
       ParticulateMatter1987Area: 
         type: string
+        title: Particulate Matter (1987) Nonattainment Area
+        example: Lake County; Cities of East Chicago, Hammond, Whiting, and Gary, IN
+        description: Indicates the relevant National Ambient Air Quality Standards (NAAQS) nontattinment standard for Particulate Matter (1987).
       ParticulateMatter1997Area: 
         type: string
         title: Particulate Matter Area - 1997
@@ -456,6 +476,9 @@ definitions:
         description: If null, the facility is not located in a designated non-attainment area. If populated, the value is the name of the non-attainment area; normally this is a city or county name
       ParticulateMatter2012Area: 
         type: string
+        title: Particulate Matter (2012) Nonattainment Area
+        example: Los Angeles-South Coast Air Basin
+        description: Indicates the relevant National Ambient Air Quality Standards (NAAQS) nontattinment standard for Particulate Matter (2012).
     required: 
       - Ozone8hr1997Area
       - Ozone8hr2008Area
@@ -470,7 +493,7 @@ definitions:
       - ParticulateMatter1997Area
       - ParticulateMatter2006Area
       - ParticulateMatter2012Area
-  caa2: 
+  caa02: 
     description: Emissions Object
     xml: 
       name: Emission
@@ -490,22 +513,49 @@ definitions:
         example: Pounds
       Year1: 
         type: string
+        title: Year 1
+        example: '2009'
+        description: The calendar year during which TRI releases and transfers occurred.
       Year2: 
         type: string
+        title: Year 2
+        example: '2010'
+        description: The calendar year during which TRI releases and transfers occurred.
       Year3: 
         type: string
+        title: Year 3
+        example: '2011'
+        description: The calendar year during which TRI releases and transfers occurred.
       Year4: 
         type: string
+        title: Year 4
+        example: '2012'
+        description: The calendar year during which TRI releases and transfers occurred.
       Year5: 
         type: string
+        title: Year 5
+        example: '2013'
+        description: The calendar year during which TRI releases and transfers occurred.
       Year6: 
         type: string
+        title: Year 6
+        example: '2014'
+        description: The calendar year during which TRI releases and transfers occurred.
       Year7: 
         type: string
+        title: Year 7
+        example: '2015'
+        description: The calendar year during which TRI releases and transfers occurred.
       Year8: 
         type: string
+        title: Year 8
+        example: '2016'
+        description: The calendar year during which TRI releases and transfers occurred.
       Year9: 
         type: string
+        title: Year 9
+        example: '2017'
+        description: The most recent calendar year during which TRI releases and transfer occurred.
       Year10: 
         type: string
     required: 
@@ -522,7 +572,7 @@ definitions:
       - Year8
       - Year9
       - Year10
-  caa3: 
+  caa03: 
     description: Map Data Object
     xml: 
       name: Object
@@ -564,7 +614,7 @@ definitions:
       - TYPE
       - NAME
       - PUV
-  caa4: 
+  caa04: 
     description: Map Output Object
     properties: 
       IconBaseURL: 
@@ -590,7 +640,7 @@ definitions:
         title: MapData Object
         description: An array of facility geospatial information.
         items: 
-          "$ref": "#/definitions/caa3" 
+          "$ref": "#/definitions/caa03" 
         xml: 
           name: MapData
           wrapped: true
@@ -600,7 +650,7 @@ definitions:
       - CenterLatitude
       - CenterLongitude
       - MapData
-  caa5: 
+  caa05: 
     description: Permits Object
     xml: 
       name: Permits
@@ -669,7 +719,7 @@ definitions:
       - NAICSDesc
       - SIC
       - FacilityStatus
-  caa6: 
+  caa06: 
     description: Spatial Metadata Object
     properties: 
       RegistryID: 
@@ -714,7 +764,7 @@ definitions:
         title: Coordinate Source System Identifier
         example: '110001891506'
         description: "??"
-  caa7_Results: 
+  caa07: 
     description: Results Object
     properties: 
       Message: 
@@ -723,11 +773,11 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       AggregateEmissions: 
-        "$ref": "#/definitions/caa9" 
+        "$ref": "#/definitions/caa10" 
     required: 
       - Message
       - AggregateEmissions
-  caa8_Results: 
+  caa08: 
     description: Results Object
     properties: 
       Message: 
@@ -736,31 +786,31 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       AirQuality: 
-        "$ref": "#/definitions/caa1" 
+        "$ref": "#/definitions/caa01" 
     required: 
       - Message
       - AirQuality
-  caa9: 
+  caa10: 
     description: Aggregate Emissions Object
     properties: 
       Emissions: 
         type: array
         title: Emissions Object
         items: 
-          "$ref": "#/definitions/caa2" 
+          "$ref": "#/definitions/caa02" 
         xml: 
           name: Emissions
           wrapped: true
     required: 
       - Emissions
-  caaa: 
+  caa11: 
     description: Results Object
     properties: 
       RegistryIDs: 
         type: array
         title: RegistryIDs Object
         items: 
-          "$ref": "#/definitions/caad" 
+          "$ref": "#/definitions/caa14" 
         xml: 
           name: RegistryIDs
           wrapped: true
@@ -768,7 +818,7 @@ definitions:
         type: array
         title: Pollutants Object
         items: 
-          "$ref": "#/definitions/caac" 
+          "$ref": "#/definitions/caa13" 
         xml: 
           name: Pollutants
           wrapped: true
@@ -776,18 +826,18 @@ definitions:
         type: array
         title: Permits Object
         items: 
-          "$ref": "#/definitions/caa5" 
+          "$ref": "#/definitions/caa05" 
         xml: 
           name: Permits
           wrapped: true
       AggregateEmissions: 
-        "$ref": "#/definitions/caa9" 
+        "$ref": "#/definitions/caa10" 
       EnvironmentalConditions: 
-        "$ref": "#/definitions/caab" 
+        "$ref": "#/definitions/caa12" 
       SpatialMetadata: 
-        "$ref": "#/definitions/caa6" 
+        "$ref": "#/definitions/caa06" 
       MapOutput: 
-        "$ref": "#/definitions/caa4" 
+        "$ref": "#/definitions/caa04" 
     required: 
       - RegistryIDs
       - Pollutants
@@ -795,14 +845,14 @@ definitions:
       - AggregateEmissions
       - EnvironmentalConditions
       - MapOutput
-  caab: 
+  caa12: 
     description: Environmental Conditions Object
     properties: 
       AirQuality: 
-        "$ref": "#/definitions/caa1" 
+        "$ref": "#/definitions/caa01" 
     required: 
       - AirQuality
-  caac: 
+  caa13: 
     description: Pollutants Object
     xml: 
       name: Pollutants
@@ -833,22 +883,49 @@ definitions:
         example: Pounds
       Year1: 
         type: string
+        title: Year 1
+        example: '2009'
+        description: The calendar year during which TRI releases and transfers occurred.
       Year2: 
         type: string
+        title: Year 2
+        example: '2010'
+        description: The calendar year during which TRI releases and transfers occurred.
       Year3: 
         type: string
+        title: Year 3
+        example: '2011'
+        description: The calendar year during which TRI releases and transfers occurred.
       Year4: 
         type: string
+        title: Year 4
+        example: '2012'
+        description: The calendar year during which TRI releases and transfers occurred.
       Year5: 
         type: string
+        title: Year 5
+        example: '2013'
+        description: The calendar year during which TRI releases and transfers occurred.
       Year6: 
         type: string
+        title: Year 6
+        example: '2014'
+        description: The calendar year during which TRI releases and transfers occurred.
       Year7: 
         type: string
+        title: Year 7
+        example: '2015'
+        description: The calendar year during which TRI releases and transfers occurred.
       Year8: 
         type: string
+        title: Year 8
+        example: '2016'
+        description: The calendar year during which TRI releases and transfers occurred.
       Year9: 
         type: string
+        title: Year 9
+        example: '2017'
+        description: The most recent calendar year during which TRI releases and transfer occurred.
       Year10: 
         type: string
     required: 
@@ -869,7 +946,7 @@ definitions:
       - Year8
       - Year9
       - Year10
-  caad: 
+  caa14: 
     description: Registry IDs Object
     xml: 
       name: RegistryIDs
@@ -933,7 +1010,7 @@ definitions:
       - Region
       - Latitude
       - Longitude
-  caah_Results: 
+  caa09: 
     description: Results Object
     properties: 
       Message: 
@@ -968,7 +1045,7 @@ definitions:
       TRI_year_10: 
         type: string
       CAAPollRpt: 
-        "$ref": "#/definitions/caaa" 
+        "$ref": "#/definitions/caa11" 
     required: 
       - Message
       - REST_Status
@@ -985,7 +1062,7 @@ definitions:
       - TRI_year_09
       - TRI_year_10
       - CAAPollRpt
-  caae_Results: 
+  caa15: 
     description: Results Object
     properties: 
       Message: 
@@ -994,11 +1071,11 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       MapOutput: 
-        "$ref": "#/definitions/caa4" 
+        "$ref": "#/definitions/caa04" 
     required: 
       - Message
       - MapOutput
-  caaf_Results: 
+  caa16: 
     description: Results Object
     properties: 
       Message: 
@@ -1010,14 +1087,14 @@ definitions:
         type: array
         title: Permits Object
         items: 
-          "$ref": "#/definitions/caa5" 
+          "$ref": "#/definitions/caa05" 
         xml: 
           name: Permits
           wrapped: true
     required: 
       - Message
       - Permits
-  caag_Results: 
+  caa17: 
     description: Results Object
     properties: 
       Message: 
@@ -1026,7 +1103,7 @@ definitions:
         example: Success
         description: Field to record messages (typically performance-related) about packet processing
       SpatialMetadata: 
-        "$ref": "#/definitions/caa6" 
+        "$ref": "#/definitions/caa06" 
     required: 
       - Message
       - SpatialMetadata

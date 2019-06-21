@@ -2,7 +2,7 @@
     "swagger": "2.0"
    ,"info": {
        "title": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Air Pollutant Report Rest Services"
-      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.<br><br>The Air Pollutant Report presents ten years of EPA air emissions data from the National Emissions Inventory (NEI), Greenhouse Gas Reporting Program (GHGRP), Toxics Release Inventory (TRI), and Clean Air Markets Programs for a selected facility. Emissions are presented by pollutant for each program and each year that values are available.<br><br>Additional ECHO Resources: <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a><br> "
+      ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for over 1 million regulated facilities nationwide. The Air Pollutant Report presents ten years of EPA air emissions data from the National Emissions Inventory (NEI), Greenhouse Gas Reporting Program (GHGRP), Toxics Release Inventory (TRI), and Clean Air Markets Programs for a selected facility. Emissions are presented by pollutant for each program and each year that values are available. \n\nAdditional ECHO Resources: <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a>  "
       ,"contact": {
           "name": "US EPA, OECA Integration, Targeting and Access Branch"
       }
@@ -143,7 +143,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/caah_Results"
+                         "$ref": "#\/definitions\/caa09"
                      }
                   }
                   ,"required": [
@@ -188,7 +188,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/caah_Results"
+                         "$ref": "#\/definitions\/caa09"
                      }
                   }
                   ,"required": [
@@ -237,7 +237,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/caaf_Results"
+                         "$ref": "#\/definitions\/caa16"
                      }
                   }
                   ,"required": [
@@ -284,7 +284,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/caaf_Results"
+                         "$ref": "#\/definitions\/caa16"
                      }
                   }
                   ,"required": [
@@ -331,7 +331,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/caa7_Results"
+                         "$ref": "#\/definitions\/caa07"
                      }
                   }
                   ,"required": [
@@ -376,7 +376,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/caa7_Results"
+                         "$ref": "#\/definitions\/caa07"
                      }
                   }
                   ,"required": [
@@ -420,7 +420,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/caa8_Results"
+                         "$ref": "#\/definitions\/caa08"
                      }
                   }
                   ,"required": [
@@ -462,7 +462,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/caa8_Results"
+                         "$ref": "#\/definitions\/caa08"
                      }
                   }
                   ,"required": [
@@ -506,7 +506,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/caae_Results"
+                         "$ref": "#\/definitions\/caa15"
                      }
                   }
                   ,"required": [
@@ -548,7 +548,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/caae_Results"
+                         "$ref": "#\/definitions\/caa15"
                      }
                   }
                   ,"required": [
@@ -592,7 +592,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/caag_Results"
+                         "$ref": "#\/definitions\/caa17"
                      }
                   }
                   ,"required": [
@@ -634,7 +634,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/caag_Results"
+                         "$ref": "#\/definitions\/caa17"
                      }
                   }
                   ,"required": [
@@ -647,7 +647,7 @@
       }
    }
    ,"definitions": {
-       "caa1": {
+       "caa01": {
           "type": "object"
          ,"description": "Air Quality Object"
          ,"properties": {
@@ -665,9 +665,15 @@
             }
             ,"Ozone8hr2015Area": {
                 "type": "string"
+               ,"title": "8-Hour Ozone (2005) Nonattainment Area"
+               ,"example": "Chicago-Naperville, IL-IN-WI"
+               ,"description": "Indicates the relevant National Ambient Air Quality Standards (NAAQS) nontattinment standard for 8-Hour Ozone (2005)."
             }
             ,"Lead1978Area": {
                 "type": "string"
+               ,"title": "Lead (1978) Nonattainment Area"
+               ,"example": "Lewis & Clark County (part); City of East Helena and vicinity, MT"
+               ,"description": "Indicates the relevant National Ambient Air Quality Standards (NAAQS) nontattinment standard for Lead (1978)."
             }
             ,"Lead2008Area": {
                 "type": "string"
@@ -677,12 +683,21 @@
             }
             ,"CarbonMonoxide1971Area": {
                 "type": "string"
+               ,"title": "Carbon Monoxide (1971) Nonattainment Area"
+               ,"example": "Billings Area, MT"
+               ,"description": "Indicates the relevant National Ambient Air Quality Standards (NAAQS) nontattinment standard for Carbon Monoxide (1971)."
             }
             ,"NitrogenDioxide1971Area": {
                 "type": "string"
+               ,"title": "Nitrogen Dioxide (1971) Nonattainment Area"
+               ,"example": "Los Angeles-South Coast Air Basin Area, CA"
+               ,"description": "Indicates the relevant National Ambient Air Quality Standards (NAAQS) nontattinment standard for Nitrogen Dioxide (1971)."
             }
             ,"SulfurDioxide1971Area": {
                 "type": "string"
+               ,"title": "Sulfur Dioxide (1971) Nonattainment Area"
+               ,"example": "Lake County: (part), IN"
+               ,"description": "Indicates the relevant National Ambient Air Quality Standards (NAAQS) nontattinment standard for Sulfur Dioxide (1971)."
             }
             ,"SulfurDioxide2010Area": {
                 "type": "string"
@@ -692,6 +707,9 @@
             }
             ,"ParticulateMatter1987Area": {
                 "type": "string"
+               ,"title": "Particulate Matter (1987) Nonattainment Area"
+               ,"example": "Lake County; Cities of East Chicago, Hammond, Whiting, and Gary, IN"
+               ,"description": "Indicates the relevant National Ambient Air Quality Standards (NAAQS) nontattinment standard for Particulate Matter (1987)."
             }
             ,"ParticulateMatter1997Area": {
                 "type": "string"
@@ -707,6 +725,9 @@
             }
             ,"ParticulateMatter2012Area": {
                 "type": "string"
+               ,"title": "Particulate Matter (2012) Nonattainment Area"
+               ,"example": "Los Angeles-South Coast Air Basin"
+               ,"description": "Indicates the relevant National Ambient Air Quality Standards (NAAQS) nontattinment standard for Particulate Matter (2012)."
             }
          }
          ,"required": [
@@ -725,7 +746,7 @@
             ,"ParticulateMatter2012Area"
          ]
       }
-      ,"caa2": {
+      ,"caa02": {
           "type": "object"
          ,"description": "Emissions Object"
          ,"xml": {
@@ -750,30 +771,57 @@
             }
             ,"Year1": {
                 "type": "string"
+               ,"title": "Year 1"
+               ,"example": "2009"
+               ,"description": "The calendar year during which TRI releases and transfers occurred."
             }
             ,"Year2": {
                 "type": "string"
+               ,"title": "Year 2"
+               ,"example": "2010"
+               ,"description": "The calendar year during which TRI releases and transfers occurred."
             }
             ,"Year3": {
                 "type": "string"
+               ,"title": "Year 3"
+               ,"example": "2011"
+               ,"description": "The calendar year during which TRI releases and transfers occurred."
             }
             ,"Year4": {
                 "type": "string"
+               ,"title": "Year 4"
+               ,"example": "2012"
+               ,"description": "The calendar year during which TRI releases and transfers occurred."
             }
             ,"Year5": {
                 "type": "string"
+               ,"title": "Year 5"
+               ,"example": "2013"
+               ,"description": "The calendar year during which TRI releases and transfers occurred."
             }
             ,"Year6": {
                 "type": "string"
+               ,"title": "Year 6"
+               ,"example": "2014"
+               ,"description": "The calendar year during which TRI releases and transfers occurred."
             }
             ,"Year7": {
                 "type": "string"
+               ,"title": "Year 7"
+               ,"example": "2015"
+               ,"description": "The calendar year during which TRI releases and transfers occurred."
             }
             ,"Year8": {
                 "type": "string"
+               ,"title": "Year 8"
+               ,"example": "2016"
+               ,"description": "The calendar year during which TRI releases and transfers occurred."
             }
             ,"Year9": {
                 "type": "string"
+               ,"title": "Year 9"
+               ,"example": "2017"
+               ,"description": "The most recent calendar year during which TRI releases and transfer occurred."
             }
             ,"Year10": {
                 "type": "string"
@@ -795,7 +843,7 @@
             ,"Year10"
          ]
       }
-      ,"caa3": {
+      ,"caa03": {
           "type": "object"
          ,"description": "Map Data Object"
          ,"xml": {
@@ -848,7 +896,7 @@
             ,"PUV"
          ]
       }
-      ,"caa4": {
+      ,"caa04": {
           "type": "object"
          ,"description": "Map Output Object"
          ,"properties": {
@@ -879,7 +927,7 @@
                ,"title": "MapData Object"
                ,"description": "An array of facility geospatial information."
                ,"items": {
-                   "$ref": "#\/definitions\/caa3"
+                   "$ref": "#\/definitions\/caa03"
                }
                ,"xml": {
                    "name": "MapData"
@@ -895,7 +943,7 @@
             ,"MapData"
          ]
       }
-      ,"caa5": {
+      ,"caa05": {
           "type": "object"
          ,"description": "Permits Object"
          ,"xml": {
@@ -956,7 +1004,7 @@
             ,"FacilityStatus"
          ]
       }
-      ,"caa6": {
+      ,"caa06": {
           "type": "object"
          ,"description": "Spatial Metadata Object"
          ,"properties": {
@@ -1012,7 +1060,7 @@
             }
          }
       }
-      ,"caa7_Results": {
+      ,"caa07": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -1023,7 +1071,7 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"AggregateEmissions": {
-                "$ref": "#\/definitions\/caa9"
+                "$ref": "#\/definitions\/caa10"
             }
          }
          ,"required": [
@@ -1031,7 +1079,7 @@
             ,"AggregateEmissions"
          ]
       }
-      ,"caa8_Results": {
+      ,"caa08": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -1042,7 +1090,7 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"AirQuality": {
-                "$ref": "#\/definitions\/caa1"
+                "$ref": "#\/definitions\/caa01"
             }
          }
          ,"required": [
@@ -1050,7 +1098,7 @@
             ,"AirQuality"
          ]
       }
-      ,"caa9": {
+      ,"caa10": {
           "type": "object"
          ,"description": "Aggregate Emissions Object"
          ,"properties": {
@@ -1058,7 +1106,7 @@
                 "type": "array"
                ,"title": "Emissions Object"
                ,"items": {
-                   "$ref": "#\/definitions\/caa2"
+                   "$ref": "#\/definitions\/caa02"
                }
                ,"xml": {
                    "name": "Emissions"
@@ -1070,7 +1118,7 @@
              "Emissions"
          ]
       }
-      ,"caaa": {
+      ,"caa11": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -1078,7 +1126,7 @@
                 "type": "array"
                ,"title": "RegistryIDs Object"
                ,"items": {
-                   "$ref": "#\/definitions\/caad"
+                   "$ref": "#\/definitions\/caa14"
                }
                ,"xml": {
                    "name": "RegistryIDs"
@@ -1089,7 +1137,7 @@
                 "type": "array"
                ,"title": "Pollutants Object"
                ,"items": {
-                   "$ref": "#\/definitions\/caac"
+                   "$ref": "#\/definitions\/caa13"
                }
                ,"xml": {
                    "name": "Pollutants"
@@ -1100,7 +1148,7 @@
                 "type": "array"
                ,"title": "Permits Object"
                ,"items": {
-                   "$ref": "#\/definitions\/caa5"
+                   "$ref": "#\/definitions\/caa05"
                }
                ,"xml": {
                    "name": "Permits"
@@ -1108,16 +1156,16 @@
                }
             }
             ,"AggregateEmissions": {
-                "$ref": "#\/definitions\/caa9"
+                "$ref": "#\/definitions\/caa10"
             }
             ,"EnvironmentalConditions": {
-                "$ref": "#\/definitions\/caab"
+                "$ref": "#\/definitions\/caa12"
             }
             ,"SpatialMetadata": {
-                "$ref": "#\/definitions\/caa6"
+                "$ref": "#\/definitions\/caa06"
             }
             ,"MapOutput": {
-                "$ref": "#\/definitions\/caa4"
+                "$ref": "#\/definitions\/caa04"
             }
          }
          ,"required": [
@@ -1129,19 +1177,19 @@
             ,"MapOutput"
          ]
       }
-      ,"caab": {
+      ,"caa12": {
           "type": "object"
          ,"description": "Environmental Conditions Object"
          ,"properties": {
              "AirQuality": {
-                "$ref": "#\/definitions\/caa1"
+                "$ref": "#\/definitions\/caa01"
             }
          }
          ,"required": [
              "AirQuality"
          ]
       }
-      ,"caac": {
+      ,"caa13": {
           "type": "object"
          ,"description": "Pollutants Object"
          ,"xml": {
@@ -1181,30 +1229,57 @@
             }
             ,"Year1": {
                 "type": "string"
+               ,"title": "Year 1"
+               ,"example": "2009"
+               ,"description": "The calendar year during which TRI releases and transfers occurred."
             }
             ,"Year2": {
                 "type": "string"
+               ,"title": "Year 2"
+               ,"example": "2010"
+               ,"description": "The calendar year during which TRI releases and transfers occurred."
             }
             ,"Year3": {
                 "type": "string"
+               ,"title": "Year 3"
+               ,"example": "2011"
+               ,"description": "The calendar year during which TRI releases and transfers occurred."
             }
             ,"Year4": {
                 "type": "string"
+               ,"title": "Year 4"
+               ,"example": "2012"
+               ,"description": "The calendar year during which TRI releases and transfers occurred."
             }
             ,"Year5": {
                 "type": "string"
+               ,"title": "Year 5"
+               ,"example": "2013"
+               ,"description": "The calendar year during which TRI releases and transfers occurred."
             }
             ,"Year6": {
                 "type": "string"
+               ,"title": "Year 6"
+               ,"example": "2014"
+               ,"description": "The calendar year during which TRI releases and transfers occurred."
             }
             ,"Year7": {
                 "type": "string"
+               ,"title": "Year 7"
+               ,"example": "2015"
+               ,"description": "The calendar year during which TRI releases and transfers occurred."
             }
             ,"Year8": {
                 "type": "string"
+               ,"title": "Year 8"
+               ,"example": "2016"
+               ,"description": "The calendar year during which TRI releases and transfers occurred."
             }
             ,"Year9": {
                 "type": "string"
+               ,"title": "Year 9"
+               ,"example": "2017"
+               ,"description": "The most recent calendar year during which TRI releases and transfer occurred."
             }
             ,"Year10": {
                 "type": "string"
@@ -1230,7 +1305,7 @@
             ,"Year10"
          ]
       }
-      ,"caad": {
+      ,"caa14": {
           "type": "object"
          ,"description": "Registry IDs Object"
          ,"xml": {
@@ -1310,7 +1385,7 @@
             ,"Longitude"
          ]
       }
-      ,"caah_Results": {
+      ,"caa09": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -1360,7 +1435,7 @@
                 "type": "string"
             }
             ,"CAAPollRpt": {
-                "$ref": "#\/definitions\/caaa"
+                "$ref": "#\/definitions\/caa11"
             }
          }
          ,"required": [
@@ -1381,7 +1456,7 @@
             ,"CAAPollRpt"
          ]
       }
-      ,"caae_Results": {
+      ,"caa15": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -1392,7 +1467,7 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"MapOutput": {
-                "$ref": "#\/definitions\/caa4"
+                "$ref": "#\/definitions\/caa04"
             }
          }
          ,"required": [
@@ -1400,7 +1475,7 @@
             ,"MapOutput"
          ]
       }
-      ,"caaf_Results": {
+      ,"caa16": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -1414,7 +1489,7 @@
                 "type": "array"
                ,"title": "Permits Object"
                ,"items": {
-                   "$ref": "#\/definitions\/caa5"
+                   "$ref": "#\/definitions\/caa05"
                }
                ,"xml": {
                    "name": "Permits"
@@ -1427,7 +1502,7 @@
             ,"Permits"
          ]
       }
-      ,"caag_Results": {
+      ,"caa17": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -1438,7 +1513,7 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"SpatialMetadata": {
-                "$ref": "#\/definitions\/caa6"
+                "$ref": "#\/definitions\/caa06"
             }
          }
          ,"required": [
