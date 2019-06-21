@@ -2197,7 +2197,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rcr1_Results"
+                         "$ref": "#\/definitions\/rcra04"
                      }
                   }
                   ,"required": [
@@ -2502,7 +2502,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rcr1_Results"
+                         "$ref": "#\/definitions\/rcra04"
                      }
                   }
                   ,"required": [
@@ -2801,7 +2801,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rcr2_Results"
+                         "$ref": "#\/definitions\/rcra08"
                      }
                   }
                   ,"required": [
@@ -3098,7 +3098,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rcr2_Results"
+                         "$ref": "#\/definitions\/rcra08"
                      }
                   }
                   ,"required": [
@@ -3159,7 +3159,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rcr4_Results"
+                         "$ref": "#\/definitions\/rcra13"
                      }
                   }
                   ,"required": [
@@ -3218,7 +3218,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/rcr4_Results"
+                         "$ref": "#\/definitions\/rcra13"
                      }
                   }
                   ,"required": [
@@ -3285,7 +3285,7 @@
                   }
                   ,"properties": {
                       "MapOutput": {
-                         "$ref": "#\/definitions\/rcr3_MapOutput"
+                         "$ref": "#\/definitions\/rcra12"
                      }
                   }
                   ,"required": [
@@ -3350,7 +3350,7 @@
                   }
                   ,"properties": {
                       "MapOutput": {
-                         "$ref": "#\/definitions\/rcr3_MapOutput"
+                         "$ref": "#\/definitions\/rcra12"
                      }
                   }
                   ,"required": [
@@ -3543,7 +3543,7 @@
                         ,"title": "Features Array"
                         ,"description": "Array of GeoJSON feature objects."
                         ,"items": {
-                            "$ref": "#\/definitions\/rcr5_Feature"
+                            "$ref": "#\/definitions\/rcra09"
                         }
                      }
                   }
@@ -3606,7 +3606,7 @@
                         ,"title": "Features Array"
                         ,"description": "Array of GeoJSON feature objects."
                         ,"items": {
-                            "$ref": "#\/definitions\/rcr5_Feature"
+                            "$ref": "#\/definitions\/rcra09"
                         }
                      }
                   }
@@ -3654,7 +3654,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/met1"
+                         "$ref": "#\/definitions\/meta1"
                      }
                   }
                   ,"required": [
@@ -3698,7 +3698,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/met1"
+                         "$ref": "#\/definitions\/meta1"
                      }
                   }
                   ,"required": [
@@ -3761,7 +3761,7 @@
             ,"coordinates"
          ]
       }
-      ,"met2": {
+      ,"meta2": {
           "type": "object"
          ,"description": "Results Column Object"
          ,"xml": {
@@ -3808,7 +3808,7 @@
             ,"Description"
          ]
       }
-      ,"met1": {
+      ,"meta1": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -3822,7 +3822,7 @@
                 "type": "array"
                ,"title": "Result Columns"
                ,"items": {
-                   "$ref": "#\/definitions\/met2"
+                   "$ref": "#\/definitions\/meta2"
                }
                ,"xml": {
                    "name": "ResultColumns"
@@ -3834,7 +3834,7 @@
              "Message"
          ]
       }
-      ,"rcr1_Facilities": {
+      ,"rcra01": {
           "type": "object"
          ,"description": "Facilities Object"
          ,"xml": {
@@ -4475,7 +4475,7 @@
             ,"MaxScore"
          ]
       }
-      ,"rcr1_MapData": {
+      ,"rcra02": {
           "type": "object"
          ,"description": "Map Data Object"
          ,"xml": {
@@ -4556,7 +4556,7 @@
             ,"InformalCount"
          ]
       }
-      ,"rcr1_MapOutput": {
+      ,"rcra03": {
           "type": "object"
          ,"description": "Map Output Object"
          ,"properties": {
@@ -4583,7 +4583,7 @@
                ,"title": "Map Data"
                ,"description": "An array of facility geospatial information."
                ,"items": {
-                   "$ref": "#\/definitions\/rcr1_MapData"
+                   "$ref": "#\/definitions\/rcra02"
                }
                ,"xml": {
                    "name": "MapData"
@@ -4598,7 +4598,7 @@
             ,"MapData"
          ]
       }
-      ,"rcr1_Results": {
+      ,"rcra04": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4678,7 +4678,7 @@
                ,"title": "Facilities"
                ,"description": "A complex array of facility information."
                ,"items": {
-                   "$ref": "#\/definitions\/rcr1_Facilities"
+                   "$ref": "#\/definitions\/rcra01"
                }
                ,"xml": {
                    "name": "Facilities"
@@ -4686,7 +4686,7 @@
                }
             }
             ,"MapOutput": {
-                "$ref": "#\/definitions\/rcr1_MapOutput"
+                "$ref": "#\/definitions\/rcra03"
             }
          }
          ,"required": [
@@ -4705,7 +4705,7 @@
             ,"PageNo"
          ]
       }
-      ,"rcr2_ClusterData": {
+      ,"rcra05": {
           "type": "object"
          ,"description": "Cluster Data Object"
          ,"properties": {
@@ -4822,7 +4822,7 @@
             ,"TotalPenalties"
          ]
       }
-      ,"rcr2_ClusterOutput": {
+      ,"rcra06": {
           "type": "object"
          ,"description": "Cluster Output Object"
          ,"properties": {
@@ -4831,7 +4831,7 @@
                ,"title": "Cluster Data"
                ,"description": "An array of state, county, or zip code cluster information"
                ,"items": {
-                   "$ref": "#\/definitions\/rcr2_ClusterData"
+                   "$ref": "#\/definitions\/rcra05"
                }
             }
          }
@@ -4839,7 +4839,7 @@
              "ClusterData"
          ]
       }
-      ,"rcr2_Facilities": {
+      ,"rcra07": {
           "type": "object"
          ,"description": "Facilities Object"
          ,"xml": {
@@ -5487,7 +5487,7 @@
             ,"MaxScore"
          ]
       }
-      ,"rcr2_Results": {
+      ,"rcra08": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -5591,7 +5591,7 @@
                ,"title": "Facilities"
                ,"description": "A complex array of facility information."
                ,"items": {
-                   "$ref": "#\/definitions\/rcr2_Facilities"
+                   "$ref": "#\/definitions\/rcra07"
                }
                ,"xml": {
                    "name": "Facilities"
@@ -5605,7 +5605,7 @@
                ,"description": "Number of clusters returned."
             }
             ,"ClusterOutput": {
-                "$ref": "#\/definitions\/rcr2_ClusterOutput"
+                "$ref": "#\/definitions\/rcra06"
             }
          }
          ,"required": [
@@ -5627,7 +5627,7 @@
             ,"QueryParameters"
          ]
       }
-      ,"rcr5_Feature": {
+      ,"rcra09": {
           "type": "object"
          ,"description": "GeoJSON Feature Object"
          ,"properties": {
@@ -5641,7 +5641,7 @@
                 "$ref": "#\/definitions\/geo"
             }
             ,"properties": {
-                "$ref": "#\/definitions\/rcr5_properties"
+                "$ref": "#\/definitions\/rcra10"
             }
          }
          ,"required": [
@@ -5650,7 +5650,7 @@
             ,"properties"
          ]
       }
-      ,"rcr5_properties": {
+      ,"rcra10": {
           "type": "object"
          ,"description": "GeoJSON Properties Object"
          ,"properties": {
@@ -6269,7 +6269,7 @@
             ,"MaxScore"
          ]
       }
-      ,"rcr3_MapData": {
+      ,"rcra11": {
           "type": "object"
          ,"description": "Map Data Object"
          ,"xml": {
@@ -6350,7 +6350,7 @@
             ,"InformalCount"
          ]
       }
-      ,"rcr3_MapOutput": {
+      ,"rcra12": {
           "type": "object"
          ,"description": "Map Output Object"
          ,"properties": {
@@ -6377,7 +6377,7 @@
                ,"title": "Map Data"
                ,"description": "An array of facility geospatial information."
                ,"items": {
-                   "$ref": "#\/definitions\/rcr3_MapData"
+                   "$ref": "#\/definitions\/rcra11"
                }
                ,"xml": {
                    "name": "MapData"
@@ -6392,7 +6392,7 @@
             ,"MapData"
          ]
       }
-      ,"rcr4_Results": {
+      ,"rcra13": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -6419,7 +6419,7 @@
                ,"title": "Facilities"
                ,"description": "A complex array of facility information."
                ,"items": {
-                   "$ref": "#\/definitions\/rcr1_Facilities"
+                   "$ref": "#\/definitions\/rcra01"
                }
                ,"xml": {
                    "name": "Facilities"
