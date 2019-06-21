@@ -133,20 +133,6 @@
          ,"type": "number"
          ,"required": false
       }
-      ,"q.p_rpt_type": {
-          "name": "p_rpt_type"
-         ,"in": "query"
-         ,"description": "DO NOT PUBLICIZE - HIDDEN PARAMETER"
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"f.p_rpt_type": {
-          "name": "p_rpt_type"
-         ,"in": "formData"
-         ,"description": "DO NOT PUBLICIZE - HIDDEN PARAMETER"
-         ,"type": "string"
-         ,"required": false
-      }
       ,"q.p_st": {
           "name": "p_st"
          ,"in": "query"
@@ -394,26 +380,16 @@
       ,"q.queryid": {
           "name": "queryid"
          ,"in": "query"
+         ,"description": "Query ID Selector.  Enter the QueryID number from a previously run query."
          ,"type": "string"
-         ,"required": false
-      }
-      ,"f.meta_type": {
-          "name": "meta_type"
-         ,"in": "formData"
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"q.meta_type": {
-          "name": "meta_type"
-         ,"in": "query"
-         ,"type": "string"
-         ,"required": false
+         ,"required": true
       }
       ,"f.queryid": {
           "name": "queryid"
          ,"in": "formData"
+         ,"description": "Query ID Selector.  Enter the QueryID number from a previously run query."
          ,"type": "string"
-         ,"required": false
+         ,"required": true
       }
       ,"q.qcolumns": {
           "name": "qcolumns"
@@ -462,9 +438,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/q.p_active"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_rpt_type"
                }
                ,{
                    "$ref": "#\/parameters\/q.p_yrs"
@@ -542,9 +515,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.p_active"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_rpt_type"
                }
                ,{
                    "$ref": "#\/parameters\/f.p_yrs"
@@ -710,9 +680,6 @@
                    "$ref": "#\/parameters\/q.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/q.p_rpt_type"
-               }
-               ,{
                    "$ref": "#\/parameters\/q.p_yrs"
                }
                ,{
@@ -757,9 +724,6 @@
                    "$ref": "#\/parameters\/f.p_id"
                }
                ,{
-                   "$ref": "#\/parameters\/f.p_rpt_type"
-               }
-               ,{
                    "$ref": "#\/parameters\/f.p_yrs"
                }
                ,{
@@ -793,7 +757,8 @@
       }
       ,"\/comp_screen_services.get_curr_fac_info": {
           "get": {
-             "summary": "Placeholder"
+             "summary": "Corporate Compliance Screener Current Facility Violation Information Service"
+            ,"description": "Based on the queryid obtained from get_facilities returns a JSON object containing facility with current violations."
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/q.output"
@@ -803,9 +768,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/q.p_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_rpt_type"
                }
                ,{
                    "$ref": "#\/parameters\/q.callback"
@@ -819,6 +781,7 @@
                 "description": "Results"
                ,"schema": {
                    "type": "object"
+                  ,"description": "Facility Violation Information Object"
                   ,"xml": {
                       "name": "Root"
                   }
@@ -835,7 +798,8 @@
             }
          }
          ,"post": {
-             "summary": "Placeholder"
+             "summary": "Corporate Compliance Screener Current Facility Violation Information Service"
+            ,"description": "Based on the queryid obtained from get_facilities returns a JSON object containing facility with current violations."
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/f.output"
@@ -845,9 +809,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.p_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_rpt_type"
                }
                ,{
                    "$ref": "#\/parameters\/f.callback"
@@ -861,6 +822,7 @@
                 "description": "Results"
                ,"schema": {
                    "type": "object"
+                  ,"description": "Facility Violation Information Object"
                   ,"xml": {
                       "name": "Root"
                   }
@@ -879,7 +841,8 @@
       }
       ,"\/comp_screen_services.get_settlements": {
           "get": {
-             "summary": "Placeholder"
+             "summary": "Corporate Compliance Screener EPA and State Formal Enforcement Settlements Service"
+            ,"description": "Based on the queryid obtained from get_facilities returns a JSON object containing formal enforcement settlements."
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/q.output"
@@ -889,9 +852,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/q.p_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_rpt_type"
                }
                ,{
                    "$ref": "#\/parameters\/q.p_yrs"
@@ -908,6 +868,7 @@
                 "description": "Results"
                ,"schema": {
                    "type": "object"
+                  ,"description": "EPA and State Formal Enforcement Settlements Object"
                   ,"xml": {
                       "name": "Root"
                   }
@@ -924,7 +885,8 @@
             }
          }
          ,"post": {
-             "summary": "Placeholder"
+             "summary": "Corporate Compliance Screener EPA and State Formal Enforcement Settlements Service"
+            ,"description": "Based on the queryid obtained from get_facilities returns a JSON object containing formal enforcement settlements."
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/f.output"
@@ -934,9 +896,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.p_id"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_rpt_type"
                }
                ,{
                    "$ref": "#\/parameters\/f.p_yrs"
@@ -953,6 +912,7 @@
                 "description": "Results"
                ,"schema": {
                    "type": "object"
+                  ,"description": "EPA and State Formal Enforcement Settlements Object"
                   ,"xml": {
                       "name": "Root"
                   }
@@ -971,7 +931,8 @@
       }
       ,"\/comp_screen_services.get_open_cases": {
           "get": {
-             "summary": "Placeholder"
+             "summary": "Corporate Compliance Screener EPA \"Open\" Civil Enforcement Cases Service"
+            ,"description": "Based on the queryid obtained from get_facilities returns a JSON object containing EPA \"open\" civil enforcement cases."
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/q.output"
@@ -994,6 +955,7 @@
                 "description": "Results"
                ,"schema": {
                    "type": "object"
+                  ,"description": "EPA \"Open\" Civil Enforcement Cases Object"
                   ,"xml": {
                       "name": "Root"
                   }
@@ -1010,7 +972,8 @@
             }
          }
          ,"post": {
-             "summary": "Placeholder"
+             "summary": "Corporate Compliance Screener EPA \"Open\" Civil Enforcement Cases Service"
+            ,"description": "Based on the queryid obtained from get_facilities returns a JSON object containing EPA \"open\" civil enforcement cases."
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/f.output"
@@ -1033,6 +996,7 @@
                 "description": "Results"
                ,"schema": {
                    "type": "object"
+                  ,"description": "EPA \"Open\" Civil Enforcement Cases Object"
                   ,"xml": {
                       "name": "Root"
                   }
@@ -1052,7 +1016,7 @@
       ,"\/comp_screen_services.get_download": {
           "get": {
              "summary": "Corporate Compliance Screener Download Data Service"
-            ,"description": "Based on the QID obtained from a get_facilities return a comma sepated vaule (CSV) file of the facilities and cases found."
+            ,"description": "Based on the QID obtained from get_facilities returns a comma separated value (CSV) file of the facilities and cases found."
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/q.qid"
@@ -1075,7 +1039,7 @@
          }
          ,"post": {
              "summary": "Corporate Compliance Screener Download Data Service"
-            ,"description": "Based on the QID obtained from a get_facilities return a comma sepated vaule (CSV) file of the facilities and cases found."
+            ,"description": "Based on the QID obtained from get_facilities returns a comma separated value (CSV) file of the facilities and cases found."
             ,"parameters": [
                 {
                    "$ref": "#\/parameters\/f.qid"
@@ -1108,9 +1072,6 @@
                ,{
                    "$ref": "#\/parameters\/q.callback"
                }
-               ,{
-                   "$ref": "#\/parameters\/q.meta_type"
-               }
             ]
             ,"tags": [
                 "Corporate Compliance Screener"
@@ -1126,7 +1087,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/css14"
+                         "$ref": "#\/definitions\/met1"
                      }
                   }
                   ,"required": [
@@ -1146,9 +1107,6 @@
                ,{
                    "$ref": "#\/parameters\/f.callback"
                }
-               ,{
-                   "$ref": "#\/parameters\/f.meta_type"
-               }
             ]
             ,"tags": [
                 "Corporate Compliance Screener"
@@ -1164,7 +1122,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/css14"
+                         "$ref": "#\/definitions\/met1"
                      }
                   }
                   ,"required": [
@@ -1179,6 +1137,7 @@
    ,"definitions": {
        "css00": {
           "type": "object"
+         ,"description": "Facility Violation Information Object"
          ,"properties": {
              "Message": {
                 "type": "string"
@@ -1588,6 +1547,7 @@
       }
       ,"css12": {
           "type": "object"
+         ,"description": "EPA \"Open\" Civil Enforcement Cases Object"
          ,"properties": {
              "Message": {
                 "type": "string"
@@ -1983,6 +1943,7 @@
       }
       ,"css11": {
           "type": "object"
+         ,"description": "EPA and State Formal Enforcement Settlements Object"
          ,"properties": {
              "Message": {
                 "type": "string"
@@ -2004,7 +1965,7 @@
             ,"Settlements"
          ]
       }
-      ,"css13": {
+      ,"met2": {
           "type": "object"
          ,"description": "Results Column Object"
          ,"xml": {
@@ -2037,6 +1998,11 @@
                ,"example": "CaseName"
                ,"description": "The JSON name used for the database column."
             }
+            ,"Description": {
+                "type": "string"
+               ,"title": "Description"
+               ,"description": "A description of the category of Supplemental Environment Project (SEP) for a settlement."
+            }
          }
          ,"required": [
              "ColumnName"
@@ -2044,9 +2010,10 @@
             ,"DataLength"
             ,"ColumnID"
             ,"ObjectName"
+            ,"Description"
          ]
       }
-      ,"css14": {
+      ,"met1": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -2060,7 +2027,7 @@
                 "type": "array"
                ,"title": "Result Columns"
                ,"items": {
-                   "$ref": "#\/definitions\/css13"
+                   "$ref": "#\/definitions\/met2"
                }
                ,"xml": {
                    "name": "ResultColumns"
