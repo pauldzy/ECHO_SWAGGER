@@ -1914,7 +1914,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/ers1_Results"
+                         "$ref": "#\/definitions\/echo04"
                      }
                   }
                   ,"required": [
@@ -2184,7 +2184,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/ers1_Results"
+                         "$ref": "#\/definitions\/echo04"
                      }
                   }
                   ,"required": [
@@ -2442,7 +2442,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/ers2_Results"
+                         "$ref": "#\/definitions\/echo08"
                      }
                   }
                   ,"required": [
@@ -2698,7 +2698,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/ers2_Results"
+                         "$ref": "#\/definitions\/echo08"
                      }
                   }
                   ,"required": [
@@ -2763,7 +2763,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/ers4_Results"
+                         "$ref": "#\/definitions\/echo11"
                      }
                   }
                   ,"required": [
@@ -2826,7 +2826,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/ers4_Results"
+                         "$ref": "#\/definitions\/echo11"
                      }
                   }
                   ,"required": [
@@ -2893,7 +2893,7 @@
                   }
                   ,"properties": {
                       "MapOutput": {
-                         "$ref": "#\/definitions\/ers0_MapOutput"
+                         "$ref": "#\/definitions\/echo02"
                      }
                   }
                   ,"required": [
@@ -2958,7 +2958,7 @@
                   }
                   ,"properties": {
                       "MapOutput": {
-                         "$ref": "#\/definitions\/ers0_MapOutput"
+                         "$ref": "#\/definitions\/echo02"
                      }
                   }
                   ,"required": [
@@ -3163,7 +3163,7 @@
                         ,"title": "Features Array"
                         ,"description": "Array of GeoJSON feature objects."
                         ,"items": {
-                            "$ref": "#\/definitions\/ers5_Feature"
+                            "$ref": "#\/definitions\/echo09"
                         }
                      }
                   }
@@ -3230,7 +3230,7 @@
                         ,"title": "Features Array"
                         ,"description": "Array of GeoJSON feature objects."
                         ,"items": {
-                            "$ref": "#\/definitions\/ers5_Feature"
+                            "$ref": "#\/definitions\/echo09"
                         }
                      }
                   }
@@ -3360,7 +3360,7 @@
             ,"QV"
          ]
       }
-      ,"ers0_MapData": {
+      ,"echo01": {
           "type": "object"
          ,"description": "Map Data Object"
          ,"xml": {
@@ -3461,7 +3461,7 @@
             ,"InformalCount"
          ]
       }
-      ,"ers0_MapOutput": {
+      ,"echo02": {
           "type": "object"
          ,"description": "Map Output Object"
          ,"properties": {
@@ -3488,7 +3488,7 @@
                ,"title": "Map Data"
                ,"description": "An array of facility geospatial information."
                ,"items": {
-                   "$ref": "#\/definitions\/ers0_MapData"
+                   "$ref": "#\/definitions\/echo01"
                }
                ,"xml": {
                    "name": "MapData"
@@ -3503,7 +3503,7 @@
             ,"MapData"
          ]
       }
-      ,"ers1_Facilities": {
+      ,"echo03": {
           "type": "object"
          ,"description": "Facilities Object"
          ,"xml": {
@@ -4805,7 +4805,7 @@
             ,"MaxScore"
          ]
       }
-      ,"ers1_Results": {
+      ,"echo04": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4915,7 +4915,7 @@
                ,"title": "Facilities"
                ,"description": "A complex array of facility information."
                ,"items": {
-                   "$ref": "#\/definitions\/ers1_Facilities"
+                   "$ref": "#\/definitions\/echo03"
                }
                ,"xml": {
                    "name": "Facilities"
@@ -4923,7 +4923,7 @@
                }
             }
             ,"MapOutput": {
-                "$ref": "#\/definitions\/ers0_MapOutput"
+                "$ref": "#\/definitions\/echo02"
             }
          }
          ,"required": [
@@ -4947,7 +4947,7 @@
             ,"PageNo"
          ]
       }
-      ,"ers2_ClusterData": {
+      ,"echo05": {
           "type": "object"
          ,"description": "Cluster Data Object"
          ,"properties": {
@@ -5064,7 +5064,7 @@
             ,"TotalPenalties"
          ]
       }
-      ,"ers2_ClusterOutput": {
+      ,"echo06": {
           "type": "object"
          ,"description": "Cluster Output Object"
          ,"properties": {
@@ -5073,7 +5073,7 @@
                ,"title": "Cluster Data"
                ,"description": "An array of state, county, or zip code cluster information"
                ,"items": {
-                   "$ref": "#\/definitions\/ers2_ClusterData"
+                   "$ref": "#\/definitions\/echo05"
                }
             }
          }
@@ -5081,7 +5081,7 @@
              "ClusterData"
          ]
       }
-      ,"ers2_Facilities": {
+      ,"echo07": {
           "type": "object"
          ,"description": "Facilities Object"
          ,"xml": {
@@ -6390,7 +6390,7 @@
             ,"MaxScore"
          ]
       }
-      ,"ers2_Results": {
+      ,"echo08": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -6518,7 +6518,7 @@
                ,"title": "Facilities"
                ,"description": "A complex array of facility information."
                ,"items": {
-                   "$ref": "#\/definitions\/ers2_Facilities"
+                   "$ref": "#\/definitions\/echo07"
                }
                ,"xml": {
                    "name": "Facilities"
@@ -6532,7 +6532,7 @@
                ,"description": "Number of clusters returned."
             }
             ,"ClusterOutput": {
-                "$ref": "#\/definitions\/ers2_ClusterOutput"
+                "$ref": "#\/definitions\/echo06"
             }
          }
          ,"required": [
@@ -6558,7 +6558,7 @@
             ,"QueryParameters"
          ]
       }
-      ,"ers5_Feature": {
+      ,"echo09": {
           "type": "object"
          ,"description": "GeoJSON Feature Object"
          ,"properties": {
@@ -6572,7 +6572,7 @@
                 "$ref": "#\/definitions\/geo"
             }
             ,"properties": {
-                "$ref": "#\/definitions\/ers5_properties"
+                "$ref": "#\/definitions\/echo10"
             }
          }
          ,"required": [
@@ -6581,7 +6581,7 @@
             ,"properties"
          ]
       }
-      ,"ers5_properties": {
+      ,"echo10": {
           "type": "object"
          ,"description": "GeoJSON Properties Object"
          ,"properties": {
@@ -7838,7 +7838,7 @@
             ,"MaxScore"
          ]
       }
-      ,"ers4_Results": {
+      ,"echo11": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -7871,7 +7871,7 @@
                ,"title": "Facilities"
                ,"description": "A complex array of facility information."
                ,"items": {
-                   "$ref": "#\/definitions\/ers1_Facilities"
+                   "$ref": "#\/definitions\/echo03"
                }
                ,"xml": {
                    "name": "Facilities"
@@ -7947,8 +7947,7 @@
             }
             ,"Description": {
                 "type": "string"
-               ,"title": "Description"
-               ,"description": "A description of the category of Supplemental Environment Project (SEP) for a settlement."
+               ,"title": "Column Description"
             }
          }
          ,"required": [
