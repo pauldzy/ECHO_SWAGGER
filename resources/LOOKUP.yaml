@@ -2,7 +2,7 @@
 swagger: '2.0'
 info: 
   title: U.S. EPA Enforcement and Compliance History Online (ECHO) - Code Lookups
-  description: "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide."
+  description: "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for over 1 million regulated facilities nationwide."
   contact: 
     name: US EPA, OECA Integration, Targeting and Access Branch
   license: 
@@ -246,7 +246,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk01_Results" 
+                "$ref": "#/definitions/rlup06" 
             required: 
               - Results
     post: 
@@ -268,7 +268,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk01_Results" 
+                "$ref": "#/definitions/rlup06" 
             required: 
               - Results
   "/rest_lookups.bio_analy_method_category": 
@@ -290,7 +290,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk02_Results" 
+                "$ref": "#/definitions/rlup07" 
             required: 
               - Results
     post: 
@@ -311,7 +311,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk02_Results" 
+                "$ref": "#/definitions/rlup07" 
             required: 
               - Results
   "/rest_lookups.bio_analytical_method": 
@@ -333,7 +333,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk03_Results" 
+                "$ref": "#/definitions/rlup08" 
             required: 
               - Results
     post: 
@@ -354,7 +354,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk03_Results" 
+                "$ref": "#/definitions/rlup08" 
             required: 
               - Results
   "/rest_lookups.bio_container_type": 
@@ -376,7 +376,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk04_Results" 
+                "$ref": "#/definitions/rlup09" 
             required: 
               - Results
     post: 
@@ -397,7 +397,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk04_Results" 
+                "$ref": "#/definitions/rlup09" 
             required: 
               - Results
   "/rest_lookups.bio_mgmt_practice_handler": 
@@ -419,7 +419,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk05_Results" 
+                "$ref": "#/definitions/rlup10" 
             required: 
               - Results
     post: 
@@ -440,7 +440,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk05_Results" 
+                "$ref": "#/definitions/rlup10" 
             required: 
               - Results
   "/rest_lookups.bio_mgmt_practice_subtype": 
@@ -463,7 +463,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk06_Results" 
+                "$ref": "#/definitions/rlup11" 
             required: 
               - Results
     post: 
@@ -485,7 +485,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk06_Results" 
+                "$ref": "#/definitions/rlup11" 
             required: 
               - Results
   "/rest_lookups.bio_mgmt_practice_type": 
@@ -507,7 +507,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk08_Results" 
+                "$ref": "#/definitions/rlup12" 
             required: 
               - Results
     post: 
@@ -528,7 +528,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk08_Results" 
+                "$ref": "#/definitions/rlup12" 
             required: 
               - Results
   "/rest_lookups.bio_mgmt_practice_typesubtype": 
@@ -550,7 +550,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk07_Results" 
+                "$ref": "#/definitions/rlup13" 
             required: 
               - Results
     post: 
@@ -571,7 +571,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk07_Results" 
+                "$ref": "#/definitions/rlup13" 
             required: 
               - Results
   "/rest_lookups.bio_pathogen_class": 
@@ -593,7 +593,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk09_Results" 
+                "$ref": "#/definitions/rlup14" 
             required: 
               - Results
     post: 
@@ -614,7 +614,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk09_Results" 
+                "$ref": "#/definitions/rlup14" 
             required: 
               - Results
   "/rest_lookups.bio_pathogen_reduction": 
@@ -637,7 +637,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk10_Results" 
+                "$ref": "#/definitions/rlup15" 
             required: 
               - Results
     post: 
@@ -659,7 +659,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk10_Results" 
+                "$ref": "#/definitions/rlup15" 
             required: 
               - Results
   "/rest_lookups.bio_treatment_process": 
@@ -681,7 +681,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk11_Results" 
+                "$ref": "#/definitions/rlup16" 
             required: 
               - Results
     post: 
@@ -702,7 +702,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk11_Results" 
+                "$ref": "#/definitions/rlup16" 
             required: 
               - Results
   "/rest_lookups.bio_vector_reduction": 
@@ -724,7 +724,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk12_Results" 
+                "$ref": "#/definitions/rlup17" 
             required: 
               - Results
     post: 
@@ -745,7 +745,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk12_Results" 
+                "$ref": "#/definitions/rlup17" 
             required: 
               - Results
   "/rest_lookups.biosolids_by_registry_id": 
@@ -766,7 +766,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk69_Results" 
+                "$ref": "#/definitions/rlup19" 
             required: 
               - Results
     post: 
@@ -786,7 +786,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk69_Results" 
+                "$ref": "#/definitions/rlup19" 
             required: 
               - Results
   "/rest_lookups.bio_vio_code": 
@@ -808,7 +808,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk68_Results" 
+                "$ref": "#/definitions/rlup18" 
             required: 
               - Results
     post: 
@@ -829,7 +829,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk68_Results" 
+                "$ref": "#/definitions/rlup18" 
             required: 
               - Results
   "/rest_lookups.bp_tribes": 
@@ -852,7 +852,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk13_Results" 
+                "$ref": "#/definitions/rlup20" 
             required: 
               - Results
     post: 
@@ -874,7 +874,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk13_Results" 
+                "$ref": "#/definitions/rlup20" 
             required: 
               - Results
   "/rest_lookups.counties": 
@@ -896,7 +896,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk14_Results" 
+                "$ref": "#/definitions/rlup21" 
             required: 
               - Results
     post: 
@@ -917,7 +917,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk14_Results" 
+                "$ref": "#/definitions/rlup21" 
             required: 
               - Results
   "/rest_lookups.cp_citations": 
@@ -938,7 +938,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk15_Results" 
+                "$ref": "#/definitions/rlup22" 
             required: 
               - Results
     post: 
@@ -958,7 +958,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk15_Results" 
+                "$ref": "#/definitions/rlup22" 
             required: 
               - Results
   "/rest_lookups.cwa_parameters": 
@@ -983,7 +983,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk16_Results" 
+                "$ref": "#/definitions/rlup23" 
             required: 
               - Results
     post: 
@@ -1007,7 +1007,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk16_Results" 
+                "$ref": "#/definitions/rlup23" 
             required: 
               - Results
   "/rest_lookups.cwa_pollutants": 
@@ -1030,7 +1030,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk17_Results" 
+                "$ref": "#/definitions/rlup24" 
             required: 
               - Results
     post: 
@@ -1052,7 +1052,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk17_Results" 
+                "$ref": "#/definitions/rlup24" 
             required: 
               - Results
   "/rest_lookups.ecatt_ams_cas": 
@@ -1074,7 +1074,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk31_Results" 
+                "$ref": "#/definitions/rlup38" 
             required: 
               - Results
     post: 
@@ -1095,7 +1095,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk31_Results" 
+                "$ref": "#/definitions/rlup38" 
             required: 
               - Results
   "/rest_lookups.ecatt_ams_polls": 
@@ -1117,7 +1117,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk32_Results" 
+                "$ref": "#/definitions/rlup39" 
             required: 
               - Results
     post: 
@@ -1138,7 +1138,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk32_Results" 
+                "$ref": "#/definitions/rlup39" 
             required: 
               - Results
   "/rest_lookups.ecatt_ams_systems": 
@@ -1160,7 +1160,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk33_Results" 
+                "$ref": "#/definitions/rlup40" 
             required: 
               - Results
     post: 
@@ -1181,7 +1181,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk33_Results" 
+                "$ref": "#/definitions/rlup40" 
             required: 
               - Results
   "/rest_lookups.ecatt_ams_years": 
@@ -1201,7 +1201,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk70_Results" 
+                "$ref": "#/definitions/rlup41" 
             required: 
               - Results
     post: 
@@ -1220,7 +1220,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk70_Results" 
+                "$ref": "#/definitions/rlup41" 
             required: 
               - Results
   "/rest_lookups.ecatt_eis_types": 
@@ -1242,7 +1242,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk34_Results" 
+                "$ref": "#/definitions/rlup42" 
             required: 
               - Results
     post: 
@@ -1263,7 +1263,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk34_Results" 
+                "$ref": "#/definitions/rlup42" 
             required: 
               - Results
   "/rest_lookups.ecatt_most_rcnt_cmmn_yr": 
@@ -1284,7 +1284,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk35_Results" 
+                "$ref": "#/definitions/rlup43" 
             required: 
               - Results
     post: 
@@ -1304,7 +1304,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk35_Results" 
+                "$ref": "#/definitions/rlup43" 
             required: 
               - Results
   "/rest_lookups.ecatt_most_rcnt_yr": 
@@ -1325,7 +1325,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk36_Results" 
+                "$ref": "#/definitions/rlup44" 
             required: 
               - Results
     post: 
@@ -1345,7 +1345,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk36_Results" 
+                "$ref": "#/definitions/rlup44" 
             required: 
               - Results
   "/rest_lookups.ecatt_nata_polls": 
@@ -1367,7 +1367,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk37_Results" 
+                "$ref": "#/definitions/rlup45" 
             required: 
               - Results
     post: 
@@ -1388,7 +1388,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk37_Results" 
+                "$ref": "#/definitions/rlup45" 
             required: 
               - Results
   "/rest_lookups.ecatt_nata_sources": 
@@ -1410,7 +1410,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk38_Results" 
+                "$ref": "#/definitions/rlup46" 
             required: 
               - Results
     post: 
@@ -1431,7 +1431,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk38_Results" 
+                "$ref": "#/definitions/rlup46" 
             required: 
               - Results
   "/rest_lookups.ecatt_nata_systems": 
@@ -1453,7 +1453,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk39_Results" 
+                "$ref": "#/definitions/rlup47" 
             required: 
               - Results
     post: 
@@ -1474,7 +1474,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk39_Results" 
+                "$ref": "#/definitions/rlup47" 
             required: 
               - Results
   "/rest_lookups.ecatt_nei_scc_codes": 
@@ -1497,7 +1497,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk40_Results" 
+                "$ref": "#/definitions/rlup48" 
             required: 
               - Results
     post: 
@@ -1519,7 +1519,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk40_Results" 
+                "$ref": "#/definitions/rlup48" 
             required: 
               - Results
   "/rest_lookups.ecatt_pcat_pgm": 
@@ -1541,7 +1541,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk41_Results" 
+                "$ref": "#/definitions/rlup49" 
             required: 
               - Results
     post: 
@@ -1562,7 +1562,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk41_Results" 
+                "$ref": "#/definitions/rlup49" 
             required: 
               - Results
   "/rest_lookups.ecatt_poll_categories": 
@@ -1584,7 +1584,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk42_Results" 
+                "$ref": "#/definitions/rlup50" 
             required: 
               - Results
     post: 
@@ -1605,7 +1605,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk42_Results" 
+                "$ref": "#/definitions/rlup50" 
             required: 
               - Results
   "/rest_lookups.ecatt_poll_pgm": 
@@ -1627,7 +1627,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk43_Results" 
+                "$ref": "#/definitions/rlup51" 
             required: 
               - Results
     post: 
@@ -1648,7 +1648,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk43_Results" 
+                "$ref": "#/definitions/rlup51" 
             required: 
               - Results
   "/rest_lookups.ecatt_pollutants": 
@@ -1670,7 +1670,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk44_Results" 
+                "$ref": "#/definitions/rlup52" 
             required: 
               - Results
     post: 
@@ -1691,7 +1691,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk44_Results" 
+                "$ref": "#/definitions/rlup52" 
             required: 
               - Results
   "/rest_lookups.ecatt_target_systems": 
@@ -1713,7 +1713,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk45_Results" 
+                "$ref": "#/definitions/rlup53" 
             required: 
               - Results
     post: 
@@ -1734,7 +1734,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk45_Results" 
+                "$ref": "#/definitions/rlup53" 
             required: 
               - Results
   "/rest_lookups.federal_agencies": 
@@ -1757,7 +1757,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk46_Results" 
+                "$ref": "#/definitions/rlup54" 
             required: 
               - Results
     post: 
@@ -1779,7 +1779,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk46_Results" 
+                "$ref": "#/definitions/rlup54" 
             required: 
               - Results
   "/rest_lookups.ghg_fac_types": 
@@ -1801,7 +1801,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk47_Results" 
+                "$ref": "#/definitions/rlup55" 
             required: 
               - Results
     post: 
@@ -1822,7 +1822,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk47_Results" 
+                "$ref": "#/definitions/rlup55" 
             required: 
               - Results
   "/rest_lookups.ghg_subparts": 
@@ -1844,7 +1844,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk48_Results" 
+                "$ref": "#/definitions/rlup56" 
             required: 
               - Results
     post: 
@@ -1865,7 +1865,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk48_Results" 
+                "$ref": "#/definitions/rlup56" 
             required: 
               - Results
   "/rest_lookups.ghg_years": 
@@ -1886,7 +1886,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk49_Results" 
+                "$ref": "#/definitions/rlup57" 
             required: 
               - Results
     post: 
@@ -1906,7 +1906,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk49_Results" 
+                "$ref": "#/definitions/rlup57" 
             required: 
               - Results
   "/rest_lookups.icis_inspection_types": 
@@ -1929,7 +1929,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk50_Results" 
+                "$ref": "#/definitions/rlup58" 
             required: 
               - Results
     post: 
@@ -1951,7 +1951,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk50_Results" 
+                "$ref": "#/definitions/rlup58" 
             required: 
               - Results
   "/rest_lookups.icis_law_sections": 
@@ -1977,7 +1977,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk51_Results" 
+                "$ref": "#/definitions/rlup59" 
             required: 
               - Results
     post: 
@@ -2002,7 +2002,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk51_Results" 
+                "$ref": "#/definitions/rlup59" 
             required: 
               - Results
   "/rest_lookups.icis_ref_program": 
@@ -2027,7 +2027,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk71_Results" 
+                "$ref": "#/definitions/rlup60" 
             required: 
               - Results
     post: 
@@ -2051,7 +2051,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk71_Results" 
+                "$ref": "#/definitions/rlup60" 
             required: 
               - Results
   "/rest_lookups.naics_codes": 
@@ -2073,7 +2073,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk52_Results" 
+                "$ref": "#/definitions/rlup61" 
             required: 
               - Results
     post: 
@@ -2094,7 +2094,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk52_Results" 
+                "$ref": "#/definitions/rlup61" 
             required: 
               - Results
   "/rest_lookups.national_priorities": 
@@ -2117,7 +2117,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk53_Results" 
+                "$ref": "#/definitions/rlup62" 
             required: 
               - Results
     post: 
@@ -2139,7 +2139,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk53_Results" 
+                "$ref": "#/definitions/rlup62" 
             required: 
               - Results
   "/rest_lookups.nei_pollutants": 
@@ -2161,7 +2161,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk54_Results" 
+                "$ref": "#/definitions/rlup63" 
             required: 
               - Results
     post: 
@@ -2182,7 +2182,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk54_Results" 
+                "$ref": "#/definitions/rlup63" 
             required: 
               - Results
   "/rest_lookups.nei_years": 
@@ -2203,7 +2203,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk55_Results" 
+                "$ref": "#/definitions/rlup64" 
             required: 
               - Results
     post: 
@@ -2223,7 +2223,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk55_Results" 
+                "$ref": "#/definitions/rlup64" 
             required: 
               - Results
   "/rest_lookups.npdes_parameters": 
@@ -2245,7 +2245,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk56_Results" 
+                "$ref": "#/definitions/rlup65" 
             required: 
               - Results
     post: 
@@ -2266,7 +2266,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk56_Results" 
+                "$ref": "#/definitions/rlup65" 
             required: 
               - Results
   "/rest_lookups.prog_deficiency": 
@@ -2288,7 +2288,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk57_Results" 
+                "$ref": "#/definitions/rlup66" 
             required: 
               - Results
     post: 
@@ -2309,7 +2309,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk57_Results" 
+                "$ref": "#/definitions/rlup66" 
             required: 
               - Results
   "/rest_lookups.rcra_lu_state_districts": 
@@ -2330,7 +2330,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk58_Results" 
+                "$ref": "#/definitions/rlup67" 
             required: 
               - Results
     post: 
@@ -2350,7 +2350,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk58_Results" 
+                "$ref": "#/definitions/rlup67" 
             required: 
               - Results
   "/rest_lookups.reporting_obligation": 
@@ -2373,7 +2373,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk59_Results" 
+                "$ref": "#/definitions/rlup68" 
             required: 
               - Results
     post: 
@@ -2395,7 +2395,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk59_Results" 
+                "$ref": "#/definitions/rlup68" 
             required: 
               - Results
   "/rest_lookups.rpo_regions": 
@@ -2417,7 +2417,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk60_Results" 
+                "$ref": "#/definitions/rlup69" 
             required: 
               - Results
     post: 
@@ -2438,7 +2438,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk60_Results" 
+                "$ref": "#/definitions/rlup69" 
             required: 
               - Results
   "/rest_lookups.sdwa_contaminants": 
@@ -2460,7 +2460,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk61_Results" 
+                "$ref": "#/definitions/rlup70" 
             required: 
               - Results
     post: 
@@ -2481,7 +2481,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk61_Results" 
+                "$ref": "#/definitions/rlup70" 
             required: 
               - Results
   "/rest_lookups.sdwis_tribes": 
@@ -2504,7 +2504,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk62_Results" 
+                "$ref": "#/definitions/rlup71" 
             required: 
               - Results
     post: 
@@ -2526,7 +2526,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk62_Results" 
+                "$ref": "#/definitions/rlup71" 
             required: 
               - Results
   "/rest_lookups.states": 
@@ -2548,7 +2548,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk63_Results" 
+                "$ref": "#/definitions/rlup72" 
             required: 
               - Results
     post: 
@@ -2569,7 +2569,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk63_Results" 
+                "$ref": "#/definitions/rlup72" 
             required: 
               - Results
   "/rest_lookups.tri_pollutants": 
@@ -2591,7 +2591,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk64_Results" 
+                "$ref": "#/definitions/rlup73" 
             required: 
               - Results
     post: 
@@ -2612,7 +2612,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk64_Results" 
+                "$ref": "#/definitions/rlup73" 
             required: 
               - Results
   "/rest_lookups.tri_years": 
@@ -2633,7 +2633,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk65_Results" 
+                "$ref": "#/definitions/rlup74" 
             required: 
               - Results
     post: 
@@ -2653,7 +2653,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk65_Results" 
+                "$ref": "#/definitions/rlup74" 
             required: 
               - Results
   "/rest_lookups.wbd_code_lu": 
@@ -2676,7 +2676,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk66_Results" 
+                "$ref": "#/definitions/rlup75" 
             required: 
               - Results
     post: 
@@ -2698,7 +2698,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk66_Results" 
+                "$ref": "#/definitions/rlup75" 
             required: 
               - Results
   "/rest_lookups.wbd_lu": 
@@ -2722,7 +2722,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk72_Results" 
+                "$ref": "#/definitions/rlup76" 
             required: 
               - Results
     post: 
@@ -2745,7 +2745,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk72_Results" 
+                "$ref": "#/definitions/rlup76" 
             required: 
               - Results
   "/rest_lookups.wbd_name_lu": 
@@ -2768,7 +2768,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk67_Results" 
+                "$ref": "#/definitions/rlup77" 
             required: 
               - Results
     post: 
@@ -2790,11 +2790,11 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk67_Results" 
+                "$ref": "#/definitions/rlup77" 
             required: 
               - Results
 definitions: 
-  rlk00_LuValues: 
+  rlup01: 
     description: Lookup Values
     xml: 
       name: LuValue
@@ -2810,7 +2810,7 @@ definitions:
     required: 
       - ValueCode
       - ValueDescription
-  rlk00_LuValues3: 
+  rlup02: 
     description: Lookup Values
     xml: 
       name: LuValue
@@ -2831,7 +2831,7 @@ definitions:
       - Category
       - ValueCode
       - ValueDescription
-  rlk00_LuValues4: 
+  rlup03: 
     description: Lookup Values
     xml: 
       name: LuValue
@@ -2852,7 +2852,7 @@ definitions:
       - ValueCode
       - ValueSubCode
       - ValueDescription
-  rlk00_LuValues5: 
+  rlup04: 
     description: Lookup Values
     xml: 
       name: LuValue
@@ -2883,13 +2883,19 @@ definitions:
         type: string
         title: Status
         example: Resolved
+        description: |-
+          Describes the status of the drinking water violation. Violation statuses include:
+          - Resolved: The violation has at least one resolving enforcement action. In SDWIS, this indicates that either the system has returned to compliance from the violation, the rule that was violated was no longer applicable, or no further action was needed.
+          - Archived: The violation is not Resolved, but is more than five years past its compliance period end date. In keeping with the Enforcement Response Policy, the violation no longer contributes to the public water system's overall compliance status. Unresolved violations are also marked as Archived when a system ceases operations (becomes inactive).
+          - Addressed: The violation is not Resolved or Archived, and is addressed by one or more formal enforcement actions.
+          - Unaddressed: The violation is not Resolved or Archived, and has not been addressed by formal enforcement.
     required: 
       - Statute
       - StatuteDescription
       - Program
       - ProgramDescription
       - Status
-  rlk00_LuValues6: 
+  rlup05: 
     description: Lookup Values
     xml: 
       name: LuValue
@@ -2901,7 +2907,7 @@ definitions:
     required: 
       - IdPassed
       - IdReturned
-  rlk01_Results: 
+  rlup06: 
     description: Results Object
     properties: 
       Message: 
@@ -2912,13 +2918,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk02_Results: 
+  rlup07: 
     description: Results Object
     properties: 
       Message: 
@@ -2929,13 +2935,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk03_Results: 
+  rlup08: 
     description: Results Object
     properties: 
       Message: 
@@ -2946,13 +2952,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk04_Results: 
+  rlup09: 
     description: Results Object
     properties: 
       Message: 
@@ -2963,13 +2969,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk05_Results: 
+  rlup10: 
     description: Results Object
     properties: 
       Message: 
@@ -2980,13 +2986,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk06_Results: 
+  rlup11: 
     description: Results Object
     properties: 
       Message: 
@@ -2997,13 +3003,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues4" 
+          "$ref": "#/definitions/rlup03" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk08_Results: 
+  rlup12: 
     description: Results Object
     properties: 
       Message: 
@@ -3014,13 +3020,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk07_Results: 
+  rlup13: 
     description: Results Object
     properties: 
       Message: 
@@ -3031,13 +3037,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk09_Results: 
+  rlup14: 
     description: Results Object
     properties: 
       Message: 
@@ -3048,13 +3054,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk10_Results: 
+  rlup15: 
     description: Results Object
     properties: 
       Message: 
@@ -3065,13 +3071,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk11_Results: 
+  rlup16: 
     description: Results Object
     properties: 
       Message: 
@@ -3082,13 +3088,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk12_Results: 
+  rlup17: 
     description: Results Object
     properties: 
       Message: 
@@ -3099,13 +3105,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk68_Results: 
+  rlup18: 
     description: Results Object
     properties: 
       Message: 
@@ -3116,13 +3122,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk69_Results: 
+  rlup19: 
     description: Results Object
     properties: 
       Message: 
@@ -3133,14 +3139,14 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues6" 
+          "$ref": "#/definitions/rlup05" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
       - LuValues
-  rlk13_Results: 
+  rlup20: 
     description: Results Object
     properties: 
       Message: 
@@ -3151,13 +3157,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk14_Results: 
+  rlup21: 
     description: Results Object
     properties: 
       Message: 
@@ -3168,13 +3174,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk15_Results: 
+  rlup22: 
     description: Results Object
     properties: 
       Message: 
@@ -3185,13 +3191,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk16_Results: 
+  rlup23: 
     description: Results Object
     properties: 
       Message: 
@@ -3202,13 +3208,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk17_Results: 
+  rlup24: 
     description: Results Object
     properties: 
       Message: 
@@ -3219,13 +3225,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk31_Results: 
+  rlup38: 
     description: Results Object
     properties: 
       Message: 
@@ -3236,13 +3242,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk32_Results: 
+  rlup39: 
     description: Results Object
     properties: 
       Message: 
@@ -3253,13 +3259,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk33_Results: 
+  rlup40: 
     description: Results Object
     properties: 
       Message: 
@@ -3270,13 +3276,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk70_Results: 
+  rlup41: 
     description: Results Object
     properties: 
       Message: 
@@ -3287,13 +3293,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk34_Results: 
+  rlup42: 
     description: Results Object
     properties: 
       Message: 
@@ -3304,13 +3310,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk35_Results: 
+  rlup43: 
     description: Results Object
     properties: 
       Message: 
@@ -3321,13 +3327,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk36_Results: 
+  rlup44: 
     description: Results Object
     properties: 
       Message: 
@@ -3338,13 +3344,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk37_Results: 
+  rlup45: 
     description: Results Object
     properties: 
       Message: 
@@ -3355,13 +3361,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk38_Results: 
+  rlup46: 
     description: Results Object
     properties: 
       Message: 
@@ -3372,13 +3378,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk39_Results: 
+  rlup47: 
     description: Results Object
     properties: 
       Message: 
@@ -3389,13 +3395,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk40_Results: 
+  rlup48: 
     description: Results Object
     properties: 
       Message: 
@@ -3406,13 +3412,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk41_Results: 
+  rlup49: 
     description: Results Object
     properties: 
       Message: 
@@ -3423,13 +3429,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk42_Results: 
+  rlup50: 
     description: Results Object
     properties: 
       Message: 
@@ -3440,13 +3446,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk43_Results: 
+  rlup51: 
     description: Results Object
     properties: 
       Message: 
@@ -3457,13 +3463,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk44_Results: 
+  rlup52: 
     description: Results Object
     properties: 
       Message: 
@@ -3474,13 +3480,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk45_Results: 
+  rlup53: 
     description: Results Object
     properties: 
       Message: 
@@ -3491,13 +3497,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk46_Results: 
+  rlup54: 
     description: Results Object
     properties: 
       Message: 
@@ -3508,13 +3514,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk47_Results: 
+  rlup55: 
     description: Results Object
     properties: 
       Message: 
@@ -3525,13 +3531,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk48_Results: 
+  rlup56: 
     description: Results Object
     properties: 
       Message: 
@@ -3542,13 +3548,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk49_Results: 
+  rlup57: 
     description: Results Object
     properties: 
       Message: 
@@ -3559,13 +3565,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk50_Results: 
+  rlup58: 
     description: Results Object
     properties: 
       Message: 
@@ -3576,13 +3582,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk51_Results: 
+  rlup59: 
     description: Results Object
     properties: 
       Message: 
@@ -3593,13 +3599,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk71_Results: 
+  rlup60: 
     description: Results Object
     properties: 
       Message: 
@@ -3610,13 +3616,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues5" 
+          "$ref": "#/definitions/rlup04" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk52_Results: 
+  rlup61: 
     description: Results Object
     properties: 
       Message: 
@@ -3627,13 +3633,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk53_Results: 
+  rlup62: 
     description: Results Object
     properties: 
       Message: 
@@ -3644,13 +3650,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues3" 
+          "$ref": "#/definitions/rlup02" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk54_Results: 
+  rlup63: 
     description: Results Object
     properties: 
       Message: 
@@ -3661,13 +3667,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk55_Results: 
+  rlup64: 
     description: Results Object
     properties: 
       Message: 
@@ -3678,13 +3684,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk56_Results: 
+  rlup65: 
     description: Results Object
     properties: 
       Message: 
@@ -3695,13 +3701,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk57_Results: 
+  rlup66: 
     description: Results Object
     properties: 
       Message: 
@@ -3712,13 +3718,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk58_Results: 
+  rlup67: 
     description: Results Object
     properties: 
       Message: 
@@ -3729,13 +3735,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk59_Results: 
+  rlup68: 
     description: Results Object
     properties: 
       Message: 
@@ -3746,13 +3752,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk60_Results: 
+  rlup69: 
     description: Results Object
     properties: 
       Message: 
@@ -3763,13 +3769,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk61_Results: 
+  rlup70: 
     description: Results Object
     properties: 
       Message: 
@@ -3780,13 +3786,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk62_Results: 
+  rlup71: 
     description: Results Object
     properties: 
       Message: 
@@ -3797,13 +3803,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk63_Results: 
+  rlup72: 
     description: Results Object
     properties: 
       Message: 
@@ -3814,13 +3820,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk64_Results: 
+  rlup73: 
     description: Results Object
     properties: 
       Message: 
@@ -3831,13 +3837,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk65_Results: 
+  rlup74: 
     description: Results Object
     properties: 
       Message: 
@@ -3848,13 +3854,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk66_Results: 
+  rlup75: 
     description: Results Object
     properties: 
       Message: 
@@ -3865,13 +3871,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk72_Results: 
+  rlup76: 
     description: Results Object
     properties: 
       Message: 
@@ -3882,13 +3888,13 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
     required: 
       - Message
-  rlk67_Results: 
+  rlup77: 
     description: Results Object
     properties: 
       Message: 
@@ -3899,7 +3905,7 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
