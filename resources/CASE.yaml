@@ -3281,7 +3281,7 @@ definitions:
       - DefendantName
       - NamedInComplaint
       - NamedInSettlement
-  case00_get_case_report.EnforcementConclusions: 
+  case14: 
     description: This section contains information about the conclusion(s) of the civil enforcement case, where it resulted in an order, consent decree, or other enforceable settlement.
     xml: 
       name: EnforcementConclusion
@@ -3709,7 +3709,7 @@ definitions:
         type: array
         title: Enforcement Conclusions
         items: 
-          "$ref": "#/definitions/case00_get_case_report.EnforcementConclusions" 
+          "$ref": "#/definitions/case14" 
         xml: 
           name: EnforcementConclusions
           wrapped: true
