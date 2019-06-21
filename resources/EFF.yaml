@@ -4,19 +4,18 @@ info:
   title: U.S. EPA Enforcement and Compliance History Online (ECHO) - Effluent Charting and Reporting
   description: |-
     Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use.
-    ECHO provides integrated compliance and enforcement information for about 800,000 regulated facilities nationwide.
-    <BR><BR>EFF Rest Services provides the data for ECHO's Effluent Charts, a set of dynamic charts and tables of permitted effluent limits, releases, and violations over time for 
-    Clean Water Act (CWA) wastewater discharge permits issued under the National Pollutant Discharge Elimination System (NPDES).  See Effluent Charts Help (https://echo.epa.gov/help/reports/effluent-charts-help) for additional information.
-    <BR><BR>
+      ECHO provides integrated compliance and enforcement information for over 1 million regulated facilities nationwide.
+       EFF Rest Services provides the data for ECHO's Effluent Charts, a set of dynamic charts and tables of permitted effluent limits, releases, and violations over time for Clean Water Act (CWA) wastewater discharge permits issued under the National Pollutant Discharge Elimination System (NPDES).  
+    See Effluent Charts Help (https://echo.epa.gov/help/reports/effluent-charts-help) for additional information.
+     
     The are 3 service end points for Efffluent Charts:  get_summary_chart, get_effluent_chart, and download_effluent_chart.
-    <br>
-    <br><b>1)</b>  Use get_summary_chart to retrieve a summary matrix of effluent parameters by effluent outfall and an overall violation status for a provided NPDES Permit and date range.
-    <br><b>2)</b>  Use get_effluent_chart to retrieve detailed Discharge Limit, DMR and NPDES Violation information for a provided NPDES Permit, date range, effluent paramater, or outfall.
-    <br><b>3)</b>  Use download_effluent_chart to generate a Comma Separated Value (CSV) file of the detailed data provided with get_effluent chart, for a provided NPDES Permit, date range, effluent paramater, or outfall.
-    <br>
-    <br>
+     
+     <b>1)</b>  Use get_summary_chart to retrieve a summary matrix of effluent parameters by effluent outfall and an overall violation status for a provided NPDES Permit and date range.
+     <b>2)</b>  Use get_effluent_chart to retrieve detailed Discharge Limit, DMR and NPDES Violation information for a provided NPDES Permit, date range, effluent paramater, or outfall.
+     <b>3)</b>  Use download_effluent_chart to generate a Comma Separated Value (CSV) file of the detailed data provided with get_effluent chart, for a provided NPDES Permit, date range, effluent paramater, or outfall.
+     
     Additional ECHO Resources:   <a href="https://echo.epa.gov/tools/web-services">Web Services</a>, <a href="https://echo.epa.gov/resources/echo-data/about-the-data">About ECHO's Data</a>, <a href="https://echo.epa.gov/tools/data-downloads">Data Downloads</a>
-    <br>
+     
   contact: 
     name: US EPA, OECA Integration, Targeting and Access Branch
   license: 
@@ -183,7 +182,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/eff1_Results" 
+                "$ref": "#/definitions/eff05" 
             required: 
               - Results
     post: 
@@ -210,7 +209,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/eff1_Results" 
+                "$ref": "#/definitions/eff05" 
             required: 
               - Results
   "/eff_rest_services.get_summary_chart": 
@@ -234,7 +233,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/eff2_Results" 
+                "$ref": "#/definitions/eff09" 
             required: 
               - Results
     post: 
@@ -257,7 +256,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/eff2_Results" 
+                "$ref": "#/definitions/eff09" 
             required: 
               - Results
   "/eff_rest_services.download_effluent_chart": 
@@ -315,7 +314,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk16_Results" 
+                "$ref": "#/definitions/rlup16" 
             required: 
               - Results
     post: 
@@ -339,11 +338,11 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/rlk16_Results" 
+                "$ref": "#/definitions/rlup16" 
             required: 
               - Results
 definitions: 
-  eff1_DischargeMonitoringReports: 
+  eff01: 
     description: Discharge Monitoring Reports Object
     xml: 
       name: DischargeMonitoringReport
@@ -545,7 +544,7 @@ definitions:
         type: array
         title: NPDES Violations
         items: 
-          "$ref": "#/definitions/eff1_NPDESViolations" 
+          "$ref": "#/definitions/eff02" 
         xml: 
           name: NPDESViolations
           wrapped: true
@@ -590,7 +589,7 @@ definitions:
       - NODICode
       - NODEDesc
       - ExceedencePct
-  eff1_NPDESViolations: 
+  eff02: 
     description: NPDES Violations Object
     xml: 
       name: NPDESViolation
@@ -685,7 +684,7 @@ definitions:
           - 2 = effluent violation, i.e., discharge in excess of permitted limit
           - 3 = reportable noncompliance
           - 5 = significant noncompliance
-  eff1_Parameters: 
+  eff03: 
     description: Parameters Object
     xml: 
       name: Parameter
@@ -725,7 +724,7 @@ definitions:
         title: Effluent Discharge Monitoring Report
         description: An array of Discharge Monitoring Report (DMR) data.
         items: 
-          "$ref": "#/definitions/eff1_DischargeMonitoringReports" 
+          "$ref": "#/definitions/eff01" 
         xml: 
           name: DischargeMonitoringReports
           wrapped: true
@@ -737,7 +736,7 @@ definitions:
       - StayTypeCode
       - StayTypeDesc
       - DischargeMonitoringReports
-  eff1_PermFeatures: 
+  eff04: 
     description: Permit Features Object
     xml: 
       name: PermFeature
@@ -757,7 +756,7 @@ definitions:
         title: Limit Parameters
         description: Array of Effuent Limit Parameters
         items: 
-          "$ref": "#/definitions/eff1_Parameters" 
+          "$ref": "#/definitions/eff03" 
         xml: 
           name: Parameters
           wrapped: true
@@ -771,7 +770,7 @@ definitions:
       - PermFeatureTypeCode
       - Parameters
       - PermFeatureTypeDesc
-  eff1_Results: 
+  eff05: 
     description: Results Object
     properties: 
       Message: 
@@ -885,7 +884,7 @@ definitions:
         title: Permitted Features (Pipe Outfalls)
         description: Array of Permitted Features
         items: 
-          "$ref": "#/definitions/eff1_PermFeatures" 
+          "$ref": "#/definitions/eff04" 
         xml: 
           name: PermFeatures
           wrapped: true
@@ -906,7 +905,7 @@ definitions:
       - CWPCurrentSNCStatus
       - StartDate
       - EndDate
-  eff2_LinkedPermits: 
+  eff06: 
     description: Linked Permits Object
     xml: 
       name: LinkedPermit
@@ -983,7 +982,7 @@ definitions:
       - CWPMajorMinorStatusFlag
       - CWPPermitTypeDesc
       - CWPCurrentSNCStatus
-  eff2_Parameters: 
+  eff07: 
     description: Parameters Object
     xml: 
       name: Parameter
@@ -1013,7 +1012,7 @@ definitions:
       - ParameterDesc
       - MaxVioStatus
       - CurrentVioStatus
-  eff2_PermFeatures: 
+  eff08: 
     description: Permit Features Object
     xml: 
       name: PermFeature
@@ -1037,7 +1036,7 @@ definitions:
         type: array
         title: Parameters
         items: 
-          "$ref": "#/definitions/eff2_Parameters" 
+          "$ref": "#/definitions/eff07" 
         xml: 
           name: Parameters
           wrapped: true
@@ -1046,7 +1045,7 @@ definitions:
       - PermFeatureTypeCode
       - PermFeatureTypeDesc
       - Parameters
-  eff2_Results: 
+  eff09: 
     description: Results Object
     properties: 
       Message: 
@@ -1159,7 +1158,7 @@ definitions:
         type: array
         title: Linked Permits
         items: 
-          "$ref": "#/definitions/eff2_LinkedPermits" 
+          "$ref": "#/definitions/eff06" 
         xml: 
           name: LinkedPermits
           wrapped: true
@@ -1167,7 +1166,7 @@ definitions:
         type: array
         title: Permitted Features (Pipe Outfalls)
         items: 
-          "$ref": "#/definitions/eff2_PermFeatures" 
+          "$ref": "#/definitions/eff08" 
         xml: 
           name: PermFeatures
           wrapped: true
@@ -1188,7 +1187,7 @@ definitions:
       - CWPCurrentSNCStatus
       - StartDate
       - EndDate
-  rlk00_LuValues: 
+  rlup01: 
     description: Lookup Values
     xml: 
       name: LuValue
@@ -1204,7 +1203,7 @@ definitions:
     required: 
       - ValueCode
       - ValueDescription
-  rlk16_Results: 
+  rlup16: 
     description: Results Object
     properties: 
       Message: 
@@ -1215,7 +1214,7 @@ definitions:
       LuValues: 
         type: array
         items: 
-          "$ref": "#/definitions/rlk00_LuValues" 
+          "$ref": "#/definitions/rlup01" 
         xml: 
           name: LuValues
           wrapped: true
