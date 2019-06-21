@@ -1489,7 +1489,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/crs1_Results"
+                         "$ref": "#\/definitions\/case22"
                      }
                   }
                   ,"required": [
@@ -1540,7 +1540,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/crs1_Results"
+                         "$ref": "#\/definitions\/case22"
                      }
                   }
                   ,"required": [
@@ -1596,7 +1596,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/crs3_Results"
+                         "$ref": "#\/definitions\/case32"
                      }
                   }
                   ,"required": [
@@ -1647,7 +1647,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/crs3_Results"
+                         "$ref": "#\/definitions\/case32"
                      }
                   }
                   ,"required": [
@@ -1915,7 +1915,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/crs2_Results"
+                         "$ref": "#\/definitions\/case24"
                      }
                   }
                   ,"required": [
@@ -2181,7 +2181,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/crs2_Results"
+                         "$ref": "#\/definitions\/case24"
                      }
                   }
                   ,"required": [
@@ -2449,7 +2449,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/crs0_get_case_info.Results"
+                         "$ref": "#\/definitions\/case06"
                      }
                   }
                   ,"required": [
@@ -2715,7 +2715,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/crs0_get_case_info.Results"
+                         "$ref": "#\/definitions\/case06"
                      }
                   }
                   ,"required": [
@@ -2776,7 +2776,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/crs5_Results"
+                         "$ref": "#\/definitions\/case36"
                      }
                   }
                   ,"required": [
@@ -2835,7 +2835,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/crs5_Results"
+                         "$ref": "#\/definitions\/case36"
                      }
                   }
                   ,"required": [
@@ -2899,7 +2899,7 @@
                   }
                   ,"properties": {
                       "MapOutput": {
-                         "$ref": "#\/definitions\/crs0_MapOutput"
+                         "$ref": "#\/definitions\/case05"
                      }
                   }
                   ,"required": [
@@ -2964,7 +2964,7 @@
                   }
                   ,"properties": {
                       "MapOutput": {
-                         "$ref": "#\/definitions\/crs0_MapOutput"
+                         "$ref": "#\/definitions\/case05"
                      }
                   }
                   ,"required": [
@@ -3168,7 +3168,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/crs0_get_facilities_from_case.Results"
+                         "$ref": "#\/definitions\/case35"
                      }
                   }
                   ,"required": [
@@ -3218,7 +3218,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/crs0_get_facilities_from_case.Results"
+                         "$ref": "#\/definitions\/case35"
                      }
                   }
                   ,"required": [
@@ -3270,7 +3270,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/crs0_get_cases_from_facility.Results"
+                         "$ref": "#\/definitions\/case27"
                      }
                   }
                   ,"required": [
@@ -3320,7 +3320,7 @@
                   }
                   ,"properties": {
                       "Results": {
-                         "$ref": "#\/definitions\/crs0_get_cases_from_facility.Results"
+                         "$ref": "#\/definitions\/case27"
                      }
                   }
                   ,"required": [
@@ -3358,7 +3358,7 @@
             ,"QV"
          ]
       }
-      ,"crs0_Cases": {
+      ,"case01": {
           "type": "object"
          ,"description": "A summary of the violation(s), environmental problem(s), and a description of the cause of action."
          ,"xml": {
@@ -3642,7 +3642,7 @@
             ,"MaxScore"
          ]
       }
-      ,"crs0_ClusterData": {
+      ,"case02": {
           "type": "object"
          ,"description": "Cluster Data Complex Object"
          ,"properties": {
@@ -3799,7 +3799,7 @@
             ,"FederalRows"
          ]
       }
-      ,"crs0_ClusterOutput": {
+      ,"case03": {
           "type": "object"
          ,"description": "Cluster Ouput Complex Object Array"
          ,"properties": {
@@ -3808,12 +3808,12 @@
                ,"title": "Cluster Data"
                ,"description": "An array of state, county, or zip code cluster information"
                ,"items": {
-                   "$ref": "#\/definitions\/crs0_ClusterData"
+                   "$ref": "#\/definitions\/case02"
                }
             }
          }
       }
-      ,"crs0_MapData": {
+      ,"case04": {
           "type": "object"
          ,"description": "Data container providing locational information for each case."
          ,"xml": {
@@ -3870,7 +3870,7 @@
             ,"PUV"
          ]
       }
-      ,"crs0_MapOutput": {
+      ,"case05": {
           "type": "object"
          ,"description": "Data container for visualizing case information."
          ,"properties": {
@@ -3897,7 +3897,7 @@
                ,"title": "Map Data"
                ,"description": "An array of facility geospatial information."
                ,"items": {
-                   "$ref": "#\/definitions\/crs0_MapData"
+                   "$ref": "#\/definitions\/case04"
                }
                ,"xml": {
                    "name": "MapData"
@@ -3912,7 +3912,7 @@
             ,"MapData"
          ]
       }
-      ,"crs0_get_case_info.Results": {
+      ,"case06": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
@@ -4032,7 +4032,7 @@
                ,"title": "Cases"
                ,"description": "A summary of the violation(s), environmental problem(s), and a description of the cause of action."
                ,"items": {
-                   "$ref": "#\/definitions\/crs0_Cases"
+                   "$ref": "#\/definitions\/case01"
                }
                ,"xml": {
                    "name": "Cases"
@@ -4046,7 +4046,7 @@
                ,"description": "Number of clusters returned."
             }
             ,"ClusterOutput": {
-                "$ref": "#\/definitions\/crs0_ClusterOutput"
+                "$ref": "#\/definitions\/case03"
             }
          }
          ,"required": [
@@ -4070,7 +4070,7 @@
             ,"QueryParameters"
          ]
       }
-      ,"crs1_CAEDDocuments": {
+      ,"case07": {
           "type": "object"
          ,"description": "Case Related Uploaded Documents"
          ,"xml": {
@@ -4113,7 +4113,7 @@
             ,"DocumentLink"
          ]
       }
-      ,"crs1_CaseInformation": {
+      ,"case08": {
           "type": "object"
          ,"description": "The basic information section contains information that identifies the action and some key descriptive variables, such as case status and case type."
          ,"properties": {
@@ -4270,7 +4270,7 @@
             ,"Violations"
          ]
       }
-      ,"crs1_CaseMilestones": {
+      ,"case09": {
           "type": "object"
          ,"description": "The major milestone events tracked for the enforcement action."
          ,"xml": {
@@ -4295,7 +4295,7 @@
             ,"ActualDate"
          ]
       }
-      ,"crs1_Citations": {
+      ,"case10": {
           "type": "object"
          ,"description": "The corresponding regulation in the Code of Federal Regulations (CFR) or U.S. Code (U.S.C.) associated with the enforcement action."
          ,"xml": {
@@ -4327,7 +4327,7 @@
             ,"Programs"
          ]
       }
-      ,"crs1_ComplianceSchedules": {
+      ,"case11": {
           "type": "object"
          ,"description": "This section provides compliance schedule milestone activity information for a subset of EPA judicial consent decrees with compliance schedules."
          ,"xml": {
@@ -4381,7 +4381,7 @@
             ,"EventAmount"
          ]
       }
-      ,"crs1_ComplyingActions": {
+      ,"case12": {
           "type": "object"
          ,"description": "For civil enforcement actions, the value of the costs incurred by the defendant\/respondent to attain compliance with the law and restore the environment. This value does not include penalties, cost recovery, or costs associated with SEPs."
          ,"xml": {
@@ -4420,7 +4420,7 @@
             ,"ComplyingActionCategory"
          ]
       }
-      ,"crs1_Defendants": {
+      ,"case13": {
           "type": "object"
          ,"description": "This section lists each defendant's name and whether the defendant was named in the complaint and\/or in the settlement."
          ,"xml": {
@@ -4452,7 +4452,7 @@
             ,"NamedInSettlement"
          ]
       }
-      ,"crs1_EnforcementConclusions": {
+      ,"case00_get_case_report.EnforcementConclusions": {
           "type": "object"
          ,"description": "This section contains information about the conclusion(s) of the civil enforcement case, where it resulted in an order, consent decree, or other enforceable settlement."
          ,"xml": {
@@ -4540,7 +4540,7 @@
                 "type": "array"
                ,"title": "Pollutant Reductions"
                ,"items": {
-                   "$ref": "#\/definitions\/crs1_PollutantReductions"
+                   "$ref": "#\/definitions\/case18"
                }
                ,"xml": {
                    "name": "PollutantReductions"
@@ -4551,7 +4551,7 @@
                 "type": "array"
                ,"title": "Final Order Statuses"
                ,"items": {
-                   "$ref": "#\/definitions\/crs1_FinalOrderStatuses"
+                   "$ref": "#\/definitions\/case16"
                }
                ,"xml": {
                    "name": "FinalOrderStatuses"
@@ -4562,7 +4562,7 @@
                 "type": "array"
                ,"title": "Compliance Schedules"
                ,"items": {
-                   "$ref": "#\/definitions\/crs1_ComplianceSchedules"
+                   "$ref": "#\/definitions\/case11"
                }
                ,"xml": {
                    "name": "ComplianceSchedules"
@@ -4573,7 +4573,7 @@
                 "type": "array"
                ,"title": "Complying Actions"
                ,"items": {
-                   "$ref": "#\/definitions\/crs1_ComplyingActions"
+                   "$ref": "#\/definitions\/case12"
                }
                ,"xml": {
                    "name": "ComplyingActions"
@@ -4584,7 +4584,7 @@
                 "type": "array"
                ,"title": "Supplemental Environmental Projects"
                ,"items": {
-                   "$ref": "#\/definitions\/crs1_SupplementalEnvironmentalProjects"
+                   "$ref": "#\/definitions\/case23"
                }
                ,"xml": {
                    "name": "SupplementalEnvironmentalProjects"
@@ -4613,7 +4613,7 @@
             ,"SupplementalEnvironmentalProjects"
          ]
       }
-      ,"crs1_Facilities": {
+      ,"case15": {
           "type": "object"
          ,"description": "This section provides detailed facility and address information on all of the facilities associated with the civil enforcement case."
          ,"xml": {
@@ -4679,7 +4679,7 @@
             ,"NAICSCodes"
          ]
       }
-      ,"crs1_FinalOrderStatuses": {
+      ,"case16": {
           "type": "object"
          ,"description": "This section provides the compliance status for a subset of EPA judicial consent decrees with compliance schedules requiring more than three years to complete."
          ,"xml": {
@@ -4721,7 +4721,7 @@
             ,"Q1StatusDescription"
          ]
       }
-      ,"crs1_LawsAndSections": {
+      ,"case17": {
           "type": "object"
          ,"description": "Identifies the statute\/law and sections cited in the enforcement action."
          ,"xml": {
@@ -4753,7 +4753,7 @@
             ,"Programs"
          ]
       }
-      ,"crs1_PollutantReductions": {
+      ,"case18": {
           "type": "object"
          ,"description": "This section provides information relating complying actions and SEPs to their estimated or actual environmental impact on pollutant reduction."
          ,"xml": {
@@ -4819,7 +4819,7 @@
             ,"SEPorComp"
          ]
       }
-      ,"crs1_Pollutants": {
+      ,"case19": {
           "type": "object"
          ,"description": "The common name identifying the pollutant, waste material, substance, or chemical reduced."
          ,"xml": {
@@ -4843,7 +4843,7 @@
             ,"ChemicalAbstractNumber"
          ]
       }
-      ,"crs1_ProgramLinks": {
+      ,"case20": {
           "type": "object"
          ,"description": "Crosswalk between programs and facilities (identified by FRS ID)."
          ,"xml": {
@@ -4875,7 +4875,7 @@
             ,"ProgramID"
          ]
       }
-      ,"crs1_RelatedActivities": {
+      ,"case21": {
           "type": "object"
          ,"description": "This section provides an Activity Type description and date for other ICIS activities (e.g., inspections, or compliance assistance) that are linked to the enforcement action."
          ,"xml": {
@@ -4899,7 +4899,7 @@
             ,"ActualDate"
          ]
       }
-      ,"crs1_Results": {
+      ,"case22": {
           "type": "object"
          ,"description": "The data returned by the service call."
          ,"properties": {
@@ -4910,13 +4910,13 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"CaseInformation": {
-                "$ref": "#\/definitions\/crs1_CaseInformation"
+                "$ref": "#\/definitions\/case08"
             }
             ,"LawsAndSections": {
                 "type": "array"
                ,"title": "Laws And Sections"
                ,"items": {
-                   "$ref": "#\/definitions\/crs1_LawsAndSections"
+                   "$ref": "#\/definitions\/case17"
                }
                ,"xml": {
                    "name": "LawsAndSections"
@@ -4927,7 +4927,7 @@
                 "type": "array"
                ,"title": "Citations"
                ,"items": {
-                   "$ref": "#\/definitions\/crs1_Citations"
+                   "$ref": "#\/definitions\/case10"
                }
                ,"xml": {
                    "name": "Citations"
@@ -4938,7 +4938,7 @@
                 "type": "array"
                ,"title": "Program Links"
                ,"items": {
-                   "$ref": "#\/definitions\/crs1_ProgramLinks"
+                   "$ref": "#\/definitions\/case20"
                }
                ,"xml": {
                    "name": "ProgramLinks"
@@ -4950,7 +4950,7 @@
                ,"title": "Facilities"
                ,"description": "A complex array of facility information."
                ,"items": {
-                   "$ref": "#\/definitions\/crs1_Facilities"
+                   "$ref": "#\/definitions\/case15"
                }
                ,"xml": {
                    "name": "Facilities"
@@ -4961,7 +4961,7 @@
                 "type": "array"
                ,"title": "Defendants"
                ,"items": {
-                   "$ref": "#\/definitions\/crs1_Defendants"
+                   "$ref": "#\/definitions\/case13"
                }
                ,"xml": {
                    "name": "Defendants"
@@ -4972,7 +4972,7 @@
                 "type": "array"
                ,"title": "Case Milestones"
                ,"items": {
-                   "$ref": "#\/definitions\/crs1_CaseMilestones"
+                   "$ref": "#\/definitions\/case09"
                }
                ,"xml": {
                    "name": "CaseMilestones"
@@ -4983,7 +4983,7 @@
                 "type": "array"
                ,"title": "Pollutants"
                ,"items": {
-                   "$ref": "#\/definitions\/crs1_Pollutants"
+                   "$ref": "#\/definitions\/case19"
                }
                ,"xml": {
                    "name": "Pollutants"
@@ -4995,7 +4995,7 @@
                ,"title": "Related Activities"
                ,"description": "This section provides an Activity Type description and date for other ICIS activities (e.g., inspections, or compliance assistance) that are linked to the enforcement action."
                ,"items": {
-                   "$ref": "#\/definitions\/crs1_RelatedActivities"
+                   "$ref": "#\/definitions\/case21"
                }
                ,"xml": {
                    "name": "RelatedActivities"
@@ -5006,7 +5006,7 @@
                 "type": "array"
                ,"title": "Enforcement Conclusions"
                ,"items": {
-                   "$ref": "#\/definitions\/crs1_EnforcementConclusions"
+                   "$ref": "#\/definitions\/case00_get_case_report.EnforcementConclusions"
                }
                ,"xml": {
                    "name": "EnforcementConclusions"
@@ -5017,7 +5017,7 @@
                 "type": "array"
                ,"title": "CAED Documents"
                ,"items": {
-                   "$ref": "#\/definitions\/crs1_CAEDDocuments"
+                   "$ref": "#\/definitions\/case07"
                }
                ,"xml": {
                    "name": "CAEDDocuments"
@@ -5040,7 +5040,7 @@
             ,"CAEDDocuments"
          ]
       }
-      ,"crs1_SupplementalEnvironmentalProjects": {
+      ,"case23": {
           "type": "object"
          ,"description": "As part of a settlement, a defendant may voluntarily agree to undertake an environmentally beneficial project (Supplement Environmental Project) related to the violation in exchange for mitigation of the penalty to be paid. It does not include activities a defendant must take to return to compliance with the law. A single settlement may have multiple SEPs."
          ,"xml": {
@@ -5083,7 +5083,7 @@
             ,"SEPAmount"
          ]
       }
-      ,"crs2_Results": {
+      ,"case24": {
           "type": "object"
          ,"description": "The data returned by the service call."
          ,"properties": {
@@ -5200,7 +5200,7 @@
                ,"title": "Cases"
                ,"description": "A summary of the violation(s), environmental problem(s), and a description of the cause of action."
                ,"items": {
-                   "$ref": "#\/definitions\/crs0_Cases"
+                   "$ref": "#\/definitions\/case01"
                }
                ,"xml": {
                    "name": "Cases"
@@ -5208,7 +5208,7 @@
                }
             }
             ,"MapOutput": {
-                "$ref": "#\/definitions\/crs0_MapOutput"
+                "$ref": "#\/definitions\/case05"
             }
          }
          ,"required": [
@@ -5232,7 +5232,7 @@
             ,"PageNo"
          ]
       }
-      ,"crs0_get_cases_from_facility.CaseNumber": {
+      ,"case25": {
           "type": "object"
          ,"description": "Case Number"
          ,"properties": {
@@ -5247,7 +5247,7 @@
              "CaseNumber"
          ]
       }
-      ,"crs0_get_cases_from_facility.CaseNumbers": {
+      ,"case26": {
           "type": "object"
          ,"description": "Case Numbers"
          ,"properties": {
@@ -5255,7 +5255,7 @@
                 "type": "array"
                ,"title": "CAED Documents"
                ,"items": {
-                   "$ref": "#\/definitions\/crs0_get_cases_from_facility.CaseNumber"
+                   "$ref": "#\/definitions\/case25"
                }
                ,"xml": {
                    "name": "CAEDDocuments"
@@ -5267,19 +5267,19 @@
              "CaseNumbers"
          ]
       }
-      ,"crs0_get_cases_from_facility.Results": {
+      ,"case27": {
           "type": "object"
          ,"description": "Results"
          ,"properties": {
              "Results": {
-                "$ref": "#\/definitions\/crs0_get_cases_from_facility.CaseNumbers"
+                "$ref": "#\/definitions\/case26"
             }
          }
          ,"required": [
              "Results"
          ]
       }
-      ,"crs3_CRDefendants": {
+      ,"case28": {
           "type": "object"
          ,"description": "Provides identifying information about the defendants and courts involved in the criminal enforcement case."
          ,"xml": {
@@ -5325,7 +5325,7 @@
             ,"DocketNumber"
          ]
       }
-      ,"crs3_CRDetails": {
+      ,"case29": {
           "type": "object"
          ,"description": "A list of the violation(s), environmental problem(s), and a description of the cause of action organized by date of occurrence. The case details walk through each step of the case activities and displayed the date on which each occurred."
          ,"xml": {
@@ -5355,7 +5355,7 @@
             ,"DetailCitations"
          ]
       }
-      ,"crs3_CaseInformation": {
+      ,"case30": {
           "type": "object"
          ,"description": "The basic information section contains information that identifies the action and some key descriptive variables, such as case status and case type."
          ,"xml": {
@@ -5399,7 +5399,7 @@
             ,"CaseSummary"
          ]
       }
-      ,"crs3_Locations": {
+      ,"case31": {
           "type": "object"
          ,"description": "This section provides geographic locational information for the criminal activity."
          ,"xml": {
@@ -5459,7 +5459,7 @@
             ,"Longitude"
          ]
       }
-      ,"crs3_Results": {
+      ,"case32": {
           "type": "object"
          ,"description": "The data returned by the service call."
          ,"properties": {
@@ -5470,13 +5470,13 @@
                ,"description": "Field to record messages (typically performance-related) about packet processing"
             }
             ,"CRCaseInformation": {
-                "$ref": "#\/definitions\/crs3_CaseInformation"
+                "$ref": "#\/definitions\/case30"
             }
             ,"CRDefendants": {
                 "type": "array"
                ,"title": "Criminal Enforcement Case Defendants"
                ,"items": {
-                   "$ref": "#\/definitions\/crs3_CRDefendants"
+                   "$ref": "#\/definitions\/case28"
                }
                ,"xml": {
                    "name": "CRDefendants"
@@ -5487,7 +5487,7 @@
                 "type": "array"
                ,"title": "Criminal Case Details"
                ,"items": {
-                   "$ref": "#\/definitions\/crs3_CRDetails"
+                   "$ref": "#\/definitions\/case29"
                }
                ,"xml": {
                    "name": "CRDetails"
@@ -5498,7 +5498,7 @@
                 "type": "array"
                ,"title": "Locations"
                ,"items": {
-                   "$ref": "#\/definitions\/crs3_Locations"
+                   "$ref": "#\/definitions\/case31"
                }
                ,"xml": {
                    "name": "Locations"
@@ -5514,7 +5514,7 @@
             ,"Locations"
          ]
       }
-      ,"crs0_get_facilities_from_case.RegistryID": {
+      ,"case33": {
           "type": "object"
          ,"description": "Registry ID"
          ,"properties": {
@@ -5529,7 +5529,7 @@
              "RegistryID"
          ]
       }
-      ,"crs0_get_facilities_from_case.RegistryIDs": {
+      ,"case34": {
           "type": "object"
          ,"description": "Registry IDs"
          ,"properties": {
@@ -5537,7 +5537,7 @@
                 "type": "array"
                ,"title": "CAED Documents"
                ,"items": {
-                   "$ref": "#\/definitions\/crs0_get_facilities_from_case.RegistryID"
+                   "$ref": "#\/definitions\/case33"
                }
                ,"xml": {
                    "name": "CAEDDocuments"
@@ -5549,19 +5549,19 @@
              "RegistryIDs"
          ]
       }
-      ,"crs0_get_facilities_from_case.Results": {
+      ,"case35": {
           "type": "object"
          ,"description": "Results"
          ,"properties": {
              "Results": {
-                "$ref": "#\/definitions\/crs0_get_facilities_from_case.RegistryIDs"
+                "$ref": "#\/definitions\/case34"
             }
          }
          ,"required": [
              "Results"
          ]
       }
-      ,"crs5_Results": {
+      ,"case36": {
           "type": "object"
          ,"description": "The data returned by the service call."
          ,"properties": {
@@ -5594,7 +5594,7 @@
                ,"title": "Cases"
                ,"description": "A summary of the violation(s), environmental problem(s), and a description of the cause of action."
                ,"items": {
-                   "$ref": "#\/definitions\/crs0_Cases"
+                   "$ref": "#\/definitions\/case01"
                }
                ,"xml": {
                    "name": "Cases"
@@ -5645,8 +5645,7 @@
             }
             ,"Description": {
                 "type": "string"
-               ,"title": "Description"
-               ,"description": "A description of the category of Supplemental Environment Project (SEP) for a settlement."
+               ,"title": "Column Description"
             }
          }
          ,"required": [
