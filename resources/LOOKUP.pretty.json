@@ -161,20 +161,6 @@
          ,"type": "string"
          ,"required": true
       }
-      ,"q.descending": {
-          "name": "descending"
-         ,"in": "query"
-         ,"description": "Output Sort Column Descending Flag.  Enter Y to sort results in descending order."
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"f.descending": {
-          "name": "descending"
-         ,"in": "formData"
-         ,"description": "Output Sort Column Descending Flag.  Enter Y to sort results in descending order."
-         ,"type": "string"
-         ,"required": false
-      }
       ,"q.scc_level": {
           "name": "scc_level"
          ,"in": "query"
@@ -197,6 +183,18 @@
           "name": "sort_order"
          ,"in": "formData"
          ,"type": "number"
+         ,"required": false
+      }
+      ,"q.agency_desc": {
+          "name": "agency_desc"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"f.agency_desc": {
+          "name": "agency_desc"
+         ,"in": "formData"
+         ,"type": "string"
          ,"required": false
       }
       ,"q.exact_match": {
@@ -1733,6 +1731,82 @@
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/rlup23"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.cwa_pagency_lu": {
+          "get": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/q.output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.agency_desc"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlup78"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/f.output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.agency_desc"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlup78"
                      }
                   }
                   ,"required": [
@@ -3380,7 +3454,11 @@
                    "$ref": "#\/parameters\/q.callback"
                }
                ,{
-                   "$ref": "#\/parameters\/q.descending"
+                   "name": "descending"
+                  ,"in": "query"
+                  ,"description": "Output Sort Column Descending Flag.  Enter Y to sort results in descending order."
+                  ,"type": "string"
+                  ,"required": false
                }
             ]
             ,"tags": [
@@ -3417,7 +3495,11 @@
                    "$ref": "#\/parameters\/f.callback"
                }
                ,{
-                   "$ref": "#\/parameters\/f.descending"
+                   "name": "descending"
+                  ,"in": "formData"
+                  ,"description": "Output Sort Column Descending Flag.  Enter Y to sort results in descending order."
+                  ,"type": "string"
+                  ,"required": false
                }
             ]
             ,"tags": [
@@ -3994,7 +4076,11 @@
                    "$ref": "#\/parameters\/q.callback"
                }
                ,{
-                   "$ref": "#\/parameters\/q.descending"
+                   "name": "descending"
+                  ,"in": "query"
+                  ,"description": "Output Sort Column Descending Flag.  Enter Y to sort results in descending order."
+                  ,"type": "string"
+                  ,"required": false
                }
             ]
             ,"tags": [
@@ -4031,7 +4117,11 @@
                    "$ref": "#\/parameters\/f.callback"
                }
                ,{
-                   "$ref": "#\/parameters\/f.descending"
+                   "name": "descending"
+                  ,"in": "formData"
+                  ,"description": "Output Sort Column Descending Flag.  Enter Y to sort results in descending order."
+                  ,"type": "string"
+                  ,"required": false
                }
             ]
             ,"tags": [
@@ -4312,7 +4402,11 @@
                    "$ref": "#\/parameters\/q.search_code"
                }
                ,{
-                   "$ref": "#\/parameters\/q.descending"
+                   "name": "descending"
+                  ,"in": "query"
+                  ,"description": "Output Sort Column Descending Flag.  Enter Y to sort results in descending order."
+                  ,"type": "string"
+                  ,"required": false
                }
             ]
             ,"tags": [
@@ -4355,7 +4449,11 @@
                    "$ref": "#\/parameters\/f.search_code"
                }
                ,{
-                   "$ref": "#\/parameters\/f.descending"
+                   "name": "descending"
+                  ,"in": "formData"
+                  ,"description": "Output Sort Column Descending Flag.  Enter Y to sort results in descending order."
+                  ,"type": "string"
+                  ,"required": false
                }
             ]
             ,"tags": [
@@ -4806,7 +4904,11 @@
                    "$ref": "#\/parameters\/q.callback"
                }
                ,{
-                   "$ref": "#\/parameters\/q.descending"
+                   "name": "descending"
+                  ,"in": "query"
+                  ,"description": "Output Sort Column Descending Flag.  Enter Y to sort results in descending order."
+                  ,"type": "string"
+                  ,"required": false
                }
             ]
             ,"tags": [
@@ -4843,7 +4945,11 @@
                    "$ref": "#\/parameters\/f.callback"
                }
                ,{
-                   "$ref": "#\/parameters\/f.descending"
+                   "name": "descending"
+                  ,"in": "formData"
+                  ,"description": "Output Sort Column Descending Flag.  Enter Y to sort results in descending order."
+                  ,"type": "string"
+                  ,"required": false
                }
             ]
             ,"tags": [
@@ -4861,6 +4967,98 @@
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/rlup74"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.tri_current_year": {
+          "get": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/q.output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.callback"
+               }
+               ,{
+                   "name": "descending"
+                  ,"in": "query"
+                  ,"description": "Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated."
+                  ,"enum": [
+                      "Y"
+                     ,"N"
+                  ]
+                  ,"type": "string"
+                  ,"required": false
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlup79"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/f.output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.callback"
+               }
+               ,{
+                   "name": "descending"
+                  ,"in": "formData"
+                  ,"description": "Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated."
+                  ,"enum": [
+                      "Y"
+                     ,"N"
+                  ]
+                  ,"type": "string"
+                  ,"required": false
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlup79"
                      }
                   }
                   ,"required": [
@@ -5274,6 +5472,23 @@
          ,"required": [
              "IdPassed"
             ,"IdReturned"
+         ]
+      }
+      ,"rlup80": {
+          "type": "object"
+         ,"description": "Lookup Values"
+         ,"xml": {
+             "name": "LuValue"
+         }
+         ,"properties": {
+             "ValueDescription": {
+                "type": "string"
+               ,"title": "Value Description"
+               ,"example": "1-Butanol"
+            }
+         }
+         ,"required": [
+             "ValueDescription"
          ]
       }
       ,"rlup06": {
@@ -5691,6 +5906,31 @@
                 "type": "array"
                ,"items": {
                    "$ref": "#\/definitions\/rlup01"
+               }
+               ,"xml": {
+                   "name": "LuValues"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+         ]
+      }
+      ,"rlup78": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"LuValues": {
+                "type": "array"
+               ,"items": {
+                   "$ref": "#\/definitions\/rlup80"
                }
                ,"xml": {
                    "name": "LuValues"
@@ -6603,6 +6843,31 @@
          ]
       }
       ,"rlup72": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"LuValues": {
+                "type": "array"
+               ,"items": {
+                   "$ref": "#\/definitions\/rlup01"
+               }
+               ,"xml": {
+                   "name": "LuValues"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+         ]
+      }
+      ,"rlup79": {
           "type": "object"
          ,"description": "Results Object"
          ,"properties": {
