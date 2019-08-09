@@ -2195,6 +2195,16 @@ parameters:
       - BAG = Bag or Container
     type: string
     required: false
+  f.p_permitting_agency: 
+    name: p_permitting_agency
+    in: formData
+    type: string
+    required: false
+  q.p_permitting_agency: 
+    name: p_permitting_agency
+    in: query
+    type: string
+    required: false
   f.p_bio_vio_last_year: 
     name: p_bio_vio_last_year
     in: formData
@@ -3171,6 +3181,7 @@ paths:
         - "$ref": "#/parameters/q.p_msgp_ptype"
         - "$ref": "#/parameters/q.p_mon_type"
         - "$ref": "#/parameters/q.p_iagency"
+        - "$ref": "#/parameters/q.p_permitting_agency"
         - "$ref": "#/parameters/q.p_isws"
         - "$ref": "#/parameters/q.p_iswss"
         - "$ref": "#/parameters/q.p_iswssID"
@@ -3351,6 +3362,7 @@ paths:
         - "$ref": "#/parameters/f.p_msgp_ptype"
         - "$ref": "#/parameters/f.p_mon_type"
         - "$ref": "#/parameters/f.p_iagency"
+        - "$ref": "#/parameters/f.p_permitting_agency"
         - "$ref": "#/parameters/f.p_isws"
         - "$ref": "#/parameters/f.p_iswss"
         - "$ref": "#/parameters/f.p_iswssID"
@@ -3532,6 +3544,7 @@ paths:
         - "$ref": "#/parameters/q.p_msgp_ptype"
         - "$ref": "#/parameters/q.p_mon_type"
         - "$ref": "#/parameters/q.p_iagency"
+        - "$ref": "#/parameters/q.p_permitting_agency"
         - "$ref": "#/parameters/q.p_isws"
         - "$ref": "#/parameters/q.p_iswss"
         - "$ref": "#/parameters/q.p_iswssID"
@@ -3709,6 +3722,7 @@ paths:
         - "$ref": "#/parameters/f.p_msgp_ptype"
         - "$ref": "#/parameters/f.p_mon_type"
         - "$ref": "#/parameters/f.p_iagency"
+        - "$ref": "#/parameters/f.p_permitting_agency"
         - "$ref": "#/parameters/f.p_isws"
         - "$ref": "#/parameters/f.p_iswss"
         - "$ref": "#/parameters/f.p_iswssID"
@@ -4157,7 +4171,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/met1" 
+                "$ref": "#/definitions/meta1" 
             required: 
               - Results
     post: 
@@ -4189,7 +4203,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/met1" 
+                "$ref": "#/definitions/meta1" 
             required: 
               - Results
 definitions: 
@@ -9634,7 +9648,7 @@ definitions:
     required: 
       - type
       - coordinates
-  met2: 
+  meta2: 
     description: Results Column Object
     xml: 
       name: ResultColumn
@@ -9670,7 +9684,7 @@ definitions:
       - ColumnID
       - ObjectName
       - Description
-  met1: 
+  meta1: 
     description: Results Object
     properties: 
       Message: 
@@ -9682,7 +9696,7 @@ definitions:
         type: array
         title: Result Columns
         items: 
-          "$ref": "#/definitions/met2" 
+          "$ref": "#/definitions/meta2" 
         xml: 
           name: ResultColumns
           wrapped: true

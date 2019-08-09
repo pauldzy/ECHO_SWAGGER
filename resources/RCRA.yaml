@@ -1477,6 +1477,36 @@ parameters:
     description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
     type: number
     required: false
+  f.p_tri_lr_pol: 
+    name: p_tri_lr_pol
+    in: formData
+    type: string
+    required: false
+  q.p_tri_lr_pol: 
+    name: p_tri_lr_pol
+    in: query
+    type: string
+    required: false
+  f.p_tri_lr_amt: 
+    name: p_tri_lr_amt
+    in: formData
+    type: string
+    required: false
+  q.p_tri_lr_amt: 
+    name: p_tri_lr_amt
+    in: query
+    type: string
+    required: false
+  f.p_tri_lr_yr: 
+    name: p_tri_lr_yr
+    in: formData
+    type: string
+    required: false
+  q.p_tri_lr_yr: 
+    name: p_tri_lr_yr
+    in: query
+    type: string
+    required: false
   f.p_trichem: 
     name: p_trichem
     in: formData
@@ -1484,6 +1514,46 @@ parameters:
     required: false
   q.p_trichem: 
     name: p_trichem
+    in: query
+    type: string
+    required: false
+  f.p_owd: 
+    name: p_owd
+    in: formData
+    type: string
+    required: false
+  q.p_owd: 
+    name: p_owd
+    in: query
+    type: string
+    required: false
+  f.p_owc: 
+    name: p_owc
+    in: formData
+    type: string
+    required: false
+  q.p_owc: 
+    name: p_owc
+    in: query
+    type: string
+    required: false
+  f.p_opd: 
+    name: p_opd
+    in: formData
+    type: string
+    required: false
+  q.p_opd: 
+    name: p_opd
+    in: query
+    type: string
+    required: false
+  f.p_opc: 
+    name: p_opc
+    in: formData
+    type: string
+    required: false
+  q.p_opc: 
+    name: p_opc
     in: query
     type: string
     required: false
@@ -1892,6 +1962,9 @@ paths:
         - "$ref": "#/parameters/q.p_olr"
         - "$ref": "#/parameters/q.p_oct"
         - "$ref": "#/parameters/q.p_trichem"
+        - "$ref": "#/parameters/q.p_tri_lr_pol"
+        - "$ref": "#/parameters/q.p_tri_lr_yr"
+        - "$ref": "#/parameters/q.p_tri_lr_amt"
         - "$ref": "#/parameters/q.p_pm"
         - "$ref": "#/parameters/q.p_pd"
         - "$ref": "#/parameters/q.p_ico"
@@ -1899,6 +1972,10 @@ paths:
         - "$ref": "#/parameters/q.p_wbd"
         - "$ref": "#/parameters/q.p_pid"
         - "$ref": "#/parameters/q.p_med"
+        - "$ref": "#/parameters/q.p_owc"
+        - "$ref": "#/parameters/q.p_owd"
+        - "$ref": "#/parameters/q.p_opc"
+        - "$ref": "#/parameters/q.p_opd"
         - "$ref": "#/parameters/q.p_ysl"
         - "$ref": "#/parameters/q.p_ysly"
         - "$ref": "#/parameters/q.p_ysla"
@@ -2011,6 +2088,9 @@ paths:
         - "$ref": "#/parameters/f.p_olr"
         - "$ref": "#/parameters/f.p_oct"
         - "$ref": "#/parameters/f.p_trichem"
+        - "$ref": "#/parameters/f.p_tri_lr_pol"
+        - "$ref": "#/parameters/f.p_tri_lr_yr"
+        - "$ref": "#/parameters/f.p_tri_lr_amt"
         - "$ref": "#/parameters/f.p_pm"
         - "$ref": "#/parameters/f.p_pd"
         - "$ref": "#/parameters/f.p_ico"
@@ -2018,6 +2098,10 @@ paths:
         - "$ref": "#/parameters/f.p_wbd"
         - "$ref": "#/parameters/f.p_pid"
         - "$ref": "#/parameters/f.p_med"
+        - "$ref": "#/parameters/f.p_owc"
+        - "$ref": "#/parameters/f.p_owd"
+        - "$ref": "#/parameters/f.p_opc"
+        - "$ref": "#/parameters/f.p_opd"
         - "$ref": "#/parameters/f.p_ysl"
         - "$ref": "#/parameters/f.p_ysly"
         - "$ref": "#/parameters/f.p_ysla"
@@ -2131,6 +2215,9 @@ paths:
         - "$ref": "#/parameters/q.p_olr"
         - "$ref": "#/parameters/q.p_oct"
         - "$ref": "#/parameters/q.p_trichem"
+        - "$ref": "#/parameters/q.p_tri_lr_pol"
+        - "$ref": "#/parameters/q.p_tri_lr_yr"
+        - "$ref": "#/parameters/q.p_tri_lr_amt"
         - "$ref": "#/parameters/q.p_pm"
         - "$ref": "#/parameters/q.p_pd"
         - "$ref": "#/parameters/q.p_ico"
@@ -2138,6 +2225,10 @@ paths:
         - "$ref": "#/parameters/q.p_wbd"
         - "$ref": "#/parameters/q.p_pid"
         - "$ref": "#/parameters/q.p_med"
+        - "$ref": "#/parameters/q.p_owc"
+        - "$ref": "#/parameters/q.p_owd"
+        - "$ref": "#/parameters/q.p_opc"
+        - "$ref": "#/parameters/q.p_opd"
         - "$ref": "#/parameters/q.p_ysl"
         - "$ref": "#/parameters/q.p_ysly"
         - "$ref": "#/parameters/q.p_ysla"
@@ -2249,6 +2340,9 @@ paths:
         - "$ref": "#/parameters/f.p_olr"
         - "$ref": "#/parameters/f.p_oct"
         - "$ref": "#/parameters/f.p_trichem"
+        - "$ref": "#/parameters/f.p_tri_lr_pol"
+        - "$ref": "#/parameters/f.p_tri_lr_yr"
+        - "$ref": "#/parameters/f.p_tri_lr_amt"
         - "$ref": "#/parameters/f.p_pm"
         - "$ref": "#/parameters/f.p_pd"
         - "$ref": "#/parameters/f.p_ico"
@@ -2256,6 +2350,10 @@ paths:
         - "$ref": "#/parameters/f.p_wbd"
         - "$ref": "#/parameters/f.p_pid"
         - "$ref": "#/parameters/f.p_med"
+        - "$ref": "#/parameters/f.p_owc"
+        - "$ref": "#/parameters/f.p_owd"
+        - "$ref": "#/parameters/f.p_opc"
+        - "$ref": "#/parameters/f.p_opd"
         - "$ref": "#/parameters/f.p_ysl"
         - "$ref": "#/parameters/f.p_ysly"
         - "$ref": "#/parameters/f.p_ysla"
@@ -2886,6 +2984,8 @@ definitions:
         type: string
       Tsdf: 
         type: string
+      CleanupActionFlag: 
+        type: string
       RCRAStatus: 
         type: string
       AIRIDs: 
@@ -2917,6 +3017,8 @@ definitions:
         title: Toxics Release Inventory Program IDs
         example: 20011FRTTT5001F
         description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
+      SemsIDs: 
+        type: string
       RCRAComplStatus: 
         type: string
       RCRASNC: 
@@ -3219,6 +3321,25 @@ definitions:
         title: FRS Standardized Facility County Name
         example: Fairfax County
         description: "The standardized  facility county name from EPA's Facility Registry System"
+      ChemNamesRelLand: 
+        type: string
+        title: Chemical Names of TRI Pollutants Released ON-Site
+        description: It is an aggregated field containing all the names found for the current reporting year (2017).
+      OwnerCode: 
+        type: string
+      OwnerDesc: 
+        type: string
+        title: Owner Description
+        example: Local Government
+        description: Description of Owner code
+      OperatorCode: 
+        type: string
+      OperatorDesc: 
+        type: string
+      RCRAinfoLandTypeCode: 
+        type: string
+      RCRAinfoLandTypeDesc: 
+        type: string
       Score: 
         type: string
         title: Score
@@ -3254,6 +3375,7 @@ definitions:
       - FacLong
       - RCRAUniverse
       - Tsdf
+      - CleanupActionFlag
       - RCRAStatus
       - AIRIDs
       - CWAIDs
@@ -3261,6 +3383,7 @@ definitions:
       - RmpIDs
       - SDWAIDs
       - TRIIDs
+      - SemsIDs
       - RCRAComplStatus
       - RCRASNC
       - RCRAQtrsWithNC
@@ -3337,6 +3460,13 @@ definitions:
       - WebDocs
       - FacCountyName
       - FacStdCountyName
+      - ChemNamesRelLand
+      - OwnerCode
+      - OwnerDesc
+      - OperatorCode
+      - OperatorDesc
+      - RCRAinfoLandTypeCode
+      - RCRAinfoLandTypeDesc
       - Score
       - MaxScore
   rcra02: 
@@ -3733,6 +3863,8 @@ definitions:
         type: string
       Tsdf: 
         type: string
+      CleanupActionFlag: 
+        type: string
       RCRAStatus: 
         type: string
       AIRIDs: 
@@ -3764,6 +3896,8 @@ definitions:
         title: Toxics Release Inventory Program IDs
         example: 20011FRTTT5001F
         description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
+      SemsIDs: 
+        type: string
       RCRAComplStatus: 
         type: string
       RCRASNC: 
@@ -4066,6 +4200,25 @@ definitions:
         title: FRS Standardized Facility County Name
         example: Fairfax County
         description: "The standardized  facility county name from EPA's Facility Registry System"
+      ChemNamesRelLand: 
+        type: string
+        title: Chemical Names of TRI Pollutants Released ON-Site
+        description: It is an aggregated field containing all the names found for the current reporting year (2017).
+      OwnerCode: 
+        type: string
+      OwnerDesc: 
+        type: string
+        title: Owner Description
+        example: Local Government
+        description: Description of Owner code
+      OperatorCode: 
+        type: string
+      OperatorDesc: 
+        type: string
+      RCRAinfoLandTypeCode: 
+        type: string
+      RCRAinfoLandTypeDesc: 
+        type: string
       Score: 
         type: string
         title: Score
@@ -4102,6 +4255,7 @@ definitions:
       - FacLong
       - RCRAUniverse
       - Tsdf
+      - CleanupActionFlag
       - RCRAStatus
       - AIRIDs
       - CWAIDs
@@ -4109,6 +4263,7 @@ definitions:
       - RmpIDs
       - SDWAIDs
       - TRIIDs
+      - SemsIDs
       - RCRAComplStatus
       - RCRASNC
       - RCRAQtrsWithNC
@@ -4185,6 +4340,13 @@ definitions:
       - WebDocs
       - FacCountyName
       - FacStdCountyName
+      - ChemNamesRelLand
+      - OwnerCode
+      - OwnerDesc
+      - OperatorCode
+      - OperatorDesc
+      - RCRAinfoLandTypeCode
+      - RCRAinfoLandTypeDesc
       - Score
       - MaxScore
   rcra08: 
@@ -4397,6 +4559,8 @@ definitions:
         type: string
       Tsdf: 
         type: string
+      CleanupActionFlag: 
+        type: string
       RCRAStatus: 
         type: string
       AIRIDs: 
@@ -4428,6 +4592,8 @@ definitions:
         title: Toxics Release Inventory Program IDs
         example: 20011FRTTT5001F
         description: A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.
+      SemsIDs: 
+        type: string
       RCRAComplStatus: 
         type: string
       RCRASNC: 
@@ -4725,6 +4891,25 @@ definitions:
         title: FRS Standardized Facility County Name
         example: Fairfax County
         description: "The standardized  facility county name from EPA's Facility Registry System"
+      ChemNamesRelLand: 
+        type: string
+        title: Chemical Names of TRI Pollutants Released ON-Site
+        description: It is an aggregated field containing all the names found for the current reporting year (2017).
+      OwnerCode: 
+        type: string
+      OwnerDesc: 
+        type: string
+        title: Owner Description
+        example: Local Government
+        description: Description of Owner code
+      OperatorCode: 
+        type: string
+      OperatorDesc: 
+        type: string
+      RCRAinfoLandTypeCode: 
+        type: string
+      RCRAinfoLandTypeDesc: 
+        type: string
       Score: 
         type: number
         title: Score
@@ -4758,6 +4943,7 @@ definitions:
       - RCRANAICS
       - RCRAUniverse
       - Tsdf
+      - CleanupActionFlag
       - RCRAStatus
       - AIRIDs
       - CWAIDs
@@ -4765,6 +4951,7 @@ definitions:
       - RmpIDs
       - SDWAIDs
       - TRIIDs
+      - SemsIDs
       - RCRAComplStatus
       - RCRASNC
       - RCRAQtrsWithNC
@@ -4841,6 +5028,13 @@ definitions:
       - WebDocs
       - FacCountyName
       - FacStdCountyName
+      - ChemNamesRelLand
+      - OwnerCode
+      - OwnerDesc
+      - OperatorCode
+      - OperatorDesc
+      - RCRAinfoLandTypeCode
+      - RCRAinfoLandTypeDesc
       - Score
       - MaxScore
   rcra11: 
