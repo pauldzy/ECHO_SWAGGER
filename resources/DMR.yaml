@@ -22,34 +22,6 @@ produces:
   - application/json
   - application/xml
 parameters: 
-  q.output: 
-    name: output
-    in: query
-    description: |-
-      Output Format Flag.  Enter one of the following keywords:
-      - JSON = Data model formatted as Javascript Object Notation (default).
-      - XML = Data model formatted as Extensible Markup Language.
-      - CSV = Results formatted as comma delimited file download.
-    enum: 
-      - JSON
-      - XML
-      - CSV
-    type: string
-    required: false
-  f.output: 
-    name: output
-    in: formData
-    description: |-
-      Output Format Flag.  Enter one of the following keywords:
-      - JSON = Data model formatted as Javascript Object Notation (default).
-      - XML = Data model formatted as Extensible Markup Language.
-      - CSV = Results formatted as comma delimited file download.
-    enum: 
-      - JSON
-      - XML
-      - CSV
-    type: string
-    required: false
   q.callback: 
     name: callback
     in: query
@@ -1613,12 +1585,339 @@ parameters:
     type: number
     required: false
 paths: 
+  "/dmr_rest_services.get_all_dmr_facilities": 
+    get: 
+      summary: Water Pollution Search Discharge Monitoring Report Facilities Service
+      description: The procedure returns summary information about NPDES permits, indicating whether they have monitoring requirements, permit limits, and/or DMR data. It provides the data for the Search Statistics table on the Water Pollution Search Results.
+      parameters: 
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.download"
+        - "$ref": "#/parameters/q.p_cas"
+        - "$ref": "#/parameters/q.p_co"
+        - "$ref": "#/parameters/q.p_ct"
+        - "$ref": "#/parameters/q.p_dmr_tri_link"
+        - "$ref": "#/parameters/q.p_dmr_tri_release"
+        - "$ref": "#/parameters/q.p_esa"
+        - "$ref": "#/parameters/q.p_exceed"
+        - "$ref": "#/parameters/q.p_fname"
+        - "$ref": "#/parameters/q.p_huc"
+        - "$ref": "#/parameters/q.p_imp_water"
+        - "$ref": "#/parameters/q.p_imp_poll"
+        - "$ref": "#/parameters/q.p_maj"
+        - "$ref": "#/parameters/q.p_naics"
+        - "$ref": "#/parameters/q.p_naics2"
+        - "$ref": "#/parameters/q.p_permit_id"
+        - "$ref": "#/parameters/q.p_poll_name"
+        - "$ref": "#/parameters/q.p_poll_cat"
+        - "$ref": "#/parameters/q.p_potw"
+        - "$ref": "#/parameters/q.p_psc"
+        - "$ref": "#/parameters/q.p_reg"
+        - "$ref": "#/parameters/q.p_sic"
+        - "$ref": "#/parameters/q.p_sic2"
+        - name: p_st
+          in: query
+          description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
+          default: DC
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.p_watershed_zip"
+        - "$ref": "#/parameters/q.p_watershed_group"
+        - "$ref": "#/parameters/q.p_watershed"
+        - name: p_year
+          in: query
+          description: Required.  The calendar year for the DMR annual pollutant loadings.
+          enum: 
+            - '2018'
+            - '2017'
+            - '2016'
+            - '2015'
+            - '2014'
+            - '2013'
+            - '2012'
+            - '2011'
+            - '2010'
+            - '2009'
+            - '2008'
+            - '2007'
+          default: '2018'
+          type: string
+          required: true
+        - "$ref": "#/parameters/q.p_zip"
+        - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.pageno"
+        - "$ref": "#/parameters/q.newsort"
+        - "$ref": "#/parameters/q.descending"
+        - "$ref": "#/parameters/q.responseset"
+      tags: 
+        - Water Pollution Search, Facility Reports, and Loading Calculations
+      responses: 
+        '200': 
+          description: Returns an object that includes an array of facilities with NPDES permits for the selected criteria.
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dmr002" 
+            required: 
+              - Results
+    post: 
+      summary: Water Pollution Search Discharge Monitoring Report Facilities Service
+      description: The procedure returns summary information about NPDES permits, indicating whether they have monitoring requirements, permit limits, and/or DMR data. It provides the data for the Search Statistics table on the Water Pollution Search Results.
+      parameters: 
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.download"
+        - "$ref": "#/parameters/f.p_cas"
+        - "$ref": "#/parameters/f.p_co"
+        - "$ref": "#/parameters/f.p_ct"
+        - "$ref": "#/parameters/f.p_dmr_tri_link"
+        - "$ref": "#/parameters/f.p_dmr_tri_release"
+        - "$ref": "#/parameters/f.p_esa"
+        - "$ref": "#/parameters/f.p_exceed"
+        - "$ref": "#/parameters/f.p_fname"
+        - "$ref": "#/parameters/f.p_huc"
+        - "$ref": "#/parameters/f.p_imp_water"
+        - "$ref": "#/parameters/f.p_imp_poll"
+        - "$ref": "#/parameters/f.p_maj"
+        - "$ref": "#/parameters/f.p_naics"
+        - "$ref": "#/parameters/f.p_naics2"
+        - "$ref": "#/parameters/f.p_permit_id"
+        - "$ref": "#/parameters/f.p_poll_name"
+        - "$ref": "#/parameters/f.p_poll_cat"
+        - "$ref": "#/parameters/f.p_potw"
+        - "$ref": "#/parameters/f.p_psc"
+        - "$ref": "#/parameters/f.p_reg"
+        - "$ref": "#/parameters/f.p_sic"
+        - "$ref": "#/parameters/f.p_sic2"
+        - name: p_st
+          in: formData
+          description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
+          default: DC
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.p_watershed_zip"
+        - "$ref": "#/parameters/f.p_watershed_group"
+        - "$ref": "#/parameters/f.p_watershed"
+        - name: p_year
+          in: formData
+          description: The calendar year for the annual pollutant loadings. 
+          default: '2018'
+          type: string
+          required: true
+        - "$ref": "#/parameters/f.p_zip"
+        - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.pageno"
+        - "$ref": "#/parameters/f.newsort"
+        - "$ref": "#/parameters/f.descending"
+        - "$ref": "#/parameters/f.responseset"
+      tags: 
+        - Water Pollution Search, Facility Reports, and Loading Calculations
+      responses: 
+        '200': 
+          description: Returns an object that includes an array of facilities with NPDES permits for the selected criteria.
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dmr002" 
+            required: 
+              - Results
+  "/dmr_rest_services.get_all_tri_facilities": 
+    get: 
+      summary: Water Pollution Search Toxics Release Inventory (TRI) Facilities Service
+      description: This procedure returns facilities with TRI releases for the selected criteria.
+      parameters: 
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.download"
+        - "$ref": "#/parameters/q.p_co"
+        - "$ref": "#/parameters/q.p_ct"
+        - "$ref": "#/parameters/q.p_esa"
+        - "$ref": "#/parameters/q.p_chem_name"
+        - "$ref": "#/parameters/q.p_discharge_type"
+        - "$ref": "#/parameters/q.p_exceed"
+        - "$ref": "#/parameters/q.p_fname"
+        - "$ref": "#/parameters/q.p_huc"
+        - "$ref": "#/parameters/q.p_imp_sw"
+        - "$ref": "#/parameters/q.p_imp_sw_source"
+        - "$ref": "#/parameters/q.p_naics"
+        - "$ref": "#/parameters/q.p_naics2"
+        - "$ref": "#/parameters/q.p_permit_id"
+        - "$ref": "#/parameters/q.p_psc"
+        - "$ref": "#/parameters/q.p_reg"
+        - "$ref": "#/parameters/q.p_rpt_disch"
+        - "$ref": "#/parameters/q.p_rpt_disch_gt"
+        - "$ref": "#/parameters/q.p_rpt_disch_units"
+        - "$ref": "#/parameters/q.p_rpt_disch_amt"
+        - "$ref": "#/parameters/q.p_sic"
+        - "$ref": "#/parameters/q.p_sic2"
+        - name: p_st
+          in: query
+          description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
+          default: DC
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.p_tri_npdes_link"
+        - "$ref": "#/parameters/q.p_watershed_zip"
+        - "$ref": "#/parameters/q.p_watershed_group"
+        - "$ref": "#/parameters/q.p_watershed"
+        - name: p_year
+          in: query
+          description: The calendar year for the annual pollutant loadings. 
+          default: '2018'
+          type: string
+          required: true
+        - "$ref": "#/parameters/q.p_zip"
+        - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.pageno"
+        - "$ref": "#/parameters/q.newsort"
+        - "$ref": "#/parameters/q.descending"
+        - "$ref": "#/parameters/q.responseset"
+      tags: 
+        - Water Pollution Search, Facility Reports, and Loading Calculations
+      responses: 
+        '200': 
+          description: Returns an object that includes an array of facilities with TRIreleases for the selected criteria.
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dmr004" 
+            required: 
+              - Results
+    post: 
+      summary: Water Pollution Search Toxics Release Inventory (TRI) Facilities Service
+      description: This procedure returns facilities with TRI releases for the selected criteria.
+      parameters: 
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.download"
+        - "$ref": "#/parameters/f.p_co"
+        - "$ref": "#/parameters/f.p_ct"
+        - "$ref": "#/parameters/f.p_esa"
+        - "$ref": "#/parameters/f.p_chem_name"
+        - "$ref": "#/parameters/f.p_discharge_type"
+        - "$ref": "#/parameters/f.p_exceed"
+        - "$ref": "#/parameters/f.p_fname"
+        - "$ref": "#/parameters/f.p_huc"
+        - "$ref": "#/parameters/f.p_imp_sw"
+        - "$ref": "#/parameters/f.p_imp_sw_source"
+        - "$ref": "#/parameters/f.p_naics"
+        - "$ref": "#/parameters/f.p_naics2"
+        - "$ref": "#/parameters/f.p_permit_id"
+        - "$ref": "#/parameters/f.p_psc"
+        - "$ref": "#/parameters/f.p_reg"
+        - "$ref": "#/parameters/f.p_rpt_disch"
+        - "$ref": "#/parameters/f.p_rpt_disch_gt"
+        - "$ref": "#/parameters/f.p_rpt_disch_units"
+        - "$ref": "#/parameters/f.p_rpt_disch_amt"
+        - "$ref": "#/parameters/f.p_sic"
+        - "$ref": "#/parameters/f.p_sic2"
+        - name: p_st
+          in: formData
+          description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
+          default: DC
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.p_tri_npdes_link"
+        - "$ref": "#/parameters/f.p_watershed_zip"
+        - "$ref": "#/parameters/f.p_watershed_group"
+        - "$ref": "#/parameters/f.p_watershed"
+        - name: p_year
+          in: formData
+          description: The calendar year for the annual pollutant loadings. 
+          default: '2018'
+          type: string
+          required: true
+        - "$ref": "#/parameters/f.p_zip"
+        - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.pageno"
+        - "$ref": "#/parameters/f.newsort"
+        - "$ref": "#/parameters/f.descending"
+        - "$ref": "#/parameters/f.responseset"
+      tags: 
+        - Water Pollution Search, Facility Reports, and Loading Calculations
+      responses: 
+        '200': 
+          description: Returns an object that includes an array of facilities with TRIreleases for the selected criteria.
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dmr004" 
+            required: 
+              - Results
   "/dmr_rest_services.get_comparison_dashboard": 
     get: 
       summary: Toxics Release Inventory (TRI) and Discharge Monitoring Report (DMR) Comparison Dashboard Service
       description: This procedure returns a comparison of TRI and DMR data for the selected criteria.
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/q.p_chem_group_id"
         - "$ref": "#/parameters/q.p_chem_univ_metric"
         - "$ref": "#/parameters/q.p_co"
@@ -1668,7 +1967,19 @@ paths:
       summary: Toxics Release Inventory (TRI) and Discharge Monitoring Report (DMR) Comparison Dashboard Service
       description: This procedure returns a comparison of TRI and DMR data for the selected criteria.
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/f.p_chem_group_id"
         - "$ref": "#/parameters/f.p_chem_univ_metric"
         - "$ref": "#/parameters/f.p_co"
@@ -1719,7 +2030,19 @@ paths:
       summary: Discharge Monitoring Report Custom Search Annual Loadings Service
       description: This procedure returns pollutant loadings by year, NPDES ID, outfall, and pollutant for the selected criteria.
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/q.p_cas"
         - "$ref": "#/parameters/q.p_cerclis"
         - "$ref": "#/parameters/q.p_co"
@@ -1825,7 +2148,19 @@ paths:
       summary: Discharge Monitoring Report Custom Search Annual Loadings Service
       description: This procedure returns pollutant loadings by year, NPDES ID, outfall, and pollutant for the selected criteria.
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/f.p_cas"
         - "$ref": "#/parameters/f.p_cerclis"
         - "$ref": "#/parameters/f.p_co"
@@ -1932,7 +2267,19 @@ paths:
       summary: Discharge Monitoring Report Custom Search Facility Loadings Service
       description: This procedure returns facilities that meet the search criteria along with total pollutant loadings, including facilities that do not have DMR data in ICIS-NPDES.
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/q.p_cas"
         - "$ref": "#/parameters/q.p_cerclis"
         - "$ref": "#/parameters/q.p_co"
@@ -2038,7 +2385,19 @@ paths:
       summary: Discharge Monitoring Report Custom Search Facility Loadings Service
       description: This procedure returns facilities that meet the search criteria along with total pollutant loadings, including facilities that do not have DMR data in ICIS-NPDES.
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/f.p_cas"
         - "$ref": "#/parameters/f.p_cerclis"
         - "$ref": "#/parameters/f.p_co"
@@ -2144,7 +2503,19 @@ paths:
       summary: Discharge Monitoring Report Custom Search Monitoring Period Loadings Service
       description: This procedure returns pollutant loadings by year, NPDES ID, outfall, monitoring period, and pollutant for the selected criteria.
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/q.p_cas"
         - "$ref": "#/parameters/q.p_cerclis"
         - "$ref": "#/parameters/q.p_co"
@@ -2237,7 +2608,19 @@ paths:
       summary: Discharge Monitoring Report Custom Search Monitoring Period Loadings Service
       description: This procedure returns pollutant loadings by year, NPDES ID, outfall, monitoring period, and pollutant for the selected criteria.
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/f.p_cas"
         - "$ref": "#/parameters/f.p_cerclis"
         - "$ref": "#/parameters/f.p_co"
@@ -2331,7 +2714,19 @@ paths:
       summary: Toxics Release Inventory (TRI) and Discharge Monitoring Report (DMR) Comparison Dashboard Chemicals Download Service
       description: This procedure returns chemicals reported in the selected reporting year and facility counts and DMR and TRI releases for each.
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/q.p_chem_slice"
         - "$ref": "#/parameters/q.p_co"
         - "$ref": "#/parameters/q.p_ct"
@@ -2376,7 +2771,19 @@ paths:
       summary: Toxics Release Inventory (TRI) and Discharge Monitoring Report (DMR) Comparison Dashboard Chemicals Download Service
       description: This procedure returns chemicals reported in the selected reporting year and facility counts and DMR and TRI releases for each.
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/f.p_chem_slice"
         - "$ref": "#/parameters/f.p_co"
         - "$ref": "#/parameters/f.p_ct"
@@ -2422,7 +2829,19 @@ paths:
       summary: Toxics Release Inventory (TRI) and Discharge Monitoring Report (DMR) Comparison Dashboard Facilities Download Service
       description: This procedure returns facilities reporting DMR discharges and TRI releases for the selected criteria.
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/q.p_co"
         - "$ref": "#/parameters/q.p_ct"
         - "$ref": "#/parameters/q.p_esa"
@@ -2467,7 +2886,19 @@ paths:
       summary: Toxics Release Inventory (TRI) and Discharge Monitoring Report (DMR) Comparison Dashboard Facilities Download Service
       description: This procedure returns facilities reporting DMR discharges and TRI releases for the selected criteria.
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/f.p_co"
         - "$ref": "#/parameters/f.p_ct"
         - "$ref": "#/parameters/f.p_esa"
@@ -2513,7 +2944,19 @@ paths:
       summary: Toxics Release Inventory (TRI) and Discharge Monitoring Report (DMR) Comparison Dashboard Industries Download Service
       description: This procedure returns industrial sectors reported in the selected reporting year and facility counts and DMR and TRI releases for each.
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/q.p_co"
         - "$ref": "#/parameters/q.p_ct"
         - "$ref": "#/parameters/q.p_esa"
@@ -2557,7 +3000,19 @@ paths:
       summary: Toxics Release Inventory (TRI) and Discharge Monitoring Report (DMR) Comparison Dashboard Industries Download Service
       description: This procedure returns industrial sectors reported in the selected reporting year and facility counts and DMR and TRI releases for each.
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/f.p_co"
         - "$ref": "#/parameters/f.p_ct"
         - "$ref": "#/parameters/f.p_esa"
@@ -2602,7 +3057,19 @@ paths:
       summary: Water Pollution Search Discharge Monitoring Report (DMR) Loadings Service
       description: This procedure returns top pollutant loadings organized by geographic location, industry, or facility.
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/q.download"
         - "$ref": "#/parameters/q.p_cas"
         - "$ref": "#/parameters/q.p_co"
@@ -2666,7 +3133,19 @@ paths:
       summary: Water Pollution Search Discharge Monitoring Report (DMR) Loadings Service
       description: This procedure returns top pollutant loadings organized by geographic location, industry, or facility.
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/f.download"
         - "$ref": "#/parameters/f.p_cas"
         - "$ref": "#/parameters/f.p_co"
@@ -2726,152 +3205,24 @@ paths:
                 "$ref": "#/definitions/dmr026" 
             required: 
               - Results
-  "/dmr_rest_services.get_all_dmr_facilities": 
-    get: 
-      summary: Water Pollution Search Discharge Monitoring Report Facilities Service
-      description: The procedure returns summary information about NPDES permits, indicating whether they have monitoring requirements, permit limits, and/or DMR data. It provides the data for the Search Statistics table on the Water Pollution Search Results.
-      parameters: 
-        - "$ref": "#/parameters/q.output"
-        - "$ref": "#/parameters/q.download"
-        - "$ref": "#/parameters/q.p_cas"
-        - "$ref": "#/parameters/q.p_co"
-        - "$ref": "#/parameters/q.p_ct"
-        - "$ref": "#/parameters/q.p_dmr_tri_link"
-        - "$ref": "#/parameters/q.p_dmr_tri_release"
-        - "$ref": "#/parameters/q.p_esa"
-        - "$ref": "#/parameters/q.p_exceed"
-        - "$ref": "#/parameters/q.p_fname"
-        - "$ref": "#/parameters/q.p_huc"
-        - "$ref": "#/parameters/q.p_imp_water"
-        - "$ref": "#/parameters/q.p_imp_poll"
-        - "$ref": "#/parameters/q.p_maj"
-        - "$ref": "#/parameters/q.p_naics"
-        - "$ref": "#/parameters/q.p_naics2"
-        - "$ref": "#/parameters/q.p_permit_id"
-        - "$ref": "#/parameters/q.p_poll_name"
-        - "$ref": "#/parameters/q.p_poll_cat"
-        - "$ref": "#/parameters/q.p_potw"
-        - "$ref": "#/parameters/q.p_psc"
-        - "$ref": "#/parameters/q.p_reg"
-        - "$ref": "#/parameters/q.p_sic"
-        - "$ref": "#/parameters/q.p_sic2"
-        - name: p_st
-          in: query
-          description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
-          default: DC
-          type: string
-          required: false
-        - "$ref": "#/parameters/q.p_watershed_zip"
-        - "$ref": "#/parameters/q.p_watershed_group"
-        - "$ref": "#/parameters/q.p_watershed"
-        - name: p_year
-          in: query
-          description: Required.  The calendar year for the DMR annual pollutant loadings.
-          enum: 
-            - '2018'
-            - '2017'
-            - '2016'
-            - '2015'
-            - '2014'
-            - '2013'
-            - '2012'
-            - '2011'
-            - '2010'
-            - '2009'
-            - '2008'
-            - '2007'
-          default: '2018'
-          type: string
-          required: true
-        - "$ref": "#/parameters/q.p_zip"
-        - "$ref": "#/parameters/q.callback"
-        - "$ref": "#/parameters/q.pageno"
-        - "$ref": "#/parameters/q.newsort"
-        - "$ref": "#/parameters/q.descending"
-        - "$ref": "#/parameters/q.responseset"
-      tags: 
-        - Water Pollution Search, Facility Reports, and Loading Calculations
-      responses: 
-        '200': 
-          description: Returns an object that includes an array of facilities with NPDES permits for the selected criteria.
-          schema: 
-            description: Root Object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dmr002" 
-            required: 
-              - Results
-    post: 
-      summary: Water Pollution Search Discharge Monitoring Report Facilities Service
-      description: The procedure returns summary information about NPDES permits, indicating whether they have monitoring requirements, permit limits, and/or DMR data. It provides the data for the Search Statistics table on the Water Pollution Search Results.
-      parameters: 
-        - "$ref": "#/parameters/f.output"
-        - "$ref": "#/parameters/f.download"
-        - "$ref": "#/parameters/f.p_cas"
-        - "$ref": "#/parameters/f.p_co"
-        - "$ref": "#/parameters/f.p_ct"
-        - "$ref": "#/parameters/f.p_dmr_tri_link"
-        - "$ref": "#/parameters/f.p_dmr_tri_release"
-        - "$ref": "#/parameters/f.p_esa"
-        - "$ref": "#/parameters/f.p_exceed"
-        - "$ref": "#/parameters/f.p_fname"
-        - "$ref": "#/parameters/f.p_huc"
-        - "$ref": "#/parameters/f.p_imp_water"
-        - "$ref": "#/parameters/f.p_imp_poll"
-        - "$ref": "#/parameters/f.p_maj"
-        - "$ref": "#/parameters/f.p_naics"
-        - "$ref": "#/parameters/f.p_naics2"
-        - "$ref": "#/parameters/f.p_permit_id"
-        - "$ref": "#/parameters/f.p_poll_name"
-        - "$ref": "#/parameters/f.p_poll_cat"
-        - "$ref": "#/parameters/f.p_potw"
-        - "$ref": "#/parameters/f.p_psc"
-        - "$ref": "#/parameters/f.p_reg"
-        - "$ref": "#/parameters/f.p_sic"
-        - "$ref": "#/parameters/f.p_sic2"
-        - name: p_st
-          in: formData
-          description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
-          default: DC
-          type: string
-          required: false
-        - "$ref": "#/parameters/f.p_watershed_zip"
-        - "$ref": "#/parameters/f.p_watershed_group"
-        - "$ref": "#/parameters/f.p_watershed"
-        - name: p_year
-          in: formData
-          description: The calendar year for the annual pollutant loadings. 
-          default: '2018'
-          type: string
-          required: true
-        - "$ref": "#/parameters/f.p_zip"
-        - "$ref": "#/parameters/f.callback"
-        - "$ref": "#/parameters/f.pageno"
-        - "$ref": "#/parameters/f.newsort"
-        - "$ref": "#/parameters/f.descending"
-        - "$ref": "#/parameters/f.responseset"
-      tags: 
-        - Water Pollution Search, Facility Reports, and Loading Calculations
-      responses: 
-        '200': 
-          description: Returns an object that includes an array of facilities with NPDES permits for the selected criteria.
-          schema: 
-            description: Root Object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dmr002" 
-            required: 
-              - Results
   "/dmr_rest_services.get_eff_exceedances": 
     get: 
       summary: Effluent Limit Exceedances Search Service
       description: This procedure returns facility-level, or if selected, pollutant-level, information about E90 effluent exceedances.
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/q.download"
         - "$ref": "#/parameters/q.p_cas"
         - "$ref": "#/parameters/q.p_co"
@@ -2937,7 +3288,19 @@ paths:
       summary: Effluent Limit Exceedances Search Service
       description: This procedure returns facility-level, or if selected, pollutant-level, information about E90 effluent exceedances.
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/f.download"
         - "$ref": "#/parameters/f.p_cas"
         - "$ref": "#/parameters/f.p_co"
@@ -3004,7 +3367,19 @@ paths:
       summary: Effluent Limit Exceedances Report Service
       description: This procedure returns detailed information about effluent exceedance (E90) violations under the Clean Water Act National Pollutant Discharge Elimination System (NPDES) permit program for a single permit.
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/q.download"
         - "$ref": "#/parameters/q.p_end_date"
         - "$ref": "#/parameters/q.p_permit_id"
@@ -3028,7 +3403,19 @@ paths:
       summary: Effluent Limit Exceedances Report Service
       description: This procedure returns detailed information about effluent exceedance (E90) violations under the Clean Water Act National Pollutant Discharge Elimination System (NPDES) permit program for a single permit.
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/f.download"
         - "$ref": "#/parameters/f.p_end_date"
         - "$ref": "#/parameters/f.p_permit_id"
@@ -3053,7 +3440,19 @@ paths:
       summary: Facility Loading Calculations Service
       description: This procedure returns pollutant loadings data for a single NPDES permit by reporting year.
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - name: p_year
           in: query
           description: The calendar year for the annual pollutant loadings. 
@@ -3083,7 +3482,19 @@ paths:
       summary: Facility Loading Calculations Service
       description: This procedure returns pollutant loadings data for a single NPDES permit by reporting year.
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - name: p_year
           in: formData
           description: The calendar year for the annual pollutant loadings. 
@@ -3114,7 +3525,19 @@ paths:
       summary: Pollutant Loading Report (Discharge Monitoring Report (DMR)) Service
       description: This procedure returns detailed information about a single NPDES permit by reporting year.
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/q.download"
         - "$ref": "#/parameters/q.p_permit_id"
         - name: p_year
@@ -3142,7 +3565,19 @@ paths:
       summary: Pollutant Loading Report (Discharge Monitoring Report (DMR)) Service
       description: This procedure returns detailed information about a single NPDES permit by reporting year.
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/f.download"
         - "$ref": "#/parameters/f.p_permit_id"
         - name: p_year
@@ -3166,12 +3601,89 @@ paths:
                 "$ref": "#/definitions/dmr060" 
             required: 
               - Results
+  "/dmr_rest_services.get_loading_tool_params": 
+    get: 
+      summary: Placeholder
+      parameters: 
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+          enum: 
+            - JSONP
+            - JSON
+            - XML
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.pageno"
+        - "$ref": "#/parameters/q.callback"
+      tags: 
+        - Water Pollution Search, Facility Reports, and Loading Calculations
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dmr114" 
+            required: 
+              - Results
+    post: 
+      summary: Placeholder
+      parameters: 
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+            - XML = Data model formatted as Extensible Markup Language.
+          enum: 
+            - JSONP
+            - JSON
+            - XML
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.pageno"
+        - "$ref": "#/parameters/f.callback"
+      tags: 
+        - Water Pollution Search, Facility Reports, and Loading Calculations
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dmr114" 
+            required: 
+              - Results
   "/dmr_rest_services.get_monitor_pd_loads": 
     get: 
       summary: Facility Pollutant Loading Calculations by Monitoring Period Service
       description: This procedure returns pollutant loadings data for a single NPDES permit, pollutant, outfall by monitoring period within the selected reporting year.
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - name: p_year
           in: query
           description: The calendar year for the annual pollutant loadings. 
@@ -3201,7 +3713,19 @@ paths:
       summary: Facility Pollutant Loading Calculations by Monitoring Period Service
       description: This procedure returns pollutant loadings data for a single NPDES permit, pollutant, outfall by monitoring period within the selected reporting year.
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - name: p_year
           in: formData
           description: The calendar year for the annual pollutant loadings. 
@@ -3227,108 +3751,24 @@ paths:
                 "$ref": "#/definitions/dmr069" 
             required: 
               - Results
-  "/dmr_rest_services.get_multiyear_loading": 
-    get: 
-      summary: Discharge Monitoring Report (DMR) and Toxics Release Inventory (TRI) Multi-Year Loading Report Service
-      description: This procedure returns DMR and TRI discharges for a single NPDES permit, grouped by chemical group for the last 5 years.
-      parameters: 
-        - "$ref": "#/parameters/q.output"
-        - "$ref": "#/parameters/q.p_end_year"
-        - "$ref": "#/parameters/q.p_permit_id"
-        - "$ref": "#/parameters/q.p_start_year"
-        - "$ref": "#/parameters/q.callback"
-      tags: 
-        - Water Pollution Search, Facility Reports, and Loading Calculations
-      responses: 
-        '200': 
-          description: Returns an object that includes an array of  DMR and TRI discharges for a single NPDES permit, grouped by chemical group for the last 5 years.
-          schema: 
-            description: Root Object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dmr079" 
-            required: 
-              - Results
-    post: 
-      summary: Discharge Monitoring Report (DMR) and Toxics Release Inventory (TRI) Multi-Year Loading Report Service
-      description: This procedure returns DMR and TRI discharges for a single NPDES permit, grouped by chemical group for the last 5 years.
-      parameters: 
-        - "$ref": "#/parameters/f.output"
-        - "$ref": "#/parameters/f.p_end_year"
-        - "$ref": "#/parameters/f.p_permit_id"
-        - "$ref": "#/parameters/f.p_start_year"
-        - "$ref": "#/parameters/f.callback"
-      tags: 
-        - Water Pollution Search, Facility Reports, and Loading Calculations
-      responses: 
-        '200': 
-          description: Returns an object that includes an array of  DMR and TRI discharges for a single NPDES permit, grouped by chemical group for the last 5 years.
-          schema: 
-            description: Root Object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dmr079" 
-            required: 
-              - Results
-  "/dmr_rest_services.get_multiyear_loading_detail": 
-    get: 
-      summary: Discharge Monitoring Report (DMR) and Toxics Release Inventory (TRI) Multi-Year Loading Report By Chemical Service
-      description: This procedure returns DMR and TRI discharges for a single NPDES permit, grouped by pollutant for the last 5 years.
-      parameters: 
-        - "$ref": "#/parameters/q.output"
-        - "$ref": "#/parameters/q.p_chem_group_id"
-        - "$ref": "#/parameters/q.p_end_year"
-        - "$ref": "#/parameters/q.p_permit_id"
-        - "$ref": "#/parameters/q.p_start_year"
-        - "$ref": "#/parameters/q.callback"
-      tags: 
-        - Water Pollution Search, Facility Reports, and Loading Calculations
-      responses: 
-        '200': 
-          description: Returns an object that includes an array of  DMR and TRI discharges for a single NPDES permit, grouped by pollutant for the last 5 years.
-          schema: 
-            description: Root Object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dmr083" 
-            required: 
-              - Results
-    post: 
-      summary: Discharge Monitoring Report (DMR) and Toxics Release Inventory (TRI) Multi-Year Loading Report By Chemical Service
-      description: This procedure returns DMR and TRI discharges for a single NPDES permit, grouped by pollutant for the last 5 years.
-      parameters: 
-        - "$ref": "#/parameters/f.output"
-        - "$ref": "#/parameters/f.p_chem_group_id"
-        - "$ref": "#/parameters/f.p_end_year"
-        - "$ref": "#/parameters/f.p_permit_id"
-        - "$ref": "#/parameters/f.p_start_year"
-        - "$ref": "#/parameters/f.callback"
-      tags: 
-        - Water Pollution Search, Facility Reports, and Loading Calculations
-      responses: 
-        '200': 
-          description: Returns an object that includes an array of  DMR and TRI discharges for a single NPDES permit, grouped by pollutant for the last 5 years.
-          schema: 
-            description: Root Object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dmr083" 
-            required: 
-              - Results
   "/dmr_rest_services.get_monitoring_data": 
     get: 
       summary: NPDES Monitoring Data Download Service
       description: This procedure returns NPDES Monitoring Data for a single NPDES permit for a specified time period.
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/q.p_end_date"
         - "$ref": "#/parameters/q.p_fname"
         - "$ref": "#/parameters/q.p_frs_id"
@@ -3354,7 +3794,19 @@ paths:
       summary: NPDES Monitoring Data Download Service
       description: This procedure returns NPDES Monitoring Data for a single NPDES permit for a specified time period.
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/f.p_end_date"
         - "$ref": "#/parameters/f.p_fname"
         - "$ref": "#/parameters/f.p_frs_id"
@@ -3376,12 +3828,168 @@ paths:
                 "$ref": "#/definitions/dmr074" 
             required: 
               - Results
+  "/dmr_rest_services.get_multiyear_loading": 
+    get: 
+      summary: Discharge Monitoring Report (DMR) and Toxics Release Inventory (TRI) Multi-Year Loading Report Service
+      description: This procedure returns DMR and TRI discharges for a single NPDES permit, grouped by chemical group for the last 5 years.
+      parameters: 
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.p_end_year"
+        - "$ref": "#/parameters/q.p_permit_id"
+        - "$ref": "#/parameters/q.p_start_year"
+        - "$ref": "#/parameters/q.callback"
+      tags: 
+        - Water Pollution Search, Facility Reports, and Loading Calculations
+      responses: 
+        '200': 
+          description: Returns an object that includes an array of  DMR and TRI discharges for a single NPDES permit, grouped by chemical group for the last 5 years.
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dmr079" 
+            required: 
+              - Results
+    post: 
+      summary: Discharge Monitoring Report (DMR) and Toxics Release Inventory (TRI) Multi-Year Loading Report Service
+      description: This procedure returns DMR and TRI discharges for a single NPDES permit, grouped by chemical group for the last 5 years.
+      parameters: 
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.p_end_year"
+        - "$ref": "#/parameters/f.p_permit_id"
+        - "$ref": "#/parameters/f.p_start_year"
+        - "$ref": "#/parameters/f.callback"
+      tags: 
+        - Water Pollution Search, Facility Reports, and Loading Calculations
+      responses: 
+        '200': 
+          description: Returns an object that includes an array of  DMR and TRI discharges for a single NPDES permit, grouped by chemical group for the last 5 years.
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dmr079" 
+            required: 
+              - Results
+  "/dmr_rest_services.get_multiyear_loading_detail": 
+    get: 
+      summary: Discharge Monitoring Report (DMR) and Toxics Release Inventory (TRI) Multi-Year Loading Report By Chemical Service
+      description: This procedure returns DMR and TRI discharges for a single NPDES permit, grouped by pollutant for the last 5 years.
+      parameters: 
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
+        - "$ref": "#/parameters/q.p_chem_group_id"
+        - "$ref": "#/parameters/q.p_end_year"
+        - "$ref": "#/parameters/q.p_permit_id"
+        - "$ref": "#/parameters/q.p_start_year"
+        - "$ref": "#/parameters/q.callback"
+      tags: 
+        - Water Pollution Search, Facility Reports, and Loading Calculations
+      responses: 
+        '200': 
+          description: Returns an object that includes an array of  DMR and TRI discharges for a single NPDES permit, grouped by pollutant for the last 5 years.
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dmr083" 
+            required: 
+              - Results
+    post: 
+      summary: Discharge Monitoring Report (DMR) and Toxics Release Inventory (TRI) Multi-Year Loading Report By Chemical Service
+      description: This procedure returns DMR and TRI discharges for a single NPDES permit, grouped by pollutant for the last 5 years.
+      parameters: 
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
+        - "$ref": "#/parameters/f.p_chem_group_id"
+        - "$ref": "#/parameters/f.p_end_year"
+        - "$ref": "#/parameters/f.p_permit_id"
+        - "$ref": "#/parameters/f.p_start_year"
+        - "$ref": "#/parameters/f.callback"
+      tags: 
+        - Water Pollution Search, Facility Reports, and Loading Calculations
+      responses: 
+        '200': 
+          description: Returns an object that includes an array of  DMR and TRI discharges for a single NPDES permit, grouped by pollutant for the last 5 years.
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dmr083" 
+            required: 
+              - Results
   "/dmr_rest_services.get_permit_limits": 
     get: 
       summary: NPDES Permit Limits and Monitoring Requirements Service
       description: This procedure returns NPDES permit limits and monitoring requirements by pollutant for a single NPDES permit and reporting year.
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - name: p_year
           in: query
           description: Required.  The calendar year for the DMR annual pollutant loadings.
@@ -3423,7 +4031,19 @@ paths:
       summary: NPDES Permit Limits and Monitoring Requirements Service
       description: This procedure returns NPDES permit limits and monitoring requirements by pollutant for a single NPDES permit and reporting year.
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - name: p_year
           in: formData
           description: Required.  The calendar year for the DMR annual pollutant loadings.
@@ -3466,7 +4086,19 @@ paths:
       summary: State Statistics Download Service
       description: This procedure generates a comma separated value (CSV) file containing the counts and magnitudes of pollutant loadings for major and non-major NPDES permittees during a selected calendar year, summarized by state and EPA Region.
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - name: p_year
           in: query
           description: The calendar year for the annual pollutant loadings. 
@@ -3485,7 +4117,19 @@ paths:
       summary: State Statistics Download Service
       description: This procedure generates a comma separated value (CSV) file containing the counts and magnitudes of pollutant loadings for major and non-major NPDES permittees during a selected calendar year, summarized by state and EPA Region.
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - name: p_year
           in: formData
           description: The calendar year for the annual pollutant loadings. 
@@ -3505,7 +4149,19 @@ paths:
       summary: Pollutant Loading Report (Toxics Release Inventory (TRI)) Service
       description: This procedure returns detailed information about a single TRI Facility ID by reporting year.
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/q.download"
         - name: p_year
           in: query
@@ -3533,7 +4189,19 @@ paths:
       summary: Pollutant Loading Report (Toxics Release Inventory (TRI)) Service
       description: This procedure returns detailed information about a single TRI Facility ID by reporting year.
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/f.download"
         - name: p_year
           in: formData
@@ -3562,7 +4230,19 @@ paths:
       summary: Water Pollution Search Toxics Release Inventory (TRI) Discharges Service
       description: This procedure returns top chemical discharges organized by geographic location, industry, or facility.
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/q.download"
         - "$ref": "#/parameters/q.p_chem_name"
         - "$ref": "#/parameters/q.p_co"
@@ -3638,7 +4318,19 @@ paths:
       summary: Water Pollution Search Toxics Release Inventory (TRI) Discharges Service
       description: This procedure returns top chemical discharges organized by geographic location, industry, or facility.
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/f.download"
         - "$ref": "#/parameters/f.p_chem_name"
         - "$ref": "#/parameters/f.p_co"
@@ -3710,139 +4402,24 @@ paths:
                 "$ref": "#/definitions/dmr102" 
             required: 
               - Results
-  "/dmr_rest_services.get_all_tri_facilities": 
-    get: 
-      summary: Water Pollution Search Toxics Release Inventory (TRI) Facilities Service
-      description: This procedure returns facilities with TRI releases for the selected criteria.
-      parameters: 
-        - "$ref": "#/parameters/q.output"
-        - "$ref": "#/parameters/q.download"
-        - "$ref": "#/parameters/q.p_co"
-        - "$ref": "#/parameters/q.p_ct"
-        - "$ref": "#/parameters/q.p_esa"
-        - "$ref": "#/parameters/q.p_chem_name"
-        - "$ref": "#/parameters/q.p_discharge_type"
-        - "$ref": "#/parameters/q.p_exceed"
-        - "$ref": "#/parameters/q.p_fname"
-        - "$ref": "#/parameters/q.p_huc"
-        - "$ref": "#/parameters/q.p_imp_sw"
-        - "$ref": "#/parameters/q.p_imp_sw_source"
-        - "$ref": "#/parameters/q.p_naics"
-        - "$ref": "#/parameters/q.p_naics2"
-        - "$ref": "#/parameters/q.p_permit_id"
-        - "$ref": "#/parameters/q.p_psc"
-        - "$ref": "#/parameters/q.p_reg"
-        - "$ref": "#/parameters/q.p_rpt_disch"
-        - "$ref": "#/parameters/q.p_rpt_disch_gt"
-        - "$ref": "#/parameters/q.p_rpt_disch_units"
-        - "$ref": "#/parameters/q.p_rpt_disch_amt"
-        - "$ref": "#/parameters/q.p_sic"
-        - "$ref": "#/parameters/q.p_sic2"
-        - name: p_st
-          in: query
-          description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
-          default: DC
-          type: string
-          required: false
-        - "$ref": "#/parameters/q.p_tri_npdes_link"
-        - "$ref": "#/parameters/q.p_watershed_zip"
-        - "$ref": "#/parameters/q.p_watershed_group"
-        - "$ref": "#/parameters/q.p_watershed"
-        - name: p_year
-          in: query
-          description: The calendar year for the annual pollutant loadings. 
-          default: '2018'
-          type: string
-          required: true
-        - "$ref": "#/parameters/q.p_zip"
-        - "$ref": "#/parameters/q.callback"
-        - "$ref": "#/parameters/q.pageno"
-        - "$ref": "#/parameters/q.newsort"
-        - "$ref": "#/parameters/q.descending"
-        - "$ref": "#/parameters/q.responseset"
-      tags: 
-        - Water Pollution Search, Facility Reports, and Loading Calculations
-      responses: 
-        '200': 
-          description: Returns an object that includes an array of facilities with TRIreleases for the selected criteria.
-          schema: 
-            description: Root Object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dmr004" 
-            required: 
-              - Results
-    post: 
-      summary: Water Pollution Search Toxics Release Inventory (TRI) Facilities Service
-      description: This procedure returns facilities with TRI releases for the selected criteria.
-      parameters: 
-        - "$ref": "#/parameters/f.output"
-        - "$ref": "#/parameters/f.download"
-        - "$ref": "#/parameters/f.p_co"
-        - "$ref": "#/parameters/f.p_ct"
-        - "$ref": "#/parameters/f.p_esa"
-        - "$ref": "#/parameters/f.p_chem_name"
-        - "$ref": "#/parameters/f.p_discharge_type"
-        - "$ref": "#/parameters/f.p_exceed"
-        - "$ref": "#/parameters/f.p_fname"
-        - "$ref": "#/parameters/f.p_huc"
-        - "$ref": "#/parameters/f.p_imp_sw"
-        - "$ref": "#/parameters/f.p_imp_sw_source"
-        - "$ref": "#/parameters/f.p_naics"
-        - "$ref": "#/parameters/f.p_naics2"
-        - "$ref": "#/parameters/f.p_permit_id"
-        - "$ref": "#/parameters/f.p_psc"
-        - "$ref": "#/parameters/f.p_reg"
-        - "$ref": "#/parameters/f.p_rpt_disch"
-        - "$ref": "#/parameters/f.p_rpt_disch_gt"
-        - "$ref": "#/parameters/f.p_rpt_disch_units"
-        - "$ref": "#/parameters/f.p_rpt_disch_amt"
-        - "$ref": "#/parameters/f.p_sic"
-        - "$ref": "#/parameters/f.p_sic2"
-        - name: p_st
-          in: formData
-          description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
-          default: DC
-          type: string
-          required: false
-        - "$ref": "#/parameters/f.p_tri_npdes_link"
-        - "$ref": "#/parameters/f.p_watershed_zip"
-        - "$ref": "#/parameters/f.p_watershed_group"
-        - "$ref": "#/parameters/f.p_watershed"
-        - name: p_year
-          in: formData
-          description: The calendar year for the annual pollutant loadings. 
-          default: '2018'
-          type: string
-          required: true
-        - "$ref": "#/parameters/f.p_zip"
-        - "$ref": "#/parameters/f.callback"
-        - "$ref": "#/parameters/f.pageno"
-        - "$ref": "#/parameters/f.newsort"
-        - "$ref": "#/parameters/f.descending"
-        - "$ref": "#/parameters/f.responseset"
-      tags: 
-        - Water Pollution Search, Facility Reports, and Loading Calculations
-      responses: 
-        '200': 
-          description: Returns an object that includes an array of facilities with TRIreleases for the selected criteria.
-          schema: 
-            description: Root Object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dmr004" 
-            required: 
-              - Results
   "/dmr_rest_services.get_watershed_facilities": 
     get: 
       summary: Watershed Statistics Search Facilities Service
       description: This procedure generates a comma separated value (CSV) file containing facility attribute information (e.g., facility name, unique identifiers, address) for the selected watershed(s).
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/q.p_huc"
         - "$ref": "#/parameters/q.p_huc_region"
         - "$ref": "#/parameters/q.p_watershed"
@@ -3873,7 +4450,19 @@ paths:
       summary: Watershed Statistics Search Facilities Service
       description: This procedure generates a comma separated value (CSV) file containing facility attribute information (e.g., facility name, unique identifiers, address) for the selected watershed(s).
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/f.p_huc"
         - "$ref": "#/parameters/f.p_huc_region"
         - "$ref": "#/parameters/f.p_watershed"
@@ -3905,7 +4494,19 @@ paths:
       summary: Watershed Statistics Search Service
       description: This procedure generates a comma separated value (CSV) file containing facility counts and loadings for the selected watershed(s).
       parameters: 
-        - "$ref": "#/parameters/q.output"
+        - name: output
+          in: query
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/q.p_huc"
         - "$ref": "#/parameters/q.p_huc_region"
         - "$ref": "#/parameters/q.p_watershed"
@@ -3929,7 +4530,19 @@ paths:
       summary: Watershed Statistics Search Service
       description: This procedure generates a comma separated value (CSV) file containing facility counts and loadings for the selected watershed(s).
       parameters: 
-        - "$ref": "#/parameters/f.output"
+        - name: output
+          in: formData
+          description: |-
+            Output Format Flag.  Enter one of the following keywords:
+            - JSON = Data model formatted as Javascript Object Notation (default).
+            - XML = Data model formatted as Extensible Markup Language.
+            - CSV = Results formatted as comma delimited file download.
+          enum: 
+            - JSON
+            - XML
+            - CSV
+          type: string
+          required: false
         - "$ref": "#/parameters/f.p_huc"
         - "$ref": "#/parameters/f.p_huc_region"
         - "$ref": "#/parameters/f.p_watershed"
@@ -7190,6 +7803,121 @@ definitions:
       - MaxAllowable
       - ExceedanceFlag
       - LoadOverLimit
+  dmr113: 
+    description: Parameters Object
+    xml: 
+      name: Parameters
+    properties: 
+      PollutantCode: 
+        type: string
+      PollutantDesc: 
+        type: string
+      ParameterCode: 
+        type: string
+        title: Parameter Code
+        example: '00400'
+        description: The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)
+      ParameterDesc: 
+        type: string
+        title: Parameter Description
+        example: pH
+        description: The pollutant name and form (e.g., dissolved, suspended) associated with the parameter code
+      CountPermitsWithLimits: 
+        type: string
+      ChemicalAbstractServiceNmbr: 
+        type: string
+      SrsID: 
+        type: string
+      ExcludedFromLoadings: 
+        type: string
+      Nitrogen: 
+        type: string
+      Phosphorus: 
+        type: string
+      OrganicEnrichment: 
+        type: string
+      Solids: 
+        type: string
+      PathogenIndicators: 
+        type: string
+      Metals: 
+        type: string
+      CWAPriorityPollutants: 
+        type: string
+      CerclaHazSubst: 
+        type: string
+      TRIChemicals: 
+        type: string
+      Temperature: 
+        type: string
+      GenRadioactivity: 
+        type: string
+      Radionuclides: 
+        type: string
+      Color: 
+        type: string
+      WholeEffluentToxicity: 
+        type: string
+      Pfas: 
+        type: string
+    required: 
+      - PollutantCode
+      - PollutantDesc
+      - ParameterCode
+      - ParameterDesc
+      - CountPermitsWithLimits
+      - ChemicalAbstractServiceNmbr
+      - SrsID
+      - ExcludedFromLoadings
+      - Nitrogen
+      - Phosphorus
+      - OrganicEnrichment
+      - Solids
+      - PathogenIndicators
+      - Metals
+      - CWAPriorityPollutants
+      - CerclaHazSubst
+      - TRIChemicals
+      - Temperature
+      - GenRadioactivity
+      - Radionuclides
+      - Color
+      - WholeEffluentToxicity
+      - Pfas
+  dmr114: 
+    description: Results Object
+    properties: 
+      QueryRows: 
+        type: string
+        title: Query Row Count
+        example: '5'
+        description: Number of query results returned
+      PageCount: 
+        type: string
+      PageNo: 
+        type: string
+        title: Page Number
+        example: '1'
+        description: The number of pages of results returned
+      StartRec: 
+        type: string
+      EndRec: 
+        type: string
+      Parameters: 
+        type: array
+        title: Parameters
+        items: 
+          "$ref": "#/definitions/dmr113" 
+        xml: 
+          name: Parameters
+          wrapped: true
+    required: 
+      - QueryRows
+      - PageCount
+      - PageNo
+      - StartRec
+      - EndRec
+      - Parameters
   dmr066: 
     description: Facility Info Object
     properties: 
