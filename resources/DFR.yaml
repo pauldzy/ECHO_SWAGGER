@@ -421,6 +421,27 @@ paths:
                 "$ref": "#/definitions/dfr011" 
             required: 
               - Results
+  "/dfr_rest_services.get_csv": 
+    get: 
+      summary: Downloads a spectific section  of the DFR in CSV Format
+      description: For a supplied system id and DFR section name, the procedure will download that section in a Comma Separated Value (CSV) format.
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results are a comma separated value (CSV) file.
+          schema: 
+            type: file
+    post: 
+      summary: Downloads a spectific section  of the DFR in CSV Format
+      description: For a supplied system id and DFR section name, the procedure will download that section in a Comma Separated Value (CSV) format.
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results are a comma separated value (CSV) file.
+          schema: 
+            type: file
   "/dfr_rest_services.get_cwa_3yr_compliance": 
     get: 
       summary: Detailed Facility Report 3 Year CWA Facility-Level Status Service
@@ -515,55 +536,6 @@ paths:
             properties: 
               Results: 
                 "$ref": "#/definitions/dfr013" 
-            required: 
-              - Results
-  "/dfr_rest_services.get_d80d90s_details": 
-    get: 
-      summary: Display detailed D80/D90 information for the facility for a given quarter or month
-      description: "Displays detailed D80/D90 Effluent Non Reporting  information from EPA's ICIS NPDES system for the facility for a given quarter or month."
-      parameters: 
-        - "$ref": "#/parameters/q.output"
-        - "$ref": "#/parameters/q.p_npdes_id"
-        - "$ref": "#/parameters/q.p_missinglate"
-        - "$ref": "#/parameters/q.p_qmtype"
-        - "$ref": "#/parameters/q.p_qmvalue"
-        - "$ref": "#/parameters/q.callback"
-      tags: 
-        - Detailed Facility Report
-      responses: 
-        '200': 
-          description: Returns an object that includes information for  D80/D90 violations.
-          schema: 
-            description: Root Object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dfr022" 
-            required: 
-              - Results
-    post: 
-      summary: Display detailed D80/D90 information for the facility for a given quarter or month
-      description: "Displays detailed D80/D90 Effluent Non Reporting  information from EPA's ICIS NPDES system for the facility for a given quarter or month."
-      parameters: 
-        - "$ref": "#/parameters/q.output"
-        - "$ref": "#/parameters/q.p_npdes_id"
-        - "$ref": "#/parameters/q.p_missinglate"
-        - "$ref": "#/parameters/q.p_qmtype"
-        - "$ref": "#/parameters/q.p_qmvalue"
-        - "$ref": "#/parameters/q.callback"
-      tags: 
-        - Detailed Facility Report
-      responses: 
-        '200': 
-          description: Returns an object that includes information for  D80/D90 violations.
-          schema: 
-            description: Root Object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dfr022" 
             required: 
               - Results
   "/dfr_rest_services.get_cwa_cs_compliance": 
@@ -930,6 +902,55 @@ paths:
                 "$ref": "#/definitions/dfr021" 
             required: 
               - Results
+  "/dfr_rest_services.get_d80d90s_details": 
+    get: 
+      summary: Display detailed D80/D90 information for the facility for a given quarter or month
+      description: "Displays detailed D80/D90 Effluent Non Reporting  information from EPA's ICIS NPDES system for the facility for a given quarter or month."
+      parameters: 
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.p_npdes_id"
+        - "$ref": "#/parameters/q.p_missinglate"
+        - "$ref": "#/parameters/q.p_qmtype"
+        - "$ref": "#/parameters/q.p_qmvalue"
+        - "$ref": "#/parameters/q.callback"
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Returns an object that includes information for  D80/D90 violations.
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dfr022" 
+            required: 
+              - Results
+    post: 
+      summary: Display detailed D80/D90 information for the facility for a given quarter or month
+      description: "Displays detailed D80/D90 Effluent Non Reporting  information from EPA's ICIS NPDES system for the facility for a given quarter or month."
+      parameters: 
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.p_npdes_id"
+        - "$ref": "#/parameters/q.p_missinglate"
+        - "$ref": "#/parameters/q.p_qmtype"
+        - "$ref": "#/parameters/q.p_qmvalue"
+        - "$ref": "#/parameters/q.callback"
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Returns an object that includes information for  D80/D90 violations.
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dfr022" 
+            required: 
+              - Results
   "/dfr_rest_services.get_demographics_by_id": 
     get: 
       summary: Displays 2010 Census and ACS demographics by Facility ID
@@ -973,6 +994,88 @@ paths:
                 "$ref": "#/definitions/dfr023" 
             required: 
               - Results
+  "/dfr_rest_services.get_ejscreen_indexes": 
+    get: 
+      summary: Detailed Facility Report EJScreen Indexes Service
+      parameters: 
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.p_id"
+        - "$ref": "#/parameters/q.callback"
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dfr141" 
+            required: 
+              - Results
+    post: 
+      summary: Detailed Facility Report EJScreen Indexes Service
+      parameters: 
+        - "$ref": "#/parameters/f.output"
+        - "$ref": "#/parameters/f.p_id"
+        - "$ref": "#/parameters/f.callback"
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dfr141" 
+            required: 
+              - Results
+  "/dfr_rest_services.get_elg_codes": 
+    get: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.p_id"
+        - "$ref": "#/parameters/q.callback"
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dfr165" 
+            required: 
+              - Results
+    post: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/f.output"
+        - "$ref": "#/parameters/f.p_id"
+        - "$ref": "#/parameters/f.callback"
+      tags: 
+        - Detailed Facility Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dfr165" 
+            required: 
+              - Results
   "/dfr_rest_services.get_enforcement_summary": 
     get: 
       summary: Detailed Facility Report Enforcement Summary Service
@@ -1014,47 +1117,6 @@ paths:
             properties: 
               Results: 
                 "$ref": "#/definitions/dfr142" 
-            required: 
-              - Results
-  "/dfr_rest_services.get_ejscreen_indexes": 
-    get: 
-      summary: Detailed Facility Report EJScreen Indexes Service
-      parameters: 
-        - "$ref": "#/parameters/q.output"
-        - "$ref": "#/parameters/q.p_id"
-        - "$ref": "#/parameters/q.callback"
-      tags: 
-        - Detailed Facility Report
-      responses: 
-        '200': 
-          description: Results
-          schema: 
-            description: Root Object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dfr141" 
-            required: 
-              - Results
-    post: 
-      summary: Detailed Facility Report EJScreen Indexes Service
-      parameters: 
-        - "$ref": "#/parameters/f.output"
-        - "$ref": "#/parameters/f.p_id"
-        - "$ref": "#/parameters/f.callback"
-      tags: 
-        - Detailed Facility Report
-      responses: 
-        '200': 
-          description: Results
-          schema: 
-            description: Root Object
-            xml: 
-              name: Root
-            properties: 
-              Results: 
-                "$ref": "#/definitions/dfr141" 
             required: 
               - Results
   "/dfr_rest_services.get_extract_dates": 
@@ -2053,27 +2115,6 @@ paths:
     post: 
       summary: Downloads the complete RCRA Compliance History Section of the DFR
       description: For the provided system identifier, dowloads all displayed RCRA quaterly/monthly Facility Level Status and Violation information in a Comma Seperated Value (CSV) format.
-      tags: 
-        - Detailed Facility Report
-      responses: 
-        '200': 
-          description: Results are a comma separated value (CSV) file.
-          schema: 
-            type: file
-  "/dfr_rest_services.get_csv": 
-    get: 
-      summary: Downloads a spectific section  of the DFR in CSV Format
-      description: For a supplied system id and DFR section name, the procedure will download that section in a Comma Separated Value (CSV) format.
-      tags: 
-        - Detailed Facility Report
-      responses: 
-        '200': 
-          description: Results are a comma separated value (CSV) file.
-          schema: 
-            type: file
-    post: 
-      summary: Downloads a spectific section  of the DFR in CSV Format
-      description: For a supplied system id and DFR section name, the procedure will download that section in a Comma Separated Value (CSV) format.
       tags: 
         - Detailed Facility Report
       responses: 
@@ -11165,6 +11206,44 @@ definitions:
       - HazardWasteProximity
       - WaterDischargeProximity
       - Over80Count
+  dfr166: 
+    type: object
+    properties: 
+      Sources: 
+        type: array
+        title: Sources
+        items: 
+          "$ref": "#/definitions/dfr167" 
+        xml: 
+          name: Sources
+          wrapped: true
+  dfr167: 
+    type: object
+    properties: 
+      ELGCodes: 
+        type: array
+        title: ELGCodes
+        items: 
+          "$ref": "#/definitions/dfr168" 
+        xml: 
+          name: Sources
+          wrapped: true
+  dfr168: 
+    type: object
+    properties: 
+      SourceID: 
+        type: string
+        title: EPA Source Identifier
+        example: ALR040033
+        description: Unique Identifier assigned by EPA.
+      PermEffluentCode: 
+        type: string
+      PermEffluentDesc: 
+        type: string
+    required: 
+      - SourceID
+      - PermEffluentCode
+      - PermEffluentDesc
   dfr078: 
     description: Enforcement Compliance Summaries Object
     properties: 
@@ -11172,7 +11251,7 @@ definitions:
         type: array
         title: Program Dates
         items: 
-          "$ref": "#/definitions/dfr079_s" 
+          "$ref": "#/definitions/dfr079" 
         xml: 
           name: ProgramDates
           wrapped: true
@@ -11187,7 +11266,7 @@ definitions:
     required: 
       - ProgramDates
       - Summaries
-  dfr079_s: 
+  dfr079: 
     description: Program Date Object
     xml: 
       name: ProgramDates
@@ -13627,6 +13706,8 @@ definitions:
         "$ref": "#/definitions/dfr092" 
       SIC: 
         "$ref": "#/definitions/dfr110" 
+      EffluentGuidelines: 
+        "$ref": "#/definitions/dfr166" 
       InspectionEnforcementSummary: 
         "$ref": "#/definitions/dfr084" 
       ComplianceHistory: 
@@ -14371,13 +14452,13 @@ definitions:
         type: array
         title: Sources
         items: 
-          "$ref": "#/definitions/dfr112" 
+          "$ref": "#/definitions/dfr111" 
         xml: 
           name: Sources
           wrapped: true
     required: 
       - Sources
-  dfr112: 
+  dfr111: 
     description: Sources Object
     xml: 
       name: Sources
@@ -14385,13 +14466,13 @@ definitions:
       SICCodes: 
         type: array
         items: 
-          "$ref": "#/definitions/dfr111" 
+          "$ref": "#/definitions/dfr112" 
         xml: 
           name: SICCodes
           wrapped: true
     required: 
       - SICCodes
-  dfr111: 
+  dfr112: 
     description: SIC Codes Object
     xml: 
       name: SICCodes
@@ -15132,6 +15213,9 @@ definitions:
         type: string
         title: Chemical Name
         description: The TRI chemical to which the data in this row applies.
+      Year10Pounds: 
+        type: string
+        example: '5'
       Year9Pounds: 
         type: string
         title: Releases in Pounds for Year 9
@@ -15179,6 +15263,7 @@ definitions:
         description: The total pounds either released to air, discharged to surface water, injected underground, landfilled on-site, or transferred off-site for disposal or to a POTW.
     required: 
       - ChemicalName
+      - Year10Pounds
       - Year9Pounds
       - Year8Pounds
       - Year7Pounds
@@ -15193,6 +15278,8 @@ definitions:
     xml: 
       name: Header
     properties: 
+      Year10: 
+        type: string
       Year9: 
         type: string
         title: Year 9
@@ -15239,6 +15326,7 @@ definitions:
         example: '2009'
         description: The calendar year during which TRI releases and transfers occurred.
     required: 
+      - Year10
       - Year9
       - Year8
       - Year7
@@ -15757,6 +15845,18 @@ definitions:
         description: Field to record messages (typically performance-related) about packet processing
       EJScreenIndexes: 
         "$ref": "#/definitions/dff077" 
+    required: 
+      - Message
+  dfr165: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      EffluentGuidelines: 
+        "$ref": "#/definitions/dfr166" 
     required: 
       - Message
   dfr142: 
