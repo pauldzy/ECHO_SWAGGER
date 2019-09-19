@@ -396,7 +396,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/css01" 
+                "$ref": "#/definitions/css04" 
             required: 
               - Results
     post: 
@@ -430,7 +430,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/css01" 
+                "$ref": "#/definitions/css04" 
             required: 
               - Results
   "/comp_screen_services.get_qid": 
@@ -456,7 +456,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/css06" 
+                "$ref": "#/definitions/css07" 
             required: 
               - Results
     post: 
@@ -481,7 +481,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/css06" 
+                "$ref": "#/definitions/css07" 
             required: 
               - Results
   "/comp_screen_services.get_report": 
@@ -505,7 +505,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/css07" 
+                "$ref": "#/definitions/css10" 
             required: 
               - Results
     post: 
@@ -528,7 +528,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/css07" 
+                "$ref": "#/definitions/css10" 
             required: 
               - Results
   "/comp_screen_services.get_curr_fac_info": 
@@ -544,7 +544,7 @@ paths:
         - Corporate Compliance Screener
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes facility-level information for facilities that have any known violation(s) in the most recent quarter.
           schema: 
             description: Facility Violation Information Object
             xml: 
@@ -566,7 +566,7 @@ paths:
         - Corporate Compliance Screener
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes facility-level information for facilities that have any known violation(s) in the most recent quarter.
           schema: 
             description: Facility Violation Information Object
             xml: 
@@ -590,14 +590,14 @@ paths:
         - Corporate Compliance Screener
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes case-level information for facilities or cases that have had any penalty amount and that match the selected Settlement Time Period range.
           schema: 
             description: EPA and State Formal Enforcement Settlements Object
             xml: 
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/css11" 
+                "$ref": "#/definitions/css12" 
             required: 
               - Results
     post: 
@@ -613,14 +613,14 @@ paths:
         - Corporate Compliance Screener
       responses: 
         '200': 
-          description: Results
+          description: Returns an object that includes case-level information for facilities or cases that have had any penalty amount and that match the selected Settlement Time Period range.
           schema: 
             description: EPA and State Formal Enforcement Settlements Object
             xml: 
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/css11" 
+                "$ref": "#/definitions/css12" 
             required: 
               - Results
   "/comp_screen_services.get_open_cases": 
@@ -636,14 +636,14 @@ paths:
         - Corporate Compliance Screener
       responses: 
         '200': 
-          description: Results
+          description: "Returns an object that includes case-level information for enforcement cases that are led by EPA and have a current case status that is considered \"open\" (Complaint Filed, Stayed While Under Appeal)."
           schema: 
             description: EPA "Open" Civil Enforcement Cases Object
             xml: 
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/css12" 
+                "$ref": "#/definitions/css05" 
             required: 
               - Results
     post: 
@@ -658,14 +658,14 @@ paths:
         - Corporate Compliance Screener
       responses: 
         '200': 
-          description: Results
+          description: "Returns an object that includes case-level information for enforcement cases that are led by EPA and have a current case status that is considered \"open\" (Complaint Filed, Stayed While Under Appeal)."
           schema: 
             description: EPA "Open" Civil Enforcement Cases Object
             xml: 
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/css12" 
+                "$ref": "#/definitions/css05" 
             required: 
               - Results
   "/comp_screen_services.get_download": 
@@ -713,7 +713,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/met1" 
+                "$ref": "#/definitions/meta1" 
             required: 
               - Results
     post: 
@@ -733,7 +733,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/met1" 
+                "$ref": "#/definitions/meta1" 
             required: 
               - Results
 definitions: 
@@ -754,7 +754,7 @@ definitions:
     required: 
       - Message
       - CurrFacInfo
-  css03: 
+  css02: 
     description: Case Defendants Object
     xml: 
       name: CaseDefendants
@@ -765,7 +765,7 @@ definitions:
         description: The name of the defendant, or respondent associated with the case.
     required: 
       - CaseDefName
-  css04: 
+  css03: 
     description: Facilities Object
     xml: 
       name: Facility
@@ -783,7 +783,7 @@ definitions:
         title: Case Defendants
         description: An array of case defendants related to the facility or case.
         items: 
-          "$ref": "#/definitions/css03" 
+          "$ref": "#/definitions/css02" 
       Address: 
         type: string
       City: 
@@ -947,6 +947,15 @@ definitions:
         type: string
         title: Current SDWA Violation Flag
         description: Indicates if the facility has a current SDWA violation.
+      FacNaicsCodes: 
+        type: string
+        title: Facility NAICS Codes
+        example: 8111 8134
+        description: "The facility's North American Industry Classification System (NAICS) Codes."
+      FacSicCodes: 
+        type: string
+        title: SIC Codes
+        description: "Indicates the facility’s or permit's primary Standard Industrial Classification (SIC) Code. The SIC code describes the primary activity of the facility."
       MaxScore: 
         type: string
         title: Max Score
@@ -995,8 +1004,10 @@ definitions:
       - CWACurrViolFlag
       - RCRACurrViolFlag
       - SDWACurrViolFlag
+      - FacNaicsCodes
+      - FacSicCodes
       - MaxScore
-  css01: 
+  css04: 
     description: The data returned by the service call.
     properties: 
       Message: 
@@ -1054,7 +1065,7 @@ definitions:
         title: Facilities
         description: A complex array of facility information.
         items: 
-          "$ref": "#/definitions/css04" 
+          "$ref": "#/definitions/css03" 
     required: 
       - Message
       - QueryID
@@ -1068,7 +1079,7 @@ definitions:
       - SDWARows
       - PageNo
       - Facilities
-  css12: 
+  css05: 
     description: EPA "Open" Civil Enforcement Cases Object
     properties: 
       Message: 
@@ -1085,7 +1096,7 @@ definitions:
     required: 
       - Message
       - EnforcementCases
-  css06: 
+  css07: 
     description: The data returned by the service call.
     properties: 
       Message: 
@@ -1113,7 +1124,7 @@ definitions:
         title: Facilities
         description: A complex array of facility information.
         items: 
-          "$ref": "#/definitions/css04" 
+          "$ref": "#/definitions/css03" 
     required: 
       - Message
       - QueryRows
@@ -1237,7 +1248,7 @@ definitions:
       - StatusDate
       - PrimaryLawSection
       - NumDefendants
-  css07: 
+  css10: 
     description: The data returned by the service call.
     properties: 
       Message: 
@@ -1296,7 +1307,7 @@ definitions:
         title: Settlements
         description: A complex array of settelement information.
         items: 
-          "$ref": "#/definitions/css10" 
+          "$ref": "#/definitions/css11" 
       EnforcementCases: 
         type: array
         title: Enforcement Cases
@@ -1317,7 +1328,7 @@ definitions:
       - CurrFacInfo
       - Settlements
       - EnforcementCases
-  css10: 
+  css11: 
     description: EPA and State Formal Enforcement Settlements Object
     xml: 
       name: Settlements
@@ -1397,7 +1408,7 @@ definitions:
       - CompActionValue
       - SEPValue
       - ActivityID
-  css11: 
+  css12: 
     description: EPA and State Formal Enforcement Settlements Object
     properties: 
       Message: 
@@ -1410,11 +1421,11 @@ definitions:
         title: Settlements
         description: A complex array of settelement information.
         items: 
-          "$ref": "#/definitions/css10" 
+          "$ref": "#/definitions/css11" 
     required: 
       - Message
       - Settlements
-  met2: 
+  meta2: 
     description: Results Column Object
     xml: 
       name: ResultColumn
@@ -1450,7 +1461,7 @@ definitions:
       - ColumnID
       - ObjectName
       - Description
-  met1: 
+  meta1: 
     description: Results Object
     properties: 
       Message: 
@@ -1462,7 +1473,7 @@ definitions:
         type: array
         title: Result Columns
         items: 
-          "$ref": "#/definitions/met2" 
+          "$ref": "#/definitions/meta2" 
         xml: 
           name: ResultColumns
           wrapped: true

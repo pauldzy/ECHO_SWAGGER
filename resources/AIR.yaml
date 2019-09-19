@@ -3158,7 +3158,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/met1" 
+                "$ref": "#/definitions/meta1" 
             required: 
               - Results
     post: 
@@ -3190,7 +3190,7 @@ paths:
               name: Root
             properties: 
               Results: 
-                "$ref": "#/definitions/met1" 
+                "$ref": "#/definitions/meta1" 
             required: 
               - Results
 definitions: 
@@ -6142,7 +6142,7 @@ definitions:
     required: 
       - type
       - coordinates
-  met2: 
+  meta2: 
     description: Results Column Object
     xml: 
       name: ResultColumn
@@ -6178,7 +6178,7 @@ definitions:
       - ColumnID
       - ObjectName
       - Description
-  met1: 
+  meta1: 
     description: Results Object
     properties: 
       Message: 
@@ -6190,7 +6190,7 @@ definitions:
         type: array
         title: Result Columns
         items: 
-          "$ref": "#/definitions/met2" 
+          "$ref": "#/definitions/meta2" 
         xml: 
           name: ResultColumns
           wrapped: true
