@@ -1,0 +1,1480 @@
+---
+swagger: '2.0'
+info: 
+  title: U.S. EPA Enforcement and Compliance History Online (ECHO)
+  contact: 
+    name: US EPA, OECA Integration, Targeting and Access Branch
+  license: 
+    name: This page was built with the Swagger API.
+    url: "https://swagger.io"
+  version: '0.0.0'
+host: ofmpub.epa.gov
+basePath: /echo
+schemes: 
+  - https
+consumes: 
+  - application/x-www-form-urlencoded
+produces: 
+  - application/json
+  - application/xml
+parameters: 
+  q.output: 
+    name: output
+    in: query
+    description: |-
+      Output Format Flag.  Enter one of the following keywords:
+      - JSON = Data model formatted as Javascript Object Notation (default).
+      - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+      - XML = Data model formatted as Extensible Markup Language.
+    enum: 
+      - JSONP
+      - JSON
+      - XML
+    type: string
+    required: false
+  f.output: 
+    name: output
+    in: formData
+    description: |-
+      Output Format Flag.  Enter one of the following keywords:
+      - JSON = Data model formatted as Javascript Object Notation (default).
+      - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+      - XML = Data model formatted as Extensible Markup Language.
+    enum: 
+      - JSONP
+      - JSON
+      - XML
+    type: string
+    required: false
+  q.callback: 
+    name: callback
+    in: query
+    description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+    type: string
+    required: false
+  f.callback: 
+    name: callback
+    in: formData
+    description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+    type: string
+    required: false
+  q.p_st: 
+    name: p_st
+    in: query
+    description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
+    type: string
+    required: false
+  f.p_st: 
+    name: p_st
+    in: formData
+    description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
+    type: string
+    required: false
+  q.p_reg: 
+    name: p_reg
+    in: query
+    description: EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region.
+    enum: 
+      - '01'
+      - '02'
+      - '03'
+      - '04'
+      - '05'
+      - '06'
+      - '07'
+      - '08'
+      - '09'
+      - '10'
+    type: string
+    required: false
+  f.p_reg: 
+    name: p_reg
+    in: formData
+    description: EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region.
+    enum: 
+      - '01'
+      - '02'
+      - '03'
+      - '04'
+      - '05'
+      - '06'
+      - '07'
+      - '08'
+      - '09'
+      - '10'
+    type: string
+    required: false
+  q.p_sic4: 
+    name: p_sic4
+    in: query
+    description: Standard Industrial Classification (SIC) Code Filter Alternate 3.  Enter the first 2, 3 or 4 SIC code digits to filter results to facilities having those code prefixes.  As this alternative does not utilize an index, p_sic2 will generally be quicker.
+    type: string
+    required: false
+  f.p_sic4: 
+    name: p_sic4
+    in: formData
+    description: Standard Industrial Classification (SIC) Code Filter Alternate 3.  Enter the first 2, 3 or 4 SIC code digits to filter results to facilities having those code prefixes.  As this alternative does not utilize an index, p_sic2 will generally be quicker.
+    type: string
+    required: false
+  q.p_ff: 
+    name: p_ff
+    in: query
+    description: Federal Facility Indicator Flag. Enter Y to restrict searches to federal facilities.
+    enum: 
+      - Y
+    type: string
+    required: false
+  f.p_ff: 
+    name: p_ff
+    in: formData
+    description: Federal Facility Indicator Flag. Enter Y to restrict searches to federal facilities.
+    enum: 
+      - Y
+    type: string
+    required: false
+  q.p_maj: 
+    name: p_maj
+    in: query
+    description: Major Facility Flag.  Enter Y to restrict results to Major facilities only.
+    enum: 
+      - Y
+      - N
+    type: string
+    required: false
+  f.p_maj: 
+    name: p_maj
+    in: formData
+    description: Major Facility Flag.  Enter Y to restrict results to Major facilities only.
+    enum: 
+      - Y
+      - N
+    type: string
+    required: false
+  q.queryset: 
+    name: queryset
+    in: query
+    description: Query Limiter.  Enter a value to limit the number of records returned for each query. Value cannot exceed 70,000.
+    type: number
+    required: false
+  f.queryset: 
+    name: queryset
+    in: formData
+    description: Query Limiter.  Enter a value to limit the number of records returned for each query. Value cannot exceed 70,000.
+    type: number
+    required: false
+  q.responseset: 
+    name: responseset
+    in: query
+    description: Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000.
+    type: number
+    required: false
+  f.responseset: 
+    name: responseset
+    in: formData
+    description: Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000.
+    type: number
+    required: false
+  q.p_ico: 
+    name: p_ico
+    in: query
+    description: "Indian Country Flag.  Enter a \"Y\" or \"N\" to restrict searches to facilities inside or outside Indian Country."
+    enum: 
+      - Y
+      - N
+    type: string
+    required: false
+  f.p_ico: 
+    name: p_ico
+    in: formData
+    description: "Indian Country Flag.  Enter a \"Y\" or \"N\" to restrict searches to facilities inside or outside Indian Country."
+    enum: 
+      - Y
+      - N
+    type: string
+    required: false
+  q.p_ysl: 
+    name: p_ysl
+    in: query
+    description: |-
+      Last Facility Inspection [within / not within] Specified Date Range Indicator. The date range is determined by parameters p_idt1 and p_idt2 or by parameter p_ysly.
+      - W = within date range
+      - N = not within date range
+    enum: 
+      - W
+      - N
+      - NV
+    type: string
+    required: false
+  f.p_ysl: 
+    name: p_ysl
+    in: formData
+    description: |-
+      Last Facility Inspection [within / not within] Specified Date Range Indicator. The date range is determined by parameters p_idt1 and p_idt2 or by parameter p_ysly.
+      - W = within date range
+      - N = not within date range
+    enum: 
+      - W
+      - N
+      - NV
+    type: string
+    required: false
+  q.p_ysly: 
+    name: p_ysly
+    in: query
+    description: Number of years (1 to 5) since last facility inspection.  A value of 1 means that it has been inspected within the year.
+    enum: 
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+    type: string
+    required: false
+  f.p_ysly: 
+    name: p_ysly
+    in: formData
+    description: Number of years (1 to 5) since last facility inspection.  A value of 1 means that it has been inspected within the year.
+    enum: 
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+    type: string
+    required: false
+  q.p_ysla: 
+    name: p_ysla
+    in: query
+    description: |-
+      Facility Last Inspection Code Filter.  If left blank, both agencies are included.  Enter a value to limit results:
+      - E = EPA
+      - S = State
+    enum: 
+      - E
+      - S
+      - A
+    type: string
+    required: false
+  f.p_ysla: 
+    name: p_ysla
+    in: formData
+    description: |-
+      Facility Last Inspection Code Filter.  If left blank, both agencies are included.  Enter a value to limit results:
+      - E = EPA
+      - S = State
+    enum: 
+      - E
+      - S
+      - A
+    type: string
+    required: false
+  q.p_pstat: 
+    name: p_pstat
+    in: query
+    description: |-
+      Permit Status Filter.  Enter one or more of the following codes.  Provide multiple values as a comma-delimited list.
+      - EFF = Effective
+      - EXP = Expired
+      - PND = Pending
+      - TRM = Terminated
+      - RET = Retired
+      - NON = Not Needed
+      - ADC = Admin Continued
+    type: string
+    required: false
+  f.p_pstat: 
+    name: p_pstat
+    in: formData
+    description: |-
+      Permit Status Filter.  Enter one or more of the following codes.  Provide multiple values as a comma-delimited list.
+      - EFF = Effective
+      - EXP = Expired
+      - PND = Pending
+      - TRM = Terminated
+      - RET = Retired
+      - NON = Not Needed
+      - ADC = Admin Continued
+    type: string
+    required: false
+  q.p_ptype: 
+    name: p_ptype
+    in: query
+    description: |-
+      Permit Type Filter. Enter one or more code values to filter results.  Provide multiple values as a comma-delimited list.
+      - NPD = NPDES Individual Permit
+      - NGP = NPDES Master General Permit
+      - GPC = General Permit Covered Facility
+      - SNN = State Issued Master General Permit (Non-NPDES)
+      - IIU = Individual IU Permit (Non-NPDES)
+      - SIN = Individual State Issued Permit (Non-NPDES)
+      - APR = Associated Permit Record
+      - UFT = Unpermitted Facility
+    type: string
+    required: false
+  f.p_ptype: 
+    name: p_ptype
+    in: formData
+    description: |-
+      Permit Type Filter. Enter one or more code values to filter results.  Provide multiple values as a comma-delimited list.
+      - NPD = NPDES Individual Permit
+      - NGP = NPDES Master General Permit
+      - GPC = General Permit Covered Facility
+      - SNN = State Issued Master General Permit (Non-NPDES)
+      - IIU = Individual IU Permit (Non-NPDES)
+      - SIN = Individual State Issued Permit (Non-NPDES)
+      - APR = Associated Permit Record
+      - UFT = Unpermitted Facility
+    type: string
+    required: false
+  q.p_pcomp: 
+    name: p_pcomp
+    in: query
+    description: |-
+      Permit Component Code Filter.  Enter one or more codes to filter results.  Provide multiple values as a comma-delimited list.
+      - PRE = Pretreatment
+      - CAF = CAFO
+      - CSO = CSO
+      - POT = POTW
+      - BIO = Biosolids
+      - SWS = Storm Water Small MS4s
+      - SWM = Storm Water Medium/Large MS4s
+      - SWI = Storm Water Industrial
+      - SWC = Storm Water Construction
+    type: string
+    required: false
+  f.p_pcomp: 
+    name: p_pcomp
+    in: formData
+    description: |-
+      Permit Component Code Filter.  Enter one or more codes to filter results.  Provide multiple values as a comma-delimited list.
+      - PRE = Pretreatment
+      - CAF = CAFO
+      - CSO = CSO
+      - POT = POTW
+      - BIO = Biosolids
+      - SWS = Storm Water Small MS4s
+      - SWM = Storm Water Medium/Large MS4s
+      - SWI = Storm Water Industrial
+      - SWC = Storm Water Construction
+    type: string
+    required: false
+  q.p_pexp: 
+    name: p_pexp
+    in: query
+    description: |-
+      Permit Expired or Administratively Continued Limiter.  Enter one of the following values to filter results.
+      - EXP = limit results to facilities with permits expired or administratively continued.
+      - EXPLE1YR = limit resuls to facilities with permits expired administratively continued within the past year.
+      - EXPGT1YR = limit resuls to facilities with permits expired administratively continued more than a year ago.
+    enum: 
+      - EXP
+      - EXPLE1YR
+      - EXPGT1YR
+    type: string
+    required: false
+  f.p_pexp: 
+    name: p_pexp
+    in: formData
+    description: |-
+      Permit Expired or Administratively Continued Limiter.  Enter one of the following values to filter results.
+      - EXP = limit results to facilities with permits expired or administratively continued.
+      - EXPLE1YR = limit resuls to facilities with permits expired administratively continued within the past year.
+      - EXPGT1YR = limit resuls to facilities with permits expired administratively continued more than a year ago.
+    enum: 
+      - EXP
+      - EXPLE1YR
+      - EXPGT1YR
+    type: string
+    required: false
+  q.p_idt1: 
+    name: p_idt1
+    in: query
+    description: Beginning of date range of most recent facility inspection.
+    type: string
+    required: false
+  f.p_idt1: 
+    name: p_idt1
+    in: formData
+    description: Beginning of date range of most recent facility inspection.
+    type: string
+    required: false
+  q.p_idt2: 
+    name: p_idt2
+    in: query
+    description: End of date range of most recent facility inspection.
+    type: string
+    required: false
+  f.p_idt2: 
+    name: p_idt2
+    in: formData
+    description: End of date range of most recent facility inspection.
+    type: string
+    required: false
+  q.p_pccs: 
+    name: p_pccs
+    in: query
+    description: |-
+      Current Compliance Status:
+      ||||||||||||||||||||||||||| 
+      Significant Noncompliance (SNC) 
+      |||||||||||||||||||||||||||
+      - SNC = E, S, X, T, D
+      - E = E(EffViol)
+      - S = S(CSchVio)
+      - X = X(EffNMth)
+      - T = T(CSchRpt)
+      - D = D(DMR NR)
+      |||||||||||||||||||||||||||
+      Noncompliance (NC)
+      |||||||||||||||||||||||||||
+      - NC = N, V
+      - N = N(RptViol)
+      - V = V(NonRNCV)
+      |||||||||||||||||||||||||||
+      New Violations (PQV)
+      |||||||||||||||||||||||||||
+      - PQV = New Violations (13th Quarter)
+      |||||||||||||||||||||||||||
+      No Violations (NV)
+      |||||||||||||||||||||||||||
+      - NV = R, P, M, U, W
+      , Blank, and No New Violations (no PQV)
+      - R = R(Resolvd)
+      - P = P(ResPend)
+      - M = C(Manual)
+      - U = U(N/A)
+      - W = W(N/A)
+      - Blank = (null)
+      May contain multiple comma-separated values.
+    type: string
+    required: false
+  f.p_pccs: 
+    name: p_pccs
+    in: formData
+    description: |-
+      Current Compliance Status:
+      ||||||||||||||||||||||||||| 
+      Significant Noncompliance (SNC) 
+      |||||||||||||||||||||||||||
+      - SNC = E, S, X, T, D
+      - E = E(EffViol)
+      - S = S(CSchVio)
+      - X = X(EffNMth)
+      - T = T(CSchRpt)
+      - D = D(DMR NR)
+      |||||||||||||||||||||||||||
+      Noncompliance (NC)
+      |||||||||||||||||||||||||||
+      - NC = N, V
+      - N = N(RptViol)
+      - V = V(NonRNCV)
+      |||||||||||||||||||||||||||
+      New Violations (PQV)
+      |||||||||||||||||||||||||||
+      - PQV = New Violations (13th Quarter)
+      |||||||||||||||||||||||||||
+      No Violations (NV)
+      |||||||||||||||||||||||||||
+      - NV = R, P, M, U, W
+      , Blank, and No New Violations (no PQV)
+      - R = R(Resolvd)
+      - P = P(ResPend)
+      - M = C(Manual)
+      - U = U(N/A)
+      - W = W(N/A)
+      - Blank = (null)
+      May contain multiple comma-separated values.
+    type: string
+    required: false
+  q.p_psncq: 
+    name: p_psncq
+    in: query
+    description: |-
+      Quarters in Significant Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of significant noncompliance.
+      - Z = Zero quarters in significant noncompliance.
+      - GEXX = Replacing XX with a numeric value, that number of quarterd or more in significant noncompliance.
+      - GTXX = Replacing XX with a numeric value, more than that number of quarters in significant noncompliance.
+    enum: 
+      - GT1
+      - GE1
+      - GT2
+      - GE2
+      - GT4
+      - GE4
+      - GT8
+      - GE8
+      - GT12
+      - GE12
+    type: string
+    required: false
+  f.p_psncq: 
+    name: p_psncq
+    in: formData
+    description: |-
+      Quarters in Significant Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of significant noncompliance.
+      - Z = Zero quarters in significant noncompliance.
+      - GEXX = Replacing XX with a numeric value, that number of quarterd or more in significant noncompliance.
+      - GTXX = Replacing XX with a numeric value, more than that number of quarters in significant noncompliance.
+    enum: 
+      - GT1
+      - GE1
+      - GT2
+      - GE2
+      - GT4
+      - GE4
+      - GT8
+      - GE8
+      - GT12
+      - GE12
+    type: string
+    required: false
+  q.tablelist: 
+    name: tablelist
+    in: query
+    description: Table List Flag. Enter a Y to display the first page of facility results.
+    enum: 
+      - Y
+      - N
+    type: string
+    required: false
+  f.tablelist: 
+    name: tablelist
+    in: formData
+    description: Table List Flag. Enter a Y to display the first page of facility results.
+    enum: 
+      - Y
+      - N
+    type: string
+    required: false
+  q.summarylist: 
+    name: summarylist
+    in: query
+    description: Summary List Flag.  Enter a Y to return a list of summary statistics based on the parameters submitted to the query service.
+    enum: 
+      - Y
+      - N
+    type: string
+    required: false
+  f.summarylist: 
+    name: summarylist
+    in: formData
+    description: Summary List Flag.  Enter a Y to return a list of summary statistics based on the parameters submitted to the query service.
+    enum: 
+      - Y
+      - N
+    type: string
+    required: false
+  q.qid: 
+    name: qid
+    in: query
+    description: Query ID Selector.  Enter the QueryID number from a previously run query.
+    type: string
+    required: true
+  f.qid: 
+    name: qid
+    in: formData
+    description: Query ID Selector.  Enter the QueryID number from a previously run query.
+    type: string
+    required: true
+  q.pageno: 
+    name: pageno
+    in: query
+    description: Indicates the number of the page to display. It is used only when the results are paginated.
+    default: 1
+    type: number
+    required: false
+  f.pageno: 
+    name: pageno
+    in: formData
+    description: Indicates the number of the page to display. It is used only when the results are paginated.
+    default: 1
+    type: number
+    required: false
+  q.newsort: 
+    name: newsort
+    in: query
+    description: Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column.
+    type: number
+    required: false
+  f.newsort: 
+    name: newsort
+    in: formData
+    description: Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column.
+    type: number
+    required: false
+  q.descending: 
+    name: descending
+    in: query
+    description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
+    enum: 
+      - Y
+      - N
+    type: string
+    required: false
+  f.descending: 
+    name: descending
+    in: formData
+    description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
+    enum: 
+      - Y
+      - N
+    type: string
+    required: false
+  f.p_viol_rep_patt_amt: 
+    name: p_viol_rep_patt_amt
+    in: formData
+    type: string
+    required: false
+  q.p_viol_rep_patt_amt: 
+    name: p_viol_rep_patt_amt
+    in: query
+    type: string
+    required: false
+  f.p_viol_exist_compl: 
+    name: p_viol_exist_compl
+    in: formData
+    type: string
+    required: false
+  q.p_viol_exist_compl: 
+    name: p_viol_exist_compl
+    in: query
+    type: string
+    required: false
+  f.p_rolling_time_pd: 
+    name: p_rolling_time_pd
+    in: formData
+    type: string
+    required: false
+  q.p_rolling_time_pd: 
+    name: p_rolling_time_pd
+    in: query
+    type: string
+    required: false
+  f.p_viol_rep_patt: 
+    name: p_viol_rep_patt
+    in: formData
+    type: string
+    required: false
+  q.p_viol_rep_patt: 
+    name: p_viol_rep_patt
+    in: query
+    type: string
+    required: false
+  f.p_viol_in_compl: 
+    name: p_viol_in_compl
+    in: formData
+    type: string
+    required: false
+  q.p_viol_in_compl: 
+    name: p_viol_in_compl
+    in: query
+    type: string
+    required: false
+  f.p_viol_con_snc: 
+    name: p_viol_con_snc
+    in: formData
+    type: string
+    required: false
+  q.p_viol_con_snc: 
+    name: p_viol_con_snc
+    in: query
+    type: string
+    required: false
+  f.p_other_cwa_nc: 
+    name: p_other_cwa_nc
+    in: formData
+    type: string
+    required: false
+  q.p_other_cwa_nc: 
+    name: p_other_cwa_nc
+    in: query
+    type: string
+    required: false
+  f.p_hist_tracker: 
+    name: p_hist_tracker
+    in: formData
+    type: string
+    required: false
+  q.p_hist_tracker: 
+    name: p_hist_tracker
+    in: query
+    type: string
+    required: false
+  f.p_viol_types: 
+    name: p_viol_types
+    in: formData
+    type: string
+    required: false
+  q.p_viol_types: 
+    name: p_viol_types
+    in: query
+    type: string
+    required: false
+  f.p_viol_other: 
+    name: p_viol_other
+    in: formData
+    type: string
+    required: false
+  q.p_viol_other: 
+    name: p_viol_other
+    in: query
+    type: string
+    required: false
+  f.p_nci_search: 
+    name: p_nci_search
+    in: formData
+    type: string
+    required: false
+  q.p_nci_search: 
+    name: p_nci_search
+    in: query
+    type: string
+    required: false
+  f.p_npdes_id: 
+    name: p_npdes_id
+    in: formData
+    description: The NPDES_ID for the NPDES Permit to download DMR D80 and D90 Non-Receipt violations.
+    type: string
+    required: false
+  q.p_npdes_id: 
+    name: p_npdes_id
+    in: query
+    description: The NPDES_ID for the NPDES Permit to download DMR D80 and D90 Non-Receipt violations.
+    type: string
+    required: false
+  f.p_pagency: 
+    name: p_pagency
+    in: formData
+    type: string
+    required: false
+  q.p_pagency: 
+    name: p_pagency
+    in: query
+    type: string
+    required: false
+  f.p_pswdpc: 
+    name: p_pswdpc
+    in: formData
+    type: string
+    required: false
+  q.p_pswdpc: 
+    name: p_pswdpc
+    in: query
+    type: string
+    required: false
+  q.qcolumns: 
+    name: qcolumns
+    in: query
+    description: Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+    type: string
+    required: false
+  f.qcolumns: 
+    name: qcolumns
+    in: formData
+    description: Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions.
+    type: string
+    required: false
+paths: 
+  "/cwa_viotrack_services.get_facilities": 
+    get: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.p_ff"
+        - "$ref": "#/parameters/q.p_ico"
+        - "$ref": "#/parameters/q.p_hist_tracker"
+        - "$ref": "#/parameters/q.p_idt1"
+        - "$ref": "#/parameters/q.p_idt2"
+        - "$ref": "#/parameters/q.p_maj"
+        - "$ref": "#/parameters/q.p_npdes_id"
+        - "$ref": "#/parameters/q.p_other_cwa_nc"
+        - "$ref": "#/parameters/q.p_pagency"
+        - "$ref": "#/parameters/q.p_pccs"
+        - "$ref": "#/parameters/q.p_pcomp"
+        - "$ref": "#/parameters/q.p_pexp"
+        - "$ref": "#/parameters/q.p_psncq"
+        - "$ref": "#/parameters/q.p_pstat"
+        - "$ref": "#/parameters/q.p_pswdpc"
+        - "$ref": "#/parameters/q.p_ptype"
+        - "$ref": "#/parameters/q.p_reg"
+        - "$ref": "#/parameters/q.p_rolling_time_pd"
+        - "$ref": "#/parameters/q.p_sic4"
+        - "$ref": "#/parameters/q.p_st"
+        - "$ref": "#/parameters/q.p_viol_con_snc"
+        - "$ref": "#/parameters/q.p_viol_exist_compl"
+        - "$ref": "#/parameters/q.p_viol_in_compl"
+        - "$ref": "#/parameters/q.p_viol_other"
+        - "$ref": "#/parameters/q.p_viol_rep_patt"
+        - "$ref": "#/parameters/q.p_viol_rep_patt_amt"
+        - "$ref": "#/parameters/q.p_viol_types"
+        - "$ref": "#/parameters/q.p_ysl"
+        - "$ref": "#/parameters/q.p_ysly"
+        - "$ref": "#/parameters/q.p_ysla"
+        - "$ref": "#/parameters/q.p_nci_search"
+        - "$ref": "#/parameters/q.queryset"
+        - "$ref": "#/parameters/q.responseset"
+        - "$ref": "#/parameters/q.tablelist"
+        - "$ref": "#/parameters/q.summarylist"
+        - "$ref": "#/parameters/q.qcolumns"
+        - "$ref": "#/parameters/q.callback"
+      tags: 
+        - CWA Violation Tracking
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/cvt01" 
+            required: 
+              - Results
+    post: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/f.output"
+        - "$ref": "#/parameters/f.p_ff"
+        - "$ref": "#/parameters/f.p_ico"
+        - "$ref": "#/parameters/f.p_hist_tracker"
+        - "$ref": "#/parameters/f.p_idt1"
+        - "$ref": "#/parameters/f.p_idt2"
+        - "$ref": "#/parameters/f.p_maj"
+        - "$ref": "#/parameters/f.p_npdes_id"
+        - "$ref": "#/parameters/f.p_other_cwa_nc"
+        - "$ref": "#/parameters/f.p_pagency"
+        - "$ref": "#/parameters/f.p_pccs"
+        - "$ref": "#/parameters/f.p_pcomp"
+        - "$ref": "#/parameters/f.p_pexp"
+        - "$ref": "#/parameters/f.p_psncq"
+        - "$ref": "#/parameters/f.p_pstat"
+        - "$ref": "#/parameters/f.p_pswdpc"
+        - "$ref": "#/parameters/f.p_ptype"
+        - "$ref": "#/parameters/f.p_reg"
+        - "$ref": "#/parameters/f.p_rolling_time_pd"
+        - "$ref": "#/parameters/f.p_sic4"
+        - "$ref": "#/parameters/f.p_st"
+        - "$ref": "#/parameters/f.p_viol_con_snc"
+        - "$ref": "#/parameters/f.p_viol_exist_compl"
+        - "$ref": "#/parameters/f.p_viol_in_compl"
+        - "$ref": "#/parameters/f.p_viol_other"
+        - "$ref": "#/parameters/f.p_viol_rep_patt"
+        - "$ref": "#/parameters/f.p_viol_rep_patt_amt"
+        - "$ref": "#/parameters/f.p_viol_types"
+        - "$ref": "#/parameters/f.p_ysl"
+        - "$ref": "#/parameters/f.p_ysly"
+        - "$ref": "#/parameters/f.p_ysla"
+        - "$ref": "#/parameters/f.p_nci_search"
+        - "$ref": "#/parameters/f.queryset"
+        - "$ref": "#/parameters/f.responseset"
+        - "$ref": "#/parameters/f.tablelist"
+        - "$ref": "#/parameters/f.summarylist"
+        - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.qcolumns"
+      tags: 
+        - CWA Violation Tracking
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/cvt01" 
+            required: 
+              - Results
+  "/cwa_viotrack_services.get_qid": 
+    get: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.qid"
+        - "$ref": "#/parameters/q.pageno"
+        - "$ref": "#/parameters/q.callback"
+        - "$ref": "#/parameters/q.newsort"
+        - "$ref": "#/parameters/q.descending"
+        - "$ref": "#/parameters/q.qcolumns"
+      tags: 
+        - CWA Violation Tracking
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/cvt02" 
+            required: 
+              - Results
+    post: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/f.output"
+        - "$ref": "#/parameters/f.qid"
+        - "$ref": "#/parameters/f.pageno"
+        - "$ref": "#/parameters/f.callback"
+        - "$ref": "#/parameters/f.newsort"
+        - "$ref": "#/parameters/f.descending"
+        - "$ref": "#/parameters/f.qcolumns"
+      tags: 
+        - CWA Violation Tracking
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/cvt02" 
+            required: 
+              - Results
+  "/cwa_viotrack_services.get_download": 
+    get: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/q.qid"
+        - "$ref": "#/parameters/q.qcolumns"
+      tags: 
+        - CWA Violation Tracking
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            type: file
+    post: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/f.qid"
+        - "$ref": "#/parameters/f.qcolumns"
+      tags: 
+        - CWA Violation Tracking
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            type: file
+  "/cwa_viotrack_services.metadata": 
+    get: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.callback"
+      tags: 
+        - Metadata
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/meta1" 
+            required: 
+              - Results
+    post: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/f.output"
+        - "$ref": "#/parameters/f.callback"
+      tags: 
+        - Metadata
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/meta1" 
+            required: 
+              - Results
+definitions: 
+  cvt03: 
+    description: Facilities Object
+    xml: 
+      name: Facility
+    properties: 
+      CWPName: 
+        type: string
+        title: Facility Name
+        example: REDSTONE ARSENAL
+        description: Facility or permit holder name, as maintained in ICIS-NPDES.
+      SourceID: 
+        type: string
+        title: EPA Source Identifier
+        example: ALR040033
+        description: Unique Identifier assigned by EPA.
+      CWPStreet: 
+        type: string
+        title: Street Address
+        example: BUILDING 3240 AREA
+        description: Facility street address
+      CWPCity: 
+        type: string
+        title: City
+        example: HUNTSVILLE
+        description: City in which the facility is located.
+      CWPState: 
+        type: string
+        title: State
+        example: AL
+        description: Facility location - two-digit state abbreviation.
+      CWPZip: 
+        type: string
+        title: Zip
+        example: '35898'
+        description: Facility ZIP code
+      RegistryID: 
+        type: string
+        title: FRS ID
+        example: '110020837601'
+        description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
+      CWPCounty: 
+        type: string
+        title: County
+        example: District of Columbia
+        description: County in which the facility is located.
+      CWPEPARegion: 
+        type: string
+        title: EPA Region
+        example: '03'
+        description: The EPA region where the facility is located. EPA has 10 regional offices that execute programs within several states and territories.
+      StateRegion: 
+        type: string
+      CWPSICCodes: 
+        type: string
+        title: SIC Code
+        example: '4911'
+        description: "Indicates the facility's or permit's primary Standard Industrial Classification (SIC) Code."
+      CWPNAICSCodes: 
+        type: string
+        title: NAICS Code
+        example: '236220'
+        description: "Indicates the facility's or permit's primary North American Industry Classification System (NAICS) Code."
+      FacLat: 
+        type: string
+        title: Latitude
+        example: '38.803076'
+        description: The latitude of the facility in decimal degrees expressed using the NAD83 horizontal datum. The coordinate comes from the FRS EPA Locational Reference Tables (LRT) file which represents the most accurate value for the facility based on the available spatial metadata.
+      FacLong: 
+        type: string
+        title: Longitude
+        example: '-77.085951'
+        description: The longitude of the facility in decimal degrees expressed using the NAD83 horizontal datum. The coordinate comes from the FRS EPA Locational Reference Tables (LRT) file which represents the most accurate value for the facility based on the available spatial metadata.
+      CWPMajorMinorStatusFlag: 
+        type: string
+        title: Major/Minor Status Flag
+        example: N
+        description: |-
+          Facilities marked "M" for major refers to CWA major permittees.
+          - M = Major
+          - N = Minor
+      Over80CountUs: 
+        type: string
+        title: EJ Indexes Above 80th Percentile
+        example: '3'
+        description: The number of primary EJSCREEN environmental justice (EJ) indexes exceeding the 80th or higher national percentile for the Census block group that the facility is located in.
+      CWPIndianCntryFlg: 
+        type: string
+        title: In Indian Country
+        example: Y
+        description: "Displays \"Y\" if a facility is located in Indian country."
+      CWPTotalDesignFlowNmbr: 
+        type: string
+        example: '40'
+        description: The amount of wastewater flow in million gallons per day (MGD) that the facility is designed for.
+      CWPActualAverageFlowNmbr: 
+        type: string
+        example: '448'
+        description: "The actual amount of the facility's wastewater flow measured in million gallons per day (MGD)."
+      CWPFacilityTypeIndicator: 
+        type: string
+        title: Facility Type
+        example: NON-POTW
+        description: Each National Pollutant Discharge Elimination System (NPDES) permit is defined by the program office as a Major or non-major discharger. This field also indicates the permit type.
+      IssuingAgency: 
+        type: string
+        title: Permit Issuing Agency
+        description: This is the name of the organization issuing or granting a permit.
+      CWPPermitStatusDesc: 
+        type: string
+        title: Permit Status Description
+        example: Effective
+        description: The current stage/status in the NPDES permit life cycle.
+      CWPPermitStatusCode: 
+        type: string
+        title: Permit Status (Code)
+        example: ADC
+        description: "The code associated with the facility's NPDES permit status."
+      CWPPermitTypeDesc: 
+        type: string
+        title: Permit Type Description
+        example: General Permit Covered Facility
+        description: |-
+          NPDES facility permit classification:
+          - NPDES Individual Permit
+          - General Permit Covered Facility
+          - NPDES Master General Permit
+          - Associated Permit Record
+          - Individual Industrial User Permit
+          - Individual State Issued Permit
+          - State Issued Master General Permit
+          - Unpermitted Facility
+      CWPPermitTypeCode: 
+        type: string
+        title: Permit Type (Code)
+        example: NPD
+        description: "The code associated with the facility's NPDES permit classification."
+      PermitComponents: 
+        type: string
+        title: Permit Components
+        example: POTW
+        description: Indicates the permit component(s) associated with the NPDES Permit Program Area.
+      CWPSNCStatus: 
+        type: string
+        title: Significant Noncompliance (SNC) Status
+        description: Indicates when a major source is in significant noncompliance (SNC) or a non-major source has a Category I violation.
+      CWPQtrsWithSNC: 
+        type: string
+        title: Quarters with SNC (3 years)
+        example: '0'
+        description: Count of the number of quarters, out of the last twelve quarters, in which the permit is considered in Significant Noncompliance (SNC), as described above under Compliance Status.
+      CWPQtrsWithNC: 
+        type: string
+        title: Quarters with Noncompliance (3 years)
+        example: '0'
+        description: Count of the number of quarters, out of the last twelve quarters, in which the permit or site is considered either with violations, in noncompliance (NC) status, or in Significant Noncompliance (SNC), as described above under Compliance Status.
+      CWP13qtrsComplStatus: 
+        type: string
+      CWPVioStatus: 
+        type: string
+        title: Current RNC Violation Status
+        example: E(EffViol)
+        description: The current Reportable Non Compliance value for the facility.
+      DaysEffExceedances: 
+        type: string
+      DaysEffExceedancesUnadd: 
+        type: string
+      PctLimitsInViolation: 
+        type: string
+      CWPInspectionCount: 
+        type: string
+        title: Inspections (5 yrs)
+        example: '4'
+        description: The number of inspections/compliance evaluations, under the corresponding statute, occurring at the facility within the last five years.
+      CWPInspCountEPA: 
+        type: string
+      CWPInspCountState: 
+        type: string
+      CWPDaysLastInspection: 
+        type: string
+        example: '247'
+        description: Indicates the number of days since the most recent inspection of the facility.
+      CWPDateLastInspEPA: 
+        type: string
+        example: 07/29/2015
+        description: Indicates the effective date of the most recent inspection taken against the facility.
+      CWPDateLastInspSt: 
+        type: string
+        example: 09/15/2004
+        description: Indicates the effective date of the most recent inspection taken against the facility by a state environmental agency.
+      QtrsConsecSNC: 
+        type: string
+      HasCompSched: 
+        type: string
+      SchedInCompliance: 
+        type: string
+      HasPermitSched: 
+        type: string
+      PermitSchedInComp: 
+        type: string
+      OtherCWASNC: 
+        type: string
+      E90Count: 
+        type: string
+      E90CountUnadd: 
+        type: string
+      UnresDMRCount: 
+        type: string
+      CWATrackerCriteria: 
+        type: string
+      CWATrackerCriteriaUnadd: 
+        type: string
+      NefTotal: 
+        type: string
+      CWPFormalEaCnt: 
+        type: string
+        example: '1'
+        description: "Indicates the total number of enforcement actions taken against the facility within the last five years. \"NA\" indicates that this measure is not applicable for facilities with no associated CAA, CWA, or RCRA permits."
+      CWPInformalEnfActCount: 
+        type: string
+        title: Information Enforcement Actions (5 yrs)
+        example: '3'
+        description: Indicates the total number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years.
+      CWPDateLastFeaEPA: 
+        type: string
+        example: 06/01/2006
+        description: Indicates the effective date of the most recent listed formal enforcement action taken against the facility by EPA.
+      CWPDateLastFeaSt: 
+        type: string
+        example: 09/27/2010
+        description: Indicates the effective date of the most recent listed formal enforcement action taken against the facility by a state environmental agency.
+      CWPDateLastIeaEPA: 
+        type: string
+        example: 12/09/1992
+        description: Indicates the effective date of the most recent listed informal enforcement action taken against the facility by EPA.
+      CWPDateLastIeaSt: 
+        type: string
+        example: 06/09/2013
+        description: Indicates the effective date of the most recent listed informal enforcement action taken against the facility by a state environmental agency.
+      DMRLolPounds: 
+        type: string
+      DMRLolTwpe: 
+        type: string
+      PollWithViolation: 
+        type: string
+        title: Pollutant(s) With Violations (3 years)
+        description: The names of pollutants with effluent exceedances (i.e., violation code E90) in the past three years in ICIS-NPDES.
+      Udf1: 
+        type: string
+      Udf2: 
+        type: string
+      Udf3: 
+        type: string
+      Udf4: 
+        type: string
+      Udf5: 
+        type: string
+      CWPExpirationDate: 
+        type: string
+        title: Date of Permit Expiration
+        example: 04/19/2005
+        description: Date that the permit expires.
+      CWPVersionNmbr: 
+        type: string
+        title: Permit Version Number
+        example: '0'
+        description: "The version number of the facility's NPDES permit."
+      CWPDateLastInspection: 
+        type: string
+        title: Date of Last Inspection
+        example: 07/29/2015
+        description: The date on which the most recent inspection of the facility took place. For the CAA, the date on which a Full Compliance Evaluation (FCE) was completed.
+      RollingTimePd: 
+        type: string
+      MaxScore: 
+        type: string
+        title: Max Score
+        example: '1'
+        description: A sorting score for internal use.
+    required: 
+      - CWPName
+      - SourceID
+      - CWPStreet
+      - CWPCity
+      - CWPState
+      - CWPZip
+      - RegistryID
+      - CWPCounty
+      - CWPEPARegion
+      - StateRegion
+      - CWPSICCodes
+      - CWPNAICSCodes
+      - FacLat
+      - FacLong
+      - CWPMajorMinorStatusFlag
+      - Over80CountUs
+      - CWPIndianCntryFlg
+      - CWPTotalDesignFlowNmbr
+      - CWPActualAverageFlowNmbr
+      - CWPFacilityTypeIndicator
+      - IssuingAgency
+      - CWPPermitStatusDesc
+      - CWPPermitStatusCode
+      - CWPPermitTypeDesc
+      - CWPPermitTypeCode
+      - PermitComponents
+      - CWPSNCStatus
+      - CWPQtrsWithSNC
+      - CWPQtrsWithNC
+      - CWP13qtrsComplStatus
+      - CWPVioStatus
+      - DaysEffExceedances
+      - DaysEffExceedancesUnadd
+      - PctLimitsInViolation
+      - CWPInspectionCount
+      - CWPInspCountEPA
+      - CWPInspCountState
+      - CWPDaysLastInspection
+      - CWPDateLastInspEPA
+      - CWPDateLastInspSt
+      - QtrsConsecSNC
+      - HasCompSched
+      - SchedInCompliance
+      - HasPermitSched
+      - PermitSchedInComp
+      - OtherCWASNC
+      - E90Count
+      - E90CountUnadd
+      - UnresDMRCount
+      - CWATrackerCriteria
+      - CWATrackerCriteriaUnadd
+      - NefTotal
+      - CWPFormalEaCnt
+      - CWPInformalEnfActCount
+      - CWPDateLastFeaEPA
+      - CWPDateLastFeaSt
+      - CWPDateLastIeaEPA
+      - CWPDateLastIeaSt
+      - DMRLolPounds
+      - DMRLolTwpe
+      - PollWithViolation
+      - Udf1
+      - Udf2
+      - Udf3
+      - Udf4
+      - Udf5
+      - CWPExpirationDate
+      - CWPVersionNmbr
+      - CWPDateLastInspection
+      - RollingTimePd
+      - MaxScore
+  cvt01: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      QueryRows: 
+        type: string
+        title: Query Row Count
+        example: '5'
+        description: Number of query results returned
+      QueryID: 
+        type: string
+        title: Query Identifier
+        example: '245'
+        description: Sequential number assigned to entire search result
+      PageNo: 
+        type: string
+        title: Page Number
+        example: '1'
+        description: The number of pages of results returned
+      Facilities: 
+        type: array
+        title: Facilities
+        items: 
+          "$ref": "#/definitions/cvt03" 
+        xml: 
+          name: Facilities
+          wrapped: true
+    required: 
+      - Message
+      - QueryRows
+      - QueryID
+      - PageNo
+      - Facilities
+  cvt02: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      QueryRows: 
+        type: string
+        title: Query Row Count
+        example: '5'
+        description: Number of query results returned
+      QueryID: 
+        type: string
+        title: Query Identifier
+        example: '245'
+        description: Sequential number assigned to entire search result
+      PageNo: 
+        type: string
+        title: Page Number
+        example: '1'
+        description: The number of pages of results returned
+      Facilities: 
+        type: array
+        title: Facilities
+        items: 
+          "$ref": "#/definitions/cvt03" 
+        xml: 
+          name: Facilities
+          wrapped: true
+    required: 
+      - Message
+      - QueryRows
+      - QueryID
+      - PageNo
+      - Facilities
+  meta2: 
+    description: Results Column Object
+    xml: 
+      name: ResultColumn
+    properties: 
+      ColumnName: 
+        type: string
+        title: Column Name
+      DataType: 
+        type: string
+        title: Data Type
+        example: NUMBER
+        description: Data type for EPA program database column.
+      DataLength: 
+        type: string
+        title: Data Length
+        example: '10'
+        description: Data length for EPA program database column.
+      ColumnID: 
+        type: string
+        title: Column ID
+      ObjectName: 
+        type: string
+        title: Object Name
+        example: CaseName
+        description: The JSON name used for the database column.
+      Description: 
+        type: string
+        title: Column Description
+    required: 
+      - ColumnName
+      - DataType
+      - DataLength
+      - ColumnID
+      - ObjectName
+      - Description
+  meta1: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      ResultColumns: 
+        type: array
+        title: Result Columns
+        items: 
+          "$ref": "#/definitions/meta2" 
+        xml: 
+          name: ResultColumns
+          wrapped: true
+    required: 
+      - Message
