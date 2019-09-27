@@ -73,6 +73,36 @@ parameters:
     description: "Units of Measurement.  For the Air Pollutant Report, the default value is 'lbs'.  Enter \"TWPE\" for Toxic Weighted Pounds Equivalents (TWPE). "
     type: string
     required: false
+  f.p_registry_id: 
+    name: p_registry_id
+    in: formData
+    type: string
+    required: false
+  q.p_registry_id: 
+    name: p_registry_id
+    in: query
+    type: string
+    required: false
+  f.p_source_id: 
+    name: p_source_id
+    in: formData
+    type: string
+    required: false
+  q.p_source_id: 
+    name: p_source_id
+    in: query
+    type: string
+    required: false
+  f.p_object: 
+    name: p_object
+    in: formData
+    type: string
+    required: false
+  q.p_object: 
+    name: p_object
+    in: query
+    type: string
+    required: false
   q.nn2: 
     name: nn2
     in: query
@@ -308,6 +338,49 @@ paths:
                 "$ref": "#/definitions/caa08" 
             required: 
               - Results
+  "/caa_poll_rpt_rest_services.get_mon_sta": 
+    get: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.p_registry_id"
+        - "$ref": "#/parameters/q.p_source_id"
+        - "$ref": "#/parameters/q.callback"
+      tags: 
+        - Air Pollution Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/caa19" 
+            required: 
+              - Results
+    post: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/f.output"
+        - "$ref": "#/parameters/f.p_registry_id"
+        - "$ref": "#/parameters/f.p_source_id"
+        - "$ref": "#/parameters/f.callback"
+      tags: 
+        - Air Pollution Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/caa19" 
+            required: 
+              - Results
   "/caa_poll_rpt_rest_services.get_map": 
     get: 
       summary: Air Pollutant Report Map Service
@@ -359,6 +432,41 @@ paths:
                 "$ref": "#/definitions/caa15" 
             required: 
               - Results
+  "/caa_poll_rpt_rest_services.get_caa_csv": 
+    get: 
+      summary: Placeholder
+      parameters: 
+        - name: p_id
+          in: query
+          description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
+          type: string
+          required: true
+        - "$ref": "#/parameters/q.p_units"
+        - "$ref": "#/parameters/q.p_object"
+      tags: 
+        - Air Pollution Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            type: file
+    post: 
+      summary: Placeholder
+      parameters: 
+        - name: p_id
+          in: formData
+          description: "EPA Facility Registry Service's REGISTRY_ID. A unique identifier for a facility across EPA program databases."
+          type: string
+          required: true
+        - "$ref": "#/parameters/f.p_units"
+        - "$ref": "#/parameters/f.p_object"
+      tags: 
+        - Air Pollution Report
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            type: file
   "/caa_poll_rpt_rest_services.get_spatial_metadata": 
     get: 
       summary: Air Pollutant Report Spatial Metadata Service
@@ -650,6 +758,13 @@ definitions:
       - CenterLatitude
       - CenterLongitude
       - MapData
+  caa18: 
+    description: Monitor Stations Object
+    properties: 
+      AmaSiteCode: 
+        type: string
+    required: 
+      - AmaSiteCode
   caa05: 
     description: Permits Object
     xml: 
@@ -838,6 +953,13 @@ definitions:
         "$ref": "#/definitions/caa06" 
       MapOutput: 
         "$ref": "#/definitions/caa04" 
+      MonitorStations: 
+        type: array
+        items: 
+          "$ref": "#/definitions/caa18" 
+        xml: 
+          name: MonitorStationData
+          wrapped: true
     required: 
       - RegistryIDs
       - Pollutants
@@ -845,6 +967,7 @@ definitions:
       - AggregateEmissions
       - EnvironmentalConditions
       - MapOutput
+      - MonitorStations
   caa12: 
     description: Environmental Conditions Object
     properties: 
@@ -1066,6 +1189,24 @@ definitions:
     required: 
       - Message
       - MapOutput
+  caa19: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      MonitorStations: 
+        type: array
+        items: 
+          "$ref": "#/definitions/caa18" 
+        xml: 
+          name: MonitorStationData
+          wrapped: true
+    required: 
+      - Message
+      - MonitorStations
   caa16: 
     description: Results Object
     properties: 
