@@ -1,0 +1,1907 @@
+---
+swagger: '2.0'
+info: 
+  title: U.S. EPA Enforcement and Compliance History Online (ECHO)
+  contact: 
+    name: US EPA, OECA Integration, Targeting and Access Branch
+  license: 
+    name: This page was built with the Swagger API.
+    url: "https://swagger.io"
+  version: '0.0.0'
+host: ofmpub.epa.gov
+basePath: /echo
+schemes: 
+  - https
+consumes: 
+  - application/x-www-form-urlencoded
+produces: 
+  - application/json
+  - application/xml
+parameters: 
+  q.output: 
+    name: output
+    in: query
+    description: |-
+      Output Format Flag.  Enter one of the following keywords:
+      - JSON = Data model formatted as Javascript Object Notation (default).
+      - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+      - XML = Data model formatted as Extensible Markup Language.
+    enum: 
+      - JSONP
+      - JSON
+      - XML
+    type: string
+    required: false
+  f.output: 
+    name: output
+    in: formData
+    description: |-
+      Output Format Flag.  Enter one of the following keywords:
+      - JSON = Data model formatted as Javascript Object Notation (default).
+      - JSONP = Data model formatted as Javascript Object Notation with Padding.  
+      - XML = Data model formatted as Extensible Markup Language.
+    enum: 
+      - JSONP
+      - JSON
+      - XML
+    type: string
+    required: false
+  q.callback: 
+    name: callback
+    in: query
+    description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+    type: string
+    required: false
+  f.callback: 
+    name: callback
+    in: formData
+    description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+    type: string
+    required: false
+  q.p_st: 
+    name: p_st
+    in: query
+    description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
+    type: string
+    required: false
+  f.p_st: 
+    name: p_st
+    in: formData
+    description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
+    type: string
+    required: false
+  q.p_reg: 
+    name: p_reg
+    in: query
+    description: EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region.
+    enum: 
+      - '01'
+      - '02'
+      - '03'
+      - '04'
+      - '05'
+      - '06'
+      - '07'
+      - '08'
+      - '09'
+      - '10'
+    type: string
+    required: false
+  f.p_reg: 
+    name: p_reg
+    in: formData
+    description: EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region.
+    enum: 
+      - '01'
+      - '02'
+      - '03'
+      - '04'
+      - '05'
+      - '06'
+      - '07'
+      - '08'
+      - '09'
+      - '10'
+    type: string
+    required: false
+  q.p_sic: 
+    name: p_sic
+    in: query
+    description: Standard Industrial Classification (SIC) Code Filter.  Enter a single 4-digit SIC Code to filter results.  If more complex filtering is required, use p_sic2 and p_sic4.
+    type: string
+    required: false
+  f.p_sic: 
+    name: p_sic
+    in: formData
+    description: Standard Industrial Classification (SIC) Code Filter.  Enter a single 4-digit SIC Code to filter results.  If more complex filtering is required, use p_sic2 and p_sic4.
+    type: string
+    required: false
+  q.p_sic2: 
+    name: p_sic2
+    in: query
+    description: "Standard Industrial Classification (SIC) Code Filter Alternate 2. Enter a wild-card search against SIC codes.  A final wild-card is always present allowing \"22\" to match all SIC codes beginning with 22.  Use the \"%\" character within strings to match any SIC values with the pattern.  For example, \"2%21\" matches 2021, 2121, 2221, etc."
+    type: string
+    required: false
+  f.p_sic2: 
+    name: p_sic2
+    in: formData
+    description: "Standard Industrial Classification (SIC) Code Filter Alternate 2. Enter a wild-card search against SIC codes.  A final wild-card is always present allowing \"22\" to match all SIC codes beginning with 22.  Use the \"%\" character within strings to match any SIC values with the pattern.  For example, \"2%21\" matches 2021, 2121, 2221, etc."
+    type: string
+    required: false
+  q.p_maj: 
+    name: p_maj
+    in: query
+    description: Major Facility Flag.  Enter Y to restrict results to Major facilities only.
+    enum: 
+      - Y
+      - N
+    type: string
+    required: false
+  f.p_maj: 
+    name: p_maj
+    in: formData
+    description: Major Facility Flag.  Enter Y to restrict results to Major facilities only.
+    enum: 
+      - Y
+      - N
+    type: string
+    required: false
+  q.p_huc: 
+    name: p_huc
+    in: query
+    description: 2-, 4-, 6-, or 8-character watershed code. May contain multiple comma-separated values.
+    type: string
+    required: false
+  f.p_huc: 
+    name: p_huc
+    in: formData
+    description: 2-, 4-, 6-, or 8-character watershed code. May contain multiple comma-separated values.
+    type: string
+    required: false
+  q.p_esa: 
+    name: p_esa
+    in: query
+    description: ESA-listed species flag. Provide Y or N to restrict results to DMR facilities that do or do not discharge to counties w/ ESA-listed species
+    type: string
+    required: false
+  f.p_phosp_exceed_pct: 
+    name: p_phosp_exceed_pct
+    in: formData
+    type: string
+    required: false
+  q.p_phosp_exceed_pct: 
+    name: p_phosp_exceed_pct
+    in: query
+    type: string
+    required: false
+  f.p_phosp_exceed_lbs: 
+    name: p_phosp_exceed_lbs
+    in: formData
+    type: string
+    required: false
+  q.p_phosp_exceed_lbs: 
+    name: p_phosp_exceed_lbs
+    in: query
+    type: string
+    required: false
+  f.p_nitro_exceed_pct: 
+    name: p_nitro_exceed_pct
+    in: formData
+    type: string
+    required: false
+  q.p_nitro_exceed_pct: 
+    name: p_nitro_exceed_pct
+    in: query
+    type: string
+    required: false
+  f.p_nitro_exceed_lbs: 
+    name: p_nitro_exceed_lbs
+    in: formData
+    type: string
+    required: false
+  q.p_nitro_exceed_lbs: 
+    name: p_nitro_exceed_lbs
+    in: query
+    type: string
+    required: false
+  f.p_watershed_group: 
+    name: p_watershed_group
+    in: formData
+    description: |-
+      Major U.S. Watershed. Provide one of the following codes to restrict results. 
+      - M = Major Watersheds
+      - U = USGS Watersheds
+      - L = Large Aquatic Ecosystems Program
+      - N = National Estuaries Program
+    enum: 
+      - M
+      - U
+      - L
+      - N
+    type: string
+    required: false
+  q.p_watershed_group: 
+    name: p_watershed_group
+    in: query
+    description: |-
+      Major U.S. Watershed. Provide one of the following codes to restrict results. 
+      - M = Major Watersheds
+      - U = USGS Watersheds
+      - L = Large Aquatic Ecosystems Program
+      - N = National Estuaries Program
+    enum: 
+      - M
+      - U
+      - L
+      - N
+    type: string
+    required: false
+  f.p_watershed_zip: 
+    name: p_watershed_zip
+    in: formData
+    description: 5-Digit Watershed ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values.
+    type: string
+    required: false
+  q.p_watershed_zip: 
+    name: p_watershed_zip
+    in: query
+    description: 5-Digit Watershed ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values.
+    type: string
+    required: false
+  f.p_phosp_exceed: 
+    name: p_phosp_exceed
+    in: formData
+    type: string
+    required: false
+  q.p_phosp_exceed: 
+    name: p_phosp_exceed
+    in: query
+    type: string
+    required: false
+  f.p_nitro_exceed: 
+    name: p_nitro_exceed
+    in: formData
+    type: string
+    required: false
+  q.p_nitro_exceed: 
+    name: p_nitro_exceed
+    in: query
+    type: string
+    required: false
+  f.p_phosp_loads: 
+    name: p_phosp_loads
+    in: formData
+    type: string
+    required: false
+  q.p_phosp_loads: 
+    name: p_phosp_loads
+    in: query
+    type: string
+    required: false
+  f.p_nitro_loads: 
+    name: p_nitro_loads
+    in: formData
+    type: string
+    required: false
+  q.p_nitro_loads: 
+    name: p_nitro_loads
+    in: query
+    type: string
+    required: false
+  f.p_start_year: 
+    name: p_start_year
+    in: formData
+    description: Start of Year Range.  Provide a year value in YYYY format to specifcy the first year to include in results.  Parameter p_end_year must also be populated when using this parameter.
+    default: '2018'
+    type: string
+    required: true
+  q.p_start_year: 
+    name: p_start_year
+    in: query
+    description: Start of Year Range.  Provide a year value in YYYY format to specifcy the first year to include in results.  Parameter p_end_year must also be populated when using this parameter.
+    default: '2018'
+    type: string
+    required: true
+  f.p_htf_states: 
+    name: p_htf_states
+    in: formData
+    type: string
+    required: false
+  q.p_htf_states: 
+    name: p_htf_states
+    in: query
+    type: string
+    required: false
+  f.p_watershed: 
+    name: p_watershed
+    in: formData
+    description: Watershed. Provide a watershed name in combination with p_watershed_group to restrict results.
+    type: string
+    required: false
+  q.p_watershed: 
+    name: p_watershed
+    in: query
+    description: Watershed. Provide a watershed name in combination with p_watershed_group to restrict results.
+    type: string
+    required: false
+  f.p_imp_water: 
+    name: p_imp_water
+    in: formData
+    description: Discharge to impaired waterbodies flag. Provide Y or N to restrict results to DMR facilities that discharge to impaired waterbodies.
+    type: string
+    required: false
+  q.p_imp_water: 
+    name: p_imp_water
+    in: query
+    description: Discharge to impaired waterbodies flag. Provide Y or N to restrict results to DMR facilities that discharge to impaired waterbodies.
+    type: string
+    required: false
+  f.p_phosp_lt: 
+    name: p_phosp_lt
+    in: formData
+    type: string
+    required: false
+  q.p_phosp_lt: 
+    name: p_phosp_lt
+    in: query
+    type: string
+    required: false
+  f.p_phosp_gt: 
+    name: p_phosp_gt
+    in: formData
+    type: string
+    required: false
+  q.p_phosp_gt: 
+    name: p_phosp_gt
+    in: query
+    type: string
+    required: false
+  f.p_nitro_lt: 
+    name: p_nitro_lt
+    in: formData
+    type: string
+    required: false
+  q.p_nitro_lt: 
+    name: p_nitro_lt
+    in: query
+    type: string
+    required: false
+  f.p_nitro_gt: 
+    name: p_nitro_gt
+    in: formData
+    type: string
+    required: false
+  q.p_nitro_gt: 
+    name: p_nitro_gt
+    in: query
+    type: string
+    required: false
+  f.p_imp_poll: 
+    name: p_imp_poll
+    in: formData
+    description: Discharge pollutants contributing to impairment flag. Provide Y or N to restrict results to DMR facilities that discharge pollutants contributing to a waterbody impairment
+    type: string
+    required: false
+  q.p_imp_poll: 
+    name: p_imp_poll
+    in: query
+    description: Discharge pollutants contributing to impairment flag. Provide Y or N to restrict results to DMR facilities that discharge pollutants contributing to a waterbody impairment
+    type: string
+    required: false
+  f.p_group_by: 
+    name: p_group_by
+    in: formData
+    type: string
+    required: false
+  q.p_group_by: 
+    name: p_group_by
+    in: query
+    type: string
+    required: false
+  f.p_end_year: 
+    name: p_end_year
+    in: formData
+    description: End of Year Range.  Provide a year value in YYYY format to specifcy the last year to include in results.  Parameter p_start_year must also be populated when using this parameter.
+    default: '2018'
+    type: string
+    required: true
+  q.p_end_year: 
+    name: p_end_year
+    in: query
+    description: End of Year Range.  Provide a year value in YYYY format to specifcy the last year to include in results.  Parameter p_start_year must also be populated when using this parameter.
+    default: '2018'
+    type: string
+    required: true
+  f.p_sic4952: 
+    name: p_sic4952
+    in: formData
+    type: string
+    required: false
+  q.p_sic4952: 
+    name: p_sic4952
+    in: query
+    type: string
+    required: false
+  f.p_naics2: 
+    name: p_naics2
+    in: formData
+    description: "North American Industry Classification System Filter. Enter two digit code to filter results to facilities having matching NAICS codes.  A final wild-card is always present allowing \"22\" to match all NAICS codes beginning with 22. "
+    type: string
+    required: false
+  q.p_naics2: 
+    name: p_naics2
+    in: query
+    description: "North American Industry Classification System Filter. Enter two digit code to filter results to facilities having matching NAICS codes.  A final wild-card is always present allowing \"22\" to match all NAICS codes beginning with 22. "
+    type: string
+    required: false
+  f.download: 
+    name: download
+    in: formData
+    description: "Name of data object to be downloaded, e.g., TopWatersheds, TopSIC, TopFacilities, TopPollutantPounds, TopPollutantTWPE, TopWatershedPounds, TopWatershedTWPE, TopSICPounds, TopSICTWPE, TopFacilityPounds, TopFacilityTWPE. NOTE: Use TopWatersheds, TopSIC, or TopFacilities in combination with the search parameters p_cas, p_poll_name, or p_poll_cat."
+    type: string
+    required: false
+  q.download: 
+    name: download
+    in: query
+    description: "Name of data object to be downloaded, e.g., TopWatersheds, TopSIC, TopFacilities, TopPollutantPounds, TopPollutantTWPE, TopWatershedPounds, TopWatershedTWPE, TopSICPounds, TopSICTWPE, TopFacilityPounds, TopFacilityTWPE. NOTE: Use TopWatersheds, TopSIC, or TopFacilities in combination with the search parameters p_cas, p_poll_name, or p_poll_cat."
+    type: string
+    required: false
+  f.p_year: 
+    name: p_year
+    in: formData
+    description: The calendar year for the annual pollutant loadings. 
+    default: '2018'
+    type: string
+    required: true
+  q.p_year: 
+    name: p_year
+    in: query
+    description: The calendar year for the annual pollutant loadings. 
+    default: '2018'
+    type: string
+    required: true
+  f.p_potw: 
+    name: p_potw
+    in: formData
+    description: Publicly-Owned Treatment Works (POTW) Flag. Provide Y to restrict results to POTWs.
+    type: string
+    required: false
+  q.p_potw: 
+    name: p_potw
+    in: query
+    description: Publicly-Owned Treatment Works (POTW) Flag. Provide Y to restrict results to POTWs.
+    type: string
+    required: false
+  f.p_poll: 
+    name: p_poll
+    in: formData
+    type: string
+    required: false
+  q.p_poll: 
+    name: p_poll
+    in: query
+    type: string
+    required: false
+  f.p_esa: 
+    name: p_esa
+    in: formData
+    description: ESA-listed species flag. Provide Y or N to restrict results to DMR facilities that do or do not discharge to counties w/ ESA-listed species
+    type: string
+    required: false
+  q.p_psc: 
+    name: p_psc
+    in: query
+    description: Point Source Category.
+    type: string
+    required: false
+  f.p_psc: 
+    name: p_psc
+    in: formData
+    description: Point Source Category.
+    type: string
+    required: false
+  q.p_naics: 
+    name: p_naics
+    in: query
+    description: North American Industry Classification System Filter. Enter two to six digits to filter results to facilities having matching NAICS codes.  Digits less than six will match to all codes beginning with the provided values.
+    type: string
+    required: false
+  f.p_naics: 
+    name: p_naics
+    in: formData
+    description: North American Industry Classification System Filter. Enter two to six digits to filter results to facilities having matching NAICS codes.  Digits less than six will match to all codes beginning with the provided values.
+    type: string
+    required: false
+paths: 
+  "/dmr_htf_rest_services.get_nutrient_modeling": 
+    get: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.download"
+        - "$ref": "#/parameters/q.p_esa"
+        - "$ref": "#/parameters/q.p_huc"
+        - "$ref": "#/parameters/q.p_imp_water"
+        - "$ref": "#/parameters/q.p_imp_poll"
+        - "$ref": "#/parameters/q.p_maj"
+        - "$ref": "#/parameters/q.p_naics2"
+        - "$ref": "#/parameters/q.p_naics"
+        - "$ref": "#/parameters/q.p_nitro_loads"
+        - "$ref": "#/parameters/q.p_nitro_gt"
+        - "$ref": "#/parameters/q.p_nitro_lt"
+        - "$ref": "#/parameters/q.p_nitro_exceed"
+        - "$ref": "#/parameters/q.p_nitro_exceed_pct"
+        - "$ref": "#/parameters/q.p_nitro_exceed_lbs"
+        - "$ref": "#/parameters/q.p_phosp_loads"
+        - "$ref": "#/parameters/q.p_phosp_gt"
+        - "$ref": "#/parameters/q.p_phosp_lt"
+        - "$ref": "#/parameters/q.p_phosp_exceed"
+        - "$ref": "#/parameters/q.p_phosp_exceed_pct"
+        - "$ref": "#/parameters/q.p_phosp_exceed_lbs"
+        - "$ref": "#/parameters/q.p_potw"
+        - "$ref": "#/parameters/q.p_psc"
+        - "$ref": "#/parameters/q.p_reg"
+        - "$ref": "#/parameters/q.p_sic"
+        - "$ref": "#/parameters/q.p_sic2"
+        - "$ref": "#/parameters/q.p_sic4952"
+        - "$ref": "#/parameters/q.p_st"
+        - "$ref": "#/parameters/q.p_watershed_zip"
+        - "$ref": "#/parameters/q.p_watershed_group"
+        - "$ref": "#/parameters/q.p_watershed"
+        - "$ref": "#/parameters/q.p_year"
+        - "$ref": "#/parameters/q.callback"
+      tags: 
+        - DMR HTF
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dhtf01" 
+            required: 
+              - Results
+    post: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/f.output"
+        - "$ref": "#/parameters/f.download"
+        - "$ref": "#/parameters/f.p_esa"
+        - "$ref": "#/parameters/f.p_huc"
+        - "$ref": "#/parameters/f.p_imp_water"
+        - "$ref": "#/parameters/f.p_imp_poll"
+        - "$ref": "#/parameters/f.p_maj"
+        - "$ref": "#/parameters/f.p_naics2"
+        - "$ref": "#/parameters/f.p_naics"
+        - "$ref": "#/parameters/f.p_nitro_loads"
+        - "$ref": "#/parameters/f.p_nitro_gt"
+        - "$ref": "#/parameters/f.p_nitro_lt"
+        - "$ref": "#/parameters/f.p_nitro_exceed"
+        - "$ref": "#/parameters/f.p_nitro_exceed_pct"
+        - "$ref": "#/parameters/f.p_nitro_exceed_lbs"
+        - "$ref": "#/parameters/f.p_phosp_loads"
+        - "$ref": "#/parameters/f.p_phosp_gt"
+        - "$ref": "#/parameters/f.p_phosp_lt"
+        - "$ref": "#/parameters/f.p_phosp_exceed"
+        - "$ref": "#/parameters/f.p_phosp_exceed_pct"
+        - "$ref": "#/parameters/f.p_phosp_exceed_lbs"
+        - "$ref": "#/parameters/f.p_potw"
+        - "$ref": "#/parameters/f.p_psc"
+        - "$ref": "#/parameters/f.p_reg"
+        - "$ref": "#/parameters/f.p_sic"
+        - "$ref": "#/parameters/f.p_sic2"
+        - "$ref": "#/parameters/f.p_sic4952"
+        - "$ref": "#/parameters/f.p_st"
+        - "$ref": "#/parameters/f.p_watershed_zip"
+        - "$ref": "#/parameters/f.p_watershed_group"
+        - "$ref": "#/parameters/f.p_watershed"
+        - "$ref": "#/parameters/f.p_year"
+        - "$ref": "#/parameters/f.callback"
+      tags: 
+        - DMR HTF
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dhtf01" 
+            required: 
+              - Results
+  "/dmr_htf_rest_services.get_htf_poll_counts": 
+    get: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.download"
+        - "$ref": "#/parameters/q.p_end_year"
+        - "$ref": "#/parameters/q.p_esa"
+        - "$ref": "#/parameters/q.p_group_by"
+        - "$ref": "#/parameters/q.p_huc"
+        - "$ref": "#/parameters/q.p_htf_states"
+        - "$ref": "#/parameters/q.p_imp_water"
+        - "$ref": "#/parameters/q.p_imp_poll"
+        - "$ref": "#/parameters/q.p_maj"
+        - "$ref": "#/parameters/q.p_poll"
+        - "$ref": "#/parameters/q.p_potw"
+        - "$ref": "#/parameters/q.p_reg"
+        - "$ref": "#/parameters/q.p_sic4952"
+        - "$ref": "#/parameters/q.p_st"
+        - "$ref": "#/parameters/q.p_start_year"
+        - "$ref": "#/parameters/q.p_watershed_zip"
+        - "$ref": "#/parameters/q.p_watershed_group"
+        - "$ref": "#/parameters/q.p_watershed"
+        - "$ref": "#/parameters/q.p_year"
+        - "$ref": "#/parameters/q.callback"
+      tags: 
+        - DMR HTF
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dhtf02" 
+            required: 
+              - Results
+    post: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/f.output"
+        - "$ref": "#/parameters/f.download"
+        - "$ref": "#/parameters/f.p_end_year"
+        - "$ref": "#/parameters/f.p_esa"
+        - "$ref": "#/parameters/f.p_group_by"
+        - "$ref": "#/parameters/f.p_huc"
+        - "$ref": "#/parameters/f.p_htf_states"
+        - "$ref": "#/parameters/f.p_imp_water"
+        - "$ref": "#/parameters/f.p_imp_poll"
+        - "$ref": "#/parameters/f.p_maj"
+        - "$ref": "#/parameters/f.p_poll"
+        - "$ref": "#/parameters/f.p_potw"
+        - "$ref": "#/parameters/f.p_reg"
+        - "$ref": "#/parameters/f.p_sic4952"
+        - "$ref": "#/parameters/f.p_st"
+        - "$ref": "#/parameters/f.p_start_year"
+        - "$ref": "#/parameters/f.p_watershed_zip"
+        - "$ref": "#/parameters/f.p_watershed_group"
+        - "$ref": "#/parameters/f.p_watershed"
+        - "$ref": "#/parameters/f.p_year"
+        - "$ref": "#/parameters/f.callback"
+      tags: 
+        - DMR HTF
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dhtf02" 
+            required: 
+              - Results
+  "/dmr_htf_rest_services.get_htf_industry_counts": 
+    get: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.download"
+        - "$ref": "#/parameters/q.p_end_year"
+        - "$ref": "#/parameters/q.p_esa"
+        - "$ref": "#/parameters/q.p_group_by"
+        - "$ref": "#/parameters/q.p_huc"
+        - "$ref": "#/parameters/q.p_htf_states"
+        - "$ref": "#/parameters/q.p_imp_water"
+        - "$ref": "#/parameters/q.p_imp_poll"
+        - "$ref": "#/parameters/q.p_maj"
+        - "$ref": "#/parameters/q.p_poll"
+        - "$ref": "#/parameters/q.p_potw"
+        - "$ref": "#/parameters/q.p_reg"
+        - "$ref": "#/parameters/q.p_sic4952"
+        - "$ref": "#/parameters/q.p_st"
+        - "$ref": "#/parameters/q.p_start_year"
+        - "$ref": "#/parameters/q.p_watershed_zip"
+        - "$ref": "#/parameters/q.p_watershed_group"
+        - "$ref": "#/parameters/q.p_watershed"
+        - "$ref": "#/parameters/q.p_year"
+        - "$ref": "#/parameters/q.callback"
+      tags: 
+        - DMR HTF
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dhtf03" 
+            required: 
+              - Results
+    post: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/f.output"
+        - "$ref": "#/parameters/f.download"
+        - "$ref": "#/parameters/f.p_end_year"
+        - "$ref": "#/parameters/f.p_esa"
+        - "$ref": "#/parameters/f.p_group_by"
+        - "$ref": "#/parameters/f.p_huc"
+        - "$ref": "#/parameters/f.p_htf_states"
+        - "$ref": "#/parameters/f.p_imp_water"
+        - "$ref": "#/parameters/f.p_imp_poll"
+        - "$ref": "#/parameters/f.p_maj"
+        - "$ref": "#/parameters/f.p_poll"
+        - "$ref": "#/parameters/f.p_potw"
+        - "$ref": "#/parameters/f.p_reg"
+        - "$ref": "#/parameters/f.p_sic4952"
+        - "$ref": "#/parameters/f.p_st"
+        - "$ref": "#/parameters/f.p_start_year"
+        - "$ref": "#/parameters/f.p_watershed_zip"
+        - "$ref": "#/parameters/f.p_watershed_group"
+        - "$ref": "#/parameters/f.p_watershed"
+        - "$ref": "#/parameters/f.p_year"
+        - "$ref": "#/parameters/f.callback"
+      tags: 
+        - DMR HTF
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dhtf03" 
+            required: 
+              - Results
+  "/dmr_htf_rest_services.get_htf_facility_counts": 
+    get: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.download"
+        - "$ref": "#/parameters/q.p_end_year"
+        - "$ref": "#/parameters/q.p_esa"
+        - "$ref": "#/parameters/q.p_group_by"
+        - "$ref": "#/parameters/q.p_huc"
+        - "$ref": "#/parameters/q.p_htf_states"
+        - "$ref": "#/parameters/q.p_imp_water"
+        - "$ref": "#/parameters/q.p_imp_poll"
+        - "$ref": "#/parameters/q.p_maj"
+        - "$ref": "#/parameters/q.p_poll"
+        - "$ref": "#/parameters/q.p_potw"
+        - "$ref": "#/parameters/q.p_reg"
+        - "$ref": "#/parameters/q.p_st"
+        - "$ref": "#/parameters/q.p_start_year"
+        - "$ref": "#/parameters/q.p_watershed_zip"
+        - "$ref": "#/parameters/q.p_watershed_group"
+        - "$ref": "#/parameters/q.p_watershed"
+        - "$ref": "#/parameters/q.p_year"
+        - "$ref": "#/parameters/q.callback"
+      tags: 
+        - DMR HTF
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dhtf04" 
+            required: 
+              - Results
+    post: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/f.output"
+        - "$ref": "#/parameters/f.download"
+        - "$ref": "#/parameters/f.p_end_year"
+        - "$ref": "#/parameters/f.p_esa"
+        - "$ref": "#/parameters/f.p_group_by"
+        - "$ref": "#/parameters/f.p_huc"
+        - "$ref": "#/parameters/f.p_htf_states"
+        - "$ref": "#/parameters/f.p_imp_water"
+        - "$ref": "#/parameters/f.p_imp_poll"
+        - "$ref": "#/parameters/f.p_maj"
+        - "$ref": "#/parameters/f.p_poll"
+        - "$ref": "#/parameters/f.p_potw"
+        - "$ref": "#/parameters/f.p_reg"
+        - "$ref": "#/parameters/f.p_sic4952"
+        - "$ref": "#/parameters/f.p_st"
+        - "$ref": "#/parameters/f.p_start_year"
+        - "$ref": "#/parameters/f.p_watershed_zip"
+        - "$ref": "#/parameters/f.p_watershed_group"
+        - "$ref": "#/parameters/f.p_watershed"
+        - "$ref": "#/parameters/f.p_year"
+        - "$ref": "#/parameters/f.callback"
+      tags: 
+        - DMR HTF
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dhtf04" 
+            required: 
+              - Results
+  "/dmr_htf_rest_services.get_htf_poll_loads": 
+    get: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.download"
+        - "$ref": "#/parameters/q.p_end_year"
+        - "$ref": "#/parameters/q.p_esa"
+        - "$ref": "#/parameters/q.p_group_by"
+        - "$ref": "#/parameters/q.p_huc"
+        - "$ref": "#/parameters/q.p_htf_states"
+        - "$ref": "#/parameters/q.p_imp_water"
+        - "$ref": "#/parameters/q.p_imp_poll"
+        - "$ref": "#/parameters/q.p_maj"
+        - "$ref": "#/parameters/q.p_poll"
+        - "$ref": "#/parameters/q.p_potw"
+        - "$ref": "#/parameters/q.p_reg"
+        - "$ref": "#/parameters/q.p_sic4952"
+        - "$ref": "#/parameters/q.p_st"
+        - "$ref": "#/parameters/q.p_start_year"
+        - "$ref": "#/parameters/q.p_watershed_zip"
+        - "$ref": "#/parameters/q.p_watershed_group"
+        - "$ref": "#/parameters/q.p_watershed"
+        - "$ref": "#/parameters/q.p_year"
+        - "$ref": "#/parameters/q.callback"
+      tags: 
+        - DMR HTF
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dhtf05" 
+            required: 
+              - Results
+    post: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/f.output"
+        - "$ref": "#/parameters/f.download"
+        - "$ref": "#/parameters/f.p_end_year"
+        - "$ref": "#/parameters/f.p_esa"
+        - "$ref": "#/parameters/f.p_group_by"
+        - "$ref": "#/parameters/f.p_huc"
+        - "$ref": "#/parameters/f.p_htf_states"
+        - "$ref": "#/parameters/f.p_imp_water"
+        - "$ref": "#/parameters/f.p_imp_poll"
+        - "$ref": "#/parameters/f.p_maj"
+        - "$ref": "#/parameters/f.p_poll"
+        - "$ref": "#/parameters/f.p_potw"
+        - "$ref": "#/parameters/f.p_reg"
+        - "$ref": "#/parameters/f.p_sic4952"
+        - "$ref": "#/parameters/f.p_st"
+        - "$ref": "#/parameters/f.p_start_year"
+        - "$ref": "#/parameters/f.p_watershed_zip"
+        - "$ref": "#/parameters/f.p_watershed_group"
+        - "$ref": "#/parameters/f.p_watershed"
+        - "$ref": "#/parameters/f.p_year"
+        - "$ref": "#/parameters/f.callback"
+      tags: 
+        - DMR HTF
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dhtf05" 
+            required: 
+              - Results
+  "/dmr_htf_rest_services.get_htf_industry_loads": 
+    get: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.download"
+        - "$ref": "#/parameters/q.p_end_year"
+        - "$ref": "#/parameters/q.p_esa"
+        - "$ref": "#/parameters/q.p_group_by"
+        - "$ref": "#/parameters/q.p_huc"
+        - "$ref": "#/parameters/q.p_htf_states"
+        - "$ref": "#/parameters/q.p_imp_water"
+        - "$ref": "#/parameters/q.p_imp_poll"
+        - "$ref": "#/parameters/q.p_maj"
+        - "$ref": "#/parameters/q.p_poll"
+        - "$ref": "#/parameters/q.p_potw"
+        - "$ref": "#/parameters/q.p_reg"
+        - "$ref": "#/parameters/q.p_sic4952"
+        - "$ref": "#/parameters/q.p_st"
+        - "$ref": "#/parameters/q.p_start_year"
+        - "$ref": "#/parameters/q.p_watershed_zip"
+        - "$ref": "#/parameters/q.p_watershed_group"
+        - "$ref": "#/parameters/q.p_watershed"
+        - "$ref": "#/parameters/q.p_year"
+        - "$ref": "#/parameters/q.callback"
+      tags: 
+        - DMR HTF
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dhtf06" 
+            required: 
+              - Results
+    post: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/f.output"
+        - "$ref": "#/parameters/f.download"
+        - "$ref": "#/parameters/f.p_end_year"
+        - "$ref": "#/parameters/f.p_esa"
+        - "$ref": "#/parameters/f.p_group_by"
+        - "$ref": "#/parameters/f.p_huc"
+        - "$ref": "#/parameters/f.p_htf_states"
+        - "$ref": "#/parameters/f.p_imp_water"
+        - "$ref": "#/parameters/f.p_imp_poll"
+        - "$ref": "#/parameters/f.p_maj"
+        - "$ref": "#/parameters/f.p_poll"
+        - "$ref": "#/parameters/f.p_potw"
+        - "$ref": "#/parameters/f.p_reg"
+        - "$ref": "#/parameters/f.p_sic4952"
+        - "$ref": "#/parameters/f.p_st"
+        - "$ref": "#/parameters/f.p_start_year"
+        - "$ref": "#/parameters/f.p_watershed_zip"
+        - "$ref": "#/parameters/f.p_watershed_group"
+        - "$ref": "#/parameters/f.p_watershed"
+        - "$ref": "#/parameters/f.p_year"
+        - "$ref": "#/parameters/f.callback"
+      tags: 
+        - DMR HTF
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dhtf06" 
+            required: 
+              - Results
+  "/dmr_htf_rest_services.get_htf_facility_loads": 
+    get: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/q.output"
+        - "$ref": "#/parameters/q.download"
+        - "$ref": "#/parameters/q.p_end_year"
+        - "$ref": "#/parameters/q.p_esa"
+        - "$ref": "#/parameters/q.p_group_by"
+        - "$ref": "#/parameters/q.p_huc"
+        - "$ref": "#/parameters/q.p_htf_states"
+        - "$ref": "#/parameters/q.p_imp_water"
+        - "$ref": "#/parameters/q.p_imp_poll"
+        - "$ref": "#/parameters/q.p_maj"
+        - "$ref": "#/parameters/q.p_poll"
+        - "$ref": "#/parameters/q.p_potw"
+        - "$ref": "#/parameters/q.p_reg"
+        - "$ref": "#/parameters/q.p_sic4952"
+        - "$ref": "#/parameters/q.p_st"
+        - "$ref": "#/parameters/q.p_start_year"
+        - "$ref": "#/parameters/q.p_watershed_zip"
+        - "$ref": "#/parameters/q.p_watershed_group"
+        - "$ref": "#/parameters/q.p_watershed"
+        - "$ref": "#/parameters/q.p_year"
+        - "$ref": "#/parameters/q.callback"
+      tags: 
+        - DMR HTF
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dhtf07" 
+            required: 
+              - Results
+    post: 
+      summary: Placeholder
+      parameters: 
+        - "$ref": "#/parameters/f.output"
+        - "$ref": "#/parameters/f.download"
+        - "$ref": "#/parameters/f.p_end_year"
+        - "$ref": "#/parameters/f.p_esa"
+        - "$ref": "#/parameters/f.p_group_by"
+        - "$ref": "#/parameters/f.p_huc"
+        - "$ref": "#/parameters/f.p_htf_states"
+        - "$ref": "#/parameters/f.p_imp_water"
+        - "$ref": "#/parameters/f.p_imp_poll"
+        - "$ref": "#/parameters/f.p_maj"
+        - "$ref": "#/parameters/f.p_poll"
+        - "$ref": "#/parameters/f.p_potw"
+        - "$ref": "#/parameters/f.p_reg"
+        - "$ref": "#/parameters/f.p_sic4952"
+        - "$ref": "#/parameters/f.p_st"
+        - "$ref": "#/parameters/f.p_start_year"
+        - "$ref": "#/parameters/f.p_watershed_zip"
+        - "$ref": "#/parameters/f.p_watershed_group"
+        - "$ref": "#/parameters/f.p_watershed"
+        - "$ref": "#/parameters/f.p_year"
+        - "$ref": "#/parameters/f.callback"
+      tags: 
+        - DMR HTF
+      responses: 
+        '200': 
+          description: Results
+          schema: 
+            description: Root Object
+            xml: 
+              name: Root
+            properties: 
+              Results: 
+                "$ref": "#/definitions/dhtf07" 
+            required: 
+              - Results
+definitions: 
+  dhtf08: 
+    description: Hypoxia Facilities Object
+    xml: 
+      name: HypoxiaFacilities
+    properties: 
+      ExternalPermitNmbr: 
+        type: string
+      StateCode: 
+        type: string
+        title: State Code
+        example: VA
+        description: The state in which the system is located.
+      FacilityTypeIndicator: 
+        type: string
+      SicCode4Digit: 
+        type: string
+      SicDesc4Digit: 
+        type: string
+      FacInfoOnly: 
+        type: string
+        example: No
+      TotalNMonReqOnly: 
+        type: string
+      TotalNMonReqLimits: 
+        type: string
+      OtherNMonReqOnly: 
+        type: string
+      OtherNMonReqLimits: 
+        type: string
+      TotalPMonReqOnly: 
+        type: string
+      TotalPMonReqLimits: 
+        type: string
+      OtherPMonReqOnly: 
+        type: string
+      OtherPMonReqLimits: 
+        type: string
+      NAndPMonReqOnly: 
+        type: string
+      NAndPMonReqLimits: 
+        type: string
+    required: 
+      - ExternalPermitNmbr
+      - StateCode
+      - FacilityTypeIndicator
+      - SicCode4Digit
+      - SicDesc4Digit
+      - FacInfoOnly
+      - TotalNMonReqOnly
+      - TotalNMonReqLimits
+      - OtherNMonReqOnly
+      - OtherNMonReqLimits
+      - TotalPMonReqOnly
+      - TotalPMonReqLimits
+      - OtherPMonReqOnly
+      - OtherPMonReqLimits
+      - NAndPMonReqOnly
+      - NAndPMonReqLimits
+  dhtf04: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      SearchCriteria: 
+        type: string
+      QueryRows: 
+        type: string
+        title: Query Row Count
+        example: '5'
+        description: Number of query results returned
+      PageCount: 
+        type: string
+      PageNo: 
+        type: string
+        title: Page Number
+        example: '1'
+        description: The number of pages of results returned
+      StartRec: 
+        type: string
+      EndRec: 
+        type: string
+      HypoxiaFacilities: 
+        type: array
+        title: Hypoxia Loads
+        items: 
+          "$ref": "#/definitions/dhtf08" 
+        xml: 
+          name: HypoxiaFacilities
+          wrapped: true
+    required: 
+      - Message
+      - SearchCriteria
+      - QueryRows
+      - PageCount
+      - PageNo
+      - StartRec
+      - EndRec
+      - HypoxiaFacilities
+  dhtf09: 
+    description: Hypoxia Facilities Object
+    xml: 
+      name: HypoxiaFacilities
+    properties: 
+      ExternalPermitNmbr: 
+        type: string
+      StateCode: 
+        type: string
+        title: State Code
+        example: VA
+        description: The state in which the system is located.
+      FacilityTypeIndicator: 
+        type: string
+      SicCode4Digit: 
+        type: string
+      SicDesc4Digit: 
+        type: string
+      NitrogenAnnualDischarge: 
+        type: string
+      NitrogenDmrDischarge: 
+        type: string
+      NitrogenPctDmr: 
+        type: string
+      PhosphorusAnnualDischarge: 
+        type: string
+      PhosphorusDmrDischarge: 
+        type: string
+      PhosphorusPctDmr: 
+        type: string
+    required: 
+      - ExternalPermitNmbr
+      - StateCode
+      - FacilityTypeIndicator
+      - SicCode4Digit
+      - SicDesc4Digit
+      - NitrogenAnnualDischarge
+      - NitrogenDmrDischarge
+      - NitrogenPctDmr
+      - PhosphorusAnnualDischarge
+      - PhosphorusDmrDischarge
+      - PhosphorusPctDmr
+  dhtf07: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      SearchCriteria: 
+        type: string
+      QueryRows: 
+        type: string
+        title: Query Row Count
+        example: '5'
+        description: Number of query results returned
+      PageCount: 
+        type: string
+      PageNo: 
+        type: string
+        title: Page Number
+        example: '1'
+        description: The number of pages of results returned
+      StartRec: 
+        type: string
+      EndRec: 
+        type: string
+      HypoxiaFacilities: 
+        type: array
+        title: Hypoxia Loads
+        items: 
+          "$ref": "#/definitions/dhtf09" 
+        xml: 
+          name: HypoxiaFacilities
+          wrapped: true
+    required: 
+      - Message
+      - SearchCriteria
+      - QueryRows
+      - PageCount
+      - PageNo
+      - StartRec
+      - EndRec
+      - HypoxiaFacilities
+  dhtf13: 
+    description: Hypoxia Count Totals Object
+    xml: 
+      name: HypoxiaCountTotals
+    properties: 
+      GroupName: 
+        type: string
+        title: Group Name
+        description: Name of the group represented. Either a state name or point source category (PSC).
+      GroupCode: 
+        type: string
+      AllFac: 
+        type: string
+      FacInfoOnly: 
+        type: string
+        example: No
+      WithPermitData: 
+        type: string
+      PotwTotalMonReq: 
+        type: string
+      PotwTotalLimits: 
+        type: string
+      PotwOtherMonReq: 
+        type: string
+      PotwOtherLimits: 
+        type: string
+      NpotwTotalMonReq: 
+        type: string
+      NpotwTotalLimits: 
+        type: string
+      NpotwOtherMonReq: 
+        type: string
+      NpotwOtherLimits: 
+        type: string
+    required: 
+      - GroupName
+      - GroupCode
+      - AllFac
+      - FacInfoOnly
+      - WithPermitData
+      - PotwTotalMonReq
+      - PotwTotalLimits
+      - PotwOtherMonReq
+      - PotwOtherLimits
+      - NpotwTotalMonReq
+      - NpotwTotalLimits
+      - NpotwOtherMonReq
+      - NpotwOtherLimits
+  dhtf10: 
+    description: Hypoxia Counts Object
+    xml: 
+      name: HypoxiaCounts
+    properties: 
+      GroupName: 
+        type: string
+        title: Group Name
+        description: Name of the group represented. Either a state name or point source category (PSC).
+      GroupCode: 
+        type: string
+      AllFac: 
+        type: string
+      FacInfoOnly: 
+        type: string
+        example: No
+      WithPermitData: 
+        type: string
+      PotwTotalMonReq: 
+        type: string
+      PotwTotalLimits: 
+        type: string
+      PotwOtherMonReq: 
+        type: string
+      PotwOtherLimits: 
+        type: string
+      NpotwTotalMonReq: 
+        type: string
+      NpotwTotalLimits: 
+        type: string
+      NpotwOtherMonReq: 
+        type: string
+      NpotwOtherLimits: 
+        type: string
+    required: 
+      - GroupName
+      - GroupCode
+      - AllFac
+      - FacInfoOnly
+      - WithPermitData
+      - PotwTotalMonReq
+      - PotwTotalLimits
+      - PotwOtherMonReq
+      - PotwOtherLimits
+      - NpotwTotalMonReq
+      - NpotwTotalLimits
+      - NpotwOtherMonReq
+      - NpotwOtherLimits
+  dhtf03: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      SearchCriteria: 
+        type: string
+      HypoxiaCounts: 
+        type: array
+        title: Hypoxia Counts
+        items: 
+          "$ref": "#/definitions/dhtf10" 
+        xml: 
+          name: HypoxiaCounts
+          wrapped: true
+      HypoxiaCountTotals: 
+        type: array
+        title: Hypoxia Count Totals
+        items: 
+          "$ref": "#/definitions/dhtf13" 
+        xml: 
+          name: HypoxiaCountTotals
+          wrapped: true
+    required: 
+      - Message
+      - SearchCriteria
+      - HypoxiaCounts
+      - HypoxiaCountTotals
+  dhtf12: 
+    description: Hypoxia Load Totals Object
+    xml: 
+      name: HypoxiaLoadTotals
+    properties: 
+      GroupName: 
+        type: string
+        title: Group Name
+        description: Name of the group represented. Either a state name or point source category (PSC).
+      GroupCode: 
+        type: string
+      PotwAnnualDischarge: 
+        type: string
+      PotwDmrDischarge: 
+        type: string
+      PotwPctDmr: 
+        type: string
+      PotwDmrCount: 
+        type: string
+      PotwModeledCount: 
+        type: string
+      NonpotwAnnualDischarge: 
+        type: string
+      NonpotwDmrDischarge: 
+        type: string
+      NonpotwPctDmr: 
+        type: string
+      NonpotwDmrCount: 
+        type: string
+      NonpotwModeledCount: 
+        type: string
+    required: 
+      - GroupName
+      - GroupCode
+      - PotwAnnualDischarge
+      - PotwDmrDischarge
+      - PotwPctDmr
+      - PotwDmrCount
+      - PotwModeledCount
+      - NonpotwAnnualDischarge
+      - NonpotwDmrDischarge
+      - NonpotwPctDmr
+      - NonpotwDmrCount
+      - NonpotwModeledCount
+  dhtf11: 
+    description: Hypoxia Loads Object
+    xml: 
+      name: HypoxiaLoads
+    properties: 
+      GroupName: 
+        type: string
+        title: Group Name
+        description: Name of the group represented. Either a state name or point source category (PSC).
+      GroupCode: 
+        type: string
+      PotwAnnualDischarge: 
+        type: string
+      PotwDmrDischarge: 
+        type: string
+      PotwPctDmr: 
+        type: string
+      PotwDmrCount: 
+        type: string
+      PotwModeledCount: 
+        type: string
+      NonpotwAnnualDischarge: 
+        type: string
+      NonpotwDmrDischarge: 
+        type: string
+      NonpotwPctDmr: 
+        type: string
+      NonpotwDmrCount: 
+        type: string
+      NonpotwModeledCount: 
+        type: string
+    required: 
+      - GroupName
+      - GroupCode
+      - PotwAnnualDischarge
+      - PotwDmrDischarge
+      - PotwPctDmr
+      - PotwDmrCount
+      - PotwModeledCount
+      - NonpotwAnnualDischarge
+      - NonpotwDmrDischarge
+      - NonpotwPctDmr
+      - NonpotwDmrCount
+      - NonpotwModeledCount
+  dhtf06: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      SearchCriteria: 
+        type: string
+      HypoxiaLoads: 
+        type: array
+        title: Hypoxia Loads
+        items: 
+          "$ref": "#/definitions/dhtf11" 
+        xml: 
+          name: HypoxiaLoads
+          wrapped: true
+      HypoxiaLoadTotals: 
+        type: array
+        title: Hypoxia Load Totals
+        items: 
+          "$ref": "#/definitions/dhtf12" 
+        xml: 
+          name: HypoxiaLoadTotals
+          wrapped: true
+    required: 
+      - Message
+      - SearchCriteria
+      - HypoxiaLoads
+      - HypoxiaLoadTotals
+  dhtf15: 
+    description: Hypoxia Count Totals Object
+    xml: 
+      name: HypoxiaCountTotals
+    properties: 
+      GroupName: 
+        type: string
+        title: Group Name
+        description: Name of the group represented. Either a state name or point source category (PSC).
+      GroupCode: 
+        type: string
+      AllFac: 
+        type: string
+      FacInfoOnly: 
+        type: string
+        example: No
+      WithPermitData: 
+        type: string
+      TotalNMonReqOnly: 
+        type: string
+      TotalNMonReqLimits: 
+        type: string
+      OtherNMonReqOnly: 
+        type: string
+      OtherNMonReqLimits: 
+        type: string
+      TotalPMonReqOnly: 
+        type: string
+      TotalPMonReqLimits: 
+        type: string
+      OtherPMonReqOnly: 
+        type: string
+      OtherPMonReqLimits: 
+        type: string
+      NAndPMonReqOnly: 
+        type: string
+      NAndPMonReqLimits: 
+        type: string
+    required: 
+      - GroupName
+      - GroupCode
+      - AllFac
+      - FacInfoOnly
+      - WithPermitData
+      - TotalNMonReqOnly
+      - TotalNMonReqLimits
+      - OtherNMonReqOnly
+      - OtherNMonReqLimits
+      - TotalPMonReqOnly
+      - TotalPMonReqLimits
+      - OtherPMonReqOnly
+      - OtherPMonReqLimits
+      - NAndPMonReqOnly
+      - NAndPMonReqLimits
+  dhtf14: 
+    description: Hypoxia Counts Object
+    xml: 
+      name: HypoxiaCounts
+    properties: 
+      GroupName: 
+        type: string
+        title: Group Name
+        description: Name of the group represented. Either a state name or point source category (PSC).
+      GroupCode: 
+        type: string
+      AllFac: 
+        type: string
+      FacInfoOnly: 
+        type: string
+        example: No
+      WithPermitData: 
+        type: string
+      TotalNMonReqOnly: 
+        type: string
+      TotalNMonReqLimits: 
+        type: string
+      OtherNMonReqOnly: 
+        type: string
+      OtherNMonReqLimits: 
+        type: string
+      TotalPMonReqOnly: 
+        type: string
+      TotalPMonReqLimits: 
+        type: string
+      OtherPMonReqOnly: 
+        type: string
+      OtherPMonReqLimits: 
+        type: string
+      NAndPMonReqOnly: 
+        type: string
+      NAndPMonReqLimits: 
+        type: string
+    required: 
+      - GroupName
+      - GroupCode
+      - AllFac
+      - FacInfoOnly
+      - WithPermitData
+      - TotalNMonReqOnly
+      - TotalNMonReqLimits
+      - OtherNMonReqOnly
+      - OtherNMonReqLimits
+      - TotalPMonReqOnly
+      - TotalPMonReqLimits
+      - OtherPMonReqOnly
+      - OtherPMonReqLimits
+      - NAndPMonReqOnly
+      - NAndPMonReqLimits
+  dhtf02: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      SearchCriteria: 
+        type: string
+      HypoxiaCounts: 
+        type: array
+        title: Hypoxia Counts
+        items: 
+          "$ref": "#/definitions/dhtf14" 
+        xml: 
+          name: HypoxiaCounts
+          wrapped: true
+      HypoxiaCountTotals: 
+        type: array
+        title: Hypoxia Count Totals
+        items: 
+          "$ref": "#/definitions/dhtf15" 
+        xml: 
+          name: HypoxiaCountTotals
+          wrapped: true
+    required: 
+      - Message
+      - SearchCriteria
+      - HypoxiaCounts
+      - HypoxiaCountTotals
+  dhtf17: 
+    description: Hypoxia Load Totals Object
+    xml: 
+      name: HypoxiaLoadTotals
+    properties: 
+      GroupName: 
+        type: string
+        title: Group Name
+        description: Name of the group represented. Either a state name or point source category (PSC).
+      GroupCode: 
+        type: string
+      NitrogenAnnualDischarge: 
+        type: string
+      NitrogenDmrDischarge: 
+        type: string
+      NitrogenPctDmr: 
+        type: string
+      NitrogenDmrCount: 
+        type: string
+      NitrogenModeledCount: 
+        type: string
+      PhosphorusAnnualDischarge: 
+        type: string
+      PhosphorusDmrDischarge: 
+        type: string
+      PhosphorusPctDmr: 
+        type: string
+      PhosphorusDmrCount: 
+        type: string
+      PhosphorusModeledCount: 
+        type: string
+    required: 
+      - GroupName
+      - GroupCode
+      - NitrogenAnnualDischarge
+      - NitrogenDmrDischarge
+      - NitrogenPctDmr
+      - NitrogenDmrCount
+      - NitrogenModeledCount
+      - PhosphorusAnnualDischarge
+      - PhosphorusDmrDischarge
+      - PhosphorusPctDmr
+      - PhosphorusDmrCount
+      - PhosphorusModeledCount
+  dhtf16: 
+    description: Hypoxia Loads Object
+    xml: 
+      name: HypoxiaLoads
+    properties: 
+      GroupName: 
+        type: string
+        title: Group Name
+        description: Name of the group represented. Either a state name or point source category (PSC).
+      GroupCode: 
+        type: string
+      NitrogenAnnualDischarge: 
+        type: string
+      NitrogenDmrDischarge: 
+        type: string
+      NitrogenPctDmr: 
+        type: string
+      NitrogenDmrCount: 
+        type: string
+      NitrogenModeledCount: 
+        type: string
+      PhosphorusAnnualDischarge: 
+        type: string
+      PhosphorusDmrDischarge: 
+        type: string
+      PhosphorusPctDmr: 
+        type: string
+      PhosphorusDmrCount: 
+        type: string
+      PhosphorusModeledCount: 
+        type: string
+    required: 
+      - GroupName
+      - GroupCode
+      - NitrogenAnnualDischarge
+      - NitrogenDmrDischarge
+      - NitrogenPctDmr
+      - NitrogenDmrCount
+      - NitrogenModeledCount
+      - PhosphorusAnnualDischarge
+      - PhosphorusDmrDischarge
+      - PhosphorusPctDmr
+      - PhosphorusDmrCount
+      - PhosphorusModeledCount
+  dhtf05: 
+    description: Results Object
+    properties: 
+      Message: 
+        type: string
+        title: Message
+        example: Success
+        description: Field to record messages (typically performance-related) about packet processing
+      SearchCriteria: 
+        type: string
+      HypoxiaLoads: 
+        type: array
+        title: Hypoxia Loads
+        items: 
+          "$ref": "#/definitions/dhtf16" 
+        xml: 
+          name: HypoxiaLoads
+          wrapped: true
+      HypoxiaLoadTotals: 
+        type: array
+        title: Hypoxia Load Totals
+        items: 
+          "$ref": "#/definitions/dhtf17" 
+        xml: 
+          name: HypoxiaLoadTotals
+          wrapped: true
+    required: 
+      - Message
+      - SearchCriteria
+      - HypoxiaLoads
+      - HypoxiaLoadTotals
+  dhtf18: 
+    description: Nutrient Loads Object
+    properties: 
+      DmrYear: 
+        type: string
+      ExternalPermitNmbr: 
+        type: string
+      Uin: 
+        type: string
+      SicCode1: 
+        type: string
+      NaicsCode: 
+        type: string
+      FacilityName: 
+        type: string
+        title: Facility Name
+        example: 3M COMPANY
+        description: The name of the facility.
+      City: 
+        type: string
+        title: City
+        description: The name of the city, town, village or other locality, when identifiable, within whose boundaries (the majority of) the facility site is located. This is not always the same as the city used for USPS mail delivery.
+      StateCode: 
+        type: string
+        title: State Code
+        example: VA
+        description: The state in which the system is located.
+      Zip: 
+        type: string
+        title: Zip Code
+        example: '53140'
+        description: US postal ZIP code, as maintained by ICIS.
+      CountyName: 
+        type: string
+      FIPSCode: 
+        type: string
+      EPARegionCode: 
+        type: string
+        title: EPA Region Code
+        example: '03'
+        description: The EPA region where the facility is located. EPA has 10 regional offices that execute programs within several states and territories
+      FacilityTypeIndicator: 
+        type: string
+      PermitTypeDesc: 
+        type: string
+      MajorMinorStatusFlag: 
+        type: string
+      Huc12: 
+        type: string
+      TotalDesignFlowNmbr: 
+        type: string
+      ActualAverageFlowNmbr: 
+        type: string
+      GeocodeLatitude: 
+        type: string
+      GeocodeLongitude: 
+        type: string
+      NutrientType: 
+        type: string
+      TotalPounds: 
+        type: string
+      TotalFlow: 
+        type: string
+      AllowableLoad: 
+        type: string
+      LoadOverLimit: 
+        type: string
+      AverageConc: 
+        type: string
+      ConcSource: 
+        type: string
+      FlowSource: 
+        type: string
+      ImpWtrFlag: 
+        type: string
+      ImpWtrPollFlag: 
+        type: string
+    required: 
+      - DmrYear
+      - ExternalPermitNmbr
+      - Uin
+      - SicCode1
+      - NaicsCode
+      - FacilityName
+      - City
+      - StateCode
+      - Zip
+      - CountyName
+      - FIPSCode
+      - EPARegionCode
+      - FacilityTypeIndicator
+      - PermitTypeDesc
+      - MajorMinorStatusFlag
+      - Huc12
+      - TotalDesignFlowNmbr
+      - ActualAverageFlowNmbr
+      - GeocodeLatitude
+      - GeocodeLongitude
+      - NutrientType
+      - TotalPounds
+      - TotalFlow
+      - AllowableLoad
+      - LoadOverLimit
+      - AverageConc
+      - ConcSource
+      - FlowSource
+      - ImpWtrFlag
+      - ImpWtrPollFlag
+  dhtf01: 
+    description: Results Object
+    properties: 
+      QueryRows: 
+        type: string
+        title: Query Row Count
+        example: '5'
+        description: Number of query results returned
+      PageCount: 
+        type: string
+      PageNo: 
+        type: string
+        title: Page Number
+        example: '1'
+        description: The number of pages of results returned
+      StartRec: 
+        type: string
+      EndRec: 
+        type: string
+      NutrientLoads: 
+        type: array
+        title: Nutrient Loads
+        items: 
+          "$ref": "#/definitions/dhtf18" 
+    required: 
+      - QueryRows
+      - PageCount
+      - PageNo
+      - StartRec
+      - EndRec
+      - NutrientLoads
