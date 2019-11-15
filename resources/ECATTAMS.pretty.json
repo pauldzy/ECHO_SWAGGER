@@ -3,13 +3,14 @@
    ,"info": {
        "title": "U.S. EPA Enforcement and Compliance History Online (ECHO)"
       ,"contact": {
-          "name": "US EPA, OECA Integration, Targeting and Access Branch"
+          "name": "U.S. EPA, OECA Integration, Targeting and Access Branch"
+         ,"url": "https:\/\/echo.epa.gov\/resources\/general-info\/contact-us"
       }
       ,"license": {
-          "name": "This page was built with the Swagger API."
-         ,"url": "https:\/\/swagger.io"
+          "name": "U.S. Public Domain License"
+         ,"url": "https:\/\/edg.epa.gov\/EPA_Data_License.html"
       }
-      ,"version": "0.0.0"
+      ,"version": "2019.10.15"
    }
    ,"host": "ofmpub.epa.gov"
    ,"basePath": "\/echo"
@@ -2701,6 +2702,9 @@
             ,"MedianConc": {
                 "type": "string"
             }
+            ,"RecentConc": {
+                "type": "string"
+            }
             ,"Variance": {
                 "type": "string"
             }
@@ -2728,6 +2732,7 @@
             ,"AverageConc"
             ,"MaximumConc"
             ,"MedianConc"
+            ,"RecentConc"
             ,"Variance"
             ,"ReferenceConc"
             ,"NATAModeledConc"
@@ -3450,16 +3455,31 @@
             ,"TotalWholebodyHazIndex": {
                 "type": "string"
             }
+            ,"AvgAmaCancerRisk": {
+                "type": "string"
+            }
             ,"AvgCancerRisk": {
+                "type": "string"
+            }
+            ,"MedianAmaCancerRisk": {
                 "type": "string"
             }
             ,"MedianCancerRisk": {
                 "type": "string"
             }
+            ,"MaxAmaCancerRisk": {
+                "type": "string"
+            }
             ,"MaxCancerRisk": {
                 "type": "string"
             }
+            ,"TotalAmaCancerRisk": {
+                "type": "string"
+            }
             ,"TotalSiteCancerRisk": {
+                "type": "string"
+            }
+            ,"TotalNataCancerRisk": {
                 "type": "string"
             }
             ,"TotalCancerRiskPerMil": {
@@ -3499,6 +3519,9 @@
                 "type": "string"
             }
             ,"SO2NonattainmentArea": {
+                "type": "string"
+            }
+            ,"NonAttainmentMatch": {
                 "type": "string"
             }
             ,"MapIcon": {
@@ -3618,6 +3641,9 @@
             ,"AmaTtlHazWholebod": {
                 "type": "string"
             }
+            ,"RecentAmaCancerRisk": {
+                "type": "string"
+            }
             ,"RecentCancerRisk": {
                 "type": "string"
             }
@@ -3731,11 +3757,6 @@
              "ReportingYear"
             ,"AmaSiteCode"
             ,"AmaSiteLocation"
-            ,"ParameterCode"
-            ,"ParameterDesc"
-            ,"Cas"
-            ,"CategoryCode"
-            ,"PTrend"
             ,"StateAbbr"
             ,"LocationType"
             ,"ProgramDesc"
@@ -3762,16 +3783,6 @@
             ,"TotalSpleenHazIndex"
             ,"TotalThyroidHazIndex"
             ,"TotalWholebodyHazIndex"
-            ,"AvgCancerRisk"
-            ,"MedianCancerRisk"
-            ,"MaxCancerRisk"
-            ,"TotalSiteCancerRisk"
-            ,"TotalCancerRiskPerMil"
-            ,"AvgAmaConcUgM3"
-            ,"MaxAmaConcUgM3"
-            ,"MedAmaConcUgM3"
-            ,"RecentAmaConcUgM3"
-            ,"NataConcUgM3"
             ,"CoNonattainmentArea"
             ,"LeadNonattainmentArea"
             ,"NO2NonattainmentArea"
@@ -3779,24 +3790,11 @@
             ,"Pm25NonattainmentArea"
             ,"OzoneNonattainmentArea"
             ,"SO2NonattainmentArea"
+            ,"NonAttainmentMatch"
             ,"MapIcon"
             ,"NondetectMethod"
             ,"NdThreshold"
             ,"AnnualCompleteness"
-            ,"AmaHazResp"
-            ,"AmaHazLiver"
-            ,"AmaHazNeuro"
-            ,"AmaHazDev"
-            ,"AmaHazReprod"
-            ,"AmaHazKidney"
-            ,"AmaHazOcular"
-            ,"AmaHazEndoc"
-            ,"AmaHazHemato"
-            ,"AmaHazImmune"
-            ,"AmaHazSkeletal"
-            ,"AmaHazSpleen"
-            ,"AmaHazThyroid"
-            ,"AmaHazWholebod"
             ,"AmaTtlGt1x"
             ,"AmaTtlGt2x"
             ,"AmaTtlGt10x"
@@ -3804,56 +3802,21 @@
             ,"AmaTtlGt1000x"
             ,"AmaTtlGt10000x"
             ,"AmaTtlCountConc"
-            ,"AmaTtlHazResp"
-            ,"AmaTtlHazLiver"
             ,"AmaTtlHazNeuro"
-            ,"AmaTtlHazDev"
             ,"AmaTtlHazReprod"
-            ,"AmaTtlHazKidney"
             ,"AmaTtlHazOcular"
             ,"AmaTtlHazEndoc"
-            ,"AmaTtlHazHemato"
             ,"AmaTtlHazImmune"
             ,"AmaTtlHazSkeletal"
             ,"AmaTtlHazSpleen"
             ,"AmaTtlHazThyroid"
             ,"AmaTtlHazWholebod"
-            ,"RecentCancerRisk"
             ,"Gt1xModeled"
             ,"Gt2xModeled"
             ,"Gt10xModeled"
             ,"Gt100xModeled"
             ,"Gt1000xModeled"
             ,"Gt10000xModeled"
-            ,"NataPollutantCode"
-            ,"NataPollutantName"
-            ,"BkgdCncrRiskPerMil"
-            ,"PtCncrRiskPerMil"
-            ,"PtAirportsCncrRiskPerMil"
-            ,"OrLgtDutyCncrRiskPerMil"
-            ,"OrHvyDutyCncrRiskPerMil"
-            ,"NrOthCncrRiskPerMil"
-            ,"NrCmvCncrRiskPerMil"
-            ,"Np10mRelHtCncrRskPerMil"
-            ,"NpLowRelHtCncrRskPerMil"
-            ,"ResWoodCncrRiskPerMil"
-            ,"BiogenAncrRiskPerMil"
-            ,"FireCncrRiskPerMil"
-            ,"SecFormCncrRiskPerMil"
-            ,"NataRespHazIndex"
-            ,"NataLiverHazIndex"
-            ,"NataNeuroHazIndex"
-            ,"NataDevelHazIndex"
-            ,"NataReprHazIndex"
-            ,"NataKidneyHazIndex"
-            ,"NataOcularHazIndex"
-            ,"NataEndocrineHazIndex"
-            ,"NataHemaHazIndex"
-            ,"NataImmunoHazIndex"
-            ,"NataSkeletalHazIndex"
-            ,"NataSpleenHazIndex"
-            ,"NataThyroidHazIndex"
-            ,"NataWholebodyHazIndex"
          ]
       }
       ,"ecat01": {
