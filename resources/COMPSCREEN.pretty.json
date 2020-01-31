@@ -4,13 +4,14 @@
        "title": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Corporate Compliance Screener Rest Services"
       ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for over one million regulated facilities nationwide. The Corporate Compliance Screener organizes existing ECHO facility data into reports that highlight recent compliance issues or enforcement actions based upon data entered into national data systems of record. \n\nFor guidance, please see https:\/\/echo.epa.gov\/help\/corporate-compliance-screener\/corporate-compliance-screener-help#results. "
       ,"contact": {
-          "name": "US EPA, OECA Integration, Targeting and Access Branch"
+          "name": "U.S. EPA, OECA Integration, Targeting and Access Branch"
+         ,"url": "https:\/\/echo.epa.gov\/resources\/general-info\/contact-us"
       }
       ,"license": {
-          "name": "This page was built with the Swagger API."
-         ,"url": "https:\/\/swagger.io"
+          "name": "U.S. Public Domain License"
+         ,"url": "https:\/\/edg.epa.gov\/EPA_Data_License.html"
       }
-      ,"version": "0.0.0"
+      ,"version": "2019.10.15"
    }
    ,"host": "ofmpub.epa.gov"
    ,"basePath": "\/echo"
@@ -377,6 +378,66 @@
          ,"type": "string"
          ,"required": false
       }
+      ,"q.p_caa": {
+          "name": "p_caa"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"f.p_caa": {
+          "name": "p_caa"
+         ,"in": "formData"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"q.p_cwa": {
+          "name": "p_cwa"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"f.p_cwa": {
+          "name": "p_cwa"
+         ,"in": "formData"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"q.p_rcra": {
+          "name": "p_rcra"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"f.p_rcra": {
+          "name": "p_rcra"
+         ,"in": "formData"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"q.p_sdwa": {
+          "name": "p_sdwa"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"f.p_sdwa": {
+          "name": "p_sdwa"
+         ,"in": "formData"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"q.p_tsca": {
+          "name": "p_tsca"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"f.p_tsca": {
+          "name": "p_tsca"
+         ,"in": "formData"
+         ,"type": "string"
+         ,"required": false
+      }
       ,"q.queryid": {
           "name": "queryid"
          ,"in": "query"
@@ -441,6 +502,21 @@
                }
                ,{
                    "$ref": "#\/parameters\/q.p_yrs"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_caa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_cwa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_rcra"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_sdwa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_tsca"
                }
                ,{
                    "$ref": "#\/parameters\/q.queryset"
@@ -518,6 +594,21 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.p_yrs"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_caa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_cwa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_rcra"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_sdwa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_tsca"
                }
                ,{
                    "$ref": "#\/parameters\/f.queryset"
@@ -1978,7 +2069,7 @@
             ,"Settlements"
          ]
       }
-      ,"meta2": {
+      ,"meta3": {
           "type": "object"
          ,"description": "Results Column Object"
          ,"xml": {
@@ -2039,7 +2130,7 @@
                 "type": "array"
                ,"title": "Result Columns"
                ,"items": {
-                   "$ref": "#\/definitions\/meta2"
+                   "$ref": "#\/definitions\/meta3"
                }
                ,"xml": {
                    "name": "ResultColumns"
