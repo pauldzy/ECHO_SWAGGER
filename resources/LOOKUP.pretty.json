@@ -4,13 +4,14 @@
        "title": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Code Lookups"
       ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for over 1 million regulated facilities nationwide."
       ,"contact": {
-          "name": "US EPA, OECA Integration, Targeting and Access Branch"
+          "name": "U.S. EPA, OECA Integration, Targeting and Access Branch"
+         ,"url": "https:\/\/echo.epa.gov\/resources\/general-info\/contact-us"
       }
       ,"license": {
-          "name": "Creative Commons Zero Public Domain Dedication"
-         ,"url": "https:\/\/creativecommons.org\/publicdomain\/zero\/1.0\/"
+          "name": "U.S. Public Domain License"
+         ,"url": "https:\/\/edg.epa.gov\/EPA_Data_License.html"
       }
-      ,"version": "0.0.0"
+      ,"version": "2019.10.15"
    }
    ,"host": "ofmpub.epa.gov"
    ,"basePath": "\/echo"
@@ -1257,82 +1258,6 @@
             }
          }
       }
-      ,"\/rest_lookups.biosolids_by_registry_id": {
-          "get": {
-             "summary": "Placeholder"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/q.output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.registry_id"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlup19"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Placeholder"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/f.output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.registry_id"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlup19"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
       ,"\/rest_lookups.bio_vio_code": {
           "get": {
              "summary": "Placeholder"
@@ -1405,6 +1330,82 @@
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/rlup18"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
+      ,"\/rest_lookups.biosolids_by_registry_id": {
+          "get": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/q.output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.registry_id"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlup19"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/f.output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.registry_id"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlup19"
                      }
                   }
                   ,"required": [
@@ -1521,7 +1522,7 @@
             ]
             ,"responses": {
              "200": {
-                "description": "Results"
+                "description": "Returns an object that includes a list of of U.S. counties."
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
@@ -1561,7 +1562,7 @@
             ]
             ,"responses": {
              "200": {
-                "description": "Results"
+                "description": "Returns an object that includes a list of of U.S. counties."
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
@@ -1657,6 +1658,82 @@
             }
          }
       }
+      ,"\/rest_lookups.cwa_pagency_lu": {
+          "get": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/q.output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.agency_desc"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlup78"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/f.output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.agency_desc"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlup78"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
       ,"\/rest_lookups.cwa_parameters": {
           "get": {
              "summary": "ECHO CWA Parameter Lookup Service"
@@ -1731,82 +1808,6 @@
                   ,"properties": {
                       "Results": {
                          "$ref": "#\/definitions\/rlup23"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-      }
-      ,"\/rest_lookups.cwa_pagency_lu": {
-          "get": {
-             "summary": "Placeholder"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/q.output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.agency_desc"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlup78"
-                     }
-                  }
-                  ,"required": [
-                      "Results"
-                  ]
-               }
-            }
-            }
-         }
-         ,"post": {
-             "summary": "Placeholder"
-            ,"parameters": [
-                {
-                   "$ref": "#\/parameters\/f.output"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.callback"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.agency_desc"
-               }
-            ]
-            ,"tags": [
-                "Lookups"
-            ]
-            ,"responses": {
-             "200": {
-                "description": "Results"
-               ,"schema": {
-                   "type": "object"
-                  ,"description": "Root Object"
-                  ,"xml": {
-                      "name": "Root"
-                  }
-                  ,"properties": {
-                      "Results": {
-                         "$ref": "#\/definitions\/rlup78"
                      }
                   }
                   ,"required": [
@@ -1923,7 +1924,7 @@
             ]
             ,"responses": {
              "200": {
-                "description": "Results"
+                "description": "Returns an array of chemical abstract service (CAS) number containing search term. If search term not provided, returns all values."
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
@@ -1963,7 +1964,7 @@
             ]
             ,"responses": {
              "200": {
-                "description": "Results"
+                "description": "Returns an array of chemical abstract service (CAS) number containing search term. If search term not provided, returns all values."
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
@@ -2005,7 +2006,7 @@
             ]
             ,"responses": {
              "200": {
-                "description": "Results"
+                "description": "Returns an array of air polluntants containing search term or search code. If search term or search code not provided, returns all values."
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
@@ -2045,7 +2046,7 @@
             ]
             ,"responses": {
              "200": {
-                "description": "Results"
+                "description": "Returns an array of air polluntants containing search term or search code. If search term or search code not provided, returns all values."
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
@@ -4227,6 +4228,82 @@
             }
          }
       }
+      ,"\/rest_lookups.npl_site_link": {
+          "get": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/q.output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.registry_id"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlup81"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Placeholder"
+            ,"parameters": [
+                {
+                   "$ref": "#\/parameters\/f.output"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.callback"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.registry_id"
+               }
+            ]
+            ,"tags": [
+                "Lookups"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/rlup81"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
       ,"\/rest_lookups.prog_deficiency": {
           "get": {
              "summary": "Placeholder"
@@ -4751,7 +4828,7 @@
             ]
             ,"responses": {
              "200": {
-                "description": "Results"
+                "description": "Returns an object that includes a list of U.S. states."
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
@@ -4791,7 +4868,7 @@
             ]
             ,"responses": {
              "200": {
-                "description": "Results"
+                "description": "Returns an object that includes a list of U.S. states."
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
@@ -4916,7 +4993,7 @@
             ]
             ,"responses": {
              "200": {
-                "description": "Results"
+                "description": "Returns an array of valid TRI reporting years."
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
@@ -4957,7 +5034,7 @@
             ]
             ,"responses": {
              "200": {
-                "description": "Results"
+                "description": "Returns an array of valid TRI reporting years."
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
@@ -5004,7 +5081,7 @@
             ]
             ,"responses": {
              "200": {
-                "description": "Results"
+                "description": "Returns the current (latest) year for which TRI data is available."
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
@@ -5049,7 +5126,7 @@
             ]
             ,"responses": {
              "200": {
-                "description": "Results"
+                "description": "Returns the current (latest) year for which TRI data is available."
                ,"schema": {
                    "type": "object"
                   ,"description": "Root Object"
@@ -6681,6 +6758,31 @@
                 "type": "array"
                ,"items": {
                    "$ref": "#\/definitions\/rlup01"
+               }
+               ,"xml": {
+                   "name": "LuValues"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "Message"
+         ]
+      }
+      ,"rlup81": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "Message": {
+                "type": "string"
+               ,"title": "Message"
+               ,"example": "Success"
+               ,"description": "Field to record messages (typically performance-related) about packet processing"
+            }
+            ,"LuValues": {
+                "type": "array"
+               ,"items": {
+                   "$ref": "#\/definitions\/rlup05"
                }
                ,"xml": {
                    "name": "LuValues"
