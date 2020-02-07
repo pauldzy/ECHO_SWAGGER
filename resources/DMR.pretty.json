@@ -4,13 +4,14 @@
        "title": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Water Pollutant Loading Tool Rest Services"
       ,"description": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for over 1 million regulated facilities nationwide. \n\nThe Water Pollutant Loading Tool (Loading Tool) Rest Services provide multiple service endpoints, each with specific capabilities, to search and retrieve data on pollutant mass discharges to surface waters from facilities regulated under the Clean Water Act (CWA) and managed under the National Pollutant Discharge Elimination System (NPDES) program. The Loading Tool uses discharge monitoring report (DMR) and permit data from EPA\u2019s program system, ICIS-NPDES, to calculate pollutant discharges by year and monitoring period. The returned results reflect data drawn from EPA's Loading Tool database. Data from other EPA sources, such as water release data from the Toxics Release Inventory (TRI), are also supplied for context and comparative purposes. \n\nAdditional ECHO Resources: <a href=\"https:\/\/echo.epa.gov\/tools\/web-services\">Web Services<\/a>, <a href=\"https:\/\/echo.epa.gov\/resources\/echo-data\/about-the-data\">About ECHO's Data<\/a>, <a href=\"https:\/\/echo.epa.gov\/tools\/data-downloads\">Data Downloads<\/a>  "
       ,"contact": {
-          "name": "US EPA, OECA Integration, Targeting and Access Branch"
+          "name": "U.S. EPA, OECA Integration, Targeting and Access Branch"
+         ,"url": "https:\/\/echo.epa.gov\/resources\/general-info\/contact-us"
       }
       ,"license": {
-          "name": "This page was built with the Swagger API."
-         ,"url": "https:\/\/swagger.io"
+          "name": "U.S. Public Domain License"
+         ,"url": "https:\/\/edg.epa.gov\/EPA_Data_License.html"
       }
-      ,"version": "0.0.0"
+      ,"version": "2019.10.15"
    }
    ,"host": "ofmpub.epa.gov"
    ,"basePath": "\/echo"
@@ -4376,6 +4377,210 @@
             }
          }
       }
+      ,"\/dmr_rest_services.get_dashboard_npdes": {
+          "get": {
+             "summary": "Placeholder"
+            ,"description": "Placeholder"
+            ,"parameters": [
+                {
+                   "name": "output"
+                  ,"in": "query"
+                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- XML = Data model formatted as Extensible Markup Language.\n- CSV = Results formatted as comma delimited file download."
+                  ,"enum": [
+                      "JSON"
+                     ,"XML"
+                     ,"CSV"
+                  ]
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_co"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_ct"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_esa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_fac_slice"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_imp_water"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_imp_poll"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_reg"
+               }
+               ,{
+                   "name": "p_st"
+                  ,"in": "query"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_top_chem_univ"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_top_ind_univ"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_watershed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_watershed_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_watershed_zip"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "query"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
+                  ,"type": "string"
+                  ,"required": true
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_zip"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.callback"
+               }
+            ]
+            ,"tags": [
+                "Everyday Searches and Other Data Downloads"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr115"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+         ,"post": {
+             "summary": "Placeholder"
+            ,"description": "Placeholder"
+            ,"parameters": [
+                {
+                   "name": "output"
+                  ,"in": "formData"
+                  ,"description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- XML = Data model formatted as Extensible Markup Language.\n- CSV = Results formatted as comma delimited file download."
+                  ,"enum": [
+                      "JSON"
+                     ,"XML"
+                     ,"CSV"
+                  ]
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_co"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_ct"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_esa"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_fac_slice"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_huc"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_imp_water"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_imp_poll"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_reg"
+               }
+               ,{
+                   "name": "p_st"
+                  ,"in": "formData"
+                  ,"description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+                  ,"type": "string"
+                  ,"required": false
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_top_chem_univ"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_top_ind_univ"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_watershed"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_watershed_group"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_watershed_zip"
+               }
+               ,{
+                   "name": "p_year"
+                  ,"in": "formData"
+                  ,"description": "The calendar year for the annual pollutant loadings. "
+                  ,"default": "2018"
+                  ,"type": "string"
+                  ,"required": true
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_zip"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.callback"
+               }
+            ]
+            ,"tags": [
+                "Everyday Searches and Other Data Downloads"
+            ]
+            ,"responses": {
+             "200": {
+                "description": "Results"
+               ,"schema": {
+                   "type": "object"
+                  ,"description": "Root Object"
+                  ,"xml": {
+                      "name": "Root"
+                  }
+                  ,"properties": {
+                      "Results": {
+                         "$ref": "#\/definitions\/dmr115"
+                     }
+                  }
+                  ,"required": [
+                      "Results"
+                  ]
+               }
+            }
+            }
+         }
+      }
       ,"\/dmr_rest_services.get_dashboard_industries": {
           "get": {
              "summary": "Toxics Release Inventory (TRI) and Discharge Monitoring Report (DMR) Comparison Dashboard Industries Download Service"
@@ -7659,6 +7864,15 @@
             ,"NodmrDirectIndDsch": {
                 "type": "string"
             }
+            ,"TriNoNpdes": {
+                "type": "string"
+            }
+            ,"TriNotDmrFiler": {
+                "type": "string"
+            }
+            ,"TriDmrFiler": {
+                "type": "string"
+            }
             ,"NodmrIndDsch": {
                 "type": "string"
             }
@@ -7670,6 +7884,9 @@
             ,"DmrIndDsch"
             ,"NodmrDirectDisch"
             ,"NodmrDirectIndDsch"
+            ,"TriNoNpdes"
+            ,"TriNotDmrFiler"
+            ,"TriDmrFiler"
             ,"NodmrIndDsch"
          ]
       }
@@ -8887,6 +9104,18 @@
             ,"TRIIndirectTwpe": {
                 "type": "string"
             }
+            ,"NPDESDmrFilers": {
+                "type": "string"
+            }
+            ,"NPDESActiveLimits": {
+                "type": "string"
+            }
+            ,"NPDESDmrData": {
+                "type": "string"
+            }
+            ,"NPDESLoads": {
+                "type": "string"
+            }
             ,"MultiyrLink": {
                 "type": "string"
             }
@@ -8915,6 +9144,10 @@
             ,"TRIDirectTwpe"
             ,"TRIIndirectPounds"
             ,"TRIIndirectTwpe"
+            ,"NPDESDmrFilers"
+            ,"NPDESActiveLimits"
+            ,"NPDESDmrData"
+            ,"NPDESLoads"
             ,"MultiyrLink"
          ]
       }
@@ -9060,6 +9293,105 @@
             ,"StartRec"
             ,"EndRec"
             ,"Industries"
+         ]
+      }
+      ,"dmr116": {
+          "type": "object"
+         ,"description": "Chemicals Object"
+         ,"xml": {
+             "name": "Chemicals"
+         }
+         ,"properties": {
+             "GroupName": {
+                "type": "string"
+               ,"title": "Group Name"
+               ,"description": "Name of the group represented. Either a state name or point source category (PSC)."
+            }
+            ,"DmrFacCount": {
+                "type": "string"
+            }
+            ,"TRIFacCount": {
+                "type": "string"
+            }
+            ,"DmrPounds": {
+                "type": "string"
+            }
+            ,"DmrTwpe": {
+                "type": "string"
+            }
+            ,"TRIDirectPounds": {
+                "type": "string"
+            }
+            ,"TRIDirectTwpe": {
+                "type": "string"
+            }
+            ,"DmrQcFlag": {
+                "type": "string"
+            }
+            ,"HasToxicWeight": {
+                "type": "string"
+            }
+            ,"OnTRIList": {
+                "type": "string"
+            }
+         }
+         ,"required": [
+             "GroupName"
+            ,"DmrFacCount"
+            ,"TRIFacCount"
+            ,"DmrPounds"
+            ,"DmrTwpe"
+            ,"TRIDirectPounds"
+            ,"TRIDirectTwpe"
+            ,"DmrQcFlag"
+            ,"HasToxicWeight"
+            ,"OnTRIList"
+         ]
+      }
+      ,"dmr115": {
+          "type": "object"
+         ,"description": "Results Object"
+         ,"properties": {
+             "QueryRows": {
+                "type": "string"
+               ,"title": "Query Row Count"
+               ,"example": "5"
+               ,"description": "Number of query results returned"
+            }
+            ,"PageCount": {
+                "type": "string"
+            }
+            ,"PageNo": {
+                "type": "string"
+               ,"title": "Page Number"
+               ,"example": "1"
+               ,"description": "The number of pages of results returned"
+            }
+            ,"StartRec": {
+                "type": "string"
+            }
+            ,"EndRec": {
+                "type": "string"
+            }
+            ,"Chemicals": {
+                "type": "array"
+               ,"title": "Chemicals Array"
+               ,"items": {
+                   "$ref": "#\/definitions\/dmr116"
+               }
+               ,"xml": {
+                   "name": "TopChemicalPounds"
+                  ,"wrapped": true
+               }
+            }
+         }
+         ,"required": [
+             "QueryRows"
+            ,"PageCount"
+            ,"PageNo"
+            ,"StartRec"
+            ,"EndRec"
+            ,"Chemicals"
          ]
       }
       ,"dmr025": {
@@ -10230,6 +10562,9 @@
             ,"LoadOverLimitLbs": {
                 "type": "string"
             }
+            ,"LoadOverLimitTwpe": {
+                "type": "string"
+            }
             ,"NmbrOfDays": {
                 "type": "string"
             }
@@ -10253,6 +10588,7 @@
             ,"LimitValueUnit"
             ,"ExceedencePct"
             ,"LoadOverLimitLbs"
+            ,"LoadOverLimitTwpe"
             ,"NmbrOfDays"
             ,"ViolationDays"
          ]
