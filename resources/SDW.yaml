@@ -20,11 +20,12 @@ info:
     Additional ECHO Resources:   <a href="https://echo.epa.gov/tools/web-services">Web Services</a>, <a href="https://echo.epa.gov/resources/echo-data/about-the-data">About ECHO's Data</a>, <a href="https://echo.epa.gov/tools/data-downloads">Data Downloads</a>
      
   contact: 
-    name: US EPA, OECA Integration, Targeting and Access Branch
+    name: U.S. EPA, OECA Integration, Targeting and Access Branch
+    url: "https://echo.epa.gov/resources/general-info/contact-us"
   license: 
-    name: This page was built with the Swagger API.
-    url: "https://swagger.io"
-  version: '0.0.0'
+    name: U.S. Public Domain License
+    url: "https://edg.epa.gov/EPA_Data_License.html"
+  version: '2019.10.15'
 host: ofmpub.epa.gov
 basePath: /echo
 schemes: 
@@ -1535,7 +1536,7 @@ paths:
             required: 
               - Results
 definitions: 
-  meta2: 
+  meta3: 
     description: Results Column Object
     xml: 
       name: ResultColumn
@@ -1583,7 +1584,7 @@ definitions:
         type: array
         title: Result Columns
         items: 
-          "$ref": "#/definitions/meta2" 
+          "$ref": "#/definitions/meta3" 
         xml: 
           name: ResultColumns
           wrapped: true
@@ -2029,6 +2030,12 @@ definitions:
         title: Inspected Within Last Five Years Flag
         example: '1'
         description: Indicates if the facility has an inspection within the last 5 years. 1 = Yes
+      ServiceAreaTypeCode: 
+        type: string
+      ServiceAreaTypeDesc: 
+        type: string
+      ViolationCategories: 
+        type: string
       Sansurvey5yr: 
         type: string
         title: Sanitary Surveys (5 years)
@@ -2039,6 +2046,8 @@ definitions:
         title: Significant Deficiency Count
         example: '3'
         description: The number of significant deficiencies found from a sanitary survey within the past five years.
+      SignificantDeficiencyCountIls: 
+        type: string
       SDWDateLastVisit: 
         type: string
         title: Date Last Visit
@@ -2065,16 +2074,16 @@ definitions:
         type: string
       SiteVisits5yrOther: 
         type: string
-      MaxScore: 
-        type: string
-        title: Max Score
-        example: '1'
-        description: A sorting score for internal use.
       RegistryID: 
         type: string
         title: FRS ID
         example: '110020837601'
         description: An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.
+      MaxScore: 
+        type: string
+        title: Max Score
+        example: '1'
+        description: A sorting score for internal use.
     required: 
       - PWSName
       - PWSId
@@ -2137,8 +2146,12 @@ definitions:
       - CurrVioFlag
       - VioFlag
       - Insp5yrFlag
+      - ServiceAreaTypeCode
+      - ServiceAreaTypeDesc
+      - ViolationCategories
       - Sansurvey5yr
       - SignificantDeficiencyCount
+      - SignificantDeficiencyCountIls
       - SDWDateLastVisit
       - SDWDateLastVisitEPA
       - SDWDateLastVisitState
@@ -2146,5 +2159,5 @@ definitions:
       - SiteVisits5yrAll
       - SiteVisits5yrInspections
       - SiteVisits5yrOther
-      - MaxScore
       - RegistryID
+      - MaxScore
