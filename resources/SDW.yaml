@@ -816,46 +816,6 @@ parameters:
     description: End of date range of most recent facility inspection.
     type: string
     required: false
-  q.p_pityp: 
-    name: p_pityp
-    in: query
-    description: |-
-      Inspection Type:
-      - CAC = Corrective Action Inspection
-      - CAV = Compliance Assistance Visit
-      - CDI = Case Development Inspection
-      - CEI = Inspection Inspection
-      - CSE = Compliance Schedule Evaluation
-      - FCI = Focused Compliance
-      - FRR = Financial Record Review
-      - FSD = Facility Self Disclosure
-      - FUI = Follow-Up Inspection
-      - GME = Groundwater Monitoring Evaluation
-      - NRR = Non-Financial Record Review
-      - OAM = Operation and Maintenance Inspection
-      May contain multiple comma-separated values.
-    type: string
-    required: false
-  f.p_pityp: 
-    name: p_pityp
-    in: formData
-    description: |-
-      Inspection Type:
-      - CAC = Corrective Action Inspection
-      - CAV = Compliance Assistance Visit
-      - CDI = Case Development Inspection
-      - CEI = Inspection Inspection
-      - CSE = Compliance Schedule Evaluation
-      - FCI = Focused Compliance
-      - FRR = Financial Record Review
-      - FSD = Facility Self Disclosure
-      - FUI = Follow-Up Inspection
-      - GME = Groundwater Monitoring Evaluation
-      - NRR = Non-Financial Record Review
-      - OAM = Operation and Maintenance Inspection
-      May contain multiple comma-separated values.
-    type: string
-    required: false
   q.p_pfead1: 
     name: p_pfead1
     in: query
@@ -973,6 +933,16 @@ parameters:
     required: false
   q.p_cms_flag: 
     name: p_cms_flag
+    in: query
+    type: string
+    required: false
+  f.p_sdc_ils: 
+    name: p_sdc_ils
+    in: formData
+    type: string
+    required: false
+  q.p_sdc_ils: 
+    name: p_sdc_ils
     in: query
     type: string
     required: false
@@ -1242,12 +1212,12 @@ paths:
         - "$ref": "#/parameters/q.p_pfeat"
         - "$ref": "#/parameters/q.p_ss5yr"
         - "$ref": "#/parameters/q.p_sdc"
+        - "$ref": "#/parameters/q.p_sdc_ils"
         - "$ref": "#/parameters/q.p_ysl"
         - "$ref": "#/parameters/q.p_ysly"
         - "$ref": "#/parameters/q.p_ysla"
         - "$ref": "#/parameters/q.p_idt1"
         - "$ref": "#/parameters/q.p_idt2"
-        - "$ref": "#/parameters/q.p_pityp"
         - "$ref": "#/parameters/q.p_cms_flag"
         - "$ref": "#/parameters/q.queryset"
         - "$ref": "#/parameters/q.responseset"
@@ -1329,12 +1299,12 @@ paths:
         - "$ref": "#/parameters/f.p_pfeat"
         - "$ref": "#/parameters/f.p_ss5yr"
         - "$ref": "#/parameters/f.p_sdc"
+        - "$ref": "#/parameters/f.p_sdc_ils"
         - "$ref": "#/parameters/f.p_ysl"
         - "$ref": "#/parameters/f.p_ysly"
         - "$ref": "#/parameters/f.p_ysla"
         - "$ref": "#/parameters/f.p_idt1"
         - "$ref": "#/parameters/f.p_idt2"
-        - "$ref": "#/parameters/f.p_pityp"
         - "$ref": "#/parameters/f.p_cms_flag"
         - "$ref": "#/parameters/f.queryset"
         - "$ref": "#/parameters/f.responseset"

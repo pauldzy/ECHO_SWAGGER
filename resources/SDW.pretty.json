@@ -810,20 +810,6 @@
          ,"type": "string"
          ,"required": false
       }
-      ,"q.p_pityp": {
-          "name": "p_pityp"
-         ,"in": "query"
-         ,"description": "Inspection Type:\n- CAC = Corrective Action Inspection\n- CAV = Compliance Assistance Visit\n- CDI = Case Development Inspection\n- CEI = Inspection Inspection\n- CSE = Compliance Schedule Evaluation\n- FCI = Focused Compliance\n- FRR = Financial Record Review\n- FSD = Facility Self Disclosure\n- FUI = Follow-Up Inspection\n- GME = Groundwater Monitoring Evaluation\n- NRR = Non-Financial Record Review\n- OAM = Operation and Maintenance Inspection\nMay contain multiple comma-separated values."
-         ,"type": "string"
-         ,"required": false
-      }
-      ,"f.p_pityp": {
-          "name": "p_pityp"
-         ,"in": "formData"
-         ,"description": "Inspection Type:\n- CAC = Corrective Action Inspection\n- CAV = Compliance Assistance Visit\n- CDI = Case Development Inspection\n- CEI = Inspection Inspection\n- CSE = Compliance Schedule Evaluation\n- FCI = Focused Compliance\n- FRR = Financial Record Review\n- FSD = Facility Self Disclosure\n- FUI = Follow-Up Inspection\n- GME = Groundwater Monitoring Evaluation\n- NRR = Non-Financial Record Review\n- OAM = Operation and Maintenance Inspection\nMay contain multiple comma-separated values."
-         ,"type": "string"
-         ,"required": false
-      }
       ,"q.p_pfead1": {
           "name": "p_pfead1"
          ,"in": "query"
@@ -962,6 +948,18 @@
       }
       ,"q.p_cms_flag": {
           "name": "p_cms_flag"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"f.p_sdc_ils": {
+          "name": "p_sdc_ils"
+         ,"in": "formData"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"q.p_sdc_ils": {
+          "name": "p_sdc_ils"
          ,"in": "query"
          ,"type": "string"
          ,"required": false
@@ -1301,6 +1299,9 @@
                    "$ref": "#\/parameters\/q.p_sdc"
                }
                ,{
+                   "$ref": "#\/parameters\/q.p_sdc_ils"
+               }
+               ,{
                    "$ref": "#\/parameters\/q.p_ysl"
                }
                ,{
@@ -1314,9 +1315,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/q.p_idt2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/q.p_pityp"
                }
                ,{
                    "$ref": "#\/parameters\/q.p_cms_flag"
@@ -1510,6 +1508,9 @@
                    "$ref": "#\/parameters\/f.p_sdc"
                }
                ,{
+                   "$ref": "#\/parameters\/f.p_sdc_ils"
+               }
+               ,{
                    "$ref": "#\/parameters\/f.p_ysl"
                }
                ,{
@@ -1523,9 +1524,6 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.p_idt2"
-               }
-               ,{
-                   "$ref": "#\/parameters\/f.p_pityp"
                }
                ,{
                    "$ref": "#\/parameters\/f.p_cms_flag"

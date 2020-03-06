@@ -223,18 +223,6 @@ parameters:
     in: formData
     type: string
     required: false
-  q.p_sfs: 
-    name: p_sfs
-    in: query
-    description: Single Facility Search Filter.  Provide a facility name or program system identifier to limit results.  For the all data search, the FRS registry identifier is also searched.
-    type: string
-    required: false
-  f.p_sfs: 
-    name: p_sfs
-    in: formData
-    description: Single Facility Search Filter.  Provide a facility name or program system identifier to limit results.  For the all data search, the FRS registry identifier is also searched.
-    type: string
-    required: false
   q.p_fea: 
     name: p_fea
     in: query
@@ -451,6 +439,18 @@ parameters:
       - GT20000
     type: string
     required: false
+  q.p_pid: 
+    name: p_pid
+    in: query
+    description: Nine-digit permit IDs. May contain up to 2000 comma-separated values.
+    type: string
+    required: false
+  f.p_pid: 
+    name: p_pid
+    in: formData
+    description: Nine-digit permit IDs. May contain up to 2000 comma-separated values.
+    type: string
+    required: false
   q.p_ysl: 
     name: p_ysl
     in: query
@@ -571,55 +571,19 @@ parameters:
       - BEGINS
     type: string
     required: false
-  q.tablelist: 
-    name: tablelist
+  q.p_pidall: 
+    name: p_pidall
     in: query
-    description: Table List Flag. Enter a Y to display the first page of facility results.
+    description: Controls whether search is restricted to existing system. Y means the search will match the p_pid parameter against all associated permits (AIR, RCRA, SDWIS, etc).
     enum: 
       - Y
       - N
     type: string
     required: false
-  f.tablelist: 
-    name: tablelist
+  f.p_pidall: 
+    name: p_pidall
     in: formData
-    description: Table List Flag. Enter a Y to display the first page of facility results.
-    enum: 
-      - Y
-      - N
-    type: string
-    required: false
-  q.maplist: 
-    name: maplist
-    in: query
-    description: Map List Flag.  Provide a Y to return mappable coordinates representing the full geographic extent of the queryset (all facilities that met the selection criteria).
-    enum: 
-      - Y
-      - N
-    type: string
-    required: false
-  f.maplist: 
-    name: maplist
-    in: formData
-    description: Map List Flag.  Provide a Y to return mappable coordinates representing the full geographic extent of the queryset (all facilities that met the selection criteria).
-    enum: 
-      - Y
-      - N
-    type: string
-    required: false
-  q.summarylist: 
-    name: summarylist
-    in: query
-    description: Summary List Flag.  Enter a Y to return a list of summary statistics based on the parameters submitted to the query service.
-    enum: 
-      - Y
-      - N
-    type: string
-    required: false
-  f.summarylist: 
-    name: summarylist
-    in: formData
-    description: Summary List Flag.  Enter a Y to return a list of summary statistics based on the parameters submitted to the query service.
+    description: Controls whether search is restricted to existing system. Y means the search will match the p_pid parameter against all associated permits (AIR, RCRA, SDWIS, etc).
     enum: 
       - Y
       - N
@@ -681,8 +645,8 @@ parameters:
       - N
     type: string
     required: false
-  q.p_ej: 
-    name: p_ej
+  q.p_hi: 
+    name: p_hi
     in: query
     type: string
     required: false
@@ -696,13 +660,13 @@ parameters:
     in: query
     type: string
     required: false
-  f.p_polltype: 
-    name: p_polltype
+  f.p_nejscreen: 
+    name: p_nejscreen
     in: formData
     type: string
     required: false
-  q.p_polltype: 
-    name: p_polltype
+  q.p_nejscreen: 
+    name: p_nejscreen
     in: query
     type: string
     required: false
@@ -786,26 +750,6 @@ parameters:
     in: query
     type: string
     required: false
-  f.p_regcat: 
-    name: p_regcat
-    in: formData
-    type: string
-    required: false
-  q.p_regcat: 
-    name: p_regcat
-    in: query
-    type: string
-    required: false
-  f.p_rct_yr: 
-    name: p_rct_yr
-    in: formData
-    type: string
-    required: false
-  q.p_rct_yr: 
-    name: p_rct_yr
-    in: query
-    type: string
-    required: false
   f.p_ghgsub: 
     name: p_ghgsub
     in: formData
@@ -826,102 +770,18 @@ parameters:
     in: query
     type: string
     required: false
-  f.p_cur_yr: 
-    name: p_cur_yr
+  f.p_hi: 
+    name: p_hi
     in: formData
     type: string
     required: false
-  q.p_cur_yr: 
-    name: p_cur_yr
+  q.p_hq: 
+    name: p_hq
     in: query
     type: string
     required: false
-  f.p_toxwt: 
-    name: p_toxwt
-    in: formData
-    type: string
-    required: false
-  q.p_toxwt: 
-    name: p_toxwt
-    in: query
-    type: string
-    required: false
-  f.p_pname: 
-    name: p_pname
-    in: formData
-    type: string
-    required: false
-  q.p_pname: 
-    name: p_pname
-    in: query
-    type: string
-    required: false
-  f.p_desig: 
-    name: p_desig
-    in: formData
-    type: string
-    required: false
-  q.p_desig: 
-    name: p_desig
-    in: query
-    type: string
-    required: false
-  f.p_year: 
-    name: p_year
-    in: formData
-    description: The calendar year for the annual pollutant loadings. 
-    default: '2018'
-    type: string
-    required: true
-  q.p_year: 
-    name: p_year
-    in: query
-    description: The calendar year for the annual pollutant loadings. 
-    default: '2018'
-    type: string
-    required: true
-  f.p_pcat: 
-    name: p_pcat
-    in: formData
-    type: string
-    required: false
-  q.p_pcat: 
-    name: p_pcat
-    in: query
-    type: string
-    required: false
-  f.p_scc: 
-    name: p_scc
-    in: formData
-    type: string
-    required: false
-  q.p_scc: 
-    name: p_scc
-    in: query
-    type: string
-    required: false
-  f.p_rpo: 
-    name: p_rpo
-    in: formData
-    type: string
-    required: false
-  q.p_rpo: 
-    name: p_rpo
-    in: query
-    type: string
-    required: false
-  f.p_lon: 
-    name: p_lon
-    in: formData
-    type: string
-    required: false
-  q.p_lon: 
-    name: p_lon
-    in: query
-    type: string
-    required: false
-  f.p_ej: 
-    name: p_ej
+  f.p_hq: 
+    name: p_hq
     in: formData
     type: string
     required: false
@@ -935,6 +795,110 @@ parameters:
     name: p_cas
     in: formData
     description: Chemical Abstracts Service (CAS) Registry Number.
+    type: string
+    required: false
+  q.p_rpo: 
+    name: p_rpo
+    in: query
+    type: string
+    required: false
+  f.p_rpo: 
+    name: p_rpo
+    in: formData
+    type: string
+    required: false
+  q.p_scc: 
+    name: p_scc
+    in: query
+    type: string
+    required: false
+  f.p_scc: 
+    name: p_scc
+    in: formData
+    type: string
+    required: false
+  q.p_tcr: 
+    name: p_tcr
+    in: query
+    type: string
+    required: false
+  f.p_tcr: 
+    name: p_tcr
+    in: formData
+    type: string
+    required: false
+  q.p_pcat: 
+    name: p_pcat
+    in: query
+    type: string
+    required: false
+  f.p_pcat: 
+    name: p_pcat
+    in: formData
+    type: string
+    required: false
+  q.p_tctr: 
+    name: p_tctr
+    in: query
+    type: string
+    required: false
+  f.p_tctr: 
+    name: p_tctr
+    in: formData
+    type: string
+    required: false
+  q.p_year: 
+    name: p_year
+    in: query
+    description: The calendar year for the annual pollutant loadings. 
+    default: '2018'
+    type: string
+    required: true
+  f.p_year: 
+    name: p_year
+    in: formData
+    description: The calendar year for the annual pollutant loadings. 
+    default: '2018'
+    type: string
+    required: true
+  q.p_desig: 
+    name: p_desig
+    in: query
+    type: string
+    required: false
+  f.p_desig: 
+    name: p_desig
+    in: formData
+    type: string
+    required: false
+  q.p_pname: 
+    name: p_pname
+    in: query
+    type: string
+    required: false
+  f.p_pname: 
+    name: p_pname
+    in: formData
+    type: string
+    required: false
+  q.p_tcpsr: 
+    name: p_tcpsr
+    in: query
+    type: string
+    required: false
+  f.p_tcpsr: 
+    name: p_tcpsr
+    in: formData
+    type: string
+    required: false
+  q.p_toxwt: 
+    name: p_toxwt
+    in: query
+    type: string
+    required: false
+  f.p_toxwt: 
+    name: p_toxwt
+    in: formData
     type: string
     required: false
   q.qcolumns: 
@@ -961,18 +925,6 @@ parameters:
     description: "Enter \"Y\" to limit facilities to Census block groups where one of more Environmental Justice indexes above 80th percentile."
     type: string
     required: false
-  q.p_lat: 
-    name: p_lat
-    in: query
-    description: Latitude location in decimal degrees.
-    type: number
-    required: false
-  f.p_lat: 
-    name: p_lat
-    in: formData
-    description: Latitude location in decimal degrees.
-    type: number
-    required: false
 paths: 
   "/ecatt_ems2_rest_services.get_ems": 
     get: 
@@ -980,8 +932,6 @@ paths:
       parameters: 
         - "$ref": "#/parameters/q.output"
         - "$ref": "#/parameters/q.p_year"
-        - "$ref": "#/parameters/q.p_cur_yr"
-        - "$ref": "#/parameters/q.p_rct_yr"
         - "$ref": "#/parameters/q.p_rpttype"
         - "$ref": "#/parameters/q.p_aggtype"
         - "$ref": "#/parameters/q.p_pcat"
@@ -989,15 +939,12 @@ paths:
         - "$ref": "#/parameters/q.p_cas"
         - "$ref": "#/parameters/q.p_toxwt"
         - "$ref": "#/parameters/q.p_program"
-        - "$ref": "#/parameters/q.p_sfs"
         - "$ref": "#/parameters/q.p_ct"
         - "$ref": "#/parameters/q.p_fips"
         - "$ref": "#/parameters/q.p_st"
         - "$ref": "#/parameters/q.p_zip"
         - "$ref": "#/parameters/q.p_reg"
         - "$ref": "#/parameters/q.p_ncs"
-        - "$ref": "#/parameters/q.p_lat"
-        - "$ref": "#/parameters/q.p_lon"
         - "$ref": "#/parameters/q.xmin"
         - "$ref": "#/parameters/q.ymin"
         - "$ref": "#/parameters/q.xmax"
@@ -1007,17 +954,20 @@ paths:
         - "$ref": "#/parameters/q.p_naa_pol_cor"
         - "$ref": "#/parameters/q.p_tribedist"
         - "$ref": "#/parameters/q.p_pd"
-        - "$ref": "#/parameters/q.p_ej"
         - "$ref": "#/parameters/q.p_ejscreen"
+        - "$ref": "#/parameters/q.p_nejscreen"
         - "$ref": "#/parameters/q.p_rpo"
         - "$ref": "#/parameters/q.p_hotspot"
+        - "$ref": "#/parameters/q.p_tcr"
+        - "$ref": "#/parameters/q.p_tctr"
+        - "$ref": "#/parameters/q.p_tcpsr"
+        - "$ref": "#/parameters/q.p_hq"
+        - "$ref": "#/parameters/q.p_hi"
         - "$ref": "#/parameters/q.p_otr"
-        - "$ref": "#/parameters/q.p_polltype"
         - "$ref": "#/parameters/q.p_scc"
         - "$ref": "#/parameters/q.p_eisftype"
         - "$ref": "#/parameters/q.p_ghgftype"
         - "$ref": "#/parameters/q.p_ghgsub"
-        - "$ref": "#/parameters/q.p_regcat"
         - "$ref": "#/parameters/q.p_desig"
         - "$ref": "#/parameters/q.p_frsflg"
         - "$ref": "#/parameters/q.p_ysl"
@@ -1031,11 +981,10 @@ paths:
         - "$ref": "#/parameters/q.p_ieaa"
         - "$ref": "#/parameters/q.p_fn"
         - "$ref": "#/parameters/q.p_fntype"
+        - "$ref": "#/parameters/q.p_pid"
+        - "$ref": "#/parameters/q.p_pidall"
         - "$ref": "#/parameters/q.queryset"
         - "$ref": "#/parameters/q.responseset"
-        - "$ref": "#/parameters/q.tablelist"
-        - "$ref": "#/parameters/q.maplist"
-        - "$ref": "#/parameters/q.summarylist"
         - "$ref": "#/parameters/q.callback"
         - "$ref": "#/parameters/q.qcolumns"
       tags: 
@@ -1057,8 +1006,6 @@ paths:
       parameters: 
         - "$ref": "#/parameters/f.output"
         - "$ref": "#/parameters/f.p_year"
-        - "$ref": "#/parameters/f.p_cur_yr"
-        - "$ref": "#/parameters/f.p_rct_yr"
         - "$ref": "#/parameters/f.p_rpttype"
         - "$ref": "#/parameters/f.p_aggtype"
         - "$ref": "#/parameters/f.p_pcat"
@@ -1066,15 +1013,12 @@ paths:
         - "$ref": "#/parameters/f.p_cas"
         - "$ref": "#/parameters/f.p_toxwt"
         - "$ref": "#/parameters/f.p_program"
-        - "$ref": "#/parameters/f.p_sfs"
         - "$ref": "#/parameters/f.p_ct"
         - "$ref": "#/parameters/f.p_fips"
         - "$ref": "#/parameters/f.p_st"
         - "$ref": "#/parameters/f.p_zip"
         - "$ref": "#/parameters/f.p_reg"
         - "$ref": "#/parameters/f.p_ncs"
-        - "$ref": "#/parameters/f.p_lat"
-        - "$ref": "#/parameters/f.p_lon"
         - "$ref": "#/parameters/f.xmin"
         - "$ref": "#/parameters/f.ymin"
         - "$ref": "#/parameters/f.xmax"
@@ -1084,17 +1028,20 @@ paths:
         - "$ref": "#/parameters/f.p_naa_pol_cor"
         - "$ref": "#/parameters/f.p_tribedist"
         - "$ref": "#/parameters/f.p_pd"
-        - "$ref": "#/parameters/f.p_ej"
         - "$ref": "#/parameters/f.p_ejscreen"
+        - "$ref": "#/parameters/f.p_nejscreen"
         - "$ref": "#/parameters/f.p_rpo"
         - "$ref": "#/parameters/f.p_hotspot"
+        - "$ref": "#/parameters/f.p_tcr"
+        - "$ref": "#/parameters/f.p_tctr"
+        - "$ref": "#/parameters/f.p_tcpsr"
+        - "$ref": "#/parameters/f.p_hq"
+        - "$ref": "#/parameters/f.p_hi"
         - "$ref": "#/parameters/f.p_otr"
-        - "$ref": "#/parameters/f.p_polltype"
         - "$ref": "#/parameters/f.p_scc"
         - "$ref": "#/parameters/f.p_eisftype"
         - "$ref": "#/parameters/f.p_ghgftype"
         - "$ref": "#/parameters/f.p_ghgsub"
-        - "$ref": "#/parameters/f.p_regcat"
         - "$ref": "#/parameters/f.p_desig"
         - "$ref": "#/parameters/f.p_frsflg"
         - "$ref": "#/parameters/f.p_ysl"
@@ -1108,11 +1055,10 @@ paths:
         - "$ref": "#/parameters/f.p_ieaa"
         - "$ref": "#/parameters/f.p_fn"
         - "$ref": "#/parameters/f.p_fntype"
+        - "$ref": "#/parameters/f.p_pid"
+        - "$ref": "#/parameters/f.p_pidall"
         - "$ref": "#/parameters/f.queryset"
         - "$ref": "#/parameters/f.responseset"
-        - "$ref": "#/parameters/f.tablelist"
-        - "$ref": "#/parameters/f.maplist"
-        - "$ref": "#/parameters/f.summarylist"
         - "$ref": "#/parameters/f.callback"
         - "$ref": "#/parameters/f.qcolumns"
       tags: 
