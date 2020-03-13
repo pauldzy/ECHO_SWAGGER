@@ -253,6 +253,20 @@
          ,"type": "string"
          ,"required": false
       }
+      ,"q.p_mact": {
+          "name": "p_mact"
+         ,"in": "query"
+         ,"description": "CAA Maximum Achievable Control Technology (MACT) Subpart codes (alpha ID between 1 and 7 characters) applicable to the facility."
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"f.p_mact": {
+          "name": "p_mact"
+         ,"in": "formData"
+         ,"description": "CAA Maximum Achievable Control Technology (MACT) Subpart codes (alpha ID between 1 and 7 characters) applicable to the facility."
+         ,"type": "string"
+         ,"required": false
+      }
       ,"q.p_fea": {
           "name": "p_fea"
          ,"in": "query"
@@ -707,6 +721,18 @@
          ,"type": "string"
          ,"required": false
       }
+      ,"f.p_nhotspot": {
+          "name": "p_nhotspot"
+         ,"in": "formData"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"q.p_nhotspot": {
+          "name": "p_nhotspot"
+         ,"in": "query"
+         ,"type": "string"
+         ,"required": false
+      }
       ,"f.p_ghgftype": {
           "name": "p_ghgftype"
          ,"in": "formData"
@@ -895,6 +921,20 @@
          ,"type": "string"
          ,"required": false
       }
+      ,"q.p_nsps": {
+          "name": "p_nsps"
+         ,"in": "query"
+         ,"description": "Air Programl New Source Performance Standards (NSPS)  Subpart Code Search.  One or more valid Air Program NSPS Program codes cand be passed.  "
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"f.p_nsps": {
+          "name": "p_nsps"
+         ,"in": "formData"
+         ,"description": "Air Programl New Source Performance Standards (NSPS)  Subpart Code Search.  One or more valid Air Program NSPS Program codes cand be passed.  "
+         ,"type": "string"
+         ,"required": false
+      }
       ,"q.p_pcat": {
           "name": "p_pcat"
          ,"in": "query"
@@ -944,6 +984,20 @@
       ,"f.p_desig": {
           "name": "p_desig"
          ,"in": "formData"
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"q.p_nspsm": {
+          "name": "p_nspsm"
+         ,"in": "query"
+         ,"description": "Air Programl New Source Performance Standards Minors (NSPSM) Subpart Code Search.  One or more valid Air Program NSPSM Subpart codes can be passed.  "
+         ,"type": "string"
+         ,"required": false
+      }
+      ,"f.p_nspsm": {
+          "name": "p_nspsm"
+         ,"in": "formData"
+         ,"description": "Air Programl New Source Performance Standards Minors (NSPSM) Subpart Code Search.  One or more valid Air Program NSPSM Subpart codes can be passed.  "
          ,"type": "string"
          ,"required": false
       }
@@ -1063,6 +1117,15 @@
                    "$ref": "#\/parameters\/q.p_ncs"
                }
                ,{
+                   "$ref": "#\/parameters\/q.p_mact"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_nsps"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_nspsm"
+               }
+               ,{
                    "$ref": "#\/parameters\/q.xmin"
                }
                ,{
@@ -1100,6 +1163,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/q.p_hotspot"
+               }
+               ,{
+                   "$ref": "#\/parameters\/q.p_nhotspot"
                }
                ,{
                    "$ref": "#\/parameters\/q.p_tcr"
@@ -1262,6 +1328,15 @@
                    "$ref": "#\/parameters\/f.p_ncs"
                }
                ,{
+                   "$ref": "#\/parameters\/f.p_mact"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_nsps"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_nspsm"
+               }
+               ,{
                    "$ref": "#\/parameters\/f.xmin"
                }
                ,{
@@ -1299,6 +1374,9 @@
                }
                ,{
                    "$ref": "#\/parameters\/f.p_hotspot"
+               }
+               ,{
+                   "$ref": "#\/parameters\/f.p_nhotspot"
                }
                ,{
                    "$ref": "#\/parameters\/f.p_tcr"
